@@ -1,0 +1,629 @@
+:START_ID,:END_ID,:TYPE,weight
+event/2e5a08e5,why/contextual_action,MOTIVATED_BY,1.0
+event/b9d389c0,why/contextual_action,MOTIVATED_BY,1.0
+event/a8b41fb4,why/contextual_action,MOTIVATED_BY,1.0
+event/64383109,why/contextual_action,MOTIVATED_BY,1.0
+event/84017580,why/contextual_action,MOTIVATED_BY,1.0
+event/4da41d0e,why/contextual_action,MOTIVATED_BY,1.0
+event/11f543fc,why/contextual_action,MOTIVATED_BY,1.0
+event/fd01c0f5,why/contextual_action,MOTIVATED_BY,1.0
+event/7d2a6bab,why/contextual_action,MOTIVATED_BY,1.0
+event/3edd9f18,why/contextual_action,MOTIVATED_BY,1.0
+event/61acce51,why/contextual_action,MOTIVATED_BY,1.0
+event/eb7e1b5b,why/contextual_action,MOTIVATED_BY,1.0
+event/fa724393,why/contextual_action,MOTIVATED_BY,1.0
+event/ffb59e70,why/contextual_action,MOTIVATED_BY,1.0
+event/04642ad1,why/contextual_action,MOTIVATED_BY,1.0
+event/17aeab10,why/contextual_action,MOTIVATED_BY,1.0
+event/53c313d6,why/contextual_action,MOTIVATED_BY,1.0
+event/82e198b2,why/contextual_action,MOTIVATED_BY,1.0
+event/ff4fc2d8,why/contextual_action,MOTIVATED_BY,1.0
+event/ba5b93a5,why/contextual_action,MOTIVATED_BY,1.0
+event/d666e4d2,why/contextual_action,MOTIVATED_BY,1.0
+event/0db92bbc,why/contextual_action,MOTIVATED_BY,1.0
+event/53b69a34,why/contextual_action,MOTIVATED_BY,1.0
+event/b48bd86f,why/contextual_action,MOTIVATED_BY,1.0
+event/b0bf7bae,why/contextual_action,MOTIVATED_BY,1.0
+event/b7944487,why/contextual_action,MOTIVATED_BY,1.0
+event/0cae5151,why/contextual_action,MOTIVATED_BY,1.0
+event/3a532cb1,why/contextual_action,MOTIVATED_BY,1.0
+event/9aff9f5b,why/fear of the unknown,MOTIVATED_BY,1.0
+event/69d6dd7a,why/fear of the unknown,MOTIVATED_BY,1.0
+event/ea8d71eb,why/fear of being harmed,MOTIVATED_BY,1.0
+event/dc71b24e,why/fear of being harmed,MOTIVATED_BY,1.0
+event/1e626ceb,why/contextual_action,MOTIVATED_BY,1.0
+event/4f1eb857,why/contextual_action,MOTIVATED_BY,1.0
+event/d639b38c,why/immediate_command,MOTIVATED_BY,1.0
+event/29b98e15,why/contextual_action,MOTIVATED_BY,1.0
+event/ef260e7f,why/contextual_action,MOTIVATED_BY,1.0
+event/39383d63,why/contextual_action,MOTIVATED_BY,1.0
+event/dc1c4db7,why/contextual_action,MOTIVATED_BY,1.0
+event/bfc4996a,why/contextual_action,MOTIVATED_BY,1.0
+event/39995f8c,why/contextual_action,MOTIVATED_BY,1.0
+event/b81ebe7d,why/contextual_action,MOTIVATED_BY,1.0
+event/6c374691,why/contextual_action,MOTIVATED_BY,1.0
+event/10486b5f,why/contextual_action,MOTIVATED_BY,1.0
+event/b2549a1a,why/contextual_action,MOTIVATED_BY,1.0
+event/6d387e29,why/contextual_action,MOTIVATED_BY,1.0
+event/0a46728b,why/desire to intimidate,MOTIVATED_BY,1.0
+event/88cda2a4,why/contextual_action,MOTIVATED_BY,1.0
+event/3d8fb3c8,why/fear of loss,MOTIVATED_BY,0.5
+event/3d8fb3c8,why/contextual_action,MOTIVATED_BY,0.5
+event/b8fab9df,why/to keep myself upon it,MOTIVATED_BY,0.5
+event/b8fab9df,why/contextual_action,MOTIVATED_BY,0.5
+event/1f25b915,why/to keep myself upon it,MOTIVATED_BY,1.0
+event/5c54482e,why/to keep myself from crying,MOTIVATED_BY,1.0
+event/d83edcc9,why/contextual_action,MOTIVATED_BY,1.0
+event/b2396505,why/contextual_action,MOTIVATED_BY,1.0
+event/b41c8c82,why/contextual_action,MOTIVATED_BY,1.0
+event/21f317dd,why/contextual_action,MOTIVATED_BY,1.0
+event/20c80b9b,why/contextual_action,MOTIVATED_BY,1.0
+event/adb67339,why/contextual_action,MOTIVATED_BY,1.0
+event/00c4e127,why/contextual_action,MOTIVATED_BY,1.0
+event/4ea05b47,why/contextual_action,MOTIVATED_BY,1.0
+event/1b91c5d4,why/contextual_action,MOTIVATED_BY,1.0
+event/b7474bb6,why/curiosity,MOTIVATED_BY,1.0
+event/8c20eaae,why/contextual_action,MOTIVATED_BY,1.0
+event/5caaf1a7,why/contextual_action,MOTIVATED_BY,1.0
+event/fc71e649,why/curiosity,MOTIVATED_BY,0.7
+event/fc71e649,why/threatening intent,MOTIVATED_BY,0.3
+event/7291f12c,why/threatening intent,MOTIVATED_BY,1.0
+event/146300f3,why/contextual_action,MOTIVATED_BY,1.0
+event/fd72b5db,why/contextual_action,MOTIVATED_BY,1.0
+event/1456f255,why/contextual_action,MOTIVATED_BY,1.0
+event/b1245261,why/intimidation,MOTIVATED_BY,0.7
+event/b1245261,why/contextual_action,MOTIVATED_BY,0.3
+event/1043e9b9,why/contextual_action,MOTIVATED_BY,1.0
+event/6ab660b4,why/to give a greater sense of helplessness,MOTIVATED_BY,0.5
+event/6ab660b4,why/to give a greater sense of danger,MOTIVATED_BY,0.5
+event/35e43d82,why/contextual_action,MOTIVATED_BY,1.0
+event/9c646337,why/contextual_action,MOTIVATED_BY,1.0
+event/a5e049ec,why/immediate threat,MOTIVATED_BY,1.0
+event/98b31acb,why/immediate threat,MOTIVATED_BY,1.0
+event/25b7f29c,why/immediate threat,MOTIVATED_BY,1.0
+event/f8c37c13,why/immediate threat,MOTIVATED_BY,1.0
+event/78b029ef,why/contextual_action,MOTIVATED_BY,1.0
+event/fa60c043,why/contextual_action,MOTIVATED_BY,1.0
+event/ab2f9af3,why/contextual_action,MOTIVATED_BY,1.0
+event/aaf675bf,why/fear,MOTIVATED_BY,0.7
+event/aaf675bf,why/contextual_action,MOTIVATED_BY,0.3
+event/c5f68ab5,why/desire to avoid sickness,MOTIVATED_BY,0.6
+event/c5f68ab5,why/contextual_action,MOTIVATED_BY,0.4
+event/4c8086cc,why/fear of sickness,MOTIVATED_BY,1.0
+event/8bbcb046,why/desire for participation,MOTIVATED_BY,1.0
+event/7b7f116e,why/contextual_action,MOTIVATED_BY,1.0
+event/63188e73,why/contextual_action,MOTIVATED_BY,1.0
+event/6d770aff,why/contextual_action,MOTIVATED_BY,1.0
+event/a9316665,why/contextual_action,MOTIVATED_BY,1.0
+event/12f990a3,why/contextual_action,MOTIVATED_BY,1.0
+event/45d93c41,why/immediate survival,MOTIVATED_BY,0.7
+event/45d93c41,why/contextual_action,MOTIVATED_BY,0.3
+event/45dfc95e,why/fear of consequences,MOTIVATED_BY,0.8
+event/45dfc95e,why/contextual_action,MOTIVATED_BY,0.2
+event/414935bb,why/intimidation,MOTIVATED_BY,0.9
+event/414935bb,why/contextual_action,MOTIVATED_BY,0.1
+event/134721c4,why/contextual_action,MOTIVATED_BY,1.0
+event/6ec75179,why/contextual_action,MOTIVATED_BY,1.0
+event/91a2015c,why/contextual_action,MOTIVATED_BY,1.0
+event/9dcaceaf,why/contextual_action,MOTIVATED_BY,1.0
+event/ed641d86,why/fear of young man,MOTIVATED_BY,1.0
+event/cbccc207,why/fear of young man,MOTIVATED_BY,1.0
+event/ea98ffeb,why/contextual_action,MOTIVATED_BY,1.0
+event/fcd352a8,why/contextual_action,MOTIVATED_BY,1.0
+event/5a287957,why/contextual_action,MOTIVATED_BY,1.0
+event/44414d07,why/contextual_action,MOTIVATED_BY,1.0
+event/a1c3efae,why/contextual_action,MOTIVATED_BY,1.0
+event/258a68bb,why/contextual_action,MOTIVATED_BY,1.0
+event/98944448,why/protection of boy,MOTIVATED_BY,1.0
+event/f7fc8959,why/contextual_action,MOTIVATED_BY,1.0
+event/0cf6fb65,why/contextual_action,MOTIVATED_BY,1.0
+event/ee4ae9ef,why/promise to assist,MOTIVATED_BY,1.0
+event/3b3ed8d2,why/promise to assist,MOTIVATED_BY,1.0
+event/708a6c3a,why/promise to assist,MOTIVATED_BY,1.0
+event/12eb7f92,why/intimidation,MOTIVATED_BY,1.0
+event/a3ef9b29,why/contextual_action,MOTIVATED_BY,1.0
+event/ee77e2a4,why/contextual_action,MOTIVATED_BY,1.0
+event/d6b65c53,why/contextual_action,MOTIVATED_BY,1.0
+event/38aacf8e,why/contextual_action,MOTIVATED_BY,1.0
+event/769b15b3,why/contextual_action,MOTIVATED_BY,1.0
+event/8501f748,why/contextual_action,MOTIVATED_BY,1.0
+event/74ab8089,why/contextual_action,MOTIVATED_BY,1.0
+event/9214af0c,why/contextual_action,MOTIVATED_BY,1.0
+event/607b0da7,why/contextual_action,MOTIVATED_BY,1.0
+event/d5ccf5d2,why/contextual_action,MOTIVATED_BY,1.0
+event/ffc996e7,why/contextual_action,MOTIVATED_BY,1.0
+event/c3fbefdb,why/contextual_action,MOTIVATED_BY,1.0
+event/556cc8e5,why/contextual_action,MOTIVATED_BY,1.0
+event/32f7fa01,why/contextual_action,MOTIVATED_BY,1.0
+event/4868595d,why/contextual_action,MOTIVATED_BY,1.0
+event/cab12820,why/contextual_action,MOTIVATED_BY,1.0
+event/a5845b01,why/contextual_action,MOTIVATED_BY,1.0
+event/20ff9b8d,why/contextual_action,MOTIVATED_BY,1.0
+event/d0ad7f45,why/contextual_action,MOTIVATED_BY,1.0
+event/8e6c9c96,why/contextual_action,MOTIVATED_BY,1.0
+event/f4cbbbee,why/contextual_action,MOTIVATED_BY,1.0
+event/c4d0c001,why/contextual_action,MOTIVATED_BY,1.0
+event/1d65a2f1,why/contextual_action,MOTIVATED_BY,1.0
+event/1d1ae5ce,why/contextual_action,MOTIVATED_BY,1.0
+event/4cdbeff8,why/contextual_action,MOTIVATED_BY,1.0
+event/29051fe7,why/contextual_action,MOTIVATED_BY,1.0
+event/2d922087,why/contextual_action,MOTIVATED_BY,1.0
+event/1407723d,why/contextual_action,MOTIVATED_BY,1.0
+event/9665d1c2,why/fear of the situation,MOTIVATED_BY,1.0
+event/a71195fc,why/curiosity about surroundings,MOTIVATED_BY,1.0
+event/493f569a,why/curiosity about cattle's thoughts,MOTIVATED_BY,1.0
+event/a65a55ee,why/searching for a perceived threat,MOTIVATED_BY,1.0
+event/c7b76578,why/relief from not finding the threat,MOTIVATED_BY,1.0
+event/85a7ba36,why/fear of the unknown,MOTIVATED_BY,1.0
+event/bef2006c,why/desire to escape fear,MOTIVATED_BY,1.0
+event/5208ee0a,why/contextual_action,MOTIVATED_BY,1.0
+event/c8380cde,why/contextual_action,MOTIVATED_BY,1.0
+event/1792926f,why/contextual_action,MOTIVATED_BY,1.0
+event/6357b33f,why/curiosity,MOTIVATED_BY,1.0
+event/6d1a5548,why/contextual_action,MOTIVATED_BY,1.0
+event/eda9e21b,why/contextual_action,MOTIVATED_BY,1.0
+event/fd88735f,why/contextual_action,MOTIVATED_BY,1.0
+event/972ab49a,why/contextual_action,MOTIVATED_BY,1.0
+event/b66493ff,why/contextual_action,MOTIVATED_BY,1.0
+event/ba1298ba,why/contextual_action,MOTIVATED_BY,1.0
+event/6480b3ed,why/contextual_action,MOTIVATED_BY,1.0
+event/6fde6cec,why/contextual_action,MOTIVATED_BY,1.0
+event/0f67f86e,why/contextual_action,MOTIVATED_BY,1.0
+event/d380c0d3,why/contextual_action,MOTIVATED_BY,1.0
+event/92fd38f6,why/contextual_action,MOTIVATED_BY,1.0
+event/2861d7b4,why/contextual_action,MOTIVATED_BY,1.0
+event/d1afcd26,why/curiosity,MOTIVATED_BY,1.0
+event/287024eb,why/contextual_action,MOTIVATED_BY,1.0
+event/c6cb11a4,why/self-importance,MOTIVATED_BY,0.5
+event/c6cb11a4,why/reproach against Joe,MOTIVATED_BY,0.5
+event/bf922cd6,why/contextual_action,MOTIVATED_BY,1.0
+event/b12b4355,why/contextual_action,MOTIVATED_BY,1.0
+event/cbea3374,why/contextual_action,MOTIVATED_BY,1.0
+event/e689cd03,why/self-importance,MOTIVATED_BY,1.0
+event/d83a46b9,why/self-importance,MOTIVATED_BY,1.0
+event/3a462fa3,why/contextual_action,MOTIVATED_BY,1.0
+event/cdc60e2c,why/contextual_action,MOTIVATED_BY,1.0
+event/8fcb03be,why/concern for Pip,MOTIVATED_BY,1.0
+event/7af51285,why/contextual_action,MOTIVATED_BY,1.0
+event/9464e7ad,why/contextual_action,MOTIVATED_BY,1.0
+event/4bb1b0e9,why/contextual_action,MOTIVATED_BY,1.0
+event/6b36043e,why/contextual_action,MOTIVATED_BY,1.0
+event/546a7211,why/contextual_action,MOTIVATED_BY,1.0
+event/c1443478,why/contextual_action,MOTIVATED_BY,1.0
+event/6ec192f1,why/contextual_action,MOTIVATED_BY,1.0
+event/fd048c51,why/concern for her absence,MOTIVATED_BY,1.0
+event/4b2adb39,why/perception of Joe's maturity,MOTIVATED_BY,1.0
+event/54b4b7ef,why/perception of equality,MOTIVATED_BY,1.0
+event/ce7661c5,why/contextual_action,MOTIVATED_BY,1.0
+event/80f66b45,why/contextual_action,MOTIVATED_BY,1.0
+event/24cc3b55,why/contextual_action,MOTIVATED_BY,1.0
+event/713f7e26,why/contextual_action,MOTIVATED_BY,1.0
+event/7f6a0a71,why/contextual_action,MOTIVATED_BY,1.0
+event/5601e590,why/contextual_action,MOTIVATED_BY,1.0
+event/e4ce06c6,why/contextual_action,MOTIVATED_BY,1.0
+event/58a1c521,why/contextual_action,MOTIVATED_BY,1.0
+event/65147d87,why/contextual_action,MOTIVATED_BY,1.0
+event/9e105ab6,why/concern for Pip's actions,MOTIVATED_BY,0.7
+event/9e105ab6,why/contextual_action,MOTIVATED_BY,0.3
+event/d191f21a,why/frustration,MOTIVATED_BY,1.0
+event/a606a00e,why/concern for Pip's actions,MOTIVATED_BY,0.7
+event/a606a00e,why/contextual_action,MOTIVATED_BY,0.3
+event/2ad7e6e4,why/frustration with Pip,MOTIVATED_BY,0.8
+event/2ad7e6e4,why/contextual_action,MOTIVATED_BY,0.2
+event/d468756c,why/contextual_action,MOTIVATED_BY,1.0
+event/e447bd50,why/contextual_action,MOTIVATED_BY,1.0
+event/51405c2b,why/contextual_action,MOTIVATED_BY,1.0
+event/ed876015,why/contextual_action,MOTIVATED_BY,1.0
+event/17d309d5,why/self-reflection,MOTIVATED_BY,1.0
+event/866fa1fb,why/defensive response,MOTIVATED_BY,1.0
+event/a6680397,why/regret,MOTIVATED_BY,1.0
+event/c8a2a16d,why/self-awareness,MOTIVATED_BY,1.0
+event/afe87ae3,why/emotional burden,MOTIVATED_BY,1.0
+event/1c474fea,why/frustration,MOTIVATED_BY,1.0
+event/6e859275,why/contextual_action,MOTIVATED_BY,1.0
+event/0f504918,why/emotional state,MOTIVATED_BY,1.0
+event/2a655d8f,why/contextual_action,MOTIVATED_BY,1.0
+event/14635d38,why/contextual_action,MOTIVATED_BY,1.0
+event/2d31f8be,why/contextual_action,MOTIVATED_BY,1.0
+event/84691080,why/contextual_action,MOTIVATED_BY,1.0
+event/6976eb28,why/contextual_action,MOTIVATED_BY,1.0
+event/cada4fe9,why/contextual_action,MOTIVATED_BY,1.0
+event/1a42b9fd,why/contextual_action,MOTIVATED_BY,1.0
+event/aebd0fe0,why/contextual_action,MOTIVATED_BY,1.0
+event/08a60377,why/curiosity,MOTIVATED_BY,0.5
+event/08a60377,why/contextual_action,MOTIVATED_BY,0.5
+event/a9cec915,why/contextual_action,MOTIVATED_BY,1.0
+event/35aed3fa,why/concern,MOTIVATED_BY,1.0
+event/e401437a,why/contextual_action,MOTIVATED_BY,1.0
+event/b52dd92a,why/admiration,MOTIVATED_BY,0.5
+event/b52dd92a,why/contextual_action,MOTIVATED_BY,0.5
+event/c08cbab4,why/contextual_action,MOTIVATED_BY,1.0
+event/5cbcba8c,why/contextual_action,MOTIVATED_BY,1.0
+event/1a87ea2f,why/contextual_action,MOTIVATED_BY,1.0
+event/8bc02174,why/contextual_action,MOTIVATED_BY,1.0
+event/425f587d,why/contextual_action,MOTIVATED_BY,1.0
+event/f17fea22,why/contextual_action,MOTIVATED_BY,1.0
+event/30b185a5,why/contextual_action,MOTIVATED_BY,1.0
+event/ffc18e89,why/contextual_action,MOTIVATED_BY,1.0
+event/aedeeafd,why/contextual_action,MOTIVATED_BY,1.0
+event/d1b15417,why/contextual_action,MOTIVATED_BY,1.0
+event/59e0ec3b,why/contextual_action,MOTIVATED_BY,1.0
+event/d095771f,why/contextual_action,MOTIVATED_BY,1.0
+event/8f182399,why/contextual_action,MOTIVATED_BY,1.0
+event/aaeca2d3,why/contextual_action,MOTIVATED_BY,1.0
+event/d21e4af0,why/contextual_action,MOTIVATED_BY,1.0
+event/9919f1c2,why/hunger,MOTIVATED_BY,1.0
+event/8bfc8e78,why/fear of acquaintance,MOTIVATED_BY,1.0
+event/40f93a16,why/preparation for acquaintance,MOTIVATED_BY,1.0
+event/74510a43,why/fear of acquaintance,MOTIVATED_BY,1.0
+event/4d71a1df,why/fear of young man,MOTIVATED_BY,1.0
+event/0a56aa3f,why/awareness of strictness,MOTIVATED_BY,1.0
+event/2c2f6eaa,why/fear of failure,MOTIVATED_BY,1.0
+event/bf9bea97,why/need for concealment,MOTIVATED_BY,1.0
+event/068bb4ad,why/contextual_action,MOTIVATED_BY,1.0
+event/c731b4d3,why/contextual_action,MOTIVATED_BY,1.0
+event/9f51f640,why/contextual_action,MOTIVATED_BY,1.0
+event/c08378f1,why/contextual_action,MOTIVATED_BY,1.0
+event/70a7186f,why/contextual_action,MOTIVATED_BY,1.0
+event/0847369c,why/contextual_action,MOTIVATED_BY,1.0
+event/83801a5b,why/contextual_action,MOTIVATED_BY,1.0
+event/6dccfec1,why/contextual_action,MOTIVATED_BY,1.0
+event/fcdd4e38,why/contextual_action,MOTIVATED_BY,1.0
+event/d81a59ff,why/perception of Pip's loss of appetite,MOTIVATED_BY,1.0
+event/d292eaa3,why/contextual_action,MOTIVATED_BY,1.0
+event/c8014bd0,why/contextual_action,MOTIVATED_BY,1.0
+event/06136c7f,why/contextual_action,MOTIVATED_BY,1.0
+event/75d58625,why/contextual_action,MOTIVATED_BY,1.0
+event/cdd959f8,why/contextual_action,MOTIVATED_BY,1.0
+event/e15c231c,why/contextual_action,MOTIVATED_BY,1.0
+event/a96a86d3,why/contextual_action,MOTIVATED_BY,1.0
+event/1be835b4,why/contextual_action,MOTIVATED_BY,1.0
+event/6f193ab3,why/contextual_action,MOTIVATED_BY,1.0
+event/9d1c16af,why/contextual_action,MOTIVATED_BY,1.0
+event/d0f164bb,why/contextual_action,MOTIVATED_BY,1.0
+event/f5a61f5d,why/contextual_action,MOTIVATED_BY,1.0
+event/da6c970e,why/curiosity,MOTIVATED_BY,1.0
+event/b9c6d01d,why/contextual_action,MOTIVATED_BY,1.0
+event/e425d5fc,why/concern for Pip's well-being,MOTIVATED_BY,1.0
+event/f9072e74,why/concern for Pip,MOTIVATED_BY,1.0
+event/c815b28e,why/frustration or urgency,MOTIVATED_BY,1.0
+event/6cf43197,why/concern for Pip's health,MOTIVATED_BY,0.7
+event/6cf43197,why/contextual_action,MOTIVATED_BY,0.3
+event/31a2e183,why/concern for Pip's health,MOTIVATED_BY,1.0
+event/05211a08,why/contextual_action,MOTIVATED_BY,1.0
+event/09301f5a,why/concern for Pip's health,MOTIVATED_BY,1.0
+event/577b2979,why/concern for Pip,MOTIVATED_BY,0.7
+event/577b2979,why/contextual_action,MOTIVATED_BY,0.3
+event/2d165024,why/physical exertion,MOTIVATED_BY,1.0
+event/c9f75c3b,why/frustration with Pip's behavior,MOTIVATED_BY,1.0
+event/10dfb239,why/helplessness,MOTIVATED_BY,1.0
+event/e5012921,why/helplessness,MOTIVATED_BY,1.0
+event/1fa4a5f5,why/contextual_action,MOTIVATED_BY,1.0
+event/d70d5e9c,why/contextual_action,MOTIVATED_BY,1.0
+event/2170cec8,why/contextual_action,MOTIVATED_BY,1.0
+event/8bb032c4,why/contextual_action,MOTIVATED_BY,1.0
+event/fd928cf2,why/contextual_action,MOTIVATED_BY,1.0
+event/8ca8dae1,why/contextual_action,MOTIVATED_BY,1.0
+event/72e57756,why/contextual_action,MOTIVATED_BY,1.0
+event/51a151a3,why/contextual_action,MOTIVATED_BY,1.0
+event/fa6103e4,why/contextual_action,MOTIVATED_BY,1.0
+event/c53493b9,why/contextual_action,MOTIVATED_BY,1.0
+event/d80333e8,why/contextual_action,MOTIVATED_BY,1.0
+event/41d51282,why/contextual_action,MOTIVATED_BY,1.0
+event/5bde1f4b,why/contextual_action,MOTIVATED_BY,1.0
+event/a67bc50b,why/contextual_action,MOTIVATED_BY,1.0
+event/250caca4,why/contextual_action,MOTIVATED_BY,1.0
+event/d0973e55,why/contextual_action,MOTIVATED_BY,1.0
+event/b7694ff0,why/contextual_action,MOTIVATED_BY,1.0
+event/8ae60664,why/contextual_action,MOTIVATED_BY,1.0
+event/7135c12a,why/contextual_action,MOTIVATED_BY,1.0
+event/fa551594,why/contextual_action,MOTIVATED_BY,1.0
+event/098690f8,why/contextual_action,MOTIVATED_BY,1.0
+event/59e8bd8e,why/contextual_action,MOTIVATED_BY,1.0
+event/fcd28ebd,why/guilt,MOTIVATED_BY,1.0
+event/b28c463e,why/contextual_action,MOTIVATED_BY,1.0
+event/fe5d43f6,why/contextual_action,MOTIVATED_BY,1.0
+event/8692fe0e,why/contextual_action,MOTIVATED_BY,1.0
+event/dd336c4e,why/contextual_action,MOTIVATED_BY,1.0
+event/8ec2d7eb,why/contextual_action,MOTIVATED_BY,1.0
+event/93bc4c17,why/guilt,MOTIVATED_BY,1.0
+event/b6bd1c19,why/contextual_action,MOTIVATED_BY,1.0
+event/6e671178,why/contextual_action,MOTIVATED_BY,1.0
+event/a0a198ee,why/contextual_action,MOTIVATED_BY,1.0
+event/004e86ec,why/hunger,MOTIVATED_BY,1.0
+event/1539703b,why/concern,MOTIVATED_BY,1.0
+event/85a7b9be,why/fear,MOTIVATED_BY,1.0
+event/dc788837,why/fear,MOTIVATED_BY,1.0
+event/da1a30c4,why/fear,MOTIVATED_BY,1.0
+event/5ca92142,why/contextual_action,MOTIVATED_BY,1.0
+event/413dd7c0,why/contextual_action,MOTIVATED_BY,1.0
+event/0321dd7c,why/contextual_action,MOTIVATED_BY,1.0
+event/7f2a707e,why/contextual_action,MOTIVATED_BY,1.0
+event/2a97edb9,why/contextual_action,MOTIVATED_BY,1.0
+event/1128d2d3,why/curiosity,MOTIVATED_BY,1.0
+event/76057e56,why/curiosity,MOTIVATED_BY,1.0
+event/f0ad4c88,why/contextual_action,MOTIVATED_BY,1.0
+event/bae94a32,why/contextual_action,MOTIVATED_BY,1.0
+event/178d2244,why/contextual_action,MOTIVATED_BY,1.0
+event/cd1922c1,why/inform others,MOTIVATED_BY,1.0
+event/1a8616b4,why/provide context,MOTIVATED_BY,1.0
+event/283ed5f5,why/inform others,MOTIVATED_BY,1.0
+event/9da9562c,why/inform others,MOTIVATED_BY,1.0
+event/f54c38c6,why/frustration with Pip's questioning,MOTIVATED_BY,1.0
+event/e1638972,why/contextual_action,MOTIVATED_BY,1.0
+event/e6f55342,why/desire to prevent lies,MOTIVATED_BY,1.0
+event/62170c11,why/contextual_action,MOTIVATED_BY,1.0
+event/5106dad7,why/contextual_action,MOTIVATED_BY,1.0
+event/9ab25fcc,why/curiosity,MOTIVATED_BY,1.0
+event/6fae9fec,why/contextual_action,MOTIVATED_BY,1.0
+event/0e867369,why/contextual_action,MOTIVATED_BY,1.0
+event/22ad5e54,why/contextual_action,MOTIVATED_BY,1.0
+event/6d759c89,why/contextual_action,MOTIVATED_BY,1.0
+event/3a929726,why/contextual_action,MOTIVATED_BY,1.0
+event/3a3b19ba,why/contextual_action,MOTIVATED_BY,1.0
+event/e9187199,why/contextual_action,MOTIVATED_BY,1.0
+event/5dff9348,why/confusion,MOTIVATED_BY,1.0
+event/f62af841,why/curiosity about the firing,MOTIVATED_BY,1.0
+event/06235d07,why/contextual_action,MOTIVATED_BY,1.0
+event/1e77ebf1,why/contradictory feelings,MOTIVATED_BY,1.0
+event/e7a674bc,why/contextual_action,MOTIVATED_BY,1.0
+event/8ca0d780,why/contextual_action,MOTIVATED_BY,1.0
+event/20d54813,why/contextual_action,MOTIVATED_BY,1.0
+event/700c897e,why/contextual_action,MOTIVATED_BY,1.0
+event/abb81131,why/contextual_action,MOTIVATED_BY,1.0
+event/7d7bd713,why/contextual_action,MOTIVATED_BY,1.0
+event/91ae3a4d,why/contextual_action,MOTIVATED_BY,1.0
+event/9e29cd88,why/contextual_action,MOTIVATED_BY,1.0
+event/7cf70702,why/contextual_action,MOTIVATED_BY,1.0
+event/d2790f5b,why/curiosity,MOTIVATED_BY,0.5
+event/d2790f5b,why/quiet desperation,MOTIVATED_BY,0.5
+event/7b5b6f0d,why/contextual_action,MOTIVATED_BY,1.0
+event/b65dc108,why/contextual_action,MOTIVATED_BY,1.0
+event/35f81600,why/contextual_action,MOTIVATED_BY,1.0
+event/2833a834,why/contextual_action,MOTIVATED_BY,1.0
+event/4fb4687f,why/contextual_action,MOTIVATED_BY,1.0
+event/cb6865b1,why/contextual_action,MOTIVATED_BY,1.0
+event/0efc8650,why/contextual_action,MOTIVATED_BY,1.0
+event/d0a71ab1,why/contextual_action,MOTIVATED_BY,1.0
+event/107a0546,why/contextual_action,MOTIVATED_BY,1.0
+event/3b91cec1,why/contextual_action,MOTIVATED_BY,1.0
+event/2a42ec48,why/contextual_action,MOTIVATED_BY,1.0
+event/49301da0,why/contextual_action,MOTIVATED_BY,1.0
+event/1a487345,why/contextual_action,MOTIVATED_BY,1.0
+event/9bcab8d1,why/fear of harm,MOTIVATED_BY,1.0
+event/9cca274d,why/fear of harm,MOTIVATED_BY,1.0
+event/4b724f0a,why/fear of self,MOTIVATED_BY,1.0
+event/e24f0ee1,why/despair,MOTIVATED_BY,1.0
+event/92069b9c,why/fear of consequences,MOTIVATED_BY,1.0
+event/154e1750,why/contextual_action,MOTIVATED_BY,1.0
+event/826a5aac,why/contextual_action,MOTIVATED_BY,1.0
+event/7b9bd4f2,why/contextual_action,MOTIVATED_BY,1.0
+event/e7feb8b2,why/fear of consequences,MOTIVATED_BY,0.7
+event/e7feb8b2,why/contextual_action,MOTIVATED_BY,0.3
+event/a5ba43b8,why/fear of consequences,MOTIVATED_BY,1.0
+event/6e493f22,why/contextual_action,MOTIVATED_BY,1.0
+event/6eadceb6,why/contextual_action,MOTIVATED_BY,1.0
+event/0777d14d,why/contextual_action,MOTIVATED_BY,1.0
+event/e57ce3b2,why/contextual_action,MOTIVATED_BY,1.0
+event/66208544,why/contextual_action,MOTIVATED_BY,1.0
+event/efaec9af,why/contextual_action,MOTIVATED_BY,1.0
+event/97f696f0,why/contextual_action,MOTIVATED_BY,1.0
+event/f835fefe,why/contextual_action,MOTIVATED_BY,1.0
+event/fa296cbe,why/contextual_action,MOTIVATED_BY,1.0
+event/dd855ce8,why/contextual_action,MOTIVATED_BY,1.0
+event/a1f1b8b0,why/contextual_action,MOTIVATED_BY,1.0
+event/bf6a7efb,why/contextual_action,MOTIVATED_BY,1.0
+event/69b583ce,why/contextual_action,MOTIVATED_BY,1.0
+event/ff9eab81,why/contextual_action,MOTIVATED_BY,1.0
+event/5c838f36,why/contextual_action,MOTIVATED_BY,1.0
+event/fdf3019a,why/contextual_action,MOTIVATED_BY,1.0
+event/408444b3,why/contextual_action,MOTIVATED_BY,1.0
+event/f155555c,why/hunger,MOTIVATED_BY,0.5
+event/f155555c,why/contextual_action,MOTIVATED_BY,0.5
+event/b5f90393,why/hunger,MOTIVATED_BY,0.5
+event/b5f90393,why/contextual_action,MOTIVATED_BY,0.5
+event/f7337371,why/hunger,MOTIVATED_BY,0.5
+event/f7337371,why/contextual_action,MOTIVATED_BY,0.5
+event/3308607c,why/contextual_action,MOTIVATED_BY,1.0
+event/3b03d05f,why/hunger,MOTIVATED_BY,0.5
+event/3b03d05f,why/contextual_action,MOTIVATED_BY,0.5
+event/1c2ddba2,why/contextual_action,MOTIVATED_BY,1.0
+event/694842a6,why/contextual_action,MOTIVATED_BY,1.0
+event/472b855f,why/contextual_action,MOTIVATED_BY,1.0
+event/0ce2e6e6,why/hunger,MOTIVATED_BY,0.5
+event/0ce2e6e6,why/contextual_action,MOTIVATED_BY,0.5
+event/3d8d3bd3,why/hunger,MOTIVATED_BY,0.5
+event/3d8d3bd3,why/contextual_action,MOTIVATED_BY,0.5
+event/5b101253,why/contextual_action,MOTIVATED_BY,1.0
+event/b6967d7e,why/curiosity,MOTIVATED_BY,1.0
+event/fbd33cee,why/curiosity,MOTIVATED_BY,1.0
+event/92d0b8c5,why/curiosity,MOTIVATED_BY,1.0
+event/6de925c5,why/hope it is not intended for early use,MOTIVATED_BY,0.5
+event/6de925c5,why/hope it will not be missed for some time,MOTIVATED_BY,0.5
+event/1b596ad4,why/contextual_action,MOTIVATED_BY,1.0
+event/40aa2c5a,why/contextual_action,MOTIVATED_BY,1.0
+event/a66616d1,why/contextual_action,MOTIVATED_BY,1.0
+event/79208de2,why/contextual_action,MOTIVATED_BY,1.0
+event/083c7460,why/contextual_action,MOTIVATED_BY,1.0
+event/50b5f6f9,why/contextual_action,MOTIVATED_BY,1.0
+event/c92c7801,why/contextual_action,MOTIVATED_BY,1.0
+event/e8861bd3,why/contextual_action,MOTIVATED_BY,1.0
+event/10e40e04,why/contextual_action,MOTIVATED_BY,1.0
+event/890e45a9,why/contextual_action,MOTIVATED_BY,1.0
+event/bc2ad238,why/contextual_action,MOTIVATED_BY,1.0
+event/9b15664f,why/contextual_action,MOTIVATED_BY,1.0
+event/82fc07b5,why/contextual_action,MOTIVATED_BY,1.0
+event/409adfa0,why/contextual_action,MOTIVATED_BY,1.0
+event/8bc4cac6,why/contextual_action,MOTIVATED_BY,1.0
+event/9d8175df,why/contextual_action,MOTIVATED_BY,1.0
+event/a46a0312,why/contextual_action,MOTIVATED_BY,1.0
+event/dbb98c36,why/contextual_action,MOTIVATED_BY,1.0
+event/fbee67b5,why/contextual_action,MOTIVATED_BY,1.0
+event/db32636b,why/contextual_action,MOTIVATED_BY,1.0
+event/9c2410c7,why/contextual_action,MOTIVATED_BY,1.0
+event/732c2a3d,why/contextual_action,MOTIVATED_BY,1.0
+event/c257b93c,why/contextual_action,MOTIVATED_BY,1.0
+event/d3077e77,why/contextual_action,MOTIVATED_BY,1.0
+event/6f56f82d,why/contextual_action,MOTIVATED_BY,1.0
+event/c26791d8,why/contextual_action,MOTIVATED_BY,1.0
+event/4c6ad413,why/guilt,MOTIVATED_BY,1.0
+event/971904ce,why/contextual_action,MOTIVATED_BY,1.0
+event/21a73d93,why/contextual_action,MOTIVATED_BY,1.0
+event/ebf17328,why/contextual_action,MOTIVATED_BY,1.0
+event/e8564276,why/contextual_action,MOTIVATED_BY,1.0
+event/36557eae,why/contextual_action,MOTIVATED_BY,1.0
+event/323b20d8,why/contextual_action,MOTIVATED_BY,1.0
+event/94dbee96,why/contextual_action,MOTIVATED_BY,1.0
+event/d62a852c,why/contextual_action,MOTIVATED_BY,1.0
+event/943492c4,why/contextual_action,MOTIVATED_BY,1.0
+event/2b8bfc2d,why/contextual_action,MOTIVATED_BY,1.0
+event/50d9abaa,why/contextual_action,MOTIVATED_BY,1.0
+event/4f4a887b,why/contextual_action,MOTIVATED_BY,1.0
+event/0419c7a6,why/contextual_action,MOTIVATED_BY,1.0
+event/f812cdc8,why/contextual_action,MOTIVATED_BY,1.0
+event/884b0d33,why/contextual_action,MOTIVATED_BY,1.0
+event/f17ef378,why/contextual_action,MOTIVATED_BY,1.0
+event/a92f2eb7,why/contextual_action,MOTIVATED_BY,1.0
+event/96a2fab9,why/contextual_action,MOTIVATED_BY,1.0
+event/e2e99df8,why/contextual_action,MOTIVATED_BY,1.0
+event/50498a60,why/contextual_action,MOTIVATED_BY,1.0
+event/13c96e4f,why/contextual_action,MOTIVATED_BY,1.0
+event/bc88308a,why/contextual_action,MOTIVATED_BY,1.0
+event/7ccac3c5,why/contextual_action,MOTIVATED_BY,1.0
+event/17defe17,why/contextual_action,MOTIVATED_BY,1.0
+event/34de9581,why/contextual_action,MOTIVATED_BY,1.0
+event/9183a26c,why/contextual_action,MOTIVATED_BY,1.0
+event/3b9d83ed,why/contextual_action,MOTIVATED_BY,1.0
+event/e3fde20e,why/contextual_action,MOTIVATED_BY,1.0
+event/ab813521,why/contextual_action,MOTIVATED_BY,1.0
+event/558bd7d1,why/contextual_action,MOTIVATED_BY,1.0
+event/59b2a64c,why/contextual_action,MOTIVATED_BY,1.0
+event/82b56cf2,why/contextual_action,MOTIVATED_BY,1.0
+event/bfb834b5,why/anticipation of joy,MOTIVATED_BY,0.5
+event/bfb834b5,why/contextual_action,MOTIVATED_BY,0.5
+event/035ef420,why/desire to surprise,MOTIVATED_BY,1.0
+event/16739857,why/attempt to wake,MOTIVATED_BY,1.0
+event/214a87ea,why/surprise,MOTIVATED_BY,1.0
+event/373730db,why/realization of change,MOTIVATED_BY,1.0
+event/87d1eb12,why/contextual_action,MOTIVATED_BY,1.0
+event/84c4829d,why/fear or surprise,MOTIVATED_BY,1.0
+event/1ee1085a,why/contextual_action,MOTIVATED_BY,1.0
+event/73739219,why/contextual_action,MOTIVATED_BY,1.0
+event/34ac3c1d,why/contextual_action,MOTIVATED_BY,1.0
+event/911ec718,why/contextual_action,MOTIVATED_BY,1.0
+event/58c1c150,why/cold,MOTIVATED_BY,1.0
+event/1d57c22c,why/contextual_action,MOTIVATED_BY,1.0
+event/35488e2a,why/concern,MOTIVATED_BY,1.0
+event/1b8fe467,why/contextual_action,MOTIVATED_BY,1.0
+event/46aac06d,why/help,MOTIVATED_BY,1.0
+event/c703489c,why/contextual_action,MOTIVATED_BY,1.0
+event/bcbe8354,why/hunger,MOTIVATED_BY,1.0
+event/2ca1b213,why/contextual_action,MOTIVATED_BY,1.0
+event/73371447,why/contextual_action,MOTIVATED_BY,1.0
+event/5dfd7c0d,why/contextual_action,MOTIVATED_BY,1.0
+event/d1d579b2,why/hurry,MOTIVATED_BY,0.7
+event/d1d579b2,why/contextual_action,MOTIVATED_BY,0.3
+event/b3b3506b,why/contextual_action,MOTIVATED_BY,1.0
+event/8f378c8b,why/contextual_action,MOTIVATED_BY,1.0
+event/b1987cbc,why/cold or fear,MOTIVATED_BY,0.6
+event/b1987cbc,why/contextual_action,MOTIVATED_BY,0.4
+event/ca0afd0a,why/contextual_action,MOTIVATED_BY,1.0
+event/60db93ee,why/contextual_action,MOTIVATED_BY,1.0
+event/f16d8887,why/concern for his well-being,MOTIVATED_BY,1.0
+event/3b45e2f0,why/to provide information,MOTIVATED_BY,1.0
+event/ddb2d7f5,why/to express my opinion,MOTIVATED_BY,1.0
+event/5b843f7b,why/to express my opinion,MOTIVATED_BY,1.0
+event/80cc9b1d,why/fear of death,MOTIVATED_BY,0.7
+event/80cc9b1d,why/contextual_action,MOTIVATED_BY,0.3
+event/0dcda3af,why/fear of execution,MOTIVATED_BY,1.0
+event/3da5bdb1,why/defiance against fear,MOTIVATED_BY,1.0
+event/d9b2d85d,why/hunger,MOTIVATED_BY,1.0
+event/c0f27f35,why/distrust,MOTIVATED_BY,1.0
+event/c8d4d214,why/suspicion,MOTIVATED_BY,1.0
+event/138c6f03,why/fear,MOTIVATED_BY,1.0
+event/8222727f,why/fear,MOTIVATED_BY,1.0
+event/bb4a0dc3,why/surprise,MOTIVATED_BY,1.0
+event/aa7d901a,why/urgency,MOTIVATED_BY,1.0
+event/dc2f72fb,why/contextual_action,MOTIVATED_BY,1.0
+event/4b4013c4,why/contextual_action,MOTIVATED_BY,1.0
+event/a3357a2d,why/contextual_action,MOTIVATED_BY,1.0
+event/ec3b31c7,why/contextual_action,MOTIVATED_BY,1.0
+event/eaddb4c4,why/contextual_action,MOTIVATED_BY,1.0
+event/d4844132,why/empathy,MOTIVATED_BY,1.0
+event/e82c90c5,why/curiosity,MOTIVATED_BY,1.0
+event/0d5cc5ae,why/desire to connect,MOTIVATED_BY,1.0
+event/ae7e4d35,why/fear of losing inheritance,MOTIVATED_BY,0.7
+event/ae7e4d35,why/contextual_action,MOTIVATED_BY,0.3
+event/cfe43f9e,why/timidity,MOTIVATED_BY,1.0
+event/1919f71c,why/concern for politeness,MOTIVATED_BY,1.0
+event/7e48330a,why/certainty about the situation,MOTIVATED_BY,1.0
+event/d755ff45,why/certainty of the fact,MOTIVATED_BY,1.0
+event/e7a90389,why/contextual_action,MOTIVATED_BY,1.0
+event/da28bb63,why/contextual_action,MOTIVATED_BY,1.0
+event/8e1379f9,why/contextual_action,MOTIVATED_BY,1.0
+event/00ea4afd,why/curiosity,MOTIVATED_BY,0.5
+event/00ea4afd,why/surprise,MOTIVATED_BY,0.5
+event/40c58f42,why/contextual_action,MOTIVATED_BY,1.0
+event/ef8aa63e,why/contextual_action,MOTIVATED_BY,1.0
+event/66fe2707,why/contextual_action,MOTIVATED_BY,1.0
+event/6c83e340,why/contextual_action,MOTIVATED_BY,1.0
+event/4c10868b,why/contextual_action,MOTIVATED_BY,1.0
+event/3384edce,why/intimidation,MOTIVATED_BY,0.7
+event/3384edce,why/contextual_action,MOTIVATED_BY,0.3
+event/defdd10e,why/fear of threat,MOTIVATED_BY,1.0
+event/79550f21,why/anxiety,MOTIVATED_BY,0.5
+event/79550f21,why/contextual_action,MOTIVATED_BY,0.5
+event/111a2f44,why/fear,MOTIVATED_BY,1.0
+event/9ca02b81,why/desire for careful communication,MOTIVATED_BY,1.0
+event/c411f0ec,why/contextual_action,MOTIVATED_BY,1.0
+event/ac414e79,why/contextual_action,MOTIVATED_BY,1.0
+event/8bae9055,why/curiosity about certainty,MOTIVATED_BY,1.0
+event/9a812bb6,why/engaging in conversation,MOTIVATED_BY,1.0
+event/5be0eb5e,why/contextual_action,MOTIVATED_BY,1.0
+event/76f2d2d1,why/considering distance,MOTIVATED_BY,1.0
+event/7bc06a7a,why/contextual_action,MOTIVATED_BY,1.0
+event/71b93f82,why/contextual_action,MOTIVATED_BY,1.0
+event/b10e15ea,why/contextual_action,MOTIVATED_BY,1.0
+event/cd3b9052,why/contextual_action,MOTIVATED_BY,1.0
+event/e7a2668d,why/contextual_action,MOTIVATED_BY,1.0
+event/42ebbb88,why/contextual_action,MOTIVATED_BY,1.0
+event/0c5c560a,why/contextual_action,MOTIVATED_BY,1.0
+event/4110dd5c,why/contextual_action,MOTIVATED_BY,1.0
+event/61a5ad05,why/contextual_action,MOTIVATED_BY,1.0
+event/5b220b90,why/contextual_action,MOTIVATED_BY,1.0
+event/82ebdbd9,why/contextual_action,MOTIVATED_BY,1.0
+event/0711563a,why/contextual_action,MOTIVATED_BY,1.0
+event/602457ca,why/fear of being pursued,MOTIVATED_BY,0.7
+event/602457ca,why/contextual_action,MOTIVATED_BY,0.3
+event/0c222c01,why/fear of being pursued,MOTIVATED_BY,0.7
+event/0c222c01,why/contextual_action,MOTIVATED_BY,0.3
+event/3a642f1d,why/fear of being pursued,MOTIVATED_BY,0.7
+event/3a642f1d,why/contextual_action,MOTIVATED_BY,0.3
+event/84042633,why/fear of being pursued,MOTIVATED_BY,0.7
+event/84042633,why/contextual_action,MOTIVATED_BY,0.3
+event/53ae9cc1,why/fear of being pursued,MOTIVATED_BY,0.7
+event/53ae9cc1,why/contextual_action,MOTIVATED_BY,0.3
+event/1502f472,why/contextual_action,MOTIVATED_BY,1.0
+event/9afcd3a3,why/curiosity,MOTIVATED_BY,1.0
+event/8c949e36,why/contextual_action,MOTIVATED_BY,1.0
+event/8705d38f,why/contextual_action,MOTIVATED_BY,1.0
+event/f5a13651,why/contextual_action,MOTIVATED_BY,1.0
+event/bc45affd,why/contextual_action,MOTIVATED_BY,1.0
+event/5f66c279,why/contextual_action,MOTIVATED_BY,1.0
+event/94939843,why/contextual_action,MOTIVATED_BY,1.0
+event/af054846,why/curiosity,MOTIVATED_BY,1.0
+event/e728784a,why/contextual_action,MOTIVATED_BY,1.0
+event/8f2631d5,why/urgency,MOTIVATED_BY,1.0
+event/f9f6b7db,why/focus on task,MOTIVATED_BY,1.0
+event/734c865c,why/pain tolerance,MOTIVATED_BY,1.0
+event/e4a01056,why/contextual_action,MOTIVATED_BY,1.0
+event/e0cef522,why/desensitization,MOTIVATED_BY,1.0
+event/112aabaa,why/threat perception,MOTIVATED_BY,1.0
+event/48c8ff61,why/fear of consequences,MOTIVATED_BY,1.0
+event/40b5288e,why/desire to leave,MOTIVATED_BY,1.0
+event/c7d6293d,why/distraction,MOTIVATED_BY,1.0
+event/183419ce,why/need to escape,MOTIVATED_BY,1.0
+event/3328109a,why/curiosity,MOTIVATED_BY,1.0
+event/eb510c71,why/frustration,MOTIVATED_BY,1.0
+event/73d82a7f,why/awareness of surroundings,MOTIVATED_BY,1.0
+event/3fddba55,why/curiosity,MOTIVATED_BY,1.0

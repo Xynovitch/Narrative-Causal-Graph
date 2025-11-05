@@ -1,0 +1,1118 @@
+:ID,relationType,weight,confidence,mechanism,sign,cause_sequence,effect_sequence
+causal/ab3ae712,causes,0.9,0.95,The mention of the family name prompts the character to adopt a name for himself.,+,0,1
+causal/8fa6e56b,causes,0.9,0.95,The family name Pirrip directly leads to the character being identified as Pip.,+,0,2
+causal/f20f25dd,causes,0.9,0.95,The act of calling oneself Pip directly leads to being referred to as Pip by others.,+,1,2
+causal/30a27fca,causes,0.9,0.95,The mention of the family name directly leads to its use as the speaker's identifier.,+,0,3
+causal/574bea47,causes,0.8,0.9,The act of calling himself Pip leads to the identification of his family name.,+,1,3
+causal/aff2533d,causes,0.9,0.95,"The naming of Pip is directly influenced by the family name Pirrip, establishing a causal relationship.",+,2,3
+causal/b7a208c8,causes,0.8,0.85,"The act of calling oneself Pip suggests a personal identity linked to the tombstone, indicating a direct connection.",+,1,4
+causal/0b27de88,causes,0.8,0.9,"The naming of Pip is directly linked to the inscription on his tombstone, indicating a causal relationship.",+,2,4
+causal/4893311a,causes,0.8,0.9,"The act of giving Pirrip as a family name is based on the information from the tombstone, establishing a direct link.",+,3,4
+causal/f1dab4ef,causes,0.8,0.9,"Pip's self-identification leads to the introduction of his sister, establishing familial context.",+,1,5
+causal/fff0b04d,enables,0.8,0.9,Providing the family name allows for the identification of the sister's marital status.,+,3,5
+causal/fb2d7cca,enables,0.7,0.8,"The act of giving Pirrip as a family name implies a connection to the father, which is significant in the context of not having seen him.",+,3,6
+causal/9bb6f1ec,causes,0.8,0.9,The absence of parental figures leads to a lack of familiarity with their likeness.,+,6,7
+causal/c1a2a127,enables,0.7,0.8,The authority of the tombstone allows for the remembrance of individuals in a time before photographs.,+,4,8
+causal/25d58f68,causes,0.8,0.9,"The absence of photographs is a direct consequence of not having seen the parents, implying a lack of visual memory.",+,6,8
+causal/fc471b52,causes,0.8,0.9,"The absence of photographs leads to a lack of likeness, as people could not visually capture images of each other.",+,7,8
+causal/d6e44756,causes,0.8,0.9,The absence of parental figures leads to the formation of unrealistic perceptions based on limited information.,+,6,9
+causal/41c57aa0,causes,0.8,0.9,The absence of likeness leads to reliance on tombstones for imagination.,+,7,9
+causal/e9d73e81,causes,0.8,0.9,"The absence of photographs leads to reliance on tombstones for imagination, causing distorted perceptions.",+,8,9
+causal/962c2ec6,enables,0.7,0.8,"The initial fancies about the deceased are influenced by the tombstones, which allows for the interpretation of the letters on the father's tombstone.",+,9,10
+causal/594c0e73,causes,0.7,0.8,The absence of likeness leads to an imaginative interpretation of the person's appearance.,+,7,11
+causal/e913bbf6,causes,0.8,0.9,The initial fancies based on tombstones led to a specific mental image of the person.,+,9,11
+causal/aa5bab0d,enables,0.7,0.8,The description of the letters suggests a visual or conceptual association that influences the perception of the father's character.,+,10,11
+causal/6f18e359,causes,0.8,0.9,The initial fancies based on tombstones led to a misguided conclusion about the mother's appearance.,+,9,13
+causal/e8f94517,causes,0.7,0.8,"The father's letter shape influenced the child's perception, leading to a mistaken conclusion about the mother.",+,10,13
+causal/f05b6413,enables,0.7,0.8,The shape of the letters allows for the character and turn of the inscription to be perceived.,+,10,14
+causal/e56a071f,causes,0.8,0.85,The inscription likely leads to the placement of the stone lozenges as a memorial.,+,14,15
+causal/0ee9c01c,causes,0.8,0.75,"The character and tone of the inscription suggest a discouraging environment, leading to early resignation in the struggle for survival.",+,14,16
+causal/84dd6e5e,causes,0.8,0.85,"The character and turn of the inscription suggest a belief about the nature of the subjects, leading to the conclusion about their birth circumstances.",+,14,17
+causal/b347ceca,causes,0.7,0.8,The presence of the lozenges prompts a belief about the deceased's nature and circumstances.,+,15,17
+causal/075dd158,causes,0.7,0.8,The struggle for a living leads to a belief in inherent laziness or entitlement.,+,16,17
+causal/dcd1987a,causes,0.8,0.85,Giving up on the struggle for a living leads to a state of existence where one does not engage with life.,+,16,18
+causal/6eb670ae,causes,0.8,0.9,The belief in their inherent laziness leads to the conclusion that they have never changed their state.,+,17,18
+causal/b4f76672,enables,0.7,0.8,"The description of the marsh country sets the scene, allowing for the discovery of the churchyard.",+,19,21
+causal/e940fafd,causes,0.8,0.9,The discovery of the churchyard leads to the realization of the deaths of Philip Pirrip and Georgiana.,+,21,22
+causal/cd0f9f74,causes,0.7,0.8,The death of Philip Pirrip and Georgiana likely led to the death of their infant children due to the implications of parental mortality.,+,22,24
+causal/df4fdf9d,causes,0.7,0.8,"The death of Georgiana likely led to the neglect or inability to care for the infant children, resulting in their deaths.",+,23,24
+causal/b6259ed4,enables,0.8,0.9,The discovery of the churchyard allows for the identification of the surrounding marshes.,+,21,25
+causal/0a31ba95,enables,0.7,0.8,The description of the wilderness sets a fearful atmosphere that allows Pip's emotional response to develop.,+,25,28
+causal/ebdd7f47,causes,0.8,0.85,The fear of the wind from the sea causes Pip to feel afraid and cry.,+,27,28
+causal/ba72f5d3,causes,0.8,0.9,"Pip's fear leads to his crying, indicating a direct emotional response.",+,28,29
+causal/15affab3,causes,0.7,0.6,"Pip's crying may have startled the man, prompting his sudden movement from the graves.",+,29,30
+causal/428a4846,causes,0.8,0.85,"Pip's crying prompts a harsh response from the voice, indicating a direct cause-effect relationship.",+,29,31
+causal/beb60c31,aggravates,0.7,0.8,"Pip's crying escalates the tension, provoking a threatening response.",+,29,32
+causal/9c7f7ff1,causes,0.8,0.85,"The sudden appearance of the man from the graves likely instills fear, prompting the aggressive threat.",+,30,32
+causal/3ab7e5bf,causes,0.8,0.9,"The command to be quiet is a direct threat that instills fear, leading to silence.",+,31,32
+causal/d3057da4,causes,0.8,0.85,"The threat of violence instills fear, leading to a fearful demeanor.",+,32,33
+causal/6b5e95e3,aggravates,0.7,0.8,"The command to be quiet may increase the distress of the injured man, as it implies a harsh environment despite his suffering.",+,31,35
+causal/18995dd8,aggravates,0.7,0.8,The threat of violence increases the man's suffering from his existing injuries and harsh conditions.,+,32,35
+causal/454bdfba,aggravates,0.7,0.8,"The fearful man's condition is worsened by the harsh environment, leading to multiple injuries.",+,33,35
+causal/c8eda700,aggravates,0.8,0.75,"The man's poor condition (no hat, broken shoes) likely worsens his exposure to harsh elements, leading to further injuries.",+,34,35
+causal/1b6eaa8a,causes,0.8,0.9,"The fearful man's condition and demeanor lead to his limping, shivering, glaring, and growling.",+,33,36
+causal/dd40446c,causes,0.8,0.85,"The man's poor clothing and physical condition lead to his limping, shivering, and aggressive demeanor.",+,34,36
+causal/ec9b82cc,causes,0.8,0.9,"The man's physical suffering from various injuries and discomfort leads to his limping, shivering, glaring, and growling.",+,35,36
+causal/113b36dd,causes,0.8,0.85,Fear can lead to physical reactions such as chattering teeth due to anxiety or stress.,+,33,37
+causal/60ed9052,causes,0.8,0.75,"The man's poor clothing and condition likely contribute to his physical discomfort, leading to chattering teeth.",+,34,37
+causal/ee3a3059,causes,0.8,0.9,The man's physical suffering from various injuries and exposure to elements likely leads to his teeth chattering due to shock or cold.,+,35,37
+causal/3af78957,causes,0.8,0.85,"The description of the subject's physical state (limping, shivering) suggests a direct cause for the chattering teeth, indicating a response to cold or fear.",+,36,37
+causal/94238ebf,aggravates,0.8,0.85,The man's suffering from various injuries and discomforts heightens his fear of further harm.,+,35,39
+causal/f2a4ff6b,causes,0.8,0.9,"The character's aggressive demeanor instills fear in the other, leading to a plea for mercy.",+,36,39
+causal/20d21552,prevents,0.7,0.8,"The act of seizing by the chin suggests an attempt to control or intimidate, prompting a plea for restraint.",-,38,40
+causal/30b17459,causes,0.8,0.9,The plea for mercy directly results from the fear of being harmed.,+,39,40
+causal/b8eef7a1,enables,0.7,0.8,"The command to 'give it mouth' suggests encouraging expression, which enables the man to ask for the location.",+,43,44
+causal/7e474bdd,causes,0.8,0.9,The man's request prompts a response to identify the location.,+,44,45
+causal/9799fff8,enables,0.8,0.9,The man's request for location information allows the speaker to indicate their village.,+,44,46
+causal/ec5d0d5f,causes,0.9,0.95,The command to point directly leads to the action of pointing to the village.,+,45,46
+causal/087bac0c,enables,0.7,0.8,Pointing out a location allows for navigation to that specific area.,+,45,47
+causal/9c8a1e22,enables,0.7,0.8,"Pointing provides direction and context, enabling understanding of the village's location.",+,46,47
+causal/68710eb7,enables,0.7,0.8,"Pointing to the village indicates its location, making it possible to understand its distance from the church.",+,46,48
+causal/2b37fb9d,enables,0.7,0.8,"Pointing out the place provides direction, allowing the man to focus on the speaker.",+,45,49
+causal/8d72e15e,enables,0.7,0.8,"Pointing provides direction, allowing the man to understand the location of the village.",+,46,49
+causal/95ddfcd2,causes,0.8,0.9,The man's action of looking at the speaker leads to the physical act of turning them upside down.,+,49,50
+causal/f0005457,causes,0.8,0.85,"The man's gaze likely prompted the action of emptying pockets, indicating a direct influence.",+,49,51
+causal/9728b822,causes,0.9,0.85,Being turned upside down leads to the contents of pockets falling out.,+,50,51
+causal/43f5068b,causes,0.8,0.9,"Emptying pockets directly results in having only the remaining contents, which is a piece of bread.",+,51,52
+causal/a901c389,causes,0.8,0.9,The man's sudden and strong action directly resulted in the object flipping over.,+,49,53
+causal/5d0727bf,causes,0.8,0.9,The sudden and strong action directly leads to the object being turned upside down.,+,50,53
+causal/4110fccf,causes,0.7,0.6,"Emptying pockets may indicate a loss of control or vulnerability, leading to a sudden and strong reaction.",+,51,53
+causal/9062c829,causes,0.8,0.9,"The sudden and strong action caused the object to flip, leading to the observer seeing the steeple from an unusual perspective.",+,53,54
+causal/21278ff0,causes,0.8,0.7,"The sudden and strong action caused a disruption, leading to the church regaining its composure.",+,53,55
+causal/16653336,causes,0.8,0.75,The speaker's perspective from above suggests a transformative realization or awakening of the church.,+,54,55
+causal/d3d2341f,causes,0.7,0.8,"Seeing the steeple likely indicates a high vantage point, leading to being seated on a high tombstone.",+,54,56
+causal/ef545eca,causes,0.7,0.8,"The church's self-awareness leads to a heightened emotional state, causing the individual to eat ravenously.",+,55,57
+causal/d2b323e0,causes,0.7,0.8,"The act of eating ravenously suggests a strong desire for food, which may lead to the man's comment about the boy's appearance.",+,58,59
+causal/9d7f0407,causes,0.7,0.8,"The act of eating ravenously suggests a strong desire for food, which may lead to the man's comment about the boy's appearance.",+,58,60
+causal/5bfda7eb,causes,0.7,0.8,"The act of eating ravenously suggests a strong desire for food, which may lead to the man's comment about the boy's appearance.",+,58,61
+causal/fb870b35,causes,0.8,0.7,"Ravenous eating likely leads to weight gain, contributing to being fat.",+,58,62
+causal/c604db88,causes,0.7,0.8,Believing someone is fat may lead to the perception that they lack strength.,+,62,64
+causal/21ad1cd9,causes,0.8,0.85,Being undersized likely contributed to a lack of physical strength.,+,63,64
+causal/3453f5af,causes,0.8,0.9,"The man's comment about the dog's cheeks suggests a desire to eat them, indicating a direct cause of his threatening behavior.",+,61,65
+causal/05d80c54,enables,0.7,0.8,"The man's expression of desire suggests that his ability to eat is contingent on his willingness, indicating a potential action.",+,65,66
+causal/c50247ed,causes,0.7,0.8,"The phrase suggests a strong emotional or mental struggle, leading to a physical reaction of holding tighter to the tombstone.",+,66,68
+causal/f075e238,aggravates,0.7,0.8,"The expression of hope may have intensified his emotional grip, leading to a stronger attachment to the tombstone.",+,67,68
+causal/95d7369a,enables,0.7,0.8,The speaker's indecision allows them to maintain focus on their intention.,+,66,69
+causal/98fd97f8,enables,0.7,0.8,Expressing hope can create a mental focus that helps maintain self-control.,+,67,69
+causal/6ee098cc,causes,0.8,0.85,"Holding tighter to the tombstone provides stability, enabling the speaker to remain on it.",+,68,69
+causal/cb41ff59,prevents,0.7,0.8,Expressing hope may help manage emotions and prevent crying.,+,67,70
+causal/bac5c48e,causes,0.8,0.85,Holding tighter to the tombstone indicates an emotional response aimed at controlling feelings of sadness.,+,68,70
+causal/53efdd66,prevents,0.7,0.8,"The act of keeping oneself focused helps to avoid emotional distress, such as crying.",-,69,70
+causal/8d3913a0,causes,0.7,0.8,The act of keeping oneself focused leads to the initiation of action.,+,69,73
+causal/f02b77b2,enables,0.7,0.8,"The act of keeping oneself from crying may create a state that allows him to start, possibly indicating emotional control.",+,70,73
+causal/ef5aea67,causes,0.8,0.85,"The man's statement prompts him to take action, indicating a direct cause-effect relationship.",+,71,73
+causal/365021ab,causes,0.8,0.85,"The question prompts a response, leading to the action of starting.",+,72,73
+causal/9701f254,enables,0.7,0.8,Keeping emotions in check can provide the focus needed to engage in physical activity.,+,70,74
+causal/a370150e,causes,0.8,0.9,Starting initiates the action of making a short run.,+,73,74
+causal/0e45adbe,causes,0.8,0.9,The action of making a short run directly leads to the stopping action.,+,74,75
+causal/4248136b,causes,0.7,0.8,"Starting an action often leads to subsequent actions, such as looking over one's shoulder.",+,73,76
+causal/1791ef78,enables,0.7,0.8,"The action of making a short run allows the individual to look over their shoulder, suggesting a heightened awareness or need to check for something.",+,74,76
+causal/646857e0,enables,0.7,0.8,"The man's dark glances suggest curiosity or contemplation, which may have prompted him to approach the tombstone.",+,91,93
+causal/34aab3ed,enables,0.7,0.8,"The man's dark glances suggest curiosity or contemplation, which may have prompted him to approach the tombstone.",+,92,93
+causal/03980995,causes,0.7,0.8,"The intense gaze suggests a build-up of tension, prompting the action of taking by the arms.",+,91,94
+causal/6e196043,causes,0.7,0.8,"The person's dark gaze suggests discomfort or concern, prompting them to physically engage by taking the speaker's arms.",+,92,94
+causal/9b49a81e,causes,0.8,0.85,"Coming closer creates a physical connection, leading to the action of taking by the arms.",+,93,94
+causal/0e12946d,causes,0.7,0.8,"The person's intense gaze suggests a threatening demeanor, prompting a defensive reaction.",+,91,95
+causal/35efcc42,causes,0.7,0.8,"The person's intense gaze suggests a build-up of tension, leading to the action of tilting back.",+,92,95
+causal/31fc853d,causes,0.8,0.85,"His approach caused a physical reaction, tilting me back.",+,93,95
+causal/87cd06a7,causes,0.8,0.9,The action of taking someone by the arms directly leads to the tilting motion.,+,94,95
+causal/17a56ebe,causes,0.7,0.8,"The intense gaze at his leg suggests a deep emotional or physical discomfort, leading to a powerful connection in eye contact.",+,92,96
+causal/039d8925,causes,0.8,0.85,"The act of coming closer creates a direct visual connection, intensifying the gaze.",+,93,96
+causal/5097d54c,causes,0.8,0.85,The act of taking someone by the arms creates a physical connection that intensifies eye contact and emotional engagement.,+,94,96
+causal/a505572e,causes,0.8,0.85,"The act of tilting creates a physical and emotional connection, intensifying eye contact.",+,95,96
+causal/f9017d74,enables,0.7,0.8,"The act of coming closer allows for a more intimate interaction, leading to a helpless gaze.",+,93,97
+causal/98407bc8,enables,0.7,0.8,The act of taking by the arms suggests a physical control that allows for a conversation about the person's fate.,+,94,98
+causal/ca3f147e,enables,0.7,0.8,"Tilting back creates a vulnerable position, allowing the speaker to assert control over the situation.",+,95,98
+causal/62f2e197,causes,0.8,0.85,"The intensity of his gaze implies a threatening dominance, leading to a life-or-death question.",+,96,98
+causal/9611c682,causes,0.8,0.9,The intensity of his gaze creates a feeling of vulnerability and fear in the observer.,+,96,100
+causal/07c61323,causes,0.7,0.8,The act of looking up helplessly contributes to a growing sense of helplessness and danger as the questioning continues.,+,97,100
+causal/66577f16,causes,0.8,0.85,The threat of being let to live creates a sense of helplessness and danger.,+,98,100
+causal/4c9ae7e8,causes,0.7,0.8,The act of looking up helplessly contributes to a growing sense of helplessness and danger through the interaction described.,+,97,101
+causal/2a1f923c,enables,0.7,0.8,The question about the file creates a context that heightens the sense of helplessness and danger.,+,99,102
+causal/1bdd68ad,enables,0.8,0.9,Understanding what a file is allows the person to request one.,+,99,103
+causal/9bb1615c,enables,0.7,0.8,"The act of tilting creates a sense of helplessness, which may motivate the request for a file.",+,100,103
+causal/8eb80744,enables,0.7,0.8,"The act of tilting creates a sense of helplessness, which may lead to a willingness to comply with demands.",+,100,104
+causal/ec311ec8,enables,0.7,0.8,"The act of tilting creates a sense of helplessness, which may lead to a willingness to comply with demands.",+,101,104
+causal/935ad637,enables,0.7,0.8,"The act of tilting creates a sense of helplessness, which may lead to a submissive response, enabling the request for food.",+,102,104
+causal/5ec07a14,enables,0.7,0.8,Obtaining the file allows for the provision of food.,+,103,104
+causal/9e0cc7fa,enables,0.7,0.8,"The act of tilting creates a sense of helplessness, which may lead to a willingness to comply or submit.",+,102,105
+causal/b44aee2a,enables,0.7,0.8,Getting the file allows the action of bringing both items to the speaker.,+,103,105
+causal/469b4343,causes,0.8,0.85,Getting wittles implies that the other person will bring them to the speaker.,+,104,105
+causal/f71232b5,causes,0.8,0.85,"The act of tilting creates a sense of helplessness, which may provoke a threatening response.",+,102,106
+causal/ad73c524,enables,0.7,0.8,"The request for a file creates a situation where a threat is made, enabling the potential for violence.",+,103,106
+causal/ab7e07af,causes,0.8,0.9,"The demand to bring both individuals leads to a threat of violence, indicating a direct cause-and-effect relationship.",+,105,106
+causal/71b9311f,causes,0.7,0.6,"The threat of violence induces fear, leading to a giddy reaction as a coping mechanism.",+,106,109
+causal/be45bba8,causes,0.8,0.85,Fear can lead to physical reactions like dizziness.,+,108,109
+causal/e4f8a801,causes,0.8,0.9,"Tilting creates a sense of instability, prompting a clinging response for support.",+,107,110
+causal/968b609b,causes,0.8,0.9,Fear led to a physical response of clinging for security.,+,108,110
+causal/3d5218d9,causes,0.7,0.8,"Feeling giddy can lead to a sense of excitement or instability, prompting a need for physical support.",+,109,110
+causal/6e0e4cb4,causes,0.8,0.9,"Tilting leads to a loss of balance, prompting a request to remain upright.",+,107,111
+causal/5e714a27,causes,0.7,0.8,"Feeling giddy can lead to difficulty maintaining balance, prompting a request for assistance.",+,109,111
+causal/74e7b84a,enables,0.8,0.85,"Clinging provides physical support, allowing the speaker to maintain balance.",+,110,111
+causal/d34a995a,prevents,0.7,0.8,"The request to remain upright suggests a desire to avoid sickness, implying that maintaining posture may help prevent feeling unwell.",+,111,112
+causal/1695d028,enables,0.7,0.6,Feeling giddy may increase motivation or willingness to attend more events.,+,109,113
+causal/0c1a74c1,enables,0.7,0.6,"Clinging suggests a desire for support, which may facilitate the ability to attend more.",+,110,113
+causal/8f39f217,causes,0.8,0.9,The request to remain upright implies that doing so would allow for better attendance.,+,111,113
+causal/3bdd82b0,prevents,0.8,0.9,Being sick hinders attendance at events or activities.,-,112,113
+causal/82908015,causes,0.8,0.9,The dip and roll likely caused him to hold her by the arms for support.,+,114,116
+causal/8e21f03e,causes,0.8,0.9,The action of giving a dip and roll results in the person ending up upright on the stone.,+,114,117
+causal/b721c05f,causes,0.9,0.85,Holding someone by the arms directly supports their upright position.,+,116,117
+causal/d9906ea3,causes,0.8,0.85,"The action of giving a dip and roll leads to a heightened emotional response, resulting in fearful terms.",+,114,118
+causal/060a7076,causes,0.8,0.75,"The church's action of jumping over its weathercock indicates a significant change, leading to a fearful expression.",+,115,118
+causal/b8bdc200,causes,0.7,0.8,"Holding someone by the arms can create a tense situation, leading to fearful communication.",+,116,118
+causal/69758d7a,enables,0.7,0.8,Holding by the arms suggests a physical control that facilitates the request for items.,+,116,119
+causal/e58f3075,causes,0.8,0.85,"The fearful terms create an atmosphere of intimidation, leading to silence about the encounter.",+,118,120
+causal/61bf5a03,causes,0.8,0.85,"The request for the file and food implies a threat, leading to compliance and silence.",+,119,120
+causal/a295c252,prevents,0.8,0.9,"Remaining upright on the stone is a condition for survival, implying that failing to do so leads to dire consequences.",+,117,121
+causal/607d08d7,causes,0.8,0.9,"The fearful terms create a threat that compels compliance, suggesting that failure to adhere will result in severe consequences.",+,118,121
+causal/b661090f,causes,0.8,0.9,"The demand for the file and food creates a condition for survival, linking compliance to life preservation.",+,119,121
+causal/822324d4,prevents,0.8,0.9,"The act of silence and compliance prevents dire consequences, as failure to adhere leads to severe punishment.",+,120,121
+causal/a3c1e6fa,enables,0.7,0.8,The request for the file and food enables the speaker to feel less alone by anticipating assistance.,+,119,122
+causal/f160a14d,enables,0.7,0.8,The act of not speaking about the encounter allows the speaker to feel less isolated.,+,120,122
+causal/def9df19,prevents,0.7,0.8,The threat of violence serves to deter the individual from acting against the speaker's wishes.,+,121,122
+causal/f8026a20,prevents,0.8,0.7,"The threat of violence serves to deter the young man from disobeying or leaving, implying that compliance is necessary for survival.",+,121,123
+causal/b9738a60,enables,0.7,0.8,The speaker's acknowledgment of companionship allows for a comparison that elevates their self-perception.,+,122,123
+causal/86183a3c,causes,0.8,0.9,The speaker's threat implies that the young man must listen to avoid dire consequences.,+,121,124
+causal/1221f766,enables,0.7,0.8,The speaker's assertion of not being alone suggests a connection that allows the young man to hear and engage with the speaker's words.,+,122,124
+causal/69995880,enables,0.8,0.9,"The speaker's words are audible to the young man, allowing him to hear them.",+,123,124
+causal/3319bdc7,enables,0.7,0.8,"The speaker's realization of not being alone allows for deeper emotional connections, enabling the young man to reach the boy's heart.",+,122,125
+causal/e87648a9,enables,0.7,0.8,Hearing the words allows the young man to connect with the boy emotionally and physically.,+,124,125
+causal/634ad6d9,prevents,0.7,0.8,The young man's unique approach may lead the boy to feel the need to protect himself by locking his door.,-,125,127
+causal/94174768,prevents,0.6,0.7,"Locking the door may prevent the young man from entering, but it does not guarantee the boy's concealment.",+,126,127
+causal/4d313d92,enables,0.7,0.8,"The young man's unique approach allows him to connect emotionally, which can lead to feelings of warmth and comfort.",+,125,128
+causal/1ebab565,enables,0.7,0.6,"Locking the door allows the boy to feel secure and comfortable, enabling him to stay warm in bed.",+,127,128
+causal/0e1f5164,enables,0.7,0.8,"Locking the door provides privacy, allowing the boy to tuck himself up comfortably.",+,127,129
+causal/be655166,causes,0.8,0.85,Feeling warm in bed encourages a person to tuck themselves up for added comfort.,+,128,129
+causal/3e454d62,enables,0.7,0.8,The boy's attempt to hide allows the young man to draw the clothes over his head.,+,126,130
+causal/7549d346,causes,0.8,0.85,Warmth in bed can lead to a desire to cover oneself with clothes for additional comfort.,+,128,130
+causal/a37e581b,enables,0.7,0.8,Tucking oneself up allows for the action of drawing clothes over the head.,+,129,130
+causal/2c238389,enables,0.7,0.8,"Locking the door creates a sense of security, allowing the boy to feel comfortable.",+,127,131
+causal/8382b81e,enables,0.8,0.85,"A warm bed creates a sense of comfort, leading to feelings of safety.",+,128,131
+causal/7f680ff3,enables,0.7,0.8,Tucking oneself up creates a sense of comfort and safety.,+,129,131
+causal/3dfc5883,enables,0.7,0.8,Drawing clothes over his head creates a sense of comfort and safety.,+,130,131
+causal/a4b04b05,enables,0.7,0.8,A warm bed creates a comfortable environment that encourages the young man to approach quietly.,+,128,132
+causal/ecb0d105,enables,0.7,0.8,Drawing the clothes over his head allows the young man to move stealthily.,+,130,132
+causal/ed0232d8,enables,0.7,0.8,Feeling comfortable and safe allows the young man to approach without fear.,+,131,132
+causal/5344c5ee,causes,0.7,0.6,Tucking oneself up may lead to a situation where one is vulnerable to being torn open.,+,129,133
+causal/627278da,causes,0.8,0.9,The young man's creeping behavior leads directly to the act of tearing him open.,+,132,133
+causal/3b79d522,prevents,0.7,0.8,"Drawing the clothes over his head may distract or restrain him, preventing harm.",+,130,134
+causal/b3ff9d53,prevents,0.7,0.8,"The feeling of comfort and safety may lead to a false sense of security, which allows for intervention to prevent harm.",+,131,134
+causal/044fa4f1,prevents,0.8,0.9,The act of keeping the young man away prevents him from causing harm.,+,132,134
+causal/c92a92ae,prevents,0.8,0.85,"The act of tearing him open is being prevented, which protects the young man from causing harm.",+,133,134
+causal/1e78d9b3,aggravates,0.7,0.8,The young man's creeping behavior increases the difficulty of resisting him.,+,132,135
+causal/8d3f4367,causes,0.8,0.85,"The act of tearing open leads to difficulty in restraining the young man, indicating a direct consequence.",+,133,135
+causal/372dc151,prevents,0.8,0.9,The speaker is actively restraining the young man to prevent him from causing harm.,+,134,135
+causal/d8c8e423,prevents,0.8,0.9,"The speaker is actively stopping the young man from causing harm, indicating a protective action.",+,134,136
+causal/b65cdd0e,enables,0.8,0.9,"The question prompts a response, allowing the speaker to express their intention.",+,136,137
+causal/a8ab41e6,enables,0.7,0.8,The question prompts a response that leads to providing food.,+,136,138
+causal/01622f95,enables,0.7,0.8,"The promise to provide the file allows for the additional offer of food, indicating a supportive action.",+,137,138
+causal/133b3cfd,enables,0.7,0.8,"The difficulty in holding the young man off suggests a strong attraction, enabling the speaker's intention to meet him.",+,135,139
+causal/bca78082,enables,0.8,0.9,The promise to deliver the file facilitates the plan to meet early in the morning.,+,137,139
+causal/e34ecb48,enables,0.7,0.8,Providing food allows for the possibility of visiting him at the Battery.,+,138,139
+causal/08f21e38,enables,0.7,0.8,The promise to deliver the file facilitates the young man's actions and expectations.,+,137,141
+causal/384cf7af,enables,0.7,0.8,Providing food supports the young man's ability to fulfill his commitment and return home.,+,138,142
+causal/29249d4c,enables,0.7,0.8,The man's threat encourages the listener to remember their commitment and act accordingly.,+,140,142
+causal/6dd32ad0,enables,0.7,0.8,The man's threat encourages the listener to remember their commitment and act accordingly.,+,140,143
+causal/a217aab0,causes,0.8,0.85,"The cold and wet environment likely induces discomfort, prompting the individual to hug their body for warmth.",+,147,148
+causal/1708a6b6,causes,0.8,0.85,"The act of hugging himself suggests a response to emotional distress, indicating that the first event leads to the second.",+,148,149
+causal/d94c8787,causes,0.7,0.8,"The act of hugging suggests a need for comfort, which may lead to the character limping towards the wall for support.",+,148,150
+causal/71544ea4,causes,0.7,0.8,"The act of clasping himself suggests a struggle to maintain composure, leading to a physical manifestation of distress as he limps.",+,149,150
+causal/69b006be,enables,0.7,0.8,"Limping towards the wall suggests a careful movement, allowing for navigation among the nettles.",+,150,152
+causal/fbed3a96,enables,0.7,0.8,"Navigating through nettles allows access to brambles, facilitating movement in the area.",+,152,153
+causal/90f1f1eb,causes,0.7,0.8,"Navigating through nettles suggests a struggle or danger, leading to a fearful or evasive reaction in the observer.",+,152,154
+causal/c94ae37f,causes,0.7,0.8,"The gaze implies a connection to the dead, suggesting that the act of looking invokes their presence.",+,154,155
+causal/163a4f2b,causes,0.8,0.85,Navigating through nettles can lead to tripping or twisting an ankle due to uneven ground or distraction.,+,152,156
+causal/d7399bcb,causes,0.7,0.8,"The brambles can obstruct movement, leading to tripping and twisting an ankle.",+,153,156
+causal/0f02bc8b,enables,0.7,0.8,The brambles create a barrier that facilitates the act of pulling someone in.,+,153,157
+causal/34c725f0,causes,0.8,0.85,"The act of stretching out of graves suggests an intention to pull someone in, indicating a direct cause-effect relationship.",+,155,157
+causal/d3d48006,causes,0.8,0.85,Pulling him in directly leads to his arrival at the church wall.,+,157,158
+causal/4d28979e,enables,0.7,0.8,"Pulling him in provides support, allowing him to overcome his struggles.",+,157,159
+causal/31df9bbd,causes,0.9,0.95,The action of coming to the wall directly leads to the ability to get over it.,+,158,159
+causal/082ed0c8,causes,0.8,0.85,Pulling him in leads to him turning around to search for the speaker.,+,157,160
+causal/d908bcbf,enables,0.8,0.9,The act of coming to the wall allows him to turn around and look for the speaker.,+,158,160
+causal/12d75c79,causes,0.8,0.85,Overcoming his feelings allowed him to focus on finding the speaker.,+,159,160
+causal/6e1e7986,enables,0.7,0.8,The presence of 'he' at the wall allows 'I' to see him turning.,+,158,161
+causal/328beb29,causes,0.8,0.85,Seeing him turn prompted a decision to return home.,+,161,162
+causal/6a50c063,enables,0.7,0.8,"Seeing him turn prompted a quick response, allowing for effective movement.",+,161,163
+causal/36d3b494,enables,0.8,0.9,"Setting a direction towards home allows for purposeful movement, facilitating the use of legs effectively.",+,162,163
+causal/bec9b3f3,causes,0.8,0.7,Turning around to look for someone prompts the action of looking over one's shoulder.,+,160,164
+causal/b90a5c11,enables,0.7,0.8,Seeing him turn prompts the action of looking over the shoulder.,+,161,164
+causal/5220a84f,causes,0.8,0.85,Seeing him turn prompts the observer to notice his subsequent movement towards the river.,+,161,165
+causal/a39d336f,enables,0.7,0.8,Making the best use of legs allows for movement towards the river.,+,163,165
+causal/d348a930,enables,0.8,0.9,The placement of stones creates stable stepping-places during adverse weather conditions.,+,168,169
+causal/634deeb5,enables,0.7,0.8,"The stepping-places provide access during adverse conditions, allowing for care.",+,169,171
+causal/51fddb4d,causes,0.8,0.9,Stopping to look indicates a decision that leads to the action of looking after him.,+,170,171
+causal/5f301b17,enables,0.7,0.8,"The description of the marshes sets the scene, allowing the observer to notice the two upright black objects.",+,172,175
+causal/379a112a,enables,0.7,0.8,"The marshes serve as a reference point for sailors, allowing them to navigate effectively.",+,172,176
+causal/09ec8831,enables,0.7,0.8,"The river's horizontal line serves as a reference point for sailors, enabling navigation.",+,173,176
+causal/e6b744cd,enables,0.7,0.8,"The ominous sky conditions serve as a visual reference point for sailors, allowing them to navigate effectively.",+,174,176
+causal/026410e2,causes,0.8,0.9,The visibility of the black objects leads sailors to identify the beacon for navigation.,+,175,176
+causal/339bb071,aggravates,0.7,0.8,"The ominous appearance of the sky can heighten feelings of unease or fear, making the situation seem more threatening.",+,174,177
+causal/ba71dbc6,enables,0.7,0.8,"The beacon provides guidance for sailors, while the gibbet serves as a landmark, enabling navigation.",+,176,178
+causal/1977d93f,enables,0.7,0.8,"The beacon provides guidance, enabling the man to navigate despite his limp.",+,176,179
+causal/3a5fd57b,enables,0.6,0.7,"The beacon provides guidance, allowing the sailors to navigate effectively, which may evoke imagery of a pirate's return.",+,176,180
+causal/980d0c39,enables,0.7,0.8,"The presence of the gibbet and chains evokes the image of the pirate, enabling the imagination of the pirate coming to life.",+,178,180
+causal/47f5875b,causes,0.8,0.9,"The presence of the ugly thing triggered a strong emotional reaction, leading to a feeling of distress.",+,177,181
+causal/cd4cae59,causes,0.8,0.9,"The sight of the gibbet and its chains evokes fear and anxiety, leading to a strong emotional reaction.",+,178,181
+causal/8c20a892,causes,0.8,0.85,"The vivid imagery of the pirate evokes a strong emotional response, leading to a feeling of fear or anxiety.",+,180,181
+causal/fb001e72,enables,0.7,0.8,"The vivid imagery of the pirate brings attention to the cattle, enabling their reaction.",+,180,182
+causal/a2962ff5,causes,0.7,0.8,The cattle's action of lifting their heads prompts the speaker's curiosity about their thoughts.,+,182,183
+causal/9f84c67e,causes,0.8,0.85,The emotional shock from the thought triggered a search for the source of distress.,+,181,184
+causal/05359878,aggravates,0.7,0.8,The thought of not seeing him intensified the emotional distress.,+,181,185
+causal/14316eb2,causes,0.8,0.85,The act of looking for the young man induces fear due to the anticipation of encountering him.,+,184,186
+causal/76bb8b6b,causes,0.8,0.9,"The act of looking for the young man instigated a sense of fear, prompting a hasty retreat home.",+,184,187
+causal/6b454560,causes,0.8,0.9,Fear prompted the individual to flee quickly for safety.,+,186,187
+causal/b91520e0,enables,0.7,0.8,"Running home without stopping may have contributed to her sense of accomplishment, enhancing her reputation.",+,187,189
+causal/957b79d9,enables,0.7,0.8,"The age difference suggests that Mrs. Joe Gargery had time to build her reputation, which was facilitated by her maturity and experience.",+,188,189
+causal/36744baa,causes,0.8,0.85,"The fear arises from the realization of the unconventional upbringing, which creates anxiety.",+,186,190
+causal/98494839,causes,0.8,0.9,"Mrs. Joe Gargery's age and experience allowed her to raise the narrator, influencing his upbringing.",+,188,190
+causal/c8e29b05,causes,0.8,0.85,Establishing a great reputation is a direct result of her upbringing methods.,+,189,190
+causal/c6be888c,enables,0.7,0.8,A great reputation can lead to others perceiving her as strict or harsh.,+,189,192
+causal/9e7d7001,causes,0.8,0.85,The upbringing by a strict and demanding parent leads to the perception of her as having a hard and heavy hand.,+,190,192
+causal/2dd9d079,enables,0.7,0.8,A strong reputation may lead to increased expectations and responsibilities placed on her husband and others.,+,189,193
+causal/b3910365,causes,0.7,0.8,"The upbringing by hand implies a strict or controlling environment, leading to habitual behavior in relationships.",+,190,193
+causal/1121b293,enables,0.7,0.8,"Understanding the expression allows for its use in communication, influencing interactions with her husband and others.",+,191,193
+causal/abee3eaf,causes,0.7,0.8,"The upbringing by hand implies a strict or controlling environment, leading to habitual behavior in relationships.",+,190,194
+causal/fb3f3f73,causes,0.8,0.85,"A hard and heavy hand suggests a tendency to be harsh or abusive, leading to the habit of laying it upon others.",+,192,194
+causal/a477f5dc,enables,0.7,0.8,Understanding the expression allows for reflection on upbringing.,+,191,195
+causal/c14e5e2e,enables,0.7,0.8,The acknowledgment of her strictness suggests that her upbringing style allowed for the development of resilience in Joe and the narrator.,+,192,195
+causal/96e509d2,enables,0.7,0.8,The habit of laying blame suggests a dynamic that fosters a shared upbringing experience.,+,194,195
+causal/3a2588b1,causes,0.7,0.8,"The habit of blaming her husband suggests manipulation, leading to the impression that she coerced Joe into marriage.",+,194,197
+causal/90b36cf1,enables,0.6,0.7,The upbringing by hand suggests a nurturing environment that may have influenced the dynamics of Joe's marriage.,+,195,197
+causal/f19a0985,causes,0.7,0.8,The perception of her appearance leads to the assumption that she used manipulation to secure a marriage.,+,196,197
+causal/631cfd8b,causes,0.8,0.85,Joe's fair nature and appearance contribute to his mild and good-natured personality.,+,198,200
+causal/cfda38db,causes,0.7,0.6,"The description of Hercules implies a strong physical presence, which may lead to noticeable skin conditions like redness due to exertion or strain.",+,201,203
+causal/eade87b8,causes,0.7,0.8,The description of Mrs. Joe's physical traits suggests a connection to her skin condition.,+,202,203
+causal/ab9d6142,enables,0.7,0.6,The description of Hercules-like strength suggests physical attributes that could enable a tall and bony appearance.,+,201,205
+causal/d635d056,causes,0.8,0.85,The description of Mrs. Joe's physical traits suggests a direct correlation to her being tall and bony.,+,202,205
+causal/685008f9,enables,0.6,0.7,Her tall and bony stature allows her to wear a coarse apron comfortably.,+,205,206
+causal/54e897bf,enables,0.7,0.8,"Her tall and bony figure allows for the fastening of loops, suggesting a fit.",+,205,207
+causal/316bc971,enables,0.7,0.8,"The coarse apron is designed to be fastened, suggesting it is functional and serves to secure the garment.",+,206,207
+causal/d21ea024,enables,0.7,0.8,"Her tall and bony stature allows for the presence of a square bib, suggesting a protective or defining feature.",+,205,208
+causal/3e2b4c59,enables,0.7,0.8,"The coarse apron allows for the addition of a square bib, enhancing protection.",+,206,208
+causal/aec9c492,enables,0.7,0.8,The fastening of the loops allows the bib to be securely positioned in front.,+,207,208
+causal/83d0e555,causes,0.7,0.8,Wearing a coarse apron likely leads to it being filled with pins and needles due to the nature of the fabric and usage.,+,206,209
+causal/9db1667e,enables,0.7,0.8,"Wearing a coarse apron suggests a hardworking nature, which contributes to her self-perception of merit.",+,206,210
+causal/42042ca6,enables,0.7,0.8,"The fastening of the loops enhances her self-perception, allowing her to view it as a merit.",+,207,210
+causal/47965353,enables,0.7,0.8,The presence of a strong defense (bib) allows her to feel empowered and confident.,+,208,210
+causal/9185e591,enables,0.7,0.6,The discomfort from the pins and needles may motivate her to view her resilience as a personal merit.,+,209,210
+causal/2c781e45,enables,0.7,0.8,The presence of a strong defense (bib) allows for a more assertive stance (reproach) against Joe.,+,208,211
+causal/fc015492,causes,0.8,0.85,Her self-empowerment leads to a negative perception of Joe.,+,210,211
+causal/b04403b0,enables,0.8,0.85,"Shared suffering fosters trust and openness, allowing for confidences.",+,220,221
+causal/eb1a8aa5,enables,0.7,0.8,Shared suffering creates a bond that fosters mutual support and confidence.,+,220,222
+causal/f0cb8814,enables,0.7,0.8,Having confidences allows Joe to share his confidence with others.,+,221,222
+causal/5bc7e456,enables,0.7,0.8,"Shared suffering creates a bond that encourages action, such as opening the door.",+,220,223
+causal/8de046dd,causes,0.8,0.9,"Raising the latch allows access to the room, enabling the action of peeping in.",+,223,224
+causal/f3cd4dbf,enables,0.8,0.9,"Mrs. Joe's search for Pip with Tickler suggests her intent to discipline him, enabling potential punishment.",+,226,230
+causal/4adddfba,enables,0.7,0.8,"Her being out allows Tickler to accompany her, suggesting a connection.",+,227,230
+causal/623ded65,aggravates,0.7,0.8,"The presence of Tickler likely increases her distress, contributing to her depression.",+,230,232
+causal/fc77b00f,causes,0.7,0.8,"The act of twisting the button indicates anxiety or restlessness, leading to feelings of depression.",+,231,232
+causal/33ad32ed,aggravates,0.7,0.8,"The presence of Tickler likely increases her distress, leading to a deeper sense of depression.",+,230,233
+causal/c659e679,causes,0.8,0.9,"Twisting the button leads to friction against the waistcoat, resulting in it being worn smooth.",+,231,235
+causal/869abac8,causes,0.8,0.9,"The tickler, being a wax-ended cane, directly interacts with the frame, leading to wear from repeated contact.",+,234,235
+causal/83c215e8,causes,0.7,0.8,"The act of looking at the fire during a moment of great depression prompts a response, leading to her getting up.",+,233,237
+causal/f57a5f2f,causes,0.8,0.9,"Sitting down likely allowed her to reach for Tickler, indicating a direct action leading to the effect.",+,236,238
+causal/27760111,causes,0.8,0.85,Joe's action of getting up prompts her to react by grabbing at Tickler.,+,237,238
+causal/9a2ebe34,causes,0.8,0.75,Joe's action of getting up leads to her rampaging behavior.,+,237,239
+causal/5f3f3c01,causes,0.8,0.75,"The action of grabbing at Tickler leads to a reaction, resulting in her rampaging.",+,238,239
+causal/a0a782d5,enables,0.7,0.8,"Sitting down allows her to focus on clearing the fire, facilitating the action.",+,236,240
+causal/3e38daaa,enables,0.7,0.8,"Joe's action of getting up allows her to clear the fire, suggesting a supportive role.",+,237,240
+causal/107aa36d,causes,0.8,0.75,The action of grabbing at Tickler leads to a reaction where she becomes agitated and acts out.,+,238,242
+causal/055ed77a,causes,0.8,0.9,"The first event describes the action of 'Ram-paging out,' which directly leads to the second event where the action is acknowledged.",+,239,242
+causal/0145b42f,prevents,0.8,0.85,Treating someone as a child prevents recognizing them as an equal.,-,244,245
+causal/2707d023,aggravates,0.7,0.8,"Treating someone as a child can lead to frustration and rebellious behavior, as seen in her rampage.",+,244,247
+causal/15ff921a,causes,0.8,0.9,The statement indicates that her current behavior is directly leading to her arrival.,+,247,248
+causal/81c50323,enables,0.7,0.8,Her agitation prompts a warning to seek safety.,+,247,249
+causal/59311e95,causes,0.8,0.9,The announcement of her arrival prompts immediate action to prepare for her entrance.,+,248,249
+causal/61fc9d25,enables,0.7,0.8,The instruction to get behind the door allows for the use of the jack-towel as a protective measure.,+,249,250
+causal/ca093318,enables,0.7,0.8,The advice given by Pip allows her to continue her actions on the Ram-page.,+,247,251
+causal/c054b34a,enables,0.7,0.8,"The statement indicates anticipation, which encourages the action of taking advice.",+,248,251
+causal/7d8efbff,prevents,0.7,0.8,"The act of throwing the door open leads to an obstruction being encountered, preventing further movement.",-,252,253
+causal/a1ec7db5,causes,0.8,0.9,The action of throwing the door open leads to the immediate understanding of the cause.,+,252,254
+causal/38da168f,causes,0.8,0.85,"The obstruction leads to the realization of the cause, indicating a direct relationship.",+,253,254
+causal/1c74cc74,enables,0.8,0.85,Taking advice provided the necessary guidance to apply Tickler effectively.,+,251,255
+causal/2e16f9d3,enables,0.7,0.8,Opening the door allows for further investigation by providing access.,+,252,255
+causal/6887d0fc,enables,0.7,0.8,Finding an obstruction prompts further investigation using Tickler.,+,253,255
+causal/731ca745,enables,0.8,0.9,Divining the cause allows for further investigation using Tickler.,+,254,255
+causal/cf3858c1,causes,0.8,0.9,The act of throwing the door open indicates a sudden action that leads to the subsequent act of throwing the speaker at Joe.,+,252,256
+causal/35d17394,causes,0.8,0.85,"The obstruction leads to a reaction where she throws the speaker at Joe, indicating a direct cause-and-effect relationship.",+,253,256
+causal/128ece48,causes,0.8,0.85,"The act of divining the cause leads to a direct action of throwing, indicating a causal relationship.",+,254,256
+causal/228bc1a5,enables,0.7,0.8,"The act of divining the cause allows the person to connect with another, facilitating their eagerness to engage.",+,254,257
+causal/d1fdbf43,enables,0.7,0.8,"The application of Tickler facilitates further investigation, allowing for communication and connection.",+,255,257
+causal/8c9bb842,causes,0.8,0.9,The act of throwing indicates a direct action that leads to Joe's reaction of being glad to receive the speaker.,+,256,257
+causal/ad4c652e,causes,0.8,0.9,The act of divining the cause leads directly to the action of passing into the chimney.,+,254,258
+causal/3d9593a8,causes,0.8,0.85,The person's eagerness to connect leads to the action of passing them into the chimney.,+,257,258
+causal/60b6aaa8,enables,0.7,0.8,The person's eagerness to engage allows for the physical confinement described.,+,257,259
+causal/5f6dd72f,enables,0.8,0.9,The action of passing into the chimney allows for the subsequent action of being fenced in.,+,258,259
+causal/b4cacf0d,causes,0.8,0.9,"The act of throwing indicates a reaction to a prior event, leading to Mrs. Joe's inquiry.",+,256,260
+causal/c063a40c,causes,0.8,0.9,The character's eagerness to connect leads to Mrs. Joe's inquiry about their whereabouts.,+,257,260
+causal/8743e662,causes,0.8,0.85,The action of being fenced in leads to Mrs. Joe's inquiry about the young monkey's whereabouts.,+,259,260
+causal/6f2be3e7,causes,0.8,0.85,"Mrs. Joe's question likely provokes a physical reaction, such as stamping her foot, due to frustration.",+,260,261
+causal/8e824e36,causes,0.7,0.8,The act of passing into the chimney suggests a transition that leads to emotional distress.,+,258,262
+causal/14504ec0,aggravates,0.7,0.8,"The act of fencing creates a sense of confinement, leading to increased anxiety and distress.",+,259,262
+causal/9d808141,causes,0.8,0.85,Mrs. Joe's inquiry about the young monkey's whereabouts leads to her expressing frustration and concern about her emotional state.,+,260,262
+causal/ebbc36d7,causes,0.8,0.85,"Stamping her foot expresses frustration, prompting a direct inquiry about her emotional distress.",+,261,262
+causal/7d1d39b3,prevents,0.8,0.85,"The action of fencing up prevents the subject from escaping the corner, implying a restriction of movement.",-,259,263
+causal/6c9932e1,causes,0.8,0.85,"The speaker's emotional distress ('fret and fright') leads to a desire to confront the other person, indicating a direct cause-effect relationship.",+,262,263
+causal/e1a7b9e3,causes,0.8,0.9,The speaker's emotional distress leads to crying as a direct response to their feelings of being worn away.,+,262,266
+causal/ed96dc28,causes,0.8,0.85,"The speaker implies that the emotional state of crying is a direct result of being cornered, suggesting a cause-and-effect relationship.",+,263,266
+causal/7d162ef1,causes,0.7,0.8,Visiting the churchyard may evoke memories or emotions leading to crying.,+,264,266
+causal/8c7968bc,causes,0.7,0.8,"The speaker's statement likely triggers an emotional response, leading to crying.",+,265,266
+causal/00fe2f42,causes,0.7,0.8,"Crying can indicate distress, which may lead to actions that prevent harm or death.",+,266,269
+causal/fde0bf6b,causes,0.7,0.8,"Rubbing oneself may indicate a coping mechanism that prevents deeper emotional distress, potentially leading to survival.",+,267,269
+causal/030df5d5,causes,0.8,0.9,"The sister's intervention is implied to have prevented death, suggesting a causal relationship.",+,268,269
+causal/5247b8c0,enables,0.8,0.9,"The speaker implies that their support has allowed the other person to survive and thrive, suggesting a nurturing role.",+,269,270
+causal/c3c09696,enables,0.8,0.9,"The speaker implies that their actions have allowed the other person to avoid death, enabling their continued existence.",+,269,271
+causal/eff1e197,causes,0.7,0.8,"The question implies a cause for the speaker's actions, suggesting that upbringing influences behavior.",+,270,271
+causal/b6a555b0,prevents,0.8,0.7,"The speaker implies that their actions have kept the listener alive, suggesting a protective role.",+,269,272
+causal/7df85040,prevents,0.8,0.9,"The speaker suggests that their intervention has prevented the other person from facing a dire consequence, implying a protective role.",+,269,273
+causal/2fb7a879,causes,0.8,0.85,"The question implies a challenging upbringing, leading to a strong negative reaction about repeating the experience.",+,270,273
+causal/8dc60ecb,causes,0.8,0.9,"The speaker's reflection on their actions suggests that the experience led to a strong negative realization, prompting a vow not to repeat it.",+,271,273
+causal/12736d24,enables,0.7,0.8,The fugitive's presence creates an opportunity for the pledge to commit a larceny.,+,279,283
+causal/2c99c8f5,causes,0.7,0.8,The presence of the mysterious young man likely influenced the decision to commit a larceny due to his persuasive or compelling nature.,+,280,283
+causal/cb65644a,causes,0.8,0.85,The file likely contains information or instructions that compel the individual to commit theft.,+,281,283
+causal/c2b7b9be,causes,0.7,0.8,The food likely led to a situation where the individual felt compelled to commit theft.,+,282,283
+causal/ca373e13,enables,0.7,0.8,The presence of the mysterious young man creates an opportunity for the larceny to occur.,+,280,284
+causal/c78c7f20,enables,0.7,0.8,The file provides information or resources that facilitate the act of committing larceny.,+,281,284
+causal/6b82fa33,causes,0.8,0.9,"The dreadful pledge creates a strong motivation to commit larceny, directly leading to the act.",+,283,284
+causal/6fbd054d,causes,0.8,0.85,"The file symbolizes a triggering event that leads to a vivid, emotional response represented by the avenging coals.",+,281,285
+causal/59eb8997,causes,0.8,0.85,"The food, when consumed, leads to a vivid and intense experience represented by the avenging coals.",+,282,285
+causal/5b0e211d,causes,0.8,0.85,"The obligation to commit a crime creates a sense of guilt and fear, symbolized by the 'avenging coals'.",+,283,285
+causal/e69d29a5,causes,0.7,0.8,"The act of committing larceny leads to a sense of vengeance, symbolized by the 'avenging coals'.",+,284,285
+causal/f0a0a9bf,aggravates,0.7,0.8,"The avenging coals symbolize a threatening situation that intensifies the speaker's emotional turmoil, suggesting a deterioration of their mental state.",+,285,289
+causal/d4dfab4e,causes,0.8,0.85,"The speaker implies that the actions of the two individuals will lead to their own demise, suggesting a direct cause-effect relationship.",+,287,289
+causal/f56e5ba0,enables,0.7,0.8,"Joe's action of peeping suggests a mental engagement with the situation, allowing for a shared mental space.",+,291,292
+causal/19ab4ca6,enables,0.7,0.8,"Joe's action of peeping suggests he is assessing the situation, which enables him to consider their compatibility.",+,291,293
+causal/22c83bdb,enables,0.7,0.8,"The mental casting suggests a consideration of compatibility, enabling the calculation of their potential pairing.",+,292,293
+causal/d7b09702,enables,0.7,0.8,"Joe's action of peeping suggests curiosity, which enables his following behavior.",+,291,295
+causal/a4ff8e7a,enables,0.7,0.8,The mental casting suggests a connection that allows for the following action of observing Mrs. Joe.,+,292,295
+causal/55dba2e1,enables,0.7,0.8,"The act of calculating the pair to make allows for the following of Mrs. Joe, suggesting a connection between planning and action.",+,293,295
+causal/ab0b4e5b,enables,0.7,0.8,The act of calculating pairs under difficult circumstances allows for a manner that is consistent with handling squally times.,+,293,296
+causal/38ef3ac4,enables,0.7,0.8,The sister's method of cutting bread allows her to effectively hold the loaf in place while cutting.,+,297,298
+causal/d2e6370e,causes,0.8,0.85,Jamming the loaf against her bib likely made it easier to access and eat.,+,298,301
+causal/51292e16,causes,0.7,0.6,The act of getting a pin or needle into something likely leads to it being put into mouths later.,+,300,301
+causal/15604f89,enables,0.7,0.8,"Jamming the loaf creates a stable base, allowing for easier butter application.",+,298,302
+causal/11109f86,enables,0.7,0.8,Getting something into their mouths allows for the action of taking butter on a knife.,+,301,302
+causal/262afcde,enables,0.7,0.8,The act of inserting a pin or needle allows for the spreading of something onto the loaf.,+,299,303
+causal/782ec679,causes,0.9,0.95,Applying butter to the knife allows it to be spread on the loaf.,+,302,303
+causal/8658a984,enables,0.7,0.8,"The act of inserting a pin or needle suggests preparation for a task, enabling the dexterous use of the knife.",+,300,304
+causal/1ea611fb,enables,0.7,0.8,The action of taking butter on a knife facilitates the subsequent action of using it with dexterity.,+,302,304
+causal/3629a829,enables,0.7,0.8,"Spreading the substance on the loaf allows for the action of making a plaster, demonstrating a methodical approach.",+,303,304
+causal/ccf795f4,enables,0.7,0.8,The action of taking butter allows for the subsequent trimming and moulding of it.,+,302,305
+causal/0af6fbf0,enables,0.7,0.8,Spreading butter on the loaf allows for trimming and moulding the excess butter.,+,303,305
+causal/f5b8cbc9,causes,0.8,0.85,The action of making a plaster suggests a technique that directly influences the process of trimming and moulding the butter.,+,304,305
+causal/a864bd9d,causes,0.7,0.8,Applying butter on the knife likely leads to the need to wipe it clean afterward.,+,302,306
+causal/89c06748,causes,0.8,0.9,The action of making a plaster with the knife leads to the need for a final wipe to clean it.,+,304,306
+causal/342d4bf1,enables,0.7,0.8,Spreading the substance on the loaf allows for the subsequent action of sawing it.,+,303,307
+causal/9c824378,enables,0.7,0.8,"The action of making a plaster suggests preparation and skill, which enables the subsequent sawing of the loaf.",+,304,307
+causal/775bfe55,enables,0.8,0.9,"Wiping the knife prepares it for effective cutting, enabling the sawing of the loaf.",+,306,307
+causal/b4ae9eb3,causes,0.8,0.9,The action of making a plaster with the knife directly leads to the hewing of the loaf into two halves.,+,304,308
+causal/cc8faf12,causes,0.7,0.8,Trimming the butter likely facilitates the process of cutting the loaf into halves.,+,305,308
+causal/e3534813,causes,0.8,0.85,"Wiping the knife likely ensures a clean cut, facilitating the hewing of the loaf into halves.",+,306,308
+causal/e61bcb81,causes,0.8,0.9,"Slicing the loaf creates two halves, enabling separation.",+,307,308
+causal/c27136cf,causes,0.9,0.95,The action of hewing the loaf into two halves directly results in Joe and the narrator each receiving one half.,+,308,310
+causal/e3b17699,prevents,0.7,0.8,"Hunger typically motivates eating, but in this case, it leads to restraint due to fear or hesitation.",-,311,312
+causal/defacdbe,enables,0.7,0.8,Receiving something allows for the feeling of having a reserve.,+,309,313
+causal/a98e136b,enables,0.7,0.8,"Receiving something allows the speaker to feel secure, prompting the desire to have a reserve.",+,310,313
+causal/407eca7e,causes,0.8,0.85,Hunger creates a sense of urgency to ensure future food availability.,+,311,313
+causal/ba6e5f3e,prevents,0.7,0.8,The fear of consuming the slice leads to a desire to keep something in reserve.,+,312,313
+causal/ef41b142,prevents,0.7,0.8,The fear of eating the slice is linked to the negative feelings towards the acquaintance.,-,312,314
+causal/cad27607,enables,0.7,0.8,"The feeling of needing a reserve suggests a lack of confidence, which may lead to negative social interactions.",-,313,314
+causal/242fc9d8,enables,0.7,0.6,The feeling of needing a reserve suggests a preparation that allows for the emergence of a more formidable ally.,+,313,315
+causal/941cf286,enables,0.7,0.8,"The dreadful acquaintance facilitates the emergence of an even more dreadful ally, suggesting a connection in their negative influence.",+,314,315
+causal/b0ce9ff2,enables,0.7,0.8,"The feeling of needing a reserve suggests a motivation to prepare for strict conditions, enabling a sense of security.",+,313,316
+causal/9eb2eb53,enables,0.7,0.8,"The feeling of needing a reserve suggests a motivation to ensure resources are available, which may lead to further exploration of the safe.",+,313,317
+causal/8a09298a,prevents,0.7,0.8,The presence of the dreadful young man discourages or obstructs the speaker's ability to find valuable items.,-,315,317
+causal/9fcd51a3,prevents,0.8,0.9,"Strict housekeeping limits opportunities for theft, making it difficult to find items to steal.",-,316,317
+causal/fd6fbea6,causes,0.8,0.85,The negative feelings towards the acquaintance prompted a drastic action of hiding food.,+,314,318
+causal/87c82698,causes,0.7,0.8,"The presence of the dreadful young man instigates a reaction of fear or anxiety, leading to the decision to hide food.",+,315,318
+causal/2ca1f025,causes,0.8,0.9,"The strict housekeeping of Mrs. Joe creates a fear of punishment, prompting the decision to hide food.",+,316,318
+causal/426eb44c,causes,0.8,0.85,The lack of available resources in the safe prompted the decision to hide food for later use.,+,317,318
+causal/80cdaef7,aggravates,0.7,0.8,The presence of the dreadful young man intensifies the difficulty of achieving resolution.,+,315,319
+causal/708195c8,causes,0.8,0.9,"The act of resolving to hide the bread and butter creates a mental struggle, leading to an awful effort of resolution.",+,318,319
+causal/19d18aff,causes,0.8,0.85,"The intense effort required for resolution leads to a feeling of extreme risk or fear, akin to jumping from a height.",+,319,320
+causal/ffaf249a,enables,0.7,0.8,"The decision to hide food suggests a potential need to escape or avoid detection, which could lead to the act of plunging into water.",+,318,321
+causal/7a2a10cd,causes,0.8,0.85,The decision to leap suggests a direct action leading to the potential consequence of falling into water.,+,320,321
+causal/26bdc250,aggravates,0.7,0.8,The presence of the unconscious Joe complicates the act of hiding the bread and butter.,+,318,322
+causal/83784e41,aggravates,0.7,0.8,"Joe's unconsciousness complicates the resolution effort, making it more challenging.",+,319,322
+causal/c2d4225e,aggravates,0.7,0.8,"The presence of Joe complicates the decision-making process, making the leap more daunting.",+,320,322
+causal/dfecd38c,aggravates,0.7,0.8,"The presence of the unconscious Joe complicates the act of plunging into water, making it more difficult.",+,321,322
+causal/b9f56401,aggravates,0.7,0.8,The effort of resolution increases the burden of shared suffering among individuals.,+,319,323
+causal/2cba8827,enables,0.7,0.8,"The decision to leap symbolizes a commitment to shared experiences, fostering a sense of camaraderie among those who suffer.",+,320,323
+causal/25ed774d,aggravates,0.7,0.8,Joe's unconsciousness complicates the shared experience of suffering among the group.,+,322,323
+causal/055612fc,aggravates,0.7,0.8,"Joe's unconsciousness complicates the situation, making companionship more challenging.",-,322,324
+causal/52c1638f,enables,0.7,0.8,The shared experience of suffering fosters a bond that allows for companionship.,+,323,324
+causal/bea7eed5,enables,0.7,0.8,The shared experience of suffering fosters a habit of camaraderie and discussion.,+,323,325
+causal/be451cd8,enables,0.7,0.8,The good-natured companionship fosters a comfortable environment for sharing habits.,+,324,325
+causal/79e2158d,enables,0.7,0.8,Joe's unconsciousness allows for the admiration to occur without interference.,+,322,326
+causal/6ba7c9b5,enables,0.7,0.8,"The camaraderie among freemasons allows them to support and admire each other, fostering mutual respect.",+,323,326
+causal/aff0b5d0,enables,0.7,0.8,The good-natured companionship fosters an environment where admiration can be shared.,+,324,326
+causal/765756c9,enables,0.7,0.8,"The habit of comparing slices allows for mutual admiration, enhancing the experience.",+,325,326
+causal/1d0e560a,causes,0.8,0.85,The shared experience of suffering among members of the freemasonry motivates them to increase their efforts.,+,323,327
+causal/702f2773,causes,0.8,0.85,Good-natured companionship fosters motivation and encourages effort.,+,324,327
+causal/e237ef17,causes,0.8,0.85,The habit of comparing our eating methods led to increased motivation and effort.,+,325,327
+causal/b93d35ff,causes,0.8,0.85,Admiration between individuals can inspire and motivate them to put in more effort.,+,326,327
+causal/eacd240d,enables,0.8,0.9,The habit of comparing slices creates an opportunity for friendly competition.,+,325,328
+causal/44811c9c,enables,0.7,0.8,The act of holding up slices for admiration encourages Joe to invite competition.,+,326,328
+causal/7ac40438,enables,0.7,0.8,"The stimulation from the cause encourages friendly competition, making it possible for Joe to invite participation.",+,327,328
+causal/a603f3c3,causes,0.8,0.85,"The stimulation led to a sense of urgency, prompting the contemplation of necessary actions.",+,327,331
+causal/a83b8dc7,enables,0.7,0.8,Joe's invitation encourages the speaker to consider engaging in their usual competition.,+,328,331
+causal/aa9cc648,enables,0.7,0.8,"Joe's invitation encourages a friendly competition, making it possible to engage in the activity.",+,328,332
+causal/48724698,enables,0.8,0.85,The contemplation of action allows for the decision to proceed in a calculated manner.,+,331,332
+causal/fef3a010,enables,0.7,0.8,"The contemplation of action led to a moment of opportunity, allowing the speaker to act.",+,331,333
+causal/769c3972,enables,0.7,0.8,The suggestion to act in a least improbable manner allows for the opportunity to take advantage of Joe's glance.,+,332,333
+causal/5d048247,causes,0.8,0.7,"The contemplation leads to a desperate decision, resulting in a physical action that causes the bread and butter to fall.",+,331,335
+causal/a658cb94,causes,0.8,0.85,The action of taking advantage of the moment directly leads to the subsequent action of getting the bread and butter down the leg.,+,333,335
+causal/9ae89abd,causes,0.7,0.8,The action of taking advantage of Joe's gaze likely led to his discomfort regarding my perceived loss of appetite.,+,333,336
+causal/46176566,causes,0.7,0.8,Joe's observation of my loss of appetite led to his discomfort.,+,334,336
+causal/d9953ab0,enables,0.7,0.8,"Joe's glance prompts a moment of reflection, leading to a thoughtful action.",+,334,337
+causal/a4a16dc9,causes,0.7,0.8,"Joe's gaze indicates his feelings, suggesting discomfort.",+,334,338
+causal/88886516,causes,0.7,0.8,Joe's discomfort from the perceived loss of appetite led to his lack of enjoyment.,+,336,338
+causal/4f8eacc6,causes,0.7,0.8,"Joe's discomfort led him to dwell on the situation, causing him to linger over his food.",+,336,339
+causal/46963cdc,causes,0.8,0.85,"Taking a thoughtful bite suggests savoring the flavor, leading to prolonged chewing.",+,337,339
+causal/a5e95149,causes,0.7,0.8,Joe's discomfort about the perceived loss of appetite leads him to think about it more deeply.,+,336,340
+causal/94c4fe6b,causes,0.7,0.8,"Taking a thoughtful bite suggests engagement with the food, leading to contemplation.",+,337,340
+causal/3546d868,causes,0.8,0.85,"The act of turning it in his mouth suggests deep contemplation, leading to pondering.",+,339,340
+causal/69ddf46f,causes,0.7,0.8,"Taking a thoughtful bite suggests a deliberate action that leads to the subsequent gulping down, indicating a change in eating behavior.",+,337,341
+causal/34312701,causes,0.8,0.85,"The prolonged chewing likely made the swallowing easier, leading to the quick gulping.",+,339,341
+causal/65c7b026,enables,0.7,0.8,"Pondering allows for acceptance, making it easier to swallow the situation.",+,340,341
+causal/58034aa9,enables,0.7,0.8,"The prolonged chewing suggests he is savoring the food, which may encourage him to take another bite.",+,339,342
+causal/6a317890,enables,0.7,0.8,"The action of turning it in his mouth allows for better positioning, facilitating a stronger grip.",+,339,343
+causal/cf03c09c,enables,0.7,0.8,"Pondering allows for better focus and understanding, facilitating a good purchase.",+,340,343
+causal/7464e7cf,enables,0.7,0.8,"Gulping down the pill allows for better positioning of the head, facilitating the action.",+,341,343
+causal/a9a9b57a,enables,0.7,0.8,"Positioning his head allows for a better grip, facilitating the action of taking a bite.",+,342,343
+causal/3351c0d3,prevents,0.7,0.8,"The act of being about to take a bite suggests readiness to eat, but Joe stopping indicates a halt in that action.",-,342,345
+causal/5711dc00,causes,0.8,0.85,"The act of noticing the absence of food prompts Joe to halt, indicating a direct response to the observation.",+,344,345
+causal/3e07429b,causes,0.8,0.85,"The act of noticing the absence of bread and butter prompts a stare, indicating surprise or concern.",+,344,346
+causal/0b08f9a2,causes,0.8,0.85,"Joe's action of stopping likely led to his attention being directed towards me, prompting him to stare.",+,345,346
+causal/8d442ae9,enables,0.7,0.8,"The action of positioning his head allows for better observation, making the effects noticeable.",+,343,347
+causal/fe00106b,causes,0.8,0.85,The act of noticing the absence of bread and butter leads to an observable reaction from the sister.,+,344,347
+causal/84374e67,enables,0.7,0.8,"Joe's stopping allows for the observations to be made, highlighting the situation.",+,345,347
+causal/879cd2df,causes,0.7,0.8,The act of noticing the absence of food likely triggered Joe's feelings of wonder and concern.,+,344,348
+causal/38a01e3e,enables,0.7,0.8,"Joe's stopping creates a moment of anticipation, allowing his emotions to be more visible.",+,345,348
+causal/bc7a741d,enables,0.7,0.8,"Staring can evoke strong emotional responses, allowing for wonder and consternation to manifest.",+,346,348
+causal/076a2781,causes,0.8,0.85,The sister's observation of the evident feelings led to Joe's wonder and consternation.,+,347,348
+causal/8ffe8cd2,causes,0.7,0.8,"The act of staring prompts a reaction, leading to a question about the observer's state.",+,346,349
+causal/83d44eba,causes,0.8,0.9,The evident situation prompted the sister's immediate inquiry.,+,347,349
+causal/a8bcbbc7,causes,0.8,0.9,The evident nature of the situation prompted her sister to react by putting down her cup.,+,347,350
+causal/47169451,enables,0.7,0.8,"The evident observations made by the sister prompted Joe's serious reaction, indicating a connection between the two events.",+,347,351
+causal/0e5be924,causes,0.8,0.85,"Joe's wonder and consternation lead to his serious remonstrance, indicating a direct emotional response.",+,348,351
+causal/5c340fbf,causes,0.8,0.9,"Joe's muttering indicates his disapproval, leading to his head shaking as a form of serious remonstrance.",+,351,352
+causal/62eb501a,prevents,0.7,0.8,Joe's serious warning aims to prevent Pip from getting into trouble.,+,351,353
+causal/71ed81c6,prevents,0.7,0.8,"The serious remonstrance serves as a warning to Pip, suggesting that his actions could lead to harm.",-,352,353
+causal/c6038a2f,prevents,0.7,0.8,"The warning suggests that Pip's actions could lead to harm, implying that the mischief can be avoided.",+,353,354
+causal/afb692aa,prevents,0.7,0.8,"The warning suggests that Pip's actions could lead to harm, implying that he should avoid certain behaviors.",-,353,355
+causal/6e8a353d,aggravates,0.7,0.8,Pip's inability to chew is causing his sister to become more irritated.,+,355,356
+causal/f0ddc2a5,causes,0.7,0.8,"The act of sticking implies a change in behavior or condition, leading to a sharper outcome.",+,354,357
+causal/de44ba77,causes,0.8,0.9,"The sister's inquiry prompts a sharper tone in her voice, indicating a direct cause-effect relationship.",+,356,357
+causal/2df35fd8,causes,0.7,0.8,"Joe's statement implies that Pip's inability to have chewed something is causing concern, leading to his recommendation to cough it up.",+,355,358
+causal/c761297f,causes,0.7,0.8,"Joe's statement implies that Pip's inability to have chewed something is causing concern, leading to his recommendation to cough it up.",+,355,359
+causal/471d5bf1,aggravates,0.7,0.8,"Joe's recommendation to cough up something exacerbates the sister's desperation, leading her to react strongly.",+,358,362
+causal/625f011a,causes,0.8,0.85,"The sister's desperation leads her to act impulsively, resulting in her grabbing Joe by the whiskers.",+,362,363
+causal/4995650e,causes,0.8,0.85,"The sister's desperation led her to act aggressively, resulting in Joe's head hitting the wall.",+,362,364
+causal/a937f89f,causes,0.8,0.85,"Grabbing someone by the whiskers can lead to a physical reaction, such as knocking their head against a wall.",+,363,364
+causal/1a14fa4b,causes,0.7,0.8,"The act of knocking his head against the wall may lead to feelings of guilt or shame, prompting a guilty expression.",+,364,366
+causal/71852e1c,causes,0.8,0.85,"Sitting in the corner suggests a feeling of shame or guilt, leading to a guilty expression.",+,365,366
+causal/8fe841a3,causes,0.8,0.85,"Taking him by the whiskers prompts a response, indicating a direct cause for the inquiry.",+,363,367
+causal/cf7c3fa9,enables,0.7,0.8,Feeling guilty may prompt someone to open up about their issues.,+,366,367
+causal/cbe8750a,causes,0.7,0.8,Feeling guilty can lead to a helpless demeanor as one may feel responsible for their actions.,+,366,370
+causal/6747cfc3,causes,0.8,0.85,"The inquiry prompts Joe's helpless reaction, indicating a direct emotional response.",+,367,370
+causal/dd554715,causes,0.7,0.8,"The sister's out-of-breath state suggests urgency or distress, leading to a helpless action of biting.",+,368,371
+causal/3b266e16,causes,0.7,0.8,"Joe's helpless gaze likely influenced his action of taking a helpless bite, indicating a direct emotional response.",+,370,371
+causal/764bd941,causes,0.7,0.8,"Staring can capture attention, prompting the subject to look back.",+,369,372
+causal/2a2031d2,enables,0.7,0.8,"The act of looking indicates attention and connection, fostering friendship.",+,372,374
+causal/663d49b6,enables,0.8,0.9,Joe's confidential tone fosters trust and friendship between him and Pip.,+,373,374
+causal/49f1d76c,enables,0.7,0.6,"The experience of being bitten may have exposed the boy to various Bolters, shaping his social interactions.",+,381,383
+causal/bb71b828,causes,0.7,0.8,"The speaker's experience of bolting at a young age suggests that such behavior is common among peers, indicating a causal relationship.",+,382,383
+causal/d6a9a6a5,prevents,0.7,0.8,"The bite suggests a struggle or injury that prevents a worse outcome, implying survival despite danger.",+,381,385
+causal/ec8c05e4,prevents,0.7,0.8,"The speaker suggests that bolting (running away) at a young age could lead to dangerous outcomes, implying that their own experience prevented worse consequences.",-,382,385
+causal/9fee6b4f,enables,0.7,0.8,"Being among Bolters suggests familiarity, which may help avoid the fate of being Bolted dead.",+,383,385
+causal/e2574bc9,prevents,0.7,0.8,"The speaker implies that the absence of Pip's 'Bolting' behavior is a mercy, suggesting that it prevents a negative outcome.",+,384,385
+causal/cceead2e,causes,0.8,0.9,The action of diving at someone directly leads to the act of fishing them up by the hair.,+,386,387
+causal/31be21ee,causes,0.8,0.85,The sister's aggressive action prompts a threatening verbal response.,+,386,388
+causal/0f08d547,causes,0.8,0.85,"The act of being fished up by the hair leads to a reaction of being dosed, indicating a direct consequence.",+,387,388
+causal/016021e4,enables,0.7,0.8,The mention of mercy implies that avoiding death allows for the use of Tar-water as a medicine.,+,385,389
+causal/9fe1b176,enables,0.7,0.6,"The act of fishing someone up suggests a rescue or revival, which could enable the use of a medicine.",+,387,389
+causal/67e20e42,causes,0.7,0.8,"The phrase implies a negative connotation towards the treatment, suggesting it led to the revival of Tar-water as a medicine.",+,388,389
+causal/5fea58c6,causes,0.7,0.8,"The phrase implies a negative consequence that leads to Mrs. Joe's preparedness, suggesting her response is a direct result of the prior statement.",+,388,390
+causal/7f9446ea,causes,0.8,0.75,"The revival of Tar-water as a medicine led to a belief in its effectiveness, despite its unpleasant qualities.",+,389,391
+causal/7bcaa9ed,enables,0.7,0.8,"Keeping a supply of it suggests Mrs. Joe's belief in its virtues, reinforcing the idea that its unpleasantness is outweighed by its benefits.",+,390,391
+causal/c3dc777e,causes,0.8,0.85,The phrase implies a coercive action leading to the administration of the elixir as a remedy.,+,388,392
+causal/2e3d9efa,enables,0.8,0.9,The supply of elixir in the cupboard allows for its administration as a restorative.,+,390,392
+causal/9ac7f174,enables,0.7,0.8,The belief in the elixir's virtues encourages its use as a restorative.,+,391,392
+causal/eb32473f,enables,0.7,0.8,The revival of Tar-water as a fine medicine suggests it allowed for a new awareness or state of being.,+,389,393
+causal/a4024f76,causes,0.7,0.8,"The belief in the virtues of something unpleasant leads to a conscious awareness of its negative effects, such as an unpleasant smell.",+,391,393
+causal/8edd2c20,enables,0.7,0.8,Having a supply of the mixture allows for its use when needed.,+,390,394
+causal/49383914,enables,0.7,0.8,The belief in the virtues of the mixture encourages its use despite its unpleasantness.,+,391,394
+causal/6bb9f262,enables,0.8,0.85,The administration of the elixir provides the necessary treatment for the urgent medical condition.,+,392,394
+causal/ddad526c,causes,0.7,0.8,"The belief in the virtues of something unpleasant can lead to its consumption, as the individual may prioritize perceived benefits over negative aspects.",+,391,395
+causal/05958124,causes,0.9,0.95,The administration of the elixir directly leads to it being poured down the throat.,+,392,395
+causal/d120bd08,causes,0.8,0.9,The administration of the elixir directly leads to increased comfort.,+,392,396
+causal/8ab1719f,enables,0.7,0.8,Being conscious of one's appearance can lead to increased comfort.,+,393,396
+causal/26f5f824,causes,0.8,0.85,"The urgency of the case necessitated the mixture, leading to increased comfort.",+,394,396
+causal/808f3b6a,causes,0.7,0.8,"The awareness of one's smell may lead to embarrassment, prompting a reaction from Mrs. Joe.",+,393,397
+causal/46a12486,causes,0.8,0.85,"The urgency of the case led to the need for the mixture, which resulted in Mrs. Joe's action of holding the head.",+,394,397
+causal/f3d07ade,causes,0.8,0.9,"The act of pouring down the throat directly leads to the need for Mrs. Joe to hold the head, indicating a cause-effect relationship.",+,395,397
+causal/653b5c77,enables,0.7,0.8,"The comfort provided allows for the use of a bootjack, facilitating the removal of the boot.",+,396,398
+causal/ec84fa56,causes,0.8,0.9,The act of pouring liquid down someone's throat directly leads to Joe consuming half a pint.,+,395,399
+causal/9e6f6731,enables,0.6,0.7,"The desire for greater comfort may lead Joe to accept a lesser amount, facilitating the outcome.",+,396,399
+causal/714980a6,causes,0.8,0.9,Holding the head under her arm likely forced the person to swallow against their will.,+,397,400
+causal/fbe96af1,causes,0.8,0.85,Joe's action of getting off with half a pint led to the necessity of swallowing it.,+,399,400
+causal/e7a041aa,causes,0.7,0.8,Joe's consumption of alcohol likely led to feelings of disturbance.,+,399,401
+causal/10ed9bda,causes,0.8,0.85,Being forced to swallow something unpleasant leads to emotional disturbance.,+,400,401
+causal/cf645be1,aggravates,0.7,0.8,The disturbance increases his discomfort while he is trying to relax and reflect.,+,401,402
+causal/ea21da6c,aggravates,0.7,0.8,The disturbance increases his discomfort while he is trying to relax and reflect.,+,401,403
+causal/20f9d2ad,aggravates,0.7,0.8,The disturbance increases his discomfort while he is trying to relax and reflect.,+,401,404
+causal/1255584a,enables,0.7,0.8,"The act of sitting and meditating creates a conducive environment for reflection, which may lead to a change in perspective or mood.",+,404,406
+causal/897ae60c,enables,0.7,0.8,"The act of sitting and meditating may create a conducive environment for reflection, leading to a change in perspective.",+,404,407
+causal/874d5896,causes,0.8,0.85,The first event suggests a prior condition that leads to the second event occurring.,+,405,407
+causal/1829adaf,enables,0.7,0.8,"Meditation can lead to self-reflection, which may trigger feelings of guilt or conscience.",+,404,408
+causal/64e9d6da,causes,0.7,0.8,The speaker suggests that a personal experience of guilt leads to a heightened sense of conscience.,+,406,408
+causal/0572de27,causes,0.7,0.8,"The statement suggests that a change in the person's state (turn) leads to feelings of guilt or conscience, indicating a causal relationship.",+,407,408
+causal/89a8b7b4,enables,0.7,0.8,"The turn allows the secret burdens to interact, suggesting a connection between them.",+,405,409
+causal/7bf90df0,enables,0.7,0.8,The first event suggests a change in condition that allows the second burden to manifest.,+,407,409
+causal/3a733867,enables,0.7,0.8,"The burden of conscience allows for the accumulation of additional burdens, suggesting a compounding effect.",+,408,409
+causal/71b232b2,prevents,0.8,0.85,The fear of conscience prevents the speaker from committing robbery.,+,408,411
+causal/c2cea599,enables,0.7,0.8,"The presence of secret burdens suggests a psychological state that may lead to unexpected actions, such as contemplating robbery.",+,409,411
+causal/cc7bc2e4,enables,0.7,0.8,"The knowledge of intent to rob creates a need for self-preservation, ensuring focus on personal security.",+,410,413
+causal/a38d8941,enables,0.7,0.8,The thought of robbing Joe suggests a mindset that may lead to prioritizing personal gain over ethical considerations.,+,411,413
+causal/ddd71fba,enables,0.7,0.8,The speaker's perception of housekeeping property as not belonging to him allows for a focus on personal sustenance.,+,412,413
+causal/48b87d94,enables,0.7,0.8,"The necessity of keeping one hand on my bread and butter allows for the act of sitting, suggesting a condition for the action.",+,413,414
+causal/088008db,causes,0.7,0.6,"Feeling ordered around may lead to frustration, prompting thoughts of rebellion or theft.",+,411,415
+causal/b3baee42,enables,0.7,0.8,The speaker's perception of housekeeping property as not belonging to him allows for being ordered about in the kitchen.,+,412,415
+causal/3943285d,enables,0.7,0.8,"The necessity of keeping one hand on my bread and butter allows for being ordered about the kitchen, as it implies a need to manage responsibilities.",+,413,415
+causal/24eb7d1f,enables,0.7,0.8,"Sitting implies a state of being present and available, which allows for being ordered about.",+,414,415
+causal/a5095790,causes,0.8,0.75,The speaker's lack of recognition of shared property leads to mental distress.,+,412,416
+causal/21b48ac9,causes,0.8,0.85,The constant need to secure one's livelihood creates stress and mental strain.,+,413,416
+causal/bef33ad2,causes,0.8,0.85,"Being ordered around creates frustration and stress, leading to mental distress.",+,415,416
+causal/5db0c86d,enables,0.7,0.8,Sitting allows for the observation of the fire's behavior influenced by the marsh winds.,+,414,417
+causal/8cae2b83,enables,0.7,0.8,"Sitting creates a state of calmness that allows for reflective thinking, leading to the perception of hearing a voice.",+,414,418
+causal/4f222da6,enables,0.6,0.7,"The glowing fire may enhance auditory perception, making the voice more noticeable.",+,417,419
+causal/ff0a57a1,enables,0.7,0.8,"The first event sets the context for the second, allowing for a more specific interpretation of the voice heard.",+,418,419
+causal/d064d41f,causes,0.7,0.8,The contemplation of the young man's thoughts may lead to impatience as a response to internal conflict.,+,421,422
+causal/edcd21c9,causes,0.7,0.8,A constitutional impatience can lead to misjudging the appropriate timing for actions.,+,422,423
+causal/00cefe15,enables,0.7,0.8,The contemplation of the young man's feelings allows for the possibility of emotional connection.,+,421,424
+causal/3b071f4a,enables,0.7,0.8,The phrase suggests that yielding to impatience allows one to feel a sense of belonging or acceptance in emotional matters.,+,422,424
+causal/07b0e94d,causes,0.8,0.85,The contemplation of a frightening scenario leads to a heightened state of fear.,+,421,425
+causal/8e5ef948,causes,0.8,0.85,"The statement implies a deep emotional connection, suggesting that the speaker's feelings lead to a strong physical reaction of fear.",+,424,425
+causal/4ff71367,enables,0.8,0.9,Stirring the pudding with a copper stick allows for effective mixing and heat distribution.,+,427,428
+causal/cf199daf,enables,0.7,0.8,"Stirring the pudding prompted a new thought about the man, suggesting a connection between the task and the reflection.",+,427,430
+causal/3e633640,enables,0.7,0.8,"The presence of the copper-stick prompts a new perspective on the man with the load, suggesting a connection between the two thoughts.",+,428,430
+causal/5d47d1b2,enables,0.7,0.8,"The passage of time prompts reflection on the man with the load, suggesting a connection between time and thought.",+,429,430
+causal/9a5f855c,causes,0.7,0.8,"The thought of the man with the load prompts a reflection on personal physical challenges, linking mental imagery to physical discomfort.",+,430,431
+causal/f9eef03a,enables,0.7,0.8,"The passage of time allows for the opportunity to leave, suggesting a connection between the clock's indication and the action taken.",+,429,432
+causal/74c4e5e3,causes,0.7,0.8,"The reflection on the man with the load prompts a change in perspective, leading to a sense of relief.",+,430,432
+causal/922b8a70,enables,0.7,0.8,Exercise led to a situation that allowed for an escape.,+,431,432
+causal/2d8f26d5,causes,0.7,0.8,"The reflection on the man with the load prompts a deeper introspection, leading to a sense of guilt or responsibility being internalized.",+,430,433
+causal/ba78a9e1,enables,0.7,0.8,"The act of slipping away allows for the separation of conscience, facilitating its deposition in the garret bedroom.",+,432,433
+causal/5e0a569c,enables,0.7,0.8,Depositing part of conscience allows for deeper reflection during stirring.,+,433,434
+causal/232135ba,enables,0.7,0.8,Depositing part of conscience allows for a smoother transition to bedtime.,+,433,436
+causal/ace1c157,causes,0.7,0.8,"Mrs. Joe's tendency to take explanations upon herself likely led to her snappish remark, indicating frustration.",+,439,440
+causal/76451917,enables,0.7,0.8,Mrs. Joe's tendency to take explanations upon herself allows her to administer definitions in a forceful manner.,+,439,441
+causal/aa841454,enables,0.7,0.8,The act of administering the definition facilitates the speaker's ability to engage in conversation about the term 'convict'.,+,441,444
+causal/e32217cb,causes,0.8,0.9,The act of putting my mouth into forms of saying initiates a specific dialogue with Joe.,+,443,444
+causal/31bf4911,causes,0.8,0.85,The act of expressing thoughts prompts Joe to respond elaborately.,+,443,445
+causal/75e69418,enables,0.8,0.9,The act of asking a question encourages Joe to respond with an elaborate answer.,+,444,445
+causal/2f8f06f9,causes,0.8,0.85,"The act of speaking to Joe leads to the recognition of the word 'Pip,' indicating a direct influence.",+,443,446
+causal/49fe863f,causes,0.7,0.8,"Joe's elaborate answer likely provoked a strong reaction, leading to warnings.",+,445,449
+causal/7af51906,causes,0.8,0.85,The convict's escape prompted the warning shots to alert others.,+,447,449
+causal/7b32e3b0,causes,0.8,0.85,"The sunset gun serves as a signal, prompting the firing of warnings.",+,448,449
+causal/82d4d926,causes,0.7,0.8,The convict's escape likely prompted authorities to issue warnings about potential dangers.,+,447,450
+causal/e3b5d81a,causes,0.8,0.85,"The sunset-gun signals the end of the day, prompting the firing of warnings.",+,448,450
+causal/070789a6,causes,0.7,0.8,"The initial warning likely led to a pattern of behavior, prompting further warnings.",+,449,450
+causal/d4d4f6fe,causes,0.8,0.85,"The act of questioning leads to the revelation of truths, implying that without questions, lies remain hidden.",+,452,453
+causal/3007a76d,causes,0.7,0.8,"The sister's frowning indicates disapproval, which leads to her being impolite when alone.",+,451,455
+causal/da08938f,enables,0.7,0.8,"Not asking questions allows curiosity to grow unchecked, leading to increased interest.",+,453,456
+causal/cc4666c2,enables,0.7,0.8,The implication of dishonesty from herself allows for increased curiosity about the truth.,+,454,456
+causal/eac92c05,enables,0.7,0.8,Joe's actions made it possible for curiosity to grow by engaging in a dramatic manner.,+,456,457
+causal/aafbe43b,enables,0.7,0.8,"Joe's actions increased curiosity, leading to the formation of a specific word in the mind.",+,456,458
+causal/4b2643ff,causes,0.8,0.9,The effort to open his mouth wide directly leads to the formation of the word 'sulks.',+,457,458
+causal/ae6f9bf1,causes,0.8,0.85,"Joe's actions increased curiosity, leading to a response directed at Mrs. Joe.",+,456,459
+causal/4d231865,causes,0.8,0.85,"Joe's actions stimulated curiosity, leading to a verbal reaction.",+,456,460
+causal/a98e935e,enables,0.8,0.9,"Opening the mouth wide allows for the formation of words, enabling speech.",+,457,460
+causal/aae4b86a,causes,0.8,0.85,Pointing to Mrs. Joe prompts the speaker to vocalize a question about her.,+,459,460
+causal/1daaba32,prevents,0.7,0.8,Joe's refusal to consider the suggestion indicates that the effort to persuade him is ineffective.,-,457,461
+causal/1c49b90d,causes,0.7,0.8,"Pointing can elicit a response, leading to a wide mouth opening in surprise or anticipation.",+,459,462
+causal/4bef9a24,causes,0.8,0.85,The act of forming words with the mouth leads to the production of an emphatic expression.,+,460,463
+causal/91e8e20f,causes,0.8,0.85,"Opening his mouth wide suggests a strong expression, leading to the emphatic word being articulated.",+,462,463
+causal/a936ce83,causes,0.8,0.9,The inquiry about the firing leads to the revelation that it originates from the Hulks.,+,466,468
+causal/1f404faf,causes,0.8,0.9,"The sister's exclamation implies sarcasm, suggesting her true feelings contradict her words, leading to a sense of vindication.",+,467,470
+causal/b50ed760,causes,0.8,0.9,"Joe's cough indicates disapproval, prompting the implied message of 'I told you so.'",+,469,470
+causal/bf7d1b1e,enables,0.7,0.8,"The phrase suggests that the speaker's identity or situation is being highlighted, which allows for the act of pointing out to occur.",+,468,472
+causal/8a247cfc,enables,0.7,0.8,"The sister's exclamation highlights the boy's behavior, allowing her to draw attention to him.",+,471,472
+causal/b304021a,causes,0.7,0.8,"The statement implies a sense of forewarning, leading to a reaction of disapproval.",+,470,473
+causal/1a8ed6f0,causes,0.8,0.9,"The sister's exclamation indicates frustration or disappointment, leading her to shake her head.",+,471,473
+causal/b82d1163,causes,0.7,0.8,"Pointing out with a needle and thread suggests a critical observation, leading to a disapproving gesture.",+,472,473
+causal/71ff7eff,causes,0.8,0.85,The boy's inquisitive nature leads to him asking multiple questions after receiving an answer.,+,471,474
+causal/2de20625,enables,0.6,0.7,"Pointing out with needle and thread suggests focus, which may lead to increased questioning.",+,472,474
+causal/90972fca,prevents,0.7,0.8,"Shaking her head indicates disapproval, suggesting she is discouraging further questioning.",-,473,474
+causal/a451c9dd,causes,0.8,0.85,"The act of answering prompts further questioning, leading to a sense of desperation.",+,474,478
+causal/e586046b,causes,0.8,0.7,The act of being imprisoned leads to feelings of quiet desperation.,+,477,479
+causal/d8805b53,causes,0.8,0.9,The phrase 'said I' indicates that the speaker's expression of desperation is a direct result of their statement.,+,478,479
+causal/ca4c3cea,prevents,0.7,0.8,"The speaker's quiet desperation suggests a desire to avoid conflict, which prevents them from badgering others.",-,478,482
+causal/a28fd56c,causes,0.8,0.85,"The speaker's statement implies a direct consequence of their upbringing, suggesting that the act of telling is linked to the admonition against badgering others.",+,481,482
+causal/0c624a9d,prevents,0.7,0.8,"The speaker implies that their upbringing was intended to instill positive behavior, thus preventing blame.",+,482,483
+causal/667924b0,causes,0.8,0.85,"The speaker implies that failing to raise someone properly leads to negative behaviors, resulting in severe consequences like imprisonment.",+,482,484
+causal/b100824c,causes,0.7,0.8,"The speaker implies that their upbringing instilled a sense of respect, leading others to engage with questions rather than badgering.",+,482,485
+causal/f17db1df,prevents,0.7,0.8,"The speaker implies that their upbringing was intended to instill good behavior, which prevents the listener from causing trouble.",+,482,486
+causal/acf341ef,prevents,0.7,0.8,"The speaker suggests that taking blame would prevent receiving praise, implying a negative outcome.",-,483,486
+causal/985c029c,prevents,0.7,0.8,"The blame implies a lack of support or resources, preventing the speaker from having a candle.",-,483,487
+causal/e75f5daa,prevents,0.8,0.9,"Being put in the Hulks restricts personal freedoms, including basic comforts like having a candle.",-,484,487
+causal/86a157cf,prevents,0.6,0.7,"Asking questions may divert attention from providing comfort, preventing the act of lighting a candle.",-,485,487
+causal/0b5c9dca,prevents,0.7,0.8,The instruction to go to bed implies a lack of resources (candle) for a safe transition.,-,486,487
+causal/170122e3,enables,0.7,0.8,Going to bed allows the action of going upstairs in the dark to occur.,+,486,488
+causal/d033ef8d,causes,0.7,0.8,"Going to bed can lead to a state of relaxation, which may cause sensations like tingling in the head.",+,486,489
+causal/921d5ee9,causes,0.7,0.8,"Moving upstairs in the dark may lead to a heightened sense of alertness or anxiety, causing physical sensations like tingling.",+,488,489
+causal/a2642640,prevents,0.7,0.8,"The lack of a candle prevents the comfort and security of light, leading to heightened awareness of fear.",-,487,491
+causal/c7af645a,enables,0.7,0.6,"The tingling sensation may heighten awareness, allowing for a greater appreciation of convenience.",+,489,491
+causal/0409b7cf,enables,0.6,0.7,"The act of playing the tambourine suggests a sense of creativity or expression, which may lead to an appreciation of convenience.",+,490,491
+causal/95d23f1a,enables,0.7,0.8,"Going upstairs in the dark allows access to the hulks, making them convenient.",+,488,492
+causal/b2e9f159,enables,0.7,0.6,"The tingling sensation may enhance awareness or perception, making the hulks more accessible or useful.",+,489,492
+causal/4ec78a2f,enables,0.7,0.8,The feeling of fear enhances the perception of convenience provided by the hulks.,+,491,492
+causal/3d859ac0,causes,0.7,0.8,"The sensation of tingling in the head suggests a physiological response that may indicate a state of excitement or anticipation, leading to the feeling of being on the way to a destination.",+,489,493
+causal/dc0ab3a3,enables,0.7,0.8,Feeling a strong sense of convenience can motivate and facilitate the decision to proceed towards a destination.,+,491,493
+causal/666c9858,enables,0.7,0.8,"The hulks provided a convenient means of transportation, facilitating my journey.",+,492,493
+causal/aff2fbe0,enables,0.7,0.8,Mrs. Joe's thimble suggests a playful or engaging environment that encourages questioning.,+,490,494
+causal/aa88dbd9,enables,0.7,0.6,Feeling a strong sense of convenience may encourage one to engage in asking questions.,+,491,494
+causal/f4978b06,enables,0.7,0.8,The availability of hulks facilitated the process of inquiry.,+,492,494
+causal/635121a9,enables,0.7,0.8,"Being on the way suggests readiness to engage, facilitating the act of asking questions.",+,493,494
+causal/8fa69b1d,causes,0.8,0.85,The feeling of fearfulness heightened the motivation to commit robbery.,+,491,495
+causal/d6135068,enables,0.8,0.85,The hulks provided a means or opportunity for the robbery.,+,492,495
+causal/0393de17,enables,0.7,0.8,The intent to go to a location facilitates the opportunity to commit a robbery.,+,493,495
+causal/df458c9c,enables,0.7,0.8,The availability of hulks provides a means for the speaker to reflect on the secrecy associated with fear in youth.,+,492,496
+causal/7f33ee7c,enables,0.7,0.8,"Asking questions can create an environment where individuals reflect on their experiences, including feelings of secrecy and terror.",+,494,496
+causal/09151cbf,enables,0.7,0.8,"Asking questions can create an environment where fear is acknowledged, allowing for the expression of terror.",+,494,497
+causal/17467d42,causes,0.8,0.85,"The presence of terror leads to a state of secrecy among the young, regardless of the reasonableness of the fear.",+,496,497
+causal/3470d165,causes,0.7,0.8,"Asking questions may have led to a confrontation, heightening fear of the young man.",+,494,498
+causal/1da27df5,causes,0.8,0.9,The fear of the young man is a direct result of the secrecy and terror experienced by the speaker.,+,496,498
+causal/5bde811c,causes,0.8,0.9,"The unreasonable terror described leads to a specific fear of the young man, indicating a direct cause-effect relationship.",+,497,498
+causal/845e728f,causes,0.8,0.85,"The fear of the interlocutor's presence likely stems from the underlying terror mentioned, indicating a direct causal relationship.",+,496,499
+causal/11bdf469,causes,0.8,0.9,The presence of unreasonable terror directly leads to a state of mortal terror in the individual.,+,497,499
+causal/ccadc313,causes,0.8,0.85,"The awareness of secrecy under terror leads to self-terror, as the individual grapples with internal fears and promises.",+,496,500
+causal/5246a4ff,causes,0.8,0.85,"The unreasonable terror leads to a profound fear of oneself, indicating a direct psychological impact.",+,497,500
+causal/c1afdeab,causes,0.8,0.9,"The fear of the young man leads to self-terror due to the promise made, indicating a direct emotional consequence.",+,498,500
+causal/1d008070,causes,0.8,0.9,The fear of the interlocutor leads to self-fear due to the promise made.,+,499,500
+causal/15c2edec,aggravates,0.7,0.8,"The unreasonable terror intensifies feelings of hopelessness and isolation, as the speaker feels rejected by their sister.",+,497,501
+causal/4eacd008,aggravates,0.7,0.8,The fear of the young man intensifies the feeling of hopelessness regarding the sister's support.,+,498,501
+causal/be64c1ce,aggravates,0.7,0.8,The fear of the interlocutor intensifies the feeling of hopelessness regarding the sister's support.,+,499,501
+causal/672d26b2,aggravates,0.7,0.8,The fear of oneself intensifies the feeling of hopelessness regarding deliverance from the sister.,+,500,501
+causal/d7fe003f,causes,0.8,0.85,The terror experienced leads to fear of potential actions taken under duress.,+,498,502
+causal/ef841a91,causes,0.8,0.9,The fear of the interlocutor directly leads to a heightened state of anxiety about potential actions taken in that fear.,+,499,502
+causal/f2269499,causes,0.8,0.9,The fear of oneself leads to anxiety about potential actions taken under duress.,+,500,502
+causal/2e337583,prevents,0.8,0.85,"The sister's rejection creates a sense of hopelessness, preventing the individual from considering actions they might take in fear.",-,501,502
+causal/6427b9d7,prevents,0.8,0.85,"The lack of hope from the sister prevents the speaker from finding peace, leading to restless thoughts.",-,501,503
+causal/648bef43,causes,0.7,0.8,"Fear can lead to hallucinations or vivid imaginations, manifesting as a ghostly figure.",+,502,504
+causal/ceb09e91,enables,0.7,0.8,The act of imagining drifting down the river creates a mental space for the ghostly pirate to appear.,+,503,504
+causal/2413651e,prevents,0.8,0.7,"The lack of hope from the sister prevents the possibility of deliverance, leading to a sense of despair as the narrator approaches the gibbet-station.",-,501,505
+causal/31392cd2,enables,0.7,0.8,The ghostly pirate's call may draw attention or influence the passerby at the gibbet-station.,+,504,505
+causal/50506909,causes,0.7,0.8,The speaker's restless imagination about drifting leads to a conclusion about facing consequences.,+,503,506
+causal/3e172759,causes,0.8,0.85,"The fear of sleeping is influenced by the anxiety of drifting down the river, suggesting a direct emotional connection.",+,503,507
+causal/31115604,causes,0.8,0.9,"The ghostly pirate's call instills fear, leading to reluctance to sleep.",+,504,507
+causal/bbf08ebd,causes,0.8,0.9,"The presence of the gibbet-station instills fear, leading to an inability to sleep.",+,505,507
+causal/e87c1f72,prevents,0.8,0.9,The fear of impending punishment prevents the individual from sleeping.,-,506,507
+causal/bfc05723,enables,0.7,0.8,"The ghostly pirate's call creates a sense of urgency and motivation to act, leading to the decision to rob the pantry at dawn.",+,504,508
+causal/1eda1c34,enables,0.7,0.8,The mention of the gibbet-station suggests a foreboding atmosphere that motivates the speaker to plan the robbery.,+,505,508
+causal/b72b3a7d,causes,0.8,0.9,Fear of sleeping leads to the necessity of robbing the pantry at dawn.,+,507,508
+causal/501def2c,prevents,0.7,0.8,"The presence of the gibbet-station creates a sense of fear or unease, making it impossible to act during the night.",-,505,509
+causal/c0c20849,prevents,0.7,0.8,The decision to come ashore and face consequences prevents the action from occurring at night.,-,506,509
+causal/ccc1afcf,causes,0.8,0.9,Fear of sleeping leads to an inability to sleep at night.,+,507,509
+causal/6cd5ef94,causes,0.8,0.9,The need to rob the pantry arises from the inability to do so at night.,+,508,509
+causal/5a0d2a9b,causes,0.8,0.85,"Fear of sleeping leads to the inability to obtain light easily, indicating a direct impact on behavior.",+,507,510
+causal/217f26cf,causes,0.8,0.9,The need to rob the pantry arises from the inability to create light easily at dawn.,+,508,510
+causal/3d308923,prevents,0.8,0.9,The inability to create light by friction at night prevents the action from occurring.,-,509,510
+causal/eb8314df,prevents,0.8,0.85,The inability to act at night prevents the possibility of obtaining fire through flint and steel.,-,509,511
+causal/f5daaf5c,prevents,0.8,0.9,The inability to create light through easy friction prevents the use of simpler methods for ignition.,-,510,511
+causal/a04c0082,causes,0.8,0.85,"The anticipation of robbing the pantry leads to a noise that mimics a pirate, suggesting a direct connection between the intent and the resulting action.",+,508,512
+causal/60b19f24,prevents,0.7,0.8,The inability to act at night prevents the noise associated with a pirate's chains.,-,509,512
+causal/fbbceceb,causes,0.8,0.9,"Striking flint and steel produces a spark and sound, similar to the noise of rattling chains.",+,511,512
+causal/cbd2642a,prevents,0.7,0.8,The inability to act at night led to the decision to get up.,+,509,513
+causal/dafc484d,causes,0.8,0.9,"Striking flint and steel produces a spark, enabling the action of getting up.",+,511,513
+causal/e4f4ddf0,causes,0.8,0.85,"The noise evokes a strong reaction, prompting the individual to get up.",+,512,513
+causal/bf8f6911,causes,0.9,0.95,Getting up is a necessary action that allows one to go downstairs.,+,513,514
+causal/7eab60df,causes,0.7,0.8,"Striking flint and steel creates sparks, which can ignite materials, leading to the sound of boards and cracks as a result of fire or impact.",+,511,515
+causal/fb88da5f,enables,0.7,0.8,"The noise created by the pirate's chains draws attention to the boards, making them seem more significant.",+,512,515
+causal/2be6a280,enables,0.7,0.8,"Getting up allows the person to notice and interact with their surroundings, including the boards and cracks.",+,513,515
+causal/ab698100,causes,0.8,0.9,"Going downstairs creates noise from the boards, which draws attention.",+,514,515
+causal/bd656b1e,enables,0.7,0.8,Going downstairs allows the person to confront or address the situation of the thief.,+,514,516
+causal/7d9c7adb,enables,0.7,0.8,"The presence of boards and cracks creates an environment where the call for help can be heard, facilitating the response.",+,515,516
+causal/a33403bd,causes,0.8,0.85,"The speaker's perception of the boards and cracks evokes a strong emotional response, prompting a call to action.",+,515,517
+causal/d4aac0f1,causes,0.8,0.9,The command to stop the thief prompts Mrs. Joe to react and get up.,+,516,517
+causal/f830a7d9,causes,0.8,0.7,The alarm caused by seeing the hare led to the action of hanging it up.,+,518,519
+causal/b8d56df4,causes,0.7,0.8,The alarm caused by the hare led to a lack of time for verification.,+,518,521
+causal/f9115d8f,causes,0.7,0.8,"The act of winking suggests a fleeting moment that distracts, leading to a lack of time for verification.",+,520,521
+causal/6808fa0f,causes,0.8,0.7,"The alarm caused by the hare led to a state of urgency, resulting in no time for selection.",+,518,522
+causal/3337b465,causes,0.8,0.75,"The hare's condition implies urgency, leading to a lack of time for careful selection.",+,519,522
+causal/3eecb130,prevents,0.7,0.8,"The act of winking suggests distraction, leading to a lack of attention and thus no time for selection.",-,520,522
+causal/d6f0a7e2,causes,0.8,0.85,Lack of time for verification directly leads to insufficient time for selection.,+,521,522
+causal/4ef9f88a,prevents,0.7,0.8,"The hare's condition implies a lack of freedom, which prevents it from engaging in any activities.",-,519,523
+causal/f60724b1,prevents,0.7,0.8,"The act of winking suggests distraction, which prevents focus on tasks.",-,520,523
+causal/7e11f92c,causes,0.8,0.9,Lack of time for verification directly leads to a general lack of time for other activities.,+,521,523
+causal/640176c0,causes,0.8,0.9,Lack of time for selection directly leads to a lack of time for other activities.,+,522,523
+causal/a7725bd3,causes,0.8,0.9,Lack of time for verification directly leads to having no time to spare.,+,521,524
+causal/cf02397a,causes,0.8,0.9,Lack of time for selection directly leads to having no time to spare.,+,522,524
+causal/ccc0ca0e,causes,0.9,0.95,Lack of time directly leads to the inability to spare time.,+,523,524
+causal/d6229c06,causes,0.8,0.9,"Lack of time led to impulsive decision-making, resulting in theft.",+,521,525
+causal/a5c35d59,causes,0.8,0.9,Lack of time led to a desperate decision to steal food.,+,522,525
+causal/07b8ce64,causes,0.8,0.85,"Lack of time may lead to desperation, prompting theft as a quick solution.",+,523,525
+causal/04986a85,causes,0.8,0.9,Lack of time led to a desperate decision to steal food.,+,524,525
+causal/49599251,causes,0.8,0.85,"Lack of time led to impulsive decision-making, resulting in theft.",+,522,526
+causal/a7868e63,causes,0.8,0.75,Lack of time may lead to desperate actions like stealing to fulfill needs.,+,523,526
+causal/4539bb7b,causes,0.8,0.75,"Lack of time led to impulsive decision-making, resulting in theft.",+,524,526
+causal/e0cd831f,enables,0.7,0.8,"Stealing bread may create a pattern of theft, making it easier to steal other items like cheese.",+,525,526
+causal/989809f9,causes,0.8,0.85,"Lack of time led to impulsive behavior, resulting in theft.",+,523,527
+causal/53e260fc,causes,0.8,0.85,"Lack of time led to impulsive decision-making, resulting in theft.",+,524,527
+causal/c2ffbbdc,causes,0.8,0.75,"Stealing bread likely led to the subsequent act of stealing mincemeat, indicating a pattern of behavior.",+,525,527
+causal/c554a91f,enables,0.6,0.7,Stealing cheese may have provided the opportunity or motivation to steal mincemeat.,+,526,527
+causal/b5150738,enables,0.7,0.8,Stealing bread allows for its concealment in the pocket-handkerchief.,+,525,528
+causal/f2398592,causes,0.8,0.9,Stealing the cheese leads to it being placed in the pocket-handkerchief for concealment.,+,526,528
+causal/e89bbe16,causes,0.8,0.9,Stealing the mincemeat directly leads to it being secured in the pocket-handkerchief.,+,527,528
+causal/e070d178,enables,0.7,0.8,The act of stealing bread may create a mindset or opportunity that leads to stealing brandy.,+,525,529
+causal/06a145b4,enables,0.6,0.7,"Stealing cheese may create a context or opportunity for stealing brandy, suggesting a pattern of behavior.",+,526,529
+causal/6e0a4472,causes,0.7,0.8,"The act of stealing mincemeat may have led to the decision to steal brandy, indicating a pattern of behavior.",+,527,529
+causal/1b062684,enables,0.7,0.8,Tying up the handkerchief may have facilitated the act of stealing by providing concealment.,+,528,529
+causal/df2fcf80,causes,0.8,0.9,Stealing the cheese rind leads to it being placed in a glass bottle.,+,526,530
+causal/fe27bf81,enables,0.8,0.9,Stealing the mincemeat allows for its transfer into a glass bottle.,+,527,530
+causal/57932cfe,enables,0.7,0.8,"Tying up the item allows for safe transport, facilitating its later transfer into a bottle.",+,528,530
+causal/2b110b87,causes,0.9,0.95,Stealing brandy directly leads to decanting it into another bottle.,+,529,530
+causal/d3e41302,causes,0.9,0.95,Stealing the mincemeat directly led to its use in making the intoxicating fluid.,+,527,531
+causal/709b319f,enables,0.7,0.8,Tying up the pocket-handkerchief allows for the concealment and use of the fluid.,+,528,531
+causal/56cc4c10,causes,0.9,0.95,Stealing brandy directly leads to its use in making an intoxicating fluid.,+,529,531
+causal/08e97ced,enables,0.8,0.85,Decanting the liquid into a bottle allows for its later use in making the intoxicating fluid.,+,530,531
+causal/5390522b,enables,0.7,0.8,The act of secretly using the intoxicating fluid allows for the dilution process to occur.,+,531,532
+causal/f10c8a0d,enables,0.7,0.8,The act of secretly using the intoxicating fluid likely facilitated the theft of the pork pie.,+,531,534
+causal/b828256d,enables,0.7,0.8,Stealing the meat bone may have provided the opportunity or motivation to steal the pork pie.,+,533,534
+causal/0021adc7,causes,0.7,0.8,"Stealing the meat bone likely distracted or delayed the individual, impacting their ability to leave with the pie.",+,533,535
+causal/2fba2ac2,causes,0.8,0.9,Stealing the pie directly led to the situation of nearly leaving without it.,+,534,535
+causal/67d34b21,enables,0.7,0.8,"The desire to take the pie creates a temptation to reach for it, suggesting a connection between the two actions.",+,535,536
+causal/cf7864e5,causes,0.8,0.85,The act of stealing the pork pie directly leads to the action of investigating the covered dish.,+,534,537
+causal/dd92bb34,causes,0.8,0.85,The desire to leave without the pie prompts a curiosity about the covered dish.,+,535,537
+causal/56c936f9,causes,0.8,0.9,The temptation to mount the shelf directly leads to the action of looking at the dish.,+,536,537
+causal/19779107,causes,0.9,0.95,Stealing the pie directly leads to the discovery of its identity.,+,534,538
+causal/809d3d76,causes,0.8,0.9,The realization of the pie's presence prompted a change in intention regarding leaving.,+,535,538
+causal/98bcc74a,causes,0.8,0.9,The temptation to mount the shelf directly led to discovering the pie.,+,536,538
+causal/882851b2,causes,0.9,0.95,The action of looking leads directly to the discovery of the pie.,+,537,538
+causal/b81723c8,enables,0.7,0.8,"Taking the pie allows for the possibility of enjoying it later, suggesting it was not intended for immediate consumption.",+,535,539
+causal/6ae90a94,enables,0.7,0.8,"The temptation to mount on the shelf led to the action of taking the item, suggesting it was made possible by the initial desire.",+,536,539
+causal/62462c70,enables,0.7,0.8,"The act of looking for the item suggests a desire to use it, which enables the possibility of taking it without immediate consequences.",+,537,539
+causal/1aa15ce7,enables,0.7,0.8,Finding the pie allows the speaker to take it without immediate consequences.,+,538,539
+causal/ae515a84,enables,0.7,0.8,Unlocking the door allows access to the item stored in the dish.,+,537,541
+causal/cd457858,causes,0.7,0.8,Finding the pie motivated the action of unlocking the door.,+,538,541
+causal/ee3256c2,enables,0.8,0.9,The presence of the door allows for the action of unlocking and unbolting it.,+,540,541
+causal/f329fb0d,enables,0.7,0.8,Taking the item allowed the action of unlocking the door to occur without immediate consequences.,+,539,542
+causal/5c3e4390,enables,0.8,0.9,The presence of the door allows for the action of unlocking and unbolting it.,+,540,542
+causal/780c52a6,enables,0.8,0.9,"Unlocking the door allowed access to Joe's tools, facilitating the retrieval of the file.",+,541,543
+causal/c1403050,enables,0.8,0.9,"Unlocking the door allowed access to Joe's tools, facilitating the retrieval of the file.",+,542,543
+causal/26485309,enables,0.7,0.8,The presence of the door allows for the action of securing the fastenings.,+,540,544
+causal/bfad166e,prevents,0.7,0.8,"Unlocking and unbolting the door allows for the fastenings to be put back in place, preventing the door from being secured.",+,541,544
+causal/e9b29634,causes,0.8,0.85,Obtaining the file likely prompted the action of organizing the fastenings.,+,543,544
+causal/2cf51861,causes,1.0,1.0,Unlocking and unbolting the door directly allows it to be opened.,+,541,545
+causal/e84a236f,causes,1.0,1.0,Unlocking and unbolting the door directly allows it to be opened.,+,542,545
+causal/55472e6c,enables,0.7,0.8,"Securing the fastenings allows for the door to be opened, facilitating access.",+,544,545
+causal/ae86a9e6,prevents,0.8,0.9,"Unlocking and unbolting the door allows it to be shut, preventing it from remaining closed.",-,542,546
+causal/c46188af,causes,0.9,0.95,The act of putting the fastenings in place directly leads to the door being shut.,+,544,546
+causal/74e9d8c2,prevents,0.8,0.9,"Shutting the door prevents further entry or exit, blocking the initial action of opening.",-,545,546
+causal/1f0e7a6c,causes,0.8,0.75,"The command to 'shut it' likely instigated a flight response, prompting the individual to run away.",+,546,547
+causal/91ecab8e,causes,0.7,0.8,Running for the marshes likely leads to observing the damp outside the window due to proximity and environmental conditions.,+,547,549
+causal/3467bc2a,causes,0.8,0.85,The dampness in the environment leads to moisture on the window.,+,548,549
+causal/801a982b,causes,0.7,0.8,"The command to 'shut it' implies a cessation of noise, leading to the perception of a goblin's crying as a past event.",+,546,550
+causal/00fb995b,causes,0.7,0.8,"The damp on the window suggests a presence or activity that evokes a feeling of sadness, akin to crying.",+,549,550
+causal/fc32921d,causes,0.8,0.9,The dampness described in the first event leads to the observable condition of dampness on hedges and grass in the second event.,+,548,551
+causal/eb276e2d,enables,0.7,0.8,The damp outside the window suggests environmental conditions that allow dampness to appear on hedges and grass.,+,549,551
+causal/09bcbf22,causes,0.8,0.75,"The imagery of a goblin crying suggests a source of moisture, leading to dampness on the hedges and grass.",+,550,551
+causal/2d35b42c,enables,0.7,0.8,The damp conditions create an environment conducive to the formation of spider webs.,+,548,552
+causal/7d030c78,causes,0.8,0.85,The damp on the hedges and grass leads to moisture accumulation on twigs and blades.,+,551,553
+causal/d1f7c7a4,enables,0.7,0.8,The description of coarser webs suggests a structure that facilitates hanging from various surfaces.,+,552,553
+causal/805f081d,causes,0.8,0.7,"The imagery of a goblin crying suggests a source of moisture, leading to the wetness observed on the rails and gates.",+,550,554
+causal/4321b281,causes,0.8,0.9,Damp conditions lead to wetness on surfaces like rails and gates.,+,551,554
+causal/ab4f4137,causes,0.7,0.8,"The coarse texture of the webs likely traps moisture, leading to clamminess on surfaces.",+,552,554
+causal/a6785ced,causes,0.8,0.7,"The act of hanging creates moisture that condenses on surfaces, leading to clamminess.",+,553,554
+causal/0bfa89a3,causes,0.8,0.85,"Damp conditions can lead to the formation of thick mist, as moisture in the air increases humidity.",+,551,555
+causal/0384124b,causes,0.7,0.8,"The description of coarser webs suggests a denser, more obstructive material, which can contribute to the thickness of the marsh mist.",+,552,555
+causal/54127583,causes,0.7,0.6,"The act of hanging from twigs and blades suggests movement through the marsh, which can stir up moisture and contribute to the thick mist.",+,553,555
+causal/2aa86ba7,causes,0.8,0.85,The wet conditions contribute to the formation of thick marsh mist.,+,554,555
+causal/a79db6f8,prevents,0.8,0.9,"The wooden finger indicates a direction, but it prevents people from coming to the village as they do not accept the direction.",-,556,557
+causal/ac128339,causes,0.8,0.9,"The thick marsh mist obscures visibility, making objects hard to see until one is close.",+,555,558
+causal/81a9f290,enables,0.7,0.8,"The wooden finger serves as a guide, making the village visible only when one approaches closely.",+,556,558
+causal/6abe36db,enables,0.8,0.9,"Being close allowed the subject to notice the object, enabling the act of looking up.",+,558,559
+causal/8e144535,causes,0.8,0.85,"The realization of the object's presence triggers a sense of guilt and fear, likening it to a haunting experience.",+,558,561
+causal/971bd6b1,causes,0.8,0.85,"The act of looking up triggers a psychological response, leading to feelings of guilt and fear associated with the phantom.",+,559,561
+causal/bae046a3,causes,0.8,0.85,"The dripping evokes a sense of guilt and foreboding, leading to a feeling of being condemned.",+,560,561
+causal/4b842843,enables,0.7,0.8,The initial invisibility allows the phantom to influence the speaker's perception and fate.,+,558,562
+causal/a8acbe6b,enables,0.7,0.8,"The act of looking up creates a mental connection to the phantom, suggesting a heightened awareness or perception of it.",+,559,562
+causal/1d4396b9,causes,0.8,0.9,"The oppressive conscience leads to a feeling of being haunted, which metaphorically connects to the idea of being devoted to punishment.",+,561,562
+causal/c04b9f39,causes,0.8,0.7,The phrase suggests that the experience of being devoted to the Hulks leads to the subsequent experience of being on the marshes.,+,562,563
+causal/01df067f,causes,0.8,0.7,"The phrase suggests that the phantom's influence leads to a denser mist, indicating a direct causal relationship.",+,562,564
+causal/8ad8c86b,causes,0.7,0.8,"Exiting onto the marshes likely exposes one to environmental conditions, such as mist, which can become denser.",+,563,564
+causal/54632cf6,causes,0.7,0.8,"The feeling of guilt and oppression leads to heightened anxiety, causing the perception of threats or challenges to intensify.",+,561,565
+causal/56917a73,causes,0.8,0.75,"The phrase suggests that the phantom's influence leads to overwhelming feelings, causing everything to feel like it's closing in.",+,562,565
+causal/8c970c5d,causes,0.8,0.85,"The act of getting out onto the marshes creates a sensory overload, making everything appear to rush towards the observer.",+,563,565
+causal/cdff84b3,causes,0.7,0.8,Heavier mist can create a perception of objects approaching due to reduced visibility.,+,564,565
+causal/5b060821,causes,0.8,0.9,The act of getting out onto the marshes triggers feelings of discomfort associated with guilt.,+,563,566
+causal/e1fc6495,causes,0.8,0.85,"Heavier mist creates an uncomfortable atmosphere, intensifying feelings of guilt.",+,564,566
+causal/8874c9fa,causes,0.8,0.85,The overwhelming perception of events can lead to feelings of guilt and discomfort.,+,565,566
+causal/27d4599f,causes,0.8,0.85,"The act of getting out onto the marshes likely leads to the observation of the gates and dikes bursting, suggesting a direct cause-effect relationship.",+,563,567
+causal/6dc954ea,causes,0.8,0.85,"Heavier mist likely obscured visibility, leading to a sudden realization of the gates and dikes bursting.",+,564,567
+causal/7f511e81,causes,0.8,0.85,The overwhelming sensation of being pursued leads to a perception of physical barriers collapsing.,+,565,567
+causal/442b5b85,aggravates,0.7,0.8,"A guilty mind can heighten anxiety and distress, leading to overwhelming feelings represented by the bursting gates and dikes.",+,566,567
+causal/d02e23c4,causes,0.8,0.85,"A guilty mind leads to feelings of discomfort, prompting a reaction that reveals guilt.",+,566,568
+causal/73ae3ebd,causes,0.8,0.75,The overwhelming sensation of everything running at the speaker likely led to the sudden appearance of the cattle.,+,565,569
+causal/4ecc34cc,causes,0.8,0.85,"The sudden appearance of the cattle likely caused a startled reaction, leading to the intense focus on their eyes.",+,569,570
+causal/aa0c0d62,causes,0.8,0.7,The phrase suggests that the boys' emotional reaction (crying) is a direct response to the situation involving the pork pie.,+,568,571
+causal/4cfc52d8,causes,0.8,0.9,The sudden arrival of the cattle leads to the visible steam from their nostrils due to exertion and temperature difference.,+,569,571
+causal/5549540f,enables,0.7,0.8,"The greeting from the thief captures attention, allowing for a focused gaze.",+,572,573
+causal/6d47140c,causes,0.8,0.85,"The accusation prompts a defensive reaction, leading to the character's movement.",+,572,574
+causal/f7b7b5f8,causes,0.8,0.85,"The intense gaze creates a confrontational atmosphere, prompting the individual to respond with an accusatory gesture.",+,573,574
+causal/860033c5,causes,0.8,0.85,"The accusatory gesture provoked a defensive emotional response, leading to the speaker's outburst.",+,574,575
+causal/78ad809a,causes,0.7,0.8,"The greeting from the speaker likely startled the young thief, prompting him to lower his head in response.",+,572,576
+causal/8083ccff,causes,0.7,0.8,"The intense gaze likely made the person feel uncomfortable, prompting them to lower their head.",+,573,576
+causal/866caf99,causes,0.7,0.8,"The accusatory gesture likely prompted a submissive response, leading him to lower his head.",+,574,576
+causal/ebae9619,causes,0.8,0.9,Putting down his head initiates the action leading to his disappearance.,+,576,578
+causal/b4e3809a,causes,0.8,0.85,"The act of blowing smoke suggests a magical or dramatic exit, leading to the character's disappearance.",+,577,578
+causal/00be54aa,causes,0.7,0.8,Putting down his head likely triggers the horse to kick up its hind legs as a response.,+,576,579
+causal/3475521e,causes,0.8,0.9,"The action of kicking up hind-legs is part of the vanishing action, indicating a direct cause-effect relationship.",+,578,579
+causal/da50a4c5,enables,0.7,0.8,Lowering his head allows for a more expressive tail flourish.,+,576,580
+causal/147b28fb,enables,0.7,0.8,The act of blowing smoke creates a dramatic effect that complements the flourish of the tail.,+,577,580
+causal/5e877061,enables,0.7,0.8,"The action of kicking up hind-legs allows for the flourish of the tail to occur, suggesting a supportive relationship.",+,578,580
+causal/4f578bee,enables,0.7,0.8,"The kick-up of hind-legs creates momentum, allowing for a flourish of the tail.",+,579,580
+causal/f8b2f2d5,enables,0.7,0.8,"The action of kicking up hind-legs suggests movement or readiness, facilitating progress towards the river.",+,579,581
+causal/26beb52c,causes,0.7,0.6,The action of kicking up may create a disturbance that emphasizes the sensation of damp cold.,+,579,583
+causal/eabc0f38,causes,0.7,0.8,"Approaching the river likely increased exposure to dampness and cold, leading to the sensation of being riveted by it.",+,581,583
+causal/0d76e981,causes,0.8,0.85,The inability to warm feet leads to a heightened perception of damp cold.,+,582,583
+causal/b4b585a0,enables,0.7,0.8,"The damp cold creates a setting that allows for the iron to be riveted, suggesting a connection between the environment and the action.",+,583,584
+causal/06460993,enables,0.7,0.8,Knowing the way to the Battery is facilitated by being near the river.,+,581,585
+causal/0184b6a7,enables,0.7,0.8,Knowing the way allows for the possibility of visiting the Battery.,+,585,586
+causal/7958dbdf,enables,0.6,0.7,"Knowing the way allows for navigation, but may lead to misdirection.",+,585,589
+causal/0b3faf79,causes,0.8,0.85,Being too far to the right necessitated retracing steps along the river-side.,+,589,590
+causal/3d94bf29,enables,0.7,0.8,Trying back along the river-side allows for quicker movement.,+,590,591
+causal/ea317e5f,causes,0.8,0.7,Moving quickly leads to crossing the ditch.,+,591,592
+causal/43310b24,enables,0.7,0.8,"The action of trying back along the river-side allows the speaker to reach the Battery, indicating proximity.",+,590,593
+causal/015a0264,enables,0.7,0.8,Moving quickly allows for reaching the Battery sooner.,+,591,593
+causal/67bed5be,enables,0.7,0.8,Crossing the ditch allows awareness of proximity to the Battery.,+,592,593
+causal/059ca04c,causes,0.8,0.85,Moving quickly leads to reaching the mound beyond the ditch.,+,591,594
+causal/7ae2383e,causes,0.8,0.9,Crossing the ditch allows for the subsequent action of scrambling up the mound.,+,592,594
+causal/cd9ccee8,enables,0.7,0.8,Having his back turned allows him to fold his arms without facing anyone.,+,596,597
+causal/feb87bce,causes,0.7,0.8,"The physical exertion of scrambling up the mound likely led to fatigue, contributing to the feeling of heaviness and sleepiness.",+,594,598
+causal/c9444204,enables,0.7,0.8,"The position of his back suggests he is relaxed, allowing him to nod off.",+,596,598
+causal/c0839669,causes,0.7,0.8,"Folding arms and nodding forward suggests a relaxed, sleepy state, indicating that the posture contributes to his heaviness of sleep.",+,597,598
+causal/2f83733c,enables,0.7,0.8,The position of his back allows for a stealthy approach.,+,596,600
+causal/616affbf,causes,0.8,0.9,The expectation of his happiness motivated the action of approaching him quietly.,+,599,600
+causal/267f5dfa,enables,0.7,0.8,"Bringing breakfast creates a positive context, making the act of touching him more likely to be received well.",+,599,601
+causal/025b0580,causes,0.8,0.9,"Moving forward softly allows for a gentle approach, leading to the action of touching.",+,600,601
+causal/9c9d6418,causes,0.8,0.9,"The act of touching him on the shoulder startled him, prompting an immediate reaction.",+,601,602
+causal/f25a0acd,causes,0.7,0.8,"The act of swearing an oath can provoke a defensive or aggressive response, leading to a physical confrontation.",+,606,607
+causal/3c132595,causes,0.7,0.8,"The act of swearing an oath led to a moment of distraction or hesitation, causing him to stumble.",+,606,609
+causal/15ff5eab,causes,0.8,0.9,The action of making a hit directly leads to the effect of stumbling.,+,607,609
+causal/488bce4b,causes,0.7,0.8,"The weak blow caused a loss of balance, leading to stumbling.",+,608,609
+causal/9a3038b2,causes,0.8,0.9,The act of stumbling directly leads to the character running into the mist.,+,609,610
+causal/9cab0d82,causes,0.8,0.85,"The action of making a hit can lead to loss of balance, causing stumbling.",+,607,611
+causal/380f6d2a,causes,0.8,0.9,The first event directly leads to the second by causing the individual to lose balance.,+,609,611
+causal/5b882fa8,causes,0.8,0.75,"Running into the mist likely obscured his vision, leading to stumbling.",+,610,611
+causal/baecb96b,causes,0.8,0.85,"Running into the mist obscured visibility, leading to losing sight of him.",+,610,612
+causal/67448f56,causes,0.8,0.9,"Stumbling led to a loss of control, resulting in losing the person.",+,611,612
+causal/d640c8dd,causes,0.8,0.85,The act of stumbling leads to the realization or recognition of the young man.,+,609,613
+causal/be29f600,causes,0.7,0.8,The young man's action of running into the mist prompts the observer's recognition of him.,+,610,613
+causal/12c254f7,causes,0.8,0.85,"Stumbling can trigger a physical response, such as an increased heart rate due to adrenaline or anxiety.",+,611,614
+causal/9fe17309,causes,0.8,0.9,"The loss of a loved one can trigger intense emotional responses, such as heartache.",+,612,614
+causal/f497e302,causes,0.8,0.85,"The realization of the young man's presence triggers a strong emotional response, leading to a physical sensation in the heart.",+,613,614
+causal/972e9e2f,causes,0.8,0.9,Identifying the young man is a direct result of the thought process initiated by recognizing him.,+,613,615
+causal/cee76c99,causes,0.8,0.85,"The emotional response of identifying someone can trigger a physical reaction, such as a racing heart.",+,614,615
+causal/ad02df75,causes,0.7,0.8,"The young man's presence triggers a physical reaction, suggesting emotional or psychological distress.",+,613,616
+causal/650b461e,enables,0.7,0.8,"Identifying someone can lead to subsequent actions, such as visiting a location.",+,615,618
+causal/247e39aa,enables,0.7,0.8,Knowing the location facilitated reaching the Battery.,+,617,618
+causal/e69708bb,aggravates,0.8,0.85,"The extreme cold he experienced heightened the risk of severe health consequences, such as hypothermia.",+,620,621
+causal/7d60d09c,causes,0.7,0.8,"The expectation of death from cold suggests a direct link to the appearance of hunger, indicating a severe state of deprivation.",+,621,622
+causal/e280fd35,enables,0.7,0.8,"The act of handing him the file allows his hungry eyes to be directed towards it, suggesting a desire for the contents.",+,622,623
+causal/c0324c7d,causes,0.8,0.85,"The description of his hungry eyes suggests a strong desire for food, leading to the thought of him trying to eat.",+,622,625
+causal/e0c93b0b,prevents,0.7,0.6,The description of his hungry eyes suggests a state of need that may have led to restraint in his actions.,+,622,626
+causal/d0ad41cd,enables,0.7,0.8,"Handing over the file likely created a positive context, reducing the likelihood of negative reactions.",+,623,626
+causal/5c7f6877,causes,0.7,0.8,The thought of him trying to eat it led to the action of emptying pockets to prevent that.,+,625,628
+causal/50cbf514,prevents,0.8,0.9,Not being turned upside down prevents the act of emptying pockets.,+,626,628
+causal/4854b3e3,causes,0.8,0.9,"Opening the bundle likely leads to the action of emptying pockets, as it suggests a sequence of actions.",+,627,628
+causal/cd956f3c,causes,0.8,0.75,The thought of trying to eat it likely prompted his action of consuming mincemeat.,+,625,629
+causal/138cb9a5,causes,0.7,0.8,"Emptying pockets suggests urgency, leading to a hurried action that resembles violence rather than calm eating.",+,628,630
+causal/5de23ecb,causes,0.8,0.85,"The manner of eating suggests urgency, indicating that the way he consumes the mincemeat is causing a perception of violence in his actions.",+,629,630
+causal/3c1b2d01,causes,0.7,0.8,"The description of hurriedly putting away suggests urgency, leading to the action of taking liquor.",+,630,631
+causal/7c45d6f7,causes,0.7,0.8,"The act of consuming mincemeat in an unusual manner may lead to physical discomfort, causing shivering.",+,629,632
+causal/61679df1,causes,0.7,0.8,"The hurried and violent manner of eating suggests stress or urgency, which can lead to physical reactions like shivering.",+,630,632
+causal/2eca79dd,causes,0.8,0.85,"The act of consuming mincemeat leads to the need to hold the bottle, indicating a direct cause-effect relationship.",+,629,633
+causal/2152cf2b,causes,0.8,0.75,"The hurried action of putting away the bottle suggests a struggle to manage consumption, leading to difficulty in holding it.",+,630,633
+causal/dd75aa5d,causes,0.8,0.85,"Leaving off to take liquor leads to difficulty in holding the bottle, indicating a direct impact on his ability to manage it.",+,631,633
+causal/792cf23c,causes,0.8,0.9,The intense shivering directly affects his ability to hold the bottle securely.,+,632,633
+causal/1ac1290a,prevents,0.7,0.8,"The act of shivering indicates a strong physical response to cold, which may prevent him from biting off his own tongue due to involuntary muscle contractions.",+,632,634
+causal/d15ef00f,prevents,0.8,0.9,Keeping the bottle neck between his teeth prevents him from biting it off.,+,633,634
+causal/a089be31,causes,0.7,0.8,"The expression of concern indicates a negative situation, which likely contributes to feelings of distress.",+,635,637
+causal/c5833b22,causes,0.8,0.75,"Lying on the meshes likely leads to discomfort or pain, resulting in dreadful aguish.",+,636,637
+causal/7e1bc82c,causes,0.7,0.8,"Lying out on meshes may lead to exposure to cold or damp conditions, which can trigger or worsen rheumatic symptoms.",+,636,638
+causal/4dd6908b,causes,0.7,0.6,Dreadful aguish can lead to rheumatic conditions due to the stress and strain it places on the body.,+,637,638
+causal/a2ef58cf,aggravates,0.7,0.8,"The speaker's warning about the situation suggests that it could worsen, leading to a sense of urgency in the listener's response.",+,635,639
+causal/430e5ee2,causes,0.8,0.75,"Eating breakfast is portrayed as a necessary action to avoid a dire consequence, suggesting a causal relationship.",+,639,640
+causal/84d65551,causes,0.7,0.6,"Eating breakfast may provide energy and confidence, leading to a positive outcome.",+,639,641
+causal/eefcbf51,causes,0.8,0.75,The fear of execution motivates the speaker to act in a way that leads to extreme physical exertion.,+,640,641
+causal/36abf2d6,causes,0.7,0.8,The act of eating voraciously may lead to suspicion or distrust in others observing the behavior.,+,642,643
+causal/5430eb1f,enables,0.7,0.8,"The fear of execution motivates the character to pay attention, suggesting that the threat of death enhances their awareness.",+,640,644
+causal/97553a11,enables,0.7,0.8,"The act of beating the shivers suggests a heightened state of alertness, which allows for attentive listening.",+,641,644
+causal/7709d7b1,enables,0.7,0.8,"The act of eating distracts him, allowing for pauses to listen.",+,642,644
+causal/fbaad26d,causes,0.7,0.8,"Distrust leads to heightened awareness, prompting him to stop and listen.",+,643,644
+causal/4163dda1,causes,0.7,0.6,The speaker's determination to overcome fear may lead to heightened awareness of sounds around them.,+,641,645
+causal/7a8c29bd,enables,0.7,0.8,"The act of stopping to listen allows the character to perceive sounds, whether real or imagined.",+,644,645
+causal/934652a1,enables,0.7,0.8,"The act of stopping to listen allows the character to hear the breathing of the beast, suggesting attentiveness enables awareness of the environment.",+,644,646
+causal/eaa91b48,enables,0.6,0.7,"The sound may attract or alert the beast, facilitating its presence in the marsh.",+,645,646
+causal/0c143817,causes,0.7,0.8,"The act of staring distrustfully creates a heightened sense of alertness, leading to a startled reaction.",+,643,647
+causal/1341aa60,causes,0.8,0.85,"The act of stopping to listen creates a heightened awareness, leading to a startled reaction.",+,644,647
+causal/8213ba5f,causes,0.8,0.9,The sound triggers a startled reaction in the individual.,+,645,647
+causal/02ee28ad,causes,0.8,0.85,"The beast's breathing creates a startling sound or presence, triggering a reaction.",+,646,647
+causal/dfda11b0,enables,0.7,0.8,The act of stopping to listen allows for a sudden response or statement.,+,644,648
+causal/433b07b5,causes,0.8,0.9,The sudden start prompts an immediate verbal response.,+,647,648
+causal/bd736838,causes,0.7,0.8,"The sudden startle prompts a reaction, leading to questioning the person's honesty.",+,647,649
+causal/942ea306,causes,0.8,0.85,"The question implies doubt, leading to a belief in honesty.",+,649,652
+causal/61e37442,causes,1.0,1.0,The statement of belief directly leads to the expression of belief.,+,651,652
+causal/2c9d81db,enables,0.7,0.8,"Believing in someone can motivate them to take action, such as helping to hunt.",+,651,654
+causal/b67943ae,enables,0.7,0.8,"Believing someone can empower them to take action, such as hunting.",+,652,654
+causal/acca77e5,enables,0.7,0.8,"Being a fierce young hound suggests energy and capability, which enables participation in hunting.",+,653,654
+causal/4d665e2c,aggravates,0.7,0.8,"The fierce young hound's aggressive nature intensifies the suffering of the warmint, leading to its dire state.",+,653,655
+causal/bfef7857,causes,0.8,0.85,"The act of hunting leads to the suffering of the warmint, indicating a direct cause-effect relationship.",+,654,655
+causal/4d02ed9d,enables,0.7,0.8,The ability to hunt at a certain age allows for the action of hunting to take place.,+,654,656
+causal/c9363f50,causes,0.9,0.95,The hunting of the warmint leads to its state of being poor and wretched.,+,655,656
+causal/6c7b1e9f,causes,0.7,0.8,"The suggestion to hunt may trigger a physical reaction, indicating excitement or anxiety.",+,654,657
+causal/8f6456cd,causes,0.7,0.8,"The desperation of the warmint suggests a physical reaction in the subject, indicating stress or fear that triggers a physiological response.",+,655,657
+causal/59e167ea,causes,0.7,0.8,"The description of the warmint suggests a triggering emotional or physical response, leading to the sensation in the throat.",+,656,657
+causal/0467c920,enables,0.7,0.8,"The ability to hunt suggests a readiness or capability that allows for the metaphorical 'striking' of works, indicating potential action or realization.",+,654,658
+causal/8a23541b,causes,0.8,0.9,"The clicking sensation in his throat suggests a mechanical function, indicating an impending action or event.",+,657,658
+causal/c09f3ce0,causes,0.8,0.75,The emotional state of the warmint leads to a physical reaction of wiping tears.,+,656,659
+causal/68777c42,causes,0.7,0.8,"The sensation in his throat triggers an emotional response, leading him to wipe his eyes.",+,657,659
+causal/ec64077a,causes,0.7,0.8,"The description suggests a mechanical, inevitable action leading to an emotional response, as if the character is compelled to act.",+,658,659
+causal/fa3b6e32,causes,0.8,0.85,The description of the warmint's poor state evokes feelings of pity in the observer.,+,656,660
+causal/cfb5d831,causes,0.8,0.85,"The action of smearing his eyes suggests a moment of vulnerability, leading to feelings of pity for his situation.",+,659,660
+causal/112857c4,causes,0.7,0.8,The clicking sensation in his throat suggests a physical reaction that leads to his eventual calmness.,+,657,661
+causal/beb49557,enables,0.7,0.8,"The description suggests that the character's internal workings, like a clock, facilitate his eventual action of settling down, indicating a preparatory state.",+,658,661
+causal/3c3e7513,causes,0.7,0.8,"Pitying leads to a compassionate observation, influencing the act of watching him settle down.",+,660,661
+causal/aecc6852,enables,0.7,0.8,Feeling pity may have encouraged the speaker to express their feelings openly.,+,660,662
+causal/c94d5875,enables,0.7,0.8,The act of watching him enjoy the pie encourages a positive interaction.,+,661,662
+causal/a71d0696,enables,0.7,0.8,The act of watching the man eat allows for the observation of similarities in behavior.,+,661,664
+causal/63fc8483,enables,0.7,0.8,Observing the dog's eating habits allowed for a comparison to be made with the man's behavior.,+,663,664
+causal/40c8d5df,causes,0.8,0.85,"The man's eating behavior is influenced by the dog's eating style, suggesting a direct imitation or learned behavior.",+,664,665
+causal/68ffb13c,causes,0.8,0.9,"The dog's eating behavior leads to rapid swallowing, indicating a direct cause-effect relationship.",+,663,666
+causal/ad357f25,causes,0.8,0.85,"The man's behavior of taking sharp bites mimics the dog's, leading to rapid swallowing.",+,665,666
+causal/68f64712,causes,0.7,0.8,"The dog's behavior of looking around while eating is likely influenced by the presence of the observer, suggesting a cause-and-effect relationship.",+,663,667
+causal/aa934cc7,causes,0.7,0.8,"Eating too quickly can lead to distraction and discomfort, causing him to look around while eating.",+,666,667
+causal/a6946048,causes,0.8,0.85,"The man's aggressive biting behavior suggests a defensive reaction to perceived threats, indicating a direct cause of his fear of losing the pie.",+,665,668
+causal/c68787cc,causes,0.8,0.85,"The hurried eating suggests anxiety about losing the food, indicating that his behavior is driven by fear of theft.",+,666,668
+causal/17f245e4,causes,0.8,0.85,"His cautious behavior while eating suggests a heightened awareness of potential threats, leading to the perception of danger.",+,667,668
+causal/feddca59,causes,0.7,0.8,The man's aggressive behavior (strong bites) leads to mental unrest.,+,665,669
+causal/a9330d83,causes,0.8,0.85,"Eating too quickly can lead to discomfort and anxiety, affecting mental state.",+,666,669
+causal/8d991898,causes,0.7,0.8,"The act of looking sideways while eating indicates distraction, which can lead to feelings of unsettlement.",+,667,669
+causal/382498ed,causes,0.8,0.85,"The fear of losing the pie creates anxiety, leading to an unsettled mind.",+,668,669
+causal/3dcc893b,prevents,0.7,0.8,His distracted eating behavior prevents him from engaging with the visitor.,-,667,671
+causal/a365cfb9,prevents,0.7,0.8,The fear of danger prevents him from acting aggressively towards the visitor.,+,668,671
+causal/b01185c9,prevents,0.7,0.8,The action of not chopping prevents the visitor from consuming the food intended for him.,-,671,673
+causal/e1c44e4b,causes,0.8,0.85,The speaker's fear of not leaving anything for another person prompts a timid response.,+,673,674
+causal/3d6d540e,causes,0.8,0.85,"The timid expression indicates a hesitation that leads to a silence, suggesting the remark's politeness is in question.",+,674,675
+causal/d522ccc2,causes,0.8,0.85,The fear of depletion leads to the belief that resources are exhausted.,+,673,676
+causal/1247aacb,causes,0.8,0.85,The fear of not leaving anything for him motivated the speaker to provide a hint.,+,673,677
+causal/004193c6,causes,0.8,0.85,The speaker's timidity leads to the certainty that motivates the hint.,+,674,677
+causal/4862215d,causes,0.8,0.85,The hesitation created a silence that led to the certainty prompting the hint.,+,675,677
+causal/5f0936fc,causes,0.8,0.85,The realization of limited resources motivated the speaker to provide a hint.,+,676,677
+causal/7bb48f6a,causes,0.8,0.9,"The speaker's timidity prompts them to suggest a hint, indicating a direct influence of their emotional state on their actions.",+,674,678
+causal/757df76b,causes,0.8,0.85,The hesitation creates a moment of reflection that leads to the decision to offer a hint.,+,675,678
+causal/e084cebe,causes,0.8,0.85,The lack of resources prompted the speaker to suggest an alternative.,+,676,678
+causal/c30c070a,causes,0.9,0.95,The certainty of the fact directly motivated the action of offering the hint.,+,677,678
+causal/17962d2b,causes,0.8,0.85,The certainty of the fact motivated the speaker to provide a hint about the young man.,+,677,679
+causal/26b8b4fc,enables,0.7,0.8,The hint offered creates an opportunity for the young man to be revealed or discussed.,+,678,679
+causal/2dbe6274,causes,0.8,0.85,"The certainty of the fact motivated the speaker to provide a hint, leading to the listener's surprised reaction.",+,677,680
+causal/3996ad68,causes,0.7,0.8,"The hint prompted a reaction, leading to a laugh.",+,678,680
+causal/658832e5,causes,0.8,0.9,The act of offering a hint directly influences the person's affirmative response.,+,678,681
+causal/5d58a20e,causes,0.7,0.8,"The young man's presence may have led to emotional distress, causing the man to stop eating.",+,679,683
+causal/e69696d1,causes,0.7,0.8,The man's cessation of eating may lead to increased focus and attention on the observer.,+,683,684
+causal/c0da4e09,causes,0.8,0.7,"The affirmation of 'Him? Yes, yes!' suggests excitement or approval, leading to a surprising outcome.",+,681,685
+causal/224b48f5,enables,0.7,0.8,"Keen scrutiny can lead to unexpected revelations, resulting in surprise.",+,684,685
+causal/84c7049f,causes,0.8,0.9,"Pointing directs attention to a location, leading to the discovery of the person asleep.",+,686,687
+causal/85844329,enables,0.7,0.8,The scrutiny allows for the possibility of forming a thought about the person being observed.,+,684,688
+causal/6b56075d,causes,0.8,0.9,"Holding someone by the collar can create a confrontational atmosphere, prompting intense eye contact.",+,689,690
+causal/4e6b4a89,causes,0.8,0.85,"The intense gaze prompted a shift in my thoughts, linking his stare to violent ideas.",+,690,691
+causal/799dd524,causes,0.8,0.85,"The act of dressing like someone else leads to the speaker's trembling, indicating anxiety or fear.",+,692,693
+causal/12e6940e,enables,0.7,0.8,The description of dressing like someone else creates a context that heightens the speaker's anxiety about the situation.,+,692,694
+causal/a20d9d07,enables,0.7,0.8,The act of explaining creates a context that allows for delicate communication.,+,693,694
+causal/fc093b82,enables,0.7,0.8,"The thought of violence prompts a desire to borrow a tool, suggesting a plan to act on those violent thoughts.",+,691,695
+causal/a5ffc95e,causes,0.9,0.95,The cannon's sound directly caused the awareness of its occurrence at home.,+,696,699
+causal/59527b43,causes,0.8,0.9,"The speaker's return is prompted by the information received from home, indicating a direct cause-effect relationship.",+,698,699
+causal/54c90380,causes,0.8,0.9,"The speaker's return is influenced by the distance of the location mentioned, indicating a causal relationship.",+,698,700
+causal/08d371ac,causes,0.8,0.9,"The act of returning is linked to the experience of being shut in, suggesting that the return was influenced by the confinement.",+,698,701
+causal/d6dea9a1,causes,0.7,0.8,Hearing something at home can lead to feelings of confinement or being shut in.,+,699,701
+causal/0b0930f1,enables,0.7,0.8,The man's state of being alone and in distress allows him to perceive the sounds of guns and voices more acutely.,+,703,704
+causal/edf6b012,causes,0.8,0.85,The speaker's exclamation indicates a realization that leads to observing the soldiers.,+,702,705
+causal/d3ff826b,causes,0.8,0.9,"The sounds of guns and voices indicate an ongoing battle, leading him to see the soldiers illuminated by torches.",+,704,705
+causal/0e9a62f2,enables,0.7,0.8,"Being alone and in a vulnerable state may heighten awareness of external stimuli, like hearing one's number called.",+,703,707
+causal/44799597,causes,0.8,0.85,"The sounds of guns and voices create a sense of urgency, prompting him to respond when his number is called.",+,704,707
+causal/75ed8768,enables,0.7,0.8,"The sight of soldiers may prompt him to pay attention, leading to hearing his number called.",+,705,707
+causal/a257ad09,enables,0.7,0.8,Closing in creates an environment where he can hear his number called.,+,706,707
+causal/8725a408,causes,0.8,0.85,"The sounds of guns and voices create a tense environment, leading him to hear himself being challenged.",+,704,708
+causal/aee164ba,enables,0.7,0.8,"The sight of the soldiers prompts him to be alert, leading to him hearing the challenge.",+,705,708
+causal/ce1579ca,enables,0.7,0.8,The act of closing in creates a situation where he can hear the challenge directed at him.,+,706,708
+causal/b9269c7c,enables,0.7,0.8,Hearing his number called allows him to respond to the challenge.,+,707,708
+causal/ce9c7c9a,enables,0.7,0.8,"Seeing the soldiers allows him to hear the muskets, as the visual presence heightens awareness of the surrounding sounds.",+,705,709
+causal/d26ff01a,enables,0.7,0.8,"The act of closing in creates a situation where he can hear the muskets, suggesting proximity to danger.",+,706,709
+causal/40161960,enables,0.7,0.8,"Hearing his number called allows him to hear the rattle of the muskets, indicating he is now part of the action.",+,707,709
+causal/66551ecf,enables,0.7,0.8,"Hearing a challenge may prompt him to become aware of the surrounding danger, including the sound of muskets.",+,708,709
+causal/29646c96,enables,0.7,0.8,"The act of closing in allows the orders to be heard and acted upon, facilitating the soldiers' readiness.",+,706,710
+causal/d06c4044,enables,0.8,0.85,Hearing his number called prompts him to prepare for the upcoming orders.,+,707,710
+causal/491d72bc,enables,0.7,0.8,"The challenge prompts him to prepare for action, leading to the orders being given.",+,708,710
+causal/f58b1394,enables,0.8,0.85,"Hearing the rattle of muskets prepares the listener to receive commands, facilitating readiness for action.",+,709,710
+causal/a4b5ebeb,causes,0.8,0.9,Hearing his number called prompts the action of being laid hands on.,+,707,711
+causal/442d62c6,causes,0.8,0.85,"The challenge prompts a physical response, leading to being laid hands on.",+,708,711
+causal/afab4e5c,causes,0.8,0.85,"The sound of muskets indicates an imminent threat, prompting a physical response.",+,709,711
+causal/ed820c2c,causes,0.8,0.9,The command to prepare for action directly leads to the physical engagement with the subject.,+,710,711
+causal/6eb544a0,prevents,0.7,0.8,"The sound of muskets indicates danger, leading to a state of inaction or fear.",-,709,712
+causal/615f17e7,prevents,0.7,0.8,The act of laying hands on suggests an intervention that stops something from happening.,-,711,712
+causal/9c26e6bf,causes,0.8,0.75,"Seeing one pursuing party likely leads to noticing more parties, suggesting a direct influence.",+,713,715
+causal/5544a93f,causes,0.8,0.85,"The sound of marching suggests a large group approaching, leading to the observation of many individuals.",+,714,715
+causal/34b6af7f,enables,0.7,0.8,The sound of marching suggests a buildup of tension that may lead to firing.,+,714,716
+causal/06f4e0bc,causes,0.8,0.85,Seeing a large number prompts a reaction to fire.,+,715,716
+causal/ce9fe0bc,causes,0.8,0.85,"The sound of marching (tramp) suggests an impending military action, leading to the cannon firing and the resulting mist shaking.",+,714,717
+causal/dfeadf42,causes,0.8,0.85,"The act of firing cannons creates a visible effect, such as shaking mist, indicating a direct cause-and-effect relationship.",+,716,717
+causal/02530047,enables,0.7,0.8,"The repetitive sound of footsteps creates an atmosphere that allows the man to express his thoughts, seemingly forgetting the listener's presence.",+,714,718
+causal/81c36812,causes,0.8,0.75,"Firing can lead to physical altercations, resulting in injuries such as bruises.",+,716,720
+causal/aea5f225,causes,0.8,0.85,The inquiry about his condition prompts the observation of his bruised face.,+,719,720
+causal/a625df9c,enables,0.7,0.8,"The cannon's sound triggers a memory recall, suggesting that the event facilitates the recollection process.",+,717,721
+causal/2a3e2b65,enables,0.7,0.8,The act of noticing prompts a deeper recollection of previously unacknowledged knowledge.,+,719,721
+causal/ff28c85b,enables,0.6,0.7,"The bruised face may trigger memories associated with past experiences, enabling recall.",+,720,721
+causal/f88a3a0a,causes,0.7,0.8,"The man's exclamation indicates surprise or disbelief, which can lead to a physical reaction, such as being struck.",+,722,723
+causal/db10028f,causes,0.8,0.85,"The act of striking provokes a reaction, leading to the inquiry about the person's whereabouts.",+,723,725
+causal/062d7e28,enables,0.7,0.8,"The question about someone's location prompts a request for directions, facilitating the search.",+,725,727
+causal/f808a993,causes,0.7,0.8,The action of using the flat of his hand suggests a forceful gesture that initiates the intent to pull someone down.,+,724,728
+causal/55a4e605,causes,0.8,0.85,"The inquiry about someone's location prompts a response indicating a pursuit, suggesting a direct cause-effect relationship.",+,725,728
+causal/459b20e4,enables,0.6,0.7,Cramming food into his jacket may enable the speaker to track him down more easily.,+,726,728
+causal/3f79cc0f,causes,0.8,0.85,"The request for direction leads to the intent to pursue and capture, similar to a bloodhound tracking a scent.",+,727,728
+causal/067b0179,causes,0.8,0.85,"The request for direction leads to frustration expressed through cursing, indicating a direct cause-effect relationship.",+,727,729
+causal/9d8766ec,causes,0.7,0.8,"The act of pulling down suggests a physical action that could lead to injury or pain, causing the curse about the sore leg.",+,728,729
+causal/4c04ba33,enables,0.7,0.8,The request for direction facilitates the boy's ability to provide the file.,+,727,730
+causal/5dde3335,causes,0.8,0.85,The act of pulling down suggests a forceful action that leads to the boy being compelled to give up the file.,+,728,730
+causal/feebab6f,enables,0.7,0.8,"Indicating the direction of the mist prompts the man to look up, facilitating his awareness of the environment.",+,731,732
+causal/74e2364e,causes,0.8,0.7,Indicating the direction of the mist likely led the man to move towards the wet grass.,+,731,733
+causal/959194b7,causes,0.8,0.85,"The request for the file prompts the boy to file aggressively, indicating a direct response to the demand.",+,730,734
+causal/ef1c4627,causes,0.8,0.85,The intense focus on filing suggests a distraction that leads to ignoring others.,+,734,735
+causal/90af0be4,causes,0.8,0.75,"Intense focus on filing may lead to neglect of personal safety, resulting in injury.",+,734,736
+causal/a0c14607,causes,0.7,0.8,"Ignoring someone can lead to a lack of self-awareness, resulting in neglecting one's own needs.",+,735,736
+causal/87da0b21,causes,0.7,0.8,"Being on wet grass can lead to injuries, such as chafing, especially if the ground is uneven or if there is a fall.",+,733,737
+causal/27e8391b,causes,0.8,0.85,"The act of filing aggressively likely exacerbated the existing chafe, leading to bleeding.",+,734,737
+causal/a82f4b86,aggravates,0.7,0.8,"Ignoring someone can worsen their emotional or physical state, leading to increased distress or injury.",+,735,737
+causal/6761b6d5,aggravates,0.8,0.85,"Ignoring the injury likely worsens the condition of the chafe, leading to increased bleeding.",+,736,737
+causal/b899b913,causes,0.8,0.85,"The intense and aggressive filing suggests a direct impact on the object being filed, leading to rough handling.",+,734,738
+causal/569ea6a3,causes,0.8,0.85,Neglecting someone's feelings can lead to them being treated insensitively or harshly.,+,735,738
+causal/41542b77,causes,0.8,0.85,"Neglecting his leg leads to rough handling, suggesting a direct cause-effect relationship.",+,736,738
+causal/942cf6b9,causes,0.8,0.85,"The presence of an old chafe and blood suggests pain or injury, leading to rough handling as if the object were insensate.",+,737,738
+causal/9230330d,causes,0.8,0.85,Neglecting someone's feelings can lead to increased fear or anxiety about that person.,+,735,739
+causal/4a61ba8f,causes,0.8,0.85,Ignoring personal boundaries can lead to fear and anxiety in others.,+,736,739
+causal/83e33d69,causes,0.7,0.8,Neglecting his own leg likely led to fear of being away from home due to potential consequences.,+,736,740
+causal/fe2afc62,causes,0.8,0.85,The bloody chafe likely caused fear of staying away from home due to potential danger or injury.,+,737,740
+causal/3aec62a1,aggravates,0.7,0.8,"Rough handling of the object increases the fear of being away from home, suggesting emotional distress.",+,738,740
+causal/effcc0c6,causes,0.8,0.85,"Fear of the person leads to fear of being away from home, as both fears are interconnected.",+,739,740
+causal/8de87d9b,causes,0.8,0.85,Fear of the person prompted the decision to leave.,+,739,741
+causal/5ec7482f,causes,0.8,0.85,Fear of staying away from home prompted the decision to leave.,+,740,741
+causal/ec5b548e,causes,0.8,0.85,Fear of the individual prompted a desire to escape the situation.,+,739,743
+causal/44d53396,causes,0.8,0.85,Fear of staying away from home prompted the decision to leave.,+,740,743
+causal/358b245d,causes,0.8,0.85,The statement of intent to leave prompted a decision to discreetly exit.,+,741,743
+causal/3adb23ca,causes,0.7,0.8,"Ignoring someone's presence can lead to feelings of neglect, prompting a decision to leave.",+,742,743
+causal/6e432597,causes,0.7,0.8,"The decision to slip away likely led to the observed behavior of the other person, indicating a direct impact.",+,743,744
+causal/030e2bc4,enables,0.7,0.8,"The act of working hard at his fetter suggests he is attempting to escape, which enables the continued sound of the file.",+,744,746
+causal/cbac1869,enables,0.7,0.8,The decision to slip off allows for a moment of pause and reflection in the mist.,+,743,747
+causal/4aa57605,causes,0.8,0.9,The act of stopping in the mist to listen is a direct result of hearing about him.,+,746,747
