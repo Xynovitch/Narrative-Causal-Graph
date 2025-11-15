@@ -1,276 +1,300 @@
 :START_ID,:END_ID,:TYPE,relationType,mechanism,sign,weight,confidence,cause_seq,effect_seq
-event/14e68cdd,event/c5cce3bf,CAUSES,causes,The act of tilting contributes to a feeling of helplessness by physically displacing the individual.,+,0.8,0.85,82,84
-event/a7ece1ff,event/b6a0e94f,CAUSES,enables,"The act of turning prompts a reaction to look back, indicating a connection between the two actions.",+,0.7,0.8,132,135
-event/dff08ed3,event/7e800e01,CAUSES,causes,"The intensity of his gaze creates a power dynamic, making the other feel vulnerable.",+,0.8,0.9,78,79
-event/400969cb,event/09fbf03d,CAUSES,causes,The death of Philip Pirrip and Georgiana likely led to the death of their infant children due to neglect or lack of care.,+,0.8,0.7,15,16
-event/6b11a7f6,event/b9fe52b2,CAUSES,causes,"The question prompted a response, leading to the commitment to retrieve the file.",+,0.8,0.9,117,118
-event/42c5872b,event/ebf60c1f,CAUSES,causes,"The plea in terror likely prompts a response of fear or concern, leading to the request not to proceed with an action.",+,0.8,0.85,32,33
-event/2dfebcc5,event/1dfccc4e,CAUSES,causes,Holding someone by the arms directly supports their upright position.,+,0.9,0.95,97,98
-event/f6f7de8a,event/494f12cd,CAUSES,causes,Being turned upside down leads to the contents of pockets falling out.,+,0.9,0.95,42,43
-event/56c464c0,event/a44ba170,CAUSES,enables,Feeling giddy allows the character to express a desire for support in maintaining balance.,+,0.7,0.8,90,92
-event/5ef63070,event/7e800e01,CAUSES,causes,The action of tilting back creates a physical position that leads to a helpless gaze.,+,0.8,0.85,77,79
-event/04521611,event/b5a9d2cf,CAUSES,causes,The command to point directly leads to the action of pointing to the village.,+,0.9,0.95,37,38
-event/51d9c03e,event/395ac3e5,CAUSES,enables,The boy's attempt to hide allows the young man to draw the clothes over his head.,+,0.7,0.8,106,110
-event/6e24dea5,event/cab104f0,CAUSES,causes,Fear prompted the individual to flee quickly for safety.,+,0.8,0.9,152,153
-event/ce3203ba,event/24ae454d,CAUSES,causes,"The fearful man's condition and demeanor lead to physical manifestations of fear, such as limping and shivering.",+,0.8,0.9,26,29
-event/02470252,event/24ae454d,CAUSES,causes,"The man's poor clothing and physical condition lead to his limping, shivering, and growling, indicating distress.",+,0.8,0.85,27,29
-event/7404b1ce,event/fce79bbc,CAUSES,prevents,The threat of violence discourages the child from moving or making noise.,+,0.8,0.85,24,25
-event/ca319493,event/cd3412bf,CAUSES,causes,Giving up on the struggle for a living leads to a state of existence where one does not engage with life.,+,0.8,0.75,9,11
-event/7ba0e780,event/b0003108,CAUSES,causes,"The intense gaze suggests a build-up of tension, prompting the action of taking by the arms.",+,0.7,0.8,74,76
-event/7e800e01,event/b8d32c99,CAUSES,causes,"The act of looking up conveys vulnerability, intensifying feelings of helplessness and danger.",+,0.8,0.85,79,83
-event/d36d72ee,event/24ae454d,CAUSES,causes,"The man's physical suffering from various injuries and exposure leads to his limping, shivering, and aggressive behavior.",+,0.8,0.9,28,29
-event/fd23e7ef,event/cb7d4760,CAUSES,causes,The threat of severe consequences (failure leading to harm) motivates the young man to develop a unique method to connect with others.,+,0.8,0.7,101,105
-event/0f3c95e7,event/395ac3e5,CAUSES,causes,Tucking oneself up typically leads to drawing the clothes over the head for warmth or comfort.,+,0.8,0.85,109,110
-event/177fddeb,event/dff08ed3,CAUSES,causes,"Proximity to the tombstone likely intensified his gaze, creating a powerful connection.",+,0.8,0.85,75,78
-event/d36d72ee,event/b7572215,CAUSES,aggravates,"The man's suffering from multiple injuries increases his fear and desperation, leading to a plea for mercy.",+,0.8,0.9,28,31
-event/0568dc94,event/8b80a34d,CAUSES,enables,"The act of limping suggests a struggle, allowing the observer to notice the careful movement among the nettles.",+,0.7,0.8,128,129
-event/dd9c26e0,event/58c4082b,CAUSES,causes,The fanciful interpretation of tombstones led to a misguided conclusion about the mother's appearance.,+,0.8,0.9,4,6
-event/bcf5b04e,event/09fbf03d,CAUSES,enables,The discovery of the churchyard allows for the realization of the children's deaths.,+,0.7,0.8,14,16
-event/0a920a1e,event/800cd1e9,CAUSES,causes,"The church's self-awareness leads to a heightened emotional state, causing the individual to tremble and eat ravenously.",+,0.8,0.75,45,48
-event/e26baea0,event/7430971b,CAUSES,prevents,"Being perceived as overweight may lead to social stigma, which can discourage physical activity and healthy habits in others.",-,0.6,0.7,51,52
-event/2dfebcc5,event/595975b5,CAUSES,enables,Holding by the arms suggests a physical control that facilitates the request for items.,+,0.7,0.8,97,100
-event/ebf60c1f,event/7e800e01,CAUSES,prevents,"The plea to refrain from an action suggests a protective intent, which may prevent harm or distress.",+,0.7,0.8,33,79
-event/b934ca9e,event/f6300930,CAUSES,enables,The man's threat may motivate the listener to remember their commitment due to fear of consequences.,+,0.7,0.8,121,122
-event/b6a0e94f,event/ebf9eac3,CAUSES,causes,Looking over the shoulder prompts the action of stopping to look after someone.,+,0.8,0.85,135,139
-event/92bd8d2f,event/0568dc94,CAUSES,causes,"Getting home may lead to physical exhaustion or injury, causing the person to limp.",+,0.7,0.6,124,128
-event/6b11a7f6,event/dae714a2,CAUSES,enables,The question prompts a response that leads to the action of providing food.,+,0.7,0.8,117,119
-event/b1a5d609,event/7d910fc4,CAUSES,causes,The fear of the small bundle is triggered by the ominous presence of the savage lair and the rushing wind from the sea.,+,0.8,0.85,19,20
-event/71357888,event/0f128c73,CAUSES,enables,The name 'Pip' allows the narrator to form an imaginative image of his father based on the letters.,+,0.7,0.8,1,5
-event/0568dc94,event/e584b274,CAUSES,causes,"The act of limping suggests vulnerability, which may lead to the graves' inhabitants taking advantage of this weakness.",+,0.7,0.8,128,131
-event/b291bca5,event/92bd8d2f,CAUSES,enables,Coming to him at the Battery allows for the possibility of getting home.,+,0.7,0.8,120,124
-event/47c9eb8f,event/7404b1ce,CAUSES,aggravates,"Crying may escalate the situation, provoking a more aggressive response.",+,0.7,0.8,21,24
-event/868c6b7c,event/d0077e45,CAUSES,enables,"The description of the marshes sets the scene, allowing the beacon to be identified as a key navigational point.",+,0.7,0.8,140,143
-event/2dfebcc5,event/fd23e7ef,CAUSES,causes,"The act of holding implies control, leading to a threat of severe consequences.",+,0.8,0.85,97,101
-event/47c9eb8f,event/ca08d766,CAUSES,causes,"Crying often prompts a reaction from others, especially in authoritative contexts.",+,0.8,0.9,21,23
-event/4a27d972,event/8003d854,CAUSES,enables,"Locking the door allows the boy to feel secure and comfortable, enabling him to stay warm in bed.",+,0.7,0.6,107,108
-event/1bcb3259,event/14d5c2f2,CAUSES,prevents,"The feeling of comfort and safety may lead to a false sense of security, which allows for intervention to prevent harm.",+,0.7,0.8,111,114
-event/d0077e45,event/c0e471b5,CAUSES,causes,"The sight of the beacon triggered a strong emotional response, leading to a feeling of distress.",+,0.7,0.8,143,147
-event/7ba0e780,event/5ef63070,CAUSES,causes,"The person's intense gaze suggests a threatening demeanor, prompting a defensive reaction.",+,0.7,0.8,74,77
-event/4744321f,event/c0e471b5,CAUSES,causes,"The sight of the gibbet and its chains evokes fear and dread, leading to a strong emotional reaction.",+,0.8,0.9,144,147
-event/c5cce3bf,event/baf3c3ea,CAUSES,causes,"Tilting leads to a change in perspective, resulting in a response.",+,0.7,0.8,84,86
-event/6fd2d3d3,event/d355313e,CAUSES,enables,The mention of Pirrip as the family name allows the narrator to establish a connection to their lineage despite not knowing their parents.,+,0.7,0.8,2,3
-event/80560a58,event/f28648f6,CAUSES,causes,The act of starting and running prompts him to check his surroundings.,+,0.7,0.8,60,62
-event/a074f3e7,event/b7572215,CAUSES,causes,"The sudden appearance of the man from the graves instills fear in the observer, leading to a plea for mercy.",+,0.8,0.9,22,31
-event/ca78f10d,event/2dfebcc5,CAUSES,causes,The dip and roll likely caused him to hold her by the arms for support.,+,0.8,0.9,95,97
-event/7404b1ce,event/d36d72ee,CAUSES,causes,"The threat of violence implies a potential for harm, which can lead to physical suffering and injury.",+,0.8,0.85,24,28
-event/1a0941d9,event/51d9c03e,CAUSES,causes,"The young man's awareness of the speaker's words leads to the boy's inability to hide, as the words create a connection between them.",+,0.8,0.85,104,106
-event/dae714a2,event/b291bca5,CAUSES,enables,Providing food facilitates the ability to visit him at the Battery.,+,0.7,0.8,119,120
-event/8b80a34d,event/3e20d908,CAUSES,enables,"The act of leaving among nettles suggests a struggle, allowing the observer to perceive a deeper emotional connection to mortality.",+,0.7,0.8,129,130
-event/395ac3e5,event/14d5c2f2,CAUSES,enables,"Drawing the clothes over his head allows the young man to be restrained, preventing him from causing harm.",+,0.7,0.8,110,114
-event/dae714a2,event/e315774a,CAUSES,enables,Providing food creates a positive memory associated with the young man.,+,0.7,0.8,119,123
-event/b8d32c99,event/ffdb8b07,CAUSES,causes,The sense of helplessness and danger directly contributes to feelings of fear.,+,0.8,0.9,83,89
-event/6dde1a71,event/3c804823,CAUSES,enables,"The speaker's indecision allows them to suppress their emotions, preventing tears.",+,0.7,0.8,55,58
-event/0659489e,event/1a0941d9,CAUSES,causes,"The speaker's self-comparison to an angel implies a significant contrast that draws attention, leading the young man to hear the words spoken.",+,0.8,0.9,103,104
-event/8cc974c6,event/b6a0e94f,CAUSES,enables,Making good use of legs allows for looking over the shoulder.,+,0.7,0.6,134,135
-event/7f17058d,event/4bfd496f,CAUSES,causes,The exclamation 'Oh!' indicates a reaction that prompts the speaker to return and express themselves.,+,0.8,0.85,65,67
-event/c5cce3bf,event/0f56388d,CAUSES,enables,Tilting over suggests a gradual process that facilitates the acquisition of the file.,+,0.7,0.8,84,85
-event/dd9c26e0,event/d5e64246,CAUSES,causes,"The initial fancies about the individuals were influenced by the appearance of their tombstones, leading to a specific visualization.",+,0.8,0.9,4,8
-event/b0003108,event/7e800e01,CAUSES,causes,"The action of taking someone by the arms suggests a direct influence on their emotional state, leading to a feeling of helplessness.",+,0.8,0.85,76,79
-event/7ba0e780,event/dff08ed3,CAUSES,causes,"The intense gaze at his leg suggests a deep emotional or physical discomfort, leading to a powerful connection in eye contact.",+,0.7,0.8,74,78
-event/6fd2d3d3,event/0f128c73,CAUSES,enables,The mention of the father's family name allows the narrator to form an image of his father's appearance.,+,0.7,0.8,2,5
-event/d36d72ee,event/42c5872b,CAUSES,aggravates,"The man's suffering from multiple physical injuries likely heightens his emotional state, leading to terror.",+,0.8,0.7,28,32
-event/75089745,event/620d84b3,CAUSES,aggravates,The young man's creeping behavior increases the difficulty of resisting him.,+,0.7,0.8,112,115
-event/ccddc861,event/7329b643,CAUSES,prevents,"The threatening shake implies a warning, leading to a hope that the negative outcome will not occur.",+,0.7,0.8,54,56
-event/ebf9eac3,event/d0077e45,CAUSES,enables,Stopping to look allows the observer to notice the beacon and the other object.,+,0.7,0.8,139,143
-event/c1eecfe7,event/3c804823,CAUSES,causes,"Holding tighter to the tombstone indicates a desire to maintain composure, which directly leads to the effort to avoid crying.",+,0.8,0.85,57,58
-event/ccddc861,event/3c804823,CAUSES,prevents,"The threatening shake serves as a deterrent to expressing emotions, thus preventing crying.",-,0.7,0.8,54,58
-event/177fddeb,event/b0003108,CAUSES,causes,"Approaching the tombstone likely prompted a physical interaction, leading to being taken by the arms.",+,0.8,0.7,75,76
-event/b8d32c99,event/c5cce3bf,CAUSES,causes,The act of tilting increases feelings of helplessness and danger.,+,0.8,0.85,83,84
-event/a7ece1ff,event/bfd206ef,CAUSES,causes,The act of seeing him turn prompted the decision to head home.,+,0.8,0.9,132,133
-event/0659489e,event/51d9c03e,CAUSES,enables,The presence of the young man allows the boy's attempt to hide to be futile.,+,0.7,0.8,103,106
-event/f6300930,event/e315774a,CAUSES,causes,Recalling past experiences can trigger memories of specific individuals associated with those experiences.,+,0.8,0.85,122,123
-event/b7572215,event/42c5872b,CAUSES,causes,The plea for mercy is a direct response to the fear of being harmed.,+,0.9,0.95,31,32
-event/7d910fc4,event/7404b1ce,CAUSES,aggravates,"The fear expressed by the bundle of shivers intensifies the threat of violence, suggesting that fear can escalate aggressive responses.",+,0.7,0.8,20,24
-event/bfd206ef,event/8cc974c6,CAUSES,enables,Setting my face towards home motivates and directs my physical effort.,+,0.8,0.9,133,134
-event/7d910fc4,event/ca08d766,CAUSES,causes,"The fear experienced by the bundle of shivers prompts a reaction, leading to the outburst of the terrible voice.",+,0.8,0.85,20,23
-event/0f128c73,event/ca319493,CAUSES,causes,The perception of the father's physical appearance influences the narrator's understanding of his character and life choices.,+,0.7,0.8,5,9
-event/a5638b9d,event/6e24dea5,CAUSES,aggravates,"The sight of the cattle reacting to the presence of someone may heighten the observer's anxiety, leading to increased fear.",+,0.7,0.8,148,152
-event/19dcf0b9,event/6e24dea5,CAUSES,causes,The act of looking for the young man induces fear due to the anticipation of encountering him.,+,0.8,0.85,150,152
-event/04521611,event/dc39c907,CAUSES,enables,"Pointing out the place provides direction, allowing the man to focus on the speaker.",+,0.7,0.8,37,41
-event/fd9b8d4f,event/22033131,CAUSES,causes,"The man's comment about the dog's fat cheeks suggests a desire to eat them, indicating a direct cause of his hunger.",+,0.8,0.9,50,53
-event/0a920a1e,event/b749d876,CAUSES,causes,"The church's self-awareness leads to a realization of its physical presence, symbolized by the steeple.",+,0.8,0.85,45,46
-event/b843dd0d,event/7d910fc4,CAUSES,enables,"The description of the dark wilderness creates an atmosphere that heightens the fear of the small bundle, enabling its emotional response.",+,0.7,0.8,17,20
-event/a074f3e7,event/ca08d766,CAUSES,causes,"The sudden appearance of the man from the graves likely startled others, prompting a loud reaction.",+,0.8,0.7,22,23
-event/22c61701,event/c5cce3bf,CAUSES,causes,"The act of questioning leads to a physical response of tilting, indicating a direct cause-effect relationship.",+,0.8,0.85,80,84
-event/d0077e45,event/c9c5ab1f,CAUSES,enables,"The beacon provides guidance for the man, enabling him to navigate towards it despite his limping.",+,0.7,0.8,143,145
-event/22c61701,event/14e68cdd,CAUSES,causes,The threat to life creates a feeling of helplessness in the individual.,+,0.8,0.85,80,82
-event/b934ca9e,event/92bd8d2f,CAUSES,enables,The man's threat may compel the listener to hurry home to avoid harm.,+,0.7,0.8,121,124
-event/7329b643,event/c1eecfe7,CAUSES,aggravates,"The expression of hope may have intensified his emotional grip, leading to a stronger attachment to the tombstone.",+,0.7,0.8,56,57
-event/315c8c62,event/0568dc94,CAUSES,causes,"The cold wet flat likely causes discomfort, leading to a limp towards the church wall.",+,0.7,0.8,126,128
-event/cb7d4760,event/0f3c95e7,CAUSES,enables,"The young man's unique approach allows him to connect with the boy, making it possible for the boy to feel comfortable and secure.",+,0.7,0.8,105,109
-event/d355313e,event/0f128c73,CAUSES,enables,"The absence of photographs allows the narrator to imagine their father's appearance based on the letters, shaping their perception.",+,0.7,0.8,3,5
-event/d0077e45,event/4744321f,CAUSES,enables,"The beacon provides guidance for sailors, while the gibbet serves as a warning of the consequences of piracy, enabling sailors to navigate safely.",+,0.7,0.8,143,144
-event/b9fe52b2,event/dae714a2,CAUSES,enables,"The promise to provide the file facilitates the act of gathering food, suggesting a supportive relationship between the two actions.",+,0.7,0.8,118,119
-event/7e800e01,event/14e68cdd,CAUSES,causes,The act of looking up helplessly intensifies the feeling of helplessness.,+,0.8,0.85,79,82
-event/bb8f6c41,event/b7572215,CAUSES,causes,"The act of seizing by the chin instills fear, leading to a plea for mercy.",+,0.8,0.9,30,31
-event/56c464c0,event/bf1c45e7,CAUSES,enables,"Feeling giddy may create a sense of excitement or motivation, making attendance more likely.",+,0.7,0.6,90,94
-event/177fddeb,event/5ef63070,CAUSES,causes,His proximity to the tombstone led to a physical reaction of tilting.,+,0.8,0.85,75,77
-event/595975b5,event/fd23e7ef,CAUSES,prevents,The demand for the file and food serves as a condition to avoid severe consequences.,+,0.8,0.9,100,101
-event/595975b5,event/1a0941d9,CAUSES,enables,The request for the file and food allows the young man to hear the speaker's words.,+,0.7,0.8,100,104
-event/494f12cd,event/d28e2f57,CAUSES,causes,Emptying pockets directly results in having nothing but the remaining item.,+,0.8,0.9,43,44
-event/4a27d972,event/1bcb3259,CAUSES,enables,"Locking the door creates a sense of security, allowing the boy to feel comfortable.",+,0.7,0.8,107,111
-event/24ae454d,event/b7572215,CAUSES,causes,"The character's fearful physical state (limping, shivering) directly leads to their plea for mercy.",+,0.8,0.9,29,31
-event/baf3c3ea,event/56c464c0,CAUSES,causes,The act of getting 'wittles' (food) can lead to feelings of giddiness due to satisfaction or excitement.,+,0.7,0.8,86,90
-event/315c8c62,event/f9273399,CAUSES,causes,"The cold wet environment leads to discomfort, prompting him to hug his body for warmth.",+,0.8,0.85,126,127
-event/dd9c26e0,event/88d8e171,CAUSES,causes,"The initial fancies about the individuals were influenced by the inscriptions on their tombstones, suggesting a direct link between perception and the information presented.",+,0.8,0.85,4,7
-event/71357888,event/d355313e,CAUSES,causes,The mention of Pip's family name and his lack of parental figures suggests a direct link between his identity and his orphan status.,+,0.8,0.9,1,3
-event/c0e471b5,event/19dcf0b9,CAUSES,causes,The shock of the thought prompted a search for the source of fear.,+,0.8,0.85,147,150
-event/75089745,event/533d6544,CAUSES,enables,"The young man's soft creeping allows him to approach, albeit with difficulty.",+,0.7,0.8,112,116
-event/d28e2f57,event/800cd1e9,CAUSES,causes,"The lack of food leads to hunger, causing the individual to eat the bread with urgency.",+,0.8,0.9,44,48
-event/dff08ed3,event/22c61701,CAUSES,causes,"The intensity of his gaze implies a threatening dominance, leading to a life-or-death question.",+,0.8,0.85,78,80
-event/22c61701,event/b8d32c99,CAUSES,causes,The threat to life creates a feeling of helplessness and danger.,+,0.8,0.85,80,83
-event/8cc974c6,event/5f12fee2,CAUSES,enables,Making the best use of legs allows for movement and observation of the person heading towards the river.,+,0.7,0.8,134,136
-event/04521611,event/384ab265,CAUSES,causes,Pointing out the location directly leads to identifying where the village is situated.,+,0.8,0.9,37,39
-event/19dcf0b9,event/cab104f0,CAUSES,causes,"The act of looking for the young man instigated a sense of fear, prompting a hasty retreat home.",+,0.8,0.9,150,153
-event/e584b274,event/b6a0e94f,CAUSES,causes,"The act of stretching out of graves suggests a threatening presence, causing the observer to look over their shoulder in fear.",+,0.7,0.8,131,135
-event/3f262f97,event/cb7d4760,CAUSES,enables,"The speaker's realization of not being alone allows for deeper emotional connections, enabling the young man to reach the boy's heart.",+,0.7,0.8,102,105
-event/6ffa6909,event/03993360,CAUSES,causes,"Tilting creates a sense of instability, prompting a clinging response for support.",+,0.8,0.85,88,91
-event/ca319493,event/2844ae9f,CAUSES,causes,The struggle for a living leads to a belief in inherent laziness or entitlement.,+,0.7,0.8,9,10
-event/7d910fc4,event/a074f3e7,CAUSES,causes,"The fear experienced by the bundle of shivers prompts a reaction, leading to the man's sudden movement from the graves.",+,0.7,0.8,20,22
-event/3c804823,event/b4bd55d6,CAUSES,prevents,The act of keeping oneself from crying serves to prevent the emotional expression of tears.,+,0.8,0.85,58,61
-event/ca08d766,event/ce3203ba,CAUSES,causes,"The command to be quiet instills fear, leading to the appearance of a fearful man in grey.",+,0.7,0.8,23,26
-event/450382e4,event/7d910fc4,CAUSES,enables,The river's presence creates an atmosphere that can evoke fear and anxiety in the observer.,+,0.7,0.8,18,20
-event/39ed8065,event/c0e471b5,CAUSES,causes,"The vivid imagery of the pirate evokes a strong emotional response, leading to fear.",+,0.8,0.85,146,147
-event/14d5c2f2,event/6b11a7f6,CAUSES,prevents,"The speaker is actively stopping the young man from causing harm, which allows for a safe conversation.",+,0.8,0.9,114,117
-event/bb8f6c41,event/42c5872b,CAUSES,causes,"The act of seizing by the chin instills fear, prompting a plea.",+,0.8,0.9,30,32
-event/75089745,event/14d5c2f2,CAUSES,prevents,The act of keeping the young man away stops him from causing harm.,+,0.8,0.9,112,114
-event/73298ec4,event/0659489e,CAUSES,causes,"The fearful terms create a contrast that highlights the young man's perceived innocence, suggesting that fear prompts a comparison to an angelic figure.",+,0.8,0.75,99,103
-event/a44ba170,event/ca78f10d,CAUSES,causes,"The request to remain upright implies a desire for stability, which is directly contradicted by the action of dipping and rolling.",+,0.8,0.9,92,95
-event/59347b38,event/14d5c2f2,CAUSES,prevents,"The act of tearing him open is being prevented, which stops the young man from causing harm.",+,0.8,0.9,113,114
-event/5ef63070,event/dff08ed3,CAUSES,causes,"The act of tilting creates a physical and emotional connection, intensifying eye contact.",+,0.8,0.85,77,78
-event/ca08d766,event/02470252,CAUSES,causes,"The command to be quiet likely instills fear or authority, leading to the man's disheveled appearance.",+,0.7,0.6,23,27
-event/24ae454d,event/42c5872b,CAUSES,causes,The character's physical discomfort and aggressive demeanor instill fear in the observer.,+,0.8,0.9,29,32
-event/a44ba170,event/ff6c9b7d,CAUSES,enables,"The request to stay upright suggests a desire to avoid worsening sickness, implying that maintaining posture may help prevent illness.",+,0.7,0.8,92,93
-event/8003d854,event/1bcb3259,CAUSES,enables,Feeling warm in bed creates a sense of comfort and safety.,+,0.7,0.8,108,111
-event/ce3203ba,event/d36d72ee,CAUSES,aggravates,The fearful man's condition is worsened by the harsh environment and physical injuries described.,+,0.7,0.8,26,28
-event/d355313e,event/58c4082b,CAUSES,causes,The lack of parental figures led to an imaginative conclusion about the mother's appearance.,+,0.8,0.9,3,6
-event/b8d32c99,event/67f6f073,CAUSES,aggravates,The sense of helplessness intensifies the perceived threat of violence.,+,0.8,0.85,83,87
-event/03993360,event/a44ba170,CAUSES,enables,"Clinging provides physical support, allowing the speaker to maintain balance.",+,0.8,0.9,91,92
-event/f6f7de8a,event/b749d876,CAUSES,causes,Being turned upside down directly leads to the perception of seeing the steeple under one's feet.,+,0.9,0.95,42,46
-event/ffdb8b07,event/56c464c0,CAUSES,causes,Fear can lead to feelings of dizziness or giddiness due to heightened anxiety and physiological responses.,+,0.8,0.85,89,90
-event/7404b1ce,event/ce3203ba,CAUSES,causes,"The threat of violence instills fear in the man, leading to his fearful demeanor.",+,0.8,0.9,24,26
-event/03993360,event/ca78f10d,CAUSES,causes,"Clinging indicates a need for support, leading to the action of dipping and rolling.",+,0.8,0.9,91,95
-event/a7ece1ff,event/8cc974c6,CAUSES,enables,The action of setting the face towards home allows for the use of legs to move in that direction.,+,0.8,0.9,132,134
-event/ebf60c1f,event/ccf0a206,CAUSES,prevents,"The plea to refrain from an action suggests that the action would lead to a negative outcome, thus preventing it.",-,0.7,0.8,33,35
-event/a5638b9d,event/19dcf0b9,CAUSES,causes,"The cattle's action of lifting their heads indicates a disturbance, prompting the observer to search for the source of that disturbance.",+,0.7,0.8,148,150
-event/6ffa6909,event/a44ba170,CAUSES,causes,"Tilting leads to a loss of balance, prompting a request to remain upright.",+,0.8,0.9,88,92
-event/fd23e7ef,event/1a0941d9,CAUSES,causes,The speaker's threat implies that the young man must heed their words to avoid dire consequences.,+,0.8,0.9,101,104
-event/ca78f10d,event/1dfccc4e,CAUSES,enables,The dip and roll maneuver allows the person to end up upright on the stone.,+,0.8,0.9,95,98
-event/b0003108,event/5ef63070,CAUSES,causes,The action of taking someone by the arms directly leads to the tilting motion.,+,0.9,0.85,76,77
-event/0f56388d,event/67f6f073,CAUSES,causes,"The request for a file creates a threat, implying that failure to comply will result in harm.",+,0.8,0.9,85,87
-event/59347b38,event/620d84b3,CAUSES,causes,"The act of tearing open leads to difficulty in restraining the young man, indicating a direct consequence.",+,0.8,0.85,113,115
-event/b9fe52b2,event/b291bca5,CAUSES,enables,The promise to provide the file facilitates the action of meeting early in the morning.,+,0.7,0.8,118,120
-event/1bcb3259,event/75089745,CAUSES,enables,Feeling comfortable and safe allows the young man to approach quietly.,+,0.7,0.8,111,112
-event/cb7d4760,event/70d06578,CAUSES,causes,"The young man's unique approach emotionally affects the boy, leading to a physical reaction of self-hugging.",+,0.8,0.85,105,137
-event/8003d854,event/75089745,CAUSES,enables,A warm bed creates a comfortable environment that encourages the young man to approach quietly.,+,0.7,0.8,108,112
-event/ffdb8b07,event/03993360,CAUSES,causes,Fear led to a physical response of clinging for security.,+,0.8,0.9,89,91
-event/3f262f97,event/0659489e,CAUSES,enables,The speaker's acknowledgment of companionship allows for a comparison that elevates their self-perception.,+,0.7,0.8,102,103
-event/6ffa6909,event/2dfebcc5,CAUSES,causes,Tilting creates a physical interaction that leads to holding.,+,0.8,0.9,88,97
-event/dc39c907,event/494f12cd,CAUSES,causes,The man's gaze likely prompted him to search my pockets.,+,0.8,0.9,41,43
-event/ca78f10d,event/73298ec4,CAUSES,causes,"The tremendous dip and roll likely induced a strong emotional response, leading to the fearful terms.",+,0.7,0.8,95,99
-event/620d84b3,event/dae714a2,CAUSES,enables,"The difficulty in holding the young man off allows for the provision of food, suggesting a supportive action.",+,0.7,0.8,115,119
-event/6a3eebb0,event/0f56388d,CAUSES,enables,Understanding what a file is allows the person to request one.,+,0.8,0.9,81,85
-event/7ba0e780,event/177fddeb,CAUSES,enables,"The man's dark glances suggest curiosity or contemplation, which may have prompted him to approach the tombstone.",+,0.7,0.8,74,75
-event/dc39c907,event/f6f7de8a,CAUSES,causes,The man's action of looking at the speaker leads directly to the action of turning them upside down.,+,0.8,0.9,41,42
-event/b749d876,event/ca78f10d,CAUSES,causes,"The act of seeing the steeple likely induced a physical reaction, leading to the dip and roll.",+,0.7,0.8,46,95
-event/71357888,event/dd9c26e0,CAUSES,enables,"The mention of Pip's family name sets the stage for his imaginative interpretations of his ancestors, influenced by their tombstones.",+,0.7,0.8,1,4
-event/1a0941d9,event/cb7d4760,CAUSES,enables,Hearing the words allows the young man to connect emotionally and physically with the boy.,+,0.7,0.8,104,105
-event/395ac3e5,event/59347b38,CAUSES,causes,Drawing the clothes over his head may lead to a struggle that results in tearing.,+,0.8,0.7,110,113
-event/c5cce3bf,event/6ffa6909,CAUSES,causes,"The action of tilting is repeated, indicating a direct cause-effect relationship.",+,0.8,0.9,84,88
-event/e584b274,event/bfd206ef,CAUSES,prevents,The act of stretching out of graves suggests a threat that prompts a retreat towards home for safety.,-,0.7,0.8,131,133
-event/b0003108,event/dff08ed3,CAUSES,causes,The act of taking someone by the arms creates a physical connection that intensifies eye contact and emotional engagement.,+,0.8,0.85,76,78
-event/cb7d4760,event/8003d854,CAUSES,enables,"The young man's unique approach allows for emotional connection, which can lead to comfort and warmth.",+,0.7,0.8,105,108
-event/d6942f55,event/71357888,CAUSES,causes,Pip's self-identification leads to the simplification of his name based on his family name and Christian name.,+,0.8,0.9,0,1
-event/0f3c95e7,event/59347b38,CAUSES,causes,Tucking oneself up may lead to a situation where one is vulnerable to being torn open.,+,0.7,0.6,109,113
-event/8003d854,event/395ac3e5,CAUSES,causes,Warmth in bed encourages the action of drawing clothes over the head for additional comfort.,+,0.8,0.85,108,110
-event/14d5c2f2,event/620d84b3,CAUSES,prevents,"The speaker is actively stopping the young man from causing harm, indicating a protective action.",+,0.8,0.9,114,115
-event/7329b643,event/3c804823,CAUSES,prevents,"Expressing hope may help manage emotions, reducing the likelihood of crying.",+,0.7,0.8,56,58
-event/0f128c73,event/88d8e171,CAUSES,enables,The description of the letters allows the speaker to infer characteristics about their father.,+,0.7,0.8,5,7
-event/59347b38,event/533d6544,CAUSES,aggravates,The act of tearing him open increases the difficulty of the situation.,+,0.7,0.8,113,116
-event/6ffa6909,event/56c464c0,CAUSES,causes,Tilting induces a physical sensation that can lead to giddiness.,+,0.8,0.9,88,90
-event/620d84b3,event/533d6544,CAUSES,aggravates,The difficulty in holding the young man off increases the overall challenge of the situation.,+,0.7,0.8,115,116
-event/c8ae6c23,event/1dfccc4e,CAUSES,causes,The church's action of jumping over the weathercock results in it being positioned upright on the stone.,+,0.8,0.7,96,98
-event/f6300930,event/92bd8d2f,CAUSES,enables,Remembering your undertakings helps you navigate home effectively.,+,0.7,0.8,122,124
-event/5ef63070,event/22c61701,CAUSES,enables,The action of tilting back creates a situation where the speaker can assert control and pose a life-threatening question.,+,0.7,0.8,77,80
-event/ed063162,event/04521611,CAUSES,causes,The man's request prompts the action of pointing out the location.,+,0.8,0.9,36,37
-event/0659489e,event/cb7d4760,CAUSES,enables,"The young man's hidden nature allows him to connect deeply with others, suggesting a unique influence on relationships.",+,0.7,0.8,103,105
-event/80560a58,event/b4bd55d6,CAUSES,causes,The action of starting and running typically leads to the need to stop.,+,0.8,0.85,60,61
-event/6fd2d3d3,event/dd9c26e0,CAUSES,causes,The mention of the tombstone as an authority for the family name leads to the character's fancies about their family being based on that tombstone.,+,0.8,0.9,2,4
-event/c1eecfe7,event/b4bd55d6,CAUSES,causes,The act of holding tighter suggests a moment of emotional intensity that leads to stopping.,+,0.8,0.85,57,61
-event/3e20d908,event/8cc974c6,CAUSES,enables,"The gaze implies a connection to the past, suggesting that the speaker's vitality allows for movement and action.",+,0.7,0.8,130,134
-event/a44ba170,event/bf1c45e7,CAUSES,enables,"Maintaining upright posture allows for better focus and engagement, facilitating attendance.",+,0.7,0.8,92,94
-event/0f56388d,event/baf3c3ea,CAUSES,enables,Obtaining the file allows for the provision of food.,+,0.7,0.8,85,86
-event/ca08d766,event/7404b1ce,CAUSES,causes,"The threat of violence directly results from the command to be quiet, indicating a cause-and-effect relationship.",+,0.8,0.9,23,24
-event/f28648f6,event/7f17058d,CAUSES,causes,"Looking over his shoulder likely startled him, prompting an exclamation.",+,0.8,0.9,62,65
-event/b749d876,event/be94e2ee,CAUSES,enables,Being seated on a high tombstone allows for the view of the steeple.,+,0.7,0.8,46,47
-event/595975b5,event/3f262f97,CAUSES,enables,The request for the file and food enables the speaker to feel less alone by anticipating assistance.,+,0.7,0.8,100,102
-event/e584b274,event/a7ece1ff,CAUSES,prevents,"The act of pulling him in suggests a threat, prompting a retreat towards home.",-,0.7,0.8,131,132
-event/cb7d4760,event/51d9c03e,CAUSES,causes,The young man's unique approach effectively reveals the boy's presence and emotions.,+,0.8,0.9,105,106
-event/4a27d972,event/0f3c95e7,CAUSES,enables,"Locking the door allows the boy to feel secure and comfortable, enabling him to tuck himself up.",+,0.7,0.8,107,109
-event/7d910fc4,event/47c9eb8f,CAUSES,causes,"Fear can trigger emotional responses, leading to crying as a reaction to distress.",+,0.8,0.85,20,21
-event/f90effe7,event/bcf5b04e,CAUSES,enables,The vivid impression of identity allows for the recognition of the churchyard's bleakness.,+,0.7,0.8,13,14
-event/b7572215,event/ebf60c1f,CAUSES,causes,The plea for mercy directly results from the fear of being harmed.,+,0.9,0.95,31,33
-event/14e68cdd,event/b8d32c99,CAUSES,enables,"The first event contributes to the feeling of helplessness, which in turn allows for the emergence of a greater sense of danger.",+,0.8,0.9,82,83
-event/6b11a7f6,event/b934ca9e,CAUSES,causes,"The question prompts a strong emotional response, leading to the man's extreme declaration.",+,0.8,0.85,117,121
-event/dae714a2,event/3e20d908,CAUSES,causes,"Providing food may evoke a sense of survival or connection, leading to a profound emotional response.",+,0.7,0.8,119,130
-event/73298ec4,event/fd23e7ef,CAUSES,causes,The fearful terms create a threatening atmosphere that instills fear and leads to violent imagery.,+,0.8,0.85,99,101
-event/14d5c2f2,event/533d6544,CAUSES,prevents,The act of keeping the young man away directly prevents harm from occurring.,+,0.8,0.9,114,116
-event/03993360,event/bf1c45e7,CAUSES,enables,"Clinging to him suggests emotional support, which may allow for greater attendance or participation.",+,0.7,0.6,91,94
-event/d355313e,event/dd9c26e0,CAUSES,causes,"The absence of parental figures led to the creation of imaginative ideas based on limited information, specifically tombstones.",+,0.8,0.9,3,4
-event/b1a5d609,event/47c9eb8f,CAUSES,causes,"The description of the savage lair and rushing wind evokes a sense of fear or distress, leading to crying.",+,0.7,0.8,19,21
-event/533d6544,event/dae714a2,CAUSES,enables,The difficulty in obtaining food suggests that the effort to provide food is made possible despite challenges.,+,0.7,0.8,116,119
-event/7e800e01,event/03993360,CAUSES,causes,"The act of looking helplessly suggests a need for support, leading to the action of clinging.",+,0.8,0.85,79,91
-event/f9273399,event/3e20d908,CAUSES,causes,"The act of hugging suggests a protective response to fear, which may lead to a heightened sense of vulnerability and awareness of mortality.",+,0.7,0.8,127,130
-event/3d91cdba,event/e26baea0,CAUSES,causes,"Ravenous eating likely leads to weight gain, contributing to being fat.",+,0.8,0.7,49,51
-event/88d8e171,event/d5e64246,CAUSES,causes,The inscription indicates a memorialization that leads to the placement of gravestones.,+,0.8,0.85,7,8
-event/e26baea0,event/22033131,CAUSES,causes,The belief about their weight leads to a desire to consume them.,+,0.7,0.8,51,53
-event/8b80a34d,event/a7ece1ff,CAUSES,causes,The act of seeing him leave prompts a decision to return home.,+,0.7,0.8,129,132
-event/8cc974c6,event/43e60f75,CAUSES,enables,Using legs effectively allows for navigating difficult terrain despite foot pain.,+,0.7,0.8,134,138
-event/02470252,event/d36d72ee,CAUSES,aggravates,"The man's poor condition (no hat, broken shoes) likely worsens his exposure to harsh elements, leading to further injuries.",+,0.8,0.7,27,28
-event/b9fe52b2,event/f6300930,CAUSES,causes,Making a commitment to provide the file prompts the memory of the undertaking.,+,0.8,0.85,118,122
-event/b5a9d2cf,event/384ab265,CAUSES,enables,Pointing provides a visual reference that helps identify the location of the village.,+,0.8,0.9,38,39
-event/e315774a,event/f9273399,CAUSES,causes,"Remembering someone can evoke emotional responses, leading to physical expressions of comfort.",+,0.7,0.8,123,127
-event/a7ece1ff,event/5f12fee2,CAUSES,prevents,The act of turning towards home suggests a decision to avoid the river.,+,0.7,0.8,132,136
-event/67f6f073,event/ffdb8b07,CAUSES,causes,The threat of violence instills fear in the individual.,+,0.9,0.95,87,89
-event/6ffa6909,event/ffdb8b07,CAUSES,causes,The action of tilting directly leads to the feeling of fear.,+,0.8,0.9,88,89
-event/b0003108,event/22c61701,CAUSES,enables,The action of taking by the arms suggests a physical control that allows for a conversation about life and death.,+,0.7,0.8,76,80
-event/ccddc861,event/c1eecfe7,CAUSES,causes,"The threatening gesture induces a sense of fear, prompting a tighter grip on the tombstone.",+,0.8,0.85,54,57
-event/395ac3e5,event/1bcb3259,CAUSES,enables,Drawing clothes over his head creates a sense of comfort and safety.,+,0.7,0.8,110,111
-event/dd9c26e0,event/0f128c73,CAUSES,causes,The interpretation of tombstone inscriptions led to a distorted perception of the father's physical appearance.,+,0.8,0.9,4,5
-event/f9273399,event/0568dc94,CAUSES,causes,"The act of hugging suggests a need for comfort, which may lead to the character limping towards the wall for support.",+,0.7,0.8,127,128
-event/ed063162,event/b5a9d2cf,CAUSES,enables,The man's request for location information allows the speaker to indicate their village.,+,0.8,0.9,36,38
-event/88d8e171,event/ca319493,CAUSES,causes,"The inscription suggests a significant relationship, implying that Georgiana's identity as a wife may have influenced her early resignation from the struggle for a living.",+,0.7,0.8,7,9
-event/bb8f6c41,event/ccf0a206,CAUSES,causes,Seizing by the chin likely prompts a reaction to speak or respond.,+,0.7,0.8,30,35
-event/1bcb3259,event/620d84b3,CAUSES,aggravates,"Feeling comfortable may lead to complacency, making it harder to resist unwanted advances.",+,0.7,0.8,111,115
-event/dff08ed3,event/14e68cdd,CAUSES,causes,The intensity of his gaze creates a feeling of vulnerability in the observer.,+,0.8,0.9,78,82
-event/d6942f55,event/dd9c26e0,CAUSES,enables,"Pip's self-identification allows him to form ideas about others, influenced by their tombstones.",+,0.7,0.8,0,4
-event/3f262f97,event/1a0941d9,CAUSES,enables,The speaker's assertion of not being alone allows the young man to hear and engage with their words.,+,0.7,0.8,102,104
-event/75089745,event/59347b38,CAUSES,causes,The young man's creeping behavior leads directly to the act of tearing him open.,+,0.8,0.9,112,113
-event/d3af896c,event/d0077e45,CAUSES,enables,The ominous sky conditions create a context where the beacon becomes a crucial point of reference for sailors.,+,0.7,0.8,142,143
-event/2844ae9f,event/cd3412bf,CAUSES,causes,The belief in their laziness leads to the conclusion that they have never changed their state.,+,0.8,0.9,10,11
-event/56c464c0,event/03993360,CAUSES,causes,"Feeling giddy can lead to a sense of excitement or instability, prompting a need for physical support.",+,0.7,0.8,90,91
-event/0f3c95e7,event/1bcb3259,CAUSES,enables,"Tucking oneself up creates a sense of comfort and safety, allowing for a positive mental state.",+,0.7,0.8,109,111
-event/8b80a34d,event/e584b274,CAUSES,causes,"The act of picking his way among the nettles leads to a potential injury from the graves, suggesting a direct consequence.",+,0.8,0.7,129,131
-event/b291bca5,event/f6300930,CAUSES,enables,Coming to him early allows for reflection on past actions.,+,0.7,0.8,120,122
-event/cb7d4760,event/4a27d972,CAUSES,prevents,The young man's secretive approach may lead the boy to feel the need to lock his door for protection.,+,0.7,0.8,105,107
-event/fce79bbc,event/24ae454d,CAUSES,causes,"The command to 'keep still' likely causes the subject to react with fear and discomfort, leading to physical manifestations like limping and shivering.",+,0.8,0.85,25,29
-event/fd9b8d4f,event/ccddc861,CAUSES,aggravates,The man's comment about the dog's appearance may provoke a defensive or aggressive response.,+,0.7,0.8,50,54
-event/14d5c2f2,event/b9fe52b2,CAUSES,prevents,"The act of keeping the young man from harming prevents immediate harm, allowing for the possibility of obtaining the file.",+,0.7,0.8,114,118
-event/ff6c9b7d,event/bf1c45e7,CAUSES,prevents,"Being sick hinders attendance, suggesting that health is a prerequisite for participation.",-,0.8,0.85,93,94
-event/ca78f10d,event/c8ae6c23,CAUSES,causes,"The action of giving a dip and roll creates a dramatic effect, leading to the church's exaggerated movement.",+,0.8,0.7,95,96
-event/8003d854,event/0f3c95e7,CAUSES,causes,Feeling warm in bed encourages a person to tuck themselves up for comfort.,+,0.8,0.85,108,109
-event/395ac3e5,event/75089745,CAUSES,enables,Drawing the clothes over his head allows the young man to move stealthily.,+,0.7,0.8,110,112
-event/4744321f,event/39ed8065,CAUSES,enables,"The presence of the gibbet evokes the image of the pirate, enabling the imagination of the pirate's return.",+,0.7,0.8,144,146
-event/ca08d766,event/fce79bbc,CAUSES,causes,"The command to be quiet is a direct response to the previous outburst, indicating a cause-and-effect relationship.",+,0.8,0.9,23,25
-event/177fddeb,event/7e800e01,CAUSES,causes,"The act of coming closer creates a direct interaction, leading to the feeling of helplessness.",+,0.8,0.85,75,79
-event/3e20d908,event/e584b274,CAUSES,causes,"The gaze of the subject suggests a fear of the dead, which may provoke a vivid imagination of them rising and causing harm.",+,0.7,0.8,130,131
-event/bb8f6c41,event/ebf60c1f,CAUSES,causes,The act of seizing by the chin provokes a plea for restraint.,+,0.8,0.9,30,33
-event/d533f501,event/d0077e45,CAUSES,enables,The river's horizontal line provides a reference point for the beacon's visibility.,+,0.7,0.8,141,143
-event/c5cce3bf,event/67f6f073,CAUSES,aggravates,The act of tilting increases the threat implied in the statement about taking organs.,+,0.7,0.8,84,87
-event/1dfccc4e,event/fd23e7ef,CAUSES,causes,Being in an upright position on the stone leads to a failure that results in severe consequences.,+,0.8,0.75,98,101
-event/a074f3e7,event/ce3203ba,CAUSES,causes,"The sudden appearance of the man from the graves likely instills fear, leading to the description of him as fearful.",+,0.8,0.85,22,26
-event/ce3203ba,event/bb8f6c41,CAUSES,causes,The fearful man's aggressive action of seizing indicates a direct cause of fear or intimidation.,+,0.8,0.85,26,30
-event/0f3c95e7,event/75089745,CAUSES,enables,Tucking up allows the young man to move quietly and stealthily.,+,0.7,0.8,109,112
-event/67f6f073,event/56c464c0,CAUSES,causes,"The threat of violence induces a state of fear or excitement, leading to a giddy reaction.",+,0.7,0.6,87,90
-event/bcf5b04e,event/400969cb,CAUSES,causes,Discovering the location of the churchyard leads to the realization of the deaths and burials of Philip Pirrip and Georgiana.,+,0.9,0.95,14,15
-event/b4bd55d6,event/7f17058d,CAUSES,causes,The action of stopping leads to a reaction expressed as surprise or realization.,+,0.8,0.9,61,65
+event/e250e1a5,event/0e6c4c36,CAUSES,enables,"Locking the door creates a sense of security, allowing the boy to feel comfortable.",+,0.7,0.8,112,116
+event/74fcf2ef,event/52643e66,CAUSES,causes,The action of taking someone by the arms creates a physical connection that leads to a feeling of helplessness and vulnerability.,+,0.8,0.85,83,86
+event/7a6e1750,event/872967fb,CAUSES,causes,The man's command implies that his action of staring is a direct result of his words.,+,0.8,0.9,41,43
+event/7be5184a,event/ef2b637e,CAUSES,causes,Being turned upside down directly leads to the perception of seeing the steeple under one's feet.,+,0.9,0.95,48,52
+event/4160d83d,event/260f7c2a,CAUSES,causes,The threat of dire consequences compels the young man to listen attentively to the speaker's words.,+,0.8,0.9,106,109
+event/36cc5f83,event/92134c5e,CAUSES,causes,"The man's suffering from various physical injuries and discomfort leads to his limping, shivering, glaring, and growling.",+,0.8,0.9,31,33
+event/4160d83d,event/96376c59,CAUSES,causes,The threat of severe punishment (failure leading to harm) motivates the young man to develop a unique method to connect with others.,+,0.8,0.7,106,110
+event/b33f8cfa,event/76794ee2,CAUSES,causes,The death of Philip Pirrip and Georgiana likely led to the death of their infant children due to neglect or lack of care.,+,0.8,0.75,19,20
+event/49c9854a,event/ccd6a35a,CAUSES,causes,Tucking oneself up typically leads to drawing the clothes over the head for warmth or comfort.,+,0.8,0.85,114,115
+event/62df8e22,event/92134c5e,CAUSES,causes,"The fearful man's condition and appearance contribute to his limping, shivering, glaring, and growling behavior.",+,0.8,0.85,29,33
+event/ccd6a35a,event/6b774ee0,CAUSES,prevents,Drawing the clothes over his head may distract or hinder the young man's ability to harm.,+,0.7,0.8,115,119
+event/e250e1a5,event/49c9854a,CAUSES,enables,"Locking the door provides privacy, allowing the boy to tuck himself up comfortably.",+,0.7,0.8,112,114
+event/36cc5f83,event/86cf3887,CAUSES,causes,"The man's suffering from various physical injuries and discomfort leads to his limping, shivering, glaring, and growling.",+,0.8,0.9,31,35
+event/c52ba2ee,event/d99380f5,CAUSES,enables,"The man's determination to eat prevents him from expressing his emotions, enabling him to suppress his tears.",+,0.7,0.8,59,63
+event/49c9854a,event/0e6c4c36,CAUSES,enables,Tucking oneself up creates a sense of comfort and safety.,+,0.7,0.8,114,116
+event/166e8d23,event/1e3c3829,CAUSES,causes,Tilting over increases the feeling of helplessness by physically altering balance.,+,0.8,0.85,89,91
+event/1e3c3829,event/6d6e5e95,CAUSES,aggravates,"Tilting increases the threat level, intensifying the speaker's violent intent.",+,0.7,0.8,91,94
+event/32c3a10c,event/9363b59b,CAUSES,causes,Seizing by the chin likely prompts a reaction to speak or respond.,+,0.8,0.85,37,42
+event/00b9abd2,event/152d2d26,CAUSES,causes,"The act of clinging suggests a need for support, leading to the dramatic dip and roll.",+,0.8,0.9,98,102
+event/872967fb,event/346a2904,CAUSES,enables,Staring at someone can prompt them to provide directions or guidance.,+,0.7,0.8,43,45
+event/32c3a10c,event/7a6e1750,CAUSES,causes,"The act of seizing by the chin prompts a direct response from the man, indicating a cause-and-effect relationship.",+,0.8,0.85,37,41
+event/d7ede6e2,event/a5bbf1d3,CAUSES,causes,"The fear experienced by the bundle of shivers prompts a reaction, leading to the man's sudden movement.",+,0.7,0.8,24,26
+event/fb23f5b7,event/5c011a34,CAUSES,enables,The absence of photographs allows the imagination to shape a vivid image of the father based on letters.,+,0.7,0.8,8,10
+event/c52ba2ee,event/742d570e,CAUSES,causes,The man's threatening demeanor suggests that his desire to eat is causing the other person to hold tighter to the tombstone in fear.,+,0.8,0.85,59,62
+event/0e6c4c36,event/6b774ee0,CAUSES,prevents,"The sense of comfort and safety may lead to complacency, but the speaker actively prevents harm despite this feeling.",+,0.7,0.8,116,119
+event/4edf4863,event/e250e1a5,CAUSES,prevents,"The boy's attempt to hide suggests he is trying to avoid being found, which is supported by locking the door.",+,0.7,0.8,111,112
+event/9e39aa8a,event/263fc53b,CAUSES,causes,"The act of tilting creates a physical and emotional connection, intensifying eye contact.",+,0.8,0.85,84,85
+event/1388d863,event/d99380f5,CAUSES,prevents,"Expressing hope may help manage emotions, reducing the likelihood of crying.",+,0.7,0.8,61,63
+event/57db3832,event/152d2d26,CAUSES,causes,"The request for stability is directly contradicted by the action of dipping and rolling, leading to an exaggerated outcome.",+,0.8,0.9,99,102
+event/a5d3f9cc,event/8308518d,CAUSES,causes,The act of looking in the young eyes triggers the imagery of dead people stretching from their graves.,+,0.8,0.9,135,136
+event/23cd98ed,event/f7cc372f,CAUSES,enables,Pip's self-identification allows for the recognition of his name on the tombstone.,+,0.7,0.8,0,4
+event/cdd72180,event/52643e66,CAUSES,prevents,"The plea to refrain from an action suggests a protective intent, which may prevent harm or distress.",+,0.7,0.8,40,86
+event/ae823e24,event/260f7c2a,CAUSES,causes,"The speaker's self-comparison to an angel implies a significant contrast, prompting the young man to listen attentively.",+,0.8,0.9,108,109
+event/704f6f20,event/58c18a61,CAUSES,causes,Looking over the shoulder prompts the action of stopping to look after someone.,+,0.8,0.85,140,144
+event/ae823e24,event/96376c59,CAUSES,enables,"The young man's hidden nature allows him to connect deeply with others, suggesting a unique influence on emotional engagement.",+,0.7,0.8,108,110
+event/f3d7db57,event/fb23f5b7,CAUSES,causes,"The absence of photographs is a direct result of not having seen the parents, implying a causal link.",+,0.8,0.9,6,8
+event/06c82226,event/91e291cb,CAUSES,enables,"Remembering the young man may trigger a sense of nostalgia or motivation, leading to the action of going home.",+,0.7,0.8,128,129
+event/fb23f5b7,event/3b172c9c,CAUSES,causes,"The absence of photographs leads to reliance on tombstones for imagination, causing distorted perceptions.",+,0.8,0.9,8,9
+event/9363b59b,event/c46c1fca,CAUSES,enables,"The command to 'give it mouth' suggests prompting or encouraging a response, which enables the man to ask for the location.",+,0.7,0.8,42,44
+event/b760a944,event/3c85710d,CAUSES,causes,The mention of the family name directly leads to its use as an identifier.,+,0.9,0.95,1,3
+event/1388d863,event/742d570e,CAUSES,aggravates,"The expression of hope may have intensified his emotional grip, leading to a stronger attachment to the tombstone.",+,0.7,0.8,61,62
+event/1e3c3829,event/0a346ca7,CAUSES,enables,Tilting creates a position that allows for easier access to the file.,+,0.7,0.8,91,92
+event/c52160ad,event/c9ca5f4a,CAUSES,aggravates,"Crying may provoke a harsh reaction, escalating the situation.",+,0.7,0.8,25,28
+event/8a14d100,event/bc7941f5,CAUSES,causes,Fear can lead to feelings of dizziness or giddiness due to heightened anxiety and physiological responses.,+,0.8,0.85,96,97
+event/0dc4c246,event/ae823e24,CAUSES,enables,The presence of the young man allows the speaker to feel less alone and enhances their self-perception.,+,0.7,0.8,107,108
+event/59592dbc,event/3e296ebb,CAUSES,causes,"The chattering teeth indicate fear, which leads to the plea for mercy.",+,0.8,0.85,36,38
+event/1f7ca27d,event/b5b177c9,CAUSES,causes,The act of looking for the young man induces fear due to the anticipation of encountering him.,+,0.8,0.85,156,158
+event/98caa49a,event/7be5184a,CAUSES,causes,The man's action of looking at the speaker leads to the subsequent action of turning them upside down.,+,0.8,0.9,47,48
+event/36cc5f83,event/0849133b,CAUSES,causes,"The man's suffering from various physical injuries and discomfort leads to his limping, shivering, glaring, and growling.",+,0.8,0.9,31,32
+event/5d8896d5,event/b5b177c9,CAUSES,causes,"The cattle's behavior triggers a sense of fear in the observer, indicating a direct emotional response.",+,0.7,0.8,154,158
+event/ccd6a35a,event/ef0fcc1a,CAUSES,enables,Drawing the clothes over his head allows the young man to approach quietly.,+,0.7,0.8,115,117
+event/5cc19add,event/8155c64d,CAUSES,enables,"The man's compliment about the dog's cheeks suggests a playful intent, enabling the possibility of further interaction.",+,0.7,0.8,56,60
+event/74fcf2ef,event/a8298261,CAUSES,enables,The action of taking by the arms suggests a physical control that allows for a conversation about life and death.,+,0.7,0.8,83,87
+event/b652ecdf,event/c460aa25,CAUSES,enables,Using legs effectively allows for navigating difficult terrain despite foot pain.,+,0.7,0.8,139,143
+event/62df8e22,event/0849133b,CAUSES,causes,"The fearful man's condition and appearance contribute to his limping, shivering, glaring, and growling behavior.",+,0.8,0.85,29,32
+event/ef0fcc1a,event/afdd7acb,CAUSES,causes,The young man's creeping behavior suggests a stealthy approach that leads to a violent outcome.,+,0.8,0.9,117,118
+event/346a2904,event/7be5184a,CAUSES,causes,"The command to point out a location leads to a disorienting experience, metaphorically turning the speaker upside down.",+,0.8,0.7,45,48
+event/afdd7acb,event/6b774ee0,CAUSES,prevents,"The act of tearing him open is being prevented, which stops potential harm.",+,0.8,0.85,118,119
+event/168b2644,event/66b75bb0,CAUSES,causes,The lack of visual reference led to an imaginative conclusion about the mother's appearance.,+,0.8,0.85,7,11
+event/346a2904,event/98caa49a,CAUSES,enables,The command to point out a location prompts the man's attention towards the speaker.,+,0.7,0.8,45,47
+event/3c85710d,event/7c2d8479,CAUSES,enables,Providing the family name allows for the introduction of the sister's identity and marital status.,+,0.8,0.9,3,5
+event/5af20959,event/465574cc,CAUSES,causes,"The act of picking his way among obstacles likely led to his limping, suggesting a physical consequence.",+,0.7,0.8,132,134
+event/3112b56c,event/7b887074,CAUSES,causes,"The inscription suggests a significant relationship, implying that Georgiana's identity as a wife may have influenced her decision to abandon her struggle for a living.",+,0.7,0.8,12,14
+event/d91cb099,event/c9ca5f4a,CAUSES,aggravates,"The command to be quiet intensifies the threat of violence, suggesting a direct escalation of fear.",+,0.8,0.9,27,28
+event/fe0d8e0f,event/3f4563c6,CAUSES,enables,The difficulty in obtaining food suggests that the effort to provide food is made possible despite challenges.,+,0.7,0.8,121,124
+event/a5bbf1d3,event/c9ca5f4a,CAUSES,causes,"The sudden appearance of the man from the graves likely instills fear, prompting the aggressive threat.",+,0.8,0.7,26,28
+event/4dc6a63a,event/3b8ac632,CAUSES,prevents,"Being sick hinders attendance, suggesting that health directly affects the ability to participate.",-,0.8,0.85,100,101
+event/0e6c4c36,event/ef0fcc1a,CAUSES,enables,Feeling comfortable and safe allows the young man to approach quietly.,+,0.7,0.8,116,117
+event/fdaf1189,event/4160d83d,CAUSES,prevents,The demand for the file and food serves as a condition to avoid severe punishment.,+,0.8,0.9,105,106
+event/d99380f5,event/d06b8de5,CAUSES,prevents,The act of keeping oneself from crying directly leads to stopping the tears.,+,0.8,0.9,63,66
+event/d99380f5,event/69e9a0c9,CAUSES,enables,The act of keeping oneself from crying allows the person to look over their shoulder without being overwhelmed by emotion.,+,0.7,0.8,63,67
+event/0e6c4c36,event/d66b33d7,CAUSES,aggravates,"Feeling comfortable may lead to complacency, making it harder to resist unwanted advances.",+,0.7,0.8,116,120
+event/766876f4,event/74fcf2ef,CAUSES,causes,"The intense gaze suggests a strong emotional response, prompting physical action.",+,0.7,0.8,81,83
+event/49c9854a,event/afdd7acb,CAUSES,causes,Tucking oneself up may lead to a situation where one is vulnerable to being torn open.,+,0.7,0.6,114,118
+event/07c6b73d,event/59592dbc,CAUSES,causes,"The description of the subject's physical state (limping, shivering) suggests a direct cause for the chattering teeth, indicating a response to cold or fear.",+,0.8,0.85,34,36
+event/86cf3887,event/59592dbc,CAUSES,causes,"The description of the subject's physical state (limping, shivering) suggests a direct cause for the chattering teeth, indicating a response to cold or fear.",+,0.8,0.85,35,36
+event/b652ecdf,event/dda2c27b,CAUSES,enables,Making the best use of legs allows for movement towards the river.,+,0.7,0.8,139,141
+event/ef0fcc1a,event/fe0d8e0f,CAUSES,enables,"The young man's soft creeping allows him to approach, albeit with difficulty.",+,0.7,0.8,117,121
+event/74fcf2ef,event/9e39aa8a,CAUSES,causes,The action of taking someone by the arms directly leads to the tilting motion.,+,0.8,0.9,83,84
+event/d301cc7f,event/0a346ca7,CAUSES,enables,Understanding what a file is allows the person to request one.,+,0.8,0.9,88,92
+event/3f4563c6,event/06c82226,CAUSES,enables,"Providing food creates a positive association, leading to remembrance.",+,0.7,0.8,124,128
+event/92134c5e,event/59592dbc,CAUSES,causes,"The description of the subject's physical state (limping, shivering) suggests a direct cause for the chattering teeth, indicating a response to cold or fear.",+,0.8,0.85,33,36
+event/7b00ba3d,event/ef2b637e,CAUSES,causes,"The church's self-awareness leads to a realization of its physical presence, symbolized by the steeple.",+,0.8,0.85,51,52
+event/59592dbc,event/c346a52c,CAUSES,causes,"The physical reaction of teeth chattering indicates fear or anxiety, leading to a pleading response.",+,0.8,0.85,36,39
+event/72f1e3df,event/465574cc,CAUSES,causes,"The act of hugging himself suggests a need for comfort and stability, which may lead to him limping towards the wall for support.",+,0.7,0.8,133,134
+event/6b774ee0,event/fe0d8e0f,CAUSES,prevents,The act of keeping the young man from harming indicates a preventive action.,+,0.8,0.9,119,121
+event/d66b33d7,event/fe0d8e0f,CAUSES,causes,The difficulty in holding the young man off directly leads to experiencing great difficulty.,+,0.8,0.85,120,121
+event/f3d7db57,event/168b2644,CAUSES,causes,The absence of parental figures leads to a lack of familiarity with their likeness.,+,0.8,0.9,6,7
+event/85eba14f,event/00b9abd2,CAUSES,causes,"Tilting creates a sense of instability, prompting a clinging response for support.",+,0.8,0.85,95,98
+event/c52160ad,event/a5bbf1d3,CAUSES,causes,"Crying may indicate a strong emotional response, potentially triggering a startled reaction in others, such as the man rising from the graves.",+,0.7,0.6,25,26
+event/7be5184a,event/d49dd3b0,CAUSES,causes,Being turned upside down leads to the physical act of emptying pockets due to gravity.,+,0.8,0.9,48,49
+event/0c070c1f,event/b41894f6,CAUSES,causes,The question prompted a response indicating an action to retrieve the file.,+,0.8,0.9,122,123
+event/23cd98ed,event/b760a944,CAUSES,causes,The act of naming oneself as Pip leads to the identification with the family name Pirrip and the Christian name Philip.,+,0.8,0.9,0,1
+event/52643e66,event/fcca2ff6,CAUSES,causes,"The act of looking up conveys vulnerability, intensifying feelings of helplessness and danger.",+,0.8,0.85,86,90
+event/6bcc5e3a,event/1f7ca27d,CAUSES,causes,"The vivid imagery of the pirate evokes fear, leading to the search for the 'horrible young man'.",+,0.8,0.85,153,156
+event/260f7c2a,event/96376c59,CAUSES,enables,Hearing the words allows the young man to connect emotionally and physically with another boy.,+,0.7,0.8,109,110
+event/26905bb9,event/92134c5e,CAUSES,causes,"The man's poor clothing and physical condition lead to his limping, shivering, and aggressive demeanor.",+,0.8,0.85,30,33
+event/57db3832,event/6b169491,CAUSES,causes,The request for support leads to being held upright.,+,0.8,0.9,99,103
+event/afdd7acb,event/d66b33d7,CAUSES,causes,"The act of tearing open leads to difficulty in restraining the young man, indicating a direct cause-effect relationship.",+,0.8,0.85,118,120
+event/56b6f1ac,event/766876f4,CAUSES,causes,"The threatening tone in the cause implies a potential for harm, leading to the effect of apprehension.",+,0.7,0.8,77,81
+event/32c3a10c,event/3e296ebb,CAUSES,causes,"The act of seizing by the chin instills fear, leading to a plea for mercy.",+,0.8,0.9,37,38
+event/c1210eb5,event/74fcf2ef,CAUSES,causes,"Approaching the tombstone likely prompted a physical interaction, leading to being taken by the arms.",+,0.8,0.7,82,83
+event/32c3a10c,event/cdd72180,CAUSES,prevents,"The act of seizing by the chin implies a threatening gesture, prompting a plea for restraint.",-,0.7,0.8,37,40
+event/3c85710d,event/f3d7db57,CAUSES,causes,"The act of naming Pirrip as the family name implies a lack of knowledge about the parents, leading to the statement about never seeing them.",+,0.8,0.9,3,6
+event/91e291cb,event/72f1e3df,CAUSES,causes,"Returning home provides comfort, leading to a physical reaction of self-hugging as a coping mechanism.",+,0.7,0.8,129,133
+event/e8e12fca,event/4160d83d,CAUSES,causes,"The fearful terms serve as a threat that instills fear, leading to a strong emotional response.",+,0.8,0.85,104,106
+event/6a7f14fe,event/3c85710d,CAUSES,causes,"The infant's limited language ability leads to the simplification of names, resulting in the use of 'Pirrip' as the family name.",+,0.8,0.9,2,3
+event/1e8db4e6,event/42036a63,CAUSES,causes,"Ravenous eating likely leads to weight gain, resulting in being perceived as fat.",+,0.8,0.7,55,57
+event/1f7ca27d,event/de79cc9e,CAUSES,causes,"The act of looking for the young man instigated a fear response, prompting a hasty retreat home.",+,0.8,0.85,156,159
+event/8ee9f7cd,event/8e0b3073,CAUSES,enables,The vivid impression of identity allows for the recognition of the churchyard's bleakness.,+,0.7,0.8,17,18
+event/0c070c1f,event/3f4563c6,CAUSES,enables,The question prompts a response that leads to the action of providing food.,+,0.7,0.8,122,124
+event/39ee4883,event/d7ede6e2,CAUSES,enables,The description of the dark wilderness creates an atmosphere that allows fear to develop in the small bundle of shivers.,+,0.7,0.8,21,24
+event/21b797bd,event/72f1e3df,CAUSES,causes,The cold and wet environment prompts a physical response of hugging oneself for warmth and comfort.,+,0.8,0.85,131,133
+event/263fc53b,event/52643e66,CAUSES,causes,"The intensity of his gaze creates a power dynamic, making the other feel helpless.",+,0.8,0.9,85,86
+event/bc7941f5,event/3b8ac632,CAUSES,enables,Feeling giddy may increase the likelihood of attending more events due to heightened enthusiasm.,+,0.7,0.8,97,101
+event/742d570e,event/1e33045e,CAUSES,causes,"The act of holding tighter likely startled him, prompting a quick reaction.",+,0.7,0.8,62,65
+event/ae823e24,event/4edf4863,CAUSES,enables,The presence of the young man allows the boy's attempt to hide to be futile.,+,0.7,0.8,108,111
+event/1e33045e,event/d06b8de5,CAUSES,causes,The action of starting and running typically leads to the need to stop.,+,0.8,0.85,65,66
+event/58c18a61,event/f45fa188,CAUSES,enables,Stopping to look allows for the observation of the two black objects in the distance.,+,0.7,0.8,144,148
+event/f3d7db57,event/3b172c9c,CAUSES,causes,"The absence of parental figures leads to the creation of idealized images based on limited information, such as tombstones.",+,0.8,0.9,6,9
+event/a8298261,event/166e8d23,CAUSES,causes,The threat to life creates a feeling of helplessness in the individual.,+,0.8,0.85,87,89
+event/c346a52c,event/872967fb,CAUSES,causes,"The act of pleading in terror likely draws attention, causing someone to stare.",+,0.7,0.8,39,43
+event/d7ede6e2,event/d91cb099,CAUSES,aggravates,"The fear experienced by the bundle of shivers intensifies the reaction of the terrible voice, suggesting a heightened emotional state.",+,0.7,0.8,24,27
+event/32c3a10c,event/c346a52c,CAUSES,causes,"The act of seizing by the chin instills fear, prompting a plea.",+,0.8,0.9,37,39
+event/c52ba2ee,event/1388d863,CAUSES,aggravates,The man's threatening demeanor increases the speaker's concern about his intentions.,+,0.7,0.8,59,61
+event/3b172c9c,event/734dbf9d,CAUSES,causes,The speaker's initial perceptions of the deceased were influenced by the appearance of their tombstones.,+,0.8,0.9,9,13
+event/62df8e22,event/36cc5f83,CAUSES,aggravates,"The fearful man's condition is worsened by the harsh environment, leading to multiple injuries.",+,0.7,0.8,29,31
+event/8155c64d,event/d99380f5,CAUSES,enables,"The speaker's indecision allows them to suppress their emotions, preventing tears.",+,0.7,0.8,60,63
+event/ba8f84d8,event/ef0fcc1a,CAUSES,enables,A warm bed creates a comfortable environment that encourages the young man to approach quietly.,+,0.7,0.8,113,117
+event/d06b8de5,event/3eb45751,CAUSES,causes,"The action of stopping leads to a reaction of surprise or realization, expressed as 'Oh!'.",+,0.8,0.7,66,70
+event/26905bb9,event/0849133b,CAUSES,causes,"The man's poor clothing and physical condition lead to his limping, shivering, and aggressive demeanor.",+,0.8,0.85,30,32
+event/a8298261,event/1e3c3829,CAUSES,causes,"The statement implies a threat to life, leading to a physical reaction of tilting.",+,0.8,0.85,87,91
+event/6bcc5e3a,event/5d8896d5,CAUSES,enables,"The pirate's presence captures the attention of the cattle, enabling them to react by lifting their heads.",+,0.7,0.8,153,154
+event/00b9abd2,event/3b8ac632,CAUSES,enables,"Clinging to him suggests emotional support, which may allow for greater attendance or participation.",+,0.7,0.8,98,101
+event/85eba14f,event/6b169491,CAUSES,causes,"Tilting leads to being held upright, indicating a direct physical influence.",+,0.8,0.85,95,103
+event/8155c64d,event/742d570e,CAUSES,causes,"The phrase suggests a strong emotional or mental struggle, leading to a physical reaction of holding tighter to the tombstone.",+,0.7,0.8,60,62
+event/69e9a0c9,event/3eb45751,CAUSES,causes,"Looking over his shoulder likely startled him, prompting an exclamation.",+,0.8,0.9,67,70
+event/c4563c0d,event/b95f7229,CAUSES,aggravates,"The ominous appearance of the sky can heighten feelings of unease or fear, making the situation seem more threatening.",+,0.7,0.8,147,150
+event/8308518d,event/b652ecdf,CAUSES,enables,Stretching up allows for better mobility and use of legs.,+,0.7,0.8,136,139
+event/5c011a34,event/7b887074,CAUSES,causes,"The perception of the father's physical appearance may lead to assumptions about his character and life choices, influencing his struggle for a living.",+,0.7,0.8,10,14
+event/7b887074,event/573e24b1,CAUSES,causes,Giving up on the struggle for a living leads to a belief in inherent laziness or entitlement.,+,0.7,0.8,14,15
+event/21b797bd,event/a5d3f9cc,CAUSES,enables,"The act of glancing around suggests a heightened awareness, allowing for a deeper emotional connection with the speaker's gaze.",+,0.7,0.8,131,135
+event/ccd6a35a,event/0e6c4c36,CAUSES,enables,Drawing clothes over his head creates a sense of comfort and safety.,+,0.7,0.8,115,116
+event/ef2b637e,event/2811f6de,CAUSES,enables,Seeing the steeple from a high vantage point allows for the experience of being seated on the tombstone.,+,0.7,0.8,52,53
+event/b5b177c9,event/de79cc9e,CAUSES,causes,Fear prompted the individual to flee quickly for safety.,+,0.8,0.9,158,159
+event/3c85710d,event/f7cc372f,CAUSES,causes,"The act of giving Pirrip as a family name is based on the information from the tombstone, establishing a direct link.",+,0.8,0.9,3,4
+event/23cd98ed,event/3c85710d,CAUSES,causes,Pip's self-identification leads to the adoption of his father's family name.,+,0.8,0.9,0,3
+event/3373c56b,event/91e291cb,CAUSES,causes,Remembering your undertakings leads to the action of getting home.,+,0.8,0.9,127,129
+event/168b2644,event/fb23f5b7,CAUSES,causes,"The absence of photographs leads to a lack of likeness, as people could not see images of each other.",+,0.8,0.9,7,8
+event/6b774ee0,event/b41894f6,CAUSES,prevents,The act of keeping the young man from harming indicates a protective action that allows for the possibility of obtaining the file.,+,0.7,0.8,119,123
+event/8e0b3073,event/b33f8cfa,CAUSES,causes,Discovering the location of the churchyard leads to the realization of the deaths and burials of Philip Pirrip and Georgiana.,+,0.9,0.95,18,19
+event/6b169491,event/4160d83d,CAUSES,causes,The act of holding creates a threatening situation that leads to fear of severe consequences.,+,0.8,0.85,103,106
+event/a5d3f9cc,event/b652ecdf,CAUSES,enables,"The gaze suggests a moment of fear or urgency, which may motivate the subject to utilize their legs effectively.",+,0.7,0.6,135,139
+event/b760a944,event/6a7f14fe,CAUSES,causes,The family name and Christian name directly lead to the nickname 'Pip' as a simplification.,+,0.9,0.95,1,2
+event/3b172c9c,event/5c011a34,CAUSES,causes,The interpretation of tombstone inscriptions led to a specific mental image of the father.,+,0.8,0.9,9,10
+event/742d570e,event/d99380f5,CAUSES,causes,"Holding tighter to the tombstone indicates a desire to maintain composure, which directly leads to the effort to avoid crying.",+,0.8,0.85,62,63
+event/7b00ba3d,event/9ceafd6e,CAUSES,causes,"The church's self-awareness leads to a heightened emotional state, causing the individual to tremble and eat ravenously.",+,0.8,0.75,51,54
+event/c081635e,event/2ddd7108,CAUSES,enables,The visibility of the marshes as a distinct line allows sailors to use the beacon for navigation.,+,0.7,0.8,145,149
+event/3f4563c6,event/cc3ffcf9,CAUSES,enables,Providing food facilitates the ability to visit him at the Battery.,+,0.7,0.8,124,125
+event/263fc53b,event/a8298261,CAUSES,causes,"The intensity of his gaze creates a sense of urgency and threat, prompting the question of survival.",+,0.8,0.85,85,87
+event/f45fa188,event/2ddd7108,CAUSES,enables,The visibility of the black objects allows sailors to navigate using the beacon.,+,0.8,0.85,148,149
+event/74fcf2ef,event/263fc53b,CAUSES,causes,The act of taking someone by the arms creates a physical connection that intensifies eye contact and emotional engagement.,+,0.8,0.85,83,85
+event/3e296ebb,event/cdd72180,CAUSES,causes,The plea for mercy directly results from the fear of being harmed.,+,0.8,0.9,38,40
+event/0dc4c246,event/260f7c2a,CAUSES,enables,The speaker's assertion of not being alone suggests a connection that allows the young man to hear and engage with the speaker's words.,+,0.7,0.8,107,109
+event/b41894f6,event/cc3ffcf9,CAUSES,enables,The promise to provide the file facilitates the action of meeting early in the morning.,+,0.7,0.8,123,125
+event/0dc4c246,event/96376c59,CAUSES,enables,"The speaker's realization of not being alone allows for deeper emotional connections, enabling the young man to reach the boy's heart.",+,0.7,0.8,107,110
+event/742d570e,event/d06b8de5,CAUSES,causes,"The action of holding tighter suggests a strong emotional response, leading to the cessation of movement.",+,0.8,0.85,62,66
+event/260f7c2a,event/4edf4863,CAUSES,causes,"The young man's awareness of the speaker's words leads to the boy's inability to hide, as the words create a connection between them.",+,0.8,0.9,109,111
+event/3b172c9c,event/3112b56c,CAUSES,causes,"The initial fancies about the individuals were influenced by the inscriptions on their tombstones, leading to a specific interpretation of their identities.",+,0.8,0.85,9,12
+event/c1210eb5,event/52643e66,CAUSES,causes,"The act of coming closer creates a direct interaction, leading to the feeling of helplessness.",+,0.8,0.85,82,86
+event/57db3832,event/4dc6a63a,CAUSES,enables,"The request to remain upright suggests a desire to avoid worsening sickness, implying that maintaining posture may help prevent illness.",+,0.7,0.8,99,100
+event/d66b33d7,event/3f4563c6,CAUSES,enables,"The difficulty in holding the young man off allows for the provision of food, suggesting a supportive action.",+,0.7,0.8,120,124
+event/d91cb099,event/62df8e22,CAUSES,causes,"The command to be quiet instills fear, leading to the appearance of a fearful man in grey.",+,0.7,0.8,27,29
+event/f7cc372f,event/fb23f5b7,CAUSES,enables,The authority of the tombstone allows for the remembrance of individuals in a time before photographs existed.,+,0.7,0.8,4,8
+event/3373c56b,event/06c82226,CAUSES,causes,Recalling past experiences can trigger memories of specific individuals associated with those experiences.,+,0.8,0.85,127,128
+event/42d8dbc2,event/b652ecdf,CAUSES,causes,The action of seeing him turn prompted the decision to head home quickly.,+,0.8,0.9,137,139
+event/263fc53b,event/166e8d23,CAUSES,causes,The intensity of his gaze creates a feeling of vulnerability in the observer.,+,0.8,0.9,85,89
+event/a5bbf1d3,event/62df8e22,CAUSES,causes,"The sudden appearance of the man from the graves likely instills fear, leading to the description of him as fearful.",+,0.8,0.85,26,29
+event/ef2b637e,event/152d2d26,CAUSES,causes,"The act of seeing the steeple prompts a physical reaction, leading to the church appearing to jump.",+,0.8,0.9,52,102
+event/3f4563c6,event/dda2c27b,CAUSES,enables,Providing food allows the subject to continue their journey towards the river.,+,0.7,0.8,124,141
+event/2ddd7108,event/be51e614,CAUSES,enables,"The beacon provides guidance for sailors, while the gibbet serves as a landmark, enabling navigation.",+,0.7,0.8,149,151
+event/7a6e1750,event/c46c1fca,CAUSES,causes,The man's demand for information is a direct result of his intense focus and inquiry.,+,0.8,0.85,41,44
+event/166e8d23,event/fcca2ff6,CAUSES,enables,"The first event contributes to the feeling of helplessness, which allows for the emergence of a greater sense of danger.",+,0.8,0.9,89,90
+event/d7ede6e2,event/c52160ad,CAUSES,causes,"Fear can trigger emotional responses, leading to crying as a reaction to distress.",+,0.8,0.85,24,25
+event/be51e614,event/6bcc5e3a,CAUSES,enables,"The presence of the gibbet and chains evokes the image of the pirate, enabling the imagination of the pirate's return.",+,0.7,0.8,151,153
+event/ccd6a35a,event/afdd7acb,CAUSES,causes,Drawing the clothes over his head may lead to a struggle that results in tearing.,+,0.8,0.7,115,118
+event/7be5184a,event/7b00ba3d,CAUSES,causes,The phrase suggests a transformative experience that leads to self-awareness or realization within the church.,+,0.7,0.6,48,51
+event/9363b59b,event/872967fb,CAUSES,causes,The command to 'give it mouth' implies an action that leads to the subject's attention being directed towards the speaker.,+,0.7,0.8,42,43
+event/b41894f6,event/3373c56b,CAUSES,causes,Making a commitment to provide the file prompts memory of the undertaking.,+,0.8,0.85,123,127
+event/52643e66,event/00b9abd2,CAUSES,causes,"The helpless gaze indicates a need for support, prompting the action of clinging.",+,0.8,0.85,86,98
+event/c56921aa,event/b652ecdf,CAUSES,enables,Setting my face towards home motivates and directs my physical effort.,+,0.8,0.9,138,139
+event/26905bb9,event/36cc5f83,CAUSES,aggravates,"The man's poor condition (no hat, broken shoes) likely worsens his exposure to harsh elements, leading to further injuries.",+,0.8,0.85,30,31
+event/a5bbf1d3,event/d91cb099,CAUSES,causes,"The sudden appearance of the man from the graves likely startled or provoked a reaction, leading to the outburst.",+,0.8,0.7,26,27
+event/d4b93b4e,event/3373c56b,CAUSES,enables,The man's threat may motivate the listener to remember their commitment due to fear of consequences.,+,0.7,0.8,126,127
+event/9e39aa8a,event/52643e66,CAUSES,causes,The action of tilting creates a physical position that leads to a helpless gaze.,+,0.8,0.85,84,86
+event/766876f4,event/c1210eb5,CAUSES,enables,"The man's dark glances suggest curiosity or contemplation, which may have prompted him to approach the tombstone.",+,0.7,0.8,81,82
+event/85eba14f,event/bc7941f5,CAUSES,causes,Tilting induces a physical sensation that can lead to giddiness.,+,0.8,0.9,95,97
+event/cc3ffcf9,event/06c82226,CAUSES,enables,The act of coming to him at the Battery allows for the memory of the young man to be recalled.,+,0.7,0.8,125,128
+event/c52ba2ee,event/8155c64d,CAUSES,enables,"The man's threatening tone suggests he is considering eating them, indicating a potential action.",+,0.7,0.8,59,60
+event/ef0fcc1a,event/6b774ee0,CAUSES,prevents,The act of keeping the young man away is directly preventing potential harm.,+,0.8,0.9,117,119
+event/f3d7db57,event/5c011a34,CAUSES,enables,The absence of parental figures allows for imaginative interpretations of their characteristics based on limited information.,+,0.7,0.8,6,10
+event/465574cc,event/a5d3f9cc,CAUSES,causes,"The act of limping suggests vulnerability, which may evoke a sense of fear or unease, leading to the perception of being watched by the dead.",+,0.7,0.8,134,135
+event/ba8f84d8,event/ccd6a35a,CAUSES,causes,"Warmth in bed can lead to a desire for more comfort, prompting the action of drawing clothes over the head.",+,0.8,0.85,113,115
+event/6b774ee0,event/0c070c1f,CAUSES,prevents,"The speaker is actively stopping the young man from causing harm, indicating a protective action.",+,0.8,0.9,119,122
+event/0849133b,event/59592dbc,CAUSES,causes,"The description of the subject's physical state (limping, shivering) suggests a direct cause for the chattering teeth, indicating a response to cold or fear.",+,0.8,0.85,32,36
+event/3b8ac632,event/fdaf1189,CAUSES,enables,"The intention to attend more suggests a willingness to engage, which facilitates the request for the file and provisions.",+,0.7,0.8,101,105
+event/346a2904,event/7ac741c0,CAUSES,causes,The command to 'point out the place' directly leads to the action of pointing to the village's location.,+,0.9,0.95,45,46
+event/a5d3f9cc,event/42d8dbc2,CAUSES,causes,"The intense gaze and eerie atmosphere prompt a sense of urgency, leading the observer to head home.",+,0.7,0.8,135,137
+event/c9ca5f4a,event/62df8e22,CAUSES,causes,"The threat of violence instills fear in the man, leading to his fearful demeanor.",+,0.8,0.9,28,29
+event/fdaf1189,event/260f7c2a,CAUSES,enables,The request for the file and food allows the young man to hear the speaker's words.,+,0.7,0.8,105,109
+event/ba8f84d8,event/0e6c4c36,CAUSES,enables,"A warm bed creates a sense of comfort, leading to feelings of safety.",+,0.7,0.8,113,116
+event/98caa49a,event/d49dd3b0,CAUSES,causes,The man's action of looking at the speaker prompts him to empty his pockets.,+,0.8,0.9,47,49
+event/1e33045e,event/69e9a0c9,CAUSES,causes,The act of starting and running prompts him to check his surroundings.,+,0.8,0.85,65,67
+event/85eba14f,event/8a14d100,CAUSES,causes,The action of tilting directly leads to the feeling of fear.,+,0.8,0.9,95,96
+event/28d50411,event/bc7941f5,CAUSES,causes,The act of getting 'wittles' (food) can lead to feelings of giddiness due to satisfaction or excitement.,+,0.7,0.8,93,97
+event/6d6e5e95,event/8a14d100,CAUSES,causes,The threat of violence instills fear in the individual.,+,0.9,0.95,94,96
+event/346a2904,event/d49dd3b0,CAUSES,causes,"The command to point out the place likely led to the action of emptying pockets, suggesting a direct cause-and-effect relationship.",+,0.8,0.7,45,49
+event/21b797bd,event/465574cc,CAUSES,causes,"The action of glancing around suggests awareness of the environment, which may lead to a cautious movement towards the wall.",+,0.7,0.8,131,134
+event/96376c59,event/4edf4863,CAUSES,causes,"The young man's unique approach allows him to connect deeply with the boy, making concealment futile.",+,0.8,0.9,110,111
+event/36cc5f83,event/07c6b73d,CAUSES,causes,"The man's suffering from various physical injuries and discomfort leads to his limping, shivering, glaring, and growling.",+,0.8,0.9,31,34
+event/42d8dbc2,event/c56921aa,CAUSES,causes,The act of seeing him turning prompted the decision to head home.,+,0.8,0.9,137,138
+event/8155c64d,event/1388d863,CAUSES,prevents,"The speaker's hesitation suggests a desire to avoid a negative outcome, indicating a preventive attitude.",-,0.7,0.8,60,61
+event/168b2644,event/3b172c9c,CAUSES,causes,The absence of likeness led to unreasonable fancies based on tombstones.,+,0.8,0.9,7,9
+event/c9ca5f4a,event/0849133b,CAUSES,aggravates,"The threat of violence increases the child's fear and distress, leading to physical and emotional reactions.",+,0.8,0.9,28,32
+event/6a7f14fe,event/7c2d8479,CAUSES,enables,"The speaker's limited understanding allows for the introduction of his sister's name, linking her to his identity.",+,0.7,0.8,2,5
+event/9ceafd6e,event/1e8db4e6,CAUSES,causes,"The act of trembling is a physical response that occurs as he eats ravenously, indicating a direct connection between the two events.",+,0.8,0.9,54,55
+event/c346a52c,event/9363b59b,CAUSES,causes,"The act of pleading in terror likely prompts a demand for a response, indicated by the phrase 'Give it mouth!'.",+,0.7,0.8,39,42
+event/bc7941f5,event/00b9abd2,CAUSES,causes,"Feeling giddy can lead to a sense of excitement or instability, prompting a physical reaction of clinging for support.",+,0.7,0.8,97,98
+event/ba8f84d8,event/49c9854a,CAUSES,causes,Feeling warm in bed encourages a person to tuck themselves up for comfort.,+,0.8,0.85,113,114
+event/3112b56c,event/734dbf9d,CAUSES,causes,The inscription indicates a memorialization that leads to the placement of gravestones.,+,0.8,0.85,12,13
+event/2ddd7108,event/6bcc5e3a,CAUSES,enables,"The beacon provides guidance, allowing the sailors to navigate effectively, which may evoke imagery of a pirate's return.",+,0.6,0.7,149,153
+event/c4563c0d,event/2ddd7108,CAUSES,enables,"The ominous sky conditions provide a visual reference point for sailors, allowing them to navigate effectively.",+,0.7,0.8,147,149
+event/bc7941f5,event/57db3832,CAUSES,causes,"Feeling giddy can lead to a loss of balance, prompting a request for assistance to remain upright.",+,0.7,0.8,97,99
+event/52643e66,event/166e8d23,CAUSES,causes,The act of looking up helplessly intensifies the feeling of helplessness.,+,0.8,0.85,86,89
+event/fcca2ff6,event/8a14d100,CAUSES,causes,A greater sense of helplessness and danger can lead to increased fear.,+,0.8,0.9,90,96
+event/0c070c1f,event/cc3ffcf9,CAUSES,enables,The invitation to speak prompts the decision to meet early in the morning.,+,0.7,0.8,122,125
+event/ef0fcc1a,event/d66b33d7,CAUSES,aggravates,The young man's creeping behavior increases the difficulty of resisting him.,+,0.7,0.8,117,120
+event/afdd7acb,event/fe0d8e0f,CAUSES,causes,The act of tearing him open directly leads to the difficulty experienced.,+,0.8,0.85,118,121
+event/57db3832,event/3b8ac632,CAUSES,enables,"Maintaining upright posture allows for better focus and engagement, facilitating attendance.",+,0.7,0.8,99,101
+event/309e2546,event/d7ede6e2,CAUSES,causes,"The fear of the wind is linked to its origin from the savage sea, suggesting a direct cause of anxiety.",+,0.8,0.85,23,24
+event/9e39aa8a,event/a8298261,CAUSES,enables,The action of tilting back creates a situation where the speaker can assert control and pose a life-threatening question.,+,0.7,0.8,84,87
+event/152d2d26,event/6b169491,CAUSES,causes,"The dip and roll motion caused a shift in balance, allowing him to hold her upright on the stone.",+,0.8,0.9,102,103
+event/4b67ee9c,event/9ceafd6e,CAUSES,causes,"The lack of food leads to hunger, causing the individual to eat the bread with urgency.",+,0.8,0.9,50,54
+event/8a14d100,event/00b9abd2,CAUSES,causes,Fear leads to a need for physical reassurance and support.,+,0.8,0.9,96,98
+event/b41894f6,event/3f4563c6,CAUSES,enables,The promise to provide the file facilitates the act of gathering food bits.,+,0.7,0.8,123,124
+event/6b774ee0,event/d66b33d7,CAUSES,prevents,The speaker is actively restraining the young man to prevent him from causing harm.,+,0.8,0.9,119,120
+event/5c011a34,event/3112b56c,CAUSES,enables,"The description of the letters allows the speaker to infer characteristics about their father, enabling a connection to the inscription.",+,0.7,0.8,10,12
+event/6d6e5e95,event/85eba14f,CAUSES,causes,The threat of violence prompts a physical reaction.,+,0.7,0.8,94,95
+event/49c9854a,event/ef0fcc1a,CAUSES,enables,"Tucking oneself up allows for stealthy movement, facilitating the young man's approach.",+,0.7,0.8,114,117
+event/23cd98ed,event/6a7f14fe,CAUSES,causes,The act of naming oneself as Pip directly leads to the ability to articulate that name.,+,0.8,0.9,0,2
+event/c081635e,event/f45fa188,CAUSES,enables,"The description of the marshes sets the scene, allowing the observer to notice the two upright black objects.",+,0.7,0.8,145,148
+event/00b9abd2,event/57db3832,CAUSES,enables,"Clinging provides physical support, allowing the speaker to maintain their balance.",+,0.8,0.9,98,99
+event/96376c59,event/ba8f84d8,CAUSES,enables,"The young man's unique approach allows him to connect emotionally, which can lead to feelings of comfort and warmth.",+,0.7,0.8,110,113
+event/c52160ad,event/62df8e22,CAUSES,causes,"Crying can indicate fear or distress, which may lead to a fearful demeanor.",+,0.7,0.8,25,29
+event/d49dd3b0,event/4b67ee9c,CAUSES,causes,Emptying pockets directly results in having nothing but the remaining item.,+,0.8,0.9,49,50
+event/dda2c27b,event/c460aa25,CAUSES,enables,The act of going towards the river allows for the possibility of navigating the stones.,+,0.7,0.8,141,143
+event/fcca2ff6,event/1e3c3829,CAUSES,causes,"Tilting creates a physical sensation of vulnerability, enhancing feelings of helplessness and danger.",+,0.8,0.85,90,91
+event/872967fb,event/98caa49a,CAUSES,enables,"Staring at someone can prompt them to look back, facilitating eye contact.",+,0.7,0.8,43,47
+event/5af20959,event/72f1e3df,CAUSES,causes,"The act of navigating through nettles and brambles likely induces discomfort and anxiety, leading to the character's need to physically embrace himself for comfort.",+,0.7,0.8,132,133
+event/0c070c1f,event/d4b93b4e,CAUSES,causes,"The question prompts a strong emotional response, leading to the man's extreme declaration.",+,0.8,0.85,122,126
+event/1e3c3829,event/28d50411,CAUSES,causes,"Tilting leads to a change in position, allowing access to food.",+,0.8,0.9,91,93
+event/3eb45751,event/0db9a2e3,CAUSES,causes,"The exclamation 'Oh!' prompts a response, indicating a realization or surprise that leads to the speaker returning.",+,0.8,0.9,70,71
+event/a5bbf1d3,event/3e296ebb,CAUSES,causes,"The sudden appearance of the man from the graves instills fear in the speaker, leading to a plea for mercy.",+,0.8,0.9,26,38
+event/c52160ad,event/d91cb099,CAUSES,causes,"Crying often prompts a reaction from others, especially in authoritative contexts.",+,0.8,0.9,25,27
+event/96376c59,event/49c9854a,CAUSES,enables,"The young man's unique approach allows him to connect with the boy, making it possible for the boy to feel comfortable and secure.",+,0.7,0.8,110,114
+event/07c6b73d,event/3e296ebb,CAUSES,causes,"The character's aggressive demeanor and physical distress instill fear in the other character, prompting a plea for mercy.",+,0.8,0.9,34,38
+event/7b887074,event/8e0b3073,CAUSES,causes,"Giving up on the struggle for a living leads to a sense of hopelessness, which can result in a bleak perception of one's surroundings, such as viewing a churchyard negatively.",+,0.7,0.8,14,18
+event/86cf3887,event/3e296ebb,CAUSES,causes,"The character's aggressive demeanor and physical distress instill fear in the other character, prompting a plea for mercy.",+,0.8,0.9,35,38
+event/5cc19add,event/c52ba2ee,CAUSES,enables,"The man's compliment about the dog's cheeks suggests a desire to eat them, enabling a threatening implication.",+,0.7,0.8,56,59
+event/3e296ebb,event/c346a52c,CAUSES,causes,The plea for mercy is a direct response to the fear of being harmed.,+,0.9,0.95,38,39
+event/152d2d26,event/e8e12fca,CAUSES,causes,"The dramatic action described leads to a heightened emotional response, prompting the speaker to express fear.",+,0.8,0.85,102,104
+event/96376c59,event/e250e1a5,CAUSES,enables,The young man's secretive approach may encourage the boy to feel secure enough to lock his door.,+,0.7,0.8,110,112
+event/a8298261,event/fcca2ff6,CAUSES,causes,The threat to life creates feelings of helplessness and danger.,+,0.8,0.85,87,90
+event/766876f4,event/263fc53b,CAUSES,causes,"The intense gaze at his leg suggests a deep emotional or physical discomfort, leading to a powerful connection in eye contact.",+,0.7,0.8,81,85
+event/c9ca5f4a,event/36cc5f83,CAUSES,aggravates,The threat of violence increases the man's suffering from his physical injuries.,+,0.7,0.8,28,31
+event/c346a52c,event/cdd72180,CAUSES,causes,The plea in terror likely prompts a response of fear or caution from the other party.,+,0.8,0.75,39,40
+event/26905bb9,event/07c6b73d,CAUSES,causes,"The man's poor clothing and physical condition lead to his limping, shivering, and aggressive demeanor.",+,0.8,0.85,30,34
+event/8e0b3073,event/76794ee2,CAUSES,causes,"The discovery of the churchyard implies the presence of graves, leading to the realization of the children's deaths.",+,0.8,0.9,18,20
+event/5af20959,event/a5d3f9cc,CAUSES,enables,"The act of navigating through nettles and brambles suggests a struggle, which allows for the perception of eluding the dead.",+,0.7,0.8,132,135
+event/8e0b3073,event/39ee4883,CAUSES,enables,"The discovery of the churchyard allows for the description of the surrounding marshes, linking the two settings.",+,0.7,0.8,18,21
+event/21b797bd,event/5af20959,CAUSES,enables,The act of glancing around allows the observer to notice the subject's careful movement through obstacles.,+,0.7,0.8,131,132
+event/1e3c3829,event/85eba14f,CAUSES,causes,The first action of tilting led directly to the second action of tilting again.,+,0.8,0.9,91,95
+event/6b169491,event/0dc4c246,CAUSES,enables,"The act of holding creates a supportive environment, allowing the speaker to feel less isolated.",+,0.7,0.8,103,107
+event/6d6e5e95,event/bc7941f5,CAUSES,causes,"The threat of violence induces a state of fear or excitement, leading to a giddy reaction.",+,0.7,0.6,94,97
+event/42d8dbc2,event/dda2c27b,CAUSES,prevents,The act of turning towards home suggests a decision to avoid the river.,+,0.7,0.8,137,141
+event/0a346ca7,event/28d50411,CAUSES,enables,Obtaining the file allows for the provision of food.,+,0.7,0.8,92,93
+event/d7ede6e2,event/c9ca5f4a,CAUSES,aggravates,The fear experienced by the bundle of shivers intensifies the threatening response from the speaker.,+,0.7,0.8,24,28
+event/cc3ffcf9,event/3373c56b,CAUSES,enables,Coming to him early allows for reflection on past actions.,+,0.7,0.8,125,127
+event/86cf3887,event/c346a52c,CAUSES,causes,"The aggressive behavior of the subject instills fear in the observer, leading to a pleading response.",+,0.8,0.85,35,39
+event/fcca2ff6,event/6d6e5e95,CAUSES,aggravates,The threat of violence increases feelings of helplessness and danger.,+,0.8,0.9,90,94
+event/168b2644,event/5c011a34,CAUSES,enables,The absence of likeness allows for imaginative interpretation of the father's appearance based on the letters.,+,0.7,0.8,7,10
+event/3b172c9c,event/66b75bb0,CAUSES,causes,The fanciful interpretation of tombstones led to a misguided perception of the mother's appearance.,+,0.7,0.8,9,11
+event/96376c59,event/3e83ca34,CAUSES,causes,"The young man's unique approach emotionally affects the boy, leading to a physical reaction of self-hugging.",+,0.8,0.85,110,142
+event/b9aa27a8,event/d7ede6e2,CAUSES,enables,The river's presence creates an atmosphere that heightens the bundle's fear.,+,0.7,0.8,22,24
+event/c1210eb5,event/263fc53b,CAUSES,causes,"The act of coming closer creates a direct interaction, leading to a powerful gaze.",+,0.8,0.85,82,85
+event/72f1e3df,event/a5d3f9cc,CAUSES,causes,"The act of hugging himself suggests a struggle with inner turmoil, leading to a fearful perception of the dead, indicating a psychological response.",+,0.7,0.8,133,135
+event/4edf4863,event/ccd6a35a,CAUSES,enables,The boy's attempt to hide allows the young man to draw the clothes over his head.,+,0.7,0.8,111,115
+event/fdaf1189,event/0dc4c246,CAUSES,enables,The request for the file and food enables the speaker to feel less alone by anticipating assistance.,+,0.7,0.8,105,107
+event/e250e1a5,event/ba8f84d8,CAUSES,enables,"Locking the door allows the boy to feel secure and comfortable, enabling him to stay warm in bed.",+,0.7,0.6,112,113
