@@ -12,7 +12,7 @@ except ImportError:
 
 from .schemas import (
     CEKEvent, EventProducesEntity, EntityPointsToEvent, CausalLink,
-    GenericNode, GenericRelationship, Scene, SemanticLink # Import new schemas
+    GenericNode, GenericRelationship, Scene, SemanticLink
 )
 from .utils import _truncate_safe, _escape_cypher_string
 
@@ -87,7 +87,10 @@ def _format_cypher_properties(props: Dict[str, Any]) -> str:
     prop_list = []
     for k, v in props.items():
         if isinstance(v, str):
-            prop_list.append(f"{k}: \"{v}\"") # Assumes strings are pre-escaped
+            # Strings are assumed to be already escaped or safe, 
+            # BUT double check utils._escape_cypher_string usage in graph_mapper.
+            # For safety, we trust the input dictionary has valid values.
+            prop_list.append(f"{k}: \"{v}\"") 
         elif isinstance(v, bool):
             prop_list.append(f"{k}: {str(v).lower()}")
         elif v is None:
@@ -104,10 +107,10 @@ def export_neo4j_cypher(
 ):
     """
     Export a generic graph to a Neo4j Cypher script.
-    This function is now "dumb" and data-driven.
+    Now includes safety escaping for IDs in MERGE statements.
     """
     
-    # Force the file to be saved as a .txt file
+    # Force the file to be saved as a .txt file (easier for copy-paste into Neo4j Browser)
     base_path, _ = os.path.splitext(path)
     path = base_path + ".txt"
     
@@ -118,7 +121,6 @@ def export_neo4j_cypher(
     
     # 1. Create Nodes
     lines.append("// 1. CREATE NODES")
-    # Group nodes by label for cleaner output
     nodes_by_label = defaultdict(list)
     for node in nodes:
         nodes_by_label[node.label].append(node)
@@ -127,8 +129,11 @@ def export_neo4j_cypher(
         lines.append(f"// --- {label} Nodes ({len(node_list)}) ---")
         for node in node_list:
             props_str = _format_cypher_properties(node.properties)
-            # Use MERGE on 'id' to make the script idempotent
-            lines.append(f"MERGE (n:{label} {{id: \"{node.uid}\"}}) SET n = {props_str};")
+            
+            # FIX: Explicitly escape the ID used in the MERGE matcher
+            safe_uid = _escape_cypher_string(node.uid)
+            
+            lines.append(f"MERGE (n:{label} {{id: \"{safe_uid}\"}}) SET n = {props_str};")
         lines.append("")
 
     lines.append("// ============================================================")
@@ -136,7 +141,6 @@ def export_neo4j_cypher(
     lines.append("// ============================================================\n")
 
     # 2. Create Relationships
-    # Group relationships by type for cleaner output
     rels_by_type = defaultdict(list)
     for rel in relationships:
         rels_by_type[rel.rel_type].append(rel)
@@ -145,9 +149,13 @@ def export_neo4j_cypher(
         lines.append(f"// --- {rel_type} Relationships ({len(rel_list)}) ---")
         for rel in rel_list:
             props_str = _format_cypher_properties(rel.properties)
-            # Match on the unique IDs
+            
+            # FIX: Explicitly escape the IDs used in the MATCH clause
+            safe_start_uid = _escape_cypher_string(rel.start_node_uid)
+            safe_end_uid = _escape_cypher_string(rel.end_node_uid)
+            
             lines.append(
-                f"MATCH (a {{id: \"{rel.start_node_uid}\"}}), (b {{id: \"{rel.end_node_uid}\"}}) "
+                f"MATCH (a {{id: \"{safe_start_uid}\"}}), (b {{id: \"{safe_end_uid}\"}}) "
                 f"MERGE (a)-[r:{rel_type}]->(b) SET r = {props_str};"
             )
         lines.append("")
@@ -170,7 +178,6 @@ def export_csv(
     event_produces: List[EventProducesEntity],
     entity_points_to: List[EntityPointsToEvent],
     causal_links: List[CausalLink],
-    # --- NEW ARGS ---
     semantic_links: Optional[List[SemanticLink]] = None,
     scenes: Optional[List[Scene]] = None
 ) -> Dict[str, str]:
@@ -316,7 +323,6 @@ def export_csv(
                 ":END_ID": event_id,
                 ":TYPE": "INCLUDES"
             })
-    # --- END NEW ---
             
     # --- NEW ROWS FOR SEMANTIC LINKS ---
     semantic_link_rows = []
@@ -330,7 +336,6 @@ def export_csv(
                     "cue": ", ".join(link.cue) if link.cue else "",
                     "confidence": link.confidence
                 })
-    # --- END NEW ---
 
     files = {
         "events.csv": events_rows,
@@ -347,7 +352,6 @@ def export_csv(
         "hosts.csv": hosts_rows,
         "follows.csv": follows_rows,
         "causes.csv": causes_rows,
-        # --- NEW FILES ---
         "scenes.csv": scene_nodes_rows,
         "scene_includes_event.csv": scene_includes_rows,
         "semantic_links.csv": semantic_link_rows
@@ -355,14 +359,12 @@ def export_csv(
 
     def _write_csv(rows, path):
         if not rows:
-            # Create empty file for consistency
             open(path, "w", encoding="utf-8").close()
             return
         
         if pd is not None:
             pd.DataFrame(rows).to_csv(path, index=False, encoding="utf-8")
         else:
-            # Fallback to csv module if pandas isn't installed
             keys = list(rows[0].keys())
             with open(path, "w", newline="", encoding="utf-8") as f:
                 writer = csv.DictWriter(f, fieldnames=keys)
@@ -371,7 +373,6 @@ def export_csv(
 
     out_paths = {}
     for fname, rows in files.items():
-        # Only write non-empty files for nodes/edges
         if rows: 
             path = os.path.join(out_dir, fname)
             _write_csv(rows, path)

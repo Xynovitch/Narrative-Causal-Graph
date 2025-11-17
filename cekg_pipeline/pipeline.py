@@ -95,14 +95,18 @@ class CEKGPreprocessor:
         if not isinstance(event_data_list, list):
             event_data_list = []
         
+        # Ensure logprobs_list has the same length as event_data_list
+        if not logprobs:
+            logprobs_list = [None] * len(event_data_list)
+        else:
+            # This is a simplification; proper logprob parsing is complex
+            logprobs_list = [logprobs] * len(event_data_list)
+        
         for i, event_data in enumerate(event_data_list):
             try:
                 # --- Confidence Calculation ---
                 if enable_confidence_calibration:
-                    # NOTE: This is complex. We'd need to map logprobs to *this specific event*.
-                    # For now, we apply it to the whole batch. A real implementation
-                    # would need to parse the logprobs object in detail.
-                    event_logprobs = logprobs # Simplified
+                    event_logprobs = logprobs_list[i] # Simplified
                     confidence = self._calculate_calibrated_confidence(event_data, event_logprobs)
                 else:
                     confidence = float(event_data.get("confidence", 0.7))
@@ -222,28 +226,24 @@ class CEKGPreprocessor:
         self, 
         paragraphs_with_chapter: List[tuple[str, int]],
         enable_llm_expansion: bool,
-        enable_confidence_calibration: bool
+        enable_confidence_calibration: bool,
+        extraction_style: str # <-- NEW ARG
     ) -> Tuple[List[schemas.CEKEvent], List[schemas.EventProducesEntity], Dict[str, List[Tuple[str, int]]]]:
-        """
-        (DEFAULT MODE) Process a batch of paragraphs in parallel.
-        """
+        """Process a batch of paragraphs in parallel (Standard Mode)."""
         all_events = []
         all_produces = []
         entity_occurrences_batch = defaultdict(list)
         
         try:
-            # 1. Get JSON data for all paragraphs in parallel
-            # Now returns (data, logprobs)
             results_batch = await llm_service.batch_extract_events(
                 paragraphs_with_chapter, 
                 self.openai_model,
                 self.client,
                 enable_llm_expansion,
-                enable_confidence_calibration # Request logprobs if calibrating
+                enable_confidence_calibration,
+                extraction_style # Pass style
             )
             
-            # 2. Parse JSON into schema objects
-            # We get a list of lists (one list of events per paragraph)
             for (para_events_json, logprobs), (para, chapter_id) in zip(results_batch, paragraphs_with_chapter):
                 events, produces, occ_batch = self._parse_event_json_data(
                     para_events_json, chapter_id, logprobs, enable_confidence_calibration
@@ -255,7 +255,6 @@ class CEKGPreprocessor:
 
         except Exception as e:
             print(f"[error] Batch processing failed: {e}")
-            traceback.print_exc()
         
         return all_events, all_produces, entity_occurrences_batch
     
@@ -264,30 +263,26 @@ class CEKGPreprocessor:
         text_chunk: str,
         chapter_id: int,
         enable_llm_expansion: bool,
-        enable_confidence_calibration: bool
+        enable_confidence_calibration: bool,
+        extraction_style: str # <-- NEW ARG
     ) -> Tuple[List[schemas.CEKEvent], List[schemas.EventProducesEntity], Dict[str, List[Tuple[str, int]]]]:
-        """
-        (EXPERIMENTAL MODE) Process a single large chunk of text.
-        """
+        """Process a single large chunk of text (Experimental Mode)."""
         try:
-            # 1. Get JSON data for the single large chunk
-            events_json, logprobs = await llm_service.extract_events_from_chunk_async(
+            events_json, logprobs = await llm_service.extract_events_from_text( # <-- Use the universal function
                 text_chunk,
                 chapter_id,
                 self.openai_model,
                 self.client,
                 enable_llm_expansion,
-                enable_confidence_calibration
+                enable_confidence_calibration,
+                extraction_style # Pass style
             )
             
-            # 2. Parse the resulting JSON list
             return self._parse_event_json_data(
                 events_json, chapter_id, logprobs, enable_confidence_calibration
             )
-
         except Exception as e:
             print(f"[error] Text chunk processing failed: {e}")
-            traceback.print_exc()
             return [], [], defaultdict(list)
 
     async def _batch_causal_linking(
@@ -362,7 +357,6 @@ class CEKGPreprocessor:
         
         accepted_edges = 0
         rejected_edges = 0
-        no_relation_edges = 0 # <-- NEW COUNTER
         
         for batch_start in range(0, len(pairs_to_assess), batch_size):
             batch = pairs_to_assess[batch_start:batch_start + batch_size]
@@ -373,7 +367,6 @@ class CEKGPreprocessor:
             
             for (cause_quote, effect_quote, cause_id, effect_id), assessment in zip(batch, assessments):
                 if assessment is None or assessment.get("relationType") == "none":
-                    no_relation_edges += 1 # <-- Track 'none' responses here
                     continue
                 
                 if not self.dag_validator.add_edge(cause_id, effect_id):
@@ -401,18 +394,16 @@ class CEKGPreprocessor:
                 causal_links.append(link)
                 accepted_edges += 1
             
-            # <-- UPDATED PRINT STATEMENT
             print(f"[causal] Progress: {min(batch_start + batch_size, len(pairs_to_assess))}/{len(pairs_to_assess)} "
-                  f"(accepted: {accepted_edges}, rejected (dag): {rejected_edges}, none: {no_relation_edges})")
+                  f"(accepted: {accepted_edges}, rejected: {rejected_edges})")
         
-        print(f"[dag] Final edge statistics: {accepted_edges} accepted, {rejected_edges} rejected, {no_relation_edges} no relation")
+        print(f"[dag] Final edge statistics: {accepted_edges} accepted, {rejected_edges} rejected")
         stats = self.dag_validator.get_stats()
         print(f"[dag] ✓ DAG validated: {stats['nodes']} nodes, {stats['edges']} edges")
         print(f"[dag] Max in-degree: {stats['max_in_degree']}, Max out-degree: {stats['max_out_degree']}")
         
         return causal_links
 
-    # --- NEW FUNCTION FOR SEMANTIC LINKING ---
     async def _batch_semantic_linking(
         self,
         events: List[schemas.CEKEvent],
@@ -422,8 +413,6 @@ class CEKGPreprocessor:
         print("[semantic linking] Starting semantic link assessment...")
         semantic_links = []
         
-        # This uses the same pairs as the causal linker for efficiency
-        # In a real implementation, you might want a different candidate generation strategy
         pairs_to_assess_set: Set[tuple[str, str]] = set()
         for i, ev in enumerate(events):
             start = max(0, i - 4) # Use same window
@@ -470,9 +459,7 @@ class CEKGPreprocessor:
 
         print(f"[semantic linking] Found {len(semantic_links)} semantic links.")
         return semantic_links
-    # --- END NEW FUNCTION ---
 
-    # --- NEW FUNCTION FOR SCENE GROUPING ---
     async def _generate_scenes(
         self,
         events: List[schemas.CEKEvent]
@@ -480,14 +467,12 @@ class CEKGPreprocessor:
         print("[scene grouping] Starting scene generation...")
         all_scenes = []
         
-        # Group events by chapter first
         events_by_chapter = defaultdict(list)
         for ev in events:
             events_by_chapter[ev.chapter].append(ev)
             
         for chapter_id, chapter_events in events_by_chapter.items():
             print(f"[scene grouping] Processing chapter {chapter_id}...")
-            # Sort events by sequence just in case
             chapter_events.sort(key=lambda x: x.sequence)
             
             scene_data_list = await llm_service.extract_scenes_from_chapter_async(
@@ -509,8 +494,8 @@ class CEKGPreprocessor:
         
         print(f"[scene grouping] Generated {len(all_scenes)} scenes.")
         return all_scenes
-    # --- END NEW FUNCTION ---
 
+    # --- FIX IS HERE: Added 'extraction_style' to the function definition ---
     async def run_async(self, text_path: str, 
                        out_json: str,
                        out_cypher: str,
@@ -520,8 +505,9 @@ class CEKGPreprocessor:
                        causal_window: int,
                        causal_sample_rate: float,
                        causal_batch_size: int,
-                       # --- NEW ARGS ---
+                       # --- All new args are now included ---
                        paragraph_chunk_size: int,
+                       extraction_style: str, # <--- THIS WAS THE MISSING ARGUMENT
                        graph_model: str,
                        enable_scene_grouping: bool,
                        enable_semantic_linking: bool,
@@ -530,7 +516,6 @@ class CEKGPreprocessor:
                        ) -> Dict[str, Any]:
         """Main async pipeline orchestrator"""
         
-        # Check for sentence-transformer dependency if flag is set
         if enable_confidence_calibration and SENTENCE_TRANSFORMER_MODEL is None:
             print("[ERROR] '--enable-confidence-calibration' was passed, but 'sentence-transformers' is not installed.")
             print("Please run 'pip install sentence-transformers' and try again.")
@@ -545,49 +530,55 @@ class CEKGPreprocessor:
 
         print(f"[pipeline] Processing {len(chapters)} chapters")
 
-        # --- Store all data in local lists ---
         all_events: List[schemas.CEKEvent] = []
         all_produces: List[schemas.EventProducesEntity] = []
         entity_occurrences = defaultdict(list)
-        self.global_event_sequence = 0 # Reset sequence counter
+        self.global_event_sequence = 0
 
         for chapter_id, chapter_text in chapters:
             paragraphs = text_processor.split_into_paragraphs(chapter_text)
             print(f"[chapter {chapter_id}] Processing {len(paragraphs)} paragraphs...")
             
-            # --- NEW IF/ELSE FOR FEATURE 1 ---
-            if paragraph_chunk_size > 1:
-                # EXPERIMENTAL: Chunked "idea-to-idea" processing
-                print(f"[chapter {chapter_id}] Using experimental chunk size: {paragraph_chunk_size}")
-                for i in range(0, len(paragraphs), paragraph_chunk_size):
-                    chunk = paragraphs[i : i + paragraph_chunk_size]
+            # --- LOGIC FOR CHUNKING VS PARALLEL ---
+            
+            # 1. CHUNKED MODE (chunk_size != 1)
+            if paragraph_chunk_size != 1:
+                # Handle "ALL" (0)
+                if paragraph_chunk_size == 0:
+                    chunk_size = len(paragraphs)
+                else:
+                    chunk_size = paragraph_chunk_size
+
+                chunk_str = "ALL" if paragraph_chunk_size == 0 else str(chunk_size)
+                print(f"[chapter {chapter_id}] Chunking: {chunk_str} paragraphs/call. Style: {extraction_style}")
+                
+                for i in range(0, len(paragraphs), chunk_size):
+                    chunk = paragraphs[i : i + chunk_size]
                     text_chunk = "\n\n".join(chunk)
-                    
                     try:
                         events, produces, occ_batch = await self._process_text_chunk(
                             text_chunk, chapter_id,
-                            enable_llm_expansion, enable_confidence_calibration
+                            enable_llm_expansion, enable_confidence_calibration,
+                            extraction_style # <-- Pass style
                         )
                         all_events.extend(events)
                         all_produces.extend(produces)
                         for key, val_list in occ_batch.items():
                             entity_occurrences[key].extend(val_list)
-                        print(f"[chapter {chapter_id}] Chunk {i//paragraph_chunk_size + 1}: extracted {len(events)} high-level events")
-                    
+                        print(f"[chapter {chapter_id}] Chunk {i//chunk_size + 1}: extracted {len(events)} events")
                     except Exception as e:
-                        print(f"[error] Failed processing chunk {i//paragraph_chunk_size + 1} in chapter {chapter_id}: {e}")
-                        traceback.print_exc()
-                        continue
+                        print(f"[error] Failed processing chunk {i//chunk_size + 1}: {e}")
             
+            # 2. DEFAULT PARALLEL MODE (chunk_size == 1)
             else:
-                # DEFAULT: Parallel batch processing (1-para-per-call)
                 for i in range(0, len(paragraphs), batch_size):
                     batch_paras = paragraphs[i:i+batch_size]
                     batch_with_chapter = [(para, chapter_id) for para in batch_paras]
                     try:
                         events, produces, occ_batch = await self._process_parallel_batch(
                             batch_with_chapter,
-                            enable_llm_expansion, enable_confidence_calibration
+                            enable_llm_expansion, enable_confidence_calibration,
+                            extraction_style # <-- Pass style
                         )
                         all_events.extend(events)
                         all_produces.extend(produces)
@@ -595,17 +586,13 @@ class CEKGPreprocessor:
                             entity_occurrences[key].extend(val_list)
                         print(f"[chapter {chapter_id}] Batch {i//batch_size + 1}: extracted {len(events)} events")
                     except Exception as e:
-                        print(f"[error] Failed processing batch {i//batch_size + 1} in chapter {chapter_id}: {e}")
-                        traceback.print_exc()
-            # --- END IF/ELSE ---
+                        print(f"[error] Failed processing batch {i//batch_size + 1}: {e}")
 
         if not all_events:
             raise schemas.CEKGError("No events were extracted")
 
         print(f"[pipeline] Total events extracted: {len(all_events)}")
         
-        # Events are already sorted by sequence number from the batch processor
-
         newly_produced, entity_occurrences = graph_builder.propagate_context(
             all_events, all_produces, entity_occurrences
         )

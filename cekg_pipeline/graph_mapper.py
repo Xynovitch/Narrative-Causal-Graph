@@ -1,5 +1,6 @@
 from collections import defaultdict
 from typing import List, Dict, Any, Tuple, Optional
+import re  # Added for sanitization
 from . import schemas
 from . import utils
 
@@ -12,6 +13,21 @@ def _escape_props(props: Dict[str, Any]) -> Dict[str, Any]:
         else:
             escaped[k] = v
     return escaped
+
+def _sanitize_name_for_id(name: str) -> str:
+    """
+    Creates a safe ID string from a name.
+    1. Lowercase
+    2. Replace spaces with underscores
+    3. Remove quotes, colons, and other problematic chars
+    """
+    if not name:
+        return "unknown"
+    # Replace spaces with _
+    clean = name.lower().replace(' ', '_')
+    # Remove quotes and typical illegal chars
+    clean = clean.replace('"', '').replace("'", "").replace(":", "").replace("\\", "")
+    return clean
 
 def map_to_generic_graph(
     events: List[schemas.CEKEvent],
@@ -66,7 +82,10 @@ def map_to_generic_graph(
     all_agents.update(entities_by_type.get("patient", {}))
     for agent_id, agent_name in all_agents.items():
         # --- MODIFIED FOR 'star' MODEL ---
-        canonical_id = f"agent_{agent_name.lower().replace(' ', '_')}"
+        # Use helper to strip quotes
+        safe_name = _sanitize_name_for_id(agent_name)
+        canonical_id = f"agent_{safe_name}"
+        
         # Use canonical_id for 'star', but original entity_id for 'chain'
         node_uid = canonical_id if graph_model == "star" else agent_id
         
@@ -81,7 +100,8 @@ def map_to_generic_graph(
     # WhyFactor nodes
     for wf_id, wf_name in entities_by_type.get("whyfactor", {}).items():
         # --- MODIFIED FOR 'star' MODEL ---
-        canonical_id = f"whyfactor_{wf_name.lower().replace(' ', '_')[:30]}"
+        safe_name = _sanitize_name_for_id(wf_name)[:30] # Truncate for ID
+        canonical_id = f"whyfactor_{safe_name}"
         node_uid = canonical_id if graph_model == "star" else wf_id
         
         if node_uid not in nodes:
@@ -95,7 +115,8 @@ def map_to_generic_graph(
     # Place nodes
     for place_id, place_name in entities_by_type.get("place", {}).items():
         # --- MODIFIED FOR 'star' MODEL ---
-        canonical_id = f"place_{place_name.lower().replace(' ', '_')}"
+        safe_name = _sanitize_name_for_id(place_name)
+        canonical_id = f"place_{safe_name}"
         node_uid = canonical_id if graph_model == "star" else place_id
         
         if node_uid not in nodes:
@@ -168,18 +189,20 @@ def map_to_generic_graph(
             rel_type = None
             prop_key = "strength"
 
+            safe_name = _sanitize_name_for_id(prod.entity_name)
+
             if prod.entity_type == "actor":
-                canonical_id = f"agent_{prod.entity_name.lower().replace(' ', '_')}"
+                canonical_id = f"agent_{safe_name}"
                 rel_type = "ACTS_IN"
             elif prod.entity_type == "patient":
-                canonical_id = f"agent_{prod.entity_name.lower().replace(' ', '_')}"
+                canonical_id = f"agent_{safe_name}"
                 rel_type = "AFFECTED_IN"
             elif prod.entity_type == "place":
-                canonical_id = f"place_{prod.entity_name.lower().replace(' ', '_')}"
+                canonical_id = f"place_{safe_name}"
                 rel_type = "HOSTS"
                 prop_key = "specificity"
             elif prod.entity_type == "whyfactor":
-                canonical_id = f"whyfactor_{prod.entity_name.lower().replace(' ', '_')[:30]}"
+                canonical_id = f"whyfactor_{safe_name[:30]}"
                 rel_type = "MOTIVATES"
                 prop_key = "weight"
             

@@ -1,5 +1,6 @@
 import json
 import asyncio
+import re
 from typing import List, Dict, Optional, Any
 
 try:
@@ -14,106 +15,61 @@ from .config import CACHE_MAX_SIZE
 # --- Caches are now local to this service ---
 event_extraction_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 assessment_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
-semantic_cache = BoundedCache(max_size=CACHE_MAX_SIZE) # New cache
-scene_cache = BoundedCache(max_size=CACHE_MAX_SIZE) # New cache
+semantic_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
+scene_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 
-# --- PROMPT SET 1: STANDARD (DEFAULT) ---
+# --- PROMPT SET 1: INSTRUCTIONS (THE GOAL) ---
 
-# --- PROMPT SET 1: STANDARD (DEFAULT) ---
+PROMPT_DETAILED_INSTRUCTIONS = """Extract EVERY distinct event from this text. An event is ANY action, perception, dialogue, emotion, or state change. Be granular. Capturing specific sequences of actions is important."""
 
-# FIX: Removed 'f' prefix, changed {{chapter_id}} to {chapter_id}, kept JSON examples as {{...}}
-PROMPT_PARAGRAPH_EXTRACTION = """You are an expert literary analyst extracting structured events from narrative text.
-Extract EVERY distinct event from this paragraph. An event is ANY action, perception, dialogue, emotion, or state change.
-Return a JSON object containing a single key "events". Each event in the array must be an object with:
-- name: brief description
-- eventType: one of ["perception/recognition", "encounter/dialogue", "conflict/threat", "assistance/exchange", "movement/departure", "reflection/emotion", "action", "other"]
-- actionType: canonical verb
-- actors: array of {{"name": "Pip", "strength": 0.0-1.0}} (use proper names, NEVER pronouns)
-- patients: array of {{"name": "Magwitch", "strength": 0.0-1.0}}
-- location: The specific place mentioned in the quote (e.g., "churchyard", "the forge"). If not explicitly mentioned, return null.
-- time: temporal reference (if any)
-- whyFactors: **This is mandatory.** Array of AT LEAST ONE {{"factor": "description", "weight": 0.0-1.0, "category": "Immediate Motivation/Instrumental Cause/Contextual Cause/Symbolic Cause"}}. If no motivation is explicit, infer the most likely "Contextual Cause" (e.g., "fear", "reacting to previous event", "survival instinct", "narrative progression").
-- confidence: 0.0-1.0 (your confidence in the extraction)
-- quote: the relevant sentence(s) from the text
+PROMPT_HIGH_LEVEL_INSTRUCTIONS = """Extract only the MAJOR narrative events or ideas from this text. Do NOT extract every single verb or minor action. Focus on the main plot points, significant changes in state, or the core "idea-to-idea" flow."""
 
-PARAGRAPH (Chapter {chapter_id}):
-{text_input}
+# --- PROMPT SET 2: EXPANSION (THE MODIFIER) ---
 
-JSON object:"""
+PROMPT_EXPANSION_ADDON = """
+**Additional Tasks:**
+1.  **Find Implicit Events:** Extract psychological or emotional events (e.g., 'Pip felt ashamed').
+2.  **Group Compound Events:** Combine simple, sequential actions into one event (e.g., 'walked to the door and knocked' -> "knock on door").
+3.  **Coreference Resolution:** Normalize all actor/patient names to their **full, canonical name** (e.g., "the boy", "Philip Pirrip", "Pip" -> "Pip").
+"""
 
-PROMPT_CHUNK_EXTRACTION = """You are an expert literary analyst and narrative summarizer.
-Read the following text chunk, which contains multiple paragraphs. Your goal is to extract only the **major, high-level narrative events or ideas**.
-Do NOT extract every single verb or minor action. Focus on the main plot points, significant changes in state, or the core "idea-to-idea" flow of the narrative.
-Return a JSON object containing a single key "events". Each event in the array must be an object with:
-- name: brief description of the high-level event or idea.
-- eventType: one of ["perception/recognition", "encounter/dialogue", "conflict/threat", "assistance/exchange", "movement/departure", "reflection/emotion", "action", "other"]
-- actionType: canonical verb for the main idea (e.g., "realize", "decide", "confront").
-- actors: array of {{"name": "Pip", "strength": 0.0-1.0}} (main actors involved).
-- patients: array of {{"name": "Magwitch", "strength": 0.0-1.0}} (main entities affected).
-- location: The primary location for this major event (if any).
-- time: temporal reference (if any).
-- whyFactors: **This is mandatory.** Array of AT LEAST ONE {{"factor": "description", "weight": 0.0-1.0, "category": "Immediate Motivation/Instrumental Cause/Contextual Cause/Symbolic Cause"}}.
-- confidence: 0.0-1.0 (your confidence in the extraction)
-- quote: A key representative sentence or phrase from the chunk (max 50 words).
+# --- PROMPT SET 3: THE BASE TEMPLATE ---
 
-TEXT CHUNK (Chapter {chapter_id}):
-{text_input}
+# UPDATED: Added strict constraints to 'actors' and 'patients' to exclude body parts/objects.
+PROMPT_BASE_TEMPLATE = """You are an expert literary analyst.
 
-JSON object:"""
-
-# --- PROMPT SET 2: EXPANDED (EXPERIMENTAL) ---
-
-PROMPT_PARAGRAPH_EXPANDED = """You are an expert literary analyst extracting structured events from narrative text.
-**Your Task:**
-1.  **Extract All Events:** Find every action, perception, dialogue, emotion, or state change.
-2.  **Find Implicit Events:** Extract psychological or emotional events (e.g., 'Pip felt ashamed').
-3.  **Group Compound Events:** Combine simple, sequential actions into one event (e.g., 'walked to the door and knocked' -> "knock on door").
-4.  **Coreference Resolution:** Normalize all actor/patient names to their **full, canonical name** (e.g., "the boy", "Philip Pirrip", "Pip" -> "Pip").
+**Your Goal:**
+{instructions}
+{expansion_instructions}
 
 **Output Format:**
-Return a JSON object containing a single key "events". Each event in the array must be an object with:
+You MUST return a valid JSON object wrapped in a markdown code block.
+Example:
+""" + "```json" + """
+{{
+  "events": [...]
+}}
+""" + "```" + """
+
+Each event object in the "events" list must have:
 - name: brief description
 - eventType: one of ["perception/recognition", "communication", "conflict", "assistance", "movement", "emotion", "transformation", "other"]
 - actionType: canonical verb
-- actors: array of {{"name": "Pip", "strength": 0.0-1.0}} (MUST be canonical full name)
-- patients: array of {{"name": "Magwitch", "strength": 0.0-1.0}} (MUST be canonical full name)
-- location: The specific place mentioned (e.g., "churchyard", "the forge").
-- time: temporal reference (if any).
-- whyFactors: **Mandatory.** Array of AT LEAST ONE {{"factor": "description", "weight": 0.0-1.0, "category": "Immediate/Contextual/Symbolic"}}.
+- actors: array of {{"name": "Name", "strength": 0.0-1.0}}. IMPORTANT: Actors must be SENTIENT beings (people, animals, personified entities). Do NOT extract body parts (e.g., "liver", "heart"), objects, or abstract concepts as actors.
+- patients: array of {{"name": "Name", "strength": 0.0-1.0}}. IMPORTANT: Patients must be SENTIENT beings. If an object/body part is affected, leave this empty or name the owner of the part.
+- location: The specific place mentioned.
+- time: temporal reference.
+- whyFactors: **Mandatory** array of {{"factor": "desc", "weight": 0.0-1.0, "category": "Immediate/Contextual"}}.
 - confidence: 0.0-1.0 (your confidence in the extraction)
-- quote: the relevant sentence(s) from the text
+- quote: relevant text (max 50 words).
 
-PARAGRAPH (Chapter {chapter_id}):
+**Text to Analyze (Chapter {chapter_id}):**
 {text_input}
 
-JSON object:"""
+Return ONLY the JSON object within the code block:"""
 
-PROMPT_CHUNK_EXPANDED = """You are an expert literary analyst and narrative summarizer.
-**Your Task:**
-1.  **Extract High-Level Events:** Read the text chunk and extract only the major narrative events or ideas.
-2.  **Find Implicit Events:** Include major psychological or emotional turning points.
-3.  **Coreference Resolution:** Normalize all actor/patient names to their **full, canonical name** (e.g., "the boy" -> "Pip").
+# --- PROMPT SET 4: LINKING & SCENES ---
 
-**Output Format:**
-Return a JSON object containing a single key "events". Each event in the array must be an object with:
-- name: brief description of the high-level event or idea.
-- eventType: one of ["perception/recognition", "communication", "conflict", "assistance", "movement", "emotion", "transformation", "other"]
-- actionType: canonical verb for the main idea (e.g., "realize", "decide", "confront").
-- actors: array of {{"name": "Pip", "strength": 0.0-1.0}} (MUST be canonical full name).
-- patients: array of {{"name": "Magwitch", "strength": 0.0-1.0}} (MUST be canonical full name).
-- location: The primary location for this major event (if any).
-- time: temporal reference (if any).
-- whyFactors: **Mandatory.** Array of AT LEAST ONE {{"factor": "description", "weight": 0.0-1.0, "category": "Immediate/Contextual/Symbolic"}}.
-- confidence: 0.0-1.0 (your confidence in the extraction)
-- quote: A key representative sentence or phrase from the chunk (max 50 words).
-
-TEXT CHUNK (Chapter {chapter_id}):
-{text_input}
-
-JSON object:"""
-
-# --- PROMPT SET 3: LINKING (CAUSAL & SEMANTIC) ---
-# These were already correct (no 'f' prefix), but included for completeness
 PROMPT_CAUSAL_PAIR = (
     "You are a careful literary causal analyst.\n"
     "Given two event descriptions, return a single JSON object with:\n"
@@ -140,8 +96,6 @@ PROMPT_SEMANTIC_PAIR = (
     "Return ONLY the JSON object:"
 )
 
-# --- PROMPT SET 4: SCENE GROUPING ---
-
 PROMPT_SCENE_GROUPING = """You are a literary editor. You will be given a list of sequential events from a chapter.
 Your job is to group these events into **narrative scenes**. A scene is a cluster of events that happen in the same general time/location and are thematically connected.
 
@@ -161,22 +115,6 @@ Return a JSON object with a single "scenes" key. Each scene must have:
 - event_ids: A list of event IDs that belong to this scene.
 - theme: A short, 3-5 word theme for the scene (e.g., "A Fateful Encounter").
 - confidence: Your 0.0-1.0 confidence in this grouping.
-
-**Example Output:**
-{{
-    "scenes": [
-        {{
-            "event_ids": ["event/001", "event/002", "event/003", "event/004"],
-            "theme": "The Graveyard Threat",
-            "confidence": 0.95
-        }},
-        {{
-            "event_ids": ["event/005", "event/006"],
-            "theme": "A Harsh Homecoming",
-            "confidence": 0.90
-        }}
-    ]
-}}
 
 **Event List for Chapter {chapter_id}:**
 {event_list_json}
@@ -203,203 +141,161 @@ async def _async_llm_json_call(
 ) -> Any:
     """
     A single, reusable, and robust function to call the LLM and get clean JSON.
-    Handles caching, retries, and JSON cleaning.
+    Handles caching, retries, JSON cleaning, and model-specific API params.
     """
     
     cached = await cache.get(cache_key)
     if cached is not None:
-        return cached, None
+        return cached, None 
+
+    # Detect Model Type
+    is_o1 = model.startswith("o1")
+    is_gpt5 = model.startswith("gpt-5")
 
     for attempt in range(3):
+        text = ""
         try:
             loop = asyncio.get_event_loop()
             
             def make_request():
-                return client.chat.completions.create(
-                    model=model,
-                    messages=[{"role": "user", "content": prompt}],
-                    response_format={"type": "json_object"}, 
-                    temperature=0.0,
-                    max_tokens=max_tokens,
-                    logprobs=request_logprobs,
-                )
+                api_args = {
+                    "model": model,
+                    "messages": [{"role": "user", "content": prompt}],
+                }
+
+                if is_o1:
+                    # o1: Strict rules. No system, no temperature, no logprobs.
+                    # Must use max_completion_tokens. NO response_format.
+                    api_args["max_completion_tokens"] = max_tokens
+                elif is_gpt5:
+                    # gpt-5: Likely supports JSON mode, uses max_completion_tokens.
+                    api_args["max_completion_tokens"] = max_tokens
+                    api_args["response_format"] = {"type": "json_object"}
+                else:
+                    # Standard (gpt-4o/3.5): max_tokens, temp, logprobs supported.
+                    api_args["max_tokens"] = max_tokens
+                    api_args["temperature"] = 0.0
+                    api_args["response_format"] = {"type": "json_object"}
+                    if request_logprobs:
+                        api_args["logprobs"] = True
+
+                return client.chat.completions.create(**api_args)
             
             resp = await loop.run_in_executor(None, make_request)
             text = resp.choices[0].message.content.strip()
-            logprobs = resp.choices[0].logprobs
             
-            # 1. Strip markdown fences
-            if text.startswith("```"):
-                lines = text.split('\n')
-                lines = lines[1:]
-                if lines and lines[-1].strip() == "```":
-                    lines = lines[:-1]
-                text = '\n'.join(lines).strip()
+            if not text:
+                raise ExtractionError("LLM returned empty response")
+
+            logprobs = getattr(resp.choices[0], "logprobs", None)
             
-            # 2. Find JSON block
-            if "{" not in text:
-                raise ExtractionError(f"No JSON found in response (attempt {attempt+1})")
+            # --- 1. Attempt Markdown Extraction ---
+            # Matches ```json ... ``` OR just ``` ... ```
+            json_match = re.search(r"```(?:json)?\n?(.*?)```", text, re.DOTALL)
+            if json_match:
+                text = json_match.group(1).strip()
             
+            # --- 2. Attempt Raw JSON Extraction ---
             start = text.find("{")
             end = text.rfind("}") + 1
-            text = text[start:end]
+            
+            if start != -1 and end > start:
+                text = text[start:end]
+            elif start != -1:
+                # RECOVERY: Found a start '{' but no valid end '}' -> Truncated?
+                # Let's try to salvage it by closing the JSON structure.
+                # This is a "Hail Mary" pass for when tokens run out.
+                print(f"[warning] JSON appears truncated. Attempting repair...")
+                text = text[start:] + "]}" 
+            else:
+                # No JSON structure found at all
+                print(f"[debug] No JSON found. Raw output start: {repr(text[:200])}")
+                raise ExtractionError("No JSON brace found in response")
 
-            # 3. Try to parse directly first (most responses won't need cleaning)
+            # --- 3. Parse JSON ---
             try:
                 data = json.loads(text)
-                
-                # Unwrap common response formats
-                if isinstance(data, dict) and 'events' in data and isinstance(data['events'], list):
-                    data = data['events']
-                elif isinstance(data, dict) and 'scenes' in data and isinstance(data['scenes'], list):
-                    data = data['scenes']
-                
-                await cache.set(cache_key, data)
-                return data, logprobs
-                
             except json.JSONDecodeError:
-                # If direct parsing fails, try cleaning
-                pass
-
-            # 4. Clean control characters only if needed
-            cleaned = []
-            i = 0
-            in_string = False
+                # Final attempt: sometimes repair needs an extra brace
+                if text.endswith("]}"): 
+                     pass
+                # Try cleaning control characters as last resort
+                cleaned_chars = [c for c in text if ord(c) >= 32 or c in '\n\r\t']
+                text = ''.join(cleaned_chars)
+                data = json.loads(text)
             
-            while i < len(text):
-                char = text[i]
-                
-                # Handle escape sequences
-                if char == '\\' and i + 1 < len(text) and in_string:
-                    next_char = text[i + 1]
-                    # Keep valid JSON escape sequences
-                    if next_char in '"\\/_bfnrtu':
-                        cleaned.append(char)
-                        cleaned.append(next_char)
-                        i += 2
-                        continue
-                
-                # Track string boundaries
-                if char == '"' and (i == 0 or text[i-1] != '\\'):
-                    in_string = not in_string
-                    cleaned.append(char)
-                    i += 1
-                    continue
-                
-                # Inside strings: escape or skip control chars
-                if in_string:
-                    if char == '\n':
-                        cleaned.append('\\n')
-                    elif char == '\r':
-                        cleaned.append('\\r')
-                    elif char == '\t':
-                        cleaned.append('\\t')
-                    elif ord(char) < 32:
-                        pass  # Skip other control chars
-                    else:
-                        cleaned.append(char)
-                else:
-                    # Outside strings: allow normal whitespace
-                    if ord(char) >= 32 or char in '\n\r\t ':
-                        cleaned.append(char)
-                
-                i += 1
-            
-            text = ''.join(cleaned)
-            
-            # 5. Parse the cleaned JSON
-            data = json.loads(text)
-            
-            # Unwrap common response formats
+            # Unwrap common wrappers
             if isinstance(data, dict) and 'events' in data and isinstance(data['events'], list):
                 data = data['events']
             elif isinstance(data, dict) and 'scenes' in data and isinstance(data['scenes'], list):
                 data = data['scenes']
-            
+
             await cache.set(cache_key, data)
             return data, logprobs
             
-        except json.JSONDecodeError as e:
-            error_context = text[:200] if 'text' in locals() else "N/A"
-            print(f"[error] JSON decode failed (attempt {attempt+1}/{3}): {str(e)}")
-            print(f"[debug] First 200 chars: {error_context}")
-            if attempt == 2:
-                raise ExtractionError(f"JSON parsing failed after 3 attempts. Last error: {str(e)}")
-            await asyncio.sleep(1 + attempt * 2)
-            
         except Exception as e:
-            print(f"[error] LLM/JSON call failed (attempt {attempt+1}/{3}): {type(e).__name__}: {str(e)}")
+            print(f"[error] LLM/JSON call failed (attempt {attempt+1}): {e}")
             if attempt == 2:
-                raise ExtractionError(f"Extraction failed after 3 attempts: {type(e).__name__}: {str(e)}")
+                raise ExtractionError(f"Extraction failed after 3 attempts: {e}")
             await asyncio.sleep(1 + attempt * 2)
     
     raise ExtractionError("Failed to get LLM response after retries")
 
 
-async def extract_events_from_paragraph(
-    paragraph: str, 
-    chapter_id: int, 
-    model: str,
-    client: openai.OpenAI,
-    enable_llm_expansion: bool = False,
-    request_logprobs: bool = False
-) -> (Any, Any):
-    
-    cache_key = _hash_for_cache(f"{chapter_id}:{paragraph}:{enable_llm_expansion}", model)
+def _get_extraction_prompt(
+    text_input: str,
+    chapter_id: int,
+    extraction_style: str,
+    enable_llm_expansion: bool
+) -> str:
+    if extraction_style == "high-level":
+        instructions = PROMPT_HIGH_LEVEL_INSTRUCTIONS
+    else: 
+        instructions = PROMPT_DETAILED_INSTRUCTIONS
     
     if enable_llm_expansion:
-        prompt_template = PROMPT_PARAGRAPH_EXPANDED
+        expansion_instructions = PROMPT_EXPANSION_ADDON
     else:
-        prompt_template = PROMPT_PARAGRAPH_EXTRACTION
+        expansion_instructions = ""
         
-    prompt = prompt_template.format(
+    return PROMPT_BASE_TEMPLATE.format(
+        instructions=instructions,
+        expansion_instructions=expansion_instructions,
         chapter_id=chapter_id, 
-        text_input=paragraph.strip()
+        text_input=text_input
     )
 
-    data, logprobs = await _async_llm_json_call(
-        prompt=prompt,
-        model=model,
-        client=client,
-        cache=event_extraction_cache,
-        cache_key=cache_key,
-        max_tokens=3072, 
-        request_logprobs=request_logprobs
-    )
-    
-    if not isinstance(data, list):
-        data = [data]
-    
-    return data, logprobs
-
-async def extract_events_from_chunk_async(
-    text_chunk: str, 
+async def extract_events_from_text(
+    text_input: str, 
     chapter_id: int, 
     model: str,
     client: openai.OpenAI,
-    enable_llm_expansion: bool = False,
-    request_logprobs: bool = False
+    enable_llm_expansion: bool,
+    request_logprobs: bool,
+    extraction_style: str
 ) -> (Any, Any):
     
-    cache_key = _hash_for_cache(f"{chapter_id}:{text_chunk}:{enable_llm_expansion}", model)
-
-    if enable_llm_expansion:
-        prompt_template = PROMPT_CHUNK_EXPANDED
-    else:
-        prompt_template = PROMPT_CHUNK_EXTRACTION
-
-    prompt = prompt_template.format(
+    cache_key = _hash_for_cache(
+        f"{chapter_id}:{text_input}:{extraction_style}:{enable_llm_expansion}", 
+        model
+    )
+    
+    prompt = _get_extraction_prompt(
+        text_input=text_input.strip(),
         chapter_id=chapter_id,
-        text_input=text_chunk.strip()
+        extraction_style=extraction_style,
+        enable_llm_expansion=enable_llm_expansion
     )
 
+    # INCREASED TOKEN LIMIT TO 16k
+    # 5 paragraphs of detailed extraction generates huge JSON.
     data, logprobs = await _async_llm_json_call(
         prompt=prompt,
         model=model,
         client=client,
         cache=event_extraction_cache,
         cache_key=cache_key,
-        max_tokens=4096,
+        max_tokens=16000, 
         request_logprobs=request_logprobs
     )
     
@@ -412,14 +308,15 @@ async def batch_extract_events(
     paragraphs: List[tuple[str, int]], 
     model: str,
     client: openai.OpenAI,
-    enable_llm_expansion: bool = False,
-    request_logprobs: bool = False
+    enable_llm_expansion: bool,
+    request_logprobs: bool,
+    extraction_style: str
 ) -> List[tuple[Any, Any]]:
     
     tasks = [
-        extract_events_from_paragraph(
+        extract_events_from_text(
             para, chapter_id, model, client, 
-            enable_llm_expansion, request_logprobs
+            enable_llm_expansion, request_logprobs, extraction_style
         )
         for para, chapter_id in paragraphs
     ]
@@ -429,9 +326,7 @@ async def batch_extract_events(
     processed_results = []
     for i, result in enumerate(results):
         if isinstance(result, Exception):
-            # Show the full error message
-            error_msg = f"{type(result).__name__}: {str(result)}"
-            print(f"[batch_extract] Paragraph {i} failed: {error_msg}")
+            print(f"[batch_extract] Paragraph {i} failed: {result}")
             processed_results.append(([], None))
         else:
             processed_results.append(result)
@@ -453,7 +348,7 @@ async def assess_causal_pair(
         data, _ = await _async_llm_json_call(
             prompt=prompt, model=model, client=client,
             cache=assessment_cache, cache_key=cache_key,
-            max_tokens=512
+            max_tokens=1024 # Increased for safety
         )
         return data
     except Exception as e:
@@ -480,7 +375,6 @@ async def batch_assess_pairs(
             processed_results.append(result)
     return processed_results
 
-# --- NEW FUNCTIONS FOR SEMANTIC LINKING ---
 async def assess_semantic_pair_async(
     cause_text: str, 
     effect_text: str, 
@@ -495,7 +389,7 @@ async def assess_semantic_pair_async(
         data, _ = await _async_llm_json_call(
             prompt=prompt, model=model, client=client,
             cache=semantic_cache, cache_key=cache_key,
-            max_tokens=512
+            max_tokens=1024
         )
         return data
     except Exception as e:
@@ -521,9 +415,7 @@ async def batch_assess_semantic_pairs(
         else:
             processed_results.append(result)
     return processed_results
-# --- END NEW FUNCTIONS ---
 
-# --- NEW FUNCTION FOR SCENE GROUPING ---
 async def extract_scenes_from_chapter_async(
     chapter_events: List[CEKEvent],
     chapter_id: int,
@@ -531,7 +423,10 @@ async def extract_scenes_from_chapter_async(
     client: openai.OpenAI
 ) -> List[Dict[str, Any]]:
     
-    # Create a simplified JSON list of events for the prompt
+    # Limit events to prevent context overflow
+    if len(chapter_events) > 300:
+         chapter_events = chapter_events[:300]
+
     event_list_simple = [
         {"id": ev.id, "name": ev.name, "seq": ev.sequence} 
         for ev in chapter_events
@@ -548,14 +443,12 @@ async def extract_scenes_from_chapter_async(
         data, _ = await _async_llm_json_call(
             prompt=prompt, model=model, client=client,
             cache=scene_cache, cache_key=cache_key,
-            max_tokens=4096
+            max_tokens=8192 # High limit for scenes
         )
-        # Data is already extracted from the 'scenes' wrapper by _async_llm_json_call
         return data if isinstance(data, list) else []
     except Exception as e:
         print(f"[error] Scene grouping for chapter {chapter_id} failed: {e}")
         return []
-# --- END NEW FUNCTION ---
 
 async def get_cache_sizes() -> dict:
     return {
