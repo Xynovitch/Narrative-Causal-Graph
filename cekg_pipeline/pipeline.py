@@ -362,6 +362,7 @@ class CEKGPreprocessor:
         
         accepted_edges = 0
         rejected_edges = 0
+        no_relation_edges = 0 # <-- NEW COUNTER
         
         for batch_start in range(0, len(pairs_to_assess), batch_size):
             batch = pairs_to_assess[batch_start:batch_start + batch_size]
@@ -372,6 +373,7 @@ class CEKGPreprocessor:
             
             for (cause_quote, effect_quote, cause_id, effect_id), assessment in zip(batch, assessments):
                 if assessment is None or assessment.get("relationType") == "none":
+                    no_relation_edges += 1 # <-- Track 'none' responses here
                     continue
                 
                 if not self.dag_validator.add_edge(cause_id, effect_id):
@@ -399,10 +401,11 @@ class CEKGPreprocessor:
                 causal_links.append(link)
                 accepted_edges += 1
             
+            # <-- UPDATED PRINT STATEMENT
             print(f"[causal] Progress: {min(batch_start + batch_size, len(pairs_to_assess))}/{len(pairs_to_assess)} "
-                  f"(accepted: {accepted_edges}, rejected: {rejected_edges})")
+                  f"(accepted: {accepted_edges}, rejected (dag): {rejected_edges}, none: {no_relation_edges})")
         
-        print(f"[dag] Final edge statistics: {accepted_edges} accepted, {rejected_edges} rejected")
+        print(f"[dag] Final edge statistics: {accepted_edges} accepted, {rejected_edges} rejected, {no_relation_edges} no relation")
         stats = self.dag_validator.get_stats()
         print(f"[dag] ✓ DAG validated: {stats['nodes']} nodes, {stats['edges']} edges")
         print(f"[dag] Max in-degree: {stats['max_in_degree']}, Max out-degree: {stats['max_out_degree']}")
