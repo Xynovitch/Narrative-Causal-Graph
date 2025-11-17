@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 from typing import List, Dict, Optional, Any, Set
 
 # ----------------------------- Custom Exceptions -----------------------------
@@ -68,6 +68,29 @@ class CausalLink:
     confidence: float
     cause_sequence: int
     effect_sequence: int
+
+# --- NEW SCHEMA DATACLASSES ---
+
+@dataclass
+class SemanticLink:
+    """Event -[:EXPLAINS]-> Event (Non-causal semantic link)"""
+    id: str
+    source_event_ids: List[str]
+    target_event_ids: List[str]
+    relation: str # e.g., "explanation", "elaboration"
+    cue: Optional[List[str]] # e.g., ["because", "therefore"]
+    confidence: float
+
+@dataclass
+class Scene:
+    """A grouping of events into a narrative scene"""
+    id: str
+    event_ids: List[str]
+    chapter: int
+    theme: str # LLM-generated theme
+    confidence: float
+
+# --- GENERIC GRAPH SCHEMAS ---
 
 @dataclass
 class GenericNode:

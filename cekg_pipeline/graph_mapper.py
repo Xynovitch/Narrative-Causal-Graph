@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any, Tuple, Optional
 from . import schemas
 from . import utils
 
@@ -17,7 +17,11 @@ def map_to_generic_graph(
     events: List[schemas.CEKEvent],
     event_produces: List[schemas.EventProducesEntity],
     entity_points_to: List[schemas.EntityPointsToEvent],
-    causal_links: List[schemas.CausalLink]
+    causal_links: List[schemas.CausalLink],
+    # --- NEW ARGUMENTS ---
+    graph_model: str = "chain",
+    semantic_links: Optional[List[schemas.SemanticLink]] = None,
+    scenes: Optional[List[schemas.Scene]] = None
 ) -> Tuple[List[schemas.GenericNode], List[schemas.GenericRelationship]]:
     """
     Maps the specific pipeline data into generic lists of nodes and relationships.
@@ -25,8 +29,13 @@ def map_to_generic_graph(
     """
     nodes: Dict[str, schemas.GenericNode] = {}
     relationships: List[schemas.GenericRelationship] = []
+    
+    if semantic_links is None:
+        semantic_links = []
+    if scenes is None:
+        scenes = []
 
-    # 1. Map Events to Nodes
+    # 1. Map Events to Nodes (Same for both models)
     for ev in events:
         nodes[ev.id] = schemas.GenericNode(
             uid=ev.id,
@@ -46,7 +55,7 @@ def map_to_generic_graph(
             })
         )
 
-    # 2. Map Entities (from event_produces) to Nodes
+    # 2. Map Entities to Nodes (Uses CANONICAL IDs for 'star' model)
     entities_by_type = defaultdict(dict)
     for prod in event_produces:
         entities_by_type[prod.entity_type][prod.entity_id] = prod.entity_name
@@ -56,63 +65,133 @@ def map_to_generic_graph(
     all_agents.update(entities_by_type.get("actor", {}))
     all_agents.update(entities_by_type.get("patient", {}))
     for agent_id, agent_name in all_agents.items():
-        if agent_id not in nodes: # Avoid duplicates
-            nodes[agent_id] = schemas.GenericNode(
-                uid=agent_id,
+        # --- MODIFIED FOR 'star' MODEL ---
+        canonical_id = f"agent_{agent_name.lower().replace(' ', '_')}"
+        # Use canonical_id for 'star', but original entity_id for 'chain'
+        node_uid = canonical_id if graph_model == "star" else agent_id
+        
+        if node_uid not in nodes: # Avoid duplicates
+            nodes[node_uid] = schemas.GenericNode(
+                uid=node_uid,
                 label="Agent",
-                properties=_escape_props({"id": agent_id, "name": agent_name})
+                properties=_escape_props({"id": node_uid, "name": agent_name})
             )
+        # --- END MODIFICATION ---
 
     # WhyFactor nodes
     for wf_id, wf_name in entities_by_type.get("whyfactor", {}).items():
-        if wf_id not in nodes:
-            nodes[wf_id] = schemas.GenericNode(
-                uid=wf_id,
+        # --- MODIFIED FOR 'star' MODEL ---
+        canonical_id = f"whyfactor_{wf_name.lower().replace(' ', '_')[:30]}"
+        node_uid = canonical_id if graph_model == "star" else wf_id
+        
+        if node_uid not in nodes:
+            nodes[node_uid] = schemas.GenericNode(
+                uid=node_uid,
                 label="WhyFactor",
-                properties=_escape_props({"id": wf_id, "factor": wf_name})
+                properties=_escape_props({"id": node_uid, "factor": wf_name})
             )
+        # --- END MODIFICATION ---
 
     # Place nodes
     for place_id, place_name in entities_by_type.get("place", {}).items():
-        if place_id not in nodes:
-            nodes[place_id] = schemas.GenericNode(
-                uid=place_id,
-                label="Place",
-                properties=_escape_props({"id": place_id, "name": place_name})
-            )
-
-    # 3. Map Event-Entity Production Relationships
-    for prod in event_produces:
-        # Define property key based on type
-        prop_key = "strength"
-        if prod.entity_type == "whyfactor":
-            prop_key = "weight"
-        elif prod.entity_type == "place":
-            prop_key = "specificity"
+        # --- MODIFIED FOR 'star' MODEL ---
+        canonical_id = f"place_{place_name.lower().replace(' ', '_')}"
+        node_uid = canonical_id if graph_model == "star" else place_id
         
-        relationships.append(schemas.GenericRelationship(
-            start_node_uid=prod.event_id,
-            end_node_uid=prod.entity_id,
-            rel_type=prod.relationship,
-            properties={prop_key: prod.strength}
-        ))
+        if node_uid not in nodes:
+            nodes[node_uid] = schemas.GenericNode(
+                uid=node_uid,
+                label="Place",
+                properties=_escape_props({"id": node_uid, "name": place_name})
+            )
+        # --- END MODIFICATION ---
 
-    # 4. Map Entity-Event Pointing Relationships
-    for ept in entity_points_to:
-        prop_key = "strength"
-        if ept.entity_type == "whyfactor":
-            prop_key = "weight"
-        elif ept.entity_type == "place":
-            prop_key = "specificity"
 
-        relationships.append(schemas.GenericRelationship(
-            start_node_uid=ept.entity_id,
-            end_node_uid=ept.next_event_id,
-            rel_type=ept.relationship,
-            properties={prop_key: ept.strength}
-        ))
+    # --- NEW: Map Scene Nodes ---
+    for scene in scenes:
+        if scene.id not in nodes:
+            nodes[scene.id] = schemas.GenericNode(
+                uid=scene.id,
+                label="Scene",
+                properties=_escape_props({
+                    "id": scene.id,
+                    "theme": scene.theme,
+                    "chapter": scene.chapter,
+                    "confidence": scene.confidence
+                })
+            )
+        # Create relationships from Scene to Event
+        for event_id in scene.event_ids:
+            if event_id in nodes: # Only link if event exists
+                relationships.append(schemas.GenericRelationship(
+                    start_node_uid=scene.id,
+                    end_node_uid=event_id,
+                    rel_type="INCLUDES",
+                    properties={}
+                ))
+    # --- END NEW ---
 
-    # 5. Map Event-Event (Follows) Relationships
+    # --- Handle Graph Model (Feature 2) ---
+    if graph_model == "chain":
+        print("[graph_mapper] Using 'chain' model (Event->Entity->Event)")
+        # 3. Map Event-Entity Production Relationships
+        for prod in event_produces:
+            prop_key = "strength"
+            if prod.entity_type == "whyfactor": prop_key = "weight"
+            elif prod.entity_type == "place": prop_key = "specificity"
+            
+            relationships.append(schemas.GenericRelationship(
+                start_node_uid=prod.event_id,
+                end_node_uid=prod.entity_id,
+                rel_type=prod.relationship,
+                properties={prop_key: prod.strength}
+            ))
+
+        # 4. Map Entity-Event Pointing Relationships
+        for ept in entity_points_to:
+            prop_key = "strength"
+            if ept.entity_type == "whyfactor": prop_key = "weight"
+            elif ept.entity_type == "place": prop_key = "specificity"
+
+            relationships.append(schemas.GenericRelationship(
+                start_node_uid=ept.entity_id,
+                end_node_uid=ept.next_event_id,
+                rel_type=ept.relationship,
+                properties={prop_key: ept.strength}
+            ))
+    
+    elif graph_model == "star":
+        print("[graph_mapper] Using 'star' model (Canonical Entity -> Events)")
+        # 3. Map Canonical Entities directly to Events
+        for prod in event_produces:
+            canonical_id = None
+            rel_type = None
+            prop_key = "strength"
+
+            if prod.entity_type == "actor":
+                canonical_id = f"agent_{prod.entity_name.lower().replace(' ', '_')}"
+                rel_type = "ACTS_IN"
+            elif prod.entity_type == "patient":
+                canonical_id = f"agent_{prod.entity_name.lower().replace(' ', '_')}"
+                rel_type = "AFFECTED_IN"
+            elif prod.entity_type == "place":
+                canonical_id = f"place_{prod.entity_name.lower().replace(' ', '_')}"
+                rel_type = "HOSTS"
+                prop_key = "specificity"
+            elif prod.entity_type == "whyfactor":
+                canonical_id = f"whyfactor_{prod.entity_name.lower().replace(' ', '_')[:30]}"
+                rel_type = "MOTIVATES"
+                prop_key = "weight"
+            
+            if canonical_id and rel_type:
+                relationships.append(schemas.GenericRelationship(
+                    start_node_uid=canonical_id, # <-- Canonical entity
+                    end_node_uid=prod.event_id,    # <-- Specific event
+                    rel_type=rel_type,
+                    properties={prop_key: prod.strength}
+                ))
+
+    # 5. Map Event-Event (Follows) Relationships (Same for both models)
     for i in range(len(events) - 1):
         ev1 = events[i]
         ev2 = events[i + 1]
@@ -124,7 +203,7 @@ def map_to_generic_graph(
                 properties={}
             ))
     
-    # 6. Map Event-Event (Causal) Relationships
+    # 6. Map Event-Event (Causal) Relationships (Same for both models)
     for link in causal_links:
         relationships.append(schemas.GenericRelationship(
             start_node_uid=link.cause_id,
@@ -140,5 +219,21 @@ def map_to_generic_graph(
                 "effect_seq": link.effect_sequence
             })
         ))
+
+    # --- NEW: Map Semantic Links ---
+    for link in semantic_links:
+        for source_id in link.source_event_ids:
+            for target_id in link.target_event_ids:
+                if source_id in nodes and target_id in nodes:
+                    relationships.append(schemas.GenericRelationship(
+                        start_node_uid=source_id,
+                        end_node_uid=target_id,
+                        rel_type=link.relation.upper(), # "EXPLANATION", etc.
+                        properties=_escape_props({
+                            "cue": ", ".join(link.cue) if link.cue else "",
+                            "confidence": link.confidence
+                        })
+                    ))
+    # --- END NEW ---
 
     return list(nodes.values()), relationships

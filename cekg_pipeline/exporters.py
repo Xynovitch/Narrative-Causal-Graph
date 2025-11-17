@@ -3,21 +3,17 @@ import json
 import csv
 from collections import defaultdict
 from dataclasses import asdict
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 try:
     import pandas as pd
 except ImportError:
     pd = None
 
-# --- FIX IS HERE (PART 1) ---
-# We must import GenericNode and GenericRelationship directly
 from .schemas import (
     CEKEvent, EventProducesEntity, EntityPointsToEvent, CausalLink,
-    GenericNode, GenericRelationship
+    GenericNode, GenericRelationship, Scene, SemanticLink # Import new schemas
 )
-# --- END FIX ---
-
 from .utils import _truncate_safe, _escape_cypher_string
 
 def build_jsonld(
@@ -103,11 +99,8 @@ def _format_cypher_properties(props: Dict[str, Any]) -> str:
 
 def export_neo4j_cypher(
     path: str,
-    # --- FIX IS HERE (PART 2) ---
-    # Remove the 'schemas.' prefix because we imported the classes directly
     nodes: List[GenericNode],
     relationships: List[GenericRelationship]
-    # --- END FIX ---
 ):
     """
     Export a generic graph to a Neo4j Cypher script.
@@ -176,10 +169,18 @@ def export_csv(
     events: List[CEKEvent],
     event_produces: List[EventProducesEntity],
     entity_points_to: List[EntityPointsToEvent],
-    causal_links: List[CausalLink]
+    causal_links: List[CausalLink],
+    # --- NEW ARGS ---
+    semantic_links: Optional[List[SemanticLink]] = None,
+    scenes: Optional[List[Scene]] = None
 ) -> Dict[str, str]:
     """Export DUAL FLOW structure to Neo4j CSV format"""
     os.makedirs(out_dir, exist_ok=True)
+    
+    if semantic_links is None:
+        semantic_links = []
+    if scenes is None:
+        scenes = []
     
     # Collect unique entities
     entities_by_type = defaultdict(dict)
@@ -298,6 +299,38 @@ def export_csv(
         "cause_seq": link.cause_sequence,
         "effect_seq": link.effect_sequence
     } for link in causal_links]
+    
+    # --- NEW ROWS FOR SCENES ---
+    scene_nodes_rows = [{
+        ":ID": scene.id,
+        "theme": scene.theme,
+        "chapter": scene.chapter,
+        "confidence": scene.confidence
+    } for scene in scenes]
+    
+    scene_includes_rows = []
+    for scene in scenes:
+        for event_id in scene.event_ids:
+            scene_includes_rows.append({
+                ":START_ID": scene.id,
+                ":END_ID": event_id,
+                ":TYPE": "INCLUDES"
+            })
+    # --- END NEW ---
+            
+    # --- NEW ROWS FOR SEMANTIC LINKS ---
+    semantic_link_rows = []
+    for link in semantic_links:
+        for source_id in link.source_event_ids:
+            for target_id in link.target_event_ids:
+                semantic_link_rows.append({
+                    ":START_ID": source_id,
+                    ":END_ID": target_id,
+                    ":TYPE": link.relation.upper(),
+                    "cue": ", ".join(link.cue) if link.cue else "",
+                    "confidence": link.confidence
+                })
+    # --- END NEW ---
 
     files = {
         "events.csv": events_rows,
@@ -314,6 +347,10 @@ def export_csv(
         "hosts.csv": hosts_rows,
         "follows.csv": follows_rows,
         "causes.csv": causes_rows,
+        # --- NEW FILES ---
+        "scenes.csv": scene_nodes_rows,
+        "scene_includes_event.csv": scene_includes_rows,
+        "semantic_links.csv": semantic_link_rows
     }
 
     def _write_csv(rows, path):

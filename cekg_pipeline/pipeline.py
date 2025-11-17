@@ -1,6 +1,7 @@
 import asyncio
 import traceback
 import random
+import numpy as np
 from collections import defaultdict
 from typing import List, Dict, Optional, Any, Set, Tuple
 
@@ -10,9 +11,19 @@ from . import schemas
 from . import utils
 from . import text_processor
 from . import llm_service
-from . import graph_builder  # <-- FIX: This import was missing
+from . import graph_builder
 from . import graph_mapper
 from . import exporters
+
+# Try to import sentence-transformers, but don't fail if it's not needed
+try:
+    from sentence_transformers import SentenceTransformer, util
+    SENTENCE_TRANSFORMER_MODEL = SentenceTransformer('all-MiniLM-L6-v2')
+except ImportError:
+    SENTENCE_TRANSFORMER_MODEL = None
+    print("[warning] 'sentence-transformers' library not found.")
+    print("[warning] Calibrated Confidence (Item #3) will not be available.")
+
 
 class CEKGPreprocessor:
     
@@ -24,148 +35,260 @@ class CEKGPreprocessor:
         self.client = llm_service.init_openai_client(config.OPENAI_API_KEY)
         self.dag_validator = utils.DAGValidator()
         self.global_event_sequence = 0
+    
+    def _calculate_calibrated_confidence(
+        self,
+        event_data: Dict[str, Any],
+        logprobs: Optional[Any] # This is a complex object from OpenAI
+    ) -> float:
+        """
+        (EXPERIMENTAL) Calculate a calibrated confidence score.
+        This is a placeholder for the complex logic from Item #3.
+        """
+        # 1. pLLM (Get logprob score)
+        # This is complex. You would need to parse the `logprobs` object
+        # to find the average token probability for the generated JSON.
+        # For now, we'll just use the LLM's own confidence.
+        p_llm = float(event_data.get("confidence", 0.7))
+
+        # 2. plexical (Score JSON completeness)
+        score = 1.0
+        if not event_data.get("actors"): score -= 0.2
+        if not event_data.get("whyFactors"): score -= 0.2 # We made this mandatory
+        if not event_data.get("location"): score -= 0.1
+        p_lexical = score
+
+        # 3. pcontextual (Semantic similarity)
+        p_contextual = 0.5 # Default
+        if SENTENCE_TRANSFORMER_MODEL:
+            try:
+                name_embedding = SENTENCE_TRANSFORMER_MODEL.encode(event_data.get("name", ""), convert_to_tensor=True)
+                quote_embedding = SENTENCE_TRANSFORMER_MODEL.encode(event_data.get("quote", ""), convert_to_tensor=True)
+                sim = util.pytorch_cos_sim(name_embedding, quote_embedding)
+                p_contextual = max(0, sim.item()) # Ensure non-negative
+            except Exception as e:
+                print(f"[warning] Could not calculate pcontextual: {e}")
         
-    async def _process_event_batch(
-        self, 
-        paragraphs_with_chapter: List[tuple[str, int]]
+        # Formula: confidence = α·pLLM + β·plexical + γ·pcontextual
+        # These weights (α, β, γ) should be calibrated.
+        alpha, beta, gamma = 0.4, 0.4, 0.2
+        
+        calibrated_score = (alpha * p_llm) + (beta * p_lexical) + (gamma * p_contextual)
+        
+        return round(calibrated_score, 4)
+
+    def _parse_event_json_data(
+        self,
+        event_data_list: List[Dict[str, Any]],
+        chapter_id: int,
+        logprobs: Optional[Any], # logprobs object for the *entire* batch
+        enable_confidence_calibration: bool
     ) -> Tuple[List[schemas.CEKEvent], List[schemas.EventProducesEntity], Dict[str, List[Tuple[str, int]]]]:
         """
-        Process a batch of paragraphs, return parsed objects.
-        This is where the logic from your old `process_chapter_events` lives.
+        Helper function to parse a list of event JSON objects
+        into schema objects and entity occurrences.
         """
         all_events = []
         all_produces = []
         entity_occurrences_batch = defaultdict(list)
+        
+        if not isinstance(event_data_list, list):
+            event_data_list = []
+        
+        for i, event_data in enumerate(event_data_list):
+            try:
+                # --- Confidence Calculation ---
+                if enable_confidence_calibration:
+                    # NOTE: This is complex. We'd need to map logprobs to *this specific event*.
+                    # For now, we apply it to the whole batch. A real implementation
+                    # would need to parse the logprobs object in detail.
+                    event_logprobs = logprobs # Simplified
+                    confidence = self._calculate_calibrated_confidence(event_data, event_logprobs)
+                else:
+                    confidence = float(event_data.get("confidence", 0.7))
+                # ---
+                
+                why_factors = utils._normalize_weights(event_data.get("whyFactors", []))
+                if not why_factors:
+                    print(f"[warning] LLM failed to provide mandatory whyFactor for event: {event_data.get('name')}")
+                    why_factors = [{"factor": "narrative progression", "weight": 1.0, "category": "Contextual Cause"}]
 
-        # 1. Get JSON data from LLM service
+                cause_weight = sum(wf.get("weight", 0) for wf in why_factors)
+                
+                action_type = event_data.get("actionType", "")
+                action_type = config.CONTROLLED_ACTION_ONTOLOGY.get(action_type.lower(), action_type)
+                
+                raw_location = event_data.get("location")
+                location = raw_location.strip() if raw_location else None
+                location_id = f"place/{location.lower().replace(' ', '_')}" if location else None
+                
+                event_sequence = self.global_event_sequence
+                self.global_event_sequence += 1
+                
+                event = schemas.CEKEvent(
+                    id=utils._make_id("event"),
+                    name=event_data.get("name", ""),
+                    eventType=event_data.get("eventType", "other"),
+                    actionType=action_type,
+                    source_quote=event_data.get("quote", ""),
+                    time=event_data.get("time"),
+                    location=location,
+                    location_id=location_id,
+                    causeWeight=cause_weight,
+                    confidence=confidence, # Use the calculated confidence
+                    chapter=chapter_id,
+                    sequence=event_sequence
+                )
+                all_events.append(event)
+                
+                # --- Process Entities ---
+                
+                # Actors
+                actors = event_data.get("actors", [])
+                if not actors and event_data.get("actor"):
+                     actors = [{"name": event_data["actor"], "strength": 1.0}]
+                
+                for actor in actors:
+                    raw_actor_name = actor.get("name")
+                    if raw_actor_name:
+                        actor_name = raw_actor_name.strip()
+                        actor_key = actor_name.lower()
+                        actor_id = utils._make_id(f"agent_{actor_key.replace(' ', '_')}")
+                        
+                        all_produces.append(schemas.EventProducesEntity(
+                            event_id=event.id, entity_id=actor_id,
+                            entity_name=actor_name, entity_type="actor",
+                            relationship="PRODUCES_ACTOR",
+                            strength=float(actor.get("strength", 1.0))
+                        ))
+                        entity_occurrences_batch[f"actor:{actor_key}"].append((event.id, event.sequence))
+                
+                # Patients
+                patients = event_data.get("patients", [])
+                if not patients and event_data.get("patient"):
+                    patients = [{"name": event_data["patient"], "strength": 1.0}]
+
+                for patient in patients:
+                    raw_patient_name = patient.get("name")
+                    if raw_patient_name:
+                        patient_name = raw_patient_name.strip()
+                        patient_key = patient_name.lower()
+                        patient_id = utils._make_id(f"agent_{patient_key.replace(' ', '_')}")
+                        
+                        all_produces.append(schemas.EventProducesEntity(
+                            event_id=event.id, entity_id=patient_id,
+                            entity_name=patient_name, entity_type="patient",
+                            relationship="PRODUCES_PATIENT",
+                            strength=float(patient.get("strength", 1.0))
+                        ))
+                        entity_occurrences_batch[f"patient:{patient_key}"].append((event.id, event.sequence))
+
+                # WhyFactors
+                for wf in why_factors:
+                    raw_factor = wf.get('factor')
+                    if raw_factor:
+                        factor_name = raw_factor.strip()
+                        factor_key = factor_name.lower()
+                        wf_id = utils._make_id(f"why_{factor_key[:30].replace(' ', '_')}")
+                        
+                        all_produces.append(schemas.EventProducesEntity(
+                            event_id=event.id, entity_id=wf_id,
+                            entity_name=factor_name, entity_type="whyfactor",
+                            relationship="PRODUCES_MOTIVATION",
+                            strength=wf.get('weight', 0.5)
+                        ))
+                        entity_occurrences_batch[f"whyfactor:{factor_key}"].append((event.id, event.sequence))
+
+                # Location
+                if location:
+                    location_key = location.lower()
+                    place_id = utils._make_id(f"place_{location_key.replace(' ', '_')}")
+                    
+                    all_produces.append(schemas.EventProducesEntity(
+                        event_id=event.id, entity_id=place_id,
+                        entity_name=location, entity_type="place",
+                        relationship="PRODUCES_LOCATION", strength=0.8
+                    ))
+                    entity_occurrences_batch[f"place:{location_key}"].append((event.id, event.sequence))
+                
+            except Exception as e:
+                print(f"[warning] Failed to process single event: {event_data.get('name')}. Error: {e}")
+                traceback.print_exc()
+                continue
+        
+        return all_events, all_produces, entity_occurrences_batch
+
+    async def _process_parallel_batch(
+        self, 
+        paragraphs_with_chapter: List[tuple[str, int]],
+        enable_llm_expansion: bool,
+        enable_confidence_calibration: bool
+    ) -> Tuple[List[schemas.CEKEvent], List[schemas.EventProducesEntity], Dict[str, List[Tuple[str, int]]]]:
+        """
+        (DEFAULT MODE) Process a batch of paragraphs in parallel.
+        """
+        all_events = []
+        all_produces = []
+        entity_occurrences_batch = defaultdict(list)
+        
         try:
-            events_batch_json = await llm_service.batch_extract_events(
+            # 1. Get JSON data for all paragraphs in parallel
+            # Now returns (data, logprobs)
+            results_batch = await llm_service.batch_extract_events(
                 paragraphs_with_chapter, 
                 self.openai_model,
-                self.client
+                self.client,
+                enable_llm_expansion,
+                enable_confidence_calibration # Request logprobs if calibrating
             )
+            
+            # 2. Parse JSON into schema objects
+            # We get a list of lists (one list of events per paragraph)
+            for (para_events_json, logprobs), (para, chapter_id) in zip(results_batch, paragraphs_with_chapter):
+                events, produces, occ_batch = self._parse_event_json_data(
+                    para_events_json, chapter_id, logprobs, enable_confidence_calibration
+                )
+                all_events.extend(events)
+                all_produces.extend(produces)
+                for key, val_list in occ_batch.items():
+                    entity_occurrences_batch[key].extend(val_list)
+
         except Exception as e:
             print(f"[error] Batch processing failed: {e}")
             traceback.print_exc()
-            return [], [], {} # Return empty on total batch failure
-
-        # 2. Parse JSON into schema objects
-        for (para, chapter_id), para_events_json in zip(paragraphs_with_chapter, events_batch_json):
-            if isinstance(para_events_json, Exception) or not para_events_json:
-                continue
-                
-            for event_data in para_events_json:
-                try:
-                    why_factors = utils._normalize_weights(event_data.get("whyFactors", []))
-                    if not why_factors:
-                        # LLM failed to provide mandatory whyFactor
-                        print(f"[warning] LLM failed to provide mandatory whyFactor for event: {event_data.get('name')}")
-                        why_factors = [{"factor": "narrative progression", "weight": 1.0, "category": "Contextual Cause"}]
-
-                    cause_weight = sum(wf.get("weight", 0) for wf in why_factors)
-                    
-                    action_type = event_data.get("actionType", "")
-                    action_type = config.CONTROLLED_ACTION_ONTOLOGY.get(action_type.lower(), action_type)
-                    
-                    raw_location = event_data.get("location")
-                    location = raw_location.strip() if raw_location else None
-                    location_id = f"place/{location.lower().replace(' ', '_')}" if location else None
-                    
-                    event_sequence = self.global_event_sequence
-                    self.global_event_sequence += 1
-                    
-                    event = schemas.CEKEvent(
-                        id=utils._make_id("event"),
-                        name=event_data.get("name", ""),
-                        eventType=event_data.get("eventType", "other"),
-                        actionType=action_type,
-                        source_quote=event_data.get("quote", ""),
-                        time=event_data.get("time"),
-                        location=location,
-                        location_id=location_id,
-                        causeWeight=cause_weight,
-                        confidence=float(event_data.get("confidence", 0.7)),
-                        chapter=chapter_id, # Use the chapter_id passed in
-                        sequence=event_sequence
-                    )
-                    all_events.append(event)
-                    
-                    # --- Process Entities ---
-                    
-                    # Actors
-                    actors = event_data.get("actors", [])
-                    if not actors and event_data.get("actor"): # Handle fallback
-                         actors = [{"name": event_data["actor"], "strength": 1.0}]
-                    
-                    for actor in actors:
-                        raw_actor_name = actor.get("name")
-                        if raw_actor_name:
-                            actor_name = raw_actor_name.strip()
-                            actor_key = actor_name.lower()
-                            actor_id = utils._make_id(f"agent_{actor_key.replace(' ', '_')}")
-                            
-                            all_produces.append(schemas.EventProducesEntity(
-                                event_id=event.id, entity_id=actor_id,
-                                entity_name=actor_name, entity_type="actor",
-                                relationship="PRODUCES_ACTOR",
-                                strength=float(actor.get("strength", 1.0))
-                            ))
-                            entity_occurrences_batch[f"actor:{actor_key}"].append((event.id, event.sequence))
-                    
-                    # Patients
-                    patients = event_data.get("patients", [])
-                    if not patients and event_data.get("patient"): # Handle fallback
-                        patients = [{"name": event_data["patient"], "strength": 1.0}]
-
-                    for patient in patients:
-                        raw_patient_name = patient.get("name")
-                        if raw_patient_name:
-                            patient_name = raw_patient_name.strip()
-                            patient_key = patient_name.lower()
-                            patient_id = utils._make_id(f"agent_{patient_key.replace(' ', '_')}")
-                            
-                            all_produces.append(schemas.EventProducesEntity(
-                                event_id=event.id, entity_id=patient_id,
-                                entity_name=patient_name, entity_type="patient",
-                                relationship="PRODUCES_PATIENT",
-                                strength=float(patient.get("strength", 1.0))
-                            ))
-                            entity_occurrences_batch[f"patient:{patient_key}"].append((event.id, event.sequence))
-
-                    # WhyFactors
-                    for wf in why_factors:
-                        raw_factor = wf.get('factor')
-                        if raw_factor:
-                            factor_name = raw_factor.strip()
-                            factor_key = factor_name.lower()
-                            wf_id = utils._make_id(f"why_{factor_key[:30].replace(' ', '_')}")
-                            
-                            all_produces.append(schemas.EventProducesEntity(
-                                event_id=event.id, entity_id=wf_id,
-                                entity_name=factor_name, entity_type="whyfactor",
-                                relationship="PRODUCES_MOTIVATION",
-                                strength=wf.get('weight', 0.5) # Use weight as strength
-                            ))
-                            entity_occurrences_batch[f"whyfactor:{factor_key}"].append((event.id, event.sequence))
-
-                    # Location
-                    if location:
-                        location_key = location.lower()
-                        place_id = utils._make_id(f"place_{location_key.replace(' ', '_')}")
-                        
-                        all_produces.append(schemas.EventProducesEntity(
-                            event_id=event.id, entity_id=place_id,
-                            entity_name=location, entity_type="place",
-                            relationship="PRODUCES_LOCATION", strength=0.8
-                        ))
-                        entity_occurrences_batch[f"place:{location_key}"].append((event.id, event.sequence))
-                    
-                except Exception as e:
-                    print(f"[warning] Failed to process single event: {event_data.get('name')}. Error: {e}")
-                    traceback.print_exc()
-                    continue
         
         return all_events, all_produces, entity_occurrences_batch
+    
+    async def _process_text_chunk(
+        self,
+        text_chunk: str,
+        chapter_id: int,
+        enable_llm_expansion: bool,
+        enable_confidence_calibration: bool
+    ) -> Tuple[List[schemas.CEKEvent], List[schemas.EventProducesEntity], Dict[str, List[Tuple[str, int]]]]:
+        """
+        (EXPERIMENTAL MODE) Process a single large chunk of text.
+        """
+        try:
+            # 1. Get JSON data for the single large chunk
+            events_json, logprobs = await llm_service.extract_events_from_chunk_async(
+                text_chunk,
+                chapter_id,
+                self.openai_model,
+                self.client,
+                enable_llm_expansion,
+                enable_confidence_calibration
+            )
+            
+            # 2. Parse the resulting JSON list
+            return self._parse_event_json_data(
+                events_json, chapter_id, logprobs, enable_confidence_calibration
+            )
+
+        except Exception as e:
+            print(f"[error] Text chunk processing failed: {e}")
+            traceback.print_exc()
+            return [], [], defaultdict(list)
 
     async def _batch_causal_linking(
         self,
@@ -228,13 +351,12 @@ class CEKGPreprocessor:
             effect_ev = event_map_by_id.get(effect_id)
             
             if cause_ev and effect_ev:
+                # Use event names for pairing if quotes are empty (e.g. from chunking)
+                cause_text = cause_ev.source_quote or cause_ev.name
+                effect_text = effect_ev.source_quote or effect_ev.name
                 pairs_to_assess.append((
-                    cause_ev.source_quote, effect_ev.source_quote, cause_id, effect_id
+                    cause_text, effect_text, cause_id, effect_id
                 ))
-        
-        # Optional: Sampling
-        # if len(pairs_to_assess) > (len(events) * 10): # Simple heuristic
-        #     pairs_to_assess = random.sample(pairs_to_assess, int(len(pairs_to_assess) * sample_rate))
         
         print(f"[causal linking] Assessing {len(pairs_to_assess)} final pairs via LLM...")
         
@@ -253,7 +375,6 @@ class CEKGPreprocessor:
                     continue
                 
                 if not self.dag_validator.add_edge(cause_id, effect_id):
-                    # This rejects cycles or duplicate edges
                     rejected_edges += 1
                     continue
                 
@@ -261,7 +382,6 @@ class CEKGPreprocessor:
                 effect_seq = self.dag_validator.event_sequence_map.get(effect_id)
                 
                 if cause_seq is None or effect_seq is None:
-                    # This should not happen if add_edge succeeded, but good to check
                     rejected_edges += 1
                     continue
                 
@@ -289,6 +409,105 @@ class CEKGPreprocessor:
         
         return causal_links
 
+    # --- NEW FUNCTION FOR SEMANTIC LINKING ---
+    async def _batch_semantic_linking(
+        self,
+        events: List[schemas.CEKEvent],
+        batch_size: int
+    ) -> List[schemas.SemanticLink]:
+        
+        print("[semantic linking] Starting semantic link assessment...")
+        semantic_links = []
+        
+        # This uses the same pairs as the causal linker for efficiency
+        # In a real implementation, you might want a different candidate generation strategy
+        pairs_to_assess_set: Set[tuple[str, str]] = set()
+        for i, ev in enumerate(events):
+            start = max(0, i - 4) # Use same window
+            for j in range(start, i):
+                cand = events[j]
+                if cand.sequence >= ev.sequence: continue
+                pairs_to_assess_set.add((cand.id, ev.id))
+
+        event_map_by_id = {ev.id: ev for ev in events}
+        pairs_to_assess = []
+        for cause_id, effect_id in pairs_to_assess_set:
+            cause_ev = event_map_by_id.get(cause_id)
+            effect_ev = event_map_by_id.get(effect_id)
+            if cause_ev and effect_ev:
+                pairs_to_assess.append((
+                    cause_ev.source_quote or cause_ev.name,
+                    effect_ev.source_quote or effect_ev.name,
+                    cause_id,
+                    effect_id
+                ))
+        
+        print(f"[semantic linking] Assessing {len(pairs_to_assess)} pairs...")
+        
+        for batch_start in range(0, len(pairs_to_assess), batch_size):
+            batch = pairs_to_assess[batch_start:batch_start + batch_size]
+            
+            assessments = await llm_service.batch_assess_semantic_pairs(
+                batch, self.openai_model, self.client
+            )
+            
+            for (cause_quote, effect_quote, cause_id, effect_id), assessment in zip(batch, assessments):
+                if assessment is None or assessment.get("relation") == "none":
+                    continue
+                
+                link = schemas.SemanticLink(
+                    id=utils._make_id("sem"),
+                    source_event_ids=[cause_id],
+                    target_event_ids=[effect_id],
+                    relation=assessment.get("relation", "explanation"),
+                    cue=assessment.get("cue"),
+                    confidence=float(assessment.get("confidence", 0.0))
+                )
+                semantic_links.append(link)
+
+        print(f"[semantic linking] Found {len(semantic_links)} semantic links.")
+        return semantic_links
+    # --- END NEW FUNCTION ---
+
+    # --- NEW FUNCTION FOR SCENE GROUPING ---
+    async def _generate_scenes(
+        self,
+        events: List[schemas.CEKEvent]
+    ) -> List[schemas.Scene]:
+        print("[scene grouping] Starting scene generation...")
+        all_scenes = []
+        
+        # Group events by chapter first
+        events_by_chapter = defaultdict(list)
+        for ev in events:
+            events_by_chapter[ev.chapter].append(ev)
+            
+        for chapter_id, chapter_events in events_by_chapter.items():
+            print(f"[scene grouping] Processing chapter {chapter_id}...")
+            # Sort events by sequence just in case
+            chapter_events.sort(key=lambda x: x.sequence)
+            
+            scene_data_list = await llm_service.extract_scenes_from_chapter_async(
+                chapter_events, chapter_id, self.openai_model, self.client
+            )
+            
+            for scene_data in scene_data_list:
+                try:
+                    scene = schemas.Scene(
+                        id=utils._make_id("scene"),
+                        event_ids=scene_data.get("event_ids", []),
+                        chapter=chapter_id,
+                        theme=scene_data.get("theme", "Untitled Scene"),
+                        confidence=float(scene_data.get("confidence", 0.7))
+                    )
+                    all_scenes.append(scene)
+                except Exception as e:
+                    print(f"[warning] Failed to parse scene data: {e}")
+        
+        print(f"[scene grouping] Generated {len(all_scenes)} scenes.")
+        return all_scenes
+    # --- END NEW FUNCTION ---
+
     async def run_async(self, text_path: str, 
                        out_json: str,
                        out_cypher: str,
@@ -297,9 +516,23 @@ class CEKGPreprocessor:
                        batch_size: int,
                        causal_window: int,
                        causal_sample_rate: float,
-                       causal_batch_size: int) -> Dict[str, Any]:
+                       causal_batch_size: int,
+                       # --- NEW ARGS ---
+                       paragraph_chunk_size: int,
+                       graph_model: str,
+                       enable_scene_grouping: bool,
+                       enable_semantic_linking: bool,
+                       enable_llm_expansion: bool,
+                       enable_confidence_calibration: bool
+                       ) -> Dict[str, Any]:
         """Main async pipeline orchestrator"""
         
+        # Check for sentence-transformer dependency if flag is set
+        if enable_confidence_calibration and SENTENCE_TRANSFORMER_MODEL is None:
+            print("[ERROR] '--enable-confidence-calibration' was passed, but 'sentence-transformers' is not installed.")
+            print("Please run 'pip install sentence-transformers' and try again.")
+            raise ImportError("'sentence-transformers' library not found.")
+            
         print("[pipeline] Loading text...")
         raw = text_processor.load_text(text_path)
         chapters = text_processor.split_chapters(raw)
@@ -308,7 +541,6 @@ class CEKGPreprocessor:
             chapters = chapters[:max_chapters]
 
         print(f"[pipeline] Processing {len(chapters)} chapters")
-        print(f"[pipeline] DUAL FLOW: Event→Entity→Event chains ✓")
 
         # --- Store all data in local lists ---
         all_events: List[schemas.CEKEvent] = []
@@ -320,24 +552,49 @@ class CEKGPreprocessor:
             paragraphs = text_processor.split_into_paragraphs(chapter_text)
             print(f"[chapter {chapter_id}] Processing {len(paragraphs)} paragraphs...")
             
-            for i in range(0, len(paragraphs), batch_size):
-                batch_paras = paragraphs[i:i+batch_size]
-                batch_with_chapter = [(para, chapter_id) for para in batch_paras]
-                
-                try:
-                    events, produces, occ_batch = await self._process_event_batch(batch_with_chapter)
+            # --- NEW IF/ELSE FOR FEATURE 1 ---
+            if paragraph_chunk_size > 1:
+                # EXPERIMENTAL: Chunked "idea-to-idea" processing
+                print(f"[chapter {chapter_id}] Using experimental chunk size: {paragraph_chunk_size}")
+                for i in range(0, len(paragraphs), paragraph_chunk_size):
+                    chunk = paragraphs[i : i + paragraph_chunk_size]
+                    text_chunk = "\n\n".join(chunk)
                     
-                    all_events.extend(events)
-                    all_produces.extend(produces)
-                    for key, val_list in occ_batch.items():
-                        entity_occurrences[key].extend(val_list)
+                    try:
+                        events, produces, occ_batch = await self._process_text_chunk(
+                            text_chunk, chapter_id,
+                            enable_llm_expansion, enable_confidence_calibration
+                        )
+                        all_events.extend(events)
+                        all_produces.extend(produces)
+                        for key, val_list in occ_batch.items():
+                            entity_occurrences[key].extend(val_list)
+                        print(f"[chapter {chapter_id}] Chunk {i//paragraph_chunk_size + 1}: extracted {len(events)} high-level events")
                     
-                    print(f"[chapter {chapter_id}] Batch {i//batch_size + 1}: extracted {len(events)} events")
-                
-                except Exception as e:
-                    print(f"[error] Failed processing batch {i//batch_size + 1} in chapter {chapter_id}: {e}")
-                    traceback.print_exc()
-                    continue # Try next batch
+                    except Exception as e:
+                        print(f"[error] Failed processing chunk {i//paragraph_chunk_size + 1} in chapter {chapter_id}: {e}")
+                        traceback.print_exc()
+                        continue
+            
+            else:
+                # DEFAULT: Parallel batch processing (1-para-per-call)
+                for i in range(0, len(paragraphs), batch_size):
+                    batch_paras = paragraphs[i:i+batch_size]
+                    batch_with_chapter = [(para, chapter_id) for para in batch_paras]
+                    try:
+                        events, produces, occ_batch = await self._process_parallel_batch(
+                            batch_with_chapter,
+                            enable_llm_expansion, enable_confidence_calibration
+                        )
+                        all_events.extend(events)
+                        all_produces.extend(produces)
+                        for key, val_list in occ_batch.items():
+                            entity_occurrences[key].extend(val_list)
+                        print(f"[chapter {chapter_id}] Batch {i//batch_size + 1}: extracted {len(events)} events")
+                    except Exception as e:
+                        print(f"[error] Failed processing batch {i//batch_size + 1} in chapter {chapter_id}: {e}")
+                        traceback.print_exc()
+            # --- END IF/ELSE ---
 
         if not all_events:
             raise schemas.CEKGError("No events were extracted")
@@ -346,22 +603,17 @@ class CEKGPreprocessor:
         
         # Events are already sorted by sequence number from the batch processor
 
-        # --- FIX: REINSTATE THE CALLS TO GRAPH_BUILDER ---
-        # Run Pass 2: Propagate context
-        # Note: propagate_context mutates all_events in place, but returns new lists
         newly_produced, entity_occurrences = graph_builder.propagate_context(
             all_events, all_produces, entity_occurrences
         )
         all_produces.extend(newly_produced)
         print(f"[pipeline] Total event->entity productions after context: {len(all_produces)}")
 
-        # Create entity→event links
         entity_to_event_links = graph_builder.create_entity_to_event_links(
             entity_occurrences, all_produces
         )
-        # --- END FIX ---
 
-        # Causal linking
+        # --- Causal Linking (Standard) ---
         print(f"[pipeline] Starting causal linking")
         causal_links = []
         try:
@@ -376,52 +628,88 @@ class CEKGPreprocessor:
             print(f"[warning] Causal linking failed: {e}")
             traceback.print_exc()
         
-        # Export results
-        print(f"[pipeline] Mapping data to generic graph...")
+        # --- Semantic Linking (Experimental) ---
+        semantic_links = []
+        if enable_semantic_linking:
+            try:
+                semantic_links = await self._batch_semantic_linking(
+                    events=all_events,
+                    batch_size=causal_batch_size # Reuse batch size
+                )
+            except Exception as e:
+                print(f"[warning] Semantic linking failed: {e}")
+                traceback.print_exc()
+
+        # --- Scene Grouping (Experimental) ---
+        scenes = []
+        if enable_scene_grouping:
+            try:
+                scenes = await self._generate_scenes(all_events)
+            except Exception as e:
+                print(f"[warning] Scene grouping failed: {e}")
+                traceback.print_exc()
+
+        # --- Export results ---
+        print(f"[pipeline] Mapping data to generic graph (model: {graph_model})...")
         csvs = {}
         try:
-            # 1. Map to generic graph structure
             generic_nodes, generic_rels = graph_mapper.map_to_generic_graph(
-                all_events, all_produces, entity_to_event_links, causal_links
+                all_events, all_produces, entity_to_event_links, causal_links,
+                graph_model=graph_model,
+                semantic_links=semantic_links, # Pass new data
+                scenes=scenes                 # Pass new data
             )
             
             print(f"[pipeline] Exporting results...")
             
-            # 2. Export JSON-LD (uses old lists)
             json_data = exporters.build_jsonld(
                 all_events, all_produces, entity_to_event_links, causal_links
             )
             exporters.export_json(out_json, json_data)
             
-            # 3. Export Cypher (uses new generic lists)
             exporters.export_neo4j_cypher(
                 out_cypher, generic_nodes, generic_rels
             )
             
-            # 4. Export CSV (uses old lists)
             csvs = exporters.export_csv(
-                out_csv_dir, all_events, all_produces, entity_to_event_links, causal_links
+                out_csv_dir, all_events, all_produces, entity_to_event_links, causal_links,
+                semantic_links=semantic_links,
+                scenes=scenes
             )
         except Exception as e:
             print(f"[error] Export failed: {e}")
             traceback.print_exc()
-            # Don't raise, just report stats
 
         dag_stats = self.dag_validator.get_stats()
         cache_stats = await llm_service.get_cache_sizes()
+
+        e2e_links = 0
+        if graph_model == 'chain':
+            e2e_links = len(entity_to_event_links)
+        elif graph_model == 'star':
+            e2e_links = len([p for p in all_produces if p.entity_type != 'whyfactor'])
+
+        # --- Build final stats dict ---
+        stats = {
+            "events": len(all_events),
+            "event_produces_entity": len(all_produces),
+            "entity_points_to_event": e2e_links,
+            "causal_links": len(causal_links),
+            "cached_event_extractions": cache_stats["event_extraction_cache_size"],
+            "cached_causal_assessments": cache_stats["assessment_cache_size"],
+            "chapters_processed": len(set(ev.chapter for ev in all_events)),
+            "dag_stats": dag_stats
+        }
+        if enable_semantic_linking:
+            stats["semantic_links"] = len(semantic_links)
+            stats["cached_semantic_assessments"] = cache_stats["semantic_cache_size"]
+        if enable_scene_grouping:
+            stats["scenes"] = len(scenes)
+            stats["cached_scene_assessments"] = cache_stats["scene_cache_size"]
 
         return {
             "json": out_json, 
             "cypher": out_cypher, 
             "csv": csvs,
-            "stats": {
-                "events": len(all_events),
-                "event_produces_entity": len(all_produces),
-                "entity_points_to_event": len(entity_to_event_links),
-                "causal_links": len(causal_links),
-                "cached_event_extractions": cache_stats["event_extraction_cache_size"],
-                "cached_causal_assessments": cache_stats["assessment_cache_size"],
-                "chapters_processed": len(set(ev.chapter for ev in all_events)),
-                "dag_stats": dag_stats
-            }
+            "stats": stats
         }
