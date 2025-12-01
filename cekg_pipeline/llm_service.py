@@ -12,122 +12,132 @@ from .schemas import ExtractionError, CEKEvent
 from .utils import BoundedCache, _hash_for_cache
 from .config import CACHE_MAX_SIZE
 
-# --- Caches are now local to this service ---
+# --- Caches ---
 event_extraction_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 assessment_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 semantic_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 scene_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 
-# --- PROMPT SET 1: INSTRUCTIONS (THE GOAL) ---
+# --- DEFAULTS (Fallbacks if no dictionary file is found) ---
+DEFAULT_EVENT_ONTOLOGY = [
+    "PHYSICAL_MOVEMENT", "COMMUNICATION_VERBAL", "INTERNAL_THOUGHT", 
+    "EMOTIONAL_REACTION", "OBSERVATION", "CONFLICT_PHYSICAL", 
+    "SOCIAL_INTERACTION", "STATE_CHANGE", "ACQUISITION", "TRAVEL"
+]
 
-PROMPT_DETAILED_INSTRUCTIONS = """Extract EVERY distinct event from this text. An event is ANY action, perception, dialogue, emotion, or state change. Be granular. Capturing specific sequences of actions is important."""
+DEFAULT_RELATIONSHIP_ONTOLOGY = [
+    "DIRECT_CAUSE", "ENABLES", "PREVENTS", "TRIGGERS", "MOTIVATES", 
+    "INTERRUPTS", "INHIBITS", "PRECEDES"
+]
 
-PROMPT_HIGH_LEVEL_INSTRUCTIONS = """Extract only the MAJOR narrative events or ideas from this text. Do NOT extract every single verb or minor action. Focus on the main plot points, significant changes in state, or the core "idea-to-idea" flow."""
+# --- PROMPTS ---
 
-# --- PROMPT SET 2: EXPANSION (THE MODIFIER) ---
+JSON_START = "```" + "json"
+JSON_END = "```"
+
+PROMPT_DETAILED_INSTRUCTIONS = """Extract EVERY distinct event from this text. An event is ANY action, perception, dialogue, emotion, or state change. Be granular."""
+PROMPT_HIGH_LEVEL_INSTRUCTIONS = """Extract only the MAJOR narrative events or ideas from this text. Focus on the main plot points."""
 
 PROMPT_EXPANSION_ADDON = """
 **Additional Tasks:**
-1.  **Find Implicit Events:** Extract psychological or emotional events (e.g., 'Pip felt ashamed').
-2.  **Group Compound Events:** Combine simple, sequential actions into one event (e.g., 'walked to the door and knocked' -> "knock on door").
-3.  **Coreference Resolution:** Normalize all actor/patient names to their **full, canonical name** (e.g., "the boy", "Philip Pirrip", "Pip" -> "Pip").
+1. Find Implicit Events (psychological/emotional).
+2. Group Compound Events (e.g., 'walked and knocked' -> "knock on door").
+3. Coreference Resolution (Normalize names to full canonical name).
 """
 
-# --- PROMPT SET 3: THE BASE TEMPLATE ---
-
-# UPDATED: Added strict constraints to 'actors' and 'patients' to exclude body parts/objects.
-PROMPT_BASE_TEMPLATE = """You are an expert literary analyst.
+PROMPT_BASE_TEMPLATE = f"""You are an expert literary analyst.
 
 **Your Goal:**
-{instructions}
-{expansion_instructions}
+Extract narrative events from the text below.
+{{instructions}}
+{{expansion_instructions}}
 
 **Output Format:**
 You MUST return a valid JSON object wrapped in a markdown code block.
 Example:
-""" + "```json" + """
-{{
-  "events": [...]
-}}
-""" + "```" + """
+{JSON_START}
+{{{{
+  "events": [
+    {{{{
+      "raw_description": "Pip ran towards the church door",
+      "event_category": "PHYSICAL_MOVEMENT", 
+      "actors": ["Pip"],
+      "patients": [],
+      "location_context": "Churchyard",
+      "time_context": "Late afternoon",
+      "why_factors": ["Fear of Magwitch"],
+      "confidence": 0.95
+    }}}}
+  ]
+}}}}
+{JSON_END}
 
-Each event object in the "events" list must have:
-- name: brief description
-- eventType: one of ["perception/recognition", "communication", "conflict", "assistance", "movement", "emotion", "transformation", "other"]
-- actionType: canonical verb
-- actors: array of {{"name": "Name", "strength": 0.0-1.0}}. IMPORTANT: Actors must be SENTIENT beings (people, animals, personified entities). Do NOT extract body parts (e.g., "liver", "heart"), objects, or abstract concepts as actors.
-- patients: array of {{"name": "Name", "strength": 0.0-1.0}}. IMPORTANT: Patients must be SENTIENT beings. If an object/body part is affected, leave this empty or name the owner of the part.
-- location: The specific place mentioned.
-- time: temporal reference.
-- whyFactors: **Mandatory** array of {{"factor": "desc", "weight": 0.0-1.0, "category": "Immediate/Contextual"}}.
-- confidence: 0.0-1.0 (your confidence in the extraction)
-- quote: relevant text (max 50 words).
+**Fields Guide:**
+1. **raw_description**: The natural language description of the event (summarized from text).
+2. **event_category**: Choose the BEST fit from the Provided Ontology List below.
+3. **location_context**: The setting. If implied by previous context, you may leave it null or fill it if obvious.
+4. **time_context**: Temporal marker (e.g., "Morning", "After dinner").
+5. **actors/patients**: Must be SENTIENT beings (Characters).
+6. **why_factors**: List of strings explaining the immediate cause/motivation.
 
-**Text to Analyze (Chapter {chapter_id}):**
-{text_input}
+**Provided Ontology List (event_category):**
+[{{ontology_list}}]
+
+**Text to Analyze (Chapter {{chapter_id}}):**
+{{text_input}}
 
 Return ONLY the JSON object within the code block:"""
 
-# --- PROMPT SET 4: LINKING & SCENES ---
-
 PROMPT_CAUSAL_PAIR = (
-    "You are a careful literary causal analyst.\n"
-    "Given two event descriptions, return a single JSON object with:\n"
-    "- relationType: one of [\"causes\", \"enables\", \"prevents\", \"aggravates\", \"none\"]\n"
-    "- mechanism: short explanation (<=50 words)\n"
-    "- sign: + or - or 0\n"
+    "You are a literary causal analyst.\n"
+    "Determine the precise relationship between Event A and Event B using the provided dictionary.\n\n"
+    "**Relationship Dictionary:**\n"
+    "[{relation_ontology}]\n\n"
+    "**Output Format:**\n"
+    "Return a JSON object:\n"
+    "- relationType: ONE valid category from the dictionary above (or \"NONE\")\n"
+    "- mechanism: short explanation (<=20 words)\n"
     "- weight: float 0.0-1.0\n"
     "- confidence: float 0.0-1.0\n\n"
-    "CAUSE: \"{cause_text}\"\n"
-    "EFFECT: \"{effect_text}\"\n\n"
+    "EVENT A (Cause/Prior): \"{cause_text}\"\n"
+    "EVENT B (Effect/Posterior): \"{effect_text}\"\n\n"
     "Return ONLY the JSON object:"
 )
 
 PROMPT_SEMANTIC_PAIR = (
-    "You are a literary analyst focusing on narrative structure.\n"
-    "Given two events, determine if there is a **non-causal semantic link** between them.\n"
-    "A semantic link is for **explanation, elaboration, contrast, or parallelism**.\n"
-    "Return a single JSON object with:\n"
-    "- relation: one of [\"explanation\", \"elaboration\", \"contrast\", \"parallelism\", \"none\"]\n"
-    "- cue: list of keywords (e.g., [\"because\", \"therefore\"]) or null\n"
-    "- confidence: float 0.0-1.0\n\n"
+    "You are a literary analyst.\n"
+    "Determine if there is a **non-causal semantic link** (explanation, contrast).\n"
+    "Return JSON:\n"
+    "- relation: [\"explanation\", \"contrast\", \"none\"]\n"
+    "- cue: list of keywords\n"
+    "- confidence: float\n\n"
     "EVENT 1: \"{cause_text}\"\n"
     "EVENT 2: \"{effect_text}\"\n\n"
     "Return ONLY the JSON object:"
 )
 
-PROMPT_SCENE_GROUPING = """You are a literary editor. You will be given a list of sequential events from a chapter.
-Your job is to group these events into **narrative scenes**. A scene is a cluster of events that happen in the same general time/location and are thematically connected.
+PROMPT_SCENE_GROUPING = """Group these events into narrative scenes.
+A scene is a cluster of events in the same time/location/theme.
 
-**Input:**
-A JSON list of event objects:
-[
-    {{"id": "event/001", "name": "Pip enters graveyard"}},
-    {{"id": "event/002", "name": "Magwitch confronts Pip"}},
-    {{"id": "event/003", "name": "Magwitch threatens Pip"}},
-    {{"id": "event/004", "name": "Pip runs home in fear"}},
-    {{"id": "event/005", "name": "Pip enters the kitchen"}},
-    {{"id": "event/006", "name": "Mrs. Joe scolds Pip"}}
-]
+Input JSON: {event_list_json}
 
-**Output:**
-Return a JSON object with a single "scenes" key. Each scene must have:
-- event_ids: A list of event IDs that belong to this scene.
-- theme: A short, 3-5 word theme for the scene (e.g., "A Fateful Encounter").
-- confidence: Your 0.0-1.0 confidence in this grouping.
+Output JSON format:
+{{
+  "scenes": [
+    {{
+      "event_ids": ["id1", "id2"],
+      "theme": "Theme Name",
+      "confidence": 0.9
+    }}
+  ]
+}}
+"""
 
-**Event List for Chapter {chapter_id}:**
-{event_list_json}
-
-Return ONLY the JSON object:"""
-
-# --- END OF PROMPTS ---
+# --- Functions ---
 
 def init_openai_client(api_key: str) -> openai.OpenAI:
     if openai is None:
-        raise RuntimeError("openai package not installed. Run `pip install openai`.")
-    if not api_key:
-        raise RuntimeError("OPENAI_API_KEY not set")
+        raise RuntimeError("openai package not installed.")
     return openai.OpenAI(api_key=api_key)
 
 async def _async_llm_json_call(
@@ -136,133 +146,87 @@ async def _async_llm_json_call(
     client: openai.OpenAI, 
     cache: BoundedCache, 
     cache_key: str,
-    max_tokens: int = 4096,
-    request_logprobs: bool = False
+    max_tokens: int = 4096
 ) -> Any:
-    """
-    A single, reusable, and robust function to call the LLM and get clean JSON.
-    Handles caching, retries, JSON cleaning, and model-specific API params.
-    """
     
     cached = await cache.get(cache_key)
     if cached is not None:
         return cached, None 
 
-    # Detect Model Type
-    is_o1 = model.startswith("o1")
-    is_gpt5 = model.startswith("gpt-5")
-
     for attempt in range(3):
-        text = ""
         try:
             loop = asyncio.get_event_loop()
             
             def make_request():
-                api_args = {
-                    "model": model,
-                    "messages": [{"role": "user", "content": prompt}],
-                }
-
-                if is_o1:
-                    # o1: Strict rules. No system, no temperature, no logprobs.
-                    # Must use max_completion_tokens. NO response_format.
-                    api_args["max_completion_tokens"] = max_tokens
-                elif is_gpt5:
-                    # gpt-5: Likely supports JSON mode, uses max_completion_tokens.
-                    api_args["max_completion_tokens"] = max_tokens
-                    api_args["response_format"] = {"type": "json_object"}
-                else:
-                    # Standard (gpt-4o/3.5): max_tokens, temp, logprobs supported.
-                    api_args["max_tokens"] = max_tokens
-                    api_args["temperature"] = 0.0
-                    api_args["response_format"] = {"type": "json_object"}
-                    if request_logprobs:
-                        api_args["logprobs"] = True
-
-                return client.chat.completions.create(**api_args)
+                return client.chat.completions.create(
+                    model=model,
+                    messages=[{"role": "user", "content": prompt}],
+                    response_format={"type": "json_object"},
+                    max_tokens=max_tokens,
+                    temperature=0.0
+                )
             
             resp = await loop.run_in_executor(None, make_request)
             text = resp.choices[0].message.content.strip()
             
-            if not text:
-                raise ExtractionError("LLM returned empty response")
-
-            logprobs = getattr(resp.choices[0], "logprobs", None)
-            
-            # --- 1. Attempt Markdown Extraction ---
-            # Matches ```json ... ``` OR just ``` ... ```
+            # Markdown Extraction
             json_match = re.search(r"```(?:json)?\n?(.*?)```", text, re.DOTALL)
             if json_match:
                 text = json_match.group(1).strip()
             
-            # --- 2. Attempt Raw JSON Extraction ---
-            start = text.find("{")
-            end = text.rfind("}") + 1
-            
-            if start != -1 and end > start:
-                text = text[start:end]
-            elif start != -1:
-                # RECOVERY: Found a start '{' but no valid end '}' -> Truncated?
-                # Let's try to salvage it by closing the JSON structure.
-                # This is a "Hail Mary" pass for when tokens run out.
-                print(f"[warning] JSON appears truncated. Attempting repair...")
-                text = text[start:] + "]}" 
-            else:
-                # No JSON structure found at all
-                print(f"[debug] No JSON found. Raw output start: {repr(text[:200])}")
-                raise ExtractionError("No JSON brace found in response")
-
-            # --- 3. Parse JSON ---
+            # JSON Parse
             try:
                 data = json.loads(text)
             except json.JSONDecodeError:
-                # Final attempt: sometimes repair needs an extra brace
-                if text.endswith("]}"): 
-                     pass
-                # Try cleaning control characters as last resort
+                # Simple repair for common trailing comma or bracket issues
                 cleaned_chars = [c for c in text if ord(c) >= 32 or c in '\n\r\t']
                 text = ''.join(cleaned_chars)
                 data = json.loads(text)
             
             # Unwrap common wrappers
-            if isinstance(data, dict) and 'events' in data and isinstance(data['events'], list):
-                data = data['events']
-            elif isinstance(data, dict) and 'scenes' in data and isinstance(data['scenes'], list):
-                data = data['scenes']
+            if isinstance(data, dict):
+                if 'events' in data and isinstance(data['events'], list):
+                    data = data['events']
+                elif 'scenes' in data and isinstance(data['scenes'], list):
+                    data = data['scenes']
 
             await cache.set(cache_key, data)
-            return data, logprobs
+            return data, getattr(resp.choices[0], "logprobs", None)
             
         except Exception as e:
-            print(f"[error] LLM/JSON call failed (attempt {attempt+1}): {e}")
             if attempt == 2:
-                raise ExtractionError(f"Extraction failed after 3 attempts: {e}")
-            await asyncio.sleep(1 + attempt * 2)
-    
-    raise ExtractionError("Failed to get LLM response after retries")
+                # raise ExtractionError(f"LLM call failed: {e}")
+                print(f"[error] LLM failed after 3 attempts: {e}")
+                return [], None
+            await asyncio.sleep(1)
+    return [], None
 
 
 def _get_extraction_prompt(
     text_input: str,
     chapter_id: int,
     extraction_style: str,
-    enable_llm_expansion: bool
+    enable_llm_expansion: bool,
+    event_ontology: List[str]
 ) -> str:
     if extraction_style == "high-level":
         instructions = PROMPT_HIGH_LEVEL_INSTRUCTIONS
     else: 
         instructions = PROMPT_DETAILED_INSTRUCTIONS
     
-    if enable_llm_expansion:
-        expansion_instructions = PROMPT_EXPANSION_ADDON
-    else:
-        expansion_instructions = ""
+    expansion_instructions = PROMPT_EXPANSION_ADDON if enable_llm_expansion else ""
+    
+    # Inject Dictionary
+    if not event_ontology:
+        event_ontology = DEFAULT_EVENT_ONTOLOGY
+    ontology_str = ", ".join(event_ontology)
         
     return PROMPT_BASE_TEMPLATE.format(
         instructions=instructions,
         expansion_instructions=expansion_instructions,
         chapter_id=chapter_id, 
-        text_input=text_input
+        text_input=text_input,
+        ontology_list=ontology_str
     )
 
 async def extract_events_from_text(
@@ -272,11 +236,15 @@ async def extract_events_from_text(
     client: openai.OpenAI,
     enable_llm_expansion: bool,
     request_logprobs: bool,
-    extraction_style: str
+    extraction_style: str,
+    event_ontology: List[str] = None
 ) -> (Any, Any):
     
+    # Include ontology hash in cache key so changing dictionary refreshes cache
+    ont_hash = str(hash(tuple(event_ontology))) if event_ontology else "default"
+    
     cache_key = _hash_for_cache(
-        f"{chapter_id}:{text_input}:{extraction_style}:{enable_llm_expansion}", 
+        f"{chapter_id}:{text_input}:{extraction_style}:{enable_llm_expansion}:{ont_hash}:v3", 
         model
     )
     
@@ -284,19 +252,17 @@ async def extract_events_from_text(
         text_input=text_input.strip(),
         chapter_id=chapter_id,
         extraction_style=extraction_style,
-        enable_llm_expansion=enable_llm_expansion
+        enable_llm_expansion=enable_llm_expansion,
+        event_ontology=event_ontology
     )
 
-    # INCREASED TOKEN LIMIT TO 16k
-    # 5 paragraphs of detailed extraction generates huge JSON.
     data, logprobs = await _async_llm_json_call(
         prompt=prompt,
         model=model,
         client=client,
         cache=event_extraction_cache,
         cache_key=cache_key,
-        max_tokens=16000, 
-        request_logprobs=request_logprobs
+        max_tokens=16000
     )
     
     if not isinstance(data, list):
@@ -310,13 +276,14 @@ async def batch_extract_events(
     client: openai.OpenAI,
     enable_llm_expansion: bool,
     request_logprobs: bool,
-    extraction_style: str
+    extraction_style: str,
+    event_ontology: List[str] = None
 ) -> List[tuple[Any, Any]]:
     
     tasks = [
         extract_events_from_text(
             para, chapter_id, model, client, 
-            enable_llm_expansion, request_logprobs, extraction_style
+            enable_llm_expansion, request_logprobs, extraction_style, event_ontology
         )
         for para, chapter_id in paragraphs
     ]
@@ -333,68 +300,42 @@ async def batch_extract_events(
     
     return processed_results
 
-
-async def assess_causal_pair(
-    cause_text: str, 
-    effect_text: str, 
-    model: str,
-    client: openai.OpenAI
-) -> Optional[Dict[str, Any]]:
-    
-    cache_key = _hash_for_cache(f"{cause_text}|||{effect_text}", model)
-    prompt = PROMPT_CAUSAL_PAIR.format(cause_text=cause_text, effect_text=effect_text)
-
-    try:
-        data, _ = await _async_llm_json_call(
-            prompt=prompt, model=model, client=client,
-            cache=assessment_cache, cache_key=cache_key,
-            max_tokens=1024 # Increased for safety
-        )
-        return data
-    except Exception as e:
-        print(f"[error] Causal assessment failed: {e}")
-        return None
-
 async def batch_assess_pairs(
     pairs: List[tuple[str, str, str, str]], 
     model: str,
-    client: openai.OpenAI
+    client: openai.OpenAI,
+    relationship_ontology: List[str] = None
 ) -> List[Optional[Dict[str, Any]]]:
     
+    if not relationship_ontology:
+        relationship_ontology = DEFAULT_RELATIONSHIP_ONTOLOGY
+    
+    ontology_str = ", ".join(relationship_ontology)
+    ont_hash = str(hash(tuple(relationship_ontology)))
+
+    async def _assess(cause_text, effect_text):
+        cache_key = _hash_for_cache(f"{cause_text}|||{effect_text}|||{ont_hash}", model)
+        prompt = PROMPT_CAUSAL_PAIR.format(
+            cause_text=cause_text, 
+            effect_text=effect_text,
+            relation_ontology=ontology_str
+        )
+
+        try:
+            data, _ = await _async_llm_json_call(
+                prompt=prompt, model=model, client=client,
+                cache=assessment_cache, cache_key=cache_key,
+                max_tokens=1024 
+            )
+            return data
+        except Exception as e:
+            return None
+
     tasks = [
-        assess_causal_pair(cause_text, effect_text, model, client)
+        _assess(cause_text, effect_text)
         for cause_text, effect_text, _, _ in pairs
     ]
-    results = await asyncio.gather(*tasks, return_exceptions=True)
-    
-    processed_results = []
-    for result in results:
-        if isinstance(result, Exception):
-            processed_results.append(None)
-        else:
-            processed_results.append(result)
-    return processed_results
-
-async def assess_semantic_pair_async(
-    cause_text: str, 
-    effect_text: str, 
-    model: str,
-    client: openai.OpenAI
-) -> Optional[Dict[str, Any]]:
-    
-    cache_key = _hash_for_cache(f"sem:{cause_text}|||{effect_text}", model)
-    prompt = PROMPT_SEMANTIC_PAIR.format(cause_text=cause_text, effect_text=effect_text)
-
-    try:
-        data, _ = await _async_llm_json_call(
-            prompt=prompt, model=model, client=client,
-            cache=semantic_cache, cache_key=cache_key,
-            max_tokens=1024
-        )
-        return data
-    except Exception as e:
-        print(f"[error] Semantic assessment failed: {e}")
-        return None
+    return await asyncio.gather(*tasks)
 
 async def batch_assess_semantic_pairs(
     pairs: List[tuple[str, str, str, str]], 
@@ -402,19 +343,19 @@ async def batch_assess_semantic_pairs(
     client: openai.OpenAI
 ) -> List[Optional[Dict[str, Any]]]:
     
-    tasks = [
-        assess_semantic_pair_async(cause_text, effect_text, model, client)
-        for cause_text, effect_text, _, _ in pairs
-    ]
-    results = await asyncio.gather(*tasks, return_exceptions=True)
-    
-    processed_results = []
-    for result in results:
-        if isinstance(result, Exception):
-            processed_results.append(None)
-        else:
-            processed_results.append(result)
-    return processed_results
+    async def _assess_sem(cause, effect):
+        cache_key = _hash_for_cache(f"sem:{cause}|||{effect}", model)
+        prompt = PROMPT_SEMANTIC_PAIR.format(cause_text=cause, effect_text=effect)
+        try:
+            data, _ = await _async_llm_json_call(
+                prompt=prompt, model=model, client=client,
+                cache=semantic_cache, cache_key=cache_key, max_tokens=1024
+            )
+            return data
+        except: return None
+
+    tasks = [_assess_sem(c, e) for c, e, _, _ in pairs]
+    return await asyncio.gather(*tasks)
 
 async def extract_scenes_from_chapter_async(
     chapter_events: List[CEKEvent],
@@ -423,12 +364,11 @@ async def extract_scenes_from_chapter_async(
     client: openai.OpenAI
 ) -> List[Dict[str, Any]]:
     
-    # Limit events to prevent context overflow
     if len(chapter_events) > 300:
          chapter_events = chapter_events[:300]
 
     event_list_simple = [
-        {"id": ev.id, "name": ev.name, "seq": ev.sequence} 
+        {"id": ev.id, "desc": ev.raw_description, "seq": ev.sequence} 
         for ev in chapter_events
     ]
     event_list_json = json.dumps(event_list_simple, indent=4)
@@ -443,7 +383,7 @@ async def extract_scenes_from_chapter_async(
         data, _ = await _async_llm_json_call(
             prompt=prompt, model=model, client=client,
             cache=scene_cache, cache_key=cache_key,
-            max_tokens=8192 # High limit for scenes
+            max_tokens=8192
         )
         return data if isinstance(data, list) else []
     except Exception as e:

@@ -1,0 +1,415 @@
+event_id,entity_id,entity_name,entity_type,relationship,strength
+event/be28aa8d,agent_pip/48de20e5,Pip,actor,PRODUCES_ACTOR,1.0
+event/8a554e34,agent_pip/78f7b466,Pip,actor,PRODUCES_ACTOR,1.0
+event/078b1256,agent_pip/5da107a7,Pip,actor,PRODUCES_ACTOR,1.0
+event/93a28e69,agent_pip/1210b90c,Pip,actor,PRODUCES_ACTOR,1.0
+event/fdcf9986,agent_pip/a0f51828,Pip,actor,PRODUCES_ACTOR,1.0
+event/fdcf9986,why_authority_of_tombstone_and_sis/566fd6cf,Authority of tombstone and sister's information,whyfactor,PRODUCES_MOTIVATION,1.0
+event/25c02c4e,agent_pip/e469acf4,Pip,actor,PRODUCES_ACTOR,1.0
+event/25c02c4e,why_lack_of_personal_experience_wi/4f74d84d,Lack of personal experience with parents,whyfactor,PRODUCES_MOTIVATION,1.0
+event/24dd711c,agent_pip/311aabdd,Pip,actor,PRODUCES_ACTOR,1.0
+event/24dd711c,why_historical_context_of_photogra/65ff3300,Historical context of photography,whyfactor,PRODUCES_MOTIVATION,1.0
+event/846beeee,agent_pip/3a3dabae,Pip,actor,PRODUCES_ACTOR,1.0
+event/846beeee,why_imagination_based_on_tombstone/6d6cee4a,Imagination based on tombstones,whyfactor,PRODUCES_MOTIVATION,1.0
+event/ad1a7c49,agent_pip/47020c43,Pip,actor,PRODUCES_ACTOR,1.0
+event/ad1a7c49,why_interpretation_of_tombstone_le/0c56a57a,Interpretation of tombstone letters,whyfactor,PRODUCES_MOTIVATION,1.0
+event/cffb46c5,agent_pip/b7fd5aaa,Pip,actor,PRODUCES_ACTOR,1.0
+event/cffb46c5,why_interpretation_of_the_inscript/5a20bbc3,Interpretation of the inscription,whyfactor,PRODUCES_MOTIVATION,1.0
+event/60fdd2a3,agent_pip/e248d4c0,Pip,actor,PRODUCES_ACTOR,1.0
+event/60fdd2a3,agent_georgiana/d7bb8a0f,Georgiana,patient,PRODUCES_PATIENT,1.0
+event/60fdd2a3,why_childish_conclusion_from_the_i/90825e6d,Childish conclusion from the inscription,whyfactor,PRODUCES_MOTIVATION,1.0
+event/1442686b,agent_narrator/1b406989,Narrator,actor,PRODUCES_ACTOR,1.0
+event/a0183d51,agent_narrator/ba4dee95,Narrator,actor,PRODUCES_ACTOR,1.0
+event/3a60383e,agent_narrator/70ae829c,Narrator,actor,PRODUCES_ACTOR,1.0
+event/3a60383e,agent_five_little_brothers/945617a2,Five little brothers,patient,PRODUCES_PATIENT,1.0
+event/d8b55db1,agent_narrator/e239bbbf,Narrator,actor,PRODUCES_ACTOR,1.0
+event/b9aeb1fb,agent_pip/53df6e73,Pip,actor,PRODUCES_ACTOR,1.0
+event/30e10780,agent_pip/14f01d2e,Pip,actor,PRODUCES_ACTOR,1.0
+event/30e10780,agent_philip_pirrip/be5dfe76,Philip Pirrip,patient,PRODUCES_PATIENT,1.0
+event/30e10780,agent_georgiana/5354d4b3,Georgiana,patient,PRODUCES_PATIENT,1.0
+event/b6c2ad45,agent_pip/c513796b,Pip,actor,PRODUCES_ACTOR,1.0
+event/b6c2ad45,agent_alexander/dc93db35,Alexander,patient,PRODUCES_PATIENT,1.0
+event/b6c2ad45,agent_bartholomew/dcc6b0e2,Bartholomew,patient,PRODUCES_PATIENT,1.0
+event/b6c2ad45,agent_abraham/8e6ad572,Abraham,patient,PRODUCES_PATIENT,1.0
+event/b6c2ad45,agent_tobias/d20481f4,Tobias,patient,PRODUCES_PATIENT,1.0
+event/b6c2ad45,agent_roger/8497dddc,Roger,patient,PRODUCES_PATIENT,1.0
+event/a6773dd9,agent_pip/85ed6490,Pip,actor,PRODUCES_ACTOR,1.0
+event/e5b3a5f2,agent_pip/28111674,Pip,actor,PRODUCES_ACTOR,1.0
+event/8e478569,agent_pip/ac1aaaa9,Pip,actor,PRODUCES_ACTOR,1.0
+event/9b8846ca,agent_pip/955b7cf0,Pip,actor,PRODUCES_ACTOR,1.0
+event/9b8846ca,why_fear_of_the_bleak_surroundings/efdbb28f,Fear of the bleak surroundings,whyfactor,PRODUCES_MOTIVATION,1.0
+event/b709ecf5,agent_pip/07ab58ea,Pip,actor,PRODUCES_ACTOR,1.0
+event/b709ecf5,why_fear_of_the_bleak_surroundings/8af78583,Fear of the bleak surroundings,whyfactor,PRODUCES_MOTIVATION,1.0
+event/9229ac36,agent_the_man/bbabef15,the man,actor,PRODUCES_ACTOR,1.0
+event/19a16bbb,agent_the_man/22aad7f0,the man,actor,PRODUCES_ACTOR,1.0
+event/19a16bbb,why_to_silence_the_little_devil/fa54acf6,To silence the little devil,whyfactor,PRODUCES_MOTIVATION,1.0
+event/7cb634c2,agent_the_man/199c6d2a,the man,actor,PRODUCES_ACTOR,1.0
+event/7cb634c2,agent_the_little_devil/7975cf74,the little devil,patient,PRODUCES_PATIENT,1.0
+event/7cb634c2,why_to_instill_fear/cfe336b7,To instill fear,whyfactor,PRODUCES_MOTIVATION,1.0
+event/4fa7c41a,agent_the_little_devil/f85ebed5,the little devil,actor,PRODUCES_ACTOR,1.0
+event/4fa7c41a,why_fear_of_being_harmed/e82d3a2a,Fear of being harmed,whyfactor,PRODUCES_MOTIVATION,1.0
+event/bd88ebb7,agent_pip/0e7bfc5a,Pip,actor,PRODUCES_ACTOR,1.0
+event/bd88ebb7,agent_fearful_man/c03560f4,fearful man,patient,PRODUCES_PATIENT,1.0
+event/b7cd24de,agent_pip/750ff73c,Pip,actor,PRODUCES_ACTOR,1.0
+event/b7cd24de,agent_fearful_man/4256605c,fearful man,patient,PRODUCES_PATIENT,1.0
+event/013ef3ef,agent_pip/f0f8633e,Pip,actor,PRODUCES_ACTOR,1.0
+event/013ef3ef,agent_fearful_man/973023ff,fearful man,patient,PRODUCES_PATIENT,1.0
+event/509b2e91,agent_fearful_man/5027099a,fearful man,actor,PRODUCES_ACTOR,1.0
+event/7a885076,agent_fearful_man/b9817b1f,fearful man,actor,PRODUCES_ACTOR,1.0
+event/f0b3e130,agent_fearful_man/e6c15c5f,fearful man,actor,PRODUCES_ACTOR,1.0
+event/f0b3e130,agent_pip/e1531d3c,Pip,patient,PRODUCES_PATIENT,1.0
+event/f0b3e130,why_fear/652a5158,Fear,whyfactor,PRODUCES_MOTIVATION,1.0
+event/f0b3e130,why_desperation/4b697301,Desperation,whyfactor,PRODUCES_MOTIVATION,1.0
+event/a85c9475,agent_pip/e62b9261,Pip,actor,PRODUCES_ACTOR,1.0
+event/a85c9475,why_fear_of_being_harmed/c17d207d,Fear of being harmed,whyfactor,PRODUCES_MOTIVATION,1.0
+event/fbaf3ce4,agent_pip/12fe56e2,Pip,actor,PRODUCES_ACTOR,1.0
+event/fbaf3ce4,agent_the_man/fe7f06ca,the man,patient,PRODUCES_PATIENT,1.0
+event/fbaf3ce4,why_fear_of_being_harmed/8c41212e,Fear of being harmed,whyfactor,PRODUCES_MOTIVATION,1.0
+event/bc3c0358,agent_the_man/2a30a869,The man,actor,PRODUCES_ACTOR,1.0
+event/bc3c0358,agent_pip/2e57f3ca,Pip,patient,PRODUCES_PATIENT,1.0
+event/f354dc1e,agent_the_man/1521a223,The man,actor,PRODUCES_ACTOR,1.0
+event/f354dc1e,agent_pip/0b74bbcf,Pip,patient,PRODUCES_PATIENT,1.0
+event/f354dc1e,why_demand_for_compliance/9f5267e4,Demand for compliance,whyfactor,PRODUCES_MOTIVATION,1.0
+event/638901ae,agent_the_man/88a55f55,the man,actor,PRODUCES_ACTOR,1.0
+event/638901ae,agent_pip/890839d7,Pip,patient,PRODUCES_PATIENT,1.0
+event/8ea81398,agent_the_man/dd5a95ba,the man,actor,PRODUCES_ACTOR,1.0
+event/8ea81398,agent_pip/19ffcf63,Pip,patient,PRODUCES_PATIENT,1.0
+event/7c329178,agent_i/761915d2,I,actor,PRODUCES_ACTOR,1.0
+event/396458e4,agent_i/01f2eaf7,I,actor,PRODUCES_ACTOR,1.0
+event/396458e4,agent_our_village/4dd498d1,our village,patient,PRODUCES_PATIENT,1.0
+event/b2dbdbf0,agent_our_village/e9461838,our village,actor,PRODUCES_ACTOR,1.0
+event/0214e854,agent_the_man/580d6276,The man,actor,PRODUCES_ACTOR,1.0
+event/0214e854,agent_pip/2dacf696,Pip,patient,PRODUCES_PATIENT,1.0
+event/daca294e,agent_the_man/389d31b0,The man,actor,PRODUCES_ACTOR,1.0
+event/daca294e,agent_pip/53b6560c,Pip,patient,PRODUCES_PATIENT,1.0
+event/d15a23b3,agent_the_man/ae5c648b,The man,actor,PRODUCES_ACTOR,1.0
+event/d15a23b3,agent_pip/43e0dbeb,Pip,patient,PRODUCES_PATIENT,1.0
+event/0661178c,agent_pip/ba372465,Pip,actor,PRODUCES_ACTOR,1.0
+event/eace9457,agent_the_church/cf8fcb08,The church,actor,PRODUCES_ACTOR,1.0
+event/eace9457,agent_pip/f0208e26,Pip,patient,PRODUCES_PATIENT,1.0
+event/eace9457,why_the_man's_sudden_and_strong_ac/70f2e661,The man's sudden and strong action,whyfactor,PRODUCES_MOTIVATION,1.0
+event/3ed07145,agent_pip/0d12ad71,Pip,actor,PRODUCES_ACTOR,1.0
+event/772137b6,agent_pip/89d14d40,Pip,actor,PRODUCES_ACTOR,1.0
+event/fa4456bd,agent_pip/e1869bd5,Pip,actor,PRODUCES_ACTOR,1.0
+event/fa4456bd,why_fear_of_the_man/e45b3ff5,Fear of the man,whyfactor,PRODUCES_MOTIVATION,1.0
+event/51f75ee9,agent_the_man/a2e05d0d,The man,actor,PRODUCES_ACTOR,1.0
+event/98df6620,agent_the_man/994cb467,the man,actor,PRODUCES_ACTOR,1.0
+event/a23c782e,agent_the_man/c159ce90,the man,actor,PRODUCES_ACTOR,1.0
+event/a23c782e,agent_pip/e14f33a9,Pip,patient,PRODUCES_PATIENT,1.0
+event/1463af19,agent_narrator/633c1bfa,Narrator,actor,PRODUCES_ACTOR,1.0
+event/1463af19,agent_individuals/0684ee94,Individuals,patient,PRODUCES_PATIENT,1.0
+event/4d78ebdb,agent_narrator/94a1130f,Narrator,actor,PRODUCES_ACTOR,1.0
+event/4d78ebdb,why_comparison_to_others/c8e97dcf,Comparison to others,whyfactor,PRODUCES_MOTIVATION,1.0
+event/71eee96e,agent_narrator/6c936b92,Narrator,actor,PRODUCES_ACTOR,1.0
+event/99089e84,agent_the_man/8068fc88,the man,actor,PRODUCES_ACTOR,1.0
+event/99089e84,why_threatening_demeanor/e9272b7f,Threatening demeanor,whyfactor,PRODUCES_MOTIVATION,1.0
+event/386638c6,agent_the_man/7be5b0a5,the man,actor,PRODUCES_ACTOR,1.0
+event/386638c6,why_expressing_anger_or_threat/bb6edf6b,Expressing anger or threat,whyfactor,PRODUCES_MOTIVATION,1.0
+event/684b63dd,agent_pip/7c01cd89,Pip,actor,PRODUCES_ACTOR,1.0
+event/7c82f581,agent_pip/12e21a81,Pip,actor,PRODUCES_ACTOR,1.0
+event/7c82f581,agent_tombstone/0ceb2079,tombstone,patient,PRODUCES_PATIENT,1.0
+event/7c82f581,why_to_keep_himself_upon_it/d7482801,To keep himself upon it,whyfactor,PRODUCES_MOTIVATION,1.0
+event/7c82f581,why_to_keep_himself_from_crying/b8c8c627,To keep himself from crying,whyfactor,PRODUCES_MOTIVATION,1.0
+event/69d6ed2b,agent_pip/33139955,Pip,actor,PRODUCES_ACTOR,1.0
+event/69d6ed2b,why_to_maintain_balance/2747709b,To maintain balance,whyfactor,PRODUCES_MOTIVATION,1.0
+event/d4df6dea,agent_pip/a42e1140,Pip,actor,PRODUCES_ACTOR,1.0
+event/d4df6dea,why_emotional_distress/92f77468,Emotional distress,whyfactor,PRODUCES_MOTIVATION,1.0
+event/07c6d316,agent_the_man/c29f4a48,the man,actor,PRODUCES_ACTOR,1.0
+event/07c6d316,agent_pip/6d33e4a6,Pip,patient,PRODUCES_PATIENT,1.0
+event/a6e82185,agent_he/54d05d82,He,actor,PRODUCES_ACTOR,1.0
+event/85cfb89d,agent_pip/f1f56b78,Pip,actor,PRODUCES_ACTOR,1.0
+event/85cfb89d,agent_sir/6ab95d86,Sir,patient,PRODUCES_PATIENT,1.0
+event/85cfb89d,why_desire_to_provide_information/0a580701,Desire to provide information,whyfactor,PRODUCES_MOTIVATION,1.0
+event/a3de203f,agent_pip/3c82a57c,Pip,actor,PRODUCES_ACTOR,1.0
+event/a3de203f,agent_sir/acb0e5a7,Sir,patient,PRODUCES_PATIENT,1.0
+event/a3de203f,why_desire_to_provide_information/5267531a,Desire to provide information,whyfactor,PRODUCES_MOTIVATION,1.0
+event/72fa3111,agent_pip/4a68ffa4,Pip,actor,PRODUCES_ACTOR,1.0
+event/72fa3111,why_nervousness_in_front_of_the_si/c4758f1e,Nervousness in front of the sir,whyfactor,PRODUCES_MOTIVATION,1.0
+event/feb330b1,agent_he/85a86aba,He,actor,PRODUCES_ACTOR,1.0
+event/feb330b1,why_surprise_at_the_situation/5f253bca,Surprise at the situation,whyfactor,PRODUCES_MOTIVATION,1.0
+event/be9dc2dd,agent_he/c5526d7b,He,actor,PRODUCES_ACTOR,1.0
+event/be9dc2dd,why_to_engage_in_conversation/926cc5c8,To engage in conversation,whyfactor,PRODUCES_MOTIVATION,1.0
+event/5a984c66,agent_he/5dd345ca,He,actor,PRODUCES_ACTOR,1.0
+event/5a984c66,why_curiosity_about_family_relatio/dadeacfe,Curiosity about family relations,whyfactor,PRODUCES_MOTIVATION,1.0
+event/106826a8,agent_pip/c647de2f,Pip,actor,PRODUCES_ACTOR,1.0
+event/85078561,agent_pip/b189444a,Pip,actor,PRODUCES_ACTOR,1.0
+event/43ea7cda,agent_the_man/b6463897,the man,actor,PRODUCES_ACTOR,1.0
+event/3ddfd437,agent_the_man/0bc8d371,the man,actor,PRODUCES_ACTOR,1.0
+event/1a0ea4c4,agent_the_man/9149e59a,the man,actor,PRODUCES_ACTOR,1.0
+event/1a0ea4c4,why_curiosity/5995cd11,Curiosity,whyfactor,PRODUCES_MOTIVATION,1.0
+event/1a0ea4c4,why_uncertainty_about_the_other_pe/7747960b,Uncertainty about the other person's situation,whyfactor,PRODUCES_MOTIVATION,1.0
+event/1071b7ce,agent_the_man/e0c3f434,the man,actor,PRODUCES_ACTOR,1.0
+event/1071b7ce,why_uncertainty/2721c885,Uncertainty,whyfactor,PRODUCES_MOTIVATION,1.0
+event/1071b7ce,why_threatening_demeanor/bd192993,Threatening demeanor,whyfactor,PRODUCES_MOTIVATION,1.0
+event/7a952a4c,agent_the_man/04c961c7,the man,actor,PRODUCES_ACTOR,1.0
+event/7a952a4c,why_indecision/6899d8b7,Indecision,whyfactor,PRODUCES_MOTIVATION,1.0
+event/7a952a4c,why_power_dynamics/03c2a49f,Power dynamics,whyfactor,PRODUCES_MOTIVATION,1.0
+event/c958cb5d,agent_mrs._joe_gargery/5efd4437,Mrs. Joe Gargery,actor,PRODUCES_ACTOR,1.0
+event/68f7242b,agent_joe_gargery/42866e91,Joe Gargery,actor,PRODUCES_ACTOR,1.0
+event/76ba9f95,agent_the_man/ee0dc797,the man,actor,PRODUCES_ACTOR,1.0
+event/dcbb4f8c,agent_the_man/0760ff85,the man,actor,PRODUCES_ACTOR,1.0
+event/7feff8d5,agent_convict/ce2336a1,Convict,actor,PRODUCES_ACTOR,1.0
+event/7feff8d5,agent_pip/43256068,Pip,patient,PRODUCES_PATIENT,1.0
+event/781383ff,agent_convict/a76b3299,Convict,actor,PRODUCES_ACTOR,1.0
+event/5f637a0d,agent_convict/ee1dd34e,Convict,actor,PRODUCES_ACTOR,1.0
+event/5f637a0d,agent_pip/ad76aa30,Pip,patient,PRODUCES_PATIENT,1.0
+event/4b4c7480,agent_convict/8e24f654,Convict,actor,PRODUCES_ACTOR,1.0
+event/4b4c7480,agent_pip/972eb457,Pip,patient,PRODUCES_PATIENT,1.0
+event/29aea004,agent_convict/89894987,Convict,actor,PRODUCES_ACTOR,1.0
+event/29aea004,agent_pip/333254ea,Pip,patient,PRODUCES_PATIENT,1.0
+event/bb4c7c03,agent_pip/dc4687a6,Pip,actor,PRODUCES_ACTOR,1.0
+event/bb4c7c03,agent_convict/bdbe8e5f,Convict,patient,PRODUCES_PATIENT,1.0
+event/d9295214,agent_the_convict/e2a0210f,the convict,actor,PRODUCES_ACTOR,1.0
+event/d9295214,agent_pip/27d4531f,Pip,patient,PRODUCES_PATIENT,1.0
+event/d5aa9d69,agent_the_convict/db54644b,the convict,actor,PRODUCES_ACTOR,1.0
+event/d5aa9d69,agent_pip/05711588,Pip,patient,PRODUCES_PATIENT,1.0
+event/7c469b04,agent_he/06e99278,He,actor,PRODUCES_ACTOR,1.0
+event/7c469b04,agent_me/52673828,Me,patient,PRODUCES_PATIENT,1.0
+event/7c469b04,why_to_give_a_greater_sense_of_hel/3c468e9d,To give a greater sense of helplessness and danger,whyfactor,PRODUCES_MOTIVATION,1.0
+event/eebaa442,agent_i/755c7b07,I,actor,PRODUCES_ACTOR,1.0
+event/eebaa442,why_due_to_being_tilted_over/49e7351b,Due to being tilted over,whyfactor,PRODUCES_MOTIVATION,1.0
+event/a1f7de7e,agent_the_convict/a94c1a40,the convict,actor,PRODUCES_ACTOR,1.0
+event/a1f7de7e,agent_pip/a082b599,Pip,patient,PRODUCES_PATIENT,1.0
+event/a1f7de7e,why_desire_for_items_to_escape_or_/a1e9e4cc,Desire for items to escape or survive,whyfactor,PRODUCES_MOTIVATION,1.0
+event/1a1d2a33,agent_the_convict/903253ec,the convict,actor,PRODUCES_ACTOR,1.0
+event/1a1d2a33,agent_pip/17a3dfe8,Pip,patient,PRODUCES_PATIENT,1.0
+event/1a1d2a33,why_to_instill_fear_and_ensure_com/a764a239,To instill fear and ensure compliance,whyfactor,PRODUCES_MOTIVATION,1.0
+event/ee0349ff,agent_the_convict/54b7e3bd,the convict,actor,PRODUCES_ACTOR,1.0
+event/ee0349ff,agent_pip/db770ba9,Pip,patient,PRODUCES_PATIENT,1.0
+event/ee0349ff,why_to_assert_dominance_and_intimi/1f4fe925,To assert dominance and intimidate,whyfactor,PRODUCES_MOTIVATION,1.0
+event/696cff69,agent_the_narrator/f51624d5,the narrator,actor,PRODUCES_ACTOR,1.0
+event/b300391e,agent_the_narrator/b362fef9,the narrator,actor,PRODUCES_ACTOR,1.0
+event/dad4da14,agent_the_narrator/a6e96aa1,the narrator,actor,PRODUCES_ACTOR,1.0
+event/dad4da14,agent_him/240fff37,him,patient,PRODUCES_PATIENT,1.0
+event/dad4da14,why_fear_of_falling/3a823dea,Fear of falling,whyfactor,PRODUCES_MOTIVATION,1.0
+event/4037c548,agent_the_narrator/49aa23db,the narrator,actor,PRODUCES_ACTOR,1.0
+event/4037c548,agent_him/50a01b89,him,patient,PRODUCES_PATIENT,1.0
+event/4037c548,why_desire_to_avoid_sickness/659b9af1,Desire to avoid sickness,whyfactor,PRODUCES_MOTIVATION,1.0
+event/9bcdbed9,agent_the_narrator/4cccde69,the narrator,actor,PRODUCES_ACTOR,1.0
+event/9bcdbed9,why_fear_of_sickness/1375079f,Fear of sickness,whyfactor,PRODUCES_MOTIVATION,1.0
+event/b3b033be,agent_the_narrator/0eff4c5c,the narrator,actor,PRODUCES_ACTOR,1.0
+event/b3b033be,why_desire_to_participate/b066f8ab,Desire to participate,whyfactor,PRODUCES_MOTIVATION,1.0
+event/6e534191,agent_the_church/ba7c3f07,the church,patient,PRODUCES_PATIENT,1.0
+event/67f1a17b,agent_he/5e211e8f,He,actor,PRODUCES_ACTOR,1.0
+event/67f1a17b,agent_me/206c2080,me,patient,PRODUCES_PATIENT,1.0
+event/e6766218,agent_he/a0de2e5a,He,actor,PRODUCES_ACTOR,1.0
+event/e6766218,why_fear/722cec88,Fear,whyfactor,PRODUCES_MOTIVATION,1.0
+event/1aab8239,agent_convict/959ed56c,Convict,actor,PRODUCES_ACTOR,1.0
+event/1aab8239,agent_pip/3833c74b,Pip,patient,PRODUCES_PATIENT,1.0
+event/1aab8239,why_desire_for_survival/8c577b9d,Desire for survival,whyfactor,PRODUCES_MOTIVATION,1.0
+event/1aab8239,why_threat_to_pip's_life/063244c1,Threat to Pip's life,whyfactor,PRODUCES_MOTIVATION,1.0
+event/b06c0525,agent_convict/9fd68736,Convict,actor,PRODUCES_ACTOR,1.0
+event/b06c0525,agent_pip/20ac743f,Pip,patient,PRODUCES_PATIENT,1.0
+event/b06c0525,why_desire_for_control/5de02e0b,Desire for control,whyfactor,PRODUCES_MOTIVATION,1.0
+event/b06c0525,why_intimidation/ea09f8af,Intimidation,whyfactor,PRODUCES_MOTIVATION,1.0
+event/69738f79,agent_convict/fc442b6e,Convict,actor,PRODUCES_ACTOR,1.0
+event/69738f79,agent_pip/8913bc31,Pip,patient,PRODUCES_PATIENT,1.0
+event/69738f79,why_to_instill_fear/bb8387d0,To instill fear,whyfactor,PRODUCES_MOTIVATION,1.0
+event/69738f79,why_to_assert_power/92676d87,To assert power,whyfactor,PRODUCES_MOTIVATION,1.0
+event/afe7b379,agent_pip/dbf2e3bd,Pip,actor,PRODUCES_ACTOR,1.0
+event/afe7b379,why_fear_of_violence/95c4f920,Fear of violence,whyfactor,PRODUCES_MOTIVATION,1.0
+event/afe7b379,why_pressure_to_comply/2470ad03,Pressure to comply,whyfactor,PRODUCES_MOTIVATION,1.0
+event/3ba2499d,agent_the_young_man/ad0815b0,The young man,actor,PRODUCES_ACTOR,1.0
+event/3ba2499d,agent_the_boy/1c4b29a5,The boy,patient,PRODUCES_PATIENT,1.0
+event/da7c041f,agent_the_boy/22c86f23,The boy,actor,PRODUCES_ACTOR,1.0
+event/da7c041f,why_desire_to_avoid_the_young_man/8cb35df9,Desire to avoid the young man,whyfactor,PRODUCES_MOTIVATION,1.0
+event/c0ea8bfd,agent_the_boy/d25d434c,The boy,actor,PRODUCES_ACTOR,1.0
+event/c0ea8bfd,why_desire_for_safety/38e41f2f,Desire for safety,whyfactor,PRODUCES_MOTIVATION,1.0
+event/56101af2,agent_the_boy/110e2acf,The boy,actor,PRODUCES_ACTOR,1.0
+event/cbf6024b,agent_the_boy/0aa61c18,The boy,actor,PRODUCES_ACTOR,1.0
+event/cbf6024b,why_desire_for_comfort/77f0f674,Desire for comfort,whyfactor,PRODUCES_MOTIVATION,1.0
+event/be1d9e83,agent_the_boy/20733a50,The boy,actor,PRODUCES_ACTOR,1.0
+event/be1d9e83,why_desire_for_safety/2cf329e6,Desire for safety,whyfactor,PRODUCES_MOTIVATION,1.0
+event/8ddde341,agent_the_boy/6da9f1a2,The boy,actor,PRODUCES_ACTOR,1.0
+event/0d596b1f,agent_the_young_man/91d4d2ac,The young man,actor,PRODUCES_ACTOR,1.0
+event/0d596b1f,agent_the_boy/13c81d0a,The boy,patient,PRODUCES_PATIENT,1.0
+event/0d596b1f,why_desire_to_reach_the_boy/92af6cc0,Desire to reach the boy,whyfactor,PRODUCES_MOTIVATION,1.0
+event/f0510385,agent_the_young_man/8d87efd5,The young man,actor,PRODUCES_ACTOR,1.0
+event/f0510385,agent_the_boy/0d1008f7,The boy,patient,PRODUCES_PATIENT,1.0
+event/f0510385,why_desire_to_harm_the_boy/6afe5d1c,Desire to harm the boy,whyfactor,PRODUCES_MOTIVATION,1.0
+event/40bc8823,agent_the_narrator/67b2d964,The narrator,actor,PRODUCES_ACTOR,1.0
+event/40bc8823,agent_the_young_man/8184c068,The young man,patient,PRODUCES_PATIENT,1.0
+event/40bc8823,agent_the_boy/ce923d97,The boy,patient,PRODUCES_PATIENT,1.0
+event/40bc8823,why_desire_to_protect_the_boy/bce8ea8b,Desire to protect the boy,whyfactor,PRODUCES_MOTIVATION,1.0
+event/b49e58e8,agent_the_narrator/da306f19,The narrator,actor,PRODUCES_ACTOR,1.0
+event/b49e58e8,agent_the_young_man/4b9d51aa,The young man,patient,PRODUCES_PATIENT,1.0
+event/b49e58e8,agent_the_boy/937926b4,The boy,patient,PRODUCES_PATIENT,1.0
+event/b49e58e8,why_struggle_to_protect_the_boy/05c4d8da,Struggle to protect the boy,whyfactor,PRODUCES_MOTIVATION,1.0
+event/876d82c1,agent_the_narrator/67eb7d04,The narrator,actor,PRODUCES_ACTOR,1.0
+event/876d82c1,agent_the_boy/2feaa45d,The boy,patient,PRODUCES_PATIENT,1.0
+event/f555bad5,agent_narrator/9b83381d,Narrator,actor,PRODUCES_ACTOR,1.0
+event/831dbd64,agent_narrator/ccc05613,Narrator,actor,PRODUCES_ACTOR,1.0
+event/9b86589a,agent_narrator/ef071ba4,Narrator,actor,PRODUCES_ACTOR,1.0
+event/25fbbfea,agent_the_man/e492cf87,the man,actor,PRODUCES_ACTOR,1.0
+event/7c681227,agent_the_speaker/e22a0a0b,the speaker,actor,PRODUCES_ACTOR,1.0
+event/7c681227,agent_the_listener/ea2fd8c8,the listener,patient,PRODUCES_PATIENT,1.0
+event/6198b35d,agent_the_speaker/e37903ac,the speaker,actor,PRODUCES_ACTOR,1.0
+event/6198b35d,agent_the_listener/4671e879,the listener,patient,PRODUCES_PATIENT,1.0
+event/6198b35d,why_to_ensure_the_listener_remembe/a490cd17,To ensure the listener remembers their responsibilities,whyfactor,PRODUCES_MOTIVATION,1.0
+event/3f8d08cf,agent_he/f5866415,He,actor,PRODUCES_ACTOR,1.0
+event/d8017c23,agent_he/cb6d6646,He,actor,PRODUCES_ACTOR,1.0
+event/39a53f63,agent_he/7a775432,He,actor,PRODUCES_ACTOR,1.0
+event/b46480e8,agent_unknown_character/d1dfdcf5,Unknown Character,actor,PRODUCES_ACTOR,1.0
+event/b46480e8,why_fear/887d1311,Fear,whyfactor,PRODUCES_MOTIVATION,1.0
+event/b46480e8,why_desire_to_hold_himself_togethe/76aceab5,Desire to hold himself together,whyfactor,PRODUCES_MOTIVATION,1.0
+event/fc8632c7,agent_unknown_character/1fcd7905,Unknown Character,actor,PRODUCES_ACTOR,1.0
+event/fc8632c7,why_need_to_escape/61ddb47a,Need to escape,whyfactor,PRODUCES_MOTIVATION,1.0
+event/fc8632c7,why_physical_injury/f094badc,Physical injury,whyfactor,PRODUCES_MOTIVATION,1.0
+event/89d98361,agent_narrator/eb3764e1,Narrator,actor,PRODUCES_ACTOR,1.0
+event/89d98361,agent_unknown_character/f04ce145,Unknown Character,patient,PRODUCES_PATIENT,1.0
+event/89d98361,why_curiosity/d97345ca,Curiosity,whyfactor,PRODUCES_MOTIVATION,1.0
+event/89d98361,why_concern/82401c67,Concern,whyfactor,PRODUCES_MOTIVATION,1.0
+event/6109772b,agent_narrator/8515ab90,Narrator,actor,PRODUCES_ACTOR,1.0
+event/6109772b,agent_unknown_character/f2a62905,Unknown Character,patient,PRODUCES_PATIENT,1.0
+event/6109772b,why_fear/27a19bcc,Fear,whyfactor,PRODUCES_MOTIVATION,1.0
+event/6109772b,why_imagination/f060aed5,Imagination,whyfactor,PRODUCES_MOTIVATION,1.0
+event/5a8f7f6e,agent_narrator/3ff5a5a6,Narrator,actor,PRODUCES_ACTOR,1.0
+event/5a8f7f6e,agent_unknown_character/955dd5a2,Unknown Character,patient,PRODUCES_PATIENT,1.0
+event/5a8f7f6e,why_fear/8bb6bd68,Fear,whyfactor,PRODUCES_MOTIVATION,1.0
+event/5a8f7f6e,why_imagination/27820fdf,Imagination,whyfactor,PRODUCES_MOTIVATION,1.0
+event/4d71e451,agent_narrator/a0689f3b,Narrator,actor,PRODUCES_ACTOR,1.0
+event/4d71e451,agent_unknown_character/bf52cbbc,Unknown Character,patient,PRODUCES_PATIENT,1.0
+event/4d71e451,why_fear/ed36682c,Fear,whyfactor,PRODUCES_MOTIVATION,1.0
+event/4d71e451,why_imagination/f33ca10b,Imagination,whyfactor,PRODUCES_MOTIVATION,1.0
+event/d81b4abf,agent_the_man/7f858463,the man,actor,PRODUCES_ACTOR,1.0
+event/d81b4abf,why_numbed_and_stiff_legs/05403148,Numbed and stiff legs,whyfactor,PRODUCES_MOTIVATION,1.0
+event/da8bfbe6,agent_the_man/5fc8ff5e,the man,actor,PRODUCES_ACTOR,1.0
+event/a35fdf1b,agent_pip/1211d900,Pip,actor,PRODUCES_ACTOR,1.0
+event/4a34407b,agent_pip/ddf560ac,Pip,actor,PRODUCES_ACTOR,1.0
+event/e2bf563f,agent_pip/afae27d1,Pip,actor,PRODUCES_ACTOR,1.0
+event/89a71946,agent_pip/daef0f3f,Pip,actor,PRODUCES_ACTOR,1.0
+event/89a71946,agent_the_man/5de38ef2,the man,patient,PRODUCES_PATIENT,1.0
+event/799ae52a,agent_the_man/9eab4ad2,the man,actor,PRODUCES_ACTOR,1.0
+event/799ae52a,why_cold_or_discomfort/94d40b52,Cold or discomfort,whyfactor,PRODUCES_MOTIVATION,1.0
+event/897abbb7,agent_the_man/00a6c6b8,the man,actor,PRODUCES_ACTOR,1.0
+event/897abbb7,why_sore_feet/d2294c84,Sore feet,whyfactor,PRODUCES_MOTIVATION,1.0
+event/98e77042,agent_narrator/b287ce12,Narrator,actor,PRODUCES_ACTOR,1.0
+event/316cb0a8,agent_narrator/2f273a8d,Narrator,actor,PRODUCES_ACTOR,1.0
+event/316cb0a8,agent_marshes/5c1e1b13,Marshes,patient,PRODUCES_PATIENT,1.0
+event/2aee0161,agent_narrator/4d331d3c,Narrator,actor,PRODUCES_ACTOR,1.0
+event/2aee0161,agent_river/a4e4cf70,River,patient,PRODUCES_PATIENT,1.0
+event/b08e9993,agent_narrator/e16df220,Narrator,actor,PRODUCES_ACTOR,1.0
+event/b08e9993,agent_sky/19c887a4,Sky,patient,PRODUCES_PATIENT,1.0
+event/ba86bbba,agent_narrator/bdef9198,Narrator,actor,PRODUCES_ACTOR,1.0
+event/8a8e869a,agent_narrator/7297992a,Narrator,actor,PRODUCES_ACTOR,1.0
+event/8a8e869a,agent_beacon/16a0a860,Beacon,patient,PRODUCES_PATIENT,1.0
+event/ed10baf2,agent_narrator/5f2a2a74,Narrator,actor,PRODUCES_ACTOR,1.0
+event/ed10baf2,agent_gibbet/ea787e02,Gibbet,patient,PRODUCES_PATIENT,1.0
+event/ed10baf2,agent_chains/33cdb4e6,Chains,patient,PRODUCES_PATIENT,1.0
+event/be06abc3,agent_man/760acbad,Man,actor,PRODUCES_ACTOR,1.0
+event/be06abc3,why_implied_connection_to_the_pira/cd270f4d,Implied connection to the pirate,whyfactor,PRODUCES_MOTIVATION,1.0
+event/bbd1515c,agent_narrator/683b5d98,Narrator,actor,PRODUCES_ACTOR,1.0
+event/bbd1515c,agent_man/cca7d314,Man,patient,PRODUCES_PATIENT,1.0
+event/bbd1515c,why_imagination/f5a41d65,Imagination,whyfactor,PRODUCES_MOTIVATION,1.0
+event/bbd1515c,why_fear/68812d6b,Fear,whyfactor,PRODUCES_MOTIVATION,1.0
+event/49df9004,agent_man/2e308f32,Man,actor,PRODUCES_ACTOR,1.0
+event/49df9004,why_implied_connection_to_the_pira/79b5a8ca,Implied connection to the pirate,whyfactor,PRODUCES_MOTIVATION,1.0
+event/56ee9472,agent_pip/a7b0ce9a,Pip,actor,PRODUCES_ACTOR,1.0
+event/56ee9472,why_fear_of_the_horrible_young_man/88fd8ecd,Fear of the horrible young man,whyfactor,PRODUCES_MOTIVATION,1.0
+event/baba2b8a,agent_pip/617c09b9,Pip,actor,PRODUCES_ACTOR,1.0
+event/baba2b8a,agent_cattle/a5d52e6f,cattle,patient,PRODUCES_PATIENT,1.0
+event/ee4f6bab,agent_pip/438765bc,Pip,actor,PRODUCES_ACTOR,1.0
+event/292a1cf0,agent_pip/2e558977,Pip,actor,PRODUCES_ACTOR,1.0
+event/584f13ba,agent_pip/b2b82d45,Pip,actor,PRODUCES_ACTOR,1.0
+event/584f13ba,why_fear_of_the_horrible_young_man/fdafd703,Fear of the horrible young man,whyfactor,PRODUCES_MOTIVATION,1.0
+event/998c01f7,agent_pip/3aa74c27,Pip,actor,PRODUCES_ACTOR,1.0
+event/998c01f7,why_fear_of_the_horrible_young_man/c239ff71,Fear of the horrible young man,whyfactor,PRODUCES_MOTIVATION,1.0
+event/02d44165,agent_pip/cd014d83,Pip,actor,PRODUCES_ACTOR,0.5
+event/02d44165,agent_georgiana/8e3b9a11,Georgiana,patient,PRODUCES_PATIENT,0.5
+event/02d44165,why_childish_conclusion_from_the_i/90825e6d,Childish conclusion from the inscription,whyfactor,PRODUCES_MOTIVATION,1.0
+event/1442686b,why_childish_conclusion_from_the_i/90825e6d,Childish conclusion from the inscription,whyfactor,PRODUCES_MOTIVATION,1.0
+event/a0183d51,why_childish_conclusion_from_the_i/90825e6d,Childish conclusion from the inscription,whyfactor,PRODUCES_MOTIVATION,1.0
+event/3a60383e,why_childish_conclusion_from_the_i/90825e6d,Childish conclusion from the inscription,whyfactor,PRODUCES_MOTIVATION,1.0
+event/d8b55db1,why_childish_conclusion_from_the_i/90825e6d,Childish conclusion from the inscription,whyfactor,PRODUCES_MOTIVATION,1.0
+event/b9aeb1fb,why_childish_conclusion_from_the_i/90825e6d,Childish conclusion from the inscription,whyfactor,PRODUCES_MOTIVATION,1.0
+event/30e10780,why_childish_conclusion_from_the_i/90825e6d,Childish conclusion from the inscription,whyfactor,PRODUCES_MOTIVATION,1.0
+event/b6c2ad45,why_childish_conclusion_from_the_i/90825e6d,Childish conclusion from the inscription,whyfactor,PRODUCES_MOTIVATION,1.0
+event/a6773dd9,why_childish_conclusion_from_the_i/90825e6d,Childish conclusion from the inscription,whyfactor,PRODUCES_MOTIVATION,1.0
+event/e5b3a5f2,why_childish_conclusion_from_the_i/90825e6d,Childish conclusion from the inscription,whyfactor,PRODUCES_MOTIVATION,1.0
+event/8e478569,why_childish_conclusion_from_the_i/90825e6d,Childish conclusion from the inscription,whyfactor,PRODUCES_MOTIVATION,1.0
+event/9229ac36,why_fear_of_the_bleak_surroundings/8af78583,Fear of the bleak surroundings,whyfactor,PRODUCES_MOTIVATION,1.0
+event/bd88ebb7,why_fear_of_being_harmed/e82d3a2a,Fear of being harmed,whyfactor,PRODUCES_MOTIVATION,1.0
+event/b7cd24de,why_fear_of_being_harmed/e82d3a2a,Fear of being harmed,whyfactor,PRODUCES_MOTIVATION,1.0
+event/013ef3ef,why_fear_of_being_harmed/e82d3a2a,Fear of being harmed,whyfactor,PRODUCES_MOTIVATION,1.0
+event/509b2e91,why_fear_of_being_harmed/e82d3a2a,Fear of being harmed,whyfactor,PRODUCES_MOTIVATION,1.0
+event/7a885076,why_fear_of_being_harmed/e82d3a2a,Fear of being harmed,whyfactor,PRODUCES_MOTIVATION,1.0
+event/bc3c0358,why_fear_of_being_harmed/8c41212e,Fear of being harmed,whyfactor,PRODUCES_MOTIVATION,1.0
+event/638901ae,why_demand_for_compliance/9f5267e4,Demand for compliance,whyfactor,PRODUCES_MOTIVATION,1.0
+event/8ea81398,why_demand_for_compliance/9f5267e4,Demand for compliance,whyfactor,PRODUCES_MOTIVATION,1.0
+event/7c329178,why_demand_for_compliance/9f5267e4,Demand for compliance,whyfactor,PRODUCES_MOTIVATION,1.0
+event/396458e4,why_demand_for_compliance/9f5267e4,Demand for compliance,whyfactor,PRODUCES_MOTIVATION,1.0
+event/b2dbdbf0,why_demand_for_compliance/9f5267e4,Demand for compliance,whyfactor,PRODUCES_MOTIVATION,1.0
+event/0214e854,why_demand_for_compliance/9f5267e4,Demand for compliance,whyfactor,PRODUCES_MOTIVATION,1.0
+event/daca294e,why_demand_for_compliance/9f5267e4,Demand for compliance,whyfactor,PRODUCES_MOTIVATION,1.0
+event/d15a23b3,why_demand_for_compliance/9f5267e4,Demand for compliance,whyfactor,PRODUCES_MOTIVATION,1.0
+event/0661178c,why_demand_for_compliance/9f5267e4,Demand for compliance,whyfactor,PRODUCES_MOTIVATION,1.0
+event/3ed07145,why_the_man's_sudden_and_strong_ac/70f2e661,The man's sudden and strong action,whyfactor,PRODUCES_MOTIVATION,1.0
+event/772137b6,why_the_man's_sudden_and_strong_ac/70f2e661,The man's sudden and strong action,whyfactor,PRODUCES_MOTIVATION,1.0
+event/51f75ee9,why_fear_of_the_man/e45b3ff5,Fear of the man,whyfactor,PRODUCES_MOTIVATION,1.0
+event/98df6620,why_fear_of_the_man/e45b3ff5,Fear of the man,whyfactor,PRODUCES_MOTIVATION,1.0
+event/a23c782e,why_fear_of_the_man/e45b3ff5,Fear of the man,whyfactor,PRODUCES_MOTIVATION,1.0
+event/1463af19,why_fear_of_the_man/e45b3ff5,Fear of the man,whyfactor,PRODUCES_MOTIVATION,1.0
+event/71eee96e,why_comparison_to_others/c8e97dcf,Comparison to others,whyfactor,PRODUCES_MOTIVATION,1.0
+event/684b63dd,why_expressing_anger_or_threat/bb6edf6b,Expressing anger or threat,whyfactor,PRODUCES_MOTIVATION,1.0
+event/07c6d316,why_emotional_distress/92f77468,Emotional distress,whyfactor,PRODUCES_MOTIVATION,1.0
+event/a6e82185,why_emotional_distress/92f77468,Emotional distress,whyfactor,PRODUCES_MOTIVATION,1.0
+event/106826a8,why_curiosity_about_family_relatio/dadeacfe,Curiosity about family relations,whyfactor,PRODUCES_MOTIVATION,1.0
+event/85078561,why_curiosity_about_family_relatio/dadeacfe,Curiosity about family relations,whyfactor,PRODUCES_MOTIVATION,1.0
+event/43ea7cda,why_curiosity_about_family_relatio/dadeacfe,Curiosity about family relations,whyfactor,PRODUCES_MOTIVATION,1.0
+event/3ddfd437,why_curiosity_about_family_relatio/dadeacfe,Curiosity about family relations,whyfactor,PRODUCES_MOTIVATION,1.0
+event/c958cb5d,why_indecision/6899d8b7,Indecision,whyfactor,PRODUCES_MOTIVATION,1.0
+event/c958cb5d,why_power_dynamics/03c2a49f,Power dynamics,whyfactor,PRODUCES_MOTIVATION,1.0
+event/68f7242b,why_indecision/6899d8b7,Indecision,whyfactor,PRODUCES_MOTIVATION,1.0
+event/68f7242b,why_power_dynamics/03c2a49f,Power dynamics,whyfactor,PRODUCES_MOTIVATION,1.0
+event/76ba9f95,why_indecision/6899d8b7,Indecision,whyfactor,PRODUCES_MOTIVATION,1.0
+event/76ba9f95,why_power_dynamics/03c2a49f,Power dynamics,whyfactor,PRODUCES_MOTIVATION,1.0
+event/dcbb4f8c,why_indecision/6899d8b7,Indecision,whyfactor,PRODUCES_MOTIVATION,1.0
+event/dcbb4f8c,why_power_dynamics/03c2a49f,Power dynamics,whyfactor,PRODUCES_MOTIVATION,1.0
+event/7feff8d5,why_indecision/6899d8b7,Indecision,whyfactor,PRODUCES_MOTIVATION,1.0
+event/7feff8d5,why_power_dynamics/03c2a49f,Power dynamics,whyfactor,PRODUCES_MOTIVATION,1.0
+event/781383ff,why_indecision/6899d8b7,Indecision,whyfactor,PRODUCES_MOTIVATION,1.0
+event/781383ff,why_power_dynamics/03c2a49f,Power dynamics,whyfactor,PRODUCES_MOTIVATION,1.0
+event/5f637a0d,why_indecision/6899d8b7,Indecision,whyfactor,PRODUCES_MOTIVATION,1.0
+event/5f637a0d,why_power_dynamics/03c2a49f,Power dynamics,whyfactor,PRODUCES_MOTIVATION,1.0
+event/4b4c7480,why_indecision/6899d8b7,Indecision,whyfactor,PRODUCES_MOTIVATION,1.0
+event/4b4c7480,why_power_dynamics/03c2a49f,Power dynamics,whyfactor,PRODUCES_MOTIVATION,1.0
+event/29aea004,why_indecision/6899d8b7,Indecision,whyfactor,PRODUCES_MOTIVATION,1.0
+event/29aea004,why_power_dynamics/03c2a49f,Power dynamics,whyfactor,PRODUCES_MOTIVATION,1.0
+event/bb4c7c03,why_indecision/6899d8b7,Indecision,whyfactor,PRODUCES_MOTIVATION,1.0
+event/bb4c7c03,why_power_dynamics/03c2a49f,Power dynamics,whyfactor,PRODUCES_MOTIVATION,1.0
+event/d9295214,why_indecision/6899d8b7,Indecision,whyfactor,PRODUCES_MOTIVATION,1.0
+event/d9295214,why_power_dynamics/03c2a49f,Power dynamics,whyfactor,PRODUCES_MOTIVATION,1.0
+event/d5aa9d69,why_indecision/6899d8b7,Indecision,whyfactor,PRODUCES_MOTIVATION,1.0
+event/d5aa9d69,why_power_dynamics/03c2a49f,Power dynamics,whyfactor,PRODUCES_MOTIVATION,1.0
+event/696cff69,why_to_assert_dominance_and_intimi/1f4fe925,To assert dominance and intimidate,whyfactor,PRODUCES_MOTIVATION,1.0
+event/b300391e,why_to_assert_dominance_and_intimi/1f4fe925,To assert dominance and intimidate,whyfactor,PRODUCES_MOTIVATION,1.0
+event/6e534191,why_desire_to_participate/b066f8ab,Desire to participate,whyfactor,PRODUCES_MOTIVATION,1.0
+event/67f1a17b,why_desire_to_participate/b066f8ab,Desire to participate,whyfactor,PRODUCES_MOTIVATION,1.0
+event/3ba2499d,why_fear_of_violence/95c4f920,Fear of violence,whyfactor,PRODUCES_MOTIVATION,1.0
+event/3ba2499d,why_pressure_to_comply/2470ad03,Pressure to comply,whyfactor,PRODUCES_MOTIVATION,1.0
+event/56101af2,why_desire_for_safety/38e41f2f,Desire for safety,whyfactor,PRODUCES_MOTIVATION,1.0
+event/8ddde341,why_desire_for_safety/2cf329e6,Desire for safety,whyfactor,PRODUCES_MOTIVATION,1.0
+event/876d82c1,why_struggle_to_protect_the_boy/05c4d8da,Struggle to protect the boy,whyfactor,PRODUCES_MOTIVATION,1.0
+event/f555bad5,why_struggle_to_protect_the_boy/05c4d8da,Struggle to protect the boy,whyfactor,PRODUCES_MOTIVATION,1.0
+event/831dbd64,why_struggle_to_protect_the_boy/05c4d8da,Struggle to protect the boy,whyfactor,PRODUCES_MOTIVATION,1.0
+event/9b86589a,why_struggle_to_protect_the_boy/05c4d8da,Struggle to protect the boy,whyfactor,PRODUCES_MOTIVATION,1.0
+event/25fbbfea,why_struggle_to_protect_the_boy/05c4d8da,Struggle to protect the boy,whyfactor,PRODUCES_MOTIVATION,1.0
+event/7c681227,why_struggle_to_protect_the_boy/05c4d8da,Struggle to protect the boy,whyfactor,PRODUCES_MOTIVATION,1.0
+event/3f8d08cf,why_to_ensure_the_listener_remembe/a490cd17,To ensure the listener remembers their responsibilities,whyfactor,PRODUCES_MOTIVATION,1.0
+event/d8017c23,why_to_ensure_the_listener_remembe/a490cd17,To ensure the listener remembers their responsibilities,whyfactor,PRODUCES_MOTIVATION,1.0
+event/39a53f63,why_to_ensure_the_listener_remembe/a490cd17,To ensure the listener remembers their responsibilities,whyfactor,PRODUCES_MOTIVATION,1.0
+event/da8bfbe6,why_numbed_and_stiff_legs/05403148,Numbed and stiff legs,whyfactor,PRODUCES_MOTIVATION,1.0
+event/a35fdf1b,why_numbed_and_stiff_legs/05403148,Numbed and stiff legs,whyfactor,PRODUCES_MOTIVATION,1.0
+event/4a34407b,why_numbed_and_stiff_legs/05403148,Numbed and stiff legs,whyfactor,PRODUCES_MOTIVATION,1.0
+event/e2bf563f,why_numbed_and_stiff_legs/05403148,Numbed and stiff legs,whyfactor,PRODUCES_MOTIVATION,1.0
+event/89a71946,why_numbed_and_stiff_legs/05403148,Numbed and stiff legs,whyfactor,PRODUCES_MOTIVATION,1.0
+event/98e77042,why_sore_feet/d2294c84,Sore feet,whyfactor,PRODUCES_MOTIVATION,1.0
+event/316cb0a8,why_sore_feet/d2294c84,Sore feet,whyfactor,PRODUCES_MOTIVATION,1.0
+event/2aee0161,why_sore_feet/d2294c84,Sore feet,whyfactor,PRODUCES_MOTIVATION,1.0
+event/b08e9993,why_sore_feet/d2294c84,Sore feet,whyfactor,PRODUCES_MOTIVATION,1.0
+event/ba86bbba,why_sore_feet/d2294c84,Sore feet,whyfactor,PRODUCES_MOTIVATION,1.0
+event/8a8e869a,why_sore_feet/d2294c84,Sore feet,whyfactor,PRODUCES_MOTIVATION,1.0
+event/ed10baf2,why_sore_feet/d2294c84,Sore feet,whyfactor,PRODUCES_MOTIVATION,1.0
+event/baba2b8a,why_fear_of_the_horrible_young_man/88fd8ecd,Fear of the horrible young man,whyfactor,PRODUCES_MOTIVATION,1.0
+event/ee4f6bab,why_fear_of_the_horrible_young_man/88fd8ecd,Fear of the horrible young man,whyfactor,PRODUCES_MOTIVATION,1.0
+event/292a1cf0,why_fear_of_the_horrible_young_man/88fd8ecd,Fear of the horrible young man,whyfactor,PRODUCES_MOTIVATION,1.0

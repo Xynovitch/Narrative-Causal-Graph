@@ -1,108 +1,91 @@
 from __future__ import annotations
-from dataclasses import dataclass, asdict
-from typing import List, Dict, Optional, Any, Set
+from dataclasses import dataclass, field
+from typing import List, Dict, Optional, Any
+from enum import Enum
 
-# ----------------------------- Custom Exceptions -----------------------------
-class CEKGError(Exception):
-    """Base exception for CEKG processing"""
-    pass
+class CEKGError(Exception): pass
+class ExtractionError(CEKGError): pass
+class DAGViolationError(CEKGError): pass
 
-class ExtractionError(CEKGError):
-    """Event extraction failed"""
-    pass
+# NOTE: RelationType Enum is removed to allow dynamic dictionary types.
+# You can maintain a list of 'Core' types if validation is needed later.
 
-class DAGViolationError(CEKGError):
-    """Graph contains cycles"""
-    pass
-
-# ----------------------------- Data classes ---------------------------------
 @dataclass
 class CEKEvent:
-    """Event is the central node"""
     id: str
-    name: str
-    eventType: str
-    actionType: str
-    source_quote: str
-    time: Optional[str]
-    location: Optional[str]
-    location_id: Optional[str]
-    causeWeight: float
-    confidence: float
+    raw_description: str
+    event_category: str
+    action_type: str
+    time_context: Optional[str]
+    location_context: Optional[str]
+    actors: List[str]
+    patients: List[str]
     chapter: int
     sequence: int = 0
-    
-    def __post_init__(self):
-        if not self.name or not self.eventType or not self.actionType:
-            raise CEKGError(f"Invalid event: missing required fields")
+    confidence: float = 1.0
+    source_quote: str = ""
+    why_factors: List[str] = field(default_factory=list)
+
+@dataclass
+class Scene:
+    id: str
+    chapter: int
+    included_event_ids: List[str]
+    primary_location: Optional[str]
+    time_period: Optional[str]
+    participants: List[str]
+    theme: str
+    summary: str
+    confidence: float
+
+@dataclass
+class CausalLink:
+    """Event -[:RELATION_TYPE]-> Event"""
+    source_event_id: str
+    target_event_id: str
+    relation_type: str  # Changed from Enum to str for dynamic types
+    mechanism: str
+    weight: float
+    confidence: float
+
+@dataclass
+class SemanticLink:
+    id: str
+    source_event_ids: List[str]
+    target_event_ids: List[str]
+    relation: str 
+    cue: Optional[List[str]] 
+    confidence: float
 
 @dataclass
 class EventProducesEntity:
-    """Event -[:PRODUCES_X]-> Entity (Event creates/produces entity instance)"""
     event_id: str
     entity_id: str
     entity_name: str
-    entity_type: str  # "actor", "patient", "whyfactor", "place"
-    relationship: str  # "PRODUCES_ACTOR", "PRODUCES_PATIENT", "PRODUCES_MOTIVATION", "PRODUCES_LOCATION"
+    entity_type: str 
+    relationship: str 
     strength: float
 
 @dataclass
 class EntityPointsToEvent:
-    """Entity -[:ACTS_IN/AFFECTED_IN/MOTIVATES/HOSTS]-> NextEvent"""
     entity_id: str
     entity_name: str
     entity_type: str
     next_event_id: str
-    relationship: str  # "ACTS_IN", "AFFECTED_IN", "MOTIVATES", "HOSTS"
+    relationship: str
     strength: float
-
-@dataclass
-class CausalLink:
-    """Event -[:CAUSES]-> Event"""
-    cause_id: str
-    effect_id: str
-    relationType: str
-    mechanism: str
-    sign: str
-    weight: float
-    confidence: float
-    cause_sequence: int
-    effect_sequence: int
-
-# --- NEW SCHEMA DATACLASSES ---
-
-@dataclass
-class SemanticLink:
-    """Event -[:EXPLAINS]-> Event (Non-causal semantic link)"""
-    id: str
-    source_event_ids: List[str]
-    target_event_ids: List[str]
-    relation: str # e.g., "explanation", "elaboration"
-    cue: Optional[List[str]] # e.g., ["because", "therefore"]
-    confidence: float
-
-@dataclass
-class Scene:
-    """A grouping of events into a narrative scene"""
-    id: str
-    event_ids: List[str]
-    chapter: int
-    theme: str # LLM-generated theme
-    confidence: float
 
 # --- GENERIC GRAPH SCHEMAS ---
 
 @dataclass
 class GenericNode:
-    """A generic node for any graph database."""
-    uid: str  # The unique ID for this node
-    label: str  # The Neo4j label (e.g., "Event", "Agent")
-    properties: Dict[str, Any]  # All other data
+    uid: str
+    label: str
+    properties: Dict[str, Any]
 
 @dataclass
 class GenericRelationship:
-    """A generic relationship for any graph database."""
     start_node_uid: str
     end_node_uid: str
-    rel_type: str  # The relationship type (e.g., "CAUSES", "ACTS_IN")
+    rel_type: str
     properties: Dict[str, Any]

@@ -1,382 +1,326 @@
-import os
+import pandas as pd
 import json
-import csv
-from collections import defaultdict
-from dataclasses import asdict
+import os
 from typing import List, Dict, Any, Optional
+from collections import defaultdict
+from .schemas import CEKEvent, EventProducesEntity, EntityPointsToEvent, CausalLink, SemanticLink, Scene
 
-try:
-    import pandas as pd
-except ImportError:
-    pd = None
-
-from .schemas import (
-    CEKEvent, EventProducesEntity, EntityPointsToEvent, CausalLink,
-    GenericNode, GenericRelationship, Scene, SemanticLink
-)
-from .utils import _truncate_safe, _escape_cypher_string
-
-def build_jsonld(
-    events: List[CEKEvent],
-    event_produces: List[EventProducesEntity],
-    entity_points_to: List[EntityPointsToEvent],
-    causal_links: List[CausalLink]
-) -> Dict[str, Any]:
-    """Build JSON-LD representation with DUAL FLOW structure"""
-    g = []
-    
-    # Events
-    for ev in events:
-        event_dict = asdict(ev)
-        event_dict["@id"] = event_dict.pop("id")
-        event_dict["type"] = "Event"
-        g.append(event_dict)
-    
-    # Event → Entity (production)
-    for prod in event_produces:
-        g.append({
-            "@id": f"{prod.event_id}__{prod.relationship}__{prod.entity_id}",
-            "type": "EventProducesEntity",
-            "from": prod.event_id,
-            "to": prod.entity_id,
-            "entity_name": prod.entity_name,
-            "entity_type": prod.entity_type,
-            "relationship": prod.relationship,
-            "strength": prod.strength
-        })
-    
-    # Entity → Event (pointing to next)
-    for ept in entity_points_to:
-        g.append({
-            "@id": f"{ept.entity_id}__{ept.relationship}__{ept.next_event_id}",
-            "type": "EntityPointsToEvent",
-            "from": ept.entity_id,
-            "to": ept.next_event_id,
-            "entity_name": ept.entity_name,
-            "entity_type": ept.entity_type,
-            "relationship": ept.relationship,
-            "strength": ept.strength
-        })
-    
-    # Event → Event (causal)
-    for link in causal_links:
-        g.append({
-            "@id": f"{link.cause_id}__CAUSES__{link.effect_id}",
-            "type": "CausalEdge",
-            "from": link.cause_id,
-            "to": link.effect_id,
-            "relationType": link.relationType,
-            "mechanism": link.mechanism,
-            "sign": link.sign,
-            "weight": link.weight,
-            "confidence": link.confidence,
-            "cause_sequence": link.cause_sequence,
-            "effect_sequence": link.effect_sequence
-        })
-    
-    return {"@graph": g}
-
-def export_json(path: str, data: Dict[str, Any]):
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"[export] JSON exported to {path}")
-
-
-def _format_cypher_properties(props: Dict[str, Any]) -> str:
-    """Helper to format a properties dictionary into a Cypher string."""
-    prop_list = []
-    for k, v in props.items():
-        if isinstance(v, str):
-            # Strings are assumed to be already escaped or safe, 
-            # BUT double check utils._escape_cypher_string usage in graph_mapper.
-            # For safety, we trust the input dictionary has valid values.
-            prop_list.append(f"{k}: \"{v}\"") 
-        elif isinstance(v, bool):
-            prop_list.append(f"{k}: {str(v).lower()}")
-        elif v is None:
-            prop_list.append(f"{k}: null")
-        else:
-            prop_list.append(f"{k}: {v}")
-    return f"{{{', '.join(prop_list)}}}"
-
-
-def export_neo4j_cypher(
-    path: str,
-    nodes: List[GenericNode],
-    relationships: List[GenericRelationship]
-):
+def export_json(path: str, data: Dict[str, Any]) -> None:
     """
-    Export a generic graph to a Neo4j Cypher script.
-    Now includes safety escaping for IDs in MERGE statements.
+    Exports a dictionary to a JSON file.
     """
-    
-    # Force the file to be saved as a .txt file (easier for copy-paste into Neo4j Browser)
-    base_path, _ = os.path.splitext(path)
-    path = base_path + ".txt"
-    
-    lines = []
-    lines.append("// ============================================================")
-    lines.append("// CEKG Cypher Import Script (Generated)")
-    lines.append("// ============================================================\n")
-    
-    # 1. Create Nodes
-    lines.append("// 1. CREATE NODES")
-    nodes_by_label = defaultdict(list)
-    for node in nodes:
-        nodes_by_label[node.label].append(node)
-        
-    for label, node_list in nodes_by_label.items():
-        lines.append(f"// --- {label} Nodes ({len(node_list)}) ---")
-        for node in node_list:
-            props_str = _format_cypher_properties(node.properties)
-            
-            # FIX: Explicitly escape the ID used in the MERGE matcher
-            safe_uid = _escape_cypher_string(node.uid)
-            
-            lines.append(f"MERGE (n:{label} {{id: \"{safe_uid}\"}}) SET n = {props_str};")
-        lines.append("")
-
-    lines.append("// ============================================================")
-    lines.append("// 2. CREATE RELATIONSHIPS")
-    lines.append("// ============================================================\n")
-
-    # 2. Create Relationships
-    rels_by_type = defaultdict(list)
-    for rel in relationships:
-        rels_by_type[rel.rel_type].append(rel)
-
-    for rel_type, rel_list in rels_by_type.items():
-        lines.append(f"// --- {rel_type} Relationships ({len(rel_list)}) ---")
-        for rel in rel_list:
-            props_str = _format_cypher_properties(rel.properties)
-            
-            # FIX: Explicitly escape the IDs used in the MATCH clause
-            safe_start_uid = _escape_cypher_string(rel.start_node_uid)
-            safe_end_uid = _escape_cypher_string(rel.end_node_uid)
-            
-            lines.append(
-                f"MATCH (a {{id: \"{safe_start_uid}\"}}), (b {{id: \"{safe_end_uid}\"}}) "
-                f"MERGE (a)-[r:{rel_type}]->(b) SET r = {props_str};"
-            )
-        lines.append("")
-    
-    lines.append("// ============================================================")
-    lines.append("// SCRIPT COMPLETE")
-    lines.append(f"// Total Nodes: {len(nodes)}")
-    lines.append(f"// Total Relationships: {len(relationships)}")
-    lines.append("// ============================================================")
-
-    with open(path, "w", encoding="utf-8") as f:
-        f.write('\n'.join(lines))
-    
-    print(f"[export] Cypher exported: {len(lines)} statements to {path}")
-
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
 
 def export_csv(
-    out_dir: str,
+    output_dir: str,
     events: List[CEKEvent],
-    event_produces: List[EventProducesEntity],
-    entity_points_to: List[EntityPointsToEvent],
+    produces: List[EventProducesEntity],
+    entity_links: List[EntityPointsToEvent],
     causal_links: List[CausalLink],
     semantic_links: Optional[List[SemanticLink]] = None,
     scenes: Optional[List[Scene]] = None
 ) -> Dict[str, str]:
-    """Export DUAL FLOW structure to Neo4j CSV format"""
-    os.makedirs(out_dir, exist_ok=True)
-    
-    if semantic_links is None:
-        semantic_links = []
-    if scenes is None:
-        scenes = []
-    
-    # Collect unique entities
-    entities_by_type = defaultdict(dict)
-    for prod in event_produces:
-        entities_by_type[prod.entity_type][prod.entity_id] = prod.entity_name
-    
-    # Event nodes
-    events_rows = []
-    for ev in events:
-        events_rows.append({
-            ":ID": ev.id,
-            "name": ev.name,
-            "eventType": ev.eventType,
-            "actionType": ev.actionType,
-            "source_quote": ev.source_quote,
-            "causeWeight": ev.causeWeight or 0.0,
-            "confidence": ev.confidence,
-            "sequence": ev.sequence,
-            "chapter": ev.chapter,
-            "time": ev.time or "",
-            "location": ev.location or ""
-        })
-    
-    # Agent nodes
-    all_agents = {}
-    all_agents.update(entities_by_type.get("actor", {}))
-    all_agents.update(entities_by_type.get("patient", {}))
-    agent_rows = [{":ID": aid, "name": name} for aid, name in all_agents.items()]
-    
-    # Place nodes
-    place_rows = [{":ID": pid, "name": name} for pid, name in entities_by_type.get("place", {}).items()]
-    
-    # WhyFactor nodes
-    whyfactor_rows = [{":ID": wid, "factor": name} for wid, name in entities_by_type.get("whyfactor", {}).items()]
-    
-    # Event → Entity edges
-    produces_actor_rows = [{
-        ":START_ID": prod.event_id,
-        ":END_ID": prod.entity_id,
-        ":TYPE": "PRODUCES_ACTOR",
-        "strength": prod.strength
-    } for prod in event_produces if prod.entity_type == "actor"]
-    
-    produces_patient_rows = [{
-        ":START_ID": prod.event_id,
-        ":END_ID": prod.entity_id,
-        ":TYPE": "PRODUCES_PATIENT",
-        "strength": prod.strength
-    } for prod in event_produces if prod.entity_type == "patient"]
-    
-    produces_motivation_rows = [{
-        ":START_ID": prod.event_id,
-        ":END_ID": prod.entity_id,
-        ":TYPE": "PRODUCES_MOTIVATION",
-        "weight": prod.strength
-    } for prod in event_produces if prod.entity_type == "whyfactor"]
-    
-    produces_location_rows = [{
-        ":START_ID": prod.event_id,
-        ":END_ID": prod.entity_id,
-        ":TYPE": "PRODUCES_LOCATION",
-        "specificity": prod.strength
-    } for prod in event_produces if prod.entity_type == "place"]
-    
-    # Entity → Event edges
-    acts_in_rows = [{
-        ":START_ID": ept.entity_id,
-        ":END_ID": ept.next_event_id,
-        ":TYPE": "ACTS_IN",
-        "strength": ept.strength
-    } for ept in entity_points_to if ept.relationship == "ACTS_IN"]
-    
-    affected_in_rows = [{
-        ":START_ID": ept.entity_id,
-        ":END_ID": ept.next_event_id,
-        ":TYPE": "AFFECTED_IN",
-        "strength": ept.strength
-    } for ept in entity_points_to if ept.relationship == "AFFECTED_IN"]
-    
-    motivates_rows = [{
-        ":START_ID": ept.entity_id,
-        ":END_ID": ept.next_event_id,
-        ":TYPE": "MOTIVATES",
-        "weight": ept.strength
-    } for ept in entity_points_to if ept.relationship == "MOTIVATES"]
-    
-    hosts_rows = [{
-        ":START_ID": ept.entity_id,
-        ":END_ID": ept.next_event_id,
-        ":TYPE": "HOSTS",
-        "specificity": ept.strength
-    } for ept in entity_points_to if ept.relationship == "HOSTS"]
-    
-    # Event -[:FOLLOWS]-> Event
-    follows_rows = []
-    for i in range(len(events) - 1):
-        ev1 = events[i]
-        ev2 = events[i + 1]
-        if ev1.chapter == ev2.chapter:
-            follows_rows.append({
-                ":START_ID": ev1.id,
-                ":END_ID": ev2.id,
-                ":TYPE": "FOLLOWS"
-            })
-    
-    # Event -[:CAUSES]-> Event
-    causes_rows = [{
-        ":START_ID": link.cause_id,
-        ":END_ID": link.effect_id,
-        ":TYPE": "CAUSES",
-        "relationType": link.relationType,
-        "mechanism": link.mechanism,
-        "sign": link.sign,
-        "weight": link.weight,
-        "confidence": link.confidence,
-        "cause_seq": link.cause_sequence,
-        "effect_seq": link.effect_sequence
-    } for link in causal_links]
-    
-    # --- NEW ROWS FOR SCENES ---
-    scene_nodes_rows = [{
-        ":ID": scene.id,
-        "theme": scene.theme,
-        "chapter": scene.chapter,
-        "confidence": scene.confidence
-    } for scene in scenes]
-    
-    scene_includes_rows = []
-    for scene in scenes:
-        for event_id in scene.event_ids:
-            scene_includes_rows.append({
-                ":START_ID": scene.id,
-                ":END_ID": event_id,
-                ":TYPE": "INCLUDES"
-            })
-            
-    # --- NEW ROWS FOR SEMANTIC LINKS ---
-    semantic_link_rows = []
-    for link in semantic_links:
-        for source_id in link.source_event_ids:
-            for target_id in link.target_event_ids:
-                semantic_link_rows.append({
-                    ":START_ID": source_id,
-                    ":END_ID": target_id,
-                    ":TYPE": link.relation.upper(),
-                    "cue": ", ".join(link.cue) if link.cue else "",
-                    "confidence": link.confidence
-                })
-
-    files = {
-        "events.csv": events_rows,
-        "agents.csv": agent_rows,
-        "places.csv": place_rows,
-        "whyfactors.csv": whyfactor_rows,
-        "produces_actor.csv": produces_actor_rows,
-        "produces_patient.csv": produces_patient_rows,
-        "produces_motivation.csv": produces_motivation_rows,
-        "produces_location.csv": produces_location_rows,
-        "acts_in.csv": acts_in_rows,
-        "affected_in.csv": affected_in_rows,
-        "motivates.csv": motivates_rows,
-        "hosts.csv": hosts_rows,
-        "follows.csv": follows_rows,
-        "causes.csv": causes_rows,
-        "scenes.csv": scene_nodes_rows,
-        "scene_includes_event.csv": scene_includes_rows,
-        "semantic_links.csv": semantic_link_rows
-    }
-
-    def _write_csv(rows, path):
-        if not rows:
-            open(path, "w", encoding="utf-8").close()
-            return
+    """
+    Exports graph data to CSVs.
+    Updated to reflect schemas.py changes (No Place/Time nodes).
+    """
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
         
-        if pd is not None:
-            pd.DataFrame(rows).to_csv(path, index=False, encoding="utf-8")
-        else:
-            keys = list(rows[0].keys())
-            with open(path, "w", newline="", encoding="utf-8") as f:
-                writer = csv.DictWriter(f, fieldnames=keys)
-                writer.writeheader()
-                writer.writerows(rows)
+    generated_files = {}
 
-    out_paths = {}
-    for fname, rows in files.items():
-        if rows: 
-            path = os.path.join(out_dir, fname)
-            _write_csv(rows, path)
-            out_paths[fname] = path
+    # 1. EVENTS CSV (Updated Schema)
+    events_data = []
+    for e in events:
+        events_data.append({
+            "id": e.id,
+            "raw_description": e.raw_description,
+            "event_category": e.event_category,
+            "action_type": e.action_type,
+            "location_context": e.location_context, # Attribute
+            "time_context": e.time_context,         # Attribute
+            "chapter": e.chapter,
+            "sequence": e.sequence,
+            "confidence": e.confidence,
+            "source_quote": e.source_quote
+        })
+    df_events = pd.DataFrame(events_data)
+    path_events = os.path.join(output_dir, "events.csv")
+    df_events.to_csv(path_events, index=False)
+    generated_files["events"] = path_events
+
+    # 2. PRODUCES CSV (Entity nodes: Actors/WhyFactors only)
+    produces_data = []
+    for p in produces:
+        # Skip 'place' type if any remain (since they are now attributes)
+        if p.entity_type != 'place': 
+            produces_data.append({
+                "event_id": p.event_id,
+                "entity_id": p.entity_id,
+                "entity_name": p.entity_name,
+                "entity_type": p.entity_type,
+                "relationship": p.relationship,
+                "strength": p.strength
+            })
+    df_produces = pd.DataFrame(produces_data)
+    path_produces = os.path.join(output_dir, "event_produces_entity.csv")
+    df_produces.to_csv(path_produces, index=False)
+    generated_files["produces"] = path_produces
+
+    # 3. ENTITY LINKS CSV (Actor -> Event)
+    links_data = [
+        {
+            "entity_id": l.entity_id,
+            "entity_name": l.entity_name,
+            "entity_type": l.entity_type,
+            "next_event_id": l.next_event_id,
+            "relationship": l.relationship,
+            "strength": l.strength
+        }
+        for l in entity_links
+    ]
+    df_links = pd.DataFrame(links_data)
+    path_links = os.path.join(output_dir, "entity_points_to_event.csv")
+    df_links.to_csv(path_links, index=False)
+    generated_files["entity_links"] = path_links
+
+    # 4. CAUSAL LINKS CSV
+    causal_data = [
+        {
+            "source": l.source_event_id,
+            "target": l.target_event_id,
+            "type": l.relation_type,
+            "mechanism": l.mechanism,
+            "weight": l.weight,
+            "confidence": l.confidence
+        }
+        for l in causal_links
+    ]
+    df_causal = pd.DataFrame(causal_data)
+    path_causal = os.path.join(output_dir, "causal_links.csv")
+    df_causal.to_csv(path_causal, index=False)
+    generated_files["causal"] = path_causal
     
-    print(f"[export] CSV exported: {len(out_paths)} files to {out_dir}/")
-    return out_paths
+    # 5. SEMANTIC LINKS (Optional)
+    if semantic_links:
+        sem_data = [
+            {
+                "source": l.source_event_ids[0] if l.source_event_ids else "",
+                "target": l.target_event_ids[0] if l.target_event_ids else "",
+                "relation": l.relation,
+                "confidence": l.confidence
+            }
+            for l in semantic_links
+        ]
+        df_sem = pd.DataFrame(sem_data)
+        path_sem = os.path.join(output_dir, "semantic_links.csv")
+        df_sem.to_csv(path_sem, index=False)
+        generated_files["semantic"] = path_sem
+
+    return generated_files
+
+def build_jsonld(
+    events: List[CEKEvent],
+    produces: List[EventProducesEntity],
+    entity_links: List[EntityPointsToEvent],
+    causal_links: List[CausalLink]
+) -> Dict[str, Any]:
+    """
+    Constructs a JSON-LD style dictionary.
+    """
+    graph_nodes = []
+    graph_edges = []
+    
+    # Events
+    for e in events:
+        graph_nodes.append({
+            "id": e.id,
+            "type": "Event",
+            "properties": {
+                "raw_description": e.raw_description,
+                "category": e.event_category,
+                "location": e.location_context,
+                "time": e.time_context,
+                "chapter": e.chapter,
+                "sequence": e.sequence
+            }
+        })
+
+    # Causal Edges
+    for l in causal_links:
+        graph_edges.append({
+            "source": l.source_event_id,
+            "target": l.target_event_id,
+            "label": l.relation_type,
+            "properties": {"mechanism": l.mechanism}
+        })
+        
+    return {"nodes": graph_nodes, "edges": graph_edges}
+
+def export_neo4j_cypher(
+    output_path: str,
+    events: List[CEKEvent],
+    produces: List[EventProducesEntity],
+    entity_links: List[EntityPointsToEvent],
+    causal_links: List[CausalLink],
+    semantic_links: Optional[List[SemanticLink]] = None,
+    scenes: Optional[List[Scene]] = None
+) -> None:
+    """
+    Generates a generic .cypher script to recreate the graph structure in Neo4j.
+    Uses UNWIND batches for efficient importing.
+    """
+    
+    def clean(s):
+        if s is None: return ""
+        return str(s).replace("\\", "\\\\").replace("'", "\\'")
+
+    queries = []
+
+    # 1. CONSTRAINTS
+    queries.append("// --- Constraints ---")
+    queries.append("CREATE CONSTRAINT event_id_unique IF NOT EXISTS FOR (e:Event) REQUIRE e.id IS UNIQUE;")
+    queries.append("CREATE CONSTRAINT character_id_unique IF NOT EXISTS FOR (c:Character) REQUIRE c.id IS UNIQUE;")
+    queries.append("CREATE CONSTRAINT why_id_unique IF NOT EXISTS FOR (w:WhyFactor) REQUIRE w.id IS UNIQUE;")
+    queries.append("CREATE CONSTRAINT scene_id_unique IF NOT EXISTS FOR (s:Scene) REQUIRE s.id IS UNIQUE;")
+    queries.append("")
+
+    # 2. NODES: EVENTS
+    queries.append("// --- Create Events ---")
+    event_maps = []
+    for e in events:
+        event_maps.append(
+            f"{{id: '{clean(e.id)}', name: '{clean(e.raw_description)}', "
+            f"category: '{clean(e.event_category)}', "
+            f"location: '{clean(e.location_context)}', time: '{clean(e.time_context)}', "
+            f"chapter: {e.chapter}, sequence: {e.sequence}, "
+            f"quote: '{clean(e.source_quote)}'}}"
+        )
+    
+    chunk_size = 500
+    for i in range(0, len(event_maps), chunk_size):
+        chunk = event_maps[i:i+chunk_size]
+        queries.append(f"UNWIND [{', '.join(chunk)}] AS row")
+        queries.append("MERGE (e:Event {id: row.id})")
+        queries.append("SET e += row;")
+    queries.append("")
+
+    # 3. NODES: ENTITIES
+    queries.append("// --- Create Entities ---")
+    actors = {}
+    whyfactors = {}
+    
+    for p in produces:
+        if p.entity_type in ['actor', 'patient']:
+            actors[p.entity_id] = p.entity_name
+        elif p.entity_type == 'whyfactor':
+            whyfactors[p.entity_id] = p.entity_name
+            
+    # Actors
+    if actors:
+        actor_maps = [f"{{id: '{clean(k)}', name: '{clean(v)}'}}" for k, v in actors.items()]
+        for i in range(0, len(actor_maps), chunk_size):
+            chunk = actor_maps[i:i+chunk_size]
+            queries.append(f"UNWIND [{', '.join(chunk)}] AS row")
+            queries.append("MERGE (c:Character {id: row.id})")
+            queries.append("SET c.name = row.name;")
+
+    # WhyFactors
+    if whyfactors:
+        why_maps = [f"{{id: '{clean(k)}', name: '{clean(v)}'}}" for k, v in whyfactors.items()]
+        for i in range(0, len(why_maps), chunk_size):
+            chunk = why_maps[i:i+chunk_size]
+            queries.append(f"UNWIND [{', '.join(chunk)}] AS row")
+            queries.append("MERGE (w:WhyFactor {id: row.id})")
+            queries.append("SET w.name = row.name;")
+    queries.append("")
+    
+    # 4. NODES: SCENES
+    if scenes:
+        queries.append("// --- Create Scenes ---")
+        scene_maps = []
+        for s in scenes:
+            scene_maps.append(
+                f"{{id: '{clean(s.id)}', theme: '{clean(s.theme)}', "
+                f"chapter: {s.chapter}, confidence: {s.confidence}}}"
+            )
+        for i in range(0, len(scene_maps), chunk_size):
+            chunk = scene_maps[i:i+chunk_size]
+            queries.append(f"UNWIND [{', '.join(chunk)}] AS row")
+            queries.append("MERGE (s:Scene {id: row.id})")
+            queries.append("SET s += row;")
+        queries.append("")
+
+    # 5. CAUSAL LINKS
+    queries.append("// --- Create Causal Links ---")
+    links_by_type = defaultdict(list)
+    for l in causal_links:
+        rel = l.relation_type if l.relation_type else "CAUSES"
+        links_by_type[rel].append(l)
+        
+    for rel_type, links in links_by_type.items():
+        type_maps = [
+            f"{{source: '{clean(l.source_event_id)}', target: '{clean(l.target_event_id)}', "
+            f"mechanism: '{clean(l.mechanism)}'}}" 
+            for l in links
+        ]
+        for i in range(0, len(type_maps), chunk_size):
+            chunk = type_maps[i:i+chunk_size]
+            queries.append(f"UNWIND [{', '.join(chunk)}] AS row")
+            queries.append(f"MATCH (s:Event {{id: row.source}}), (t:Event {{id: row.target}})")
+            queries.append(f"MERGE (s)-[r:{rel_type}]->(t)")
+            queries.append("SET r.mechanism = row.mechanism;")
+    queries.append("")
+
+    # 6. EVENT PRODUCES ENTITY
+    queries.append("// --- Event Produces Entity ---")
+    prod_by_rel = defaultdict(list)
+    for p in produces:
+        target_label = "Character" if p.entity_type in ['actor', 'patient'] else "WhyFactor"
+        if p.entity_type == 'place': continue
+        key = (p.relationship or "RELATED", target_label)
+        prod_by_rel[key].append(p)
+        
+    for (rel_type, target_label), items in prod_by_rel.items():
+        maps = [f"{{evt: '{clean(x.event_id)}', ent: '{clean(x.entity_id)}'}}" for x in items]
+        for i in range(0, len(maps), chunk_size):
+            chunk = maps[i:i+chunk_size]
+            queries.append(f"UNWIND [{', '.join(chunk)}] AS row")
+            queries.append(f"MATCH (e:Event {{id: row.evt}}), (t:{target_label} {{id: row.ent}})")
+            queries.append(f"MERGE (e)-[:{rel_type}]->(t);")
+
+    # 7. ENTITY ACTS IN
+    queries.append("")
+    queries.append("// --- Entity Acts In ---")
+    ent_links_by_rel = defaultdict(list)
+    for l in entity_links:
+        source_label = "Character" if l.entity_type in ['actor', 'patient'] else "WhyFactor"
+        key = (l.relationship, source_label)
+        ent_links_by_rel[key].append(l)
+
+    for (rel_type, source_label), items in ent_links_by_rel.items():
+        maps = [f"{{ent: '{clean(x.entity_id)}', evt: '{clean(x.next_event_id)}'}}" for x in items]
+        for i in range(0, len(maps), chunk_size):
+            chunk = maps[i:i+chunk_size]
+            queries.append(f"UNWIND [{', '.join(chunk)}] AS row")
+            queries.append(f"MATCH (s:{source_label} {{id: row.ent}}), (t:Event {{id: row.evt}})")
+            queries.append(f"MERGE (s)-[:{rel_type}]->(t);")
+
+    # 8. SCENE INCLUDES
+    if scenes:
+        queries.append("")
+        queries.append("// --- Scene Includes ---")
+        scene_links = []
+        for s in scenes:
+            for eid in s.included_event_ids:
+                scene_links.append(f"{{scene: '{clean(s.id)}', evt: '{clean(eid)}'}}")
+        
+        for i in range(0, len(scene_links), chunk_size):
+            chunk = scene_links[i:i+chunk_size]
+            queries.append(f"UNWIND [{', '.join(chunk)}] AS row")
+            queries.append("MATCH (s:Scene {id: row.scene}), (e:Event {id: row.evt})")
+            queries.append("MERGE (s)-[:INCLUDES]->(e);")
+
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write("\n".join(queries))

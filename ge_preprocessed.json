@@ -1,0 +1,4538 @@
+{
+  "nodes": [
+    {
+      "id": "event/be28aa8d",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip identified his family name as Pirrip and his Christian name as Philip",
+        "category": "COGNITIVE_REALIZATION",
+        "location": null,
+        "time": null,
+        "chapter": 1,
+        "sequence": 0
+      }
+    },
+    {
+      "id": "event/8a554e34",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip's infant tongue could not articulate his full names",
+        "category": "INTERNAL_THOUGHT",
+        "location": null,
+        "time": null,
+        "chapter": 1,
+        "sequence": 1
+      }
+    },
+    {
+      "id": "event/078b1256",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip called himself Pip",
+        "category": "STATE_CHANGE",
+        "location": null,
+        "time": null,
+        "chapter": 1,
+        "sequence": 2
+      }
+    },
+    {
+      "id": "event/93a28e69",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip came to be called Pip",
+        "category": "STATE_CHANGE",
+        "location": null,
+        "time": null,
+        "chapter": 1,
+        "sequence": 3
+      }
+    },
+    {
+      "id": "event/fdcf9986",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip identifies his family name as Pirrip based on his father's tombstone and his sister's information",
+        "category": "INTERNAL_THOUGHT",
+        "location": null,
+        "time": null,
+        "chapter": 1,
+        "sequence": 4
+      }
+    },
+    {
+      "id": "event/25c02c4e",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip reflects on never having seen his father or mother",
+        "category": "INTERNAL_THOUGHT",
+        "location": null,
+        "time": null,
+        "chapter": 1,
+        "sequence": 5
+      }
+    },
+    {
+      "id": "event/24dd711c",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip notes that he has never seen a likeness of his parents due to the absence of photographs",
+        "category": "OBSERVATION",
+        "location": null,
+        "time": null,
+        "chapter": 1,
+        "sequence": 6
+      }
+    },
+    {
+      "id": "event/846beeee",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip's first fancies about his parents are derived from their tombstones",
+        "category": "INTERNAL_THOUGHT",
+        "location": null,
+        "time": null,
+        "chapter": 1,
+        "sequence": 7
+      }
+    },
+    {
+      "id": "event/ad1a7c49",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip has an odd idea about his father's appearance based on the shape of the letters on the tombstone",
+        "category": "INTERNAL_THOUGHT",
+        "location": null,
+        "time": null,
+        "chapter": 1,
+        "sequence": 8
+      }
+    },
+    {
+      "id": "event/cffb46c5",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip drew a childish conclusion about his mother",
+        "category": "COGNITIVE_REALIZATION",
+        "location": null,
+        "time": null,
+        "chapter": 1,
+        "sequence": 9
+      }
+    },
+    {
+      "id": "event/60fdd2a3",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip perceived his mother as freckled and sickly",
+        "category": "OBSERVATION",
+        "location": null,
+        "time": null,
+        "chapter": 1,
+        "sequence": 10
+      }
+    },
+    {
+      "id": "event/02d44165",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Five little stone lozenges were arranged in a neat row beside their grave",
+        "category": "STATE_CHANGE",
+        "location": "Grave",
+        "time": null,
+        "chapter": 1,
+        "sequence": 11
+      }
+    },
+    {
+      "id": "event/1442686b",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator reflects on the memory of five little brothers",
+        "category": "INTERNAL_THOUGHT",
+        "location": "Grave",
+        "time": null,
+        "chapter": 1,
+        "sequence": 12
+      }
+    },
+    {
+      "id": "event/a0183d51",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator believes that the five little brothers were born on their backs with their hands in their trousers-pockets",
+        "category": "INTERNAL_THOUGHT",
+        "location": "Grave",
+        "time": null,
+        "chapter": 1,
+        "sequence": 13
+      }
+    },
+    {
+      "id": "event/3a60383e",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator describes the five little brothers as having given up trying to get a living early in life",
+        "category": "OBSERVATION",
+        "location": "Grave",
+        "time": null,
+        "chapter": 1,
+        "sequence": 14
+      }
+    },
+    {
+      "id": "event/d8b55db1",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator gained a vivid impression of the identity of things",
+        "category": "COGNITIVE_REALIZATION",
+        "location": "Marsh country",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 15
+      }
+    },
+    {
+      "id": "event/b9aeb1fb",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip found out that the bleak place overgrown with nettles was the churchyard",
+        "category": "COGNITIVE_REALIZATION",
+        "location": "Churchyard",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 16
+      }
+    },
+    {
+      "id": "event/30e10780",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip realized that Philip Pirrip and Georgiana were dead and buried",
+        "category": "COGNITIVE_REALIZATION",
+        "location": "Churchyard",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 17
+      }
+    },
+    {
+      "id": "event/b6c2ad45",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip realized that Alexander, Bartholomew, Abraham, Tobias, and Roger were also dead and buried",
+        "category": "COGNITIVE_REALIZATION",
+        "location": "Churchyard",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 18
+      }
+    },
+    {
+      "id": "event/a6773dd9",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip observed that the dark flat wilderness beyond the churchyard was the marshes",
+        "category": "OBSERVATION",
+        "location": "Marshes",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 19
+      }
+    },
+    {
+      "id": "event/e5b3a5f2",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip observed that the low leaden line beyond was the river",
+        "category": "OBSERVATION",
+        "location": "River",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 20
+      }
+    },
+    {
+      "id": "event/8e478569",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip observed that the distant savage lair from which the wind was rushing was the sea",
+        "category": "OBSERVATION",
+        "location": "Sea",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 21
+      }
+    },
+    {
+      "id": "event/9b8846ca",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip began to cry out of fear",
+        "category": "EMOTIONAL_REACTION",
+        "location": "Sea",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 22
+      }
+    },
+    {
+      "id": "event/b709ecf5",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip felt afraid of it all",
+        "category": "EMOTIONAL_REACTION",
+        "location": "Sea",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 23
+      }
+    },
+    {
+      "id": "event/9229ac36",
+      "type": "Event",
+      "properties": {
+        "raw_description": "A man started up from among the graves",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 24
+      }
+    },
+    {
+      "id": "event/19a16bbb",
+      "type": "Event",
+      "properties": {
+        "raw_description": "A man cried 'Hold your noise!'",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 25
+      }
+    },
+    {
+      "id": "event/7cb634c2",
+      "type": "Event",
+      "properties": {
+        "raw_description": "A man threatened to cut the throat of the little devil",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 26
+      }
+    },
+    {
+      "id": "event/4fa7c41a",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The little devil was threatened",
+        "category": "EMOTIONAL_REACTION",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 27
+      }
+    },
+    {
+      "id": "event/bd88ebb7",
+      "type": "Event",
+      "properties": {
+        "raw_description": "A fearful man appeared, all in coarse grey, with a great iron on his leg",
+        "category": "OBSERVATION",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 28
+      }
+    },
+    {
+      "id": "event/b7cd24de",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The fearful man had no hat, broken shoes, and an old rag tied round his head",
+        "category": "OBSERVATION",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 29
+      }
+    },
+    {
+      "id": "event/013ef3ef",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The fearful man had been soaked in water, smothered in mud, lamed by stones, cut by flints, stung by nettles, and torn by briars",
+        "category": "OBSERVATION",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 30
+      }
+    },
+    {
+      "id": "event/509b2e91",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The fearful man limped, shivered, glared, and growled",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 31
+      }
+    },
+    {
+      "id": "event/7a885076",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The fearful man's teeth chattered in his head",
+        "category": "EMOTIONAL_REACTION",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 32
+      }
+    },
+    {
+      "id": "event/f0b3e130",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The fearful man seized Pip by the chin",
+        "category": "CONFLICT_PHYSICAL",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 33
+      }
+    },
+    {
+      "id": "event/a85c9475",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip pleaded in terror",
+        "category": "EMOTIONAL_REACTION",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 34
+      }
+    },
+    {
+      "id": "event/fbaf3ce4",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip asked the man not to cut his throat",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 35
+      }
+    },
+    {
+      "id": "event/bc3c0358",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man stared at Pip",
+        "category": "OBSERVATION",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 36
+      }
+    },
+    {
+      "id": "event/f354dc1e",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man commanded Pip to give it mouth",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 37
+      }
+    },
+    {
+      "id": "event/638901ae",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man asked to be shown where Pip lives",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 38
+      }
+    },
+    {
+      "id": "event/8ea81398",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man instructed Pip to point out the place",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 39
+      }
+    },
+    {
+      "id": "event/7c329178",
+      "type": "Event",
+      "properties": {
+        "raw_description": "I pointed to where our village lay",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Church porch",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 40
+      }
+    },
+    {
+      "id": "event/396458e4",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Our village lay on the flat in-shore among the alder-trees and pollards",
+        "category": "OBSERVATION",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 41
+      }
+    },
+    {
+      "id": "event/b2dbdbf0",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Our village is a mile or more from the church",
+        "category": "STATE_CHANGE",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 42
+      }
+    },
+    {
+      "id": "event/0214e854",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man looked at Pip for a moment",
+        "category": "OBSERVATION",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 43
+      }
+    },
+    {
+      "id": "event/daca294e",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man turned Pip upside down",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 44
+      }
+    },
+    {
+      "id": "event/d15a23b3",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man emptied Pip's pockets",
+        "category": "ACQUISITION",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 45
+      }
+    },
+    {
+      "id": "event/0661178c",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip's pockets contained nothing but a piece of bread",
+        "category": "STATE_CHANGE",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 46
+      }
+    },
+    {
+      "id": "event/eace9457",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The church went head over heels before Pip",
+        "category": "STATE_CHANGE",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 47
+      }
+    },
+    {
+      "id": "event/3ed07145",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip saw the steeple under his feet",
+        "category": "OBSERVATION",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 48
+      }
+    },
+    {
+      "id": "event/772137b6",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip was seated on a high tombstone",
+        "category": "STATE_CHANGE",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 49
+      }
+    },
+    {
+      "id": "event/fa4456bd",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip trembled while the man ate the bread ravenously",
+        "category": "EMOTIONAL_REACTION",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 50
+      }
+    },
+    {
+      "id": "event/51f75ee9",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man ate the bread ravenously",
+        "category": "ACQUISITION",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 51
+      }
+    },
+    {
+      "id": "event/98df6620",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man licked his lips",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 52
+      }
+    },
+    {
+      "id": "event/a23c782e",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man commented on Pip's fat cheeks",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 53
+      }
+    },
+    {
+      "id": "event/1463af19",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator believed the individuals were fat",
+        "category": "INTERNAL_THOUGHT",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 54
+      }
+    },
+    {
+      "id": "event/4d78ebdb",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator felt undersized for their years",
+        "category": "EMOTIONAL_REACTION",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 55
+      }
+    },
+    {
+      "id": "event/71eee96e",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator felt not strong",
+        "category": "EMOTIONAL_REACTION",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 56
+      }
+    },
+    {
+      "id": "event/99089e84",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man expressed a threatening intention to eat",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 57
+      }
+    },
+    {
+      "id": "event/386638c6",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man shook his head threateningly",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 58
+      }
+    },
+    {
+      "id": "event/684b63dd",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip expressed hope that he wouldn’t",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 59
+      }
+    },
+    {
+      "id": "event/7c82f581",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip held tighter to the tombstone",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 60
+      }
+    },
+    {
+      "id": "event/69d6ed2b",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip felt the need to keep himself upon the tombstone",
+        "category": "INTERNAL_THOUGHT",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 61
+      }
+    },
+    {
+      "id": "event/d4df6dea",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip felt the need to keep himself from crying",
+        "category": "INTERNAL_THOUGHT",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 62
+      }
+    },
+    {
+      "id": "event/07c6d316",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man asked where Pip's mother was",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 63
+      }
+    },
+    {
+      "id": "event/a6e82185",
+      "type": "Event",
+      "properties": {
+        "raw_description": "He started, made a short run, and stopped and looked over his shoulder",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 64
+      }
+    },
+    {
+      "id": "event/85cfb89d",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip timidly explained to the sir",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 65
+      }
+    },
+    {
+      "id": "event/a3de203f",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip mentioned Georgiana as his mother",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 66
+      }
+    },
+    {
+      "id": "event/72fa3111",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip felt timid",
+        "category": "EMOTIONAL_REACTION",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 67
+      }
+    },
+    {
+      "id": "event/feb330b1",
+      "type": "Event",
+      "properties": {
+        "raw_description": "He exclaimed in surprise",
+        "category": "EMOTIONAL_REACTION",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 68
+      }
+    },
+    {
+      "id": "event/be9dc2dd",
+      "type": "Event",
+      "properties": {
+        "raw_description": "He returned to the previous location",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 69
+      }
+    },
+    {
+      "id": "event/5a984c66",
+      "type": "Event",
+      "properties": {
+        "raw_description": "He asked if that person was the father along with the mother",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 70
+      }
+    },
+    {
+      "id": "event/106826a8",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip responded affirmatively to a question",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 71
+      }
+    },
+    {
+      "id": "event/85078561",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip mentioned another person who is late of the parish",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 72
+      }
+    },
+    {
+      "id": "event/43ea7cda",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man muttered a sound of amusement",
+        "category": "EMOTIONAL_REACTION",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 73
+      }
+    },
+    {
+      "id": "event/3ddfd437",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man considered",
+        "category": "INTERNAL_THOUGHT",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 74
+      }
+    },
+    {
+      "id": "event/1a0ea4c4",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man asked who the other person lives with",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 75
+      }
+    },
+    {
+      "id": "event/1071b7ce",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man expressed doubt about the other person's right to live",
+        "category": "STATE_CHANGE",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 76
+      }
+    },
+    {
+      "id": "event/7a952a4c",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man stated he hasn't made up his mind about the other person's living situation",
+        "category": "INTERNAL_THOUGHT",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 77
+      }
+    },
+    {
+      "id": "event/c958cb5d",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Mrs. Joe Gargery is introduced as the sister of the speaker",
+        "category": "STATE_CHANGE",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 78
+      }
+    },
+    {
+      "id": "event/68f7242b",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Joe Gargery is identified as the blacksmith and husband of Mrs. Joe Gargery",
+        "category": "STATE_CHANGE",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 79
+      }
+    },
+    {
+      "id": "event/76ba9f95",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man said 'Blacksmith, eh?'",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 80
+      }
+    },
+    {
+      "id": "event/dcbb4f8c",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man looked down at his leg",
+        "category": "OBSERVATION",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 81
+      }
+    },
+    {
+      "id": "event/7feff8d5",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The convict looked darkly at his leg and at Pip several times",
+        "category": "OBSERVATION",
+        "location": "In-shore",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 82
+      }
+    },
+    {
+      "id": "event/781383ff",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The convict came closer to Pip's tombstone",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 83
+      }
+    },
+    {
+      "id": "event/5f637a0d",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The convict took Pip by both arms",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 84
+      }
+    },
+    {
+      "id": "event/4b4c7480",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The convict tilted Pip back as far as he could hold him",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 85
+      }
+    },
+    {
+      "id": "event/29aea004",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The convict's eyes looked powerfully down into Pip's eyes",
+        "category": "OBSERVATION",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 86
+      }
+    },
+    {
+      "id": "event/bb4c7c03",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip's eyes looked helplessly up into the convict's eyes",
+        "category": "OBSERVATION",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 87
+      }
+    },
+    {
+      "id": "event/d9295214",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The convict asked Pip whether he is to be let to live",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 88
+      }
+    },
+    {
+      "id": "event/d5aa9d69",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The convict asked Pip if he knows what a file is",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 89
+      }
+    },
+    {
+      "id": "event/7c469b04",
+      "type": "Event",
+      "properties": {
+        "raw_description": "He tilted me over a little more",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 90
+      }
+    },
+    {
+      "id": "event/eebaa442",
+      "type": "Event",
+      "properties": {
+        "raw_description": "I felt a greater sense of helplessness and danger",
+        "category": "EMOTIONAL_REACTION",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 91
+      }
+    },
+    {
+      "id": "event/a1f7de7e",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The convict demanded a file and food from Pip",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 92
+      }
+    },
+    {
+      "id": "event/1a1d2a33",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The convict threatened Pip with violence",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 93
+      }
+    },
+    {
+      "id": "event/ee0349ff",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The convict tilted Pip repeatedly",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 94
+      }
+    },
+    {
+      "id": "event/696cff69",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator felt dreadfully frightened",
+        "category": "EMOTIONAL_REACTION",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 95
+      }
+    },
+    {
+      "id": "event/b300391e",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator felt giddy",
+        "category": "EMOTIONAL_REACTION",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 96
+      }
+    },
+    {
+      "id": "event/dad4da14",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator clung to him with both hands",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 97
+      }
+    },
+    {
+      "id": "event/4037c548",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator asked him to let him keep upright",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 98
+      }
+    },
+    {
+      "id": "event/9bcdbed9",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator expressed hope to avoid sickness",
+        "category": "INTERNAL_THOUGHT",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 99
+      }
+    },
+    {
+      "id": "event/b3b033be",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator expressed hope to attend more",
+        "category": "INTERNAL_THOUGHT",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 100
+      }
+    },
+    {
+      "id": "event/6e534191",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The church jumped over its own weathercock",
+        "category": "OBSERVATION",
+        "location": "Tombstone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 101
+      }
+    },
+    {
+      "id": "event/67f1a17b",
+      "type": "Event",
+      "properties": {
+        "raw_description": "He held me by the arms in an upright position on the top of the stone",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "on the top of the stone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 102
+      }
+    },
+    {
+      "id": "event/e6766218",
+      "type": "Event",
+      "properties": {
+        "raw_description": "He went on in fearful terms",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "on the top of the stone",
+        "time": "Memorable raw afternoon towards evening",
+        "chapter": 1,
+        "sequence": 103
+      }
+    },
+    {
+      "id": "event/1aab8239",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The convict demanded Pip to bring him a file and food the next morning",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 104
+      }
+    },
+    {
+      "id": "event/b06c0525",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The convict threatened Pip with violence if he did not comply",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 105
+      }
+    },
+    {
+      "id": "event/69738f79",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The convict implied he was not alone and mentioned another young man",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 106
+      }
+    },
+    {
+      "id": "event/afe7b379",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip felt threatened by the convict's words",
+        "category": "EMOTIONAL_REACTION",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 107
+      }
+    },
+    {
+      "id": "event/3ba2499d",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The young man has a secret way of getting at a boy",
+        "category": "INTERNAL_THOUGHT",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 108
+      }
+    },
+    {
+      "id": "event/da7c041f",
+      "type": "Event",
+      "properties": {
+        "raw_description": "A boy attempts to hide himself from the young man",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 109
+      }
+    },
+    {
+      "id": "event/c0ea8bfd",
+      "type": "Event",
+      "properties": {
+        "raw_description": "A boy locks his door",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 110
+      }
+    },
+    {
+      "id": "event/56101af2",
+      "type": "Event",
+      "properties": {
+        "raw_description": "A boy is warm in bed",
+        "category": "STATE_CHANGE",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 111
+      }
+    },
+    {
+      "id": "event/cbf6024b",
+      "type": "Event",
+      "properties": {
+        "raw_description": "A boy tucks himself up",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 112
+      }
+    },
+    {
+      "id": "event/be1d9e83",
+      "type": "Event",
+      "properties": {
+        "raw_description": "A boy draws the clothes over his head",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 113
+      }
+    },
+    {
+      "id": "event/8ddde341",
+      "type": "Event",
+      "properties": {
+        "raw_description": "A boy thinks himself comfortable and safe",
+        "category": "INTERNAL_THOUGHT",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 114
+      }
+    },
+    {
+      "id": "event/0d596b1f",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The young man softly creeps towards the boy",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 115
+      }
+    },
+    {
+      "id": "event/f0510385",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The young man tears the boy open",
+        "category": "CONFLICT_PHYSICAL",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 116
+      }
+    },
+    {
+      "id": "event/40bc8823",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator is keeping the young man from harming the boy",
+        "category": "STATE_CHANGE",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 117
+      }
+    },
+    {
+      "id": "event/b49e58e8",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator finds it very hard to hold the young man off of the boy's inside",
+        "category": "EMOTIONAL_REACTION",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 118
+      }
+    },
+    {
+      "id": "event/876d82c1",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator asks the boy what he says",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 119
+      }
+    },
+    {
+      "id": "event/f555bad5",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator stated they would get the file",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 120
+      }
+    },
+    {
+      "id": "event/831dbd64",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator stated they would get broken bits of food",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Old Battery",
+        "time": "Tomorrow morning",
+        "chapter": 1,
+        "sequence": 121
+      }
+    },
+    {
+      "id": "event/9b86589a",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator stated they would come to him at the Battery",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Battery",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 122
+      }
+    },
+    {
+      "id": "event/25fbbfea",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man threatened with a curse",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Battery",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 123
+      }
+    },
+    {
+      "id": "event/7c681227",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The speaker reminded the listener of their undertaking and the young man",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Battery",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 124
+      }
+    },
+    {
+      "id": "event/6198b35d",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The speaker instructed the listener to go home",
+        "category": "COMMUNICATION_VERBAL",
+        "location": "Battery",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 125
+      }
+    },
+    {
+      "id": "event/3f8d08cf",
+      "type": "Event",
+      "properties": {
+        "raw_description": "He glanced about him over the cold wet flat",
+        "category": "OBSERVATION",
+        "location": "Cold wet flat",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 126
+      }
+    },
+    {
+      "id": "event/d8017c23",
+      "type": "Event",
+      "properties": {
+        "raw_description": "He expressed a wish to be a frog",
+        "category": "INTERNAL_THOUGHT",
+        "location": "Cold wet flat",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 127
+      }
+    },
+    {
+      "id": "event/39a53f63",
+      "type": "Event",
+      "properties": {
+        "raw_description": "He expressed a wish to be an eel",
+        "category": "INTERNAL_THOUGHT",
+        "location": "Cold wet flat",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 128
+      }
+    },
+    {
+      "id": "event/b46480e8",
+      "type": "Event",
+      "properties": {
+        "raw_description": "He hugged his shuddering body in both his arms",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Cold wet flat",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 129
+      }
+    },
+    {
+      "id": "event/fc8632c7",
+      "type": "Event",
+      "properties": {
+        "raw_description": "He limped towards the low church wall",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Churchyard",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 130
+      }
+    },
+    {
+      "id": "event/89d98361",
+      "type": "Event",
+      "properties": {
+        "raw_description": "I saw him go, picking his way among the nettles and brambles",
+        "category": "OBSERVATION",
+        "location": "Churchyard",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 131
+      }
+    },
+    {
+      "id": "event/6109772b",
+      "type": "Event",
+      "properties": {
+        "raw_description": "He looked as if he were eluding the hands of the dead people",
+        "category": "INTERNAL_THOUGHT",
+        "location": "Churchyard",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 132
+      }
+    },
+    {
+      "id": "event/5a8f7f6e",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The dead people were stretching up cautiously out of their graves",
+        "category": "INTERNAL_THOUGHT",
+        "location": "Churchyard",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 133
+      }
+    },
+    {
+      "id": "event/4d71e451",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The dead people were trying to get a twist upon his ankle and pull him in",
+        "category": "INTERNAL_THOUGHT",
+        "location": "Churchyard",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 134
+      }
+    },
+    {
+      "id": "event/d81b4abf",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man got over the low church wall",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Church wall",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 135
+      }
+    },
+    {
+      "id": "event/da8bfbe6",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man turned round to look for Pip",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Church wall",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 136
+      }
+    },
+    {
+      "id": "event/a35fdf1b",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip set his face towards home",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Church wall",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 137
+      }
+    },
+    {
+      "id": "event/4a34407b",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip made the best use of his legs",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Church wall",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 138
+      }
+    },
+    {
+      "id": "event/e2bf563f",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip looked over his shoulder",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Church wall",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 139
+      }
+    },
+    {
+      "id": "event/89a71946",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip saw the man going towards the river",
+        "category": "OBSERVATION",
+        "location": "River",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 140
+      }
+    },
+    {
+      "id": "event/799ae52a",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man was hugging himself in both arms",
+        "category": "STATE_CHANGE",
+        "location": "River",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 141
+      }
+    },
+    {
+      "id": "event/897abbb7",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man was picking his way with his sore feet among the great stones",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Marshes",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 142
+      }
+    },
+    {
+      "id": "event/98e77042",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator stopped to look after him",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Marshes",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 143
+      }
+    },
+    {
+      "id": "event/316cb0a8",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator observed the marshes as a long black horizontal line",
+        "category": "OBSERVATION",
+        "location": "Marshes",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 144
+      }
+    },
+    {
+      "id": "event/2aee0161",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator observed the river as another horizontal line, not broad nor black",
+        "category": "OBSERVATION",
+        "location": "Marshes",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 145
+      }
+    },
+    {
+      "id": "event/b08e9993",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator observed the sky as a row of long angry red lines and dense black lines intermixed",
+        "category": "OBSERVATION",
+        "location": "Marshes",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 146
+      }
+    },
+    {
+      "id": "event/ba86bbba",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator faintly made out two black things standing upright",
+        "category": "OBSERVATION",
+        "location": "Edge of the river",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 147
+      }
+    },
+    {
+      "id": "event/8a8e869a",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator observed the beacon, described as an ugly thing when near",
+        "category": "OBSERVATION",
+        "location": "Edge of the river",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 148
+      }
+    },
+    {
+      "id": "event/ed10baf2",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator observed a gibbet with chains hanging to it",
+        "category": "OBSERVATION",
+        "location": "Edge of the river",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 149
+      }
+    },
+    {
+      "id": "event/be06abc3",
+      "type": "Event",
+      "properties": {
+        "raw_description": "A man was limping towards the gibbet",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Edge of the river",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 150
+      }
+    },
+    {
+      "id": "event/bbd1515c",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The narrator implied that the man was the pirate come to life",
+        "category": "INTERNAL_THOUGHT",
+        "location": "Edge of the river",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 151
+      }
+    },
+    {
+      "id": "event/49df9004",
+      "type": "Event",
+      "properties": {
+        "raw_description": "The man was going back to hook himself up again",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Edge of the river",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 152
+      }
+    },
+    {
+      "id": "event/56ee9472",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip felt a terrible turn when he thought about the horrible young man",
+        "category": "EMOTIONAL_REACTION",
+        "location": "Edge of the river",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 153
+      }
+    },
+    {
+      "id": "event/baba2b8a",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip observed the cattle lifting their heads to gaze after the horrible young man",
+        "category": "OBSERVATION",
+        "location": "Edge of the river",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 154
+      }
+    },
+    {
+      "id": "event/ee4f6bab",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip wondered whether the cattle thought about the horrible young man too",
+        "category": "INTERNAL_THOUGHT",
+        "location": "Edge of the river",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 155
+      }
+    },
+    {
+      "id": "event/292a1cf0",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip looked all around for the horrible young man",
+        "category": "OBSERVATION",
+        "location": "Edge of the river",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 156
+      }
+    },
+    {
+      "id": "event/584f13ba",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip felt frightened again",
+        "category": "EMOTIONAL_REACTION",
+        "location": "Edge of the river",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 157
+      }
+    },
+    {
+      "id": "event/998c01f7",
+      "type": "Event",
+      "properties": {
+        "raw_description": "Pip ran home without stopping",
+        "category": "PHYSICAL_MOVEMENT",
+        "location": "Edge of the river",
+        "time": "Early in the morning",
+        "chapter": 1,
+        "sequence": 158
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "event/76ba9f95",
+      "target": "event/5f637a0d",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's comment prompts a reaction from the convict, indicating a response to the provocation."
+      }
+    },
+    {
+      "source": "event/ed10baf2",
+      "target": "event/56ee9472",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The narrator's observation of the gibbet evokes a strong emotional response in Pip, triggering feelings of fear and dread."
+      }
+    },
+    {
+      "source": "event/29aea004",
+      "target": "event/d5aa9d69",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's intense gaze likely prompts Pip to engage in conversation about the file."
+      }
+    },
+    {
+      "source": "event/9b86589a",
+      "target": "event/7c681227",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The narrator's statement sets the stage for the speaker to remind the listener of their commitment, facilitating the connection between the two events."
+      }
+    },
+    {
+      "source": "event/56101af2",
+      "target": "event/0d596b1f",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The boy being warm in bed creates a comfortable environment that allows the young man to approach him softly."
+      }
+    },
+    {
+      "source": "event/846beeee",
+      "target": "event/ad1a7c49",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's imagination about his parents is influenced by the inscriptions on their tombstones, leading to his odd idea about his father's appearance."
+      }
+    },
+    {
+      "source": "event/40bc8823",
+      "target": "event/f555bad5",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "The narrator's action of keeping the young man from harming the boy prevents potential harm, allowing for the statement about getting the file."
+      }
+    },
+    {
+      "source": "event/daca294e",
+      "target": "event/3ed07145",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Turning Pip upside down directly leads to his seeing the steeple under his feet."
+      }
+    },
+    {
+      "source": "event/f0b3e130",
+      "target": "event/f354dc1e",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's fearful action of seizing Pip likely instigated a command, prompting Pip to respond."
+      }
+    },
+    {
+      "source": "event/316cb0a8",
+      "target": "event/ba86bbba",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The observation of the marshes allows the narrator to notice the two black things, suggesting a connection between the two events."
+      }
+    },
+    {
+      "source": "event/02d44165",
+      "target": "event/d8b55db1",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The arrangement of the stone lozenges provides a visual cue that enhances the narrator's perception and understanding of the grave's significance."
+      }
+    },
+    {
+      "source": "event/afe7b379",
+      "target": "event/da7c041f",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's feeling of threat leads to a defensive reaction, prompting the boy to hide."
+      }
+    },
+    {
+      "source": "event/b7cd24de",
+      "target": "event/509b2e91",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's poor clothing and physical condition contribute to his fearful demeanor and behavior."
+      }
+    },
+    {
+      "source": "event/9229ac36",
+      "target": "event/bd88ebb7",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's sudden movement from the graves likely startled or prompted the fearful man to appear."
+      }
+    },
+    {
+      "source": "event/76ba9f95",
+      "target": "event/7feff8d5",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's comment prompts the convict to react negatively, indicating discomfort or anger."
+      }
+    },
+    {
+      "source": "event/bc3c0358",
+      "target": "event/8ea81398",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The man's attention on Pip likely creates a context where he feels comfortable giving instructions."
+      }
+    },
+    {
+      "source": "event/b300391e",
+      "target": "event/9bcdbed9",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Feeling giddy may lead to a more optimistic outlook, allowing the narrator to express hope for avoiding sickness."
+      }
+    },
+    {
+      "source": "event/638901ae",
+      "target": "event/7c329178",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's request directly leads to the pointing out of Pip's location."
+      }
+    },
+    {
+      "source": "event/be06abc3",
+      "target": "event/bbd1515c",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The man's limping suggests a connection to the pirate's past, enabling the narrator's implication of his identity."
+      }
+    },
+    {
+      "source": "event/fc8632c7",
+      "target": "event/89d98361",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The act of limping suggests a struggle, allowing the observer to notice his careful movement among obstacles."
+      }
+    },
+    {
+      "source": "event/da7c041f",
+      "target": "event/cbf6024b",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Hiding oneself often involves tucking up to conceal one's presence."
+      }
+    },
+    {
+      "source": "event/4037c548",
+      "target": "event/9bcdbed9",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "By asking for support to stay upright, the narrator increases the likelihood of avoiding sickness."
+      }
+    },
+    {
+      "source": "event/1a1d2a33",
+      "target": "event/b300391e",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The threat of violence caused an emotional response in the narrator, leading to feelings of giddiness."
+      }
+    },
+    {
+      "source": "event/56101af2",
+      "target": "event/8ddde341",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Being warm in bed leads to feelings of comfort and safety."
+      }
+    },
+    {
+      "source": "event/b3b033be",
+      "target": "event/40bc8823",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "The narrator's hope to attend more may motivate them to intervene and protect the boy from harm."
+      }
+    },
+    {
+      "source": "event/8a554e34",
+      "target": "event/93a28e69",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's inability to articulate his full names led to the simplification of his name to Pip."
+      }
+    },
+    {
+      "source": "event/d9295214",
+      "target": "event/a1f7de7e",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's inquiry about his fate prompts him to request essential items from Pip."
+      }
+    },
+    {
+      "source": "event/4fa7c41a",
+      "target": "event/509b2e91",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The threat to the little devil instills fear in the man, leading to his fearful reactions."
+      }
+    },
+    {
+      "source": "event/781383ff",
+      "target": "event/29aea004",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's proximity to Pip's tombstone likely intensifies the emotional or psychological impact on Pip, triggering a strong gaze exchange."
+      }
+    },
+    {
+      "source": "event/b06c0525",
+      "target": "event/69738f79",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The convict's threat suggests he has accomplices, which may influence Pip's perception of danger."
+      }
+    },
+    {
+      "source": "event/be06abc3",
+      "target": "event/49df9004",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's limp suggests a physical injury or condition that may lead him to return to the gibbet for further action."
+      }
+    },
+    {
+      "source": "event/40bc8823",
+      "target": "event/876d82c1",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "The narrator's intervention stops the young man from causing harm, allowing for communication with the boy."
+      }
+    },
+    {
+      "source": "event/a1f7de7e",
+      "target": "event/b300391e",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's demand created a stressful situation for Pip, leading to his giddy feelings."
+      }
+    },
+    {
+      "source": "event/49df9004",
+      "target": "event/56ee9472",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's action of hooking himself up again evokes a strong emotional response in Pip, indicating a trigger of feelings."
+      }
+    },
+    {
+      "source": "event/ee0349ff",
+      "target": "event/4037c548",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's action of tilting Pip prompts the narrator to request assistance in maintaining his upright position."
+      }
+    },
+    {
+      "source": "event/5f637a0d",
+      "target": "event/4b4c7480",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's action of taking Pip by the arms directly leads to the subsequent action of tilting him back."
+      }
+    },
+    {
+      "source": "event/e2bf563f",
+      "target": "event/89a71946",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's action of looking over his shoulder allows him to see the man approaching the river."
+      }
+    },
+    {
+      "source": "event/1442686b",
+      "target": "event/d8b55db1",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Reflecting on memories can enhance understanding and clarity about one's identity and surroundings."
+      }
+    },
+    {
+      "source": "event/39a53f63",
+      "target": "event/b46480e8",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The expression of a wish to be an eel suggests a desire for transformation, leading to a physical reaction of hugging his body, possibly indicating discomfort or conflict with his current self."
+      }
+    },
+    {
+      "source": "event/1463af19",
+      "target": "event/71eee96e",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The narrator's belief about others' weight may lead to feelings of inadequacy or weakness in themselves."
+      }
+    },
+    {
+      "source": "event/8e478569",
+      "target": "event/9229ac36",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's observation of the lair and the wind suggests an impending event, which triggers the man's sudden action."
+      }
+    },
+    {
+      "source": "event/7c469b04",
+      "target": "event/67f1a17b",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Tilting allows for better positioning, making it possible to hold upright."
+      }
+    },
+    {
+      "source": "event/da7c041f",
+      "target": "event/be1d9e83",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The boy's attempt to hide leads him to draw the clothes over his head for concealment."
+      }
+    },
+    {
+      "source": "event/0d596b1f",
+      "target": "event/f0510385",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The young man's action of creeping suggests an intention to harm, leading to the act of tearing the boy open."
+      }
+    },
+    {
+      "source": "event/a23c782e",
+      "target": "event/1463af19",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's comment likely influenced the narrator's perception of the individuals' appearance."
+      }
+    },
+    {
+      "source": "event/69738f79",
+      "target": "event/afe7b379",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's implication of another person creates a sense of threat for Pip."
+      }
+    },
+    {
+      "source": "event/25c02c4e",
+      "target": "event/cffb46c5",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's reflection on his parents allows him to form thoughts about his mother."
+      }
+    },
+    {
+      "source": "event/5f637a0d",
+      "target": "event/29aea004",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's physical grip on Pip likely intensifies the emotional and psychological impact of their interaction, leading to a deeper gaze."
+      }
+    },
+    {
+      "source": "event/b7cd24de",
+      "target": "event/013ef3ef",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's lack of proper clothing and footwear likely contributed to his exposure to harsh conditions, leading to his injuries."
+      }
+    },
+    {
+      "source": "event/68f7242b",
+      "target": "event/76ba9f95",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Identifying Joe as a blacksmith provides context for the man's comment, suggesting familiarity with the profession."
+      }
+    },
+    {
+      "source": "event/1442686b",
+      "target": "event/3a60383e",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The reflection on the memory prompts the narrator to articulate the struggles of the brothers, suggesting a direct influence on the description."
+      }
+    },
+    {
+      "source": "event/f555bad5",
+      "target": "event/7c681227",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The narrator's statement sets the expectation for action, allowing the speaker to remind the listener of their commitment."
+      }
+    },
+    {
+      "source": "event/bb4c7c03",
+      "target": "event/7c469b04",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's helpless gaze prompts the convict to adjust his position, indicating a response to Pip's emotional state."
+      }
+    },
+    {
+      "source": "event/24dd711c",
+      "target": "event/ad1a7c49",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The absence of photographs allows Pip to form an idea of his father's appearance based on limited information, such as the tombstone."
+      }
+    },
+    {
+      "source": "event/eebaa442",
+      "target": "event/a1f7de7e",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The feeling of helplessness may have prompted Pip to respond to the convict's demands."
+      }
+    },
+    {
+      "source": "event/02d44165",
+      "target": "event/30e10780",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The arrangement of the lozenges signifies the burial, allowing Pip to realize the death of Philip and Georgiana."
+      }
+    },
+    {
+      "source": "event/baba2b8a",
+      "target": "event/ee4f6bab",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's observation of the cattle's reaction allows him to consider their thoughts about the young man."
+      }
+    },
+    {
+      "source": "event/0d596b1f",
+      "target": "event/b49e58e8",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The young man's approach creates a situation where the narrator struggles to protect the boy."
+      }
+    },
+    {
+      "source": "event/51f75ee9",
+      "target": "event/98df6620",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Eating bread ravenously likely leads to licking lips due to hunger and anticipation of taste."
+      }
+    },
+    {
+      "source": "event/4fa7c41a",
+      "target": "event/013ef3ef",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The threat to the little devil likely instigated a series of aggressive actions against the fearful man, leading to his suffering."
+      }
+    },
+    {
+      "source": "event/19a16bbb",
+      "target": "event/bd88ebb7",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's shout likely startled the fearful man, prompting his appearance."
+      }
+    },
+    {
+      "source": "event/56101af2",
+      "target": "event/cbf6024b",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Being warm in bed allows the boy to feel comfortable enough to tuck himself up."
+      }
+    },
+    {
+      "source": "event/7c82f581",
+      "target": "event/a6e82185",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's action of holding tighter to the tombstone likely heightened his anxiety, prompting him to start running and look back."
+      }
+    },
+    {
+      "source": "event/6109772b",
+      "target": "event/4d71e451",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "His eluding gesture provokes the dead people's attempt to grab him."
+      }
+    },
+    {
+      "source": "event/d5aa9d69",
+      "target": "event/eebaa442",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's question instills fear in Pip, leading to feelings of helplessness."
+      }
+    },
+    {
+      "source": "event/1a0ea4c4",
+      "target": "event/1071b7ce",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's inquiry about living arrangements leads him to question the other person's right to reside there."
+      }
+    },
+    {
+      "source": "event/ba86bbba",
+      "target": "event/ed10baf2",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The narrator's faint perception of two black objects likely triggered the realization of the gibbet's presence."
+      }
+    },
+    {
+      "source": "event/25c02c4e",
+      "target": "event/24dd711c",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's reflection on his parents' absence leads him to realize the lack of their likenesses, as photographs are missing."
+      }
+    },
+    {
+      "source": "event/ed10baf2",
+      "target": "event/bbd1515c",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The observation of the gibbet suggests a connection to the pirate's fate, allowing the narrator to imply his return."
+      }
+    },
+    {
+      "source": "event/07c6d316",
+      "target": "event/72fa3111",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's question about Pip's mother likely made Pip feel vulnerable and anxious, leading to his timidity."
+      }
+    },
+    {
+      "source": "event/be1d9e83",
+      "target": "event/8ddde341",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The act of drawing clothes over his head creates a sense of comfort and safety for the boy."
+      }
+    },
+    {
+      "source": "event/8ddde341",
+      "target": "event/f0510385",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The boy's sense of comfort may lead to a false sense of security, provoking a violent reaction from the young man."
+      }
+    },
+    {
+      "source": "event/d5aa9d69",
+      "target": "event/1a1d2a33",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's inquiry about the file may provoke a defensive or aggressive response, leading to a threat of violence."
+      }
+    },
+    {
+      "source": "event/69d6ed2b",
+      "target": "event/a6e82185",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's feeling of need prompts him to act, leading to his physical response of running and stopping."
+      }
+    },
+    {
+      "source": "event/30e10780",
+      "target": "event/b6c2ad45",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's realization of one set of deaths enables him to recognize others, suggesting a broader understanding of loss."
+      }
+    },
+    {
+      "source": "event/7feff8d5",
+      "target": "event/781383ff",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's dark look suggests a strong emotional response, prompting him to approach Pip's tombstone."
+      }
+    },
+    {
+      "source": "event/013ef3ef",
+      "target": "event/7a885076",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's physical suffering from various elements likely induced fear and anxiety, leading to his teeth chattering."
+      }
+    },
+    {
+      "source": "event/25fbbfea",
+      "target": "event/d8017c23",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's threat of a curse prompts him to express a wish to transform, indicating a reaction to the threat."
+      }
+    },
+    {
+      "source": "event/ed10baf2",
+      "target": "event/49df9004",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The observation of the gibbet likely instills a sense of inevitability or compulsion in the man, prompting him to return to it."
+      }
+    },
+    {
+      "source": "event/4d71e451",
+      "target": "event/98e77042",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "The dead people's attempt to pull him in caused the narrator to stop and look after him, preventing further action."
+      }
+    },
+    {
+      "source": "event/4b4c7480",
+      "target": "event/bb4c7c03",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's action of tilting Pip back directly leads to Pip's helpless gaze upwards."
+      }
+    },
+    {
+      "source": "event/be06abc3",
+      "target": "event/baba2b8a",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's limping draws attention, causing Pip to notice the cattle's reaction."
+      }
+    },
+    {
+      "source": "event/72fa3111",
+      "target": "event/106826a8",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's timidity may have made him more agreeable, leading to an affirmative response."
+      }
+    },
+    {
+      "source": "event/509b2e91",
+      "target": "event/7a885076",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The fearful man's physical reactions, such as limping and shivering, indicate a state of fear that can lead to his teeth chattering."
+      }
+    },
+    {
+      "source": "event/bb4c7c03",
+      "target": "event/eebaa442",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's helpless gaze at the convict evokes feelings of helplessness and danger in the observer."
+      }
+    },
+    {
+      "source": "event/e5b3a5f2",
+      "target": "event/b709ecf5",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's observation of the river evokes a feeling of fear, suggesting a direct emotional response to the sight."
+      }
+    },
+    {
+      "source": "event/56101af2",
+      "target": "event/be1d9e83",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Feeling warm prompts the boy to draw the clothes over his head for additional comfort."
+      }
+    },
+    {
+      "source": "event/7cb634c2",
+      "target": "event/b7cd24de",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The threat instills fear in the man, leading to his disheveled appearance."
+      }
+    },
+    {
+      "source": "event/b06c0525",
+      "target": "event/afe7b379",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's threat directly instills fear in Pip, leading to his feeling of being threatened."
+      }
+    },
+    {
+      "source": "event/7cb634c2",
+      "target": "event/bd88ebb7",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The threat instills fear, leading to the appearance of a fearful man."
+      }
+    },
+    {
+      "source": "event/638901ae",
+      "target": "event/8ea81398",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's request directly leads to Pip being instructed to indicate his residence."
+      }
+    },
+    {
+      "source": "event/ee0349ff",
+      "target": "event/1aab8239",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's actions of tilting Pip indicate a coercive influence, leading to the demand for a file and food."
+      }
+    },
+    {
+      "source": "event/6e534191",
+      "target": "event/e6766218",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The church's unusual action may have instilled fear or anxiety in the observer, leading to fearful terms."
+      }
+    },
+    {
+      "source": "event/9b8846ca",
+      "target": "event/9229ac36",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's fear-induced crying likely startled the man, prompting him to rise."
+      }
+    },
+    {
+      "source": "event/f0510385",
+      "target": "event/40bc8823",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "The narrator intervenes to stop the young man from causing harm to the boy."
+      }
+    },
+    {
+      "source": "event/ee4f6bab",
+      "target": "event/292a1cf0",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's contemplation about the young man prompts him to actively search for him."
+      }
+    },
+    {
+      "source": "event/0214e854",
+      "target": "event/d15a23b3",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's gaze at Pip may have prompted him to search Pip's pockets."
+      }
+    },
+    {
+      "source": "event/d8b55db1",
+      "target": "event/a6773dd9",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The narrator's vivid impression allows Pip to perceive the marshes more clearly."
+      }
+    },
+    {
+      "source": "event/89d98361",
+      "target": "event/4d71e451",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The act of seeing him go may provoke the dead people's attempt to ensnare him."
+      }
+    },
+    {
+      "source": "event/a6773dd9",
+      "target": "event/b709ecf5",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's observation of the dark wilderness evokes a feeling of fear."
+      }
+    },
+    {
+      "source": "event/013ef3ef",
+      "target": "event/a85c9475",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's suffering from various physical discomforts likely heightened his fear, leading to Pip's terror."
+      }
+    },
+    {
+      "source": "event/4d78ebdb",
+      "target": "event/71eee96e",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Feeling undersized can lead to a perception of weakness, impacting self-esteem and confidence."
+      }
+    },
+    {
+      "source": "event/b709ecf5",
+      "target": "event/7cb634c2",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's fear likely stems from the threatening behavior of the man, creating a direct emotional response."
+      }
+    },
+    {
+      "source": "event/be1d9e83",
+      "target": "event/40bc8823",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "The narrator intervenes to stop the young man from causing harm to the boy, suggesting a protective action."
+      }
+    },
+    {
+      "source": "event/ee0349ff",
+      "target": "event/b300391e",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's actions directly affected Pip's physical state, leading to feelings of giddiness."
+      }
+    },
+    {
+      "source": "event/b300391e",
+      "target": "event/b3b033be",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Feeling giddy can lead to a positive emotional state, prompting expressions of hope."
+      }
+    },
+    {
+      "source": "event/7c681227",
+      "target": "event/6198b35d",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The reminder may have prompted the listener to follow the instruction to go home."
+      }
+    },
+    {
+      "source": "event/8a554e34",
+      "target": "event/078b1256",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's inability to articulate his full names directly leads to him adopting a simpler name."
+      }
+    },
+    {
+      "source": "event/85078561",
+      "target": "event/3ddfd437",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's mention provides context that prompts the man's consideration."
+      }
+    },
+    {
+      "source": "event/02d44165",
+      "target": "event/b9aeb1fb",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The arrangement of stone lozenges indicates a grave, leading Pip to discover the churchyard's location."
+      }
+    },
+    {
+      "source": "event/7feff8d5",
+      "target": "event/29aea004",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's dark look at Pip likely triggers a powerful gaze in return, indicating a moment of intense connection or confrontation."
+      }
+    },
+    {
+      "source": "event/b300391e",
+      "target": "event/4037c548",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Feeling giddy can lead to a loss of balance, prompting the narrator to seek support to remain upright."
+      }
+    },
+    {
+      "source": "event/1aab8239",
+      "target": "event/afe7b379",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's demand instilled fear in Pip, leading to his feeling of threat."
+      }
+    },
+    {
+      "source": "event/afe7b379",
+      "target": "event/3ba2499d",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The convict's threatening words create a sense of vulnerability in Pip, allowing the young man to exploit this fear."
+      }
+    },
+    {
+      "source": "event/bc3c0358",
+      "target": "event/f354dc1e",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's intense gaze likely prompted him to issue a command to Pip."
+      }
+    },
+    {
+      "source": "event/1a1d2a33",
+      "target": "event/ee0349ff",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's threat likely provoked a physical response, leading to the tilting of Pip."
+      }
+    },
+    {
+      "source": "event/292a1cf0",
+      "target": "event/998c01f7",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's search for the young man instigated a sense of urgency, prompting him to run home."
+      }
+    },
+    {
+      "source": "event/846beeee",
+      "target": "event/60fdd2a3",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's imagination about his parents is influenced by the limited information from their tombstones, leading to his perception of his mother."
+      }
+    },
+    {
+      "source": "event/93a28e69",
+      "target": "event/fdcf9986",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's name identification is facilitated by the information he receives about his family name."
+      }
+    },
+    {
+      "source": "event/4037c548",
+      "target": "event/b3b033be",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The narrator's request for support allows for the possibility of attending more events."
+      }
+    },
+    {
+      "source": "event/85cfb89d",
+      "target": "event/72fa3111",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's act of explaining timidly reflects his emotional state, leading to the feeling of timidity."
+      }
+    },
+    {
+      "source": "event/a3de203f",
+      "target": "event/72fa3111",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's mention of Georgiana likely evokes feelings of timidity due to his emotional connection and expectations related to her."
+      }
+    },
+    {
+      "source": "event/bb4c7c03",
+      "target": "event/afe7b379",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's helpless gaze indicates vulnerability, leading to feelings of threat from the convict's words."
+      }
+    },
+    {
+      "source": "event/93a28e69",
+      "target": "event/846beeee",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's name allows him to reflect on his identity and family, leading to his fancies about his parents."
+      }
+    },
+    {
+      "source": "event/ad1a7c49",
+      "target": "event/cffb46c5",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's interpretation of his father's appearance influences his understanding of family, leading to a simplistic view of his mother."
+      }
+    },
+    {
+      "source": "event/1a0ea4c4",
+      "target": "event/c958cb5d",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The man's question facilitates the introduction of Mrs. Joe Gargery by prompting a response that identifies her relationship to the speaker."
+      }
+    },
+    {
+      "source": "event/3ddfd437",
+      "target": "event/1071b7ce",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's consideration leads to a critical evaluation of the other person's existence, resulting in doubt."
+      }
+    },
+    {
+      "source": "event/4b4c7480",
+      "target": "event/29aea004",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's action of tilting Pip back creates a physical and emotional intensity, leading to a deep gaze."
+      }
+    },
+    {
+      "source": "event/f0b3e130",
+      "target": "event/bc3c0358",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The act of seizing Pip by the chin likely instigated the man's intense gaze, indicating a direct response to the action."
+      }
+    },
+    {
+      "source": "event/3ba2499d",
+      "target": "event/c0ea8bfd",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The young man's secretive approach prompts the boy to take protective action by locking his door."
+      }
+    },
+    {
+      "source": "event/25c02c4e",
+      "target": "event/ad1a7c49",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's reflection on his parents allows him to form an idea about his father's appearance, influenced by the tombstone."
+      }
+    },
+    {
+      "source": "event/d9295214",
+      "target": "event/eebaa442",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's question instills fear in Pip, leading to feelings of helplessness."
+      }
+    },
+    {
+      "source": "event/b9aeb1fb",
+      "target": "event/b6c2ad45",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's discovery of the churchyard leads him to realize the presence of the deceased individuals buried there."
+      }
+    },
+    {
+      "source": "event/5f637a0d",
+      "target": "event/bb4c7c03",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's physical grip on Pip creates a sense of helplessness in Pip, leading to his emotional response."
+      }
+    },
+    {
+      "source": "event/9b86589a",
+      "target": "event/25fbbfea",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The narrator's statement likely provoked a reaction from the man, leading to a threat."
+      }
+    },
+    {
+      "source": "event/b9aeb1fb",
+      "target": "event/30e10780",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Discovering the churchyard led Pip to understand the death of his parents."
+      }
+    },
+    {
+      "source": "event/ee0349ff",
+      "target": "event/dad4da14",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's tilting motion likely caused the narrator to cling for stability or support."
+      }
+    },
+    {
+      "source": "event/3f8d08cf",
+      "target": "event/b46480e8",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The cold and wet environment prompts him to hug himself for warmth and comfort."
+      }
+    },
+    {
+      "source": "event/a3de203f",
+      "target": "event/5a984c66",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's mention of Georgiana prompts a question about parental relationships, indicating a direct connection."
+      }
+    },
+    {
+      "source": "event/eebaa442",
+      "target": "event/696cff69",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "A greater sense of helplessness and danger can lead to feelings of fear and anxiety."
+      }
+    },
+    {
+      "source": "event/f0510385",
+      "target": "event/b49e58e8",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The young man's violent action directly leads to the narrator's struggle to protect the boy."
+      }
+    },
+    {
+      "source": "event/078b1256",
+      "target": "event/93a28e69",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's self-identification as Pip directly leads to his being referred to by that name."
+      }
+    },
+    {
+      "source": "event/b46480e8",
+      "target": "event/6109772b",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The act of hugging suggests a response to fear or distress, which may lead to a perception of evasion from death."
+      }
+    },
+    {
+      "source": "event/a85c9475",
+      "target": "event/f354dc1e",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's pleading likely provoked the man's command, indicating a direct response to Pip's emotional state."
+      }
+    },
+    {
+      "source": "event/684b63dd",
+      "target": "event/d4df6dea",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's hope may have provided him with the emotional strength to suppress his tears."
+      }
+    },
+    {
+      "source": "event/c958cb5d",
+      "target": "event/68f7242b",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Introducing Mrs. Joe Gargery provides context for understanding Joe's role as her husband and his profession."
+      }
+    },
+    {
+      "source": "event/7a885076",
+      "target": "event/bc3c0358",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Fear can lead to physical reactions, such as chattering teeth, which may cause a person to focus intently on something, like staring."
+      }
+    },
+    {
+      "source": "event/696cff69",
+      "target": "event/dad4da14",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The narrator's fear leads to a need for physical reassurance and security."
+      }
+    },
+    {
+      "source": "event/8ea81398",
+      "target": "event/0214e854",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The man's instruction allows Pip to indicate the location, prompting the man's attention towards him."
+      }
+    },
+    {
+      "source": "event/3ed07145",
+      "target": "event/772137b6",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Seeing the steeple indicates Pip's elevated position, which is a direct result of being seated on a high tombstone."
+      }
+    },
+    {
+      "source": "event/5a984c66",
+      "target": "event/43ea7cda",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The question posed by the man likely prompted a humorous reaction, leading to amusement."
+      }
+    },
+    {
+      "source": "event/a1f7de7e",
+      "target": "event/696cff69",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's demand instills fear in Pip, leading to his emotional response of dread."
+      }
+    },
+    {
+      "source": "event/07c6d316",
+      "target": "event/a3de203f",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's inquiry about Pip's mother prompts Pip to identify Georgiana as his mother."
+      }
+    },
+    {
+      "source": "event/98e77042",
+      "target": "event/b08e9993",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The act of stopping to look may have prompted the narrator's observation of the sky, linking the two events."
+      }
+    },
+    {
+      "source": "event/fc8632c7",
+      "target": "event/6109772b",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The act of limping suggests a struggle or evasion, which allows for the interpretation of eluding the dead."
+      }
+    },
+    {
+      "source": "event/8e478569",
+      "target": "event/b709ecf5",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's observation of the savage lair evokes a feeling of fear."
+      }
+    },
+    {
+      "source": "event/8ea81398",
+      "target": "event/7c329178",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's instruction directly led to Pip pointing out the village's location."
+      }
+    },
+    {
+      "source": "event/daca294e",
+      "target": "event/eace9457",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's action of turning Pip upside down causes a reaction in the church, leading it to go head over heels."
+      }
+    },
+    {
+      "source": "event/3ddfd437",
+      "target": "event/1a0ea4c4",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's consideration likely led him to inquire about the other person's living situation."
+      }
+    },
+    {
+      "source": "event/bbd1515c",
+      "target": "event/ee4f6bab",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The narrator's implication allows Pip to connect the pirate's existence to his own thoughts about the young man."
+      }
+    },
+    {
+      "source": "event/a6773dd9",
+      "target": "event/9b8846ca",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's observation of the dark wilderness likely triggered his fear, leading him to cry out."
+      }
+    },
+    {
+      "source": "event/29aea004",
+      "target": "event/7c469b04",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's intense gaze prompts Pip to tilt, indicating a reaction to the convict's presence."
+      }
+    },
+    {
+      "source": "event/bc3c0358",
+      "target": "event/638901ae",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's intense gaze likely prompted him to engage with Pip, leading to the request for directions."
+      }
+    },
+    {
+      "source": "event/29aea004",
+      "target": "event/1aab8239",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's intense gaze likely instilled fear or urgency in Pip, prompting the demand for a file and food."
+      }
+    },
+    {
+      "source": "event/4d71e451",
+      "target": "event/a35fdf1b",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "The dead people's attempt to pull Pip in suggests a threat, prompting him to head home for safety."
+      }
+    },
+    {
+      "source": "event/bbd1515c",
+      "target": "event/49df9004",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The implication of the man being a pirate suggests a transformation or return to a previous state, leading him to reconnect with his identity."
+      }
+    },
+    {
+      "source": "event/eebaa442",
+      "target": "event/1a1d2a33",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The feeling of helplessness can lead to a heightened perception of danger, prompting a response to threats."
+      }
+    },
+    {
+      "source": "event/7c469b04",
+      "target": "event/ee0349ff",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Tilting one person over can lead to repeated tilting of another, indicating a direct influence."
+      }
+    },
+    {
+      "source": "event/07c6d316",
+      "target": "event/85cfb89d",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The man's inquiry creates an opportunity for Pip to share information, facilitating communication."
+      }
+    },
+    {
+      "source": "event/da7c041f",
+      "target": "event/c0ea8bfd",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Locking the door allows the boy to successfully hide from the young man."
+      }
+    },
+    {
+      "source": "event/39a53f63",
+      "target": "event/89d98361",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "His wish to be an eel prompts him to venture into the wild, symbolizing a desire for transformation."
+      }
+    },
+    {
+      "source": "event/8a554e34",
+      "target": "event/fdcf9986",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's inability to articulate his full names allows him to focus on identifying himself with the name Pirrip."
+      }
+    },
+    {
+      "source": "event/69738f79",
+      "target": "event/da7c041f",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The convict's implication of another person may create a situation where the boy feels the need to hide."
+      }
+    },
+    {
+      "source": "event/584f13ba",
+      "target": "event/998c01f7",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's fear prompted him to run home quickly as a response to his emotional state."
+      }
+    },
+    {
+      "source": "event/afe7b379",
+      "target": "event/c0ea8bfd",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's feeling of threat leads him to take protective action by locking his door."
+      }
+    },
+    {
+      "source": "event/7c681227",
+      "target": "event/3f8d08cf",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The reminder prompts the young man to become aware of his surroundings."
+      }
+    },
+    {
+      "source": "event/a1f7de7e",
+      "target": "event/1a1d2a33",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's demand for a file and food creates a situation where he feels entitled to threaten Pip if his needs are not met."
+      }
+    },
+    {
+      "source": "event/4a34407b",
+      "target": "event/89a71946",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's ability to use his legs allows him to see the man approaching the river."
+      }
+    },
+    {
+      "source": "event/eace9457",
+      "target": "event/3ed07145",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The church's sudden movement likely drew Pip's attention to the steeple, prompting him to see it."
+      }
+    },
+    {
+      "source": "event/d4df6dea",
+      "target": "event/a6e82185",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's emotional state prompted him to take action, leading to his sudden movement and pause."
+      }
+    },
+    {
+      "source": "event/fdcf9986",
+      "target": "event/ad1a7c49",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's identification of his family name allows him to form an idea about his father's appearance."
+      }
+    },
+    {
+      "source": "event/e6766218",
+      "target": "event/69738f79",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The fearful terms used by him create an atmosphere that allows the convict to express his feelings about not being alone."
+      }
+    },
+    {
+      "source": "event/ee4f6bab",
+      "target": "event/584f13ba",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's contemplation of the young man leads to feelings of fear, indicating a direct emotional response."
+      }
+    },
+    {
+      "source": "event/56ee9472",
+      "target": "event/292a1cf0",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's negative feelings about the young man prompted him to search for him."
+      }
+    },
+    {
+      "source": "event/e2bf563f",
+      "target": "event/98e77042",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's action prompts the narrator to respond by looking after him."
+      }
+    },
+    {
+      "source": "event/b06c0525",
+      "target": "event/3ba2499d",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The convict's threat creates a situation where Pip feels compelled to comply, allowing the young man to exploit this vulnerability."
+      }
+    },
+    {
+      "source": "event/c0ea8bfd",
+      "target": "event/56101af2",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Locking the door allows the boy to feel secure and comfortable, contributing to a warm feeling in bed."
+      }
+    },
+    {
+      "source": "event/85cfb89d",
+      "target": "event/feb330b1",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's timid explanation likely surprised the listener, prompting an exclamation."
+      }
+    },
+    {
+      "source": "event/da8bfbe6",
+      "target": "event/e2bf563f",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The man's action of turning around allows Pip to look over his shoulder, suggesting a mutual awareness."
+      }
+    },
+    {
+      "source": "event/781383ff",
+      "target": "event/5f637a0d",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's approach to Pip's tombstone leads to a physical interaction with Pip."
+      }
+    },
+    {
+      "source": "event/89d98361",
+      "target": "event/6109772b",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The act of leaving among nettles and brambles suggests a struggle or escape, evoking imagery of evading death."
+      }
+    },
+    {
+      "source": "event/4fa7c41a",
+      "target": "event/b7cd24de",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The threat to the little devil likely instilled fear in the man, leading to his disheveled appearance."
+      }
+    },
+    {
+      "source": "event/292a1cf0",
+      "target": "event/584f13ba",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's search for the young man induces fear, leading to his frightened state."
+      }
+    },
+    {
+      "source": "event/4fa7c41a",
+      "target": "event/bd88ebb7",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The threat to the little devil likely instigated the appearance of the fearful man, suggesting a direct response to the situation."
+      }
+    },
+    {
+      "source": "event/bbd1515c",
+      "target": "event/56ee9472",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The narrator's implication about the man evokes a strong emotional response in Pip, leading to his feeling of dread."
+      }
+    },
+    {
+      "source": "event/b300391e",
+      "target": "event/dad4da14",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Feeling giddy can lead to a sense of excitement or instability, prompting the narrator to cling for support."
+      }
+    },
+    {
+      "source": "event/f354dc1e",
+      "target": "event/8ea81398",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The command to give it mouth allows for further instruction, facilitating Pip's ability to point out the place."
+      }
+    },
+    {
+      "source": "event/bd88ebb7",
+      "target": "event/7a885076",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The fearful man's fear likely leads to physical reactions, such as chattering teeth."
+      }
+    },
+    {
+      "source": "event/0661178c",
+      "target": "event/fa4456bd",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's empty pockets lead to his anxiety as he witnesses the man consuming the only food he has."
+      }
+    },
+    {
+      "source": "event/509b2e91",
+      "target": "event/f0b3e130",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The fearful man's physical reactions indicate heightened emotions, which may lead to aggressive actions like seizing Pip."
+      }
+    },
+    {
+      "source": "event/72fa3111",
+      "target": "event/5a984c66",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's timidity likely led him to seek clarification about the person's identity, prompting his question."
+      }
+    },
+    {
+      "source": "event/f0b3e130",
+      "target": "event/fbaf3ce4",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The fearful man's aggressive action instills fear in Pip, prompting him to plead for his safety."
+      }
+    },
+    {
+      "source": "event/85078561",
+      "target": "event/1071b7ce",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's mention of the other person raises doubts in the man's mind about their legitimacy."
+      }
+    },
+    {
+      "source": "event/a0183d51",
+      "target": "event/d8b55db1",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The narrator's belief about the brothers' nature allows for a deeper understanding of identity."
+      }
+    },
+    {
+      "source": "event/b06c0525",
+      "target": "event/da7c041f",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's threat instills fear in Pip, prompting him to hide from the young man."
+      }
+    },
+    {
+      "source": "event/ed10baf2",
+      "target": "event/be06abc3",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The sight of the gibbet may evoke a sense of fear or urgency, prompting the man to approach it despite his limp."
+      }
+    },
+    {
+      "source": "event/4d71e451",
+      "target": "event/da8bfbe6",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The dead people's actions prompted the man to turn around, indicating a reaction to perceived danger."
+      }
+    },
+    {
+      "source": "event/baba2b8a",
+      "target": "event/584f13ba",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's observation of the cattle's reaction to the young man triggered his own feelings of fear."
+      }
+    },
+    {
+      "source": "event/be28aa8d",
+      "target": "event/078b1256",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Identifying his full name led Pip to adopt the shorter version, Pip."
+      }
+    },
+    {
+      "source": "event/e5b3a5f2",
+      "target": "event/9229ac36",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's observation of the river may have prompted the man's sudden appearance from the graves, suggesting a connection between the two events."
+      }
+    },
+    {
+      "source": "event/8e478569",
+      "target": "event/9b8846ca",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's observation of the threatening lair instills fear, leading him to cry out."
+      }
+    },
+    {
+      "source": "event/b7cd24de",
+      "target": "event/7a885076",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's poor clothing and lack of protection likely contribute to his fear and physical reaction, such as chattering teeth."
+      }
+    },
+    {
+      "source": "event/71eee96e",
+      "target": "event/7c82f581",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The narrator's feeling of weakness may lead to Pip's increased need for support, symbolized by holding tighter to the tombstone."
+      }
+    },
+    {
+      "source": "event/b709ecf5",
+      "target": "event/9229ac36",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's fear likely prompted a heightened awareness, leading to the sudden appearance of the man."
+      }
+    },
+    {
+      "source": "event/1aab8239",
+      "target": "event/b06c0525",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's demand for a file and food instigates a threat of violence, creating a direct response to Pip's potential non-compliance."
+      }
+    },
+    {
+      "source": "event/d15a23b3",
+      "target": "event/0661178c",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Emptying Pip's pockets directly results in them containing nothing."
+      }
+    },
+    {
+      "source": "event/cffb46c5",
+      "target": "event/60fdd2a3",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's childish conclusion directly influences his perception of his mother, leading him to see her in a negative light."
+      }
+    },
+    {
+      "source": "event/99089e84",
+      "target": "event/684b63dd",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "Pip's hope is a response to the man's threatening intention, suggesting he wishes to avoid the negative outcome."
+      }
+    },
+    {
+      "source": "event/baba2b8a",
+      "target": "event/292a1cf0",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's observation of the cattle's reaction prompted him to search for the source of their alarm, the horrible young man."
+      }
+    },
+    {
+      "source": "event/b709ecf5",
+      "target": "event/bd88ebb7",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's fear likely prompted the appearance of the fearful man, suggesting a direct emotional response."
+      }
+    },
+    {
+      "source": "event/a0183d51",
+      "target": "event/3a60383e",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The belief about the brothers' birth suggests a lack of ambition or effort, leading to their early resignation from seeking a living."
+      }
+    },
+    {
+      "source": "event/386638c6",
+      "target": "event/684b63dd",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's threatening gesture likely prompted Pip to express hope for his safety."
+      }
+    },
+    {
+      "source": "event/25c02c4e",
+      "target": "event/846beeee",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's reflection on his parents allows him to imagine them based on the limited information from their tombstones."
+      }
+    },
+    {
+      "source": "event/013ef3ef",
+      "target": "event/509b2e91",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's physical suffering from various elements leads to his limping and aggressive behavior."
+      }
+    },
+    {
+      "source": "event/afe7b379",
+      "target": "event/a35fdf1b",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Feeling threatened prompted Pip to leave the situation and return home for safety."
+      }
+    },
+    {
+      "source": "event/baba2b8a",
+      "target": "event/998c01f7",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's observation of the young man instilled fear, prompting him to run home."
+      }
+    },
+    {
+      "source": "event/5a8f7f6e",
+      "target": "event/4d71e451",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The act of the dead people stretching out of their graves suggests an intention to interact with the living, leading to their attempt to pull him in."
+      }
+    },
+    {
+      "source": "event/bd88ebb7",
+      "target": "event/509b2e91",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The fearful man's appearance and condition (iron on his leg) directly lead to his limping and shivering behavior."
+      }
+    },
+    {
+      "source": "event/e6766218",
+      "target": "event/afe7b379",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The fearful terms used by the convict instilled a sense of threat in Pip."
+      }
+    },
+    {
+      "source": "event/386638c6",
+      "target": "event/d4df6dea",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's threatening gesture instills fear in Pip, prompting him to suppress his emotions."
+      }
+    },
+    {
+      "source": "event/8ddde341",
+      "target": "event/0d596b1f",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The boy's sense of comfort and safety allows the young man to approach him without fear of detection."
+      }
+    },
+    {
+      "source": "event/509b2e91",
+      "target": "event/fbaf3ce4",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The fearful man's aggressive behavior prompts Pip to plead for his safety."
+      }
+    },
+    {
+      "source": "event/be28aa8d",
+      "target": "event/93a28e69",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Identifying his family and Christian name led to Pip being recognized and referred to as Pip."
+      }
+    },
+    {
+      "source": "event/6109772b",
+      "target": "event/d81b4abf",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The man's evasive behavior suggests he is motivated to escape, which allows him to overcome the obstacle of the wall."
+      }
+    },
+    {
+      "source": "event/f555bad5",
+      "target": "event/9b86589a",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Stating the intention to get the file suggests a commitment that facilitates the narrator's subsequent visit."
+      }
+    },
+    {
+      "source": "event/1a1d2a33",
+      "target": "event/696cff69",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's threat instills fear in Pip, leading to his feeling of dread."
+      }
+    },
+    {
+      "source": "event/4037c548",
+      "target": "event/67f1a17b",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The narrator's request directly led to the action of being held upright."
+      }
+    },
+    {
+      "source": "event/6109772b",
+      "target": "event/5a8f7f6e",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's evasive behavior suggests a reaction to the dead people, prompting their cautious emergence from graves."
+      }
+    },
+    {
+      "source": "event/ba86bbba",
+      "target": "event/bbd1515c",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The sight of the two black figures prompts the narrator to associate them with the pirate, suggesting a connection."
+      }
+    },
+    {
+      "source": "event/781383ff",
+      "target": "event/4b4c7480",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's approach to Pip's tombstone initiates a physical interaction, leading to Pip being tilted."
+      }
+    },
+    {
+      "source": "event/cbf6024b",
+      "target": "event/0d596b1f",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The boy tucking himself up creates a situation that allows the young man to approach him quietly."
+      }
+    },
+    {
+      "source": "event/1463af19",
+      "target": "event/99089e84",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The narrator's belief about the individuals' weight may lead to the man's threatening intention to eat, as it suggests a perception of them as food."
+      }
+    },
+    {
+      "source": "event/d81b4abf",
+      "target": "event/da8bfbe6",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Getting over the wall allows the man to turn around and look for Pip."
+      }
+    },
+    {
+      "source": "event/daca294e",
+      "target": "event/d15a23b3",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Turning Pip upside down directly leads to the contents of his pockets falling out."
+      }
+    },
+    {
+      "source": "event/99089e84",
+      "target": "event/69d6ed2b",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's threatening intention instills fear in Pip, prompting him to seek safety on the tombstone."
+      }
+    },
+    {
+      "source": "event/0d596b1f",
+      "target": "event/40bc8823",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "The narrator's presence stops the young man from causing harm to the boy."
+      }
+    },
+    {
+      "source": "event/386638c6",
+      "target": "event/69d6ed2b",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's threatening gesture instills fear in Pip, prompting him to seek stability by clinging to the tombstone."
+      }
+    },
+    {
+      "source": "event/69738f79",
+      "target": "event/3ba2499d",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The convict's implication suggests the young man has access to the boy, facilitating potential harm."
+      }
+    },
+    {
+      "source": "event/a6e82185",
+      "target": "event/feb330b1",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The action of stopping and looking over his shoulder likely triggered a sudden realization or surprise."
+      }
+    },
+    {
+      "source": "event/19a16bbb",
+      "target": "event/4fa7c41a",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's cry serves as a direct provocation that leads to the little devil feeling threatened."
+      }
+    },
+    {
+      "source": "event/7feff8d5",
+      "target": "event/5f637a0d",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's dark look indicates a build-up of tension, leading to the physical action of taking Pip by the arms."
+      }
+    },
+    {
+      "source": "event/24dd711c",
+      "target": "event/60fdd2a3",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The absence of photographs allows Pip to imagine his mother in a specific way, influencing his perception."
+      }
+    },
+    {
+      "source": "event/078b1256",
+      "target": "event/fdcf9986",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's self-identification as Pip allows him to connect with his family name, facilitating his understanding of his heritage."
+      }
+    },
+    {
+      "source": "event/d8b55db1",
+      "target": "event/b9aeb1fb",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The narrator's vivid impression allows Pip to recognize the churchyard's identity."
+      }
+    },
+    {
+      "source": "event/be28aa8d",
+      "target": "event/fdcf9986",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's identification of his family name is directly influenced by the information from his father's tombstone and his sister."
+      }
+    },
+    {
+      "source": "event/76ba9f95",
+      "target": "event/781383ff",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's comment prompts the convict to approach Pip's tombstone, indicating a reaction to the statement."
+      }
+    },
+    {
+      "source": "event/89d98361",
+      "target": "event/d81b4abf",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Navigating through nettles and brambles suggests the man is skilled at overcoming obstacles, which enables him to get over the wall."
+      }
+    },
+    {
+      "source": "event/51f75ee9",
+      "target": "event/1463af19",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's ravenous eating suggests excessive consumption, leading the narrator to perceive the individuals as overweight."
+      }
+    },
+    {
+      "source": "event/bd88ebb7",
+      "target": "event/013ef3ef",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The fearful man's appearance suggests he has endured harsh conditions, leading to his physical state."
+      }
+    },
+    {
+      "source": "event/3ba2499d",
+      "target": "event/0d596b1f",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The young man's secretive approach likely leads to his action of creeping towards the boy."
+      }
+    },
+    {
+      "source": "event/cbf6024b",
+      "target": "event/8ddde341",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Tucking oneself up typically leads to feelings of comfort and safety."
+      }
+    },
+    {
+      "source": "event/24dd711c",
+      "target": "event/846beeee",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The absence of photographs allows Pip to form his first ideas about his parents based on their tombstones."
+      }
+    },
+    {
+      "source": "event/c0ea8bfd",
+      "target": "event/8ddde341",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Locking the door creates a sense of security, allowing the boy to feel comfortable and safe."
+      }
+    },
+    {
+      "source": "event/89d98361",
+      "target": "event/5a8f7f6e",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The act of seeing someone leave may evoke a supernatural response, causing the dead to rise."
+      }
+    },
+    {
+      "source": "event/9229ac36",
+      "target": "event/19a16bbb",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's sudden movement from the graves likely startled him, prompting the cry to silence others."
+      }
+    },
+    {
+      "source": "event/56ee9472",
+      "target": "event/584f13ba",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's negative thoughts about the young man lead to feelings of fear."
+      }
+    },
+    {
+      "source": "event/40bc8823",
+      "target": "event/b49e58e8",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "The narrator's actions are preventing the young man from causing harm to the boy, but the difficulty indicates a struggle."
+      }
+    },
+    {
+      "source": "event/846beeee",
+      "target": "event/cffb46c5",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's interpretation of his parents' tombstones leads him to form ideas about his mother."
+      }
+    },
+    {
+      "source": "event/1463af19",
+      "target": "event/4d78ebdb",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The narrator's belief about others' size led to a personal feeling of inadequacy."
+      }
+    },
+    {
+      "source": "event/19a16bbb",
+      "target": "event/7cb634c2",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's cry likely provoked a defensive or aggressive response from another man, leading to the threat."
+      }
+    },
+    {
+      "source": "event/8ddde341",
+      "target": "event/40bc8823",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "The boy's sense of comfort and safety leads the narrator to intervene and protect him from potential harm."
+      }
+    },
+    {
+      "source": "event/7cb634c2",
+      "target": "event/4fa7c41a",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's threat directly instills fear in the little devil, making it a clear cause-effect relationship."
+      }
+    },
+    {
+      "source": "event/39a53f63",
+      "target": "event/6109772b",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The expression of a wish to be an eel suggests a desire for escape, which may lead to behavior that appears evasive or elusive."
+      }
+    },
+    {
+      "source": "event/1a1d2a33",
+      "target": "event/dad4da14",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's threat instills fear in Pip, prompting him to cling to him for safety."
+      }
+    },
+    {
+      "source": "event/078b1256",
+      "target": "event/25c02c4e",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's self-identification prompts introspection about his family background."
+      }
+    },
+    {
+      "source": "event/fdcf9986",
+      "target": "event/846beeee",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's identification of his family name from the tombstone directly influences his initial thoughts about his parents."
+      }
+    },
+    {
+      "source": "event/696cff69",
+      "target": "event/4037c548",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Feeling dreadfully frightened can lead to a desire for stability and reassurance, prompting the narrator to ask for help in staying upright."
+      }
+    },
+    {
+      "source": "event/a6e82185",
+      "target": "event/72fa3111",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The action of starting and looking over his shoulder likely caused a feeling of timidity in Pip due to anticipation or fear."
+      }
+    },
+    {
+      "source": "event/a85c9475",
+      "target": "event/638901ae",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Pip's pleading in terror likely prompted the man to request information about Pip's residence."
+      }
+    },
+    {
+      "source": "event/4d71e451",
+      "target": "event/4a34407b",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "The dead people's attempt to pull Pip in suggests a struggle, which he counters by using his legs effectively."
+      }
+    },
+    {
+      "source": "event/4d71e451",
+      "target": "event/d81b4abf",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "The dead people's attempt to pull him in was unsuccessful, allowing him to escape over the wall."
+      }
+    },
+    {
+      "source": "event/02d44165",
+      "target": "event/1442686b",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The arrangement of the stone lozenges serves as a trigger for the narrator's reflection on their brothers."
+      }
+    },
+    {
+      "source": "event/f0b3e130",
+      "target": "event/a85c9475",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The fearful man's action of seizing Pip creates a direct emotional response in Pip, leading him to plead in terror."
+      }
+    },
+    {
+      "source": "event/e6766218",
+      "target": "event/1aab8239",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The fearful terms likely heightened the convict's urgency, prompting his demand for a file and food."
+      }
+    },
+    {
+      "source": "event/da8bfbe6",
+      "target": "event/89a71946",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The man's action of turning around allows Pip to see him, facilitating the observation."
+      }
+    },
+    {
+      "source": "event/b6c2ad45",
+      "target": "event/9b8846ca",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's realization of the deaths triggers an emotional response, leading to fear and crying."
+      }
+    },
+    {
+      "source": "event/fdcf9986",
+      "target": "event/25c02c4e",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Identifying his family name prompts Pip to contemplate his parents, leading to reflection on their absence."
+      }
+    },
+    {
+      "source": "event/e6766218",
+      "target": "event/3f8d08cf",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "Fearful terms may heighten awareness, prompting him to glance around his surroundings."
+      }
+    },
+    {
+      "source": "event/4a34407b",
+      "target": "event/e2bf563f",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's ability to use his legs effectively allows him to turn and look over his shoulder."
+      }
+    },
+    {
+      "source": "event/3ba2499d",
+      "target": "event/da7c041f",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The young man's secretive approach instills fear or anxiety in the boy, prompting him to hide."
+      }
+    },
+    {
+      "source": "event/9b8846ca",
+      "target": "event/b709ecf5",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's crying is a direct response to his fear, indicating that the fear caused the emotional reaction."
+      }
+    },
+    {
+      "source": "event/40bc8823",
+      "target": "event/831dbd64",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "The narrator's action of keeping the young man from harming the boy prevents potential harm, allowing for the provision of food."
+      }
+    },
+    {
+      "source": "event/fa4456bd",
+      "target": "event/98df6620",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's trembling indicates fear or anxiety, which may cause the man to exhibit a predatory behavior, such as licking his lips in anticipation of more food."
+      }
+    },
+    {
+      "source": "event/a23c782e",
+      "target": "event/99089e84",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's comment about Pip's appearance provokes a threatening response, suggesting a connection between the two events."
+      }
+    },
+    {
+      "source": "event/c0ea8bfd",
+      "target": "event/cbf6024b",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Locking the door creates a private space, allowing the boy to feel secure enough to tuck himself up."
+      }
+    },
+    {
+      "source": "event/bbd1515c",
+      "target": "event/baba2b8a",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The narrator's implication about the man being a pirate creates a sense of fear, prompting Pip to notice the cattle's reaction."
+      }
+    },
+    {
+      "source": "event/9b8846ca",
+      "target": "event/7cb634c2",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's fear is a direct emotional response to the man's threat, leading him to cry."
+      }
+    },
+    {
+      "source": "event/a35fdf1b",
+      "target": "event/4a34407b",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "By setting his face towards home, Pip is motivated to use his legs effectively to reach his destination."
+      }
+    },
+    {
+      "source": "event/ee0349ff",
+      "target": "event/696cff69",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's actions directly instilled fear in the narrator, leading to a feeling of dread."
+      }
+    },
+    {
+      "source": "event/7a885076",
+      "target": "event/a85c9475",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The fearful man's chattering teeth indicate extreme fear, which can trigger Pip's own feelings of terror."
+      }
+    },
+    {
+      "source": "event/d5aa9d69",
+      "target": "event/a1f7de7e",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The convict's question about the file indicates his need for it, leading to his demand for a file and food."
+      }
+    },
+    {
+      "source": "event/7c469b04",
+      "target": "event/eebaa442",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Tilting creates a physical sensation that leads to feelings of helplessness and danger."
+      }
+    },
+    {
+      "source": "event/7c82f581",
+      "target": "event/d4df6dea",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's action of holding tighter to the tombstone indicates emotional distress, leading to the feeling of needing to suppress tears."
+      }
+    },
+    {
+      "source": "event/98e77042",
+      "target": "event/ba86bbba",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The narrator's action of stopping allows for the observation of the two black things."
+      }
+    },
+    {
+      "source": "event/a85c9475",
+      "target": "event/fbaf3ce4",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's terror prompted him to plead for his life, leading to his request."
+      }
+    },
+    {
+      "source": "event/69738f79",
+      "target": "event/c0ea8bfd",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The convict's implication of another person may lead the boy to feel threatened, prompting him to lock his door for safety."
+      }
+    },
+    {
+      "source": "event/3ba2499d",
+      "target": "event/cbf6024b",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The young man's secret method prompts the boy to take protective action by tucking himself up."
+      }
+    },
+    {
+      "source": "event/1442686b",
+      "target": "event/a0183d51",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The reflection on the memory allows the narrator to form a belief about the brothers' birth posture."
+      }
+    },
+    {
+      "source": "event/cbf6024b",
+      "target": "event/be1d9e83",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Tucking oneself up typically involves drawing clothes over the body, which leads to drawing them over the head."
+      }
+    },
+    {
+      "source": "event/7feff8d5",
+      "target": "event/4b4c7480",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's dark look suggests anger or aggression, prompting him to physically assert control over Pip."
+      }
+    },
+    {
+      "source": "event/d8b55db1",
+      "target": "event/b6c2ad45",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The narrator's vivid impression allows Pip to connect the identities of the deceased characters."
+      }
+    },
+    {
+      "source": "event/f354dc1e",
+      "target": "event/638901ae",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The command may facilitate the man's request for Pip's location by establishing authority."
+      }
+    },
+    {
+      "source": "event/509b2e91",
+      "target": "event/a85c9475",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The fearful man's visible fear and aggressive behavior directly instill terror in Pip."
+      }
+    },
+    {
+      "source": "event/69d6ed2b",
+      "target": "event/d4df6dea",
+      "label": "PREVENTS",
+      "properties": {
+        "mechanism": "Pip's focus on the tombstone distracts him from his emotions, preventing him from crying."
+      }
+    },
+    {
+      "source": "event/846beeee",
+      "target": "event/02d44165",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Pip's imagination about his parents is influenced by the physical representation of their tombstones."
+      }
+    },
+    {
+      "source": "event/781383ff",
+      "target": "event/bb4c7c03",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The convict's approach creates a direct emotional response in Pip, leading to his helpless gaze."
+      }
+    },
+    {
+      "source": "event/a23c782e",
+      "target": "event/4d78ebdb",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's comment likely made the narrator self-conscious, leading to feelings of inadequacy about their size."
+      }
+    },
+    {
+      "source": "event/dad4da14",
+      "target": "event/4037c548",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Clinging provides physical support, allowing the narrator to maintain an upright position."
+      }
+    },
+    {
+      "source": "event/d81b4abf",
+      "target": "event/4a34407b",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "The man's action of getting over the wall allows Pip to utilize his legs effectively."
+      }
+    },
+    {
+      "source": "event/99089e84",
+      "target": "event/386638c6",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's expression of a threatening intention likely prompted him to shake his head in a threatening manner."
+      }
+    },
+    {
+      "source": "event/d4df6dea",
+      "target": "event/85cfb89d",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's emotional restraint allows him to communicate more calmly."
+      }
+    },
+    {
+      "source": "event/99089e84",
+      "target": "event/7c82f581",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's threatening intention instills fear in Pip, prompting him to hold tighter to the tombstone for security."
+      }
+    },
+    {
+      "source": "event/07c6d316",
+      "target": "event/a6e82185",
+      "label": "TRIGGERS",
+      "properties": {
+        "mechanism": "The man's question startled Pip, prompting him to react by running and looking back."
+      }
+    },
+    {
+      "source": "event/a6773dd9",
+      "target": "event/e5b3a5f2",
+      "label": "ENABLES",
+      "properties": {
+        "mechanism": "Pip's observation of the marshes allows him to also notice the river beyond, as both are part of the same landscape."
+      }
+    },
+    {
+      "source": "event/d8017c23",
+      "target": "event/b46480e8",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The wish to be a frog suggests a desire for transformation, leading to a physical reaction of hugging his body, indicating discomfort or conflict with his current state."
+      }
+    },
+    {
+      "source": "event/7c82f581",
+      "target": "event/69d6ed2b",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "Holding tighter to the tombstone indicates a stronger emotional or physical connection, leading to the feeling of needing to stay on it."
+      }
+    },
+    {
+      "source": "event/386638c6",
+      "target": "event/7c82f581",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The man's threatening gesture instills fear in Pip, prompting him to hold tighter to the tombstone for support."
+      }
+    },
+    {
+      "source": "event/e6766218",
+      "target": "event/b06c0525",
+      "label": "CAUSES",
+      "properties": {
+        "mechanism": "The fearful terms used by him likely instilled fear in Pip, prompting the convict's threat of violence."
+      }
+    }
+  ]
+}
