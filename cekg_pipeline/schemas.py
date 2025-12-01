@@ -1,14 +1,18 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import List, Dict, Optional, Any
-from enum import Enum
 
-class CEKGError(Exception): pass
-class ExtractionError(CEKGError): pass
-class DAGViolationError(CEKGError): pass
+# ----------------------------- Custom Exceptions -----------------------------
+class CEKGError(Exception):
+    pass
 
-# NOTE: RelationType Enum is removed to allow dynamic dictionary types.
-# You can maintain a list of 'Core' types if validation is needed later.
+class ExtractionError(CEKGError):
+    pass
+
+class DAGViolationError(CEKGError):
+    pass
+
+# ----------------------------- Data classes ---------------------------------
 
 @dataclass
 class CEKEvent:
@@ -43,7 +47,7 @@ class CausalLink:
     """Event -[:RELATION_TYPE]-> Event"""
     source_event_id: str
     target_event_id: str
-    relation_type: str  # Changed from Enum to str for dynamic types
+    relation_type: str  # <--- CHANGED: Enum removed to allow dynamic dictionary types
     mechanism: str
     weight: float
     confidence: float
@@ -62,7 +66,7 @@ class EventProducesEntity:
     event_id: str
     entity_id: str
     entity_name: str
-    entity_type: str 
+    entity_type: str  # "actor", "whyfactor"
     relationship: str 
     strength: float
 
