@@ -12,28 +12,38 @@ from .schemas import ExtractionError, CEKEvent
 from .utils import BoundedCache, _hash_for_cache
 from .config import CACHE_MAX_SIZE
 
+# --- Caches ---
 event_extraction_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 assessment_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 semantic_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 scene_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 
-# Fallback defaults
+# --- DEFAULTS ---
 DEFAULT_EVENT_ONTOLOGY = [
     "PHYSICAL_MOVEMENT", "COMMUNICATION_VERBAL", "INTERNAL_THOUGHT", 
     "EMOTIONAL_REACTION", "OBSERVATION", "CONFLICT_PHYSICAL", 
     "SOCIAL_INTERACTION", "STATE_CHANGE", "ACQUISITION", "TRAVEL"
 ]
+
 DEFAULT_RELATIONSHIP_ONTOLOGY = [
     "DIRECT_CAUSE", "ENABLES", "PREVENTS", "TRIGGERS", "MOTIVATES", 
     "INTERRUPTS", "INHIBITS", "PRECEDES"
 ]
+
+# --- PROMPTS ---
 
 JSON_START = "```" + "json"
 JSON_END = "```"
 
 PROMPT_DETAILED_INSTRUCTIONS = """Extract EVERY distinct event from this text. An event is ANY action, perception, dialogue, emotion, or state change. Be granular."""
 PROMPT_HIGH_LEVEL_INSTRUCTIONS = """Extract only the MAJOR narrative events or ideas from this text."""
-PROMPT_EXPANSION_ADDON = """**Additional Tasks:**\n1. Find Implicit Events (psychological/emotional).\n2. Group Compound Events.\n3. Coreference Resolution."""
+
+PROMPT_EXPANSION_ADDON = """
+**Additional Tasks:**
+1. Find Implicit Events (psychological/emotional).
+2. Group Compound Events.
+3. Coreference Resolution (Normalize names).
+"""
 
 PROMPT_BASE_TEMPLATE = f"""You are an expert literary analyst.
 
@@ -65,9 +75,9 @@ Example:
 **Fields Guide:**
 1. **raw_description**: The natural language description of the event.
 2. **event_category**: Choose the BEST fit from the Provided Ontology List below.
-3. **location_context**: The setting.
-4. **time_context**: Temporal marker.
-5. **actors/patients**: Sentient beings.
+3. **location_context**: The setting. If implied, you may leave null.
+4. **time_context**: Temporal marker (e.g., "Morning").
+5. **actors/patients**: Sentient beings only.
 6. **why_factors**: List of strings explaining immediate causes.
 
 **Provided Ontology List (event_category):**
@@ -106,38 +116,56 @@ PROMPT_SEMANTIC_PAIR = (
     "Return ONLY the JSON object:"
 )
 
-PROMPT_SCENE_GROUPING = """Group events into scenes.
+PROMPT_SCENE_GROUPING = """Group these events into narrative scenes.
 Input JSON: {event_list_json}
 Output JSON: {{"scenes": [{{"event_ids": [], "theme": "...", "confidence": 0.9}}]}}"""
 
-def init_openai_client(api_key: str):
-    if openai is None: raise RuntimeError("openai not installed.")
+# --- Functions ---
+
+def init_openai_client(api_key: str) -> openai.OpenAI:
+    if openai is None:
+        raise RuntimeError("openai package not installed.")
     return openai.OpenAI(api_key=api_key)
 
-async def _async_llm_json_call(prompt, model, client, cache, cache_key, max_tokens=4096):
+async def _async_llm_json_call(
+    prompt: str, model: str, client: openai.OpenAI, cache: BoundedCache, cache_key: str, max_tokens: int = 4096
+) -> Any:
+    
     cached = await cache.get(cache_key)
     if cached is not None: return cached, None 
+
     for attempt in range(3):
         try:
             loop = asyncio.get_event_loop()
             def make_req():
-                return client.chat.completions.create(model=model, messages=[{"role": "user", "content": prompt}], response_format={"type": "json_object"}, max_tokens=max_tokens, temperature=0.0)
+                return client.chat.completions.create(
+                    model=model,
+                    messages=[{"role": "user", "content": prompt}],
+                    response_format={"type": "json_object"},
+                    max_tokens=max_tokens,
+                    temperature=0.0
+                )
+            
             resp = await loop.run_in_executor(None, make_req)
             text = resp.choices[0].message.content.strip()
+            
             json_match = re.search(r"```(?:json)?\n?(.*?)```", text, re.DOTALL)
             if json_match: text = json_match.group(1).strip()
             
-            try: data = json.loads(text)
-            except: 
+            try:
+                data = json.loads(text)
+            except json.JSONDecodeError:
                 cleaned = ''.join([c for c in text if ord(c) >= 32 or c in '\n\r\t'])
                 data = json.loads(cleaned)
-                
+            
             if isinstance(data, dict):
                 if 'events' in data and isinstance(data['events'], list): data = data['events']
                 elif 'scenes' in data and isinstance(data['scenes'], list): data = data['scenes']
+
             await cache.set(cache_key, data)
             return data, getattr(resp.choices[0], "logprobs", None)
-        except Exception as e:
+            
+        except Exception:
             if attempt == 2: return [], None
             await asyncio.sleep(1)
     return [], None
@@ -178,8 +206,8 @@ async def batch_assess_pairs(pairs, model, client, relationship_ontology=None):
 
 async def batch_assess_semantic_pairs(pairs, model, client):
     async def _assess_sem(cause, effect):
-        prompt = PROMPT_SEMANTIC_PAIR.format(cause_text=cause, effect_text=effect)
         key = _hash_for_cache(f"sem:{cause}|||{effect}", model)
+        prompt = PROMPT_SEMANTIC_PAIR.format(cause_text=cause, effect_text=effect)
         try:
             data, _ = await _async_llm_json_call(prompt, model, client, semantic_cache, key, 1024)
             return data

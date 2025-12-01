@@ -1,329 +1,717 @@
 source,target,type,mechanism,weight,confidence
-event/76ba9f95,event/5f637a0d,TRIGGERS,"The man's comment prompts a reaction from the convict, indicating a response to the provocation.",0.7,0.8
-event/ed10baf2,event/56ee9472,TRIGGERS,"The narrator's observation of the gibbet evokes a strong emotional response in Pip, triggering feelings of fear and dread.",0.8,0.9
-event/29aea004,event/d5aa9d69,TRIGGERS,The convict's intense gaze likely prompts Pip to engage in conversation about the file.,0.7,0.8
-event/9b86589a,event/7c681227,ENABLES,"The narrator's statement sets the stage for the speaker to remind the listener of their commitment, facilitating the connection between the two events.",0.7,0.8
-event/56101af2,event/0d596b1f,ENABLES,The boy being warm in bed creates a comfortable environment that allows the young man to approach him softly.,0.7,0.8
-event/846beeee,event/ad1a7c49,CAUSES,"Pip's imagination about his parents is influenced by the inscriptions on their tombstones, leading to his odd idea about his father's appearance.",0.8,0.9
-event/40bc8823,event/f555bad5,PREVENTS,"The narrator's action of keeping the young man from harming the boy prevents potential harm, allowing for the statement about getting the file.",0.8,0.9
-event/daca294e,event/3ed07145,CAUSES,Turning Pip upside down directly leads to his seeing the steeple under his feet.,0.9,0.95
-event/f0b3e130,event/f354dc1e,TRIGGERS,"The man's fearful action of seizing Pip likely instigated a command, prompting Pip to respond.",0.7,0.8
-event/316cb0a8,event/ba86bbba,ENABLES,"The observation of the marshes allows the narrator to notice the two black things, suggesting a connection between the two events.",0.7,0.8
-event/02d44165,event/d8b55db1,ENABLES,The arrangement of the stone lozenges provides a visual cue that enhances the narrator's perception and understanding of the grave's significance.,0.7,0.8
-event/afe7b379,event/da7c041f,CAUSES,"Pip's feeling of threat leads to a defensive reaction, prompting the boy to hide.",0.8,0.85
-event/b7cd24de,event/509b2e91,CAUSES,The man's poor clothing and physical condition contribute to his fearful demeanor and behavior.,0.8,0.9
-event/9229ac36,event/bd88ebb7,TRIGGERS,The man's sudden movement from the graves likely startled or prompted the fearful man to appear.,0.7,0.8
-event/76ba9f95,event/7feff8d5,TRIGGERS,"The man's comment prompts the convict to react negatively, indicating discomfort or anger.",0.7,0.8
-event/bc3c0358,event/8ea81398,ENABLES,The man's attention on Pip likely creates a context where he feels comfortable giving instructions.,0.7,0.8
-event/b300391e,event/9bcdbed9,ENABLES,"Feeling giddy may lead to a more optimistic outlook, allowing the narrator to express hope for avoiding sickness.",0.6,0.7
-event/638901ae,event/7c329178,CAUSES,The man's request directly leads to the pointing out of Pip's location.,0.8,0.9
-event/be06abc3,event/bbd1515c,ENABLES,"The man's limping suggests a connection to the pirate's past, enabling the narrator's implication of his identity.",0.7,0.8
-event/fc8632c7,event/89d98361,ENABLES,"The act of limping suggests a struggle, allowing the observer to notice his careful movement among obstacles.",0.7,0.8
-event/da7c041f,event/cbf6024b,ENABLES,Hiding oneself often involves tucking up to conceal one's presence.,0.7,0.8
-event/4037c548,event/9bcdbed9,ENABLES,"By asking for support to stay upright, the narrator increases the likelihood of avoiding sickness.",0.7,0.8
-event/1a1d2a33,event/b300391e,TRIGGERS,"The threat of violence caused an emotional response in the narrator, leading to feelings of giddiness.",0.7,0.8
-event/56101af2,event/8ddde341,CAUSES,Being warm in bed leads to feelings of comfort and safety.,0.8,0.9
-event/b3b033be,event/40bc8823,PREVENTS,The narrator's hope to attend more may motivate them to intervene and protect the boy from harm.,0.7,0.6
-event/8a554e34,event/93a28e69,CAUSES,Pip's inability to articulate his full names led to the simplification of his name to Pip.,0.8,0.9
-event/d9295214,event/a1f7de7e,TRIGGERS,The convict's inquiry about his fate prompts him to request essential items from Pip.,0.7,0.8
-event/4fa7c41a,event/509b2e91,CAUSES,"The threat to the little devil instills fear in the man, leading to his fearful reactions.",0.8,0.85
-event/781383ff,event/29aea004,TRIGGERS,"The convict's proximity to Pip's tombstone likely intensifies the emotional or psychological impact on Pip, triggering a strong gaze exchange.",0.7,0.8
-event/b06c0525,event/69738f79,ENABLES,"The convict's threat suggests he has accomplices, which may influence Pip's perception of danger.",0.7,0.8
-event/be06abc3,event/49df9004,CAUSES,The man's limp suggests a physical injury or condition that may lead him to return to the gibbet for further action.,0.7,0.8
-event/40bc8823,event/876d82c1,PREVENTS,"The narrator's intervention stops the young man from causing harm, allowing for communication with the boy.",0.8,0.9
-event/a1f7de7e,event/b300391e,TRIGGERS,"The convict's demand created a stressful situation for Pip, leading to his giddy feelings.",0.7,0.8
-event/49df9004,event/56ee9472,TRIGGERS,"The man's action of hooking himself up again evokes a strong emotional response in Pip, indicating a trigger of feelings.",0.7,0.8
-event/ee0349ff,event/4037c548,TRIGGERS,The convict's action of tilting Pip prompts the narrator to request assistance in maintaining his upright position.,0.7,0.8
-event/5f637a0d,event/4b4c7480,CAUSES,The convict's action of taking Pip by the arms directly leads to the subsequent action of tilting him back.,0.9,0.95
-event/e2bf563f,event/89a71946,ENABLES,Pip's action of looking over his shoulder allows him to see the man approaching the river.,0.7,0.8
-event/1442686b,event/d8b55db1,ENABLES,Reflecting on memories can enhance understanding and clarity about one's identity and surroundings.,0.7,0.8
-event/39a53f63,event/b46480e8,CAUSES,"The expression of a wish to be an eel suggests a desire for transformation, leading to a physical reaction of hugging his body, possibly indicating discomfort or conflict with his current self.",0.7,0.8
-event/1463af19,event/71eee96e,CAUSES,The narrator's belief about others' weight may lead to feelings of inadequacy or weakness in themselves.,0.7,0.8
-event/8e478569,event/9229ac36,TRIGGERS,"Pip's observation of the lair and the wind suggests an impending event, which triggers the man's sudden action.",0.7,0.8
-event/7c469b04,event/67f1a17b,ENABLES,"Tilting allows for better positioning, making it possible to hold upright.",0.7,0.8
-event/da7c041f,event/be1d9e83,CAUSES,The boy's attempt to hide leads him to draw the clothes over his head for concealment.,0.8,0.9
-event/0d596b1f,event/f0510385,CAUSES,"The young man's action of creeping suggests an intention to harm, leading to the act of tearing the boy open.",0.8,0.9
-event/a23c782e,event/1463af19,CAUSES,The man's comment likely influenced the narrator's perception of the individuals' appearance.,0.7,0.8
-event/69738f79,event/afe7b379,TRIGGERS,The convict's implication of another person creates a sense of threat for Pip.,0.7,0.8
-event/25c02c4e,event/cffb46c5,ENABLES,Pip's reflection on his parents allows him to form thoughts about his mother.,0.7,0.8
-event/5f637a0d,event/29aea004,CAUSES,"The convict's physical grip on Pip likely intensifies the emotional and psychological impact of their interaction, leading to a deeper gaze.",0.8,0.85
-event/b7cd24de,event/013ef3ef,CAUSES,"The man's lack of proper clothing and footwear likely contributed to his exposure to harsh conditions, leading to his injuries.",0.8,0.85
-event/68f7242b,event/76ba9f95,ENABLES,"Identifying Joe as a blacksmith provides context for the man's comment, suggesting familiarity with the profession.",0.7,0.8
-event/1442686b,event/3a60383e,CAUSES,"The reflection on the memory prompts the narrator to articulate the struggles of the brothers, suggesting a direct influence on the description.",0.8,0.85
-event/f555bad5,event/7c681227,ENABLES,"The narrator's statement sets the expectation for action, allowing the speaker to remind the listener of their commitment.",0.7,0.8
-event/bb4c7c03,event/7c469b04,TRIGGERS,"Pip's helpless gaze prompts the convict to adjust his position, indicating a response to Pip's emotional state.",0.7,0.8
-event/24dd711c,event/ad1a7c49,ENABLES,"The absence of photographs allows Pip to form an idea of his father's appearance based on limited information, such as the tombstone.",0.7,0.8
-event/eebaa442,event/a1f7de7e,TRIGGERS,The feeling of helplessness may have prompted Pip to respond to the convict's demands.,0.7,0.8
-event/02d44165,event/30e10780,ENABLES,"The arrangement of the lozenges signifies the burial, allowing Pip to realize the death of Philip and Georgiana.",0.7,0.8
-event/baba2b8a,event/ee4f6bab,ENABLES,Pip's observation of the cattle's reaction allows him to consider their thoughts about the young man.,0.7,0.8
-event/0d596b1f,event/b49e58e8,CAUSES,The young man's approach creates a situation where the narrator struggles to protect the boy.,0.8,0.85
-event/51f75ee9,event/98df6620,CAUSES,Eating bread ravenously likely leads to licking lips due to hunger and anticipation of taste.,0.8,0.9
-event/4fa7c41a,event/013ef3ef,CAUSES,"The threat to the little devil likely instigated a series of aggressive actions against the fearful man, leading to his suffering.",0.8,0.75
-event/19a16bbb,event/bd88ebb7,TRIGGERS,"The man's shout likely startled the fearful man, prompting his appearance.",0.7,0.8
-event/56101af2,event/cbf6024b,ENABLES,Being warm in bed allows the boy to feel comfortable enough to tuck himself up.,0.7,0.8
-event/7c82f581,event/a6e82185,TRIGGERS,"Pip's action of holding tighter to the tombstone likely heightened his anxiety, prompting him to start running and look back.",0.7,0.8
-event/6109772b,event/4d71e451,TRIGGERS,His eluding gesture provokes the dead people's attempt to grab him.,0.8,0.9
-event/d5aa9d69,event/eebaa442,TRIGGERS,"The convict's question instills fear in Pip, leading to feelings of helplessness.",0.7,0.8
-event/1a0ea4c4,event/1071b7ce,CAUSES,The man's inquiry about living arrangements leads him to question the other person's right to reside there.,0.7,0.8
-event/ba86bbba,event/ed10baf2,TRIGGERS,The narrator's faint perception of two black objects likely triggered the realization of the gibbet's presence.,0.7,0.8
-event/25c02c4e,event/24dd711c,CAUSES,"Pip's reflection on his parents' absence leads him to realize the lack of their likenesses, as photographs are missing.",0.8,0.9
-event/ed10baf2,event/bbd1515c,ENABLES,"The observation of the gibbet suggests a connection to the pirate's fate, allowing the narrator to imply his return.",0.7,0.8
-event/07c6d316,event/72fa3111,CAUSES,"The man's question about Pip's mother likely made Pip feel vulnerable and anxious, leading to his timidity.",0.7,0.8
-event/be1d9e83,event/8ddde341,CAUSES,The act of drawing clothes over his head creates a sense of comfort and safety for the boy.,0.8,0.85
-event/8ddde341,event/f0510385,TRIGGERS,"The boy's sense of comfort may lead to a false sense of security, provoking a violent reaction from the young man.",0.7,0.8
-event/d5aa9d69,event/1a1d2a33,TRIGGERS,"The convict's inquiry about the file may provoke a defensive or aggressive response, leading to a threat of violence.",0.7,0.8
-event/69d6ed2b,event/a6e82185,CAUSES,"Pip's feeling of need prompts him to act, leading to his physical response of running and stopping.",0.8,0.85
-event/30e10780,event/b6c2ad45,ENABLES,"Pip's realization of one set of deaths enables him to recognize others, suggesting a broader understanding of loss.",0.7,0.8
-event/7feff8d5,event/781383ff,TRIGGERS,"The convict's dark look suggests a strong emotional response, prompting him to approach Pip's tombstone.",0.7,0.8
-event/013ef3ef,event/7a885076,CAUSES,"The man's physical suffering from various elements likely induced fear and anxiety, leading to his teeth chattering.",0.8,0.9
-event/25fbbfea,event/d8017c23,TRIGGERS,"The man's threat of a curse prompts him to express a wish to transform, indicating a reaction to the threat.",0.7,0.8
-event/ed10baf2,event/49df9004,CAUSES,"The observation of the gibbet likely instills a sense of inevitability or compulsion in the man, prompting him to return to it.",0.8,0.75
-event/4d71e451,event/98e77042,PREVENTS,"The dead people's attempt to pull him in caused the narrator to stop and look after him, preventing further action.",0.7,0.8
-event/4b4c7480,event/bb4c7c03,CAUSES,The convict's action of tilting Pip back directly leads to Pip's helpless gaze upwards.,0.9,0.95
-event/be06abc3,event/baba2b8a,TRIGGERS,"The man's limping draws attention, causing Pip to notice the cattle's reaction.",0.7,0.8
-event/72fa3111,event/106826a8,ENABLES,"Pip's timidity may have made him more agreeable, leading to an affirmative response.",0.6,0.7
-event/509b2e91,event/7a885076,CAUSES,"The fearful man's physical reactions, such as limping and shivering, indicate a state of fear that can lead to his teeth chattering.",0.8,0.9
-event/bb4c7c03,event/eebaa442,CAUSES,Pip's helpless gaze at the convict evokes feelings of helplessness and danger in the observer.,0.8,0.85
-event/e5b3a5f2,event/b709ecf5,TRIGGERS,"Pip's observation of the river evokes a feeling of fear, suggesting a direct emotional response to the sight.",0.7,0.8
-event/56101af2,event/be1d9e83,CAUSES,Feeling warm prompts the boy to draw the clothes over his head for additional comfort.,0.8,0.9
-event/7cb634c2,event/b7cd24de,TRIGGERS,"The threat instills fear in the man, leading to his disheveled appearance.",0.7,0.8
-event/b06c0525,event/afe7b379,CAUSES,"The convict's threat directly instills fear in Pip, leading to his feeling of being threatened.",0.9,0.95
-event/7cb634c2,event/bd88ebb7,CAUSES,"The threat instills fear, leading to the appearance of a fearful man.",0.8,0.85
-event/638901ae,event/8ea81398,CAUSES,The man's request directly leads to Pip being instructed to indicate his residence.,0.8,0.9
-event/ee0349ff,event/1aab8239,CAUSES,"The convict's actions of tilting Pip indicate a coercive influence, leading to the demand for a file and food.",0.8,0.9
-event/6e534191,event/e6766218,TRIGGERS,"The church's unusual action may have instilled fear or anxiety in the observer, leading to fearful terms.",0.6,0.7
-event/9b8846ca,event/9229ac36,TRIGGERS,"Pip's fear-induced crying likely startled the man, prompting him to rise.",0.7,0.8
-event/f0510385,event/40bc8823,PREVENTS,The narrator intervenes to stop the young man from causing harm to the boy.,0.8,0.9
-event/ee4f6bab,event/292a1cf0,CAUSES,Pip's contemplation about the young man prompts him to actively search for him.,0.8,0.9
-event/0214e854,event/d15a23b3,TRIGGERS,The man's gaze at Pip may have prompted him to search Pip's pockets.,0.7,0.8
-event/d8b55db1,event/a6773dd9,ENABLES,The narrator's vivid impression allows Pip to perceive the marshes more clearly.,0.7,0.8
-event/89d98361,event/4d71e451,TRIGGERS,The act of seeing him go may provoke the dead people's attempt to ensnare him.,0.7,0.8
-event/a6773dd9,event/b709ecf5,TRIGGERS,Pip's observation of the dark wilderness evokes a feeling of fear.,0.8,0.85
-event/013ef3ef,event/a85c9475,CAUSES,"The man's suffering from various physical discomforts likely heightened his fear, leading to Pip's terror.",0.8,0.9
-event/4d78ebdb,event/71eee96e,CAUSES,"Feeling undersized can lead to a perception of weakness, impacting self-esteem and confidence.",0.7,0.8
-event/b709ecf5,event/7cb634c2,CAUSES,"Pip's fear likely stems from the threatening behavior of the man, creating a direct emotional response.",0.8,0.85
-event/be1d9e83,event/40bc8823,PREVENTS,"The narrator intervenes to stop the young man from causing harm to the boy, suggesting a protective action.",0.8,0.9
-event/ee0349ff,event/b300391e,CAUSES,"The convict's actions directly affected Pip's physical state, leading to feelings of giddiness.",0.8,0.9
-event/b300391e,event/b3b033be,CAUSES,"Feeling giddy can lead to a positive emotional state, prompting expressions of hope.",0.7,0.8
-event/7c681227,event/6198b35d,ENABLES,The reminder may have prompted the listener to follow the instruction to go home.,0.7,0.8
-event/8a554e34,event/078b1256,CAUSES,Pip's inability to articulate his full names directly leads to him adopting a simpler name.,0.8,0.9
-event/85078561,event/3ddfd437,ENABLES,Pip's mention provides context that prompts the man's consideration.,0.7,0.8
-event/02d44165,event/b9aeb1fb,ENABLES,"The arrangement of stone lozenges indicates a grave, leading Pip to discover the churchyard's location.",0.7,0.8
-event/7feff8d5,event/29aea004,TRIGGERS,"The convict's dark look at Pip likely triggers a powerful gaze in return, indicating a moment of intense connection or confrontation.",0.7,0.8
-event/b300391e,event/4037c548,CAUSES,"Feeling giddy can lead to a loss of balance, prompting the narrator to seek support to remain upright.",0.8,0.85
-event/1aab8239,event/afe7b379,TRIGGERS,"The convict's demand instilled fear in Pip, leading to his feeling of threat.",0.8,0.9
-event/afe7b379,event/3ba2499d,ENABLES,"The convict's threatening words create a sense of vulnerability in Pip, allowing the young man to exploit this fear.",0.7,0.8
-event/bc3c0358,event/f354dc1e,TRIGGERS,The man's intense gaze likely prompted him to issue a command to Pip.,0.7,0.8
-event/1a1d2a33,event/ee0349ff,TRIGGERS,"The convict's threat likely provoked a physical response, leading to the tilting of Pip.",0.7,0.8
-event/292a1cf0,event/998c01f7,CAUSES,"Pip's search for the young man instigated a sense of urgency, prompting him to run home.",0.8,0.85
-event/846beeee,event/60fdd2a3,CAUSES,"Pip's imagination about his parents is influenced by the limited information from their tombstones, leading to his perception of his mother.",0.8,0.85
-event/93a28e69,event/fdcf9986,ENABLES,Pip's name identification is facilitated by the information he receives about his family name.,0.7,0.8
-event/4037c548,event/b3b033be,ENABLES,The narrator's request for support allows for the possibility of attending more events.,0.7,0.8
-event/85cfb89d,event/72fa3111,CAUSES,"Pip's act of explaining timidly reflects his emotional state, leading to the feeling of timidity.",0.8,0.9
-event/a3de203f,event/72fa3111,CAUSES,Pip's mention of Georgiana likely evokes feelings of timidity due to his emotional connection and expectations related to her.,0.7,0.8
-event/bb4c7c03,event/afe7b379,CAUSES,"Pip's helpless gaze indicates vulnerability, leading to feelings of threat from the convict's words.",0.8,0.85
-event/93a28e69,event/846beeee,ENABLES,"Pip's name allows him to reflect on his identity and family, leading to his fancies about his parents.",0.7,0.8
-event/ad1a7c49,event/cffb46c5,ENABLES,"Pip's interpretation of his father's appearance influences his understanding of family, leading to a simplistic view of his mother.",0.6,0.7
-event/1a0ea4c4,event/c958cb5d,ENABLES,The man's question facilitates the introduction of Mrs. Joe Gargery by prompting a response that identifies her relationship to the speaker.,0.7,0.8
-event/3ddfd437,event/1071b7ce,CAUSES,"The man's consideration leads to a critical evaluation of the other person's existence, resulting in doubt.",0.7,0.8
-event/4b4c7480,event/29aea004,CAUSES,"The convict's action of tilting Pip back creates a physical and emotional intensity, leading to a deep gaze.",0.8,0.9
-event/f0b3e130,event/bc3c0358,CAUSES,"The act of seizing Pip by the chin likely instigated the man's intense gaze, indicating a direct response to the action.",0.8,0.85
-event/3ba2499d,event/c0ea8bfd,TRIGGERS,The young man's secretive approach prompts the boy to take protective action by locking his door.,0.7,0.8
-event/25c02c4e,event/ad1a7c49,ENABLES,"Pip's reflection on his parents allows him to form an idea about his father's appearance, influenced by the tombstone.",0.7,0.8
-event/d9295214,event/eebaa442,TRIGGERS,"The convict's question instills fear in Pip, leading to feelings of helplessness.",0.8,0.85
-event/b9aeb1fb,event/b6c2ad45,CAUSES,Pip's discovery of the churchyard leads him to realize the presence of the deceased individuals buried there.,0.8,0.9
-event/5f637a0d,event/bb4c7c03,CAUSES,"The convict's physical grip on Pip creates a sense of helplessness in Pip, leading to his emotional response.",0.8,0.9
-event/9b86589a,event/25fbbfea,TRIGGERS,"The narrator's statement likely provoked a reaction from the man, leading to a threat.",0.7,0.8
-event/b9aeb1fb,event/30e10780,CAUSES,Discovering the churchyard led Pip to understand the death of his parents.,0.8,0.9
-event/ee0349ff,event/dad4da14,CAUSES,The convict's tilting motion likely caused the narrator to cling for stability or support.,0.8,0.85
-event/3f8d08cf,event/b46480e8,CAUSES,The cold and wet environment prompts him to hug himself for warmth and comfort.,0.8,0.9
-event/a3de203f,event/5a984c66,CAUSES,"Pip's mention of Georgiana prompts a question about parental relationships, indicating a direct connection.",0.8,0.9
-event/eebaa442,event/696cff69,CAUSES,A greater sense of helplessness and danger can lead to feelings of fear and anxiety.,0.8,0.9
-event/f0510385,event/b49e58e8,CAUSES,The young man's violent action directly leads to the narrator's struggle to protect the boy.,0.9,0.95
-event/078b1256,event/93a28e69,CAUSES,Pip's self-identification as Pip directly leads to his being referred to by that name.,0.9,0.95
-event/b46480e8,event/6109772b,TRIGGERS,"The act of hugging suggests a response to fear or distress, which may lead to a perception of evasion from death.",0.7,0.8
-event/a85c9475,event/f354dc1e,TRIGGERS,"Pip's pleading likely provoked the man's command, indicating a direct response to Pip's emotional state.",0.7,0.8
-event/684b63dd,event/d4df6dea,ENABLES,Pip's hope may have provided him with the emotional strength to suppress his tears.,0.7,0.8
-event/c958cb5d,event/68f7242b,ENABLES,Introducing Mrs. Joe Gargery provides context for understanding Joe's role as her husband and his profession.,0.7,0.8
-event/7a885076,event/bc3c0358,CAUSES,"Fear can lead to physical reactions, such as chattering teeth, which may cause a person to focus intently on something, like staring.",0.7,0.8
-event/696cff69,event/dad4da14,CAUSES,The narrator's fear leads to a need for physical reassurance and security.,0.8,0.9
-event/8ea81398,event/0214e854,ENABLES,"The man's instruction allows Pip to indicate the location, prompting the man's attention towards him.",0.7,0.8
-event/3ed07145,event/772137b6,CAUSES,"Seeing the steeple indicates Pip's elevated position, which is a direct result of being seated on a high tombstone.",0.8,0.9
-event/5a984c66,event/43ea7cda,TRIGGERS,"The question posed by the man likely prompted a humorous reaction, leading to amusement.",0.7,0.8
-event/a1f7de7e,event/696cff69,CAUSES,"The convict's demand instills fear in Pip, leading to his emotional response of dread.",0.8,0.9
-event/07c6d316,event/a3de203f,CAUSES,The man's inquiry about Pip's mother prompts Pip to identify Georgiana as his mother.,0.8,0.9
-event/98e77042,event/b08e9993,TRIGGERS,"The act of stopping to look may have prompted the narrator's observation of the sky, linking the two events.",0.7,0.8
-event/fc8632c7,event/6109772b,ENABLES,"The act of limping suggests a struggle or evasion, which allows for the interpretation of eluding the dead.",0.7,0.8
-event/8e478569,event/b709ecf5,TRIGGERS,Pip's observation of the savage lair evokes a feeling of fear.,0.7,0.8
-event/8ea81398,event/7c329178,CAUSES,The man's instruction directly led to Pip pointing out the village's location.,0.9,0.95
-event/daca294e,event/eace9457,TRIGGERS,"The man's action of turning Pip upside down causes a reaction in the church, leading it to go head over heels.",0.7,0.8
-event/3ddfd437,event/1a0ea4c4,CAUSES,The man's consideration likely led him to inquire about the other person's living situation.,0.7,0.8
-event/bbd1515c,event/ee4f6bab,ENABLES,The narrator's implication allows Pip to connect the pirate's existence to his own thoughts about the young man.,0.7,0.8
-event/a6773dd9,event/9b8846ca,TRIGGERS,"Pip's observation of the dark wilderness likely triggered his fear, leading him to cry out.",0.7,0.8
-event/29aea004,event/7c469b04,TRIGGERS,"The convict's intense gaze prompts Pip to tilt, indicating a reaction to the convict's presence.",0.7,0.8
-event/bc3c0358,event/638901ae,CAUSES,"The man's intense gaze likely prompted him to engage with Pip, leading to the request for directions.",0.7,0.8
-event/29aea004,event/1aab8239,TRIGGERS,"The convict's intense gaze likely instilled fear or urgency in Pip, prompting the demand for a file and food.",0.7,0.8
-event/4d71e451,event/a35fdf1b,PREVENTS,"The dead people's attempt to pull Pip in suggests a threat, prompting him to head home for safety.",0.8,0.9
-event/bbd1515c,event/49df9004,CAUSES,"The implication of the man being a pirate suggests a transformation or return to a previous state, leading him to reconnect with his identity.",0.8,0.7
-event/eebaa442,event/1a1d2a33,CAUSES,"The feeling of helplessness can lead to a heightened perception of danger, prompting a response to threats.",0.8,0.85
-event/7c469b04,event/ee0349ff,CAUSES,"Tilting one person over can lead to repeated tilting of another, indicating a direct influence.",0.8,0.85
-event/07c6d316,event/85cfb89d,ENABLES,"The man's inquiry creates an opportunity for Pip to share information, facilitating communication.",0.7,0.8
-event/da7c041f,event/c0ea8bfd,ENABLES,Locking the door allows the boy to successfully hide from the young man.,0.8,0.85
-event/39a53f63,event/89d98361,TRIGGERS,"His wish to be an eel prompts him to venture into the wild, symbolizing a desire for transformation.",0.7,0.8
-event/8a554e34,event/fdcf9986,ENABLES,Pip's inability to articulate his full names allows him to focus on identifying himself with the name Pirrip.,0.7,0.8
-event/69738f79,event/da7c041f,ENABLES,The convict's implication of another person may create a situation where the boy feels the need to hide.,0.7,0.8
-event/584f13ba,event/998c01f7,CAUSES,Pip's fear prompted him to run home quickly as a response to his emotional state.,0.8,0.9
-event/afe7b379,event/c0ea8bfd,CAUSES,Pip's feeling of threat leads him to take protective action by locking his door.,0.8,0.85
-event/7c681227,event/3f8d08cf,TRIGGERS,The reminder prompts the young man to become aware of his surroundings.,0.7,0.8
-event/a1f7de7e,event/1a1d2a33,CAUSES,The convict's demand for a file and food creates a situation where he feels entitled to threaten Pip if his needs are not met.,0.8,0.9
-event/4a34407b,event/89a71946,ENABLES,Pip's ability to use his legs allows him to see the man approaching the river.,0.7,0.8
-event/eace9457,event/3ed07145,TRIGGERS,"The church's sudden movement likely drew Pip's attention to the steeple, prompting him to see it.",0.7,0.8
-event/d4df6dea,event/a6e82185,TRIGGERS,"Pip's emotional state prompted him to take action, leading to his sudden movement and pause.",0.7,0.8
-event/fdcf9986,event/ad1a7c49,ENABLES,Pip's identification of his family name allows him to form an idea about his father's appearance.,0.7,0.8
-event/e6766218,event/69738f79,ENABLES,The fearful terms used by him create an atmosphere that allows the convict to express his feelings about not being alone.,0.7,0.8
-event/ee4f6bab,event/584f13ba,CAUSES,"Pip's contemplation of the young man leads to feelings of fear, indicating a direct emotional response.",0.8,0.85
-event/56ee9472,event/292a1cf0,CAUSES,Pip's negative feelings about the young man prompted him to search for him.,0.8,0.9
-event/e2bf563f,event/98e77042,TRIGGERS,Pip's action prompts the narrator to respond by looking after him.,0.7,0.8
-event/b06c0525,event/3ba2499d,ENABLES,"The convict's threat creates a situation where Pip feels compelled to comply, allowing the young man to exploit this vulnerability.",0.7,0.8
-event/c0ea8bfd,event/56101af2,ENABLES,"Locking the door allows the boy to feel secure and comfortable, contributing to a warm feeling in bed.",0.7,0.6
-event/85cfb89d,event/feb330b1,TRIGGERS,"Pip's timid explanation likely surprised the listener, prompting an exclamation.",0.7,0.8
-event/da8bfbe6,event/e2bf563f,ENABLES,"The man's action of turning around allows Pip to look over his shoulder, suggesting a mutual awareness.",0.7,0.8
-event/781383ff,event/5f637a0d,CAUSES,The convict's approach to Pip's tombstone leads to a physical interaction with Pip.,0.8,0.9
-event/89d98361,event/6109772b,TRIGGERS,"The act of leaving among nettles and brambles suggests a struggle or escape, evoking imagery of evading death.",0.7,0.8
-event/4fa7c41a,event/b7cd24de,CAUSES,"The threat to the little devil likely instilled fear in the man, leading to his disheveled appearance.",0.7,0.8
-event/292a1cf0,event/584f13ba,CAUSES,"Pip's search for the young man induces fear, leading to his frightened state.",0.8,0.9
-event/4fa7c41a,event/bd88ebb7,TRIGGERS,"The threat to the little devil likely instigated the appearance of the fearful man, suggesting a direct response to the situation.",0.7,0.8
-event/bbd1515c,event/56ee9472,TRIGGERS,"The narrator's implication about the man evokes a strong emotional response in Pip, leading to his feeling of dread.",0.8,0.9
-event/b300391e,event/dad4da14,CAUSES,"Feeling giddy can lead to a sense of excitement or instability, prompting the narrator to cling for support.",0.8,0.85
-event/f354dc1e,event/8ea81398,ENABLES,"The command to give it mouth allows for further instruction, facilitating Pip's ability to point out the place.",0.7,0.8
-event/bd88ebb7,event/7a885076,CAUSES,"The fearful man's fear likely leads to physical reactions, such as chattering teeth.",0.8,0.9
-event/0661178c,event/fa4456bd,CAUSES,Pip's empty pockets lead to his anxiety as he witnesses the man consuming the only food he has.,0.8,0.9
-event/509b2e91,event/f0b3e130,TRIGGERS,"The fearful man's physical reactions indicate heightened emotions, which may lead to aggressive actions like seizing Pip.",0.7,0.8
-event/72fa3111,event/5a984c66,CAUSES,"Pip's timidity likely led him to seek clarification about the person's identity, prompting his question.",0.7,0.8
-event/f0b3e130,event/fbaf3ce4,CAUSES,"The fearful man's aggressive action instills fear in Pip, prompting him to plead for his safety.",0.8,0.9
-event/85078561,event/1071b7ce,CAUSES,Pip's mention of the other person raises doubts in the man's mind about their legitimacy.,0.7,0.8
-event/a0183d51,event/d8b55db1,ENABLES,The narrator's belief about the brothers' nature allows for a deeper understanding of identity.,0.7,0.8
-event/b06c0525,event/da7c041f,CAUSES,"The convict's threat instills fear in Pip, prompting him to hide from the young man.",0.8,0.9
-event/ed10baf2,event/be06abc3,TRIGGERS,"The sight of the gibbet may evoke a sense of fear or urgency, prompting the man to approach it despite his limp.",0.7,0.8
-event/4d71e451,event/da8bfbe6,TRIGGERS,"The dead people's actions prompted the man to turn around, indicating a reaction to perceived danger.",0.7,0.8
-event/baba2b8a,event/584f13ba,TRIGGERS,Pip's observation of the cattle's reaction to the young man triggered his own feelings of fear.,0.8,0.9
-event/be28aa8d,event/078b1256,CAUSES,"Identifying his full name led Pip to adopt the shorter version, Pip.",0.9,0.95
-event/e5b3a5f2,event/9229ac36,TRIGGERS,"Pip's observation of the river may have prompted the man's sudden appearance from the graves, suggesting a connection between the two events.",0.7,0.6
-event/8e478569,event/9b8846ca,CAUSES,"Pip's observation of the threatening lair instills fear, leading him to cry out.",0.8,0.9
-event/b7cd24de,event/7a885076,CAUSES,"The man's poor clothing and lack of protection likely contribute to his fear and physical reaction, such as chattering teeth.",0.7,0.8
-event/71eee96e,event/7c82f581,CAUSES,"The narrator's feeling of weakness may lead to Pip's increased need for support, symbolized by holding tighter to the tombstone.",0.7,0.8
-event/b709ecf5,event/9229ac36,TRIGGERS,"Pip's fear likely prompted a heightened awareness, leading to the sudden appearance of the man.",0.7,0.8
-event/1aab8239,event/b06c0525,TRIGGERS,"The convict's demand for a file and food instigates a threat of violence, creating a direct response to Pip's potential non-compliance.",0.8,0.9
-event/d15a23b3,event/0661178c,CAUSES,Emptying Pip's pockets directly results in them containing nothing.,0.9,0.95
-event/cffb46c5,event/60fdd2a3,CAUSES,"Pip's childish conclusion directly influences his perception of his mother, leading him to see her in a negative light.",0.8,0.85
-event/99089e84,event/684b63dd,PREVENTS,"Pip's hope is a response to the man's threatening intention, suggesting he wishes to avoid the negative outcome.",0.7,0.8
-event/baba2b8a,event/292a1cf0,TRIGGERS,"Pip's observation of the cattle's reaction prompted him to search for the source of their alarm, the horrible young man.",0.8,0.9
-event/b709ecf5,event/bd88ebb7,TRIGGERS,"Pip's fear likely prompted the appearance of the fearful man, suggesting a direct emotional response.",0.7,0.8
-event/a0183d51,event/3a60383e,CAUSES,"The belief about the brothers' birth suggests a lack of ambition or effort, leading to their early resignation from seeking a living.",0.7,0.8
-event/386638c6,event/684b63dd,TRIGGERS,The man's threatening gesture likely prompted Pip to express hope for his safety.,0.7,0.8
-event/25c02c4e,event/846beeee,ENABLES,Pip's reflection on his parents allows him to imagine them based on the limited information from their tombstones.,0.7,0.8
-event/013ef3ef,event/509b2e91,CAUSES,The man's physical suffering from various elements leads to his limping and aggressive behavior.,0.8,0.9
-event/afe7b379,event/a35fdf1b,CAUSES,Feeling threatened prompted Pip to leave the situation and return home for safety.,0.8,0.85
-event/baba2b8a,event/998c01f7,CAUSES,"Pip's observation of the young man instilled fear, prompting him to run home.",0.8,0.85
-event/5a8f7f6e,event/4d71e451,CAUSES,"The act of the dead people stretching out of their graves suggests an intention to interact with the living, leading to their attempt to pull him in.",0.8,0.85
-event/bd88ebb7,event/509b2e91,CAUSES,The fearful man's appearance and condition (iron on his leg) directly lead to his limping and shivering behavior.,0.8,0.9
-event/e6766218,event/afe7b379,CAUSES,The fearful terms used by the convict instilled a sense of threat in Pip.,0.8,0.9
-event/386638c6,event/d4df6dea,CAUSES,"The man's threatening gesture instills fear in Pip, prompting him to suppress his emotions.",0.8,0.85
-event/8ddde341,event/0d596b1f,ENABLES,The boy's sense of comfort and safety allows the young man to approach him without fear of detection.,0.7,0.8
-event/509b2e91,event/fbaf3ce4,TRIGGERS,The fearful man's aggressive behavior prompts Pip to plead for his safety.,0.8,0.9
-event/be28aa8d,event/93a28e69,CAUSES,Identifying his family and Christian name led to Pip being recognized and referred to as Pip.,0.9,0.95
-event/6109772b,event/d81b4abf,ENABLES,"The man's evasive behavior suggests he is motivated to escape, which allows him to overcome the obstacle of the wall.",0.7,0.8
-event/f555bad5,event/9b86589a,ENABLES,Stating the intention to get the file suggests a commitment that facilitates the narrator's subsequent visit.,0.7,0.8
-event/1a1d2a33,event/696cff69,CAUSES,"The convict's threat instills fear in Pip, leading to his feeling of dread.",0.9,0.95
-event/4037c548,event/67f1a17b,CAUSES,The narrator's request directly led to the action of being held upright.,0.8,0.9
-event/6109772b,event/5a8f7f6e,TRIGGERS,"The man's evasive behavior suggests a reaction to the dead people, prompting their cautious emergence from graves.",0.7,0.8
-event/ba86bbba,event/bbd1515c,TRIGGERS,"The sight of the two black figures prompts the narrator to associate them with the pirate, suggesting a connection.",0.7,0.8
-event/781383ff,event/4b4c7480,TRIGGERS,"The convict's approach to Pip's tombstone initiates a physical interaction, leading to Pip being tilted.",0.7,0.8
-event/cbf6024b,event/0d596b1f,ENABLES,The boy tucking himself up creates a situation that allows the young man to approach him quietly.,0.7,0.8
-event/1463af19,event/99089e84,CAUSES,"The narrator's belief about the individuals' weight may lead to the man's threatening intention to eat, as it suggests a perception of them as food.",0.7,0.8
-event/d81b4abf,event/da8bfbe6,ENABLES,Getting over the wall allows the man to turn around and look for Pip.,0.7,0.8
-event/daca294e,event/d15a23b3,CAUSES,Turning Pip upside down directly leads to the contents of his pockets falling out.,0.9,0.95
-event/99089e84,event/69d6ed2b,CAUSES,"The man's threatening intention instills fear in Pip, prompting him to seek safety on the tombstone.",0.8,0.9
-event/0d596b1f,event/40bc8823,PREVENTS,The narrator's presence stops the young man from causing harm to the boy.,0.8,0.9
-event/386638c6,event/69d6ed2b,CAUSES,"The man's threatening gesture instills fear in Pip, prompting him to seek stability by clinging to the tombstone.",0.8,0.9
-event/69738f79,event/3ba2499d,ENABLES,"The convict's implication suggests the young man has access to the boy, facilitating potential harm.",0.7,0.8
-event/a6e82185,event/feb330b1,TRIGGERS,The action of stopping and looking over his shoulder likely triggered a sudden realization or surprise.,0.7,0.8
-event/19a16bbb,event/4fa7c41a,TRIGGERS,The man's cry serves as a direct provocation that leads to the little devil feeling threatened.,0.7,0.8
-event/7feff8d5,event/5f637a0d,TRIGGERS,"The convict's dark look indicates a build-up of tension, leading to the physical action of taking Pip by the arms.",0.7,0.8
-event/24dd711c,event/60fdd2a3,ENABLES,"The absence of photographs allows Pip to imagine his mother in a specific way, influencing his perception.",0.7,0.8
-event/078b1256,event/fdcf9986,ENABLES,"Pip's self-identification as Pip allows him to connect with his family name, facilitating his understanding of his heritage.",0.7,0.8
-event/d8b55db1,event/b9aeb1fb,ENABLES,The narrator's vivid impression allows Pip to recognize the churchyard's identity.,0.7,0.8
-event/be28aa8d,event/fdcf9986,CAUSES,Pip's identification of his family name is directly influenced by the information from his father's tombstone and his sister.,0.9,0.95
-event/76ba9f95,event/781383ff,TRIGGERS,"The man's comment prompts the convict to approach Pip's tombstone, indicating a reaction to the statement.",0.7,0.8
-event/89d98361,event/d81b4abf,ENABLES,"Navigating through nettles and brambles suggests the man is skilled at overcoming obstacles, which enables him to get over the wall.",0.7,0.8
-event/51f75ee9,event/1463af19,CAUSES,"The man's ravenous eating suggests excessive consumption, leading the narrator to perceive the individuals as overweight.",0.7,0.8
-event/bd88ebb7,event/013ef3ef,CAUSES,"The fearful man's appearance suggests he has endured harsh conditions, leading to his physical state.",0.8,0.9
-event/3ba2499d,event/0d596b1f,CAUSES,The young man's secretive approach likely leads to his action of creeping towards the boy.,0.8,0.85
-event/cbf6024b,event/8ddde341,CAUSES,Tucking oneself up typically leads to feelings of comfort and safety.,0.8,0.85
-event/24dd711c,event/846beeee,ENABLES,The absence of photographs allows Pip to form his first ideas about his parents based on their tombstones.,0.7,0.8
-event/c0ea8bfd,event/8ddde341,ENABLES,"Locking the door creates a sense of security, allowing the boy to feel comfortable and safe.",0.8,0.85
-event/89d98361,event/5a8f7f6e,TRIGGERS,"The act of seeing someone leave may evoke a supernatural response, causing the dead to rise.",0.7,0.6
-event/9229ac36,event/19a16bbb,TRIGGERS,"The man's sudden movement from the graves likely startled him, prompting the cry to silence others.",0.7,0.8
-event/56ee9472,event/584f13ba,CAUSES,Pip's negative thoughts about the young man lead to feelings of fear.,0.8,0.85
-event/40bc8823,event/b49e58e8,PREVENTS,"The narrator's actions are preventing the young man from causing harm to the boy, but the difficulty indicates a struggle.",0.8,0.9
-event/846beeee,event/cffb46c5,CAUSES,Pip's interpretation of his parents' tombstones leads him to form ideas about his mother.,0.8,0.9
-event/1463af19,event/4d78ebdb,CAUSES,The narrator's belief about others' size led to a personal feeling of inadequacy.,0.8,0.85
-event/19a16bbb,event/7cb634c2,TRIGGERS,"The man's cry likely provoked a defensive or aggressive response from another man, leading to the threat.",0.7,0.8
-event/8ddde341,event/40bc8823,PREVENTS,The boy's sense of comfort and safety leads the narrator to intervene and protect him from potential harm.,0.8,0.85
-event/7cb634c2,event/4fa7c41a,CAUSES,"The man's threat directly instills fear in the little devil, making it a clear cause-effect relationship.",1.0,1.0
-event/39a53f63,event/6109772b,TRIGGERS,"The expression of a wish to be an eel suggests a desire for escape, which may lead to behavior that appears evasive or elusive.",0.7,0.8
-event/1a1d2a33,event/dad4da14,TRIGGERS,"The convict's threat instills fear in Pip, prompting him to cling to him for safety.",0.8,0.9
-event/078b1256,event/25c02c4e,ENABLES,Pip's self-identification prompts introspection about his family background.,0.7,0.8
-event/fdcf9986,event/846beeee,CAUSES,Pip's identification of his family name from the tombstone directly influences his initial thoughts about his parents.,0.8,0.9
-event/696cff69,event/4037c548,CAUSES,"Feeling dreadfully frightened can lead to a desire for stability and reassurance, prompting the narrator to ask for help in staying upright.",0.8,0.85
-event/a6e82185,event/72fa3111,TRIGGERS,The action of starting and looking over his shoulder likely caused a feeling of timidity in Pip due to anticipation or fear.,0.7,0.8
-event/a85c9475,event/638901ae,TRIGGERS,Pip's pleading in terror likely prompted the man to request information about Pip's residence.,0.7,0.8
-event/4d71e451,event/4a34407b,PREVENTS,"The dead people's attempt to pull Pip in suggests a struggle, which he counters by using his legs effectively.",0.7,0.8
-event/4d71e451,event/d81b4abf,PREVENTS,"The dead people's attempt to pull him in was unsuccessful, allowing him to escape over the wall.",0.8,0.9
-event/02d44165,event/1442686b,ENABLES,The arrangement of the stone lozenges serves as a trigger for the narrator's reflection on their brothers.,0.7,0.8
-event/f0b3e130,event/a85c9475,CAUSES,"The fearful man's action of seizing Pip creates a direct emotional response in Pip, leading him to plead in terror.",0.9,0.95
-event/e6766218,event/1aab8239,CAUSES,"The fearful terms likely heightened the convict's urgency, prompting his demand for a file and food.",0.7,0.8
-event/da8bfbe6,event/89a71946,ENABLES,"The man's action of turning around allows Pip to see him, facilitating the observation.",0.7,0.8
-event/b6c2ad45,event/9b8846ca,CAUSES,"Pip's realization of the deaths triggers an emotional response, leading to fear and crying.",0.8,0.9
-event/fdcf9986,event/25c02c4e,ENABLES,"Identifying his family name prompts Pip to contemplate his parents, leading to reflection on their absence.",0.7,0.8
-event/e6766218,event/3f8d08cf,TRIGGERS,"Fearful terms may heighten awareness, prompting him to glance around his surroundings.",0.7,0.8
-event/4a34407b,event/e2bf563f,CAUSES,Pip's ability to use his legs effectively allows him to turn and look over his shoulder.,0.8,0.9
-event/3ba2499d,event/da7c041f,CAUSES,"The young man's secretive approach instills fear or anxiety in the boy, prompting him to hide.",0.8,0.85
-event/9b8846ca,event/b709ecf5,CAUSES,"Pip's crying is a direct response to his fear, indicating that the fear caused the emotional reaction.",0.8,0.9
-event/40bc8823,event/831dbd64,PREVENTS,"The narrator's action of keeping the young man from harming the boy prevents potential harm, allowing for the provision of food.",0.8,0.9
-event/fa4456bd,event/98df6620,CAUSES,"Pip's trembling indicates fear or anxiety, which may cause the man to exhibit a predatory behavior, such as licking his lips in anticipation of more food.",0.7,0.8
-event/a23c782e,event/99089e84,TRIGGERS,"The man's comment about Pip's appearance provokes a threatening response, suggesting a connection between the two events.",0.7,0.8
-event/c0ea8bfd,event/cbf6024b,ENABLES,"Locking the door creates a private space, allowing the boy to feel secure enough to tuck himself up.",0.7,0.8
-event/bbd1515c,event/baba2b8a,TRIGGERS,"The narrator's implication about the man being a pirate creates a sense of fear, prompting Pip to notice the cattle's reaction.",0.7,0.8
-event/9b8846ca,event/7cb634c2,CAUSES,"Pip's fear is a direct emotional response to the man's threat, leading him to cry.",0.8,0.9
-event/a35fdf1b,event/4a34407b,ENABLES,"By setting his face towards home, Pip is motivated to use his legs effectively to reach his destination.",0.7,0.8
-event/ee0349ff,event/696cff69,CAUSES,"The convict's actions directly instilled fear in the narrator, leading to a feeling of dread.",0.8,0.9
-event/7a885076,event/a85c9475,TRIGGERS,"The fearful man's chattering teeth indicate extreme fear, which can trigger Pip's own feelings of terror.",0.7,0.8
-event/d5aa9d69,event/a1f7de7e,CAUSES,"The convict's question about the file indicates his need for it, leading to his demand for a file and food.",0.8,0.9
-event/7c469b04,event/eebaa442,CAUSES,Tilting creates a physical sensation that leads to feelings of helplessness and danger.,0.8,0.85
-event/7c82f581,event/d4df6dea,CAUSES,"Pip's action of holding tighter to the tombstone indicates emotional distress, leading to the feeling of needing to suppress tears.",0.8,0.85
-event/98e77042,event/ba86bbba,ENABLES,The narrator's action of stopping allows for the observation of the two black things.,0.7,0.8
-event/a85c9475,event/fbaf3ce4,CAUSES,"Pip's terror prompted him to plead for his life, leading to his request.",0.8,0.9
-event/69738f79,event/c0ea8bfd,ENABLES,"The convict's implication of another person may lead the boy to feel threatened, prompting him to lock his door for safety.",0.7,0.8
-event/3ba2499d,event/cbf6024b,TRIGGERS,The young man's secret method prompts the boy to take protective action by tucking himself up.,0.7,0.8
-event/1442686b,event/a0183d51,ENABLES,The reflection on the memory allows the narrator to form a belief about the brothers' birth posture.,0.7,0.8
-event/cbf6024b,event/be1d9e83,CAUSES,"Tucking oneself up typically involves drawing clothes over the body, which leads to drawing them over the head.",0.8,0.9
-event/7feff8d5,event/4b4c7480,TRIGGERS,"The convict's dark look suggests anger or aggression, prompting him to physically assert control over Pip.",0.7,0.8
-event/d8b55db1,event/b6c2ad45,ENABLES,The narrator's vivid impression allows Pip to connect the identities of the deceased characters.,0.7,0.8
-event/f354dc1e,event/638901ae,ENABLES,The command may facilitate the man's request for Pip's location by establishing authority.,0.7,0.8
-event/509b2e91,event/a85c9475,CAUSES,The fearful man's visible fear and aggressive behavior directly instill terror in Pip.,0.8,0.9
-event/69d6ed2b,event/d4df6dea,PREVENTS,"Pip's focus on the tombstone distracts him from his emotions, preventing him from crying.",0.7,0.8
-event/846beeee,event/02d44165,CAUSES,Pip's imagination about his parents is influenced by the physical representation of their tombstones.,0.8,0.9
-event/781383ff,event/bb4c7c03,TRIGGERS,"The convict's approach creates a direct emotional response in Pip, leading to his helpless gaze.",0.8,0.9
-event/a23c782e,event/4d78ebdb,CAUSES,"The man's comment likely made the narrator self-conscious, leading to feelings of inadequacy about their size.",0.7,0.8
-event/dad4da14,event/4037c548,ENABLES,"Clinging provides physical support, allowing the narrator to maintain an upright position.",0.7,0.8
-event/d81b4abf,event/4a34407b,ENABLES,The man's action of getting over the wall allows Pip to utilize his legs effectively.,0.7,0.8
-event/99089e84,event/386638c6,TRIGGERS,The man's expression of a threatening intention likely prompted him to shake his head in a threatening manner.,0.7,0.8
-event/d4df6dea,event/85cfb89d,ENABLES,Pip's emotional restraint allows him to communicate more calmly.,0.7,0.8
-event/99089e84,event/7c82f581,CAUSES,"The man's threatening intention instills fear in Pip, prompting him to hold tighter to the tombstone for security.",0.8,0.9
-event/07c6d316,event/a6e82185,TRIGGERS,"The man's question startled Pip, prompting him to react by running and looking back.",0.7,0.8
-event/a6773dd9,event/e5b3a5f2,ENABLES,"Pip's observation of the marshes allows him to also notice the river beyond, as both are part of the same landscape.",0.7,0.8
-event/d8017c23,event/b46480e8,CAUSES,"The wish to be a frog suggests a desire for transformation, leading to a physical reaction of hugging his body, indicating discomfort or conflict with his current state.",0.7,0.8
-event/7c82f581,event/69d6ed2b,CAUSES,"Holding tighter to the tombstone indicates a stronger emotional or physical connection, leading to the feeling of needing to stay on it.",0.8,0.85
-event/386638c6,event/7c82f581,CAUSES,"The man's threatening gesture instills fear in Pip, prompting him to hold tighter to the tombstone for support.",0.8,0.9
-event/e6766218,event/b06c0525,CAUSES,"The fearful terms used by him likely instilled fear in Pip, prompting the convict's threat of violence.",0.7,0.8
+event/539b90c3,event/b7ac4c19,COMMUNICATION_BARRIER,The conversation pursuit highlights a gap in understanding the listener's commitment.,0.7,0.8
+event/8cccb744,event/6fe10185,COMMUNICATION_BARRIER,"Misidentification creates misunderstanding, leading to fear.",0.7,0.8
+event/d483bede,event/b07ad598,EMOTIONAL_DESPAIR,Helplessness can lead to desperate actions like demands.,0.7,0.8
+event/b7ac4c19,event/2ba4096a,EMOTIONAL_TRIGGER,Reminding evokes feelings related to the young man's undertaking.,0.7,0.8
+event/1f08d132,event/a3a72e23,EMOTIONAL_TRIGGER,The man's growl instigates fear in the narrator.,0.8,0.9
+event/1180c80d,event/7fa0dc66,EMOTIONAL_TRIGGER,Commenting on appearance triggered feelings of hunger or desire.,0.7,0.8
+event/ee5c67af,event/539b90c3,EMOTIONAL_SUPPORT,Providing food fosters connection and encourages conversation.,0.7,0.8
+event/f441c5ad,event/a42d026e,EMOTIONAL_TRIGGER,The river's appearance triggered the man's emotional response.,0.7,0.8
+event/8da31409,event/55ee64a6,EMOTIONAL_APOLOGY,Timid explanation may have prompted his return.,0.7,0.8
+event/ca940520,event/81edc118,IMAGINARY_CONSTRUCTION,The narrator constructs an imagined image of his father.,0.8,0.9
+event/81edc118,event/cc0e2c5b,IMAGINARY_CONSTRUCTION,Narrator's imagination shapes perceptions of family dynamics.,0.7,0.8
+event/1174a7d8,event/e65c3eac,EMOTIONAL_TRIGGER,The cattle's gaze triggered the narrator's search for the young man.,0.7,0.8
+event/4a3f09b6,event/47c5431d,CONTRASTS,The man's fearful appearance contrasts with his lack of a hat.,0.8,0.9
+event/e6b28a9d,event/0e319c6f,PHYSICAL_ACTION,The dip and roll caused a change in my position.,0.8,0.9
+event/5608d3a2,event/679bb2cf,PHYSICAL_SENSATION,Injury from flints causes physical discomfort leading to shivering.,0.8,0.9
+event/3ad9336b,event/5523e40e,CRUELTY_PLEASURE,The boy's action leads to a violent reaction from the young man.,0.8,0.9
+event/9587eaae,event/38db6c36,PRECEDES,Description of the marsh sets the scene for the river's path.,0.8,0.9
+event/b4cdc37b,event/3b8b606f,PERCEPTION_SHIFT,Discovery of the churchyard alters narrator's view of the wilderness.,0.8,0.85
+event/d75b33db,event/3ef3089b,EMOTIONAL_TRIGGER,The plea induced a feeling of terror in the narrator.,0.8,0.9
+event/7f50a70d,event/e682626f,BELIEF_DISMISSAL,Indebtedness leads to dismissing brothers' actions as unhelpful.,0.7,0.8
+event/1174a7d8,event/d6edd53a,EMOTIONAL_TRIGGER,The sight of the young man triggered fear in the narrator.,0.8,0.9
+event/d483bede,event/3977b91e,EMOTIONAL_DESPAIR,"Helplessness can lead to feelings of vulnerability, prompting aggressive responses.",0.7,0.8
+event/e7b709df,event/39b97f40,EMOTIONAL_TRIGGER,The comment provoked a physical reaction from the man.,0.7,0.8
+event/617d5411,event/b418a65f,EMOTIONAL_TRIGGER,Looking over his shoulder triggered a surprised reaction.,0.8,0.9
+event/cb948e78,event/3b8b606f,EMOTIONAL_TRIGGER,Death triggers reflection on surroundings and emotions.,0.8,0.85
+event/2a4cdaf6,event/4f53239c,CONTRASTS,Describing the beacon as ugly contrasts with the ominous imagery of the gibbet.,0.8,0.85
+event/43155721,event/b5354e05,EMOTIONAL_TRIGGER,The man's statement triggers concern about the mother's whereabouts.,0.7,0.8
+event/3c3b8ac2,event/a6f63d64,EMOTIONAL_TRIGGER,Self-perception of weakness triggers a hopeful expression.,0.7,0.8
+event/29a404b2,event/b5354e05,EMOTIONAL_TRIGGER,"Crying indicates emotional distress, prompting inquiry about the mother.",0.7,0.8
+event/2b1b219c,event/b5354e05,EMOTIONAL_TRIGGER,Crying may trigger inquiries about emotional support or family presence.,0.7,0.8
+event/5841b8ca,event/3b8b606f,EMOTIONAL_TRIGGER,Death evokes feelings that influence perception of surroundings.,0.8,0.85
+event/a42d026e,event/bf527a29,EMOTIONAL_TRIGGER,The man's cry triggered a violent emotional response.,0.8,0.85
+event/55ee64a6,event/8cccb744,COMMUNITY_GATHERING,His return signifies a connection to the community.,0.7,0.8
+event/25b67c3a,event/44d01a94,PHYSICAL_ACTION,The man's action prompts a verbal response from the narrator.,0.8,0.85
+event/d75b33db,event/93b2ab1a,EMOTIONAL_TRIGGER,The narrator's plea evokes a strong reaction from the man.,0.8,0.85
+event/15bc641b,event/bdb39f65,PHYSICAL_ACTION,The narrator physically intervenes to prevent harm.,0.8,0.9
+event/2ba4096a,event/fc96bba4,EMOTIONAL_TRIGGER,The reminder evokes a whimsical desire for transformation.,0.7,0.8
+event/1990a7fc,event/0746e434,PRECEDES,Navigating obstacles leads to the decision to return home.,0.8,0.85
+event/2dcd08e4,event/b7ac4c19,EMOTIONAL_TRIGGER,The man's words evoke a strong emotional response related to commitment.,0.8,0.85
+event/39520805,event/e06e60bd,IDENTITY_CONFLICT,Pip's self-identification contrasts with his lack of parental imagery.,0.7,0.8
+event/927156bf,event/0995bdaf,EMOTIONAL_TRIGGER,Holding tighter signifies a strong emotional connection to the tombstone.,0.8,0.85
+event/4f53239c,event/4c21204b,EMOTIONAL_TRIGGER,The gibbet evokes a vivid emotional response in the narrator.,0.8,0.85
+event/8c601ebd,event/a82d7e18,EMOTIONAL_TRIGGER,"Nettle sting causes pain, leading to anger and glaring.",0.8,0.9
+event/963fa2e5,event/403c6072,EMOTIONAL_SUPPORT,Hope for attendance indicates a need for emotional connection.,0.7,0.8
+event/13d13512,event/ea21fa87,COMMUNICATION_BARRIER,Acknowledgment may hinder deeper consideration.,0.6,0.7
+event/3977b91e,event/8b6a33ee,VIOLENCE_RESOLUTION,Threat of violence caused fear in the narrator.,0.9,0.95
+event/1eefbbcd,event/a82d7e18,EMOTIONAL_TRIGGER,"The man's limp may trigger anger or frustration, leading to a glare.",0.7,0.8
+event/26fd87c9,event/dd91579f,COMMUNICATION_BARRIER,Pointing indicates a lack of verbal clarity.,0.7,0.8
+event/e06e60bd,event/db8f9500,IDENTITY_CONFLICT,The narrator's perception of his father is shaped by absence.,0.8,0.85
+event/a6f63d64,event/2b1b219c,EMOTIONAL_TRIGGER,Hope expression triggered emotional response of wanting to cry.,0.8,0.85
+event/43155721,event/0995bdaf,HUMOROUS_REMARK,The man's statement humorously suggests a dark thought about eating.,0.7,0.8
+event/55ee64a6,event/2e8d2716,EMOTIONAL_TRIGGER,His return triggers the speaker's reference to inclusion.,0.7,0.8
+event/26fd87c9,event/e5999113,PHYSICAL_ACTION,Pointing led to a physical reaction from the man.,0.7,0.8
+event/d4c3193a,event/eb4191fb,EMOTIONAL_TRIGGER,The convict's claim triggers Pip's fear due to perceived threats.,0.8,0.85
+event/99ab5522,event/d85b6e24,EMOTIONAL_TRIGGER,Pip's fear triggers a startling reaction from the man.,0.8,0.85
+event/06d10836,event/fa1c293c,EMOTIONAL_TRIGGER,The convict's demands trigger a revelation about his companion.,0.7,0.8
+event/8c601ebd,event/679bb2cf,PHYSICAL_SENSATION,"Nettle sting causes pain, leading to shivering.",0.8,0.9
+event/fc96bba4,event/9a2d5a4d,IMAGINARY_CONSTRUCTION,His wish creates a vivid mental image of his actions.,0.7,0.8
+event/dd91579f,event/e5999113,PHYSICAL_ACTION,The man's gaze prompted a physical reaction.,0.7,0.8
+event/b3a6d13e,event/e6fbda0e,EMOTIONAL_CONFESSION,Stopping indicates a moment of realization about familial identity.,0.7,0.8
+event/8b6a33ee,event/16bbe0a4,EMOTIONAL_TRIGGER,Fear prompted the narrator to seek stability.,0.8,0.85
+event/c97b0a7a,event/a3a72e23,EMOTIONAL_TRIGGER,Fear from chattering teeth triggers a plea for safety.,0.8,0.85
+event/8da31409,event/b418a65f,EMOTIONAL_TRIGGER,Timid explanation triggered a surprised exclamation.,0.7,0.8
+event/06d10836,event/4d37e8fe,VIOLENCE_RESOLUTION,Demand leads to threat of violence for compliance.,0.8,0.9
+event/c7303445,event/e6142e95,PHYSICAL_ACTION,Hiding prompts the boy to secure his space.,0.8,0.85
+event/ced6adca,event/39520805,IDENTITY_CONFLICT,The narrator's struggle with self-identity reflected in name pronunciation.,0.8,0.9
+event/bdb39f65,event/b7d6926e,PHYSICAL_ACTION,The narrator's struggle indicates a physical action affecting the situation.,0.7,0.8
+event/9a2d5a4d,event/573585bc,EMOTIONAL_TRIGGER,Event A evokes a sense of danger and mortality in Event B.,0.8,0.85
+event/dfa6591c,event/81edc118,IMAGINARY_CONSTRUCTION,The narrator constructs an image of his father from tombstone ideas.,0.8,0.85
+event/db8f9500,event/4a7ff508,IDENTITY_CONFLICT,Conflicting perceptions of family lead to emotional confusion.,0.7,0.8
+event/679bb2cf,event/1f08d132,EMOTIONAL_TRIGGER,Shivering may trigger a growl as a response to discomfort.,0.7,0.8
+event/99ab5522,event/a42d026e,EMOTIONAL_CONTAGION,Pip's fear triggers emotional response in the man.,0.7,0.8
+event/d7a12cdc,event/7f50a70d,CULTURAL_EDUCATION,"The arrangement symbolizes respect, influencing the narrator's belief.",0.7,0.8
+event/db8f9500,event/81edc118,IMAGINARY_CONSTRUCTION,The narrator constructs an image of his father from limited information.,0.8,0.9
+event/679bb2cf,event/98ee37d0,PHYSICAL_SENSATION,"Shivering indicates cold, prompting a physical reaction.",0.7,0.8
+event/98ee37d0,event/a3a72e23,PHYSICAL_CONFRONTATION,The man's action directly threatened the narrator's safety.,0.9,0.85
+event/93b2ab1a,event/72845592,COMMUNICATION_BARRIER,The man's stare indicates a lack of verbal communication.,0.7,0.8
+event/b70dba59,event/89c0f9e1,EMOTIONAL_TRIGGER,Sore feet may evoke feelings of anger or frustration reflected in the sky.,0.7,0.8
+event/061b15b3,event/7f50a70d,BELIEF_DISMISSAL,Perception of inscription leads to questioning existing beliefs.,0.7,0.8
+event/94e540d1,event/b4cdc37b,EMOTIONAL_TRIGGER,The memorable afternoon evokes a significant realization about the churchyard.,0.7,0.8
+event/9d53a8dd,event/fa0a7c4a,COMMUNICATION_BARRIER,The narrator's question may hinder direct understanding.,0.7,0.8
+event/a6f63d64,event/29a404b2,EMOTIONAL_TRIGGER,Hope expressed triggered emotional response of crying.,0.8,0.85
+event/7fa0dc66,event/5613b92a,EMOTIONAL_TRIGGER,Hunger can trigger feelings of inadequacy or self-perception issues.,0.7,0.8
+event/0fd86e04,event/b4cdc37b,EMOTIONAL_TRIGGER,Reflection triggers realization about the churchyard's significance.,0.7,0.8
+event/bf527a29,event/4a3f09b6,EMOTIONAL_TRIGGER,Threatening behavior induces fear in the man.,0.8,0.9
+event/429b4a40,event/0c11f1e3,PRECEDES,Event A occurs before Event B as a reaction.,0.8,0.9
+event/e904459c,event/06d10836,EMOTIONAL_TRIGGER,Fearful terms provoke the convict's demands.,0.7,0.8
+event/5b4ad81e,event/b976fe81,PHYSICAL_ACTION,Looking for someone prompts physical movement.,0.7,0.8
+event/45230b6a,event/1180c80d,CONFUSES,The steeple's imagery may confuse the man's comment about cheeks.,0.6,0.7
+event/679bb2cf,event/c97b0a7a,PHYSICAL_SENSATION,Shivering causes teeth to chatter as a physical response to cold.,0.8,0.9
+event/2dcd08e4,event/539b90c3,EMOTIONAL_TRIGGER,The man's statement provoked a reaction to continue the conversation.,0.7,0.8
+event/4a7ff508,event/d7a12cdc,EMOTIONAL_DESPAIR,The narrator's perception of their mother leads to a somber reflection on loss.,0.8,0.85
+event/43155721,event/927156bf,EMOTIONAL_TRIGGER,The man's statement provokes a strong emotional response related to loss.,0.8,0.75
+event/3c3b8ac2,event/bddf9c89,IDENTITY_CONFLICT,Self-perception influences family introductions.,0.7,0.8
+event/573585bc,event/f5f86d3c,PHYSICAL_ACTION,Eluding suggests a physical movement over the wall.,0.8,0.75
+event/39d0548e,event/99ab5522,EMOTIONAL_TRIGGER,The narrator's perception triggered Pip's fear and emotional response.,0.8,0.85
+event/ea21fa87,event/82b2893a,DECISION_MAKING,Considering leads to questioning about living arrangements.,0.7,0.8
+event/5523e40e,event/15bc641b,PREVENTS,The narrator intervenes to stop the young man's violent action.,0.9,0.95
+event/34aafa76,event/2b7e1fba,PHYSICAL_SENSATION,"The rag may have absorbed water, causing the man to be soaked.",0.7,0.8
+event/b07ad598,event/ee37f9cd,EMOTIONAL_TRIGGER,The convict's frustration triggered repeated demands.,0.7,0.8
+event/84b2e819,event/947aa477,EMOTIONAL_TRIGGER,The question evokes feelings of danger and threat.,0.8,0.9
+event/39d0548e,event/d75b33db,EMOTIONAL_TRIGGER,"The savage lair evokes fear, triggering the narrator's terror.",0.8,0.85
+event/a2354c97,event/87d84d96,HISTORICAL_COMPARISON,The observation connects past events to present context.,0.8,0.85
+event/ee5c67af,event/fa0a7c4a,EMOTIONAL_SUPPORT,Providing food indicates care and support for the individual.,0.8,0.85
+event/9d53a8dd,event/ee5c67af,EMOTIONAL_TRIGGER,The narrator's question prompts a caring response from the boy.,0.7,0.8
+event/aae567a6,event/b19865b2,EMOTIONAL_TRIGGER,The boy's comfort triggers the young man's protective instincts.,0.7,0.8
+event/8baa51c5,event/aa5e2064,EMOTIONAL_TRIGGER,Threats can induce uncertainty in decision-making.,0.7,0.8
+event/8b6a33ee,event/d992f2e1,EMOTIONAL_TRIGGER,Fear triggered a hopeful response about health.,0.7,0.8
+event/d85b6e24,event/87f9d439,ANGER_MISPLACEMENT,The man's sudden rise may trigger misplaced anger.,0.7,0.8
+event/4d37e8fe,event/fa1c293c,VIOLENCE_RESOLUTION,Threat leads to revealing presence of another person.,0.7,0.8
+event/e4424f3c,event/0c11f1e3,PRECEDES,Looking over the shoulder prompts the narrator's action.,0.8,0.85
+event/7fa0dc66,event/d3ab0020,EMOTIONAL_TRIGGER,Hunger triggered a defensive reaction in the man.,0.7,0.8
+event/4fc7d29f,event/ca940520,NOSTALGIA_INDUCEMENT,The family name triggers memories of childhood thoughts about parents.,0.8,0.85
+event/9f11066a,event/93beb6a8,PREVENTS,Threatened state hinders the man's mobility.,0.7,0.8
+event/5812d6e6,event/77002efa,EMOTIONAL_TRIGGER,The narrator's thoughts trigger an emotional response regarding the young man.,0.7,0.8
+event/72845592,event/26fd87c9,COMMUNICATION_BARRIER,Misunderstanding led to a lack of clarity in direction.,0.7,0.8
+event/81edc118,event/4a7ff508,IMAGINARY_CONSTRUCTION,Imagining father influences perception of mother.,0.7,0.8
+event/7b76100a,event/a2354c97,HISTORICAL_COMPARISON,The marshes' appearance contrasts with the beacon's guiding role.,0.7,0.8
+event/82b2893a,event/bddf9c89,COMMUNICATION_BARRIER,Questioning indicates a lack of understanding about relationships.,0.7,0.8
+event/3aa2f053,event/e06e60bd,IDENTITY_CONFLICT,"Pip's name reflects his identity, contrasting with his unknown parentage.",0.7,0.8
+event/06d10836,event/d4c3193a,EMOTIONAL_CONFESSION,The convict expresses self-doubt and comparison to another.,0.7,0.8
+event/df64db18,event/9a2d5a4d,PHYSICAL_ACTION,The limp indicates a physical action affecting his movement.,0.8,0.9
+event/f76f4306,event/0995bdaf,EMOTIONAL_TRIGGER,Desire to eat triggers thoughts of mortality and remembrance.,0.7,0.8
+event/b418a65f,event/2e8d2716,EMOTIONAL_TRIGGER,The exclamation triggers a response in the speaker's language.,0.7,0.8
+event/6d78835e,event/b6105122,BELIEF_DISMISSAL,The sacred lozenges challenge the narrator's belief about their brothers.,0.7,0.8
+event/1180c80d,event/3c3b8ac2,EMOTIONAL_TRIGGER,The comment triggers the narrator's feelings of inadequacy.,0.8,0.85
+event/e6b28a9d,event/e904459c,EMOTIONAL_TRIGGER,The dip and roll provoked a strong emotional response.,0.7,0.8
+event/b6105122,event/1fb8552e,BELIEF_DISMISSAL,The narrator's belief about their brothers is challenged.,0.7,0.8
+event/aae567a6,event/15bc641b,PROTECTIVE_INSTINCT,The narrator intervenes to protect the boy's perceived safety.,0.8,0.9
+event/fa0a7c4a,event/2ba4096a,EMOTIONAL_TRIGGER,Event A evokes memories of youth in Event B.,0.7,0.8
+event/aa2dc6b7,event/0fd86e04,NOSTALGIA_INDUCEMENT,Reflection on past experiences evokes nostalgic feelings.,0.7,0.8
+event/e6fbda0e,event/438185b9,CONFUSES,The identification of Georgiana leads to confusion about familial relationships.,0.7,0.8
+event/99ab5522,event/eb4191fb,EMOTIONAL_TRIGGER,Convict's threats trigger Pip's fear and emotional response.,0.8,0.9
+event/5608527d,event/c6e7d28e,CONVENIENCE_PREFERENCE,Broken shoes led to mud accumulation for convenience.,0.7,0.8
+event/b19865b2,event/15bc641b,PREVENTS,The narrator intervenes to stop potential harm to the boy.,0.9,0.95
+event/5b4ad81e,event/e4424f3c,PRECEDES,His action of turning prompted my glance over my shoulder.,0.8,0.9
+event/e6142e95,event/aae567a6,ENABLING,Locking the door creates a sense of safety and comfort.,0.8,0.9
+event/b7ac4c19,event/58b7e465,EMOTIONAL_TRIGGER,The reminder evokes a reflective emotional response in the listener.,0.7,0.8
+event/44d01a94,event/84b2e819,EMOTIONAL_TRIGGER,The statement provokes a critical life-or-death question.,0.8,0.85
+event/f441c5ad,event/99ab5522,EMOTIONAL_TRIGGER,The river's appearance triggered Pip's fear and emotional response.,0.7,0.8
+event/9d53a8dd,event/0c11f1e3,COMMUNICATION_BARRIER,The narrator's question creates a pause in interaction.,0.7,0.8
+event/53c04ac9,event/3247bf5a,EMOTIONAL_TRIGGER,The man's actions triggered the narrator's negative emotions.,0.8,0.85
+event/e6fbda0e,event/55ee64a6,EMOTIONAL_CONFESSION,Recognition of familial ties prompts emotional responses leading to return.,0.7,0.8
+event/061b15b3,event/6d78835e,CULTURAL_EDUCATION,The inscription informs the narrator about the significance of the lozenges.,0.8,0.85
+event/a42d026e,event/9f11066a,EMOTIONAL_TRIGGER,The man's cry triggers a reaction in the little devil.,0.7,0.8
+event/b6105122,event/859ddd0e,BELIEF_DISMISSAL,The narrator's belief about their brothers is challenged.,0.7,0.8
+event/11980996,event/e7b709df,COMMUNICATION_BARRIER,Misunderstanding arises from unclear identification.,0.7,0.8
+event/3ef3089b,event/5d675338,EMOTIONAL_TRIGGER,Terror prompted the man's request for information.,0.7,0.8
+event/061b15b3,event/d7a12cdc,CULTURAL_EDUCATION,The inscription informs the narrator about the graves.,0.7,0.8
+event/d85b6e24,event/bf527a29,EMOTIONAL_TRIGGER,The man's sudden action provokes a violent response.,0.8,0.9
+event/617d5411,event/e6fbda0e,EMOTIONAL_CONFESSION,The action reveals a personal connection to Georgiana.,0.7,0.8
+event/fa0a7c4a,event/2dcd08e4,EMOTIONAL_TRIGGER,Event A provokes a strong emotional response in Event B.,0.8,0.75
+event/37cf8027,event/c5d6c968,EMOTIONAL_TRIGGER,Father's absence triggers reflection on his tombstone.,0.8,0.85
+event/16bbe0a4,event/963fa2e5,EMOTIONAL_SUPPORT,"The request indicates a desire for stability, fostering hope for future attendance.",0.7,0.8
+event/bd43b620,event/d483bede,EMOTIONAL_TRIGGER,The action caused a heightened emotional response of helplessness.,0.8,0.85
+event/5d675338,event/7952d6ee,REQUEST_ACCEPTANCE,The man's request led to an instruction to indicate a location.,0.8,0.9
+event/947aa477,event/b07ad598,EMOTIONAL_TRIGGER,Danger perception triggered a demand for a file.,0.7,0.8
+event/89c0f9e1,event/4f53239c,EMOTIONAL_TRIGGER,The sky's appearance evokes a sense of foreboding linked to the gibbet.,0.8,0.75
+event/9587eaae,event/0fd86e04,EMOTIONAL_TRIGGER,Describing the marsh triggers reflection on past impressions.,0.8,0.85
+event/d992f2e1,event/e6b28a9d,EMOTIONAL_TRIGGER,Hope expressed triggers a positive physical response.,0.7,0.8
+event/45230b6a,event/c00dd5a1,PHYSICAL_ACTION,Seeing the steeple indicates a physical location change.,0.7,0.8
+event/0746e434,event/b976fe81,PHYSICAL_ACTION,Moving towards home involves using one's legs effectively.,0.8,0.9
+event/9a2d5a4d,event/429b4a40,PRECEDES,Event A occurs before Event B in the narrative.,0.9,0.95
+event/f76f4306,event/43155721,CONFUSES,Desire to eat contrasts with the indication of eating them.,0.7,0.8
+event/39b97f40,event/25b67c3a,PHYSICAL_ACTION,The man's action directly leads to the narrator's physical position.,0.9,0.95
+event/0995bdaf,event/0ef10519,EMOTIONAL_TRIGGER,Desire to maintain presence triggers a reaction.,0.7,0.8
+event/cb948e78,event/40a8d95d,PRECEDES,Philip's death occurred before Georgiana's death.,0.9,0.95
+event/438185b9,event/13d13512,COMMUNICATION_BARRIER,Misunderstanding about relationships hinders clear communication.,0.7,0.8
+event/5523e40e,event/bdb39f65,PHYSICAL_CONFRONTATION,The young man's action directly leads to the narrator's struggle.,0.9,0.85
+event/15bc641b,event/b7d6926e,PROTECTIVE_INSTINCT,"The narrator's action prevents harm, leading to a promise of assistance.",0.8,0.85
+event/947aa477,event/3977b91e,EMOTIONAL_TRIGGER,Danger perception triggers a violent response from the convict.,0.8,0.85
+event/93beb6a8,event/34aafa76,PHYSICAL_DETERIORATION,Injury or condition causing both leg and head issues.,0.7,0.8
+event/87d84d96,event/53c04ac9,HUMANITY_QUESTIONING,Reflects on past actions and their implications for the present.,0.7,0.8
+event/3ef3089b,event/7952d6ee,EMOTIONAL_TRIGGER,Terror can prompt immediate instructions for safety or direction.,0.7,0.8
+event/e6142e95,event/3ad9336b,EMOTIONAL_TRIGGER,Locking the door may trigger feelings of safety and comfort.,0.7,0.8
+event/3ef3089b,event/93b2ab1a,EMOTIONAL_TRIGGER,Terror can provoke a strong reaction in others.,0.8,0.85
+event/25b67c3a,event/99982272,PHYSICAL_ACTION,The man's action influences the narrator's perception.,0.8,0.85
+event/dd473619,event/5613b92a,BELIEF_DISMISSAL,The narrator's belief about others influences their self-perception.,0.7,0.8
+event/16bbe0a4,event/e6b28a9d,PHYSICAL_ACTION,The narrator's request prompted a physical response from him.,0.8,0.9
+event/2e8d2716,event/82b2893a,COMMUNICATION_BARRIER,Ambiguity in reference creates confusion about relationships.,0.7,0.8
+event/ddfa33df,event/5b4ad81e,PRECEDES,Event A occurs before Event B as a physical action.,0.8,0.9
+event/dc0c66f1,event/0c11f1e3,EMOTIONAL_TRIGGER,"The act of hugging oneself indicates emotional distress, prompting the narrator's concern.",0.8,0.85
+event/99982272,event/84b2e819,EMOTIONAL_TRIGGER,The man's intense gaze provokes a life-or-death contemplation.,0.8,0.85
+event/6d78835e,event/859ddd0e,CULTURAL_EDUCATION,The lozenges symbolize familial memory influencing beliefs about the brothers.,0.8,0.85
+event/0a5f3971,event/b170505f,PHYSICAL_ACTION,Looking down indicates a physical action prompting closer inspection.,0.7,0.8
+event/ee5c67af,event/b7ac4c19,EMOTIONAL_SUPPORT,"Providing food reflects care, enhancing emotional connection.",0.7,0.8
+event/7952d6ee,event/26fd87c9,ENABLING,The man's instruction enabled the pointing to the village.,0.8,0.9
+event/8cccb744,event/f04082f1,COMMUNICATION_BARRIER,Identification creates misunderstanding leading to muttering.,0.7,0.8
+event/a6f63d64,event/0995bdaf,EMOTIONAL_APOLOGY,Expressing hope reflects emotional regret or apology.,0.7,0.8
+event/8da31409,event/e6fbda0e,EMOTIONAL_CONFESSION,Timid explanation reveals familial connection.,0.8,0.9
+event/e904459c,event/fa1c293c,EMOTIONAL_TRIGGER,Fearful terms trigger the convict's revelation of companionship.,0.7,0.8
+event/e6fbda0e,event/d483bede,EMOTIONAL_TRIGGER,Identification triggered feelings of helplessness regarding familial dynamics.,0.8,0.85
+event/db8f9500,event/cc0e2c5b,CONFUSES,Misinterpretation of father leads to misunderstanding of mother.,0.7,0.8
+event/e904459c,event/4d37e8fe,VIOLENCE_RESOLUTION,Fearful terms escalate to a threat of violence.,0.8,0.9
+event/0c11f1e3,event/c0a756fc,EMOTIONAL_TRIGGER,The narrator's action evokes a moment of realization.,0.7,0.8
+event/0746e434,event/dc0c66f1,EMOTIONAL_CONTAGION,"The act of returning home evokes a sense of comfort, affecting his emotional state.",0.7,0.8
+event/429b4a40,event/7b76100a,PRECEDES,Event A occurs before the observation in Event B.,0.8,0.85
+event/dd473619,event/3c3b8ac2,BELIEF_DISMISSAL,The narrator's belief affects their self-perception of strength.,0.7,0.8
+event/617d5411,event/55ee64a6,PRECEDES,Looking over his shoulder indicates awareness before returning.,0.8,0.85
+event/e682626f,event/0fd86e04,BELIEF_DISMISSAL,Narrator's belief about brothers influences their reflective impression.,0.7,0.8
+event/f04082f1,event/82b2893a,EMOTIONAL_TRIGGER,Muttering may trigger questioning about relationships.,0.7,0.8
+event/d483bede,event/9fe5eec4,EMOTIONAL_DESPAIR,Helplessness can lead to aggressive demands for basic needs.,0.7,0.8
+event/a2354c97,event/4f53239c,HUMANITY_QUESTIONING,"The beacon contrasts with the gibbet, prompting reflection on human fate.",0.7,0.8
+event/4a3f09b6,event/93beb6a8,PHYSICAL_BLOCKAGE,The iron on his leg symbolizes a physical constraint.,0.8,0.9
+event/0746e434,event/e4424f3c,EMOTIONAL_TRIGGER,Looking back often triggers feelings of nostalgia or concern.,0.7,0.8
+event/37cf8027,event/e06e60bd,EMOTIONAL_DESPAIR,Absence of parents leads to feelings of loss and despair.,0.8,0.9
+event/cc0e2c5b,event/6d78835e,EMOTIONAL_TRIGGER,Childish conclusions evoke strong emotional memories.,0.7,0.8
+event/b6105122,event/e682626f,BELIEF_DISMISSAL,The narrator's belief about their brothers is dismissed or questioned.,0.8,0.85
+event/4d37e8fe,event/397d6b99,VIOLENCE_RESOLUTION,Threats lead to secretive actions for self-protection.,0.7,0.8
+event/2a4cdaf6,event/e6db4318,CONTRASTS,Describing the beacon as ugly contrasts with the man's approach to the gibbet.,0.7,0.8
+event/dd473619,event/d3ab0020,ANGER_MISPLACEMENT,The narrator's belief triggers the man's defensive reaction.,0.7,0.8
+event/0515cfe8,event/406fff5b,EMOTIONAL_TRIGGER,The act of emptying pockets triggered a strong emotional response.,0.7,0.8
+event/1990a7fc,event/ddfa33df,PRECEDES,Navigating obstacles leads to reaching the wall.,0.8,0.9
+event/0515cfe8,event/b5132118,EXPECTATION_DISAPPOINTMENT,Expectation of valuables leads to disappointment upon finding only bread.,0.8,0.9
+event/d75b33db,event/a3a72e23,EMOTIONAL_TRIGGER,Terror prompts a desperate plea for safety.,0.8,0.9
+event/fa1c293c,event/c7303445,EMOTIONAL_TRIGGER,The convict's revelation triggers fear in the boy.,0.8,0.85
+event/4f53239c,event/e6db4318,PRECEDES,The observation of the gibbet occurs before the man's approach.,0.8,0.9
+event/7b76100a,event/c0a756fc,CONTRASTS,The marshes' appearance contrasts with the visibility of the two black objects.,0.7,0.8
+event/cc0e2c5b,event/d7a12cdc,EMOTIONAL_TRIGGER,Childish conclusion evokes emotions related to loss and memory.,0.7,0.8
+event/94e540d1,event/40a8d95d,EMOTIONAL_TRIGGER,The memorable afternoon evokes strong emotions related to Georgiana's death.,0.8,0.85
+event/0e319c6f,event/e904459c,EMOTIONAL_TRIGGER,The upright position may evoke fear in response to the situation.,0.7,0.8
+event/93beb6a8,event/5608527d,PHYSICAL_BLOCKAGE,The iron on the leg likely caused damage to the shoes.,0.8,0.85
+event/9f11066a,event/4a3f09b6,EMOTIONAL_TRIGGER,Threatening the devil triggers fear in the man.,0.8,0.85
+event/a6f63d64,event/927156bf,EMOTIONAL_TRIGGER,Hope expression triggered a strong emotional response.,0.8,0.85
+event/fab4db3a,event/dd473619,EMOTIONAL_TRIGGER,"Trembling suggests anxiety, triggering a belief about the subjects' appearance.",0.7,0.8
+event/ca940520,event/c5d6c968,NOSTALGIA_INDUCEMENT,Reflection triggers memories linked to parental figures.,0.8,0.85
+event/ced6adca,event/3aa2f053,NAMING_CONVENTION,Infant's pronunciation leads to the adoption of the name Pip.,0.8,0.9
+event/9fe5eec4,event/8b6a33ee,EMOTIONAL_TRIGGER,The convict's demand triggered fear in the narrator.,0.8,0.9
+event/84b2e819,event/d483bede,EMOTIONAL_DESPAIR,The question of survival leads to feelings of helplessness.,0.8,0.9
+event/d7a12cdc,event/b6105122,BELIEF_DISMISSAL,The arrangement of stones triggers a belief about the narrator's brothers.,0.7,0.8
+event/0fd86e04,event/40a8d95d,NOSTALGIA_INDUCEMENT,Reflection triggers memories of loss and past experiences.,0.7,0.8
+event/8da31409,event/438185b9,COMMUNICATION_BARRIER,Timid explanation may lead to misunderstandings in familial relationships.,0.7,0.8
+event/d77585ae,event/3aa2f053,NAMING_CONVENTION,Revealing the name leads to its common usage.,0.8,0.9
+event/e7b709df,event/b170505f,HUMOROUS_REMARK,"The remark lightens the mood, prompting the man to approach.",0.7,0.8
+event/c6e7d28e,event/8f72d578,PHYSICAL_DETERIORATION,Mud exposure likely led to physical harm from briars.,0.8,0.75
+event/dd91579f,event/0515cfe8,PHYSICAL_ACTION,The man's gaze prompted a subsequent physical action.,0.7,0.8
+event/9fe5eec4,event/3977b91e,PREVENTS,Demanding food may prevent violence if met.,0.7,0.8
+event/573585bc,event/48262955,EMOTIONAL_TRIGGER,A evokes fear or anxiety about death.,0.8,0.85
+event/45230b6a,event/fab4db3a,EMOTIONAL_TRIGGER,The sight of the steeple evokes a strong emotional response.,0.7,0.8
+event/3977b91e,event/ee37f9cd,VIOLENCE_RESOLUTION,Threats often escalate demands for compliance.,0.8,0.85
+event/b7ac4c19,event/fc96bba4,EMOTIONAL_TRIGGER,The reminder triggered a whimsical desire for transformation.,0.7,0.8
+event/8c601ebd,event/1eefbbcd,PHYSICAL_DETERIORATION,"Nettle sting caused pain, leading to limping.",0.8,0.9
+event/dd473619,event/f76f4306,BELIEF_DISMISSAL,Narrator's belief influences the man's desire to eat.,0.7,0.8
+event/d4c3193a,event/397d6b99,IDENTITY_CONFLICT,The convict's self-assessment creates tension regarding the young man's actions.,0.7,0.8
+event/34aafa76,event/c6e7d28e,PHYSICAL_DETERIORATION,"The rag suggests neglect, leading to a muddy appearance.",0.7,0.8
+event/ced6adca,event/37cf8027,CULTURAL_EROSION,Loss of familial identity through mispronunciation of names.,0.7,0.8
+event/0995bdaf,event/29a404b2,EMOTIONAL_TRIGGER,The tombstone evokes strong emotions leading to crying.,0.8,0.9
+event/e96abc35,event/e7b709df,HUMOROUS_REMARK,The narrator's description prompts a humorous response.,0.7,0.8
+event/d85b6e24,event/a42d026e,EMOTIONAL_TRIGGER,The man's sudden movement evokes a strong emotional response.,0.8,0.85
+event/c00dd5a1,event/fab4db3a,EMOTIONAL_TRIGGER,"The tombstone setting triggered fear or anxiety, causing trembling.",0.7,0.8
+event/a42d026e,event/4a3f09b6,EMOTIONAL_TRIGGER,The man's cry triggers fear in another man.,0.8,0.85
+event/f76f4306,event/a6f63d64,EMOTIONAL_APOLOGY,Hope expressed as a response to another's desire.,0.7,0.8
+event/5613b92a,event/3c3b8ac2,IDENTITY_CONFLICT,Self-perception of size affects strength perception.,0.7,0.8
+event/bd43b620,event/e6b28a9d,PHYSICAL_ACTION,One action leads to a more intense physical experience.,0.8,0.9
+event/e904459c,event/d4c3193a,EMOTIONAL_TRIGGER,Fearful terms evoke a comparison of self-worth.,0.7,0.8
+event/b7d6926e,event/ee5c67af,EMOTIONAL_APOLOGY,Expressing regret through offering food after failing to deliver the file.,0.7,0.8
+event/963fa2e5,event/e6b28a9d,EMOTIONAL_SUPPORT,Hope expressed leads to supportive physical interaction.,0.7,0.8
+event/8f72d578,event/a82d7e18,EMOTIONAL_TRIGGER,The pain from briars triggered anger in the man.,0.8,0.85
+event/d4c3193a,event/c7303445,EMOTIONAL_CONFESSION,"The convict's claim reveals self-doubt, prompting the boy's attempt to hide.",0.7,0.8
+event/3b8b606f,event/f441c5ad,PERCEPTION_SHIFT,Change in perception from wilderness to river.,0.8,0.85
+event/d85b6e24,event/9f11066a,EMOTIONAL_TRIGGER,The man's sudden action provokes a reaction in the little devil.,0.7,0.8
+event/eb4191fb,event/397d6b99,EMOTIONAL_TRIGGER,Fear triggers secretive behavior in response to threats.,0.7,0.8
+event/55ee64a6,event/438185b9,COMMUNITY_GATHERING,His return prompted a family inquiry.,0.7,0.8
+event/b170505f,event/25b67c3a,PHYSICAL_ACTION,The man's approach led to a physical interaction with the narrator.,0.8,0.85
+event/4d37e8fe,event/eb4191fb,EMOTIONAL_TRIGGER,The convict's threat triggers Pip's fear response.,0.9,0.95
+event/bc21ed0a,event/573585bc,IMAGINARY_CONSTRUCTION,Wishful thinking creates a surreal perception of reality.,0.7,0.8
+event/5613b92a,event/d3ab0020,IDENTITY_CONFLICT,Self-perception of inadequacy leads to defensive reactions.,0.7,0.8
+event/f86d13ca,event/df64db18,EMOTIONAL_SUPPORT,"The hug provides comfort, influencing his movement towards the wall.",0.8,0.85
+event/1990a7fc,event/5b4ad81e,PHYSICAL_ACTION,Navigating obstacles prompted him to check for my presence.,0.7,0.8
+event/44d01a94,event/bd43b620,PHYSICAL_ACTION,The statement prompted a physical response of tilting.,0.7,0.8
+event/f5f86d3c,event/0746e434,PRECEDES,Climbing the wall led to the decision to head home.,0.8,0.85
+event/a1810192,event/d85b6e24,EMOTIONAL_TRIGGER,The sight of cattle triggers a man's sudden reaction.,0.7,0.8
+event/53c04ac9,event/1174a7d8,EMOTIONAL_TRIGGER,The man's action triggers a reaction in the narrator.,0.7,0.8
+event/9a2d5a4d,event/0746e434,PRECEDES,The action of leaving occurs before the decision to return home.,0.8,0.9
+event/8b6a33ee,event/e0be1924,EMOTIONAL_TRIGGER,Fear triggered a physical response of clinging.,0.8,0.9
+event/87f9d439,event/93beb6a8,ANGER_MISPLACEMENT,Anger may lead to physical manifestations or consequences.,0.7,0.8
+event/26fd87c9,event/9f001460,COMMUNICATION_BARRIER,Misunderstanding distance due to unclear directions.,0.7,0.8
+event/8f72d578,event/679bb2cf,PHYSICAL_SENSATION,Briars cause physical discomfort leading to shivering.,0.8,0.9
+event/539b90c3,event/7d495468,COMMUNICATION_BARRIER,"The conversation led to a directive, indicating a barrier in understanding.",0.7,0.8
+event/df64db18,event/48262955,EMOTIONAL_TRIGGER,"The limping suggests pain, triggering a haunting imagery of the dead rising.",0.7,0.8
+event/b70dba59,event/0c11f1e3,INTERUPTION_RESPONSE,The narrator's action is a response to the man's struggle.,0.7,0.8
+event/d1a6987f,event/ced6adca,IDENTITY_CONFLICT,The family name's revelation creates a conflict in the narrator's identity.,0.7,0.8
+event/0746e434,event/429b4a40,PRECEDES,Setting direction towards home occurs before seeing him at the river.,0.8,0.9
+event/c0a756fc,event/87d84d96,HUMANITY_QUESTIONING,The narrator's observation prompts reflection on historical injustices.,0.7,0.8
+event/7f75ae0e,event/53674984,EMOTIONAL_TRIGGER,The church's self-realization prompts a dramatic action.,0.7,0.8
+event/99982272,event/1b4c7611,EMOTIONAL_TRIGGER,The man's gaze evokes a feeling of helplessness in the narrator.,0.8,0.9
+event/7fa0dc66,event/dd473619,EXPECTATION_DISAPPOINTMENT,Hunger leads to disappointment in perceived body image.,0.7,0.8
+event/7b76100a,event/58bd0804,CONTRASTS,"Both elements are described as horizontal lines, highlighting their differences.",0.7,0.8
+event/2ba4096a,event/bc21ed0a,EMOTIONAL_TRIGGER,The reminder evokes a whimsical desire in the listener.,0.7,0.8
+event/397d6b99,event/e6142e95,PREVENTS,The boy locks his door to prevent the young man's intrusion.,0.8,0.9
+event/dfa6591c,event/c5d6c968,CULTURAL_EDUCATION,Tombstones provide insights into family history and identity.,0.8,0.9
+event/4c21204b,event/5812d6e6,EMOTIONAL_TRIGGER,The narrator's perception triggers reflection on the young man's impact.,0.7,0.8
+event/93b2ab1a,event/5d675338,EMOTIONAL_TRIGGER,The man's stare prompted a request for information.,0.7,0.8
+event/b2356a67,event/5613b92a,EMOTIONAL_TRIGGER,The man's action triggers the narrator's self-perception.,0.7,0.8
+event/3ef3089b,event/dd473619,EMOTIONAL_TRIGGER,"Terror may distort perceptions, leading to biased beliefs about others' appearances.",0.7,0.8
+event/d3ab0020,event/927156bf,EMOTIONAL_TRIGGER,The man's threat triggered a strong emotional response.,0.8,0.85
+event/1b4c7611,event/84b2e819,EMOTIONAL_TRIGGER,The narrator's helpless gaze evokes a life-or-death question.,0.8,0.85
+event/d7a12cdc,event/859ddd0e,CULTURAL_EDUCATION,The arrangement of stones symbolizes cultural beliefs about death and memory.,0.7,0.8
+event/f5f86d3c,event/b976fe81,PHYSICAL_ACTION,Climbing the wall enabled effective use of legs.,0.8,0.9
+event/d1a6987f,event/39520805,IDENTITY_CONFLICT,The family name revelation triggers Pip's self-identification.,0.8,0.9
+event/403c6072,event/0e319c6f,PHYSICAL_ACTION,Holding arms causes upright positioning on the stone.,0.8,0.9
+event/5b4ad81e,event/0746e434,EMOTIONAL_TRIGGER,His action prompted my decision to head home.,0.7,0.8
+event/aa5e2064,event/e7b709df,CONFUSES,Uncertainty led to a confusing response.,0.7,0.8
+event/0ef10519,event/8da31409,EMOTIONAL_TRIGGER,His action prompted my hesitant explanation.,0.7,0.8
+event/13d13512,event/f04082f1,COMMUNICATION_BARRIER,Acknowledgment may lead to unclear or muted responses.,0.7,0.8
+event/1eefbbcd,event/679bb2cf,PHYSICAL_SENSATION,Limping may cause discomfort leading to shivering.,0.7,0.8
+event/44d01a94,event/d483bede,EMOTIONAL_TRIGGER,His words triggered feelings of helplessness in me.,0.8,0.85
+event/e6b28a9d,event/403c6072,PHYSICAL_ACTION,The dip and roll action directly leads to holding by the arms.,0.8,0.9
+event/406fff5b,event/c00dd5a1,EMOTIONAL_TRIGGER,The man's actions caused a strong emotional response in me.,0.7,0.8
+event/d1a6987f,event/d77585ae,IDENTITY_CONFLICT,Revealing the family name creates a conflict with the narrator's given name.,0.7,0.8
+event/b976fe81,event/e4424f3c,PHYSICAL_ACTION,Using legs enabled the action of looking over the shoulder.,0.8,0.9
+event/e6142e95,event/2a5c117e,EMOTIONAL_TRIGGER,Locking the door may trigger feelings of safety or fear.,0.7,0.8
+event/7b76100a,event/89c0f9e1,CONTRASTS,The description of marshes contrasts with the sky's appearance.,0.8,0.9
+event/e5999113,event/0515cfe8,PHYSICAL_ACTION,Turning upside down leads to pockets being emptied.,0.8,0.9
+event/e904459c,event/539b90c3,EMOTIONAL_TRIGGER,Fearful terms prompted him to continue the conversation.,0.7,0.8
+event/d3ab0020,event/43155721,EMOTIONAL_TRIGGER,Threatening gesture triggers thoughts of drastic action.,0.7,0.8
+event/05cbb6b2,event/947aa477,COMMUNICATION_BARRIER,Misunderstanding of the term created a feeling of danger.,0.7,0.8
+event/3247bf5a,event/77002efa,EMOTIONAL_DESPAIR,Narrator's negative feelings lead to a lack of perception of the young man.,0.7,0.8
+event/7f75ae0e,event/c00dd5a1,CULTURAL_EDUCATION,The church's self-awareness influences personal reflection on identity.,0.7,0.8
+event/29a404b2,event/8da31409,EMOTIONAL_TRIGGER,Crying triggered a timid explanation of feelings.,0.8,0.85
+event/87f9d439,event/47c5431d,ANGER_MISPLACEMENT,Anger may be misdirected towards the absence of a hat.,0.7,0.6
+event/2dcd08e4,event/7d495468,EMOTIONAL_TRIGGER,The man's threat provokes a strong emotional response in the listener.,0.7,0.8
+event/2b7e1fba,event/50e8db25,PHYSICAL_ACTION,Soaking may lead to vulnerability to stone injuries.,0.7,0.6
+event/93b2ab1a,event/7952d6ee,EMOTIONAL_TRIGGER,The man's stare prompted the narrator to respond with direction.,0.7,0.8
+event/0ef10519,event/94a02a6c,PHYSICAL_ACTION,Starting indicates the initiation of a physical action.,0.8,0.85
+event/87d84d96,event/4c21204b,HUMANITY_QUESTIONING,The chains evoke thoughts about identity and past lives.,0.7,0.8
+event/b170505f,event/39b97f40,PHYSICAL_ACTION,The man's approach prompted a physical response from the narrator.,0.8,0.85
+event/15bc641b,event/9d53a8dd,PREVENTS,"The narrator's action prevents harm, leading to communication.",0.8,0.9
+event/55ee64a6,event/13d13512,COMMUNICATION_BARRIER,His return prompts acknowledgment of others' presence.,0.7,0.8
+event/3c3b8ac2,event/d3ab0020,EMOTIONAL_TRIGGER,Self-perception of weakness triggers defensive behavior in others.,0.7,0.8
+event/0995bdaf,event/b5354e05,EMOTIONAL_CONFESSION,Expressing a desire related to loss and memory.,0.7,0.6
+event/3b8b606f,event/a1810192,PERCEPTION_SHIFT,Change in focus from wilderness to cattle indicates a shift in perception.,0.7,0.8
+event/b418a65f,event/438185b9,EMOTIONAL_TRIGGER,The exclamation triggered a question about family relations.,0.7,0.8
+event/39520805,event/4fc7d29f,IDENTITY_CONFLICT,Pip's self-identification leads to confusion about his family name.,0.7,0.8
+event/1fb8552e,event/e682626f,BELIEF_DISMISSAL,Narrator's initial belief is contradicted by a subsequent belief.,0.8,0.9
+event/e682626f,event/aa2dc6b7,BELIEF_DISMISSAL,Narrator's belief undermines brothers' motivation to succeed.,0.7,0.8
+event/429b4a40,event/dc0c66f1,EMOTIONAL_CONTAGION,The act of going towards the river evokes a self-soothing gesture.,0.7,0.8
+event/99982272,event/44d01a94,EMOTIONAL_TRIGGER,The man's intense gaze provokes a response from the narrator.,0.8,0.85
+event/29a404b2,event/94a02a6c,EMOTIONAL_TRIGGER,Crying can trigger physical responses like running.,0.6,0.7
+event/3977b91e,event/6fe10185,VIOLENCE_RESOLUTION,Threats of violence induce fear in the victim.,0.9,0.95
+event/c5d6c968,event/061b15b3,ENABLES,The description allows perception of the inscription.,0.8,0.9
+event/2b1b219c,event/94a02a6c,EMOTIONAL_TRIGGER,Desire to suppress emotions may lead to physical actions.,0.7,0.6
+event/40a8d95d,event/f441c5ad,EMOTIONAL_TRIGGER,Georgiana's death triggers the narrator's reflection on the river.,0.8,0.85
+event/f5f86d3c,event/e4424f3c,PHYSICAL_ACTION,Jumping over the wall prompts a glance back.,0.7,0.8
+event/3977b91e,event/dc1ac5b4,EMOTIONAL_TRIGGER,Threatening violence triggered a giddy emotional response.,0.7,0.8
+event/bdb39f65,event/fa0a7c4a,PHYSICAL_BLOCKAGE,The narrator's struggle indicates a physical barrier to connection.,0.8,0.75
+event/1180c80d,event/5613b92a,EMOTIONAL_TRIGGER,The comment triggers feelings of inadequacy in the narrator.,0.8,0.85
+event/f86d13ca,event/9a2d5a4d,EMOTIONAL_SUPPORT,The hug provides comfort before he leaves.,0.8,0.85
+event/b418a65f,event/55ee64a6,EMOTIONAL_TRIGGER,The exclamation likely triggered a response prompting his return.,0.7,0.8
+event/a3a72e23,event/3ef3089b,EMOTIONAL_TRIGGER,The narrator's plea triggered feelings of terror.,0.8,0.9
+event/fab4db3a,event/1180c80d,EMOTIONAL_TRIGGER,"Trembling indicates anxiety, triggering a comment on appearance.",0.7,0.8
+event/6fe10185,event/16bbe0a4,EMOTIONAL_TRIGGER,Fear triggered a response to maintain composure.,0.8,0.75
+event/e06e60bd,event/c5d6c968,NOSTALGIA_INDUCEMENT,The absence of parental likeness evokes memories tied to the tombstone.,0.7,0.8
+event/c7303445,event/3ad9336b,PHYSICAL_ACTION,Hiding involves tucking oneself up physically.,0.8,0.9
+event/3c3b8ac2,event/f76f4306,EMOTIONAL_DESPAIR,Self-perception of weakness may lead to emotional distress affecting appetite.,0.7,0.8
+event/e0be1924,event/963fa2e5,EMOTIONAL_SUPPORT,Clinging indicates a need for emotional connection and support.,0.8,0.85
+event/4fc7d29f,event/37cf8027,HUMANITY_QUESTIONING,The naming prompts reflection on parental absence.,0.7,0.8
+event/99982272,event/2dcd08e4,EMOTIONAL_TRIGGER,The man's intense gaze provokes a strong emotional response in the narrator.,0.8,0.85
+event/e4424f3c,event/dc0c66f1,EMOTIONAL_TRIGGER,Looking over the shoulder triggers emotional response to self-hugging.,0.7,0.8
+event/5b4ad81e,event/dc0c66f1,EMOTIONAL_TRIGGER,His action triggered a self-soothing response.,0.7,0.8
+event/5d675338,event/26fd87c9,COMMUNICATION_BARRIER,Misunderstanding led to a need for clarification about location.,0.7,0.8
+event/6fe10185,event/8b6a33ee,EMOTIONAL_TRIGGER,"The convict's threats triggered the speaker's fear, leading to the narrator's fright.",0.8,0.9
+event/81edc118,event/d7a12cdc,IMAGINARY_CONSTRUCTION,"Narrator's imagination shapes perception of father, influencing grave arrangement.",0.7,0.8
+event/5d675338,event/9f001460,COMMUNICATION_BARRIER,The man's request indicates a lack of knowledge about the village's location.,0.7,0.8
+event/ee37f9cd,event/8b6a33ee,EMOTIONAL_TRIGGER,The convict's demands triggered fear in the narrator.,0.8,0.9
+event/d4c3193a,event/e6142e95,EMOTIONAL_TRIGGER,The convict's self-doubt triggers the boy's fear and need for safety.,0.7,0.8
+event/e6db4318,event/3247bf5a,EMOTIONAL_TRIGGER,The man's limping evokes a strong emotional response in the narrator.,0.8,0.9
+event/403c6072,event/4d37e8fe,PHYSICAL_CONFRONTATION,Physical restraint leads to a threat of violence.,0.8,0.9
+event/b5354e05,event/66656dbd,EMOTIONAL_TRIGGER,The man's question triggered a dark emotional response.,0.7,0.8
+event/87d84d96,event/3247bf5a,EMOTIONAL_TRIGGER,The mention of chains evokes a negative emotional response.,0.8,0.85
+event/947aa477,event/9fe5eec4,EMOTIONAL_TRIGGER,Feeling danger may trigger aggressive demands for survival.,0.7,0.8
+event/aae567a6,event/5523e40e,EMOTIONAL_TRIGGER,The boy's false sense of safety triggers violent actions.,0.8,0.85
+event/8b6a33ee,event/dc1ac5b4,EMOTIONAL_TRIGGER,Fear can lead to unexpected feelings of euphoria.,0.7,0.8
+event/406fff5b,event/fab4db3a,EMOTIONAL_TRIGGER,The man's actions triggered a strong emotional response in me.,0.8,0.85
+event/b19865b2,event/5523e40e,CRUELTY_PLEASURE,The young man's actions suggest a sadistic enjoyment in harming the boy.,0.85,0.9
+event/d7a12cdc,event/6d78835e,CULTURAL_EDUCATION,"Lozenges symbolize remembrance, educating about familial loss.",0.8,0.9
+event/50e8db25,event/8f72d578,PHYSICAL_DETERIORATION,Injury from stones leads to further physical harm from briars.,0.8,0.75
+event/e6b28a9d,event/53674984,HUMOROUS_REMARK,The exaggerated action creates a humorous visual effect.,0.7,0.8
+event/9587eaae,event/b4cdc37b,HISTORICAL_COMPARISON,Describing the marsh country leads to recognizing its historical significance as a churchyard.,0.7,0.8
+event/7f75ae0e,event/fab4db3a,EMOTIONAL_TRIGGER,The church's realization triggered a strong emotional response in me.,0.8,0.75
+event/94a02a6c,event/8da31409,EMOTIONAL_TRIGGER,The run prompted a nervous response in the explanation.,0.7,0.8
+event/859ddd0e,event/e682626f,BELIEF_DISMISSAL,Narrator's belief about brothers' behavior is dismissed or contradicted.,0.7,0.8
+event/eb4191fb,event/e6142e95,EMOTIONAL_TRIGGER,Fear triggers a protective response in the boy.,0.8,0.9
+event/39b97f40,event/1b4c7611,EMOTIONAL_TRIGGER,The man's grip evokes a sense of helplessness in the narrator.,0.8,0.9
+event/dc1ac5b4,event/e0be1924,EMOTIONAL_TRIGGER,Giddiness triggered a strong emotional response leading to physical clinging.,0.8,0.85
+event/679bb2cf,event/a82d7e18,EMOTIONAL_TRIGGER,Shivering may trigger anger leading to glaring.,0.7,0.8
+event/5812d6e6,event/e65c3eac,EMOTIONAL_TRIGGER,The cattle's thoughts triggered the narrator's search for the young man.,0.7,0.8
+event/b418a65f,event/13d13512,EMOTIONAL_TRIGGER,Exclamation triggers acknowledgment of others' presence.,0.7,0.8
+event/34aafa76,event/5608d3a2,PHYSICAL_ACTION,The rag indicates a response to an injury from flints.,0.8,0.85
+event/5812d6e6,event/d6edd53a,EMOTIONAL_TRIGGER,The cattle's thoughts triggered the narrator's fear.,0.7,0.8
+event/b5132118,event/406fff5b,EMOTIONAL_DESPAIR,Despair from emptiness leads to chaotic actions.,0.7,0.8
+event/38db6c36,event/0fd86e04,NOSTALGIA_INDUCEMENT,The river's path triggers memories of the narrator's past.,0.7,0.8
+event/e5999113,event/406fff5b,HUMOROUS_REMARK,Both events describe a playful or exaggerated action.,0.7,0.8
+event/fa0a7c4a,event/539b90c3,ENCOURAGES,Event A prompts Event B through engagement.,0.7,0.8
+event/e5999113,event/b5132118,PHYSICAL_ACTION,The man's action caused the empty pockets.,0.8,0.9
+event/438185b9,event/8cccb744,COMMUNICATION_BARRIER,Misunderstanding arises from unclear familial identification.,0.7,0.8
+event/89c0f9e1,event/a2354c97,EMOTIONAL_TRIGGER,The sky's appearance evokes a sense of urgency for navigation.,0.7,0.8
+event/6d78835e,event/1fb8552e,NOSTALGIA_INDUCEMENT,The memory of brothers evokes a nostalgic belief in the narrator.,0.8,0.85
+event/7f50a70d,event/b6105122,BELIEF_DISMISSAL,Indebtedness influences the narrator's belief about their brothers.,0.7,0.8
+event/13d13512,event/8cccb744,COMMUNICATION_BARRIER,Acknowledgment may not fully bridge understanding of identity.,0.7,0.8
+event/9a2d5a4d,event/1990a7fc,PRECEDES,Event A describes the action before Event B.,0.9,0.95
+event/4d37e8fe,event/d4c3193a,VIOLENCE_RESOLUTION,Threat leads to a comparison of worthiness.,0.7,0.8
+event/403c6072,event/e904459c,EMOTIONAL_TRIGGER,Physical hold evokes fear in response.,0.7,0.8
+event/3aa2f053,event/4fc7d29f,NAMING_CONVENTION,Pip's name reflects his family heritage.,0.8,0.9
+event/947aa477,event/0e319c6f,EMOTIONAL_TRIGGER,Danger perception triggered a physical response.,0.8,0.85
+event/a1810192,event/99ab5522,EMOTIONAL_TRIGGER,The sight of scattered cattle triggered Pip's fear and emotional response.,0.7,0.8
+event/dc1ac5b4,event/16bbe0a4,EMOTIONAL_TRIGGER,Giddiness prompted the narrator's request for support.,0.7,0.8
+event/0a5f3971,event/bd43b620,PHYSICAL_ACTION,Looking down indicates a physical adjustment or reaction.,0.7,0.8
+event/e6db4318,event/53c04ac9,PHYSICAL_ACTION,Limping indicates a physical action leading to self-harm.,0.8,0.85
+event/9fe5eec4,event/ee37f9cd,EMOTIONAL_TRIGGER,The convict's hunger triggered repeated demands for food.,0.8,0.9
+event/0e319c6f,event/4d37e8fe,PHYSICAL_CONFRONTATION,Upright position leads to confrontation with the convict.,0.7,0.8
+event/539b90c3,event/58b7e465,COMMUNICATION_BARRIER,The conversation pursuit led to distraction from surroundings.,0.7,0.8
+event/397d6b99,event/c7303445,PREVENTS,The young man's actions lead the boy to seek concealment.,0.8,0.85
+event/3247bf5a,event/5812d6e6,EMOTIONAL_TRIGGER,The narrator's feelings triggered thoughts about the young man.,0.7,0.8
+event/43155721,event/a6f63d64,EMOTIONAL_TRIGGER,The man's statement triggered a strong emotional response in the speaker.,0.8,0.9
+event/438185b9,event/2e8d2716,COMMUNICATION_BARRIER,Misunderstanding in familial relationships creates confusion.,0.7,0.8
+event/e6fbda0e,event/13d13512,EMOTIONAL_CONFESSION,Acknowledgment of familial ties prompts recognition of others.,0.7,0.8
+event/13d13512,event/2e8d2716,COMMUNICATION_BARRIER,Acknowledgment may not fully bridge understanding.,0.7,0.8
+event/9f001460,event/dd91579f,COMMUNICATION_BARRIER,Distance may hinder effective communication between the man and the observer.,0.7,0.8
+event/66656dbd,event/b170505f,EMOTIONAL_TRIGGER,The man's dark look indicates emotional distress prompting his approach to the tombstone.,0.8,0.75
+event/e4424f3c,event/429b4a40,PRECEDES,Looking over the shoulder occurs before seeing him move.,0.8,0.9
+event/9f001460,event/e5999113,PHYSICAL_ACTION,Distance to church prompts physical reaction from the man.,0.7,0.6
+event/1b4c7611,event/bd43b620,EMOTIONAL_TRIGGER,The narrator's helpless gaze prompts a physical response from the man.,0.8,0.85
+event/5b4ad81e,event/429b4a40,PRECEDES,Looking for someone typically occurs before continuing an action.,0.8,0.85
+event/84b2e819,event/bd43b620,PHYSICAL_ACTION,Tilting indicates a physical response to the question of survival.,0.8,0.85
+event/58b7e465,event/fc96bba4,EMOTIONAL_TRIGGER,The cold environment triggered a whimsical desire for transformation.,0.7,0.8
+event/b07ad598,event/3977b91e,PREVENTS,The demand for a file escalated to a violent threat.,0.8,0.9
+event/0515cfe8,event/7f75ae0e,EMOTIONAL_TRIGGER,The man's action triggered a collective emotional response in the church.,0.7,0.8
+event/39b97f40,event/44d01a94,EMOTIONAL_TRIGGER,The man's action provokes a verbal response from the narrator.,0.8,0.85
+event/2a4cdaf6,event/87d84d96,HUMANITY_QUESTIONING,The narrator's perception of the beacon prompts reflection on its historical significance.,0.7,0.8
+event/df64db18,event/573585bc,EMOTIONAL_TRIGGER,"The limp suggests vulnerability, evoking imagery of death.",0.7,0.8
+event/ddfa33df,event/f5f86d3c,PHYSICAL_ACTION,Climbing over the wall is a physical action following his approach.,0.8,0.9
+event/aae567a6,event/bdb39f65,EMOTIONAL_TRIGGER,The boy's comfort triggers the narrator's protective instincts.,0.7,0.8
+event/fab4db3a,event/7fa0dc66,EMOTIONAL_TRIGGER,"Trembling indicates anxiety, triggering awareness of the man's hunger.",0.7,0.8
+event/1b4c7611,event/44d01a94,EMOTIONAL_TRIGGER,The narrator's helpless gaze prompts a response from the man.,0.7,0.8
+event/5812d6e6,event/a927aaa9,EMOTIONAL_TRIGGER,The narrator's thoughts triggered a strong emotional response leading to urgent action.,0.8,0.85
+event/2a5c117e,event/aae567a6,EMOTIONAL_TRIGGER,The act of drawing clothes triggers feelings of comfort and safety.,0.8,0.85
+event/b19865b2,event/bdb39f65,PHYSICAL_ACTION,The young man's action directly affects the narrator's struggle.,0.8,0.85
+event/48262955,event/f5f86d3c,PHYSICAL_ACTION,The dead rising prompts a physical response to escape.,0.7,0.8
+event/b5132118,event/bd43b620,PHYSICAL_ACTION,The action of tilting is influenced by the lack of resources.,0.7,0.8
+event/b5354e05,event/b3a6d13e,INTERRUPTION_RESPONSE,The man's question caused him to stop.,0.8,0.9
+event/4f53239c,event/87d84d96,HISTORICAL_COMPARISON,The observation of the gibbet prompts reflection on its historical use.,0.8,0.9
+event/99ab5522,event/87f9d439,EMOTIONAL_DESPAIR,"Pip's fear leads to emotional distress, triggering the man's anger.",0.7,0.8
+event/44d01a94,event/05cbb6b2,COMMUNICATION_BARRIER,Unclear language creates confusion about the topic.,0.7,0.8
+event/bdb39f65,event/9d53a8dd,EMOTIONAL_TRIGGER,The struggle prompts the narrator to engage with the boy.,0.7,0.8
+event/39520805,event/37cf8027,IDENTITY_CONFLICT,Pip's self-identification contrasts with his unknown parentage.,0.8,0.85
+event/9a2d5a4d,event/ddfa33df,PRECEDES,Event A occurs before Event B in the sequence.,0.9,0.95
+event/8f72d578,event/1eefbbcd,PHYSICAL_DETERIORATION,Briars caused physical injury leading to limping.,0.8,0.9
+event/0995bdaf,event/2b1b219c,EMOTIONAL_TRIGGER,Desire to maintain composure triggers emotional restraint.,0.8,0.85
+event/bc21ed0a,event/f86d13ca,EMOTIONAL_TRIGGER,His wish triggered a physical response of self-hugging.,0.7,0.8
+event/dc1ac5b4,event/d992f2e1,EMOTIONAL_TRIGGER,Giddiness triggered hope for health.,0.7,0.8
+event/8cccb744,event/8baa51c5,COMMUNICATION_BARRIER,The identification creates misunderstanding leading to implied threats.,0.7,0.8
+event/fa0a7c4a,event/9a2d5a4d,PRECEDES,"Event A occurs before Event B, indicating a sequence.",0.8,0.9
+event/37cf8027,event/dfa6591c,CULTURAL_EDUCATION,Tombstones provide cultural insights about parental identity.,0.8,0.9
+event/bd43b620,event/9fe5eec4,PHYSICAL_ACTION,Tilting indicates a physical action leading to a demand.,0.7,0.6
+event/89c0f9e1,event/2a4cdaf6,EMOTIONAL_TRIGGER,The sky's appearance evokes a negative emotional response towards the beacon.,0.7,0.8
+event/406fff5b,event/45230b6a,PHYSICAL_ACTION,The man's action caused a physical reaction in the observer.,0.8,0.85
+event/93beb6a8,event/2b7e1fba,PHYSICAL_DETERIORATION,The iron on his leg may have caused physical issues leading to water exposure.,0.7,0.6
+event/16bbe0a4,event/d992f2e1,EMOTIONAL_SUPPORT,The request indicates care for her well-being.,0.8,0.85
+event/50e8db25,event/1eefbbcd,PHYSICAL_DETERIORATION,Laming by stones leads to limping.,0.9,0.95
+event/e7b709df,event/0a5f3971,HUMOROUS_REMARK,The remark triggers a self-conscious reaction about his leg.,0.7,0.8
+event/c7303445,event/2a5c117e,PHYSICAL_ACTION,Hiding involves a physical action of covering oneself.,0.8,0.9
+event/26fd87c9,event/a6f63d64,EMOTIONAL_TRIGGER,Pointing to the village evokes a strong emotional response.,0.7,0.8
+event/b170505f,event/1b4c7611,EMOTIONAL_TRIGGER,The man's approach evokes a strong emotional response in the narrator.,0.8,0.85
+event/3b8b606f,event/39d0548e,PERCEPTION_SHIFT,Change in perception from wilderness to a savage lair.,0.8,0.85
+event/7f75ae0e,event/406fff5b,EMOTIONAL_TRIGGER,The church's self-awareness triggered the man's overwhelming reaction.,0.7,0.8
+event/cc0e2c5b,event/061b15b3,CONFUSES,Childish conclusion led to misunderstanding of the inscription.,0.7,0.8
+event/9d53a8dd,event/2dcd08e4,COMMUNICATION_BARRIER,The narrator's question leads to a hostile response.,0.7,0.8
+event/b976fe81,event/b70dba59,PHYSICAL_ACTION,Using legs effectively contrasts with struggling on sore feet.,0.7,0.8
+event/c5d6c968,event/cc0e2c5b,EMOTIONAL_TRIGGER,The tombstone's description evokes emotions leading to the conclusion about the mother.,0.7,0.8
+event/15bc641b,event/ee5c67af,PROTECTIVE_INSTINCT,The narrator's action reflects a desire to protect the boy.,0.85,0.9
+event/1eefbbcd,event/1f08d132,PHYSICAL_SENSATION,Limping may cause frustration leading to growling.,0.7,0.8
+event/4c21204b,event/53c04ac9,CONFUSES,The narrator's perception creates a misunderstanding of the man's intentions.,0.7,0.8
+event/403c6072,event/06d10836,PHYSICAL_ACTION,Holding indicates a physical interaction leading to demands.,0.7,0.6
+event/3b8b606f,event/99ab5522,EMOTIONAL_TRIGGER,"The dark wilderness evokes fear in Pip, triggering his emotional response.",0.8,0.85
+event/f86d13ca,event/48262955,EMOTIONAL_TRIGGER,The hug evokes a strong emotional response linked to the dead.,0.8,0.75
+event/e6db4318,event/1174a7d8,EMOTIONAL_TRIGGER,The man's limp evokes a reaction from the cattle.,0.7,0.8
+event/f5f86d3c,event/5b4ad81e,PRECEDES,Climbing the wall led him to look for me.,0.8,0.9
+event/53c04ac9,event/5812d6e6,EMOTIONAL_TRIGGER,The man's actions evoke thoughts of the young man in the narrator.,0.7,0.8
+event/3ad9336b,event/aae567a6,EMOTIONAL_TRIGGER,Tucking up triggers feelings of comfort and safety.,0.8,0.9
+event/ea21fa87,event/aa5e2064,DECISION_MAKING,Considering leads to uncertainty in decision-making.,0.8,0.85
+event/3ad9336b,event/b19865b2,EMOTIONAL_TRIGGER,The boy's action triggers a soft response in the young man.,0.7,0.8
+event/89c0f9e1,event/c0a756fc,EMOTIONAL_TRIGGER,The sky's appearance evokes a sense of foreboding.,0.7,0.8
+event/29a404b2,event/b3a6d13e,EMOTIONAL_TRIGGER,Crying can prompt others to respond emotionally.,0.7,0.8
+event/a2354c97,event/2a4cdaf6,CONTRASTS,The narrator's perception of the beacon changes with proximity.,0.8,0.9
+event/9fe5eec4,event/6fe10185,EMOTIONAL_TRIGGER,The convict's demands triggered fear in the speaker.,0.8,0.9
+event/429b4a40,event/b70dba59,PHYSICAL_ACTION,Movement towards the river despite physical discomfort.,0.8,0.9
+event/93b2ab1a,event/26fd87c9,COMMUNICATION_BARRIER,The man's stare indicates a lack of understanding or communication.,0.7,0.8
+event/8cccb744,event/82b2893a,COMMUNICATION_BARRIER,Identification creates confusion about the other person's living situation.,0.7,0.8
+event/eb4191fb,event/c7303445,EMOTIONAL_TRIGGER,Pip's fear triggers the boy's instinct to hide.,0.8,0.85
+event/1990a7fc,event/f5f86d3c,PHYSICAL_ACTION,Navigating obstacles led to overcoming the wall.,0.8,0.9
+event/87f9d439,event/9f11066a,ANGER_MISPLACEMENT,Anger directed towards an innocent figure.,0.7,0.8
+event/397d6b99,event/b19865b2,PHYSICAL_ACTION,The young man's secretive approach indicates a physical action towards the boy.,0.8,0.85
+event/859ddd0e,event/9587eaae,CULTURAL_EDUCATION,Narrator's belief influences their description of the environment.,0.7,0.8
+event/0c11f1e3,event/89c0f9e1,EMOTIONAL_TRIGGER,The narrator's action evokes a strong emotional response reflected in the sky's appearance.,0.8,0.85
+event/539b90c3,event/2ba4096a,COMMUNICATION_BARRIER,The conversation may have highlighted a disconnect in understanding.,0.7,0.8
+event/4a7ff508,event/7f50a70d,EMOTIONAL_APOLOGY,Indebtedness arises from feelings of guilt about the mother's condition.,0.7,0.8
+event/3aa2f053,event/ca940520,NOSTALGIA_INDUCEMENT,Pip's name evokes memories of his childhood and family.,0.7,0.8
+event/927156bf,event/b5354e05,EMOTIONAL_TRIGGER,Grief from the tombstone prompts inquiry about the mother.,0.8,0.85
+event/58b7e465,event/f86d13ca,EMOTIONAL_TRIGGER,The cold environment triggers a physical response of hugging for warmth.,0.8,0.9
+event/3aa2f053,event/37cf8027,IDENTITY_CONFLICT,Pip's name reflects his struggle with identity and family background.,0.7,0.8
+event/05cbb6b2,event/b07ad598,COMMUNICATION_BARRIER,Misunderstanding of 'file' led to a demand for a physical object.,0.8,0.9
+event/ca940520,event/dfa6591c,NOSTALGIA_INDUCEMENT,Reflection triggers memories influencing perceptions of parents.,0.8,0.85
+event/859ddd0e,event/1fb8552e,BELIEF_DISMISSAL,The narrator's belief about their brothers is contradicted.,0.7,0.8
+event/d483bede,event/947aa477,EMOTIONAL_DESPAIR,Helplessness can lead to feelings of danger.,0.8,0.85
+event/fa1c293c,event/eb4191fb,EMOTIONAL_TRIGGER,The convict's revelation triggers Pip's fear response.,0.8,0.9
+event/b976fe81,event/dc0c66f1,PHYSICAL_ACTION,"Using legs implies movement, contrasting with his stillness.",0.7,0.8
+event/438185b9,event/f04082f1,COMMUNICATION_BARRIER,Misunderstanding leads to a muted response.,0.7,0.8
+event/0a5f3971,event/66656dbd,EMOTIONAL_TRIGGER,The man's gaze indicates a strong emotional response to his leg.,0.8,0.85
+event/963fa2e5,event/15bc641b,EMOTIONAL_SUPPORT,Hope leads to protective actions for others.,0.7,0.8
+event/bddf9c89,event/e7b709df,COMMUNICATION_BARRIER,Misunderstanding arises from the narrator's introduction.,0.7,0.8
+event/1f08d132,event/d75b33db,EMOTIONAL_TRIGGER,The man's growl instigates fear in the narrator.,0.8,0.9
+event/d75b33db,event/72845592,EMOTIONAL_TRIGGER,The narrator's terror prompted the man's commanding response.,0.8,0.85
+event/b6105122,event/aa2dc6b7,BELIEF_DISMISSAL,The narrator's belief led to the brothers' resignation.,0.7,0.8
+event/2ba4096a,event/7d495468,EMOTIONAL_TRIGGER,Reminding evokes feelings leading to instruction.,0.7,0.8
+event/e4424f3c,event/b70dba59,PHYSICAL_SENSATION,Looking over the shoulder indicates awareness of physical discomfort.,0.7,0.8
+event/dd91579f,event/7f75ae0e,EMOTIONAL_TRIGGER,The man's gaze evokes a collective awakening in the church.,0.7,0.8
+event/82b2893a,event/aa5e2064,EMOTIONAL_TRIGGER,Questioning living arrangements triggered uncertainty in decision-making.,0.7,0.8
+event/df64db18,event/1990a7fc,PHYSICAL_ACTION,Limping indicates a physical action affecting his movement through obstacles.,0.8,0.85
+event/1180c80d,event/dd473619,CONFUSES,Comment leads to misunderstanding about the subjects' appearance.,0.7,0.8
+event/0fd86e04,event/94e540d1,EMOTIONAL_TRIGGER,Reflection triggers strong emotional memories of the afternoon.,0.8,0.85
+event/c3252244,event/e5999113,PHYSICAL_ACTION,The village setting influences the man's physical action.,0.7,0.6
+event/bd43b620,event/947aa477,PHYSICAL_ACTION,Tilting caused a physical sensation of danger.,0.8,0.85
+event/573585bc,event/ddfa33df,PHYSICAL_ACTION,Eluding suggests a physical movement towards the wall.,0.7,0.8
+event/58bd0804,event/a2354c97,HISTORICAL_COMPARISON,The river's appearance contrasts with the beacon's guiding role.,0.7,0.8
+event/2a4cdaf6,event/4c21204b,PERCEPTION_SHIFT,The narrator's negative view of the beacon alters his perception of the man.,0.7,0.8
+event/ea21fa87,event/8baa51c5,EMOTIONAL_TRIGGER,Considering leads to implying threats based on emotional responses.,0.7,0.8
+event/9d53a8dd,event/b7d6926e,COMMUNICATION_BARRIER,The narrator's question may lead to misunderstanding in response.,0.7,0.8
+event/6fe10185,event/e0be1924,EMOTIONAL_TRIGGER,Fear triggered a protective emotional response from the narrator.,0.8,0.85
+event/e6db4318,event/4c21204b,EMOTIONAL_TRIGGER,"The man's limp evokes a vivid, imaginative response in the narrator.",0.7,0.8
+event/ee37f9cd,event/e0be1924,EMOTIONAL_SUPPORT,The narrator's action indicates a need for emotional connection.,0.8,0.75
+event/b5354e05,event/0ef10519,COMMUNICATION_BARRIER,The man's question indicates a lack of understanding or clarity.,0.7,0.8
+event/d77585ae,event/ced6adca,NARRATIVE_COMPOSITE,Name revelation contributes to character identity formation.,0.8,0.9
+event/1150b828,event/aae567a6,EMOTIONAL_TRIGGER,Warmth in bed triggers feelings of comfort and safety.,0.8,0.9
+event/aa2dc6b7,event/94e540d1,EMOTIONAL_CONTAGION,The brothers' struggles evoke strong emotions in the narrator.,0.7,0.8
+event/a82d7e18,event/d75b33db,EMOTIONAL_TRIGGER,The man's glare instigates the narrator's fear and pleading.,0.8,0.9
+event/1150b828,event/b19865b2,EMOTIONAL_TRIGGER,The boy's warmth may evoke a sense of comfort in the young man.,0.7,0.8
+event/2dcd08e4,event/2ba4096a,EMOTIONAL_TRIGGER,The man's words evoke a strong emotional response related to the young man.,0.8,0.75
+event/db8f9500,event/061b15b3,PERCEPTION_SHIFT,The odd idea alters how the narrator interprets the inscription.,0.7,0.8
+event/4c21204b,event/1174a7d8,EMOTIONAL_TRIGGER,The man's presence evokes a strong emotional response in the narrator.,0.8,0.85
+event/397d6b99,event/3ad9336b,EMOTIONAL_TRIGGER,The young man's actions provoke a defensive response in the boy.,0.7,0.8
+event/40a8d95d,event/3b8b606f,EMOTIONAL_TRIGGER,Georgiana's death triggers the narrator's perception of desolation.,0.8,0.9
+event/66656dbd,event/99982272,EMOTIONAL_TRIGGER,The man's dark look triggers an intense gaze exchange.,0.7,0.8
+event/fc96bba4,event/f86d13ca,EMOTIONAL_TRIGGER,Desire to transform triggers emotional response and self-comfort.,0.7,0.8
+event/e7b709df,event/66656dbd,EMOTIONAL_TRIGGER,The comment provokes a negative emotional response in the man.,0.7,0.8
+event/94a02a6c,event/b3a6d13e,PRECEDES,The run occurred before he stopped.,0.9,0.95
+event/bf527a29,event/87f9d439,ANGER_MISPLACEMENT,Threatening behavior indicates misplaced anger towards the little devil.,0.8,0.9
+event/e06e60bd,event/ca940520,NOSTALGIA_INDUCEMENT,Reflecting on parents evokes nostalgic feelings and memories.,0.8,0.85
+event/b5354e05,event/617d5411,EMOTIONAL_TRIGGER,The man's question triggered a cautious response.,0.7,0.8
+event/3247bf5a,event/e65c3eac,EMOTIONAL_TRIGGER,The narrator's feelings prompted a search for the young man.,0.8,0.9
+event/d77585ae,event/39520805,IDENTITY_CONFLICT,Name revelation leads to self-identification as Pip.,0.8,0.9
+event/39b97f40,event/99982272,EMOTIONAL_TRIGGER,The man's grip evokes a strong emotional response in the narrator.,0.8,0.85
+event/fa0a7c4a,event/b7ac4c19,EMOTIONAL_TRIGGER,Event A evokes a memory related to Event B.,0.7,0.8
+event/0fd86e04,event/cb948e78,NOSTALGIA_INDUCEMENT,Reflection triggers memories of past events.,0.7,0.8
+event/82b2893a,event/8baa51c5,EMOTIONAL_TRIGGER,Questioning living situation triggered a threatening implication.,0.7,0.8
+event/c5d6c968,event/81edc118,IMAGINARY_CONSTRUCTION,The tombstone description triggers the narrator's imaginative visualization of his father.,0.8,0.85
+event/4a7ff508,event/6d78835e,NOSTALGIA_INDUCEMENT,Mother's condition evokes memories of lost siblings.,0.7,0.8
+event/c6e7d28e,event/5608d3a2,PHYSICAL_BLOCKAGE,"Mud obstructs movement, leading to injury from flints.",0.7,0.8
+event/2e8d2716,event/ea21fa87,COMMUNICATION_BARRIER,Ambiguity in reference creates misunderstanding.,0.7,0.8
+event/2b7e1fba,event/c6e7d28e,PHYSICAL_ACTION,Water exposure leads to mud accumulation on the man.,0.8,0.9
+event/947aa477,event/ee37f9cd,EMOTIONAL_TRIGGER,Feeling danger triggers repeated demands for attention.,0.7,0.8
+event/e65c3eac,event/d6edd53a,EMOTIONAL_TRIGGER,The search for the young man triggered the narrator's fear.,0.8,0.9
+event/5608527d,event/50e8db25,PHYSICAL_DETERIORATION,Broken shoes led to injury from stones.,0.8,0.9
+event/9f001460,event/0515cfe8,CONVENIENCE_PREFERENCE,Distance influences the man's decision to take advantage.,0.7,0.6
+event/1174a7d8,event/5812d6e6,EMOTIONAL_TRIGGER,The cattle's gaze triggers the narrator's reflection on their thoughts.,0.7,0.8
+event/c97b0a7a,event/d75b33db,EMOTIONAL_TRIGGER,"The man's chattering teeth indicate fear, triggering the narrator's terror.",0.8,0.85
+event/9587eaae,event/94e540d1,CULTURAL_EDUCATION,Describing the marsh enhances the significance of the afternoon.,0.7,0.8
+event/1f08d132,event/98ee37d0,PHYSICAL_ACTION,The growl indicates aggression leading to physical action.,0.8,0.9
+event/98ee37d0,event/d75b33db,PHYSICAL_CONFRONTATION,The man's action caused the narrator's fearful reaction.,0.8,0.9
+event/47c5431d,event/34aafa76,CONVENIENCE_PREFERENCE,The rag serves as a makeshift hat for convenience.,0.7,0.8
+event/bdb39f65,event/ee5c67af,EMOTIONAL_SUPPORT,The narrator's struggle leads to providing food for the boy.,0.7,0.8
+event/b976fe81,event/429b4a40,PHYSICAL_ACTION,Using legs enabled movement towards the river.,0.8,0.9
+event/5608d3a2,event/8f72d578,PHYSICAL_DETERIORATION,Both events describe the man's physical injuries.,0.8,0.9
+event/58bd0804,event/2a4cdaf6,CONTRASTS,The river's appearance contrasts with the narrator's negative description of the beacon.,0.8,0.85
+event/2e8d2716,event/f04082f1,COMMUNICATION_BARRIER,Ambiguity in reference creates misunderstanding.,0.7,0.8
+event/1b4c7611,event/05cbb6b2,COMMUNICATION_BARRIER,The narrator's helplessness hinders effective communication.,0.7,0.8
+event/c97b0a7a,event/3ef3089b,EMOTIONAL_TRIGGER,The man's chattering teeth triggered the narrator's feeling of terror.,0.8,0.9
+event/7fa0dc66,event/3c3b8ac2,EMOTIONAL_TRIGGER,Hunger triggers feelings of weakness in the narrator.,0.7,0.8
+event/b5132118,event/7f75ae0e,EMOTIONAL_TRIGGER,The emptiness evokes a sense of community awakening.,0.7,0.8
+event/c00dd5a1,event/1180c80d,HUMOROUS_REMARK,Commenting on appearance evokes humor from the situation.,0.7,0.8
+event/f04082f1,event/aa5e2064,EMOTIONAL_TRIGGER,Muttering can trigger feelings of uncertainty.,0.7,0.8
+event/dc0c66f1,event/b70dba59,EMOTIONAL_CONTAGION,The act of hugging oneself suggests emotional distress affecting physical movement.,0.7,0.8
+event/81edc118,event/061b15b3,IMAGINARY_CONSTRUCTION,Narrator's imagination shapes perception of the inscription.,0.7,0.8
+event/e5999113,event/7f75ae0e,EMOTIONAL_TRIGGER,The man's action provoked a significant emotional response in the church.,0.7,0.8
+event/98ee37d0,event/e5999113,PHYSICAL_ACTION,Seizing by the chin leads to being turned upside down.,0.8,0.9
+event/98ee37d0,event/3ef3089b,EMOTIONAL_TRIGGER,The man's action triggered a feeling of terror in the narrator.,0.8,0.9
+event/c0a756fc,event/4f53239c,HUMANITY_QUESTIONING,The sight prompts reflection on mortality and justice.,0.8,0.85
+event/e0be1924,event/16bbe0a4,EMOTIONAL_SUPPORT,The narrator seeks stability through physical connection.,0.8,0.9
+event/e0be1924,event/e6b28a9d,EMOTIONAL_SUPPORT,The narrator's cling indicates a need for emotional reassurance.,0.8,0.9
+event/37cf8027,event/ca940520,NOSTALGIA_INDUCEMENT,Absence of parents triggers nostalgic reflections in the narrator.,0.8,0.85
+event/1f08d132,event/c97b0a7a,PHYSICAL_SENSATION,"The growl indicates tension, causing physical reactions like chattering teeth.",0.8,0.85
+event/c0a756fc,event/a2354c97,HUMANITY_QUESTIONING,The narrator's perception raises questions about visibility and guidance.,0.7,0.8
+event/7d495468,event/f86d13ca,EMOTIONAL_SUPPORT,The instruction to go home leads to a comforting embrace.,0.8,0.85
+event/87f9d439,event/4a3f09b6,EMOTIONAL_TRIGGER,Anger expressed triggers fear in others.,0.8,0.85
+event/39d0548e,event/bf527a29,EMOTIONAL_TRIGGER,The narrator's perception evokes a threatening response from the man.,0.7,0.8
+event/d3ab0020,event/a6f63d64,EMOTIONAL_TRIGGER,The man's threat triggered a hopeful response.,0.7,0.8
+event/a3a72e23,event/72845592,PREVENTS,The narrator's request prevents immediate violence.,0.8,0.85
+event/29a404b2,event/0ef10519,EMOTIONAL_TRIGGER,Crying can trigger a response in others.,0.7,0.8
+event/2b1b219c,event/0ef10519,EMOTIONAL_TRIGGER,Desire to suppress emotions triggered his action.,0.7,0.8
+event/b7d6926e,event/2dcd08e4,EMOTIONAL_TRIGGER,The promise triggered a strong emotional response from the man.,0.7,0.8
+event/a82d7e18,event/1f08d132,EMOTIONAL_TRIGGER,Glaring can provoke a growl as a response.,0.8,0.85
+event/a82d7e18,event/98ee37d0,PHYSICAL_CONFRONTATION,Glaring indicates aggression leading to physical confrontation.,0.8,0.9
+event/ced6adca,event/4fc7d29f,NARRATIVE_COMPOSITE,Infant's pronunciation shapes the narrative identity of the character.,0.8,0.9
+event/4a3f09b6,event/5608527d,PHYSICAL_DETERIORATION,"The man's fearful appearance suggests neglect, reflected in his broken shoes.",0.8,0.85
+event/98ee37d0,event/93b2ab1a,PHYSICAL_ACTION,Seizing indicates a physical action leading to the man's stare.,0.8,0.9
+event/f441c5ad,event/39d0548e,PERCEPTION_SHIFT,Change in narrator's perception from river to sea.,0.8,0.85
+event/72845592,event/5d675338,COMMUNICATION_BARRIER,Misunderstanding led to a request for clarification.,0.7,0.8
+event/b7d6926e,event/539b90c3,ENCOURAGES,The promise to provide the file prompted further discussion.,0.7,0.8
+event/d77585ae,event/4fc7d29f,IDENTITY_CONFLICT,Revealing the name creates a conflict in identity perception.,0.7,0.8
+event/5613b92a,event/43155721,IDENTITY_CONFLICT,Narrator's self-perception leads to conflict with the man's aggressive intent.,0.7,0.8
+event/25b67c3a,event/84b2e819,PHYSICAL_ACTION,The man's action directly influences the narrator's survival question.,0.8,0.85
+event/05cbb6b2,event/bd43b620,CONFUSES,The question created confusion leading to a physical response.,0.7,0.8
+event/e65c3eac,event/a927aaa9,EMOTIONAL_TRIGGER,Fear of the young man triggered the narrator's urgent escape.,0.8,0.9
+event/ee37f9cd,event/6fe10185,EMOTIONAL_TRIGGER,The convict's repeated demands triggered fear in the speaker.,0.8,0.9
+event/94e540d1,event/5841b8ca,EMOTIONAL_TRIGGER,The memorable afternoon evokes strong emotions related to loss.,0.8,0.85
+event/6fe10185,event/dc1ac5b4,EMOTIONAL_TRIGGER,Fear triggered a contrasting emotional response of giddiness.,0.7,0.8
+event/d992f2e1,event/963fa2e5,EMOTIONAL_TRIGGER,Hope for health triggers desire for social engagement.,0.8,0.9
+event/ee37f9cd,event/dc1ac5b4,EMOTIONAL_TRIGGER,The convict's demands triggered a giddy emotional response in the narrator.,0.7,0.8
+event/a82d7e18,event/c97b0a7a,EMOTIONAL_TRIGGER,"The glare induces fear or anxiety, causing physical reaction.",0.8,0.85
+event/e06e60bd,event/dfa6591c,CULTURAL_EDUCATION,Tombstones provide cultural insights about the narrator's parents.,0.7,0.8
+event/58bd0804,event/c0a756fc,CONTRASTS,The river's line contrasts with the visibility of the black objects.,0.8,0.85
+event/9a2d5a4d,event/48262955,HUMANITY_QUESTIONING,The act of leaving prompts reflection on mortality and existence.,0.7,0.8
+event/1fb8552e,event/aa2dc6b7,BELIEF_DISMISSAL,Narrator's belief led to brothers' early resignation from work.,0.7,0.8
+event/927156bf,event/2b1b219c,EMOTIONAL_TRIGGER,The act of holding the tombstone triggered emotional distress.,0.8,0.9
+event/dc1ac5b4,event/963fa2e5,EMOTIONAL_TRIGGER,Giddiness triggered feelings of hope for future attendance.,0.7,0.8
+event/fab4db3a,event/b2356a67,EMOTIONAL_TRIGGER,"Trembling indicates anxiety, triggering a response in the man.",0.7,0.8
+event/b3a6d13e,event/8da31409,EMOTIONAL_TRIGGER,His stopping triggered my timid explanation.,0.7,0.8
+event/061b15b3,event/4a7ff508,PERCEPTION_SHIFT,The inscription altered the narrator's view of their mother.,0.7,0.8
+event/f04082f1,event/8baa51c5,EMOTIONAL_TRIGGER,Muttering can trigger implications of threats in communication.,0.7,0.8
+event/f86d13ca,event/573585bc,EMOTIONAL_TRIGGER,"The hug signifies emotional distress, triggering thoughts of loss.",0.8,0.85
+event/e0be1924,event/d992f2e1,EMOTIONAL_SUPPORT,Clinging indicates a need for emotional reassurance.,0.8,0.85
+event/53c04ac9,event/e65c3eac,EMOTIONAL_TRIGGER,The man's action triggers the narrator's emotional response.,0.7,0.8
+event/c97b0a7a,event/98ee37d0,PHYSICAL_SENSATION,"Chattering teeth indicate fear or cold, prompting physical action.",0.7,0.8
+event/72845592,event/7952d6ee,COMMUNICATION_BARRIER,Misunderstanding led to unclear instructions.,0.7,0.8
+event/f76f4306,event/927156bf,EMOTIONAL_TRIGGER,Desire to eat triggered emotional response related to loss.,0.7,0.8
+event/43155721,event/2b1b219c,EMOTIONAL_TRIGGER,The man's statement provokes an emotional response in the listener.,0.7,0.8
+event/0a5f3971,event/25b67c3a,PHYSICAL_ACTION,Looking down indicates a physical response to an action.,0.7,0.8
+event/4c21204b,event/3247bf5a,EMOTIONAL_TRIGGER,The perception of the man triggered a strong emotional response.,0.8,0.85
+event/39520805,event/3aa2f053,NAMING_CONVENTION,Self-identification leads to external recognition by others.,0.8,0.9
+event/66656dbd,event/25b67c3a,EMOTIONAL_TRIGGER,The man's dark look triggers a physical response from the narrator.,0.7,0.8
+event/05cbb6b2,event/d483bede,COMMUNICATION_BARRIER,Misunderstanding of basic concepts led to feelings of helplessness.,0.7,0.8
+event/fa1c293c,event/d4c3193a,EMOTIONAL_CONFESSION,The convict expresses vulnerability by comparing himself to another.,0.8,0.85
+event/c6e7d28e,event/50e8db25,PHYSICAL_DETERIORATION,Mud exposure likely led to injury from stones.,0.7,0.8
+event/b170505f,event/99982272,EMOTIONAL_TRIGGER,The man's approach evokes a strong emotional response in the narrator.,0.8,0.85
+event/3ad9336b,event/2a5c117e,PHYSICAL_ACTION,Tucking up leads to drawing clothes over the head.,0.8,0.9
+event/2a5c117e,event/b19865b2,EMOTIONAL_TRIGGER,The boy's action triggers a protective or curious response in the young man.,0.7,0.8
+event/7f50a70d,event/1fb8552e,BELIEF_DISMISSAL,Indebtedness leads to questioning the narrator's beliefs about their brothers.,0.7,0.8
+event/ca940520,event/db8f9500,NOSTALGIA_INDUCEMENT,Reflection triggers memories influencing perceptions of the father.,0.7,0.8
+event/2ba4096a,event/58b7e465,EMOTIONAL_TRIGGER,The reminder evokes feelings related to the young man's situation.,0.7,0.8
+event/58b7e465,event/bc21ed0a,EMOTIONAL_TRIGGER,The cold environment triggers a whimsical desire for escape.,0.7,0.8
+event/927156bf,event/29a404b2,EMOTIONAL_TRIGGER,The act of holding the tombstone triggered emotional response.,0.8,0.9
+event/c0a756fc,event/2a4cdaf6,CONTRASTS,The narrator's perception shifts from vague to negative.,0.7,0.8
+event/3ef3089b,event/72845592,EMOTIONAL_TRIGGER,Terror prompted the man's urgent command.,0.8,0.9
+event/d6edd53a,event/a927aaa9,EMOTIONAL_TRIGGER,Fear triggered the narrator's urgent response to run home.,0.8,0.9
+event/b3a6d13e,event/b418a65f,EMOTIONAL_TRIGGER,Stopping prompted an emotional reaction leading to the exclamation.,0.7,0.8
+event/8cccb744,event/ea21fa87,COMMUNICATION_BARRIER,Identification may hinder understanding or connection.,0.7,0.8
+event/4a7ff508,event/b6105122,BELIEF_DISMISSAL,The narrator's perception of their mother influences their beliefs about siblings.,0.7,0.8
+event/9f001460,event/b5132118,CONVENIENCE_PREFERENCE,Distance affects the choice of carrying items.,0.7,0.8
+event/4fc7d29f,event/e06e60bd,IDENTITY_CONFLICT,The father's name creates confusion about parental identity.,0.7,0.8
+event/58b7e465,event/df64db18,PHYSICAL_DETERIORATION,Limping suggests a physical issue affecting movement.,0.8,0.85
+event/8f72d578,event/1f08d132,EMOTIONAL_TRIGGER,"The briars caused pain, triggering a growl of frustration.",0.8,0.9
+event/d1a6987f,event/3aa2f053,NAMING_CONVENTION,Family name leads to the nickname Pip.,0.8,0.9
+event/a1810192,event/f441c5ad,PERCEPTION_SHIFT,The narrator's view changes from cattle to the river.,0.7,0.8
+event/77002efa,event/d6edd53a,EMOTIONAL_TRIGGER,The young man's presence triggers the narrator's fear.,0.8,0.85
+event/2b1b219c,event/29a404b2,EMOTIONAL_TRIGGER,Desire to suppress emotions triggered the urge to cry.,0.8,0.9
+event/e96abc35,event/66656dbd,CULTURAL_EROSION,Joe's profession contrasts with the man's dark demeanor.,0.7,0.8
+event/2a5c117e,event/15bc641b,PROTECTIVE_INSTINCT,The narrator intervenes to protect the boy from potential harm.,0.8,0.9
+event/3c3b8ac2,event/43155721,EMOTIONAL_TRIGGER,Self-perception of weakness triggers aggressive thoughts.,0.7,0.8
+event/4fc7d29f,event/dfa6591c,CULTURAL_EDUCATION,Family name influences narrator's understanding of parental identity.,0.7,0.8
+event/b2356a67,event/7fa0dc66,EMOTIONAL_TRIGGER,Licking lips often signals hunger or desire.,0.8,0.9
+event/48262955,event/5b4ad81e,EMOTIONAL_TRIGGER,The sight of the dead triggers a reaction in him.,0.8,0.75
+event/3247bf5a,event/1174a7d8,EMOTIONAL_TRIGGER,The narrator's feelings triggered a reaction in observing the cattle.,0.7,0.8
+event/2a5c117e,event/5523e40e,CRUELTY_PLEASURE,The act of drawing clothes leads to a violent reaction.,0.8,0.75
+event/5523e40e,event/9d53a8dd,EMOTIONAL_TRIGGER,The violent act prompts a response from the narrator.,0.8,0.85
+event/d992f2e1,event/403c6072,EMOTIONAL_TRIGGER,Hope can trigger physical reassurance through touch.,0.7,0.8
+event/87f9d439,event/e6db4318,ANGER_MISPLACEMENT,Anger may lead to physical consequences or reactions.,0.7,0.8
+event/7f50a70d,event/859ddd0e,BELIEF_DISMISSAL,Indebtedness leads to questioning the validity of beliefs.,0.7,0.8
+event/82b2893a,event/11980996,COMMUNICATION_BARRIER,Questioning indicates a lack of clarity about relationships.,0.7,0.8
+event/ddfa33df,event/0746e434,PRECEDES,Event A occurs before the decision to return home.,0.8,0.85
+event/859ddd0e,event/aa2dc6b7,BELIEF_DISMISSAL,The narrator's belief led to the brothers' early resignation.,0.7,0.8
+event/39d0548e,event/d85b6e24,EMOTIONAL_TRIGGER,The narrator's perception evokes a sudden emotional response in the man.,0.7,0.8
+event/5608d3a2,event/1eefbbcd,PHYSICAL_DETERIORATION,Injury from flints caused the man's limp.,0.9,0.95
+event/e6fbda0e,event/b418a65f,AGE_SURPRISE,The revelation of Georgiana's identity caused surprise.,0.8,0.9
+event/dfa6591c,event/cc0e2c5b,EMOTIONAL_TRIGGER,Tombstone ideas evoke emotions leading to childish conclusions.,0.7,0.8
+event/6d78835e,event/7f50a70d,CULTURAL_EDUCATION,The lozenges symbolize cultural memory influencing belief.,0.8,0.85
+event/94a02a6c,event/617d5411,PHYSICAL_ACTION,Running prompts looking over the shoulder for awareness.,0.8,0.85
+event/2e8d2716,event/8cccb744,COMMUNICATION_BARRIER,Ambiguity in reference creates confusion in identification.,0.7,0.8
+event/34aafa76,event/50e8db25,PHYSICAL_DETERIORATION,"The rag suggests injury, leading to lameness from stones.",0.8,0.85
+event/7f75ae0e,event/45230b6a,EMOTIONAL_TRIGGER,The church's realization evokes a profound personal vision.,0.7,0.8
+event/b07ad598,event/6fe10185,EMOTIONAL_TRIGGER,The convict's demand triggered fear in the speaker.,0.8,0.9
+event/e96abc35,event/8b6a33ee,EMOTIONAL_TRIGGER,Joe's identity as a blacksmith triggers the narrator's fear.,0.7,0.8
+event/39d0548e,event/a42d026e,EMOTIONAL_TRIGGER,The narrator's perception evokes a strong emotional response in the man.,0.8,0.75
+event/7952d6ee,event/dd91579f,COMMUNICATION_BARRIER,Instructing may create confusion in understanding the request.,0.7,0.8
+event/bf527a29,event/93beb6a8,PHYSICAL_ACTION,Threatening action leads to physical consequence.,0.7,0.8
+event/06d10836,event/eb4191fb,EMOTIONAL_TRIGGER,The convict's demands instigate fear in Pip.,0.8,0.9
+event/99ab5522,event/bf527a29,EMOTIONAL_DESPAIR,Pip's fear leads to emotional distress in response to the threat.,0.8,0.9
+event/0a5f3971,event/39b97f40,PHYSICAL_ACTION,Looking down prompts a physical response from the man.,0.7,0.8
+event/cc0e2c5b,event/4a7ff508,CONFUSES,Childish conclusion led to a misunderstanding of the mother's appearance.,0.7,0.8
+event/b19865b2,event/9d53a8dd,COMMUNICATION_BARRIER,The young man's approach may hinder the boy's response.,0.7,0.8
+event/25b67c3a,event/1b4c7611,PHYSICAL_ACTION,The man's action directly influences the narrator's helpless gaze.,0.8,0.9
+event/66656dbd,event/39b97f40,EMOTIONAL_TRIGGER,The man's dark look triggers a physical response from him.,0.7,0.8
+event/ddfa33df,event/b976fe81,PHYSICAL_ACTION,The action of approaching the wall enabled physical movement.,0.7,0.8
+event/87d84d96,event/e6db4318,HUMANITY_QUESTIONING,The pirate's past evokes reflection on human suffering.,0.7,0.8
+event/b7ac4c19,event/7d495468,EMOTIONAL_TRIGGER,Reminding evokes a sense of responsibility leading to instruction.,0.7,0.8
+event/dfa6591c,event/db8f9500,CULTURAL_EDUCATION,Tombstones provide cultural insights influencing the narrator's perception of his father.,0.7,0.8
+event/1150b828,event/2a5c117e,PHYSICAL_ACTION,The warmth prompts the boy to cover himself with clothes.,0.8,0.9
+event/99982272,event/05cbb6b2,EMOTIONAL_TRIGGER,The man's intense gaze prompts a question about understanding.,0.7,0.8
+event/b7d6926e,event/fa0a7c4a,REQUEST_ACCEPTANCE,The promise to deliver the file implies a commitment to meet.,0.8,0.9
+event/a42d026e,event/87f9d439,EMOTIONAL_TRIGGER,Crying can trigger feelings of anger in response.,0.7,0.8
+event/1eefbbcd,event/c97b0a7a,PHYSICAL_SENSATION,Limping may cause physical discomfort leading to chattering teeth.,0.7,0.8
+event/58bd0804,event/89c0f9e1,CONTRASTS,The river's calmness contrasts with the sky's chaotic appearance.,0.8,0.9
+event/77002efa,event/a927aaa9,EMOTIONAL_TRIGGER,Fear of the young man triggered the narrator's urgent escape.,0.8,0.9
+event/f441c5ad,event/d85b6e24,EMOTIONAL_TRIGGER,The river's imagery evokes a sudden emotional response in the man.,0.7,0.8
+event/ee5c67af,event/2dcd08e4,EMOTIONAL_SUPPORT,"Providing food reflects care, prompting a strong emotional reaction.",0.7,0.8
+event/c5d6c968,event/db8f9500,EMOTIONAL_TRIGGER,The tombstone's description evokes complex feelings about the father.,0.8,0.85
+event/617d5411,event/8da31409,EMOTIONAL_TRIGGER,Looking over the shoulder may trigger a feeling of anxiety or caution.,0.7,0.8
