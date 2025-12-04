@@ -149,9 +149,13 @@ class CEKGPreprocessor:
             batch = pairs_list[i:i+batch_size]
             results = await llm_service.batch_assess_pairs(batch, self.openai_model, self.client, self.relationship_ontology)
             for (c_txt, e_txt, c_id, e_id), res in zip(batch, results):
-                if res and res.get("relationType") not in [None, "NONE"]:
+                # FIX: Handle list return for relationType
+                raw_rt = res.get("relationType") if res else None
+                if isinstance(raw_rt, list): raw_rt = raw_rt[0] if raw_rt else "NONE"
+                
+                if res and raw_rt not in [None, "NONE"]:
                     if self.dag_validator.add_edge(c_id, e_id):
-                        rt_str = res.get("relationType", "DIRECT_CAUSE").upper()
+                        rt_str = str(raw_rt).upper()
                         causal_links.append(schemas.CausalLink(c_id, e_id, rt_str, res.get("mechanism",""), float(res.get("weight",0)), float(res.get("confidence",0))))
             print(f"[causal] Processed {min(i+batch_size, len(pairs_list))}/{len(pairs_list)} pairs")
         return causal_links
@@ -166,8 +170,16 @@ class CEKGPreprocessor:
             batch = pairs[i:i+batch_size]
             results = await llm_service.batch_assess_semantic_pairs(batch, self.openai_model, self.client)
             for (c,e,cid,eid), res in zip(batch, results):
-                if res and res.get("relation") != "none":
-                    links.append(schemas.SemanticLink(utils._make_id("sem"), [cid], [eid], res.get("relation"), res.get("cue"), float(res.get("confidence",0))))
+                if not res: continue
+                
+                # FIX: Handle list return for relation
+                raw_rel = res.get("relation")
+                if isinstance(raw_rel, list): raw_rel = raw_rel[0] if raw_rel else "none"
+                
+                if raw_rel and str(raw_rel).lower() != "none":
+                    links.append(schemas.SemanticLink(
+                        utils._make_id("sem"), [cid], [eid], str(raw_rel), res.get("cue"), float(res.get("confidence",0))
+                    ))
         return links
 
     async def _generate_scenes(self, events):

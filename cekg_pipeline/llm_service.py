@@ -31,7 +31,6 @@ DEFAULT_RELATIONSHIP_ONTOLOGY = [
 ]
 
 # --- PROMPTS ---
-
 JSON_START = "```" + "json"
 JSON_END = "```"
 
@@ -138,12 +137,14 @@ async def _async_llm_json_call(
         try:
             loop = asyncio.get_event_loop()
             def make_req():
+                # ADDED TIMEOUT=30 to prevent hangs
                 return client.chat.completions.create(
                     model=model,
                     messages=[{"role": "user", "content": prompt}],
                     response_format={"type": "json_object"},
                     max_tokens=max_tokens,
-                    temperature=0.0
+                    temperature=0.0,
+                    timeout=30 
                 )
             
             resp = await loop.run_in_executor(None, make_req)
@@ -165,8 +166,10 @@ async def _async_llm_json_call(
             await cache.set(cache_key, data)
             return data, getattr(resp.choices[0], "logprobs", None)
             
-        except Exception:
-            if attempt == 2: return [], None
+        except Exception as e:
+            if attempt == 2:
+                print(f"[error] LLM call failed after 3 attempts: {e}")
+                return [], None
             await asyncio.sleep(1)
     return [], None
 
