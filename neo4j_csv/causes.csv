@@ -1,0 +1,666 @@
+:START_ID,:END_ID,:TYPE,relationType,mechanism,weight,confidence
+event/82943b82,event/db6c4794,CAUSES,NOSTALGIA_INDUCEMENT,Pip's name evokes memories of his childhood imaginings.,0.8,0.85
+event/e2511029,event/533c1bc6,CAUSES,PHYSICAL_SENSATION,Ravenous eating leads to a physical response of licking lips.,0.8,0.9
+event/50018bce,event/07b2e7bd,CAUSES,CONFUSES,The man's comment led to the narrator's misunderstanding about fat cheeks.,0.7,0.8
+event/35541825,event/fa613bc2,CAUSES,COMMUNICATION_BARRIER,Misunderstanding leads to a delayed response.,0.7,0.8
+event/bb375da7,event/7973a915,CAUSES,EMOTIONAL_TRIGGER,The convict's threats triggered fear in Philip Pirrip.,0.8,0.9
+event/df2e5b1b,event/93ebab0e,CAUSES,EMOTIONAL_TRIGGER,Threatening behavior induces fear in the observer.,0.8,0.85
+event/fe6c6d3d,event/2737c6a7,CAUSES,PRECEDES,The action of tilting led to the convict's demand.,0.8,0.9
+event/bff40d85,event/fd0dc162,CAUSES,EMOTIONAL_TRIGGER,Danger triggered a physical response from the convict.,0.8,0.85
+event/9ebc191e,event/54c163de,CAUSES,EMOTIONAL_TRIGGER,Giddiness triggered feelings of hope for future attendance.,0.7,0.8
+event/c3892b67,event/63151fd5,CAUSES,PHYSICAL_ACTION,Water exposure led to vulnerability against stones.,0.7,0.6
+event/3f9b04c7,event/fd0dc162,CAUSES,PHYSICAL_CONFRONTATION,Threatening behavior leads to physical actions.,0.8,0.9
+event/fd0dc162,event/9ebc191e,CAUSES,EMOTIONAL_TRIGGER,The convict's actions triggered a giddy emotional response in the narrator.,0.8,0.85
+event/2d3e300d,event/69fc07d4,CAUSES,EMOTIONAL_TRIGGER,Glaring can trigger a growl as a response.,0.7,0.8
+event/40ba1309,event/94afe542,CAUSES,REQUEST_ACCEPTANCE,The plea led to a request for information.,0.7,0.8
+event/2d3e300d,event/9bcafefe,CAUSES,EMOTIONAL_TRIGGER,"The glare induces fear or anxiety, causing physical reaction.",0.7,0.8
+event/7f73f462,event/960ef67b,CAUSES,EMOTIONAL_TRIGGER,Locking the door triggers feelings of comfort and safety.,0.8,0.9
+event/118e4d85,event/e1505ac5,CAUSES,CONFUSES,Both events describe a disorienting action involving Philip Pirrip.,0.8,0.9
+event/1adc4771,event/f6ee76a9,CAUSES,EMOTIONAL_CONTAGION,"The hug conveys deep emotional distress, affecting the observer's perception.",0.8,0.85
+event/2f7ecbf2,event/bcd46419,CAUSES,EMOTIONAL_CONFESSION,"Referring to Georgiana as mother indicates emotional connection, prompting his return.",0.7,0.8
+event/118e4d85,event/c53990a7,CAUSES,PHYSICAL_ACTION,Turning upside down leads to emptying pockets.,0.8,0.9
+event/6eb2f929,event/b7c9ceef,CAUSES,EMOTIONAL_TRIGGER,The gibbet evokes thoughts of the young man's horror.,0.8,0.85
+event/cff71c8c,event/66c1e494,CAUSES,IMAGINARY_CONSTRUCTION,The tombstone's description triggers a vivid mental image of the father.,0.8,0.85
+event/14e9ee75,event/2ec5bb04,CAUSES,CULTURAL_EDUCATION,The arrangement of stones symbolizes familial connections and beliefs about lineage.,0.7,0.8
+event/39ea1a89,event/4e3634d6,CAUSES,EMOTIONAL_TRIGGER,The convict's question triggered feelings of helplessness in Philip.,0.8,0.85
+event/407f38c4,event/09992456,CAUSES,EMOTIONAL_TRIGGER,The cold environment triggered a whimsical desire for transformation.,0.7,0.8
+event/6a2cd365,event/9cc812a8,CAUSES,EMOTIONAL_TRIGGER,Threatening gesture triggers thoughts of drastic action.,0.7,0.8
+event/c83551a5,event/1468cee0,CAUSES,PERCEPTION_SHIFT,Narrator's focus shifts from objects to the man's condition.,0.7,0.8
+event/69dd78ca,event/ee204a52,CAUSES,EMOTIONAL_TRIGGER,The cattle's reaction triggered the narrator's search for the young man.,0.8,0.85
+event/2b2a3c3b,event/3675a222,CAUSES,EMOTIONAL_SUPPORT,The narrator's hope prompts physical support from another.,0.7,0.8
+event/c5d5a034,event/2602ce69,CAUSES,CONVENIENCE_PREFERENCE,The rag serves as a makeshift hat for convenience.,0.7,0.8
+event/331dfe6d,event/85ad6c9f,CAUSES,PRECEDES,Climbing the wall leads to the decision to head home.,0.8,0.85
+event/59e5b7dd,event/9ebc191e,CAUSES,EMOTIONAL_TRIGGER,Fear can lead to unexpected emotional responses like giddiness.,0.7,0.8
+event/c2ff13e7,event/9fca0a5e,CAUSES,COMMUNICATION_BARRIER,Addressing as 'sir' creates a formal distance affecting dialogue.,0.7,0.8
+event/18a59c8e,event/99625e27,CAUSES,EMOTIONAL_TRIGGER,The man's action instigated fear in Philip Pirrip.,0.8,0.9
+event/2d3e300d,event/99625e27,CAUSES,EMOTIONAL_TRIGGER,The man's glare instigates Philip's terror.,0.8,0.9
+event/fe58aa39,event/4a0f1f9b,CAUSES,EMOTIONAL_TRIGGER,Philip's reflection triggers emotions about the loss of his brothers.,0.8,0.9
+event/17f42de1,event/84f3cf05,CAUSES,COMMUNICATION_BARRIER,The man's stare indicates a lack of verbal communication.,0.7,0.8
+event/5873a1e0,event/0cda9890,CAUSES,EMOTIONAL_DESPAIR,Pip's fear and crying lead to negative labeling.,0.7,0.8
+event/97af6fc1,event/eab6f274,CAUSES,NARRATIVE_COMPOSITE,Name revelation contributes to character identity formation.,0.8,0.9
+event/2f7ecbf2,event/90b84c3e,CAUSES,CONFUSES,Referring to Georgiana as mother creates confusion about familial relationships.,0.8,0.9
+event/b0a230ac,event/f9f36d18,CAUSES,CONVENIENCE_PREFERENCE,Seating on a tombstone suggests a preference for comfort in a difficult situation.,0.6,0.7
+event/900dd2c7,event/97af6fc1,CAUSES,PRECEDES,The family name revelation leads to the Christian name revelation.,0.8,0.9
+event/407f38c4,event/1adc4771,CAUSES,EMOTIONAL_TRIGGER,The cold environment triggers a physical response of hugging for warmth.,0.8,0.9
+event/82943b82,event/5d775e1c,CAUSES,IDENTITY_CONFLICT,Pip's name influences his perception of identity and connection.,0.7,0.8
+event/b7c9ceef,event/c0336df5,CAUSES,EXPECTATION_DISAPPOINTMENT,The narrator's expectation of seeing the young man was unmet.,0.7,0.8
+event/9c1d7e15,event/4a0f1f9b,CAUSES,EMOTIONAL_TRIGGER,The narrator's impression evokes a strong emotional response to the loss.,0.8,0.75
+event/dd3c18c1,event/5e4ffab8,CAUSES,PROTECTIVE_INSTINCT,The speaker's action reflects a protective instinct towards the boy.,0.8,0.9
+event/4a0f1f9b,event/5873a1e0,CAUSES,EMOTIONAL_DESPAIR,The narrator's revelation triggers Pip's fear and emotional distress.,0.8,0.85
+event/bb375da7,event/7f73f462,CAUSES,EMOTIONAL_TRIGGER,The convict's implication triggers fear in the boy.,0.8,0.85
+event/b7c9ceef,event/e805c584,CAUSES,CONFUSES,The narrator's thoughts blur the line between human and animal perception.,0.7,0.8
+event/a8452911,event/85f186c8,CAUSES,COMMUNICATION_BARRIER,The man's question creates a moment of confusion or hesitation.,0.7,0.8
+event/e2320f43,event/55f29258,CAUSES,HISTORICAL_COMPARISON,Both events describe the narrator's realization of geographical features.,0.7,0.8
+event/c83551a5,event/6eb2f929,CAUSES,HUMANITY_QUESTIONING,The sight prompts reflection on mortality and justice.,0.8,0.85
+event/666f0d3e,event/6bcbee0c,CAUSES,HUMOROUS_REMARK,The exaggerated action creates a humorous image.,0.7,0.8
+event/6fded52c,event/1adc4771,CAUSES,EMOTIONAL_TRIGGER,His wish triggered a physical response of self-hugging.,0.7,0.8
+event/edaf32ff,event/66c1e494,CAUSES,IMAGINARY_CONSTRUCTION,The narrator's fantasies are shaped by tombstone inscriptions.,0.8,0.9
+event/0cda9890,event/93ebab0e,CAUSES,EMOTIONAL_TRIGGER,"The insult triggers fear in the man, leading to his appearance.",0.7,0.8
+event/6a2cd365,event/17004f0d,CAUSES,EMOTIONAL_APOLOGY,The man's threat prompted a sincere expression of hope.,0.7,0.8
+event/666f0d3e,event/3c65d84b,CAUSES,EMOTIONAL_TRIGGER,The dip and roll provoked a strong emotional response.,0.7,0.8
+event/6ca43a74,event/f451ea20,CAUSES,EMOTIONAL_TRIGGER,Exclamation triggered acknowledgment of another's presence.,0.7,0.8
+event/2737c6a7,event/fd0dc162,CAUSES,PHYSICAL_ACTION,The convict's demand led to a physical response towards Philip.,0.8,0.9
+event/43cb0672,event/dd463184,CAUSES,IMAGINARY_CONSTRUCTION,Narrator's imagination constructs a scenario based on perception.,0.8,0.85
+event/3f09a400,event/89677a6c,CAUSES,EMOTIONAL_TRIGGER,The act of holding the tombstone triggered emotional distress.,0.8,0.9
+event/faab2d4c,event/e70c5870,CAUSES,EMOTIONAL_TRIGGER,Abel Magwitch's gaze evokes fear and uncertainty in Philip Pirrip.,0.8,0.9
+event/6eb2f929,event/1468cee0,CAUSES,EMOTIONAL_TRIGGER,The gibbet evokes a strong emotional response in the narrator.,0.7,0.8
+event/9aec5747,event/3b569512,CAUSES,PHYSICAL_ACTION,Using legs effectively contrasts with struggling on sore feet.,0.7,0.8
+event/63151fd5,event/37ed44f7,CAUSES,PHYSICAL_DETERIORATION,Injury from stones leads to vulnerability to briars.,0.8,0.75
+event/bcd46419,event/db405121,CAUSES,COMMUNICATION_BARRIER,His return caused confusion in the speaker's reference.,0.7,0.8
+event/12fb476b,event/4a0f1f9b,CAUSES,PRECEDES,Event A reveals prior deaths leading to Event B.,0.8,0.9
+event/3b826a1c,event/17004f0d,CAUSES,EMOTIONAL_APOLOGY,Weakness prompts a sincere expression of hope.,0.7,0.8
+event/bcd46419,event/e04aafb1,CAUSES,COMMUNITY_GATHERING,His return signifies a reconnection within the community.,0.7,0.8
+event/36835a6e,event/960ef67b,CAUSES,EMOTIONAL_TRIGGER,The act of drawing clothes triggers feelings of comfort and safety.,0.8,0.85
+event/5d775e1c,event/66c1e494,CAUSES,IMAGINARY_CONSTRUCTION,The narrator constructs an image of his father based on limited information.,0.8,0.85
+event/94afe542,event/a3704144,CAUSES,COMMUNITY_GATHERING,The man's request indicates a desire to connect with the village.,0.7,0.8
+event/e805c584,event/11475679,CAUSES,EMOTIONAL_TRIGGER,The narrator's thoughts triggered a strong emotional response leading to urgent action.,0.8,0.85
+event/4da9306e,event/43cb0672,CAUSES,CONFUSES,The narrator's perception of the beacon leads to confusion about the man's identity.,0.7,0.8
+event/960ef67b,event/dd3c18c1,CAUSES,PROTECTIVE_INSTINCT,The speaker acts to protect the boy's perceived safety.,0.8,0.9
+event/90b84c3e,event/07c1af06,CAUSES,EMOTIONAL_TRIGGER,The question triggered an emotional response leading to muttering.,0.7,0.8
+event/bd644966,event/71181368,CAUSES,PRECEDES,Discovery of the churchyard leads to awareness of the marshes.,0.8,0.9
+event/53712509,event/e2511029,CAUSES,EMOTIONAL_TRIGGER,Philip's trembling indicates fear triggered by the man's actions.,0.8,0.85
+event/ecc6ac02,event/bba55582,CAUSES,EMOTIONAL_SUPPORT,"Event A indicates seeking support, leading to Event B's reminder.",0.7,0.8
+event/0467b589,event/6ca43a74,CAUSES,EMOTIONAL_TRIGGER,Timid explanation triggered a surprised exclamation.,0.7,0.8
+event/c0336df5,event/11475679,CAUSES,EMOTIONAL_TRIGGER,Fear of the young man triggered the narrator's urgent escape.,0.8,0.85
+event/ce1d9952,event/0221fb11,CAUSES,PHYSICAL_DETERIORATION,Injury from flints caused the man's limp.,0.9,0.95
+event/18a59c8e,event/40ba1309,CAUSES,PHYSICAL_ACTION,The man's action prompted Philip's plea.,0.8,0.9
+event/35541825,event/b860cd88,CAUSES,COMMUNICATION_BARRIER,The speaker's question leads to a confrontational response.,0.7,0.8
+event/90b84c3e,event/e04aafb1,CAUSES,COMMUNICATION_BARRIER,Misunderstanding of familial relationships creates confusion.,0.7,0.8
+event/9ebc191e,event/13d15815,CAUSES,EMOTIONAL_TRIGGER,Giddiness triggered a physical response of clinging.,0.8,0.9
+event/79e9f0d0,event/f9f36d18,CAUSES,PHYSICAL_ACTION,Seeing the steeple prompted him to sit on the tombstone.,0.7,0.8
+event/82943b82,event/2c57cf0e,CAUSES,NAMING_CONVENTION,Pip's name reflects his family heritage.,0.8,0.9
+event/900dd2c7,event/94fefd04,CAUSES,IDENTITY_CONFLICT,Name revelation leads to personal identity reflection.,0.8,0.9
+event/99625e27,event/94afe542,CAUSES,EMOTIONAL_TRIGGER,Philip's terror triggers the man's request for information.,0.7,0.8
+event/60b36d7a,event/43cb0672,CAUSES,EMOTIONAL_TRIGGER,The beacon evokes a strong emotional response leading to the pirate thought.,0.8,0.85
+event/b860cd88,event/02fcebf9,CAUSES,EMOTIONAL_TRIGGER,"The man's statement provoked a strong emotional response, prompting further conversation.",0.7,0.8
+event/b7c9ceef,event/ee204a52,CAUSES,EMOTIONAL_TRIGGER,The narrator's thoughts triggered a search for the young man.,0.7,0.8
+event/5d775e1c,event/db6c4794,CAUSES,NOSTALGIA_INDUCEMENT,The narrator's lack of likeness triggers nostalgic reflections on parents.,0.8,0.85
+event/2d3e300d,event/18a59c8e,CAUSES,PHYSICAL_ACTION,Glaring indicates aggression leading to physical confrontation.,0.8,0.85
+event/60266535,event/5dcd8eb0,CAUSES,PHYSICAL_ACTION,The convict's gaze prompts a physical response from Magwitch.,0.7,0.8
+event/9bcafefe,event/17f42de1,CAUSES,EMOTIONAL_TRIGGER,"Chattering teeth indicate fear or anxiety, triggering a focused stare.",0.7,0.8
+event/8b36d780,event/0cda9890,CAUSES,EMOTIONAL_TRIGGER,The man's cry provokes a negative perception of Philip.,0.7,0.8
+event/54c163de,event/3c65d84b,CAUSES,EMOTIONAL_TRIGGER,Hope expressed triggers fear in response.,0.7,0.8
+event/3c65d84b,event/58ed203f,CAUSES,VIOLENCE_RESOLUTION,Fearful terms lead to threats of violence for compliance.,0.8,0.85
+event/77322920,event/11475679,CAUSES,EMOTIONAL_TRIGGER,Fear triggered the narrator's urgent response to run home.,0.8,0.9
+event/331dfe6d,event/9aec5747,CAUSES,PHYSICAL_ACTION,Climbing the wall enabled effective use of legs.,0.8,0.9
+event/276ad22b,event/7973a915,CAUSES,EMOTIONAL_TRIGGER,The convict's demands instigated fear in Philip Pirrip.,0.8,0.9
+event/6eb2f929,event/dd463184,CAUSES,IMAGINARY_CONSTRUCTION,The observation triggered an imaginative scenario in the narrator's mind.,0.8,0.9
+event/94fefd04,event/5d775e1c,CAUSES,IDENTITY_CONFLICT,Pip's self-identification contrasts with his perception of others.,0.7,0.8
+event/24b3e1f4,event/14e9ee75,CAUSES,EMOTIONAL_TRIGGER,Childish conclusion evokes emotions linked to the grave arrangement.,0.7,0.8
+event/98f7edf1,event/ce1d9952,CAUSES,PHYSICAL_BLOCKAGE,"Mud obstructed movement, leading to injury from flints.",0.8,0.75
+event/8a46dfd2,event/3cd49454,CAUSES,PHYSICAL_ACTION,The young man's approach triggers a physical response from the speaker.,0.8,0.85
+event/5ab8b656,event/3cd49454,CAUSES,PHYSICAL_CONFRONTATION,The young man's action directly leads to the speaker's struggle.,0.9,0.95
+event/affbc492,event/a3704144,CAUSES,COMMUNICATION_BARRIER,Instructing may lead to misunderstandings about the village's location.,0.7,0.8
+event/a04c2b0d,event/2c1aa49b,CAUSES,BELIEF_DISMISSAL,Philip dismisses the belief about his brothers' actions.,0.8,0.9
+event/2bc997fd,event/53712509,CAUSES,EMOTIONAL_TRIGGER,The church's self-awareness triggers Philip's emotional response.,0.7,0.8
+event/4e3634d6,event/bff40d85,CAUSES,EMOTIONAL_DESPAIR,Helplessness can lead to feelings of danger.,0.7,0.8
+event/37e4eb83,event/0b2a11b0,CAUSES,PRECEDES,Mrs. Joe's introduction logically comes before Joe's introduction.,0.9,0.95
+event/37ed44f7,event/7dc286c0,CAUSES,PHYSICAL_SENSATION,Briars cause physical discomfort leading to shivering.,0.8,0.9
+event/5873a1e0,event/df2e5b1b,CAUSES,EMOTIONAL_DESPAIR,Pip's fear leads to emotional distress in response to the threat.,0.8,0.85
+event/85f186c8,event/0467b589,CAUSES,EMOTIONAL_TRIGGER,"Looking over the shoulder may trigger anxiety, leading to timid explanation.",0.7,0.8
+event/eab6f274,event/9a02dd56,CAUSES,IDENTITY_CONFLICT,The narrator struggles with his identity due to absent parents.,0.8,0.85
+event/8d564ae3,event/03392695,CAUSES,CONTRASTS,The river's calmness contrasts with the sky's chaotic appearance.,0.8,0.9
+event/3c65d84b,event/7973a915,CAUSES,EMOTIONAL_TRIGGER,The fearful terms triggered Philip's fear response.,0.8,0.9
+event/6a2cd365,event/3f09a400,CAUSES,EMOTIONAL_TRIGGER,The man's threat triggered a strong emotional response.,0.8,0.85
+event/85f186c8,event/07c1af06,CAUSES,EMOTIONAL_TRIGGER,Looking over his shoulder triggered his muttering.,0.7,0.8
+event/900dd2c7,event/82943b82,CAUSES,NAMING_CONVENTION,Family name revelation leads to narrator's name identification.,0.9,0.95
+event/e82b2130,event/9cc812a8,CAUSES,EMOTIONAL_TRIGGER,Narrator's undersized nature triggers man's aggressive thought.,0.7,0.8
+event/2e082757,event/37e4eb83,CAUSES,CULTURAL_EDUCATION,Introduction provides context about familial relationships.,0.7,0.8
+event/533c1bc6,event/07b2e7bd,CAUSES,EMOTIONAL_TRIGGER,The man's action triggered the narrator's negative self-perception.,0.7,0.8
+event/89677a6c,event/0467b589,CAUSES,EMOTIONAL_TRIGGER,Desire to suppress emotions led to hesitant communication.,0.7,0.8
+event/58ed203f,event/be611acc,CAUSES,VIOLENCE_RESOLUTION,Threat of violence leads to fear and hiding behavior.,0.8,0.9
+event/7973a915,event/fa613bc2,CAUSES,EMOTIONAL_TRIGGER,Fear triggered a response to help the convict.,0.8,0.85
+event/a04c2b0d,event/bd644966,CAUSES,BELIEF_DISMISSAL,Philip's belief is dismissed upon discovering the churchyard's true nature.,0.7,0.8
+event/2b2a3c3b,event/666f0d3e,CAUSES,EMOTIONAL_TRIGGER,Hope can lead to positive physical expressions.,0.7,0.8
+event/d2e6a9a8,event/60b36d7a,CAUSES,PRECEDES,The narrator's action of stopping leads to the observation of the beacon.,0.8,0.9
+event/affe10b0,event/8b36d780,CAUSES,EMOTIONAL_TRIGGER,The man's sudden appearance triggers a strong emotional response.,0.8,0.9
+event/55f29258,event/df2e5b1b,CAUSES,EMOTIONAL_TRIGGER,The discovery evokes a strong emotional response leading to aggression.,0.7,0.8
+event/0467b589,event/bcd46419,CAUSES,EMOTIONAL_APOLOGY,Timid explanation may prompt a return as an emotional response.,0.7,0.8
+event/2737c6a7,event/3f9b04c7,CAUSES,VIOLENCE_RESOLUTION,Demanding a file escalated to a threat of violence.,0.8,0.9
+event/ecc6ac02,event/57c557ec,CAUSES,EMOTIONAL_TRIGGER,The speaker's action evokes memories of youth in the listener.,0.7,0.8
+event/9a02dd56,event/5d775e1c,CAUSES,EMOTIONAL_TRIGGER,Absence of parents triggers feelings of loss and longing.,0.8,0.9
+event/03392695,event/4da9306e,CAUSES,EMOTIONAL_TRIGGER,The sky's appearance evokes a negative emotional response towards the beacon.,0.7,0.8
+event/3675a222,event/3c65d84b,CAUSES,EMOTIONAL_TRIGGER,The physical hold likely triggered fear in the speaker.,0.8,0.85
+event/3f9b04c7,event/13d15815,CAUSES,PHYSICAL_CONFRONTATION,Threat of violence led to a physical reaction of clinging.,0.8,0.9
+event/c83551a5,event/4da9306e,CAUSES,CONTRASTS,The narrator's perception shifts from vague to negative.,0.8,0.85
+event/93ebab0e,event/c3892b67,CAUSES,EMOTIONAL_TRIGGER,Fear may lead to physical reactions like getting soaked.,0.7,0.8
+event/72a38974,event/fe58aa39,CAUSES,NOSTALGIA_INDUCEMENT,"Lozenges evoke memories of lost brothers, prompting reflection.",0.8,0.9
+event/407f38c4,event/9753272e,CAUSES,EMOTIONAL_TRIGGER,The cold environment triggers a physical response of self-clasping.,0.7,0.8
+event/c7e09230,event/960ef67b,CAUSES,ENABLING,Tucking up creates a sense of comfort and safety.,0.8,0.9
+event/a04c2b0d,event/fe58aa39,CAUSES,BELIEF_DISMISSAL,Philip's belief about his brothers contrasts with their early death.,0.7,0.8
+event/0467b589,event/90b84c3e,CAUSES,COMMUNICATION_BARRIER,Timid explanation may hinder clear understanding of relationships.,0.7,0.8
+event/f6ee76a9,event/331dfe6d,CAUSES,EMOTIONAL_TRIGGER,The gaze evokes a sense of urgency and escape.,0.7,0.8
+event/0cda9890,event/18a59c8e,CAUSES,EMOTIONAL_TRIGGER,The insult provoked a physical reaction from the man.,0.8,0.85
+event/85ad6c9f,event/30a13607,CAUSES,PRECEDES,Setting direction towards home occurs before seeing him by the river.,0.8,0.85
+event/fa613bc2,event/5e4ffab8,CAUSES,EMOTIONAL_APOLOGY,Expressing regret through offering food after failing to deliver the file.,0.7,0.8
+event/7debfcbc,event/5209be2e,CAUSES,EMOTIONAL_TRIGGER,Desire to be remembered prompts action.,0.7,0.8
+event/1468cee0,event/43cb0672,CAUSES,CONFUSES,The man's limp creates confusion about his identity.,0.7,0.8
+event/bff40d85,event/59e5b7dd,CAUSES,EMOTIONAL_TRIGGER,Philip's sense of danger triggered the narrator's fear.,0.8,0.9
+event/6fded52c,event/9753272e,CAUSES,EMOTIONAL_TRIGGER,His wish triggered a physical response of self-holding.,0.7,0.8
+event/ce1d9952,event/7dc286c0,CAUSES,PHYSICAL_SENSATION,Injury from flints causes physical discomfort leading to shivering.,0.8,0.9
+event/13d15815,event/666f0d3e,CAUSES,PHYSICAL_ACTION,The narrator's action led to the man's response.,0.8,0.9
+event/53712509,event/50018bce,CAUSES,EMOTIONAL_TRIGGER,Philip's trembling may have triggered the man's comment.,0.7,0.8
+event/fd0dc162,event/731438db,CAUSES,PHYSICAL_ACTION,The convict's action prompted the narrator's request for stability.,0.8,0.9
+event/5e4ffab8,event/ecc6ac02,CAUSES,ENABLING,Providing food facilitates the morning visit.,0.7,0.8
+event/07b2e7bd,event/6a2cd365,CAUSES,EMOTIONAL_TRIGGER,The narrator's belief triggered a defensive reaction from the man.,0.7,0.8
+event/be945dda,event/03392695,CAUSES,EMOTIONAL_TRIGGER,"The act of hugging oneself suggests emotional distress, triggering a vivid sky imagery.",0.7,0.8
+event/3fce1e48,event/5dcd8eb0,CAUSES,PHYSICAL_ACTION,Magwitch's grip led to the tilting of Pip.,0.8,0.9
+event/9753272e,event/188b58cb,CAUSES,EMOTIONAL_TRIGGER,"A self-holding gesture indicates emotional distress, triggering a supernatural response.",0.8,0.75
+event/731438db,event/2b2a3c3b,CAUSES,EMOTIONAL_TRIGGER,The request to stay upright triggers hope for health.,0.7,0.8
+event/85f186c8,event/2f7ecbf2,CAUSES,EMOTIONAL_CONFESSION,Looking back triggers a personal revelation about family.,0.7,0.8
+event/72a38974,event/a04c2b0d,CAUSES,BELIEF_DISMISSAL,Philip dismisses the sacredness of the lozenges in favor of a trivial belief.,0.7,0.8
+event/0b03e175,event/85ad6c9f,CAUSES,PRECEDES,Event A occurs before the decision to return home in Event B.,0.8,0.9
+event/2895b0d9,event/8a46dfd2,CAUSES,PHYSICAL_ACTION,Creeping is a physical action influenced by the secretive intent.,0.8,0.9
+event/c2ff13e7,event/4567cdec,CAUSES,COMMUNICATION_BARRIER,Addressing as 'sir' creates a formal distance.,0.7,0.8
+event/fe6c6d3d,event/7533a3ab,CAUSES,PRECEDES,Tilting Philip Pirrip led to the convict's demand for food.,0.8,0.9
+event/e2511029,event/50018bce,CAUSES,EMOTIONAL_TRIGGER,Ravenous eating may trigger emotional responses leading to comments.,0.7,0.6
+event/99625e27,event/5baab928,CAUSES,EMOTIONAL_TRIGGER,Fear prompts a response to an authoritative command.,0.8,0.9
+event/24b3e1f4,event/72a38974,CAUSES,EMOTIONAL_TRIGGER,Childish conclusions evoke memories tied to loss and nostalgia.,0.7,0.8
+event/94fefd04,event/9a02dd56,CAUSES,IDENTITY_CONFLICT,Pip's self-identification contrasts with his lack of parental connection.,0.8,0.85
+event/69fc07d4,event/99625e27,CAUSES,EMOTIONAL_TRIGGER,The man's growl instigates fear in Philip Pirrip.,0.8,0.9
+event/89677a6c,event/089c8fea,CAUSES,EMOTIONAL_TRIGGER,Desire to suppress emotions may lead to physical actions.,0.6,0.7
+event/788e9af7,event/faab2d4c,CAUSES,EMOTIONAL_TRIGGER,Magwitch's gaze evokes a sense of helplessness in Pip.,0.8,0.9
+event/8b36d780,event/df2e5b1b,CAUSES,EMOTIONAL_TRIGGER,The man's cry provokes a violent response.,0.8,0.75
+event/40ba1309,event/17f42de1,CAUSES,EMOTIONAL_APOLOGY,The plea evokes a reaction from the man.,0.7,0.8
+event/9753272e,event/f6ee76a9,CAUSES,EMOTIONAL_TRIGGER,"A physical gesture indicates emotional turmoil, triggering a profound response.",0.8,0.85
+event/dd463184,event/ee204a52,CAUSES,EMOTIONAL_TRIGGER,The narrator's imagination triggered a strong emotional response.,0.7,0.8
+event/affe10b0,event/93ebab0e,CAUSES,EMOTIONAL_TRIGGER,The man's sudden appearance triggers fear in the observer.,0.8,0.9
+event/58efa0e2,event/0b2a11b0,CAUSES,COMMUNICATION_BARRIER,The question indicates a lack of knowledge about relationships.,0.7,0.8
+event/17f42de1,event/affbc492,CAUSES,DECISION_MAKING,The man's stare influences his decision to instruct.,0.7,0.8
+event/59e5b7dd,event/731438db,CAUSES,EMOTIONAL_TRIGGER,Fear triggered a request for stability.,0.8,0.9
+event/e2320f43,event/5873a1e0,CAUSES,EMOTIONAL_TRIGGER,The river's revelation triggers Pip's fear and emotional response.,0.8,0.85
+event/17f42de1,event/5baab928,CAUSES,EMOTIONAL_TRIGGER,The man's stare provokes a commanding response towards Philip.,0.7,0.8
+event/c7e09230,event/5ab8b656,CAUSES,CRUELTY_PLEASURE,The boy's action leads to a violent reaction from the young man.,0.8,0.9
+event/39ea1a89,event/bff40d85,CAUSES,EMOTIONAL_TRIGGER,The convict's question triggered Philip's fear response.,0.8,0.9
+event/7533a3ab,event/fd0dc162,CAUSES,PHYSICAL_ACTION,The convict's demand led to a physical response towards Philip.,0.8,0.85
+event/5873a1e0,event/8b36d780,CAUSES,EMOTIONAL_TRIGGER,Pip's fear triggers the man's emotional response.,0.7,0.8
+event/4e3634d6,event/3f9b04c7,CAUSES,EMOTIONAL_DESPAIR,Helplessness can lead to vulnerability to threats.,0.7,0.8
+event/9c1d7e15,event/12fb476b,CAUSES,EMOTIONAL_TRIGGER,The narrator's impression triggered a realization of loss.,0.7,0.8
+event/bba55582,event/407f38c4,CAUSES,EMOTIONAL_TRIGGER,Reminding evokes feelings related to the environment.,0.7,0.6
+event/3675a222,event/bb375da7,CAUSES,EMOTIONAL_TRIGGER,The physical hold may trigger emotional responses related to fear or urgency.,0.7,0.8
+event/57c557ec,event/09992456,CAUSES,EMOTIONAL_TRIGGER,The reminder evokes a whimsical desire for transformation.,0.7,0.8
+event/c7e09230,event/36835a6e,CAUSES,PRECEDES,Tucking up occurs before drawing clothes over the head.,0.9,0.95
+event/e70c5870,event/bff40d85,CAUSES,EMOTIONAL_TRIGGER,The convict's question instigated fear in Philip Pirrip.,0.8,0.85
+event/9bcafefe,event/99625e27,CAUSES,EMOTIONAL_TRIGGER,"Chattering teeth indicate fear, triggering Philip's terror.",0.8,0.85
+event/db405121,event/58efa0e2,CAUSES,COMMUNICATION_BARRIER,Ambiguity in reference creates confusion about relationships.,0.7,0.8
+event/39ea1a89,event/fe6c6d3d,CAUSES,PHYSICAL_ACTION,The convict's question prompted a physical response from Philip.,0.7,0.8
+event/e2320f43,event/affe10b0,CAUSES,EMOTIONAL_TRIGGER,The discovery evokes a sudden emotional response in the man.,0.7,0.8
+event/37ed44f7,event/2d3e300d,CAUSES,EMOTIONAL_TRIGGER,Briars caused emotional distress leading to a glare.,0.7,0.8
+event/58ed203f,event/2895b0d9,CAUSES,VIOLENCE_RESOLUTION,Threats lead to secretive actions for self-protection.,0.7,0.8
+event/2895b0d9,event/be611acc,CAUSES,PREVENTS,The young man's actions lead the boy to seek concealment.,0.8,0.85
+event/89677a6c,event/5209be2e,CAUSES,EMOTIONAL_TRIGGER,Desire to suppress emotions triggered his action.,0.7,0.8
+event/bcd46419,event/f451ea20,CAUSES,COMMUNICATION_BARRIER,"His return prompted acknowledgment, breaking previous silence.",0.7,0.8
+event/fe58aa39,event/bd644966,CAUSES,NOSTALGIA_INDUCEMENT,Reflection on loss evokes memories of the churchyard.,0.7,0.8
+event/59e5b7dd,event/2b2a3c3b,CAUSES,EMOTIONAL_TRIGGER,Fear triggered a desire for hope regarding health.,0.7,0.8
+event/55f29258,event/8b36d780,CAUSES,EMOTIONAL_TRIGGER,The realization of the sea evokes a strong emotional response.,0.8,0.75
+event/f9f36d18,event/53712509,CAUSES,EMOTIONAL_TRIGGER,The tombstone setting triggers Philip's fear and anxiety.,0.8,0.85
+event/3b569512,event/d2e6a9a8,CAUSES,PRECEDES,The narrator's action follows the man's movement among stones.,0.8,0.9
+event/e82b2130,event/3b826a1c,CAUSES,PHYSICAL_DETERIORATION,Undersized stature implies physical weakness.,0.8,0.9
+event/8d5f4f60,event/c83551a5,CAUSES,CONTRASTS,The marshes' appearance contrasts with the visibility of the two black objects.,0.8,0.85
+event/bd644966,event/4a0f1f9b,CAUSES,EMOTIONAL_TRIGGER,The discovery of the churchyard triggers emotions about the deceased children.,0.8,0.9
+event/2737c6a7,event/59e5b7dd,CAUSES,EMOTIONAL_TRIGGER,The convict's demand triggered fear in the narrator.,0.8,0.9
+event/9c1d7e15,event/bd644966,CAUSES,PERCEPTION_SHIFT,Narrator's impression led to a clearer understanding of the churchyard's identity.,0.8,0.85
+event/2c57cf0e,event/db6c4794,CAUSES,NOSTALGIA_INDUCEMENT,The family name triggers memories of parental imagination.,0.8,0.85
+event/c7e09230,event/8a46dfd2,CAUSES,EMOTIONAL_TRIGGER,The boy's action triggers a gentle response from the young man.,0.7,0.8
+event/b860cd88,event/8d975e6d,CAUSES,EMOTIONAL_TRIGGER,The man's threat may provoke a strong emotional response in the listener.,0.7,0.8
+event/4567cdec,event/faab2d4c,CAUSES,EMOTIONAL_TRIGGER,Magwitch's approach evokes strong emotions in Philip.,0.8,0.9
+event/f451ea20,event/db405121,CAUSES,COMMUNICATION_BARRIER,Acknowledgment may not fully convey inclusion.,0.7,0.8
+event/7973a915,event/2895b0d9,CAUSES,EMOTIONAL_TRIGGER,Fear triggers secretive behavior in response to threats.,0.7,0.8
+event/85ad6c9f,event/757492c6,CAUSES,PRECEDES,Looking over the shoulder follows the action of setting face towards home.,0.8,0.9
+event/90b84c3e,event/f451ea20,CAUSES,COMMUNICATION_BARRIER,Uncertainty in familial relationships creates confusion in communication.,0.7,0.8
+event/f451ea20,event/e04aafb1,CAUSES,COMMUNICATION_BARRIER,Acknowledgment may indicate a barrier to deeper connection.,0.7,0.8
+event/37ed44f7,event/69fc07d4,CAUSES,EMOTIONAL_TRIGGER,"The briars caused pain, triggering a growl of frustration.",0.8,0.9
+event/4567cdec,event/788e9af7,CAUSES,EMOTIONAL_TRIGGER,Magwitch's approach evokes strong emotions related to Pip's past.,0.8,0.9
+event/db405121,event/e04aafb1,CAUSES,COMMUNICATION_BARRIER,Ambiguity in reference creates confusion in identification.,0.7,0.8
+event/db6c4794,event/24b3e1f4,CAUSES,EMOTIONAL_TRIGGER,Reflection triggers childhood memories influencing conclusions about parents.,0.7,0.8
+event/5873a1e0,event/affe10b0,CAUSES,EMOTIONAL_TRIGGER,Pip's fear triggers a startling event with the man.,0.8,0.85
+event/e70c5870,event/4e3634d6,CAUSES,EMOTIONAL_TRIGGER,The convict's question triggered Philip's feelings of helplessness.,0.8,0.85
+event/6fded52c,event/ce64310d,CAUSES,IMAGINARY_CONSTRUCTION,His wish creates a vivid mental image of his actions.,0.7,0.8
+event/03392695,event/60b36d7a,CAUSES,EMOTIONAL_TRIGGER,The sky's appearance evokes a sense of guidance for sailors.,0.7,0.8
+event/9aec5747,event/be945dda,CAUSES,PHYSICAL_ACTION,"Using legs implies movement, contrasting with his stillness.",0.7,0.8
+event/f9f36d18,event/50018bce,CAUSES,HUMOROUS_REMARK,The man's comment humorously highlights Philip's appearance.,0.7,0.8
+event/2895b0d9,event/c7e09230,CAUSES,EMOTIONAL_TRIGGER,The young man's actions provoke a defensive response in the boy.,0.7,0.8
+event/c83551a5,event/60b36d7a,CAUSES,HUMANITY_QUESTIONING,The narrator's perception raises questions about visibility and guidance.,0.7,0.8
+event/b860cd88,event/bba55582,CAUSES,EMOTIONAL_TRIGGER,The man's curse evokes a strong emotional response in the listener.,0.7,0.8
+event/089c8fea,event/85f186c8,CAUSES,PHYSICAL_ACTION,The run prompted him to check for potential threats.,0.7,0.8
+event/1adc4771,event/9753272e,CAUSES,EMOTIONAL_SUPPORT,Self-hugging indicates a need for emotional comfort.,0.8,0.9
+event/d2e6a9a8,event/4da9306e,CAUSES,EMOTIONAL_TRIGGER,The narrator's action triggered a negative emotional response towards the beacon.,0.7,0.8
+event/f6ee76a9,event/188b58cb,CAUSES,EMOTIONAL_TRIGGER,Fear of death evokes a strong emotional response.,0.8,0.85
+event/37ed44f7,event/0221fb11,CAUSES,PHYSICAL_DETERIORATION,Briars caused physical injury leading to limping.,0.9,0.95
+event/69fc07d4,event/18a59c8e,CAUSES,PHYSICAL_ACTION,The growl indicates aggression leading to physical action.,0.8,0.9
+event/50018bce,event/3b826a1c,CAUSES,EMOTIONAL_TRIGGER,The comment triggered feelings of inadequacy in the narrator.,0.7,0.8
+event/0b03e175,event/9aec5747,CAUSES,PHYSICAL_ACTION,The action of approaching the wall enabled physical movement.,0.7,0.8
+event/23632289,event/98f7edf1,CAUSES,PHYSICAL_DETERIORATION,Broken shoes lead to mud accumulation.,0.8,0.85
+event/8abe8936,event/331dfe6d,CAUSES,PHYSICAL_ACTION,The dead people attempted to physically restrain him.,0.8,0.9
+event/55f29258,event/affe10b0,CAUSES,EMOTIONAL_TRIGGER,The realization of the sea evokes a strong emotional response.,0.7,0.8
+event/5209be2e,event/089c8fea,CAUSES,PHYSICAL_ACTION,Starting indicates the initiation of a physical action.,0.8,0.9
+event/4da9306e,event/1468cee0,CAUSES,CONFUSES,The narrator's negative description creates confusion about the man's condition.,0.7,0.8
+event/9a02dd56,event/edaf32ff,CAUSES,EMOTIONAL_CONFESSION,Narrator expresses feelings about absent parents through tombstone fantasies.,0.8,0.9
+event/2c1aa49b,event/9c1d7e15,CAUSES,BELIEF_DISMISSAL,Philip's belief led to a broader understanding of identity.,0.7,0.8
+event/9bcafefe,event/40ba1309,CAUSES,EMOTIONAL_TRIGGER,The man's chattering teeth triggered Philip's emotional response.,0.7,0.8
+event/37e4eb83,event/c2ff13e7,CAUSES,COMMUNICATION_BARRIER,Narrator's formal address indicates a barrier in personal connection.,0.7,0.8
+event/276ad22b,event/bb375da7,CAUSES,COMMUNICATION_BARRIER,The convict's demand creates a misunderstanding about his situation.,0.7,0.8
+event/757492c6,event/30a13607,CAUSES,PRECEDES,Looking over the shoulder occurs before seeing him move.,0.8,0.9
+event/2c1aa49b,event/12fb476b,CAUSES,BELIEF_DISMISSAL,Philip's belief is contradicted by the discovery of death.,0.8,0.85
+event/2e082757,event/58efa0e2,CAUSES,DECISION_MAKING,Considering leads to questioning about living arrangements.,0.7,0.8
+event/788e9af7,event/e70c5870,CAUSES,EMOTIONAL_TRIGGER,Magwitch's gaze evokes a critical life decision for Pip.,0.8,0.85
+event/affe10b0,event/df2e5b1b,CAUSES,EMOTIONAL_TRIGGER,The man's sudden appearance provokes a violent reaction.,0.8,0.75
+event/98f7edf1,event/37ed44f7,CAUSES,PHYSICAL_ACTION,Mud smothering may lead to physical entanglement with briars.,0.7,0.8
+event/07b2e7bd,event/1193010b,CAUSES,EMOTIONAL_TRIGGER,The narrator's belief triggered the man's desire to eat.,0.7,0.8
+event/3b826a1c,event/6a2cd365,CAUSES,EMOTIONAL_TRIGGER,Narrator's weakness triggers man's threatening behavior.,0.7,0.8
+event/2c57cf0e,event/5d775e1c,CAUSES,IDENTITY_CONFLICT,The narrator's family name creates a disconnect with his identity.,0.7,0.8
+event/3675a222,event/58ed203f,CAUSES,PHYSICAL_CONFRONTATION,Physical restraint leads to a threat of violence.,0.8,0.85
+event/960ef67b,event/5ab8b656,CAUSES,EMOTIONAL_TRIGGER,The boy's false sense of safety triggers violent actions.,0.8,0.85
+event/f451ea20,event/2e082757,CAUSES,COMMUNICATION_BARRIER,Acknowledgment may lead to consideration of the other person's perspective.,0.7,0.8
+event/db405121,event/2e082757,CAUSES,CONFUSES,Ambiguity in reference leads to confusion in understanding.,0.7,0.8
+event/14e9ee75,event/72a38974,CAUSES,CULTURAL_EDUCATION,"Lozenges symbolize remembrance, educating about familial loss.",0.8,0.9
+event/9bcafefe,event/18a59c8e,CAUSES,EMOTIONAL_TRIGGER,"Chattering teeth indicate fear or anxiety, prompting aggressive action.",0.7,0.8
+event/a8452911,event/c9aaf735,CAUSES,COMMUNICATION_BARRIER,The man's question created a pause in the conversation.,0.7,0.8
+event/b0a230ac,event/2bc997fd,CAUSES,EMOTIONAL_CONTAGION,Despair from poverty influences community's emotional state.,0.7,0.8
+event/4da9306e,event/6eb2f929,CAUSES,CONTRASTS,Describing the beacon as ugly contrasts with the grim imagery of the gibbet.,0.8,0.85
+event/dd463184,event/b7c9ceef,CAUSES,IMAGINARY_CONSTRUCTION,Narrator's thoughts create a negative perception of the young man.,0.7,0.8
+event/7533a3ab,event/3f9b04c7,CAUSES,PRECEDES,Demanding food led to a violent threat.,0.8,0.9
+event/99625e27,event/17f42de1,CAUSES,EMOTIONAL_TRIGGER,Philip's terror triggers the man's intense gaze.,0.8,0.9
+event/58efa0e2,event/37e4eb83,CAUSES,COMMUNICATION_BARRIER,The question creates a barrier to understanding family connections.,0.7,0.8
+event/dd3c18c1,event/3cd49454,CAUSES,PHYSICAL_ACTION,The speaker's action prevents harm to the boy.,0.8,0.9
+event/79e9f0d0,event/53712509,CAUSES,EMOTIONAL_TRIGGER,Seeing the steeple triggered Philip's anxiety and trembling.,0.8,0.85
+event/dd463184,event/69dd78ca,CAUSES,IMAGINARY_CONSTRUCTION,Narrator's imagination influences perception of the man's actions.,0.7,0.8
+event/03392695,event/d2e6a9a8,CAUSES,EMOTIONAL_TRIGGER,The sky's appearance evokes a strong emotional response prompting the narrator's action.,0.7,0.8
+event/cff71c8c,event/14e9ee75,CAUSES,HUMANITY_QUESTIONING,The description prompts reflection on mortality and memory.,0.7,0.8
+event/bc68dc0e,event/be945dda,CAUSES,EMOTIONAL_TRIGGER,His search for me triggered a self-soothing gesture.,0.7,0.8
+event/e04aafb1,event/c5c3b1ce,CAUSES,NAMING_CONVENTION,Identifying relationships through specific titles or names.,0.8,0.85
+event/94afe542,event/216c6f22,CAUSES,COMMUNICATION_BARRIER,The man's request indicates a potential misunderstanding or lack of clarity.,0.7,0.8
+event/bff40d85,event/3f9b04c7,CAUSES,EMOTIONAL_TRIGGER,Danger triggers a response leading to a violent threat.,0.8,0.9
+event/faab2d4c,event/13d15815,CAUSES,EMOTIONAL_TRIGGER,Fear and desperation trigger a physical response of clinging.,0.8,0.9
+event/fe6c6d3d,event/4e3634d6,CAUSES,EMOTIONAL_TRIGGER,Tilting caused Philip to feel more helpless.,0.8,0.85
+event/7973a915,event/7f73f462,CAUSES,EMOTIONAL_TRIGGER,Fear triggers the boy's instinct to secure himself.,0.8,0.9
+event/43cb0672,event/e805c584,CAUSES,EMOTIONAL_TRIGGER,The narrator's belief triggers reflection on the young man's impact.,0.7,0.8
+event/ce64310d,event/85ad6c9f,CAUSES,PRECEDES,The action of leaving occurs before the decision to return home.,0.8,0.9
+event/9cc812a8,event/89677a6c,CAUSES,EMOTIONAL_TRIGGER,The man's statement triggered an emotional response in the speaker.,0.7,0.8
+event/cff71c8c,event/24b3e1f4,CAUSES,EMOTIONAL_TRIGGER,The tombstone's description evokes emotions leading to the narrator's conclusion.,0.7,0.8
+event/731438db,event/fa613bc2,CAUSES,REQUEST_ACCEPTANCE,The narrator's request leads to a promise to provide the file.,0.8,0.9
+event/94303c0d,event/60266535,CAUSES,EMOTIONAL_TRIGGER,The character's gaze triggers a dark reflection in the convict.,0.7,0.8
+event/f6ee76a9,event/8abe8936,CAUSES,EMOTIONAL_TRIGGER,Fear of death influences his perception and actions.,0.8,0.85
+event/1468cee0,event/b7c9ceef,CAUSES,PERCEPTION_SHIFT,The narrator's perception of the man's limp influenced his thoughts about him.,0.7,0.8
+event/e805c584,event/c0336df5,CAUSES,EMOTIONAL_TRIGGER,The narrator's thoughts trigger an emotional response regarding the young man.,0.7,0.8
+event/960ef67b,event/8a46dfd2,CAUSES,EMOTIONAL_TRIGGER,The boy's comfort triggers the young man's cautious approach.,0.7,0.8
+event/40ba1309,event/affbc492,CAUSES,REQUEST_ACCEPTANCE,A plea often leads to a request being acknowledged.,0.7,0.8
+event/e1505ac5,event/79e9f0d0,CAUSES,PRECEDES,The man's actions led to Philip's perspective change.,0.8,0.85
+event/089c8fea,event/0467b589,CAUSES,EMOTIONAL_TRIGGER,The run may have triggered nervousness in the explanation.,0.7,0.8
+event/6bcbee0c,event/3675a222,CAUSES,PHYSICAL_ACTION,The church's action led to a physical response from him.,0.7,0.8
+event/fa613bc2,event/ecc6ac02,CAUSES,DECISION_MAKING,The promise to deliver the file influences the decision to meet early.,0.8,0.9
+event/1468cee0,event/69dd78ca,CAUSES,EMOTIONAL_TRIGGER,The man's limp evokes a reaction from the cattle.,0.7,0.8
+event/40ba1309,event/5baab928,CAUSES,REQUEST_ACCEPTANCE,The plea led to a command for compliance.,0.7,0.8
+event/03392695,event/c83551a5,CAUSES,EMOTIONAL_TRIGGER,The sky's appearance evokes a sense of foreboding in the narrator.,0.8,0.85
+event/37e4eb83,event/9fca0a5e,CAUSES,COMMUNICATION_BARRIER,The introduction creates confusion about the narrator's identity.,0.7,0.8
+event/b860cd88,event/57c557ec,CAUSES,EMOTIONAL_TRIGGER,The man's words evoke strong emotions related to the young man's memory.,0.8,0.85
+event/bc68dc0e,event/85ad6c9f,CAUSES,EMOTIONAL_TRIGGER,His action triggered my desire to return home.,0.7,0.8
+event/30a13607,event/8d5f4f60,CAUSES,HUMANITY_QUESTIONING,Observation prompts reflection on nature's impact.,0.7,0.6
+event/17004f0d,event/89677a6c,CAUSES,EMOTIONAL_TRIGGER,Hope expression triggered emotional response of wanting to cry.,0.8,0.85
+event/2c1aa49b,event/fe58aa39,CAUSES,BELIEF_DISMISSAL,Philip's belief about his brothers' existence is challenged by their early death.,0.8,0.85
+event/69dd78ca,event/77322920,CAUSES,EMOTIONAL_TRIGGER,The sight of the young man triggered fear in the narrator.,0.8,0.85
+event/666f0d3e,event/3675a222,CAUSES,PHYSICAL_ACTION,The dip and roll led to being held upright.,0.8,0.9
+event/55f29258,event/99625e27,CAUSES,EMOTIONAL_TRIGGER,The discovery of the sea instigated fear in Philip Pirrip.,0.8,0.85
+event/1193010b,event/9cc812a8,CAUSES,HUMOROUS_REMARK,The man's statement humorously contrasts his desire with a dark implication.,0.8,0.9
+event/2f7ecbf2,event/f451ea20,CAUSES,COMMUNICATION_BARRIER,Misunderstanding due to familial reference caused confusion.,0.7,0.8
+event/f6ee76a9,event/0b03e175,CAUSES,EMOTIONAL_TRIGGER,The gaze evokes a sense of mortality and urgency.,0.7,0.8
+event/1adc4771,event/44241451,CAUSES,EMOTIONAL_SUPPORT,"The hug provides comfort, influencing his movement towards the wall.",0.8,0.85
+event/e04aafb1,event/58efa0e2,CAUSES,COMMUNICATION_BARRIER,Identification creates confusion about the other person's living situation.,0.7,0.8
+event/731438db,event/54c163de,CAUSES,EMOTIONAL_SUPPORT,The request for support leads to hopeful expression.,0.7,0.8
+event/be611acc,event/c7e09230,CAUSES,PHYSICAL_ACTION,The boy's action of tucking is a physical response to hiding.,0.8,0.9
+event/042951e5,event/c2ff13e7,CAUSES,COMMUNICATION_BARRIER,Uncertainty in decision affects formal address.,0.7,0.8
+event/37e4eb83,event/c5c3b1ce,CAUSES,PRECEDES,Introduction establishes familial relationship for the narrator's reference.,0.8,0.9
+event/900dd2c7,event/eab6f274,CAUSES,IDENTITY_CONFLICT,The revelation of the family name creates confusion about identity.,0.8,0.9
+event/affbc492,event/118e4d85,CAUSES,PHYSICAL_ACTION,The instruction led to the physical action of turning Philip upside down.,0.8,0.9
+event/4e3634d6,event/2737c6a7,CAUSES,EMOTIONAL_DESPAIR,Helplessness led to vulnerability in the interaction with the convict.,0.8,0.85
+event/72a38974,event/2c1aa49b,CAUSES,BELIEF_DISMISSAL,Philip dismisses the reality of his brothers' existence.,0.8,0.85
+event/ce1d9952,event/37ed44f7,CAUSES,PHYSICAL_ACTION,Both events describe physical injuries caused by sharp objects.,0.8,0.85
+event/94afe542,event/affbc492,CAUSES,REQUEST_ACCEPTANCE,The man's request led to an instruction for guidance.,0.8,0.9
+event/8b36d780,event/93ebab0e,CAUSES,EMOTIONAL_TRIGGER,The man's cry triggers fear in another individual.,0.8,0.85
+event/edaf32ff,event/24b3e1f4,CAUSES,EMOTIONAL_TRIGGER,Tombstone fancies trigger emotional conclusions about the mother.,0.7,0.8
+event/1adc4771,event/ce64310d,CAUSES,EMOTIONAL_SUPPORT,The hug provides comfort before his departure.,0.8,0.85
+event/8abe8936,event/30a13607,CAUSES,PHYSICAL_ACTION,The dead people's actions physically influenced his movement towards the river.,0.8,0.75
+event/0467b589,event/2f7ecbf2,CAUSES,EMOTIONAL_CONFESSION,Timid explanation leads to revealing personal relationship.,0.7,0.8
+event/82943b82,event/9a02dd56,CAUSES,IDENTITY_CONFLICT,Pip's name reflects his struggle with parental absence.,0.7,0.8
+event/affbc492,event/216c6f22,CAUSES,COMMUNICATION_BARRIER,The instruction may have created confusion in the man's response.,0.7,0.8
+event/5baab928,event/94afe542,CAUSES,REQUEST_ACCEPTANCE,The command leads to a request for information.,0.7,0.8
+event/9fca0a5e,event/60266535,CAUSES,EMOTIONAL_TRIGGER,The character's remark triggers a negative emotional response in the convict.,0.7,0.8
+event/ee204a52,event/77322920,CAUSES,EMOTIONAL_TRIGGER,The search for the young man triggered fear in the narrator.,0.8,0.9
+event/89677a6c,event/a8452911,CAUSES,EMOTIONAL_TRIGGER,Crying is triggered by emotional distress related to the inquiry.,0.7,0.8
+event/9fca0a5e,event/4567cdec,CAUSES,EMOTIONAL_TRIGGER,The character's remark triggers Magwitch's emotional response towards Pip's tombstone.,0.7,0.8
+event/3f09a400,event/7debfcbc,CAUSES,EMOTIONAL_TRIGGER,Gripping the tombstone reflects a strong emotional connection to loss.,0.8,0.85
+event/5dcd8eb0,event/39ea1a89,CAUSES,PHYSICAL_ACTION,Abel's action prompts a question from the convict.,0.7,0.8
+event/6eb2f929,event/43cb0672,CAUSES,CONFUSES,The gibbet's appearance led to a mistaken identity perception.,0.7,0.8
+event/1193010b,event/17004f0d,CAUSES,EMOTIONAL_APOLOGY,Hope expressed as a response to another's desire.,0.7,0.8
+event/4567cdec,event/3fce1e48,CAUSES,PHYSICAL_ACTION,Magwitch's approach leads to physical interaction with Pip.,0.8,0.9
+event/0cda9890,event/23632289,CAUSES,HUMOROUS_REMARK,The comment about Philip's nature humorously contrasts with the man's appearance.,0.7,0.8
+event/35541825,event/5e4ffab8,CAUSES,EMOTIONAL_SUPPORT,The speaker's inquiry prompts a caring response from the boy.,0.7,0.8
+event/c53990a7,event/b0a230ac,CAUSES,EXPECTATION_DISAPPOINTMENT,The man's action led to a disappointing discovery for Philip.,0.8,0.9
+event/02fcebf9,event/8d975e6d,CAUSES,COMMUNICATION_BARRIER,"The conversation led to a directive, indicating a barrier in understanding.",0.7,0.8
+event/2e082757,event/042951e5,CAUSES,DECISION_MAKING,Considering leads to uncertainty about decisions.,0.8,0.9
+event/40ba1309,event/84f3cf05,CAUSES,COMMUNICATION_BARRIER,Philip's plea indicates a misunderstanding of location.,0.7,0.8
+event/2895b0d9,event/7f73f462,CAUSES,PREVENTS,The young man's actions lead the boy to secure himself.,0.8,0.85
+event/02fcebf9,event/407f38c4,CAUSES,COMMUNICATION_BARRIER,The conversation pursuit contrasts with his distracted observation.,0.7,0.8
+event/54c163de,event/3675a222,CAUSES,EMOTIONAL_SUPPORT,The narrator's hope indicates a need for support during a pivotal moment.,0.7,0.8
+event/30a13607,event/8d564ae3,CAUSES,CONTRASTS,The river's appearance contrasts with the man's movement towards it.,0.7,0.8
+event/6a2cd365,event/1193010b,CAUSES,EMOTIONAL_TRIGGER,Threatening gesture triggered a desire for comfort through eating.,0.7,0.8
+event/8d5f4f60,event/03392695,CAUSES,CONTRASTS,The description of marshes contrasts with the sky's appearance.,0.8,0.9
+event/e805c584,event/ee204a52,CAUSES,EMOTIONAL_TRIGGER,The narrator's thoughts about the young man prompted a search for him.,0.8,0.85
+event/9cc812a8,event/7debfcbc,CAUSES,HUMOROUS_REMARK,The man's statement humorously suggests a dark thought about eating.,0.7,0.8
+event/3fce1e48,event/39ea1a89,CAUSES,EMOTIONAL_TRIGGER,Magwitch's grip evokes fear and curiosity in Pip.,0.7,0.8
+event/e82b2130,event/6a2cd365,CAUSES,EMOTIONAL_TRIGGER,The narrator's size may evoke a defensive reaction in the man.,0.7,0.8
+event/faab2d4c,event/fe6c6d3d,CAUSES,PHYSICAL_ACTION,Abel Magwitch physically manipulates Philip Pirrip's position.,0.8,0.9
+event/dd3c18c1,event/fa613bc2,CAUSES,PREVENTS,"The speaker prevents harm, leading to a promise of assistance.",0.8,0.75
+event/71181368,event/e2320f43,CAUSES,PRECEDES,Discovery of marshes leads to realization of the river's location.,0.8,0.9
+event/0b03e175,event/331dfe6d,CAUSES,PRECEDES,Event A occurs before Event B as a necessary action.,0.9,0.95
+event/2602ce69,event/98f7edf1,CAUSES,PHYSICAL_ACTION,The rag may have contributed to the man's muddy appearance.,0.6,0.7
+event/7533a3ab,event/59e5b7dd,CAUSES,EMOTIONAL_TRIGGER,The convict's demand instilled fear in the narrator.,0.8,0.9
+event/6ca43a74,event/db405121,CAUSES,EMOTIONAL_TRIGGER,The exclamation may trigger a response related to the other person mentioned.,0.7,0.8
+event/042951e5,event/c5c3b1ce,CAUSES,EMOTIONAL_CONFESSION,Implying uncertainty reveals emotional ties to family.,0.7,0.8
+event/02fcebf9,event/bba55582,CAUSES,COMMUNICATION_BARRIER,The conversation pursuit highlights a gap in understanding the listener's commitment.,0.7,0.8
+event/db6c4794,event/edaf32ff,CAUSES,NOSTALGIA_INDUCEMENT,Reflection triggers nostalgic thoughts about parents based on tombstone inscriptions.,0.8,0.85
+event/69fc07d4,event/9bcafefe,CAUSES,PHYSICAL_SENSATION,"The growl indicates tension, causing physical reactions like chattering teeth.",0.7,0.8
+event/94afe542,event/84f3cf05,CAUSES,COMMUNICATION_BARRIER,Misunderstanding led to a request for clarification about location.,0.7,0.8
+event/eab6f274,event/82943b82,CAUSES,NAMING_CONVENTION,Infant's inability to articulate leads to the simplified name Pip.,0.8,0.9
+event/3f9b04c7,event/59e5b7dd,CAUSES,VIOLENCE_RESOLUTION,Threat of violence caused fear in the narrator.,0.8,0.9
+event/bc68dc0e,event/9aec5747,CAUSES,PHYSICAL_ACTION,Looking for someone prompts physical movement.,0.7,0.8
+event/36835a6e,event/dd3c18c1,CAUSES,PROTECTIVE_INSTINCT,The speaker intervenes to protect the boy from potential harm.,0.8,0.9
+event/2ec5bb04,event/9c1d7e15,CAUSES,BELIEF_DISMISSAL,Philip's belief led to a broader understanding of identity.,0.7,0.8
+event/bd644966,event/12fb476b,CAUSES,PRECEDES,Discovery of the churchyard precedes knowledge of the buried individuals.,0.9,0.95
+event/8d564ae3,event/60b36d7a,CAUSES,HISTORICAL_COMPARISON,The river's appearance contrasts with the beacon's guiding role.,0.7,0.8
+event/2602ce69,event/63151fd5,CAUSES,PHYSICAL_ACTION,The rag suggests prior injury leading to laming by stones.,0.7,0.8
+event/58efa0e2,event/c5c3b1ce,CAUSES,COMMUNICATION_BARRIER,The question indicates a lack of understanding of familial relationships.,0.7,0.8
+event/2c57cf0e,event/edaf32ff,CAUSES,CULTURAL_EDUCATION,Family name influences narrator's understanding of heritage.,0.7,0.8
+event/84f3cf05,event/118e4d85,CAUSES,PHYSICAL_ACTION,Pointing initiates a physical response from the man.,0.7,0.8
+event/50018bce,event/6a2cd365,CAUSES,ANGER_MISPLACEMENT,The man's comment triggered an inappropriate threat response.,0.7,0.8
+event/e04aafb1,event/042951e5,CAUSES,BELIEF_DISMISSAL,The speaker's identification undermines certainty about the other person's fate.,0.7,0.8
+event/3c65d84b,event/276ad22b,CAUSES,EMOTIONAL_TRIGGER,Fearful terms triggered the convict's demands.,0.7,0.8
+event/7f73f462,event/c7e09230,CAUSES,PRECEDES,Locking the door leads to tucking himself up for safety.,0.8,0.9
+event/3f9b04c7,event/9ebc191e,CAUSES,EMOTIONAL_TRIGGER,Threatening violence triggered a giddy emotional response.,0.7,0.8
+event/0221fb11,event/7dc286c0,CAUSES,PHYSICAL_SENSATION,Limping may cause discomfort leading to shivering.,0.7,0.8
+event/84f3cf05,event/a3704144,CAUSES,HISTORICAL_COMPARISON,Describing the village's location in relation to a prior reference.,0.8,0.9
+event/216c6f22,event/c53990a7,CAUSES,PHYSICAL_ACTION,The man's gaze prompts a physical action of searching pockets.,0.8,0.9
+event/b7c9ceef,event/69dd78ca,CAUSES,EMOTIONAL_TRIGGER,The narrator's thoughts evoke a reaction in the cattle.,0.7,0.8
+event/3f09a400,event/a8452911,CAUSES,EMOTIONAL_TRIGGER,The act of holding the tombstone evokes emotional memories related to Philip Pirrip.,0.8,0.75
+event/7debfcbc,event/89677a6c,CAUSES,EMOTIONAL_TRIGGER,Desire to maintain composure triggers emotional restraint.,0.8,0.85
+event/94303c0d,event/3fce1e48,CAUSES,PHYSICAL_ACTION,The character's action prompts Magwitch's physical engagement with Philip.,0.7,0.8
+event/731438db,event/666f0d3e,CAUSES,PHYSICAL_ACTION,The narrator's request led to the man's physical response.,0.8,0.9
+event/bff40d85,event/2737c6a7,CAUSES,EMOTIONAL_TRIGGER,Danger triggered the convict's demand for a file.,0.8,0.85
+event/e70c5870,event/2737c6a7,CAUSES,REQUEST_ACCEPTANCE,The convict's question implies a request for assistance from Philip.,0.7,0.8
+event/8abe8936,event/0b03e175,CAUSES,PHYSICAL_ACTION,"The dead people attempted to physically pull him, leading to his movement.",0.8,0.85
+event/d2e6a9a8,event/c83551a5,CAUSES,EMOTIONAL_TRIGGER,The narrator's action evokes a visual response.,0.7,0.8
+event/bba55582,event/8d975e6d,CAUSES,ENCOURAGES,Reminding prompts action towards getting home.,0.7,0.8
+event/407f38c4,event/6fded52c,CAUSES,EMOTIONAL_TRIGGER,The cold environment triggers a whimsical desire for transformation.,0.7,0.8
+event/1193010b,event/3f09a400,CAUSES,EMOTIONAL_TRIGGER,Desire to eat triggered emotional response related to loss.,0.7,0.8
+event/affbc492,event/84f3cf05,CAUSES,ENABLING,The instruction enabled the action of pointing to the village.,0.8,0.9
+event/5209be2e,event/0467b589,CAUSES,EMOTIONAL_TRIGGER,His action prompted my hesitant explanation.,0.7,0.8
+event/50018bce,event/e82b2130,CAUSES,CONTRASTS,The man's comment highlights Philip's physical appearance versus his actual size.,0.8,0.9
+event/8a46dfd2,event/35541825,CAUSES,COMMUNICATION_BARRIER,The young man's approach may hinder the boy's ability to respond.,0.7,0.8
+event/8a46dfd2,event/dd3c18c1,CAUSES,PROTECTIVE_INSTINCT,The speaker intervenes to protect the boy from potential harm.,0.8,0.9
+event/118e4d85,event/2bc997fd,CAUSES,EMOTIONAL_TRIGGER,The man's action provoked a significant emotional response in the church.,0.7,0.8
+event/5ab8b656,event/dd3c18c1,CAUSES,PREVENTS,The speaker intervenes to stop the young man's violent action.,0.9,0.95
+event/7dc286c0,event/2d3e300d,CAUSES,EMOTIONAL_TRIGGER,Shivering may trigger a glare due to discomfort or anger.,0.7,0.8
+event/1193010b,event/7debfcbc,CAUSES,EMOTIONAL_TRIGGER,Desire to eat triggers thoughts of mortality.,0.7,0.8
+event/fd0dc162,event/666f0d3e,CAUSES,PHYSICAL_ACTION,The convict's action directly caused the dip and roll.,0.9,0.85
+event/c2ff13e7,event/94303c0d,CAUSES,COMMUNICATION_BARRIER,Addressing as 'sir' creates a formal distance affecting perception.,0.7,0.8
+event/3cd49454,event/5e4ffab8,CAUSES,EMOTIONAL_SUPPORT,The speaker's struggle indicates a protective instinct towards the boy.,0.8,0.85
+event/fd0dc162,event/13d15815,CAUSES,PHYSICAL_ACTION,The convict's action prompted the narrator's physical response.,0.8,0.9
+event/02fcebf9,event/57c557ec,CAUSES,COMMUNICATION_BARRIER,The conversation led to a misunderstanding of identity.,0.7,0.8
+event/8d5f4f60,event/8d564ae3,CAUSES,CONTRASTS,Both events describe horizontal lines but differ in nature.,0.8,0.9
+event/cff71c8c,event/360b5d74,CAUSES,EMOTIONAL_TRIGGER,The tombstone description evokes memories affecting the narrator's perception of his mother.,0.7,0.8
+event/e70c5870,event/fe6c6d3d,CAUSES,PHYSICAL_ACTION,The convict's question prompts a physical action towards Philip Pirrip.,0.8,0.85
+event/2ec5bb04,event/fe58aa39,CAUSES,BELIEF_DISMISSAL,Belief about brothers' birth leads to reflection on their deaths.,0.8,0.85
+event/07c1af06,event/37e4eb83,CAUSES,COMMUNICATION_BARRIER,Muttering creates a barrier to clear introduction.,0.7,0.8
+event/6ca43a74,event/bcd46419,CAUSES,EMOTIONAL_TRIGGER,The exclamation likely triggered a response to return.,0.7,0.8
+event/44241451,event/ce64310d,CAUSES,PHYSICAL_ACTION,Limping indicates a physical struggle affecting his movement.,0.8,0.9
+event/09992456,event/9753272e,CAUSES,EMOTIONAL_TRIGGER,Desire to transform triggered a physical response of self-holding.,0.7,0.8
+event/c5c3b1ce,event/c2ff13e7,CAUSES,COMMUNICATION_BARRIER,Different forms of address indicate social distance or hierarchy.,0.7,0.8
+event/2bc997fd,event/e1505ac5,CAUSES,EMOTIONAL_TRIGGER,The church's self-awareness provokes a strong reaction from the man.,0.7,0.8
+event/5e4ffab8,event/02fcebf9,CAUSES,EMOTIONAL_SUPPORT,Providing food fosters connection and encourages conversation.,0.7,0.8
+event/f451ea20,event/07c1af06,CAUSES,COMMUNICATION_BARRIER,Acknowledgment may lead to hesitation in response.,0.7,0.8
+event/58ed203f,event/7973a915,CAUSES,VIOLENCE_RESOLUTION,Threats of violence induce fear in the victim.,0.9,0.95
+event/be611acc,event/36835a6e,CAUSES,PHYSICAL_ACTION,The boy's action of hiding involves a physical movement.,0.8,0.9
+event/c3892b67,event/98f7edf1,CAUSES,PHYSICAL_ACTION,Water exposure leads to mud accumulation on the man.,0.8,0.9
+event/db405121,event/07c1af06,CAUSES,COMMUNICATION_BARRIER,Ambiguity in reference causes confusion in response.,0.7,0.8
+event/c052418a,event/36835a6e,CAUSES,PHYSICAL_ACTION,The boy's warmth prompts him to adjust his clothes.,0.8,0.9
+event/9fca0a5e,event/3fce1e48,CAUSES,EMOTIONAL_TRIGGER,The character's remark triggers Magwitch's emotional response towards Pip.,0.7,0.8
+event/d2681c62,event/0221fb11,CAUSES,PHYSICAL_SENSATION,"Nettle sting caused pain, leading to limping.",0.8,0.9
+event/9a02dd56,event/cff71c8c,CAUSES,EMOTIONAL_TRIGGER,Absence of parents triggers reflection on father's tombstone.,0.8,0.9
+event/960ef67b,event/3cd49454,CAUSES,EMOTIONAL_TRIGGER,The boy's comfort triggers a protective response from the speaker.,0.7,0.8
+event/7dc286c0,event/69fc07d4,CAUSES,EMOTIONAL_TRIGGER,Shivering may trigger a growl as a response to discomfort.,0.7,0.8
+event/99625e27,event/40ba1309,CAUSES,EMOTIONAL_TRIGGER,Terror triggered Philip's plea for help.,0.8,0.9
+event/fd0dc162,event/59e5b7dd,CAUSES,EMOTIONAL_TRIGGER,The convict's actions triggered fear in the narrator.,0.8,0.9
+event/df2e5b1b,event/0cda9890,CAUSES,CRUELTY_PLEASURE,Threatening violence reflects enjoyment in cruelty towards the innocent.,0.8,0.75
+event/7dc286c0,event/9bcafefe,CAUSES,PHYSICAL_SENSATION,Shivering causes teeth to chatter due to cold or fear.,0.8,0.9
+event/0cda9890,event/2602ce69,CAUSES,EMOTIONAL_TRIGGER,The insult triggers a visual description of the man's appearance.,0.7,0.8
+event/5e4ffab8,event/b860cd88,CAUSES,EMOTIONAL_SUPPORT,"Providing food reflects care, prompting a strong emotional reaction.",0.7,0.8
+event/14e9ee75,event/2c1aa49b,CAUSES,CULTURAL_EDUCATION,The lozenges symbolize a cultural practice influencing Philip's beliefs.,0.7,0.8
+event/59e5b7dd,event/13d15815,CAUSES,EMOTIONAL_TRIGGER,Fear triggered a physical response of clinging.,0.8,0.9
+event/6ca43a74,event/90b84c3e,CAUSES,EMOTIONAL_TRIGGER,The exclamation triggered a question about family identity.,0.7,0.8
+event/55f29258,event/5873a1e0,CAUSES,EMOTIONAL_TRIGGER,The discovery of the lair triggers Pip's fear and emotional response.,0.8,0.85
+event/69fc07d4,event/40ba1309,CAUSES,EMOTIONAL_TRIGGER,The man's growl triggered Philip's emotional response to plead.,0.7,0.8
+event/2ec5bb04,event/a04c2b0d,CAUSES,BELIEF_DISMISSAL,"Philip's belief about his brothers evolves, dismissing previous notions.",0.7,0.8
+event/54c163de,event/7973a915,CAUSES,EMOTIONAL_TRIGGER,Hope can trigger fear in response to threats.,0.7,0.6
+event/188b58cb,event/8abe8936,CAUSES,VIOLENCE_RESOLUTION,The dead's actions suggest a struggle or conflict with the living.,0.8,0.85
+event/edaf32ff,event/360b5d74,CAUSES,CULTURAL_EDUCATION,Tombstones inform the narrator's perception of his mother's appearance.,0.7,0.8
+event/5dcd8eb0,event/e70c5870,CAUSES,PHYSICAL_ACTION,Abel's action directly influences Philip's fate.,0.8,0.85
+event/24b3e1f4,event/360b5d74,CAUSES,CONFUSES,Childish conclusion led to a misinterpretation of the mother's appearance.,0.7,0.8
+event/5baab928,event/84f3cf05,CAUSES,COMMUNICATION_BARRIER,The command creates a misunderstanding about the location.,0.7,0.8
+event/54c163de,event/666f0d3e,CAUSES,EMOTIONAL_TRIGGER,Hope led to an enthusiastic physical response.,0.7,0.8
+event/66c1e494,event/14e9ee75,CAUSES,NOSTALGIA_INDUCEMENT,The narrator's memory evokes a sentimental connection to his father.,0.7,0.8
+event/4567cdec,event/5dcd8eb0,CAUSES,PHYSICAL_ACTION,Magwitch's approach leads to physically manipulating Pip's position.,0.8,0.9
+event/fe6c6d3d,event/bff40d85,CAUSES,EMOTIONAL_TRIGGER,Tilting caused Philip to feel threatened.,0.8,0.85
+event/331dfe6d,event/bc68dc0e,CAUSES,PRECEDES,Climbing the wall led to looking back.,0.8,0.85
+event/66c1e494,event/24b3e1f4,CAUSES,CONFUSES,The father's description leads to a misunderstanding about the mother.,0.7,0.8
+event/c5c3b1ce,event/9fca0a5e,CAUSES,COMMUNICATION_BARRIER,The narrator's reference creates a misunderstanding about relationships.,0.7,0.8
+event/2bc997fd,event/79e9f0d0,CAUSES,CULTURAL_EDUCATION,The church's self-awareness influences Philip's perception of his surroundings.,0.7,0.8
+event/30a13607,event/be945dda,CAUSES,EMOTIONAL_TRIGGER,The action of going towards the river triggers a self-hugging response.,0.7,0.8
+event/5d775e1c,event/edaf32ff,CAUSES,CULTURAL_EROSION,Loss of direct connection leads to reliance on symbols.,0.7,0.8
+event/089c8fea,event/c9aaf735,CAUSES,PRECEDES,The short run led to his subsequent stopping.,0.8,0.9
+event/757492c6,event/3b569512,CAUSES,PHYSICAL_SENSATION,Looking over the shoulder indicates awareness of physical discomfort.,0.7,0.8
+event/97af6fc1,event/94fefd04,CAUSES,IDENTITY_CONFLICT,Name revelation creates a conflict in self-identity.,0.8,0.9
+event/35541825,event/ecc6ac02,CAUSES,COMMUNICATION_BARRIER,The speaker's question may hinder clear understanding of the boy's intentions.,0.7,0.8
+event/bba55582,event/57c557ec,CAUSES,EMOTIONAL_TRIGGER,Reminding evokes feelings related to the young man's past actions.,0.7,0.8
+event/97af6fc1,event/2c57cf0e,CAUSES,PRECEDES,Revealing the name precedes the mention of the family name.,0.8,0.9
+event/60b36d7a,event/1468cee0,CAUSES,PERCEPTION_SHIFT,Observation of the beacon altered the narrator's perception of the man's condition.,0.7,0.8
+event/23632289,event/63151fd5,CAUSES,PHYSICAL_DETERIORATION,Broken shoes led to injury from stones.,0.8,0.9
+event/0221fb11,event/2d3e300d,CAUSES,EMOTIONAL_TRIGGER,"The limp may trigger anger or frustration, leading to the glare.",0.7,0.8
+event/3f09a400,event/5209be2e,CAUSES,EMOTIONAL_TRIGGER,"The act of holding tighter indicates emotional distress, prompting a reaction.",0.7,0.8
+event/c53990a7,event/e1505ac5,CAUSES,CRUELTY_PLEASURE,"The man's actions caused distress to Philip, indicating a pleasure in cruelty.",0.8,0.75
+event/07b2e7bd,event/3b826a1c,CAUSES,BELIEF_DISMISSAL,The narrator's belief affected their perception of strength.,0.7,0.8
+event/9753272e,event/44241451,CAUSES,EMOTIONAL_TRIGGER,Emotional distress causes physical manifestation in movement.,0.7,0.8
+event/94303c0d,event/407f38c4,CAUSES,PHYSICAL_SENSATION,The character's leg prompts awareness of the environment.,0.7,0.8
+event/9cc812a8,event/17004f0d,CAUSES,EMOTIONAL_TRIGGER,The man's statement triggered a strong emotional response in the speaker.,0.8,0.85
+event/042951e5,event/60266535,CAUSES,EMOTIONAL_TRIGGER,Uncertainty about fate triggers emotional response in the convict.,0.7,0.8
+event/09992456,event/44241451,CAUSES,EMOTIONAL_TRIGGER,Desire to transform triggered a physical response.,0.7,0.8
+event/3b826a1c,event/9cc812a8,CAUSES,EMOTIONAL_DESPAIR,Weakness leads to desperate thoughts of cannibalism.,0.7,0.8
+event/18a59c8e,event/5baab928,CAUSES,PHYSICAL_ACTION,The man's physical action leads to a verbal command.,0.8,0.9
+event/3c65d84b,event/bb375da7,CAUSES,EMOTIONAL_TRIGGER,Fearful terms trigger the convict's implication of companionship.,0.7,0.8
+event/58efa0e2,event/042951e5,CAUSES,DECISION_MAKING,Inquiry influences uncertainty in decision about the other person.,0.7,0.8
+event/93ebab0e,event/23632289,CAUSES,PHYSICAL_DETERIORATION,Fear may lead to neglect of personal appearance.,0.7,0.8
+event/63151fd5,event/0221fb11,CAUSES,PHYSICAL_DETERIORATION,Laming by stones leads to limping as a physical consequence.,0.9,0.95
+event/2c1aa49b,event/bd644966,CAUSES,BELIEF_DISMISSAL,Philip's belief is contradicted by the narrator's discovery.,0.7,0.8
+event/4e3634d6,event/7533a3ab,CAUSES,EMOTIONAL_DESPAIR,Helplessness led to a submissive response to the convict's demands.,0.8,0.85
+event/2b2a3c3b,event/54c163de,CAUSES,EMOTIONAL_TRIGGER,Hope for health triggers desire for social engagement.,0.8,0.85
+event/9753272e,event/ce64310d,CAUSES,EMOTIONAL_TRIGGER,"His self-clasping indicates emotional distress, prompting his departure.",0.7,0.8
+event/3cd49454,event/35541825,CAUSES,INTERRUPTION_RESPONSE,The speaker's action interrupts the boy's expression.,0.7,0.8
+event/30a13607,event/3b569512,CAUSES,PHYSICAL_ACTION,Walking towards the river involves navigating over stones.,0.8,0.9
+event/53712509,event/07b2e7bd,CAUSES,EMOTIONAL_TRIGGER,Philip's fear triggered a negative perception of the man's appearance.,0.7,0.8
+event/8abe8936,event/bc68dc0e,CAUSES,PHYSICAL_ACTION,The dead people's actions prompted his physical response to turn around.,0.8,0.85
+event/60b36d7a,event/6eb2f929,CAUSES,HUMANITY_QUESTIONING,"The beacon contrasts with the gibbet, prompting reflection on human fate.",0.7,0.8
+event/9ebc191e,event/731438db,CAUSES,EMOTIONAL_TRIGGER,Giddiness prompted the narrator's request for support.,0.7,0.8
+event/4da9306e,event/dd463184,CAUSES,CONFUSES,The narrator's negative perception creates confusion about the man's intentions.,0.7,0.8
+event/94303c0d,event/4567cdec,CAUSES,PHYSICAL_ACTION,The character's action prompts Magwitch's approach.,0.7,0.8
+event/97af6fc1,event/82943b82,CAUSES,NAMING_CONVENTION,Revealing the Christian name leads to the nickname Pip.,0.9,0.95
+event/0221fb11,event/69fc07d4,CAUSES,PHYSICAL_SENSATION,Limping may cause frustration leading to growling.,0.7,0.8
+event/e2511029,event/07b2e7bd,CAUSES,EMOTIONAL_TRIGGER,Ravenous eating may trigger feelings of self-consciousness about weight.,0.7,0.8
+event/7f73f462,event/36835a6e,CAUSES,PHYSICAL_ACTION,Locking the door leads to the action of drawing clothes over his head.,0.7,0.8
+event/d2681c62,event/7dc286c0,CAUSES,PHYSICAL_SENSATION,"Nettle sting causes pain, leading to shivering.",0.8,0.9
+event/57c557ec,event/8d975e6d,CAUSES,EMOTIONAL_TRIGGER,Reminding evokes feelings leading to instruction.,0.7,0.8
+event/9aec5747,event/30a13607,CAUSES,PHYSICAL_ACTION,Using legs enabled movement towards the river.,0.8,0.9
+event/0221fb11,event/9bcafefe,CAUSES,PHYSICAL_SENSATION,Limping may cause physical discomfort leading to chattering teeth.,0.7,0.8
+event/89677a6c,event/c9aaf735,CAUSES,EMOTIONAL_TRIGGER,Desire to suppress emotions led to his cessation.,0.7,0.8
+event/57c557ec,event/407f38c4,CAUSES,EMOTIONAL_TRIGGER,The reminder evokes a reflective emotional response in the listener.,0.7,0.8
+event/94303c0d,event/5dcd8eb0,CAUSES,PHYSICAL_ACTION,The character's action influences Magwitch's physical response.,0.7,0.8
+event/8abe8936,event/85ad6c9f,CAUSES,PREVENTS,The dead people's actions hindered his movement towards home.,0.8,0.85
+event/09992456,event/1adc4771,CAUSES,EMOTIONAL_TRIGGER,The wish to be a frog triggered an emotional response in him.,0.7,0.8
+event/bd644966,event/e2320f43,CAUSES,PRECEDES,Discovery of the churchyard leads to recognizing the river's location.,0.8,0.9
+event/9ebc191e,event/2b2a3c3b,CAUSES,EMOTIONAL_TRIGGER,Giddiness triggered a hopeful response about health.,0.7,0.8
+event/13d15815,event/54c163de,CAUSES,EMOTIONAL_SUPPORT,"Clinging indicates a need for support, leading to hope.",0.7,0.8
+event/2602ce69,event/ce1d9952,CAUSES,PHYSICAL_ACTION,The rag may have been used to protect from injury.,0.7,0.6
+event/7dc286c0,event/18a59c8e,CAUSES,EMOTIONAL_TRIGGER,"The man's shivering indicates fear or anxiety, prompting a physical reaction.",0.7,0.8
+event/66c1e494,event/72a38974,CAUSES,IMAGINARY_CONSTRUCTION,Narrator's perception shapes a fictional memory of his father.,0.7,0.8
+event/50018bce,event/a8452911,CAUSES,COMMUNICATION_BARRIER,The comment created a barrier to discussing Philip's mother.,0.7,0.8
+event/e04aafb1,event/07c1af06,CAUSES,HUMOROUS_REMARK,The phrase suggests a humorous or ironic context.,0.7,0.8
+event/90b84c3e,event/db405121,CAUSES,COMMUNICATION_BARRIER,Misunderstanding in familial relationships creates confusion in communication.,0.7,0.8
+event/276ad22b,event/58ed203f,CAUSES,PRECEDES,The demand led to a threat if not fulfilled.,0.8,0.9
+event/60266535,event/788e9af7,CAUSES,EMOTIONAL_TRIGGER,The convict's gaze evokes a strong emotional response in Philip.,0.8,0.85
+event/60266535,event/4567cdec,CAUSES,EMOTIONAL_TRIGGER,The convict's gaze evokes a response related to Magwitch's connection to Pip.,0.7,0.8
+event/e1505ac5,event/e2511029,CAUSES,EMOTIONAL_TRIGGER,The man's actions likely triggered a strong emotional response in Philip.,0.7,0.8
+event/db6c4794,event/cff71c8c,CAUSES,NOSTALGIA_INDUCEMENT,Reflection triggers memories of parental perceptions linked to loss.,0.8,0.85
+event/c9aaf735,event/0467b589,CAUSES,EMOTIONAL_TRIGGER,His stopping triggered my timid explanation.,0.7,0.8
+event/eab6f274,event/94fefd04,CAUSES,NAMING_CONVENTION,The infant tongue's limitation led to the simplified name Pip.,0.8,0.9
+event/9a02dd56,event/db6c4794,CAUSES,EMOTIONAL_TRIGGER,Absence of parents triggers reflections on their imagined qualities.,0.8,0.9
+event/bba55582,event/09992456,CAUSES,EMOTIONAL_TRIGGER,Reminding triggered a whimsical desire for transformation.,0.7,0.8
+event/85ad6c9f,event/be945dda,CAUSES,EMOTIONAL_CONTAGION,"The act of returning home evokes a sense of comfort, affecting his emotional state.",0.7,0.8
+event/2c57cf0e,event/9a02dd56,CAUSES,IDENTITY_CONFLICT,The father's name creates a conflict in the narrator's identity.,0.7,0.8
+event/44241451,event/188b58cb,CAUSES,EMOTIONAL_TRIGGER,"The limping suggests pain, triggering a haunting emotional response.",0.7,0.8
+event/bc68dc0e,event/30a13607,CAUSES,PRECEDES,Looking for someone typically occurs before continuing on a path.,0.8,0.85
+event/eab6f274,event/2c57cf0e,CAUSES,NARRATIVE_COMPOSITE,Narrator's limited language shapes the naming of Pirrip.,0.8,0.9
+event/9cc812a8,event/3f09a400,CAUSES,EMOTIONAL_TRIGGER,The man's thought provokes a strong emotional response in the speaker.,0.7,0.8
+event/3cd49454,event/ecc6ac02,CAUSES,PHYSICAL_ACTION,The speaker's struggle indicates a physical confrontation affecting future actions.,0.8,0.75
+event/07c1af06,event/58efa0e2,CAUSES,COMMUNICATION_BARRIER,Muttering creates confusion about the question asked.,0.7,0.8
+event/72a38974,event/2ec5bb04,CAUSES,CULTURAL_EDUCATION,Philip's belief is shaped by the sacred memory of his brothers.,0.8,0.9
+event/fa613bc2,event/02fcebf9,CAUSES,ENCOURAGES,The promise to provide the file prompted further discussion.,0.7,0.8
+event/9c1d7e15,event/71181368,CAUSES,PERCEPTION_SHIFT,Narrator's impression shifted to a clearer understanding of the marshes.,0.8,0.9
+event/788e9af7,event/fe6c6d3d,CAUSES,PHYSICAL_ACTION,Magwitch's gaze prompts a physical response from Pirrip.,0.8,0.9
+event/a04c2b0d,event/9c1d7e15,CAUSES,BELIEF_DISMISSAL,Dismissal of belief leads to broader understanding.,0.7,0.8
+event/331dfe6d,event/757492c6,CAUSES,PHYSICAL_ACTION,Jumping over the wall prompts a glance back.,0.7,0.8
+event/85f186c8,event/58efa0e2,CAUSES,EMOTIONAL_TRIGGER,"Looking over the shoulder indicates concern, prompting the question.",0.7,0.8
+event/ce64310d,event/188b58cb,CAUSES,HUMANITY_QUESTIONING,The act of leaving prompts reflection on mortality and existence.,0.7,0.8
+event/17f42de1,event/94afe542,CAUSES,REQUEST_ACCEPTANCE,The man's stare prompts a request for information.,0.7,0.8
+event/c9aaf735,event/6ca43a74,CAUSES,EMOTIONAL_TRIGGER,Stopping prompted an emotional reaction leading to the exclamation.,0.7,0.8
+event/360b5d74,event/14e9ee75,CAUSES,EMOTIONAL_TRIGGER,The narrator's perception evokes feelings related to loss and mourning.,0.8,0.85
+event/44241451,event/f6ee76a9,CAUSES,EMOTIONAL_TRIGGER,"The limp suggests vulnerability, triggering emotional responses in the observer.",0.7,0.8
+event/188b58cb,event/bc68dc0e,CAUSES,EMOTIONAL_TRIGGER,The sight of the dead triggers a reaction in him.,0.8,0.75
+event/bb375da7,event/be611acc,CAUSES,PRECEDES,The convict's implication leads to the boy's attempt to hide.,0.8,0.85
+event/17004f0d,event/3f09a400,CAUSES,EMOTIONAL_TRIGGER,Hope expression triggered a strong emotional response.,0.8,0.85
+event/36835a6e,event/5ab8b656,CAUSES,VIOLENCE_RESOLUTION,The boy's action triggers a violent response from the young man.,0.8,0.85
+event/fa613bc2,event/b860cd88,CAUSES,EMOTIONAL_TRIGGER,The promise triggered a strong emotional response from the man.,0.8,0.75
+event/39ea1a89,event/e70c5870,CAUSES,EMOTIONAL_TRIGGER,The convict's question provokes a life-or-death contemplation for Philip.,0.8,0.85
+event/9fca0a5e,event/94303c0d,CAUSES,CONFUSES,The remark creates confusion about the character's identity or status.,0.7,0.8
+event/3b569512,event/03392695,CAUSES,EMOTIONAL_TRIGGER,Physical discomfort evokes a strong emotional response to the sky's appearance.,0.7,0.8
+event/dd3c18c1,event/35541825,CAUSES,PREVENTS,"The speaker prevents harm, allowing for communication.",0.8,0.9
+event/17004f0d,event/7debfcbc,CAUSES,EMOTIONAL_APOLOGY,Expressing hope indicates a desire for reconciliation.,0.7,0.8
+event/ce64310d,event/f6ee76a9,CAUSES,EMOTIONAL_TRIGGER,His departure evokes a sense of loss and fear of mortality.,0.8,0.85
+event/5e4ffab8,event/bba55582,CAUSES,EMOTIONAL_SUPPORT,Providing food symbolizes care and support for the listener's journey.,0.7,0.8
+event/216c6f22,event/2bc997fd,CAUSES,EMOTIONAL_TRIGGER,The man's gaze evokes a realization in the church.,0.7,0.8
+event/bff40d85,event/7533a3ab,CAUSES,EMOTIONAL_TRIGGER,Danger triggered a response leading to the convict's demand.,0.8,0.85
+event/13d15815,event/731438db,CAUSES,PHYSICAL_ACTION,Clinging indicates a physical action to maintain balance.,0.8,0.9
+event/e04aafb1,event/2e082757,CAUSES,CONFUSES,The identification may lead to confusion about the person's status.,0.7,0.8
+event/9aec5747,event/757492c6,CAUSES,PHYSICAL_ACTION,Using legs enabled the action of looking over the shoulder.,0.8,0.9
+event/57c557ec,event/6fded52c,CAUSES,IDENTITY_CONFLICT,The listener's reminder triggers a desire for transformation.,0.7,0.8
+event/5dcd8eb0,event/faab2d4c,CAUSES,PHYSICAL_ACTION,Abel's action causes Philip to feel helpless.,0.8,0.9
+event/30a13607,event/d2e6a9a8,CAUSES,PRECEDES,Event A occurs before Event B as a reaction.,0.8,0.9
+event/18a59c8e,event/17f42de1,CAUSES,PHYSICAL_ACTION,The man's action of seizing leads to his subsequent stare.,0.8,0.9
+event/7533a3ab,event/9ebc191e,CAUSES,EMOTIONAL_TRIGGER,The convict's demand triggered a giddy emotional response in the narrator.,0.7,0.8
+event/58ed203f,event/bb375da7,CAUSES,VIOLENCE_RESOLUTION,Threat of violence leads to revealing information about accomplices.,0.8,0.9
+event/c052418a,event/960ef67b,CAUSES,EMOTIONAL_SUPPORT,Warmth in bed fosters feelings of comfort and safety.,0.8,0.9
+event/dd463184,event/e805c584,CAUSES,IMAGINARY_CONSTRUCTION,Narrator's imagination influences thoughts about the young man.,0.7,0.8
+event/71181368,event/5873a1e0,CAUSES,EMOTIONAL_TRIGGER,The discovery of the marshes triggered Pip's fear and emotional response.,0.8,0.9
+event/2bc997fd,event/f9f36d18,CAUSES,CULTURAL_EDUCATION,The church's self-awareness influences community identity and individual positioning.,0.7,0.8
+event/1468cee0,event/dd463184,CAUSES,CONFUSES,The narrator's perception leads to a misunderstanding of the man's intentions.,0.7,0.8
+event/24b3e1f4,event/2ec5bb04,CAUSES,CONFUSES,Childish conclusions lead to misunderstandings about family origins.,0.7,0.8
+event/ecc6ac02,event/02fcebf9,CAUSES,ENCOURAGES,Event A prompts Event B through initiation of dialogue.,0.7,0.8
+event/2ec5bb04,event/2c1aa49b,CAUSES,BELIEF_DISMISSAL,Philip dismisses the belief about his brothers' existence.,0.8,0.9
+event/5dcd8eb0,event/788e9af7,CAUSES,PHYSICAL_ACTION,Magwitch's action directly influences his gaze towards Pip.,0.8,0.9
+event/85f186c8,event/6ca43a74,CAUSES,EMOTIONAL_TRIGGER,Looking over his shoulder triggered a surprise reaction.,0.8,0.9
+event/44241451,event/8abe8936,CAUSES,PHYSICAL_BLOCKAGE,The limping indicates a physical struggle against being pulled.,0.8,0.85
+event/be945dda,event/3b569512,CAUSES,EMOTIONAL_CONTAGION,The act of hugging oneself suggests emotional distress affecting physical movement.,0.7,0.8
+event/66c1e494,event/360b5d74,CAUSES,IDENTITY_CONFLICT,Conflicting perceptions of parental figures create identity confusion.,0.7,0.8
+event/c9aaf735,event/2f7ecbf2,CAUSES,EMOTIONAL_CONFESSION,Stopping prompted a personal revelation about familial connection.,0.7,0.8
+event/36835a6e,event/8a46dfd2,CAUSES,EMOTIONAL_TRIGGER,The boy's action triggers a protective instinct in the young man.,0.7,0.8
+event/788e9af7,event/39ea1a89,CAUSES,EMOTIONAL_TRIGGER,Magwitch's gaze evokes a response in Pip regarding the file.,0.7,0.8
+event/d2e6a9a8,event/6eb2f929,CAUSES,EMOTIONAL_TRIGGER,The narrator's action triggers a reflection on the gibbet.,0.7,0.8
+event/bcd46419,event/90b84c3e,CAUSES,EMOTIONAL_CONFESSION,His return prompts a personal inquiry about family.,0.7,0.8
+event/8a46dfd2,event/5ab8b656,CAUSES,CRUELTY_PLEASURE,The young man's initial approach leads to a violent act.,0.8,0.9
+event/13d15815,event/2b2a3c3b,CAUSES,EMOTIONAL_SUPPORT,Clinging indicates a need for support during illness.,0.7,0.8
+event/e1505ac5,event/53712509,CAUSES,EMOTIONAL_TRIGGER,The man's actions triggered Philip's fear and anxiety.,0.8,0.85
+event/d2681c62,event/2d3e300d,CAUSES,EMOTIONAL_TRIGGER,The sting caused an immediate emotional response of anger.,0.8,0.9
+event/7973a915,event/be611acc,CAUSES,EMOTIONAL_TRIGGER,Fear triggers the boy's instinct to hide.,0.8,0.85
+event/c5c3b1ce,event/60266535,CAUSES,IDENTITY_CONFLICT,Narrator's familial reference contrasts with convict's perception of Philip.,0.7,0.8
+event/3fce1e48,event/faab2d4c,CAUSES,EMOTIONAL_TRIGGER,Magwitch's grip evokes a strong emotional response in Pip.,0.8,0.9
+event/71181368,event/affe10b0,CAUSES,PRECEDES,The discovery of the marshes leads to the man's emergence from the graves.,0.8,0.85
+event/a8452911,event/089c8fea,CAUSES,PRECEDES,The question prompted the man's immediate action.,0.8,0.85
+event/faab2d4c,event/39ea1a89,CAUSES,EMOTIONAL_TRIGGER,Abel Magwitch's gaze evokes a response in Philip Pirrip.,0.7,0.8
+event/84f3cf05,event/216c6f22,CAUSES,COMMUNICATION_BARRIER,Pointing indicates a lack of verbal clarity.,0.7,0.8
+event/ecc6ac02,event/b860cd88,CAUSES,EMOTIONAL_TRIGGER,The visit prompts a strong emotional reaction from the man.,0.7,0.8
+event/ce64310d,event/8abe8936,CAUSES,EMOTIONAL_TRIGGER,The sight of danger evokes fear and urgency.,0.8,0.85
+event/60b36d7a,event/4da9306e,CAUSES,CONTRASTS,The narrator's perception of the beacon changes with proximity.,0.8,0.9
+event/8d975e6d,event/1adc4771,CAUSES,EMOTIONAL_SUPPORT,The instruction to go home leads to a comforting embrace.,0.8,0.85
+event/0b03e175,event/bc68dc0e,CAUSES,PRECEDES,Event A occurs before Event B as a physical action.,0.8,0.9
+event/3fce1e48,event/788e9af7,CAUSES,EMOTIONAL_TRIGGER,Magwitch's grip evokes a strong emotional response in Pip.,0.8,0.9
+event/ecc6ac02,event/ce64310d,CAUSES,PRECEDES,Event A occurs before Event B in the narrative.,0.9,0.95
+event/5baab928,event/affbc492,CAUSES,DECISION_MAKING,The command influences Philip's decision to indicate a location.,0.8,0.85
+event/94fefd04,event/2c57cf0e,CAUSES,IDENTITY_CONFLICT,Pip's self-identification conflicts with his family heritage.,0.8,0.9
+event/216c6f22,event/118e4d85,CAUSES,PHYSICAL_ACTION,The man's gaze prompts a physical reaction towards Philip.,0.7,0.8
+event/c2ff13e7,event/faab2d4c,CAUSES,COMMUNICATION_BARRIER,Addressing as 'sir' creates a formal distance in their interaction.,0.7,0.8
+event/2f7ecbf2,event/6ca43a74,CAUSES,SURPRISE,The reference triggered an unexpected reaction.,0.8,0.9
+event/ce64310d,event/0b03e175,CAUSES,PRECEDES,Event A occurs before Event B in the sequence.,0.9,0.95
+event/c2ff13e7,event/60266535,CAUSES,COMMUNICATION_BARRIER,Addressing as 'sir' creates a distance and misunderstanding.,0.7,0.8
+event/e2320f43,event/8b36d780,CAUSES,EMOTIONAL_TRIGGER,The discovery evokes a strong emotional response in the man.,0.8,0.75
+event/be611acc,event/7f73f462,CAUSES,PHYSICAL_ACTION,Hiding prompts the boy to secure his space.,0.8,0.9
+event/98f7edf1,event/63151fd5,CAUSES,PHYSICAL_BLOCKAGE,"Mud obstructed movement, leading to injury from stones.",0.8,0.75
+event/bc68dc0e,event/757492c6,CAUSES,PRECEDES,His action of turning prompted my glance over my shoulder.,0.8,0.9
+event/9cc812a8,event/a8452911,CAUSES,HUMOROUS_REMARK,The man's statement suggests a humorous intent before asking about the mother.,0.7,0.8
+event/faab2d4c,event/4e3634d6,CAUSES,EMOTIONAL_CONTAGION,Abel Magwitch's gaze triggers Philip's feelings of helplessness.,0.8,0.9
+event/edaf32ff,event/cff71c8c,CAUSES,CULTURAL_EDUCATION,Tombstones provide insights into family history and identity.,0.8,0.9
+event/e805c584,event/77322920,CAUSES,EMOTIONAL_TRIGGER,The narrator's thoughts about the young man triggered fear.,0.8,0.85
+event/a8452911,event/5209be2e,CAUSES,COMMUNICATION_BARRIER,The man's question creates confusion about Philip's situation.,0.7,0.8
+event/db6c4794,event/66c1e494,CAUSES,NOSTALGIA_INDUCEMENT,Reflection triggers nostalgic memories of parental perceptions.,0.8,0.85
+event/affe10b0,event/0cda9890,CAUSES,EMOTIONAL_TRIGGER,The man's sudden appearance startled and provoked a reaction in Philip.,0.7,0.8
+event/43cb0672,event/b7c9ceef,CAUSES,CONFUSES,The narrator's perception of the man leads to confusion about his identity.,0.7,0.8
+event/c0336df5,event/77322920,CAUSES,EMOTIONAL_TRIGGER,The young man's absence triggers the narrator's fear.,0.8,0.85
+event/17004f0d,event/a8452911,CAUSES,COMMUNICATION_BARRIER,Hope expression failed to clarify the man's inquiry.,0.7,0.8
+event/93ebab0e,event/c5d5a034,CAUSES,CONTRASTS,The man's appearance contrasts with the absence of a hat.,0.7,0.8
+event/0b2a11b0,event/9fca0a5e,CAUSES,COMMUNICATION_BARRIER,"Joe's identity as a blacksmith is questioned, indicating a misunderstanding.",0.7,0.8
+event/43cb0672,event/69dd78ca,CAUSES,EMOTIONAL_TRIGGER,The narrator's belief triggers a reaction in the cattle.,0.7,0.8
+event/69dd78ca,event/e805c584,CAUSES,EMOTIONAL_TRIGGER,The cattle's gaze triggers the narrator's contemplation.,0.7,0.8
+event/07c1af06,event/042951e5,CAUSES,EMOTIONAL_TRIGGER,"Muttering suggests uncertainty, triggering implications about decision-making.",0.7,0.8
+event/94fefd04,event/82943b82,CAUSES,NAMING_CONVENTION,Self-identification leads to public recognition.,0.8,0.9
+event/360b5d74,event/72a38974,CAUSES,NOSTALGIA_INDUCEMENT,The mother's condition evokes memories of lost siblings.,0.7,0.8
+event/60266535,event/3fce1e48,CAUSES,EMOTIONAL_TRIGGER,The convict's dark look triggers Magwitch's action towards Pip.,0.7,0.8
+event/fe58aa39,event/9c1d7e15,CAUSES,EMOTIONAL_TRIGGER,Reflection on loss triggers deeper understanding of identity.,0.7,0.8
+event/07b2e7bd,event/e82b2130,CAUSES,BELIEF_DISMISSAL,The narrator's belief conflicts with their physical reality.,0.8,0.9
+event/ee204a52,event/11475679,CAUSES,EMOTIONAL_TRIGGER,Fear of the young man triggered the narrator's urgent escape.,0.8,0.9
+event/85ad6c9f,event/9aec5747,CAUSES,PHYSICAL_ACTION,Moving towards home involves using one's legs effectively.,0.8,0.9
+event/53712509,event/533c1bc6,CAUSES,EMOTIONAL_TRIGGER,Philip's fear triggers the man's ravenous behavior.,0.7,0.8
+event/fe58aa39,event/12fb476b,CAUSES,EMOTIONAL_TRIGGER,Philip's reflection triggers emotions related to loss and mortality.,0.8,0.85
+event/bb375da7,event/b860cd88,CAUSES,EMOTIONAL_TRIGGER,The convict's implication provokes a strong emotional response in the man.,0.7,0.8
+event/bb375da7,event/2895b0d9,CAUSES,CONFLICT_OF_INTEREST,The convict's implication suggests a shared motive with the young man.,0.7,0.8
+event/5d775e1c,event/cff71c8c,CAUSES,HUMANITY_QUESTIONING,The narrator reflects on identity through the absence of likeness.,0.7,0.8
+event/0b2a11b0,event/c5c3b1ce,CAUSES,IDENTITY_CONFLICT,Joe's role as husband contrasts with Mrs. Joe's identity as sister.,0.7,0.8
+event/85f186c8,event/bcd46419,CAUSES,PRECEDES,Looking over his shoulder indicates awareness before returning.,0.8,0.85
+event/c53990a7,event/50018bce,CAUSES,CRUELTY_PLEASURE,The man's action reflects a cruel enjoyment in mocking Philip.,0.8,0.9
+event/8d564ae3,event/c83551a5,CAUSES,CONTRASTS,The river's line contrasts with the distinct black objects.,0.8,0.85
+event/757492c6,event/be945dda,CAUSES,EMOTIONAL_TRIGGER,Looking over the shoulder triggers emotional response in the other person.,0.7,0.8

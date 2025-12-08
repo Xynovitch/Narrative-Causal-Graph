@@ -61,10 +61,10 @@ def build_jsonld(
     # Event → Event (causal)
     for link in causal_links:
         g.append({
-            "@id": f"{link.cause_id}__CAUSES__{link.effect_id}",
+            "@id": f"{link.source_event_id}__CAUSES__{link.target_event_id}",
             "type": "CausalEdge",
-            "from": link.cause_id,
-            "to": link.effect_id,
+            "from": link.source_event_id,
+            "to": link.target_event_id,
             "relationType": link.relation_type,
             "mechanism": link.mechanism,
             "weight": link.weight,
@@ -99,9 +99,7 @@ def export_neo4j_cypher(
     nodes: List[GenericNode],
     relationships: List[GenericRelationship]
 ):
-    """
-    Export a generic graph to a Neo4j Cypher script.
-    """
+    """Export a generic graph to a Neo4j Cypher script."""
     
     base_path, _ = os.path.splitext(path)
     path = base_path + ".txt"
@@ -166,15 +164,20 @@ def export_csv(
     causal_links: List[CausalLink],
     semantic_links: Optional[List[SemanticLink]] = None,
     scenes: Optional[List[Scene]] = None,
-    graph_model: str = "star" # <--- Controls edge suppression
+    graph_model: str = "star"
 ) -> Dict[str, str]:
-    """Export DUAL FLOW structure to Neo4j CSV format"""
+    """
+    Export DUAL FLOW structure to Neo4j CSV format.
+    Now supports conditional edge generation based on graph_model.
+    """
     os.makedirs(out_dir, exist_ok=True)
     
     if semantic_links is None:
         semantic_links = []
     if scenes is None:
         scenes = []
+    
+    print(f"[export] Exporting CSVs (graph_model: {graph_model})...")
     
     # Collect unique entities
     entities_by_type = defaultdict(dict)
@@ -186,8 +189,8 @@ def export_csv(
     for ev in events:
         events_rows.append({
             ":ID": ev.id,
-            "name": ev.raw_description, # Updated to match Schema
-            "event_category": ev.event_category, # Updated to match Schema
+            "name": ev.raw_description,
+            "event_category": ev.event_category,
             "actionType": ev.action_type,
             "source_quote": ev.source_quote,
             "confidence": ev.confidence,
@@ -203,13 +206,15 @@ def export_csv(
     all_agents.update(entities_by_type.get("patient", {}))
     agent_rows = [{":ID": aid, "name": name} for aid, name in all_agents.items()]
     
-    # Place nodes (Should be empty if Place nodes are removed, but kept for compatibility)
-    place_rows = [{":ID": pid, "name": name} for pid, name in entities_by_type.get("place", {}).items()]
+    # Place nodes (kept for compatibility, but typically empty)
+    place_rows = [{":ID": pid, "name": name} 
+                  for pid, name in entities_by_type.get("place", {}).items()]
     
     # WhyFactor nodes
-    whyfactor_rows = [{":ID": wid, "factor": name} for wid, name in entities_by_type.get("whyfactor", {}).items()]
+    whyfactor_rows = [{":ID": wid, "factor": name} 
+                      for wid, name in entities_by_type.get("whyfactor", {}).items()]
     
-    # --- EDGE GENERATION (CONDITIONAL) ---
+    # --- CONDITIONAL EDGE GENERATION BASED ON GRAPH MODEL ---
     produces_actor_rows = []
     produces_patient_rows = []
     produces_motivation_rows = []
@@ -299,7 +304,7 @@ def export_csv(
         "confidence": link.confidence
     } for link in causal_links]
     
-    # Scenes
+    # Scene nodes (NEW)
     scene_nodes_rows = [{
         ":ID": scene.id,
         "theme": scene.theme,
@@ -307,6 +312,7 @@ def export_csv(
         "confidence": scene.confidence
     } for scene in scenes]
     
+    # Scene -> Event edges (NEW)
     scene_includes_rows = []
     for scene in scenes:
         for event_id in scene.included_event_ids:
@@ -316,7 +322,7 @@ def export_csv(
                 ":TYPE": "INCLUDES"
             })
             
-    # Semantic Links
+    # Semantic Links (NEW)
     semantic_link_rows = []
     for link in semantic_links:
         for source_id in link.source_event_ids:
@@ -325,7 +331,7 @@ def export_csv(
                     ":START_ID": source_id,
                     ":END_ID": target_id,
                     ":TYPE": link.relation.upper(),
-                    "cue": str(link.cue),
+                    "cue": str(link.cue) if link.cue else "",
                     "confidence": link.confidence
                 })
 
@@ -367,7 +373,6 @@ def export_csv(
 
     out_paths = {}
     for fname, rows in files.items():
-        # Always verify we have rows before writing, otherwise write empty
         path = os.path.join(out_dir, fname)
         _write_csv(rows, path)
         if rows:
