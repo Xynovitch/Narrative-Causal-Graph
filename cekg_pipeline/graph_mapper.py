@@ -114,9 +114,12 @@ def map_to_generic_graph(
                     "id": scene.id,
                     "theme": scene.theme,
                     "chapter": scene.chapter,
-                    "confidence": scene.confidence
+                    "confidence": scene.confidence,
+                    "location": scene.primary_location or "",
+                    "time": scene.time_period or ""
                 })
             )
+        
         # Scene -> Event Relationships
         for event_id in scene.included_event_ids:
             if event_id in nodes:
@@ -124,6 +127,22 @@ def map_to_generic_graph(
                     start_node_uid=scene.id,
                     end_node_uid=event_id,
                     rel_type="INCLUDES",
+                    properties={}
+                ))
+        
+        # FIX: Create Scene -> Agent Relationships
+        # This makes agents "part of" the scene rather than just mentioned in properties
+        for participant_name in scene.participants:
+            # Find the canonical agent ID for this participant
+            safe_name = _sanitize_name_for_id(participant_name)
+            agent_uid = f"agent_{safe_name}"
+            
+            # Only create relationship if the agent node exists
+            if agent_uid in nodes:
+                relationships.append(schemas.GenericRelationship(
+                    start_node_uid=scene.id,
+                    end_node_uid=agent_uid,
+                    rel_type="HAS_PARTICIPANT",
                     properties={}
                 ))
 

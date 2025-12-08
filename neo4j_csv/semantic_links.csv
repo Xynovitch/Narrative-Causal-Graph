@@ -1,504 +1,507 @@
 :START_ID,:END_ID,:TYPE,cue,confidence
-event/900dd2c7,event/97af6fc1,CONTRAST,"['revealed', 'name']",0.85
-event/900dd2c7,event/eab6f274,EXPLANATION,"['revealed', 'infant tongue', 'names', 'Pip']",0.85
-event/97af6fc1,event/eab6f274,EXPLANATION,"['revealed', 'infant tongue', 'make of', 'nothing longer or more explicit']",0.85
-event/900dd2c7,event/94fefd04,EXPLANATION,"['revealed', 'called']",0.85
-event/97af6fc1,event/94fefd04,CONTRAST,"['Christian name', 'called himself']",0.85
-event/eab6f274,event/94fefd04,EXPLANATION,"['infant tongue', 'make of', 'called himself']",0.85
-event/900dd2c7,event/82943b82,EXPLANATION,"['revealed', 'called']",0.85
-event/97af6fc1,event/82943b82,CONTRAST,"['revealed', 'called']",0.85
-event/eab6f274,event/82943b82,EXPLANATION,"['could make of', 'came to be called']",0.85
-event/94fefd04,event/82943b82,EXPLANATION,"['called', 'came to be called']",0.85
-event/97af6fc1,event/2c57cf0e,CONTRAST,"['revealed', 'gives', 'family name']",0.85
-event/eab6f274,event/2c57cf0e,EXPLANATION,"['infant tongue', 'names', 'Pip', 'Pirrip', ""father's family name""]",0.85
-event/94fefd04,event/2c57cf0e,EXPLANATION,"['called himself', 'gives', 'family name']",0.85
-event/82943b82,event/2c57cf0e,EXPLANATION,"['called', 'gives', 'family name']",0.85
-event/eab6f274,event/9a02dd56,CONTRAST,"['never saw', 'nothing longer or more explicit']",0.85
-event/94fefd04,event/9a02dd56,CONTRAST,"['never saw', 'called himself']",0.85
-event/82943b82,event/9a02dd56,CONTRAST,"['never saw', 'called']",0.8
-event/2c57cf0e,event/9a02dd56,CONTRAST,"['never saw', 'father', 'family name']",0.85
-event/94fefd04,event/5d775e1c,CONTRAST,"['never saw', 'likeness', 'either of them']",0.85
-event/82943b82,event/5d775e1c,CONTRAST,"['never saw', 'likeness']",0.85
-event/2c57cf0e,event/5d775e1c,CONTRAST,"['never saw', 'likeness']",0.85
-event/9a02dd56,event/5d775e1c,EXPLANATION,"['never saw', 'likeness']",0.85
-event/82943b82,event/db6c4794,EXPLANATION,"['reflects', 'first fancies', 'what his parents were like']",0.85
-event/2c57cf0e,event/db6c4794,CONTRAST,"['reflects', 'first fancies', 'parents']",0.75
-event/9a02dd56,event/db6c4794,CONTRAST,"['never saw', 'reflects', 'first fancies']",0.85
-event/5d775e1c,event/db6c4794,CONTRAST,"['never saw', 'reflects', 'first fancies', 'what his parents were like']",0.85
-event/2c57cf0e,event/edaf32ff,CONTRAST,"['gives', 'derives', 'fancies', 'tombstones']",0.85
-event/9a02dd56,event/edaf32ff,EXPLANATION,"['derive', 'fancies', 'tombstones']",0.85
-event/5d775e1c,event/edaf32ff,CONTRAST,"['never saw', 'derives', 'fancies', 'tombstones']",0.85
-event/db6c4794,event/edaf32ff,EXPLANATION,"['reflects', 'derives', 'fancies', 'parents', 'tombstones']",0.85
-event/9a02dd56,event/cff71c8c,CONTRAST,"['never saw', 'describes', 'tombstone']",0.85
-event/5d775e1c,event/cff71c8c,CONTRAST,"['never saw', 'describes', 'tombstone']",0.85
-event/db6c4794,event/cff71c8c,CONTRAST,"['reflects', 'describes']",0.75
-event/edaf32ff,event/cff71c8c,EXPLANATION,"['derives', 'describes', 'tombstones']",0.85
-event/5d775e1c,event/66c1e494,CONTRAST,"['never saw', 'odd idea', 'square, stout, dark man']",0.85
-event/db6c4794,event/66c1e494,EXPLANATION,"['reflects', 'fancies', 'idea']",0.85
-event/edaf32ff,event/66c1e494,CONTRAST,"['odd idea', 'fancies', 'tombstones']",0.85
-event/cff71c8c,event/66c1e494,CONTRAST,"['odd idea', 'square', 'stout', 'dark man']",0.85
-event/db6c4794,event/24b3e1f4,EXPLANATION,"['reflects', 'conclusion', 'fancies']",0.85
-event/edaf32ff,event/24b3e1f4,CONTRAST,"['derive', 'childish conclusion']",0.8
-event/cff71c8c,event/24b3e1f4,CONTRAST,"['describes', 'conclusion', 'childish']",0.8
-event/66c1e494,event/24b3e1f4,CONTRAST,"['odd idea', 'childish conclusion']",0.85
-event/edaf32ff,event/360b5d74,CONTRAST,"['derived', 'perceived', 'freckled', 'sickly']",0.85
-event/cff71c8c,event/360b5d74,CONTRAST,"['describes', 'perceived', 'freckled', 'sickly']",0.85
-event/66c1e494,event/360b5d74,CONTRAST,"['odd idea', 'perceived', 'freckled', 'sickly']",0.85
-event/24b3e1f4,event/360b5d74,CONTRAST,"['childish conclusion', 'freckled and sickly']",0.85
-event/24b3e1f4,event/14e9ee75,CONTRAST,"['childish conclusion', 'neat row', 'grave']",0.75
-event/360b5d74,event/14e9ee75,CONTRAST,"['freckled', 'sickly', 'grave']",0.85
-event/24b3e1f4,event/72a38974,CONTRAST,"['childish conclusion', 'sacred', 'memory']",0.75
-event/14e9ee75,event/72a38974,EXPLANATION,"['sacred', 'memory']",0.85
-event/24b3e1f4,event/2ec5bb04,CONTRAST,"['childish conclusion', 'believed', 'brothers', 'born on their backs']",0.75
-event/72a38974,event/2ec5bb04,CONTRAST,"['sacred', 'memory', 'believed', 'born on their backs']",0.85
-event/72a38974,event/a04c2b0d,CONTRAST,"['sacred', 'believed', 'hands in their trousers-pockets']",0.85
-event/2ec5bb04,event/a04c2b0d,CONTRAST,"['believed', 'hands in their trousers-pockets']",0.75
-event/14e9ee75,event/2c1aa49b,CONTRAST,"['beside the grave', 'believed', 'never taken their hands out']",0.75
-event/72a38974,event/2c1aa49b,EXPLANATION,"['sacred', 'memory', 'believed', 'never taken their hands out']",0.85
-event/2ec5bb04,event/2c1aa49b,CONTRAST,"['believed', 'never', 'all', 'in this state of existence']",0.85
-event/a04c2b0d,event/2c1aa49b,CONTRAST,"['believed', 'never', 'in this state of existence']",0.85
-event/72a38974,event/fe58aa39,CONTRAST,"['sacred', 'reflected', 'early death']",0.85
-event/2ec5bb04,event/fe58aa39,CONTRAST,"['believed', 'reflected', 'early death']",0.85
-event/a04c2b0d,event/fe58aa39,CONTRAST,"['believed', 'reflected', 'early death']",0.85
-event/2c1aa49b,event/fe58aa39,CONTRAST,"['believed', 'reflected', 'early death']",0.85
-event/a04c2b0d,event/9c1d7e15,CONTRAST,"['believed', 'impression']",0.75
-event/2c1aa49b,event/9c1d7e15,CONTRAST,"['believed', 'impression']",0.75
-event/fe58aa39,event/9c1d7e15,CONTRAST,"['reflected', 'early death', 'gained', 'vivid', 'broad impression']",0.75
-event/a04c2b0d,event/bd644966,CONTRAST,"['believed', 'found out', 'bleak', 'overgrown']",0.75
-event/2c1aa49b,event/bd644966,CONTRAST,"['believed', 'found out', 'bleak place', 'churchyard']",0.85
-event/fe58aa39,event/bd644966,CONTRAST,"['reflected', 'bleak', 'overgrown', 'churchyard']",0.75
-event/9c1d7e15,event/bd644966,CONTRAST,"['gained a vivid and broad impression', 'bleak place', 'overgrown with nettles']",0.85
-event/2c1aa49b,event/12fb476b,CONTRAST,"['believed', 'found out', 'dead and buried']",0.85
-event/fe58aa39,event/12fb476b,CONTRAST,"['reflected', 'found out', 'dead', 'buried']",0.85
-event/9c1d7e15,event/12fb476b,CONTRAST,"['gained a vivid and broad impression', 'found out', 'were dead and buried']",0.85
-event/bd644966,event/12fb476b,EXPLANATION,"['found out', 'bleak place', 'dead and buried']",0.85
-event/fe58aa39,event/4a0f1f9b,CONTRAST,"['reflected', 'found out', 'also dead']",0.85
-event/9c1d7e15,event/4a0f1f9b,CONTRAST,"['gained a vivid and broad impression', 'found out', 'also dead and buried']",0.75
-event/bd644966,event/4a0f1f9b,CONTRAST,"['bleak place', 'infant children', 'dead and buried']",0.85
-event/12fb476b,event/4a0f1f9b,EXPLANATION,"['found out', 'dead and buried']",0.85
-event/9c1d7e15,event/71181368,EXPLANATION,"['gained a vivid and broad impression', 'found out', 'dark flat wilderness', 'marshes']",0.85
-event/bd644966,event/71181368,CONTRAST,"['bleak', 'dark', 'flat', 'wilderness']",0.85
-event/bd644966,event/e2320f43,CONTRAST,"['bleak', 'low', 'churchyard', 'river']",0.85
-event/71181368,event/e2320f43,CONTRAST,"['beyond', 'was']",0.85
-event/71181368,event/55f29258,CONTRAST,"['dark flat wilderness', 'distant savage lair', 'marshes', 'sea']",0.85
-event/e2320f43,event/55f29258,CONTRAST,"['low leaden line', 'distant savage lair', 'river', 'sea']",0.85
-event/4a0f1f9b,event/5873a1e0,CONTRAST,"['found out', 'afraid', 'cry']",0.85
-event/71181368,event/5873a1e0,CONTRAST,"['found out', 'growing afraid', 'beginning to cry']",0.85
-event/e2320f43,event/5873a1e0,CONTRAST,"['found out', 'afraid', 'cry']",0.85
-event/55f29258,event/5873a1e0,CONTRAST,"['found out', 'afraid', 'cry']",0.85
-event/71181368,event/affe10b0,CONTRAST,"['dark flat wilderness', 'graves', 'church porch']",0.85
-event/55f29258,event/affe10b0,CONTRAST,"['distant savage lair', 'graves', 'church porch']",0.75
-event/5873a1e0,event/affe10b0,CONTRAST,"['afraid', 'cry', 'started up', 'graves']",0.85
-event/e2320f43,event/8b36d780,CONTRAST,"['found out', 'terrible voice']",0.75
-event/55f29258,event/8b36d780,CONTRAST,"['distant savage lair', 'terrible voice']",0.75
-event/5873a1e0,event/8b36d780,CONTRAST,"['afraid', 'cry', 'terrible voice']",0.85
-event/affe10b0,event/8b36d780,CONTRAST,"['started up', 'cried', 'terrible voice']",0.85
-event/5873a1e0,event/df2e5b1b,CONTRAST,"['afraid', 'threatened', 'cry', 'devil']",0.85
-event/8b36d780,event/df2e5b1b,CONTRAST,"['cried', 'threatened', 'terrible', 'cut the throat']",0.85
-event/5873a1e0,event/0cda9890,CONTRAST,"['small bundle of shivers', 'little devil']",0.85
-event/8b36d780,event/0cda9890,CONTRAST,"['cried', 'called', 'terrible', 'little devil']",0.85
-event/df2e5b1b,event/0cda9890,CONTRAST,"['threatened', 'called']",0.8
-event/affe10b0,event/93ebab0e,CONTRAST,"['fearful', 'coarse grey', 'great iron on his leg']",0.85
-event/8b36d780,event/93ebab0e,CONTRAST,"['terrible voice', 'fearful man', 'coarse grey', 'great iron on his leg']",0.85
-event/df2e5b1b,event/93ebab0e,CONTRAST,"['threatened', 'fearful', 'devil', 'coarse grey']",0.85
-event/0cda9890,event/93ebab0e,CONTRAST,"['called', 'fearful', 'coarse grey', 'iron on his leg']",0.85
-event/0cda9890,event/c5d5a034,CONTRAST,"['called', 'no']",0.75
-event/93ebab0e,event/c5d5a034,CONTRAST,"['fearful', 'coarse grey', 'great iron', 'no hat']",0.85
-event/0cda9890,event/23632289,CONTRAST,"['called', 'wore']",0.75
-event/93ebab0e,event/23632289,CONTRAST,"['fearful', 'coarse grey', 'great iron', 'broken shoes']",0.85
-event/0cda9890,event/2602ce69,CONTRAST,"['called', 'old rag']",0.75
-event/93ebab0e,event/2602ce69,CONTRAST,"['fearful', 'coarse grey', 'great iron', 'old rag']",0.85
-event/c5d5a034,event/2602ce69,CONTRAST,"['no hat', 'old rag']",0.85
-event/23632289,event/2602ce69,CONTRAST,"['wore', 'old', 'broken']",0.85
-event/93ebab0e,event/c3892b67,CONTRAST,"['fearful', 'soaked']",0.85
-event/c5d5a034,event/c3892b67,CONTRAST,"['no hat', 'soaked in water']",0.85
-event/23632289,event/c3892b67,CONTRAST,"['wore', 'broken', 'soaked']",0.85
-event/c5d5a034,event/98f7edf1,CONTRAST,"['no hat', 'smothered in mud']",0.85
-event/23632289,event/98f7edf1,CONTRAST,"['wore', 'broken', 'smothered', 'mud']",0.85
-event/2602ce69,event/98f7edf1,CONTRAST,"['old rag', 'smothered in mud']",0.85
-event/c3892b67,event/98f7edf1,CONTRAST,"['soaked', 'smothered', 'water', 'mud']",0.85
-event/23632289,event/63151fd5,CONTRAST,"['broken shoes', 'lamed', 'by stones']",0.8
-event/2602ce69,event/63151fd5,CONTRAST,"['old rag', 'lamed', 'stones']",0.8
-event/98f7edf1,event/63151fd5,CONTRAST,"['smothered', 'lamed']",0.85
-event/2602ce69,event/ce1d9952,CONTRAST,"['old rag', 'cut', 'flints']",0.8
-event/98f7edf1,event/ce1d9952,CONTRAST,"['smothered', 'cut']",0.85
-event/63151fd5,event/ce1d9952,CONTRAST,"['lamed', 'cut']",0.85
-event/63151fd5,event/d2681c62,CONTRAST,"['but', 'however', 'on the other hand']",0.8
-event/ce1d9952,event/d2681c62,CONTRAST,"['cut', 'stung']",0.85
-event/98f7edf1,event/37ed44f7,CONTRAST,"['smothered', 'torn']",0.85
-event/63151fd5,event/37ed44f7,CONTRAST,"['lamed', 'torn', 'stones', 'briars']",0.85
-event/ce1d9952,event/37ed44f7,CONTRAST,"['cut', 'torn', 'flints', 'briars']",0.85
-event/d2681c62,event/37ed44f7,CONTRAST,"['stung', 'torn', 'nettles', 'briars']",0.85
-event/ce1d9952,event/0221fb11,CONTRAST,"['cut', 'limped']",0.75
-event/37ed44f7,event/0221fb11,CONTRAST,"['torn', 'limped']",0.75
-event/ce1d9952,event/7dc286c0,CONTRAST,"['cut', 'shivered']",0.75
-event/d2681c62,event/7dc286c0,CONTRAST,"['but', 'however', 'yet']",0.8
-event/37ed44f7,event/7dc286c0,CONTRAST,"['torn', 'shivered']",0.8
-event/0221fb11,event/7dc286c0,CONTRAST,"['limped', 'shivered']",0.8
-event/37ed44f7,event/69fc07d4,CONTRAST,"['torn', 'growled']",0.85
-event/2d3e300d,event/69fc07d4,CONTRAST,"['glared', 'growled']",0.85
-event/0221fb11,event/9bcafefe,CONTRAST,"['limped', 'chattered']",0.8
-event/7dc286c0,event/9bcafefe,EXPLANATION,"['shivered', 'teeth chattered']",0.85
-event/2d3e300d,event/9bcafefe,CONTRAST,"['glared', 'chattered']",0.85
-event/69fc07d4,event/9bcafefe,CONTRAST,"['growled', 'chattered']",0.85
-event/2d3e300d,event/99625e27,CONTRAST,"['glared', 'pleaded', 'terror']",0.85
-event/69fc07d4,event/99625e27,CONTRAST,"['growled', 'pleaded', 'terror']",0.85
-event/9bcafefe,event/99625e27,CONTRAST,"['chattered', 'pleaded', 'terror']",0.8
-event/18a59c8e,event/99625e27,CONTRAST,"['seized', 'pleaded', 'terror']",0.85
-event/69fc07d4,event/40ba1309,CONTRAST,"['growled', 'expressed', 'plea']",0.85
-event/99625e27,event/40ba1309,CONTRAST,"['pleaded in terror', 'expressed a plea']",0.8
-event/9bcafefe,event/17f42de1,CONTRAST,"['stared', 'chattered']",0.75
-event/99625e27,event/17f42de1,CONTRAST,"['pleaded in terror', 'stared']",0.85
-event/18a59c8e,event/5baab928,CONTRAST,"['seized', 'commanded']",0.85
-event/99625e27,event/5baab928,CONTRAST,"['pleaded in terror', 'commanded']",0.85
-event/40ba1309,event/5baab928,CONTRAST,"['plea', 'commanded']",0.85
-event/17f42de1,event/5baab928,CONTRAST,"['stared', 'commanded']",0.85
-event/99625e27,event/94afe542,CONTRAST,"['pleaded in terror', 'asked to be shown']",0.75
-event/5baab928,event/94afe542,CONTRAST,"['commanded', 'asked']",0.85
-event/40ba1309,event/affbc492,CONTRAST,"['plea', 'instructed']",0.75
-event/17f42de1,event/affbc492,CONTRAST,"['stared', 'instructed', 'point out']",0.75
-event/5baab928,event/affbc492,CONTRAST,"['commanded', 'instructed']",0.8
-event/94afe542,event/affbc492,CONTRAST,"['asked', 'instructed', 'shown', 'point out']",0.85
-event/17f42de1,event/84f3cf05,CONTRAST,"['stared', 'pointed']",0.75
-event/94afe542,event/84f3cf05,CONTRAST,"['asked', 'pointed']",0.75
-event/affbc492,event/84f3cf05,CONTRAST,"['instructed', 'pointed']",0.8
-event/affbc492,event/118e4d85,CONTRAST,"['instructed', 'turned upside down']",0.85
-event/a3704144,event/118e4d85,CONTRAST,"['upside down', 'flat', 'among']",0.75
-event/216c6f22,event/118e4d85,CONTRAST,"['looked at', 'turned upside down']",0.85
-event/216c6f22,event/c53990a7,CONTRAST,"['looked at', 'emptied']",0.85
-event/216c6f22,event/b0a230ac,CONTRAST,"['looked at', 'contained nothing but']",0.85
-event/118e4d85,event/b0a230ac,CONTRAST,"['upside down', 'contained nothing but']",0.85
-event/c53990a7,event/b0a230ac,CONTRAST,"['emptied', 'contained nothing but']",0.85
-event/216c6f22,event/2bc997fd,CONTRAST,"['looked', 'came to itself']",0.75
-event/118e4d85,event/2bc997fd,CONTRAST,"['upside down', 'came to itself']",0.7
-event/b0a230ac,event/2bc997fd,CONTRAST,"['but', 'came to itself']",0.75
-event/118e4d85,event/e1505ac5,CONTRAST,"['upside down', 'head over heels']",0.85
-event/c53990a7,event/e1505ac5,CONTRAST,"['emptied', 'head over heels']",0.75
-event/b0a230ac,event/e1505ac5,CONTRAST,"['but', 'before']",0.85
-event/2bc997fd,event/e1505ac5,CONTRAST,"['came to itself', 'go head over heels']",0.85
-event/b0a230ac,event/79e9f0d0,CONTRAST,"['but', 'under']",0.8
-event/2bc997fd,event/79e9f0d0,CONTRAST,"['came to itself', 'saw', 'under his feet']",0.75
-event/e1505ac5,event/79e9f0d0,CONTRAST,"['before', 'saw', 'under']",0.85
-event/2bc997fd,event/f9f36d18,CONTRAST,"['came to itself', 'seated', 'high tombstone']",0.75
-event/e1505ac5,event/f9f36d18,CONTRAST,['before'],0.8
-event/79e9f0d0,event/f9f36d18,CONTRAST,"['saw', 'under', 'seated', 'high']",0.85
-event/79e9f0d0,event/53712509,CONTRAST,"['saw', 'trembling', 'ravenously']",0.75
-event/f9f36d18,event/53712509,CONTRAST,"['trembling', 'ravenously']",0.85
-event/53712509,event/e2511029,CONTRAST,"['trembling', 'ravenously']",0.85
-event/53712509,event/533c1bc6,CONTRAST,"['trembling', 'ravenously', 'licked his lips']",0.85
-event/f9f36d18,event/50018bce,CONTRAST,"['commented', 'fat cheeks']",0.8
-event/53712509,event/50018bce,CONTRAST,"['trembling', 'ravenously', 'commented', 'fat cheeks']",0.85
-event/53712509,event/07b2e7bd,CONTRAST,"['trembling', 'ravenously', 'fat']",0.85
-event/e2511029,event/07b2e7bd,CONTRAST,"['ravenously', 'believed', 'fat']",0.85
-event/533c1bc6,event/07b2e7bd,CONTRAST,"['believed', 'fat']",0.75
-event/50018bce,event/07b2e7bd,CONTRAST,"['commented', 'believed']",0.8
-event/e2511029,event/e82b2130,CONTRAST,"['ravenously', 'undersized']",0.85
-event/50018bce,event/e82b2130,CONTRAST,"['commented', 'undersized']",0.85
-event/07b2e7bd,event/e82b2130,CONTRAST,"['believed', 'undersized']",0.85
-event/50018bce,event/3b826a1c,CONTRAST,"['not strong', 'fat cheeks']",0.8
-event/07b2e7bd,event/3b826a1c,CONTRAST,"['believed', 'not']",0.8
-event/e82b2130,event/3b826a1c,CONTRAST,"['undersized', 'not strong']",0.85
-event/50018bce,event/6a2cd365,CONTRAST,"['commented', 'threatened']",0.85
-event/e82b2130,event/6a2cd365,CONTRAST,"['undersized', 'threatened']",0.85
-event/3b826a1c,event/6a2cd365,CONTRAST,"['not strong', 'threatened']",0.8
-event/07b2e7bd,event/1193010b,CONTRAST,"['believed', 'expressed a desire']",0.75
-event/e82b2130,event/9cc812a8,CONTRAST,"['undersized', 'half a mind']",0.8
-event/3b826a1c,event/9cc812a8,CONTRAST,"['not strong', 'half a mind']",0.8
-event/6a2cd365,event/9cc812a8,CONTRAST,"['threatened', 'indicated', 'half a mind']",0.85
-event/1193010b,event/9cc812a8,CONTRAST,"['expressed a desire', 'indicated he had half a mind']",0.85
-event/3b826a1c,event/17004f0d,CONTRAST,"['not', 'hope']",0.85
-event/6a2cd365,event/17004f0d,CONTRAST,"['threatened', 'earnestly expressed', 'hope']",0.85
-event/1193010b,event/17004f0d,CONTRAST,"['desire', 'hope', ""wouldn't""]",0.85
-event/9cc812a8,event/17004f0d,CONTRAST,"['indicated', 'hope']",0.85
-event/6a2cd365,event/3f09a400,CONTRAST,"['threatened', 'held tighter']",0.85
-event/1193010b,event/3f09a400,CONTRAST,"['desire', 'held tighter']",0.75
-event/9cc812a8,event/3f09a400,CONTRAST,"['indicated', 'held tighter']",0.85
-event/17004f0d,event/3f09a400,CONTRAST,"['hope', 'tighter']",0.85
-event/1193010b,event/7debfcbc,CONTRAST,"['expressed a desire', 'wanted to keep myself']",0.85
-event/9cc812a8,event/7debfcbc,CONTRAST,"['indicated', 'wanted', 'keep', 'upon']",0.75
-event/17004f0d,event/7debfcbc,CONTRAST,"['hope', 'wanted', 'keep', 'tombstone']",0.85
-event/3f09a400,event/7debfcbc,CONTRAST,"['tighter', 'wanted to keep myself']",0.85
-event/9cc812a8,event/89677a6c,CONTRAST,"['indicated', 'wanted', 'keep myself from crying']",0.75
-event/17004f0d,event/89677a6c,CONTRAST,"['hope', 'keep myself from crying']",0.85
-event/3f09a400,event/89677a6c,CONTRAST,"['tighter', 'keep', 'crying']",0.85
-event/7debfcbc,event/89677a6c,CONTRAST,"['keep', 'from']",0.85
-event/3f09a400,event/a8452911,CONTRAST,"['tombstone', 'asked', 'where']",0.75
-event/7debfcbc,event/5209be2e,CONTRAST,"['wanted', 'started']",0.75
-event/89677a6c,event/c9aaf735,CONTRAST,"['keep', 'stopped']",0.8
-event/5209be2e,event/c9aaf735,CONTRAST,"['started', 'stopped']",0.9
-event/089c8fea,event/c9aaf735,CONTRAST,"['short run', 'stopped']",0.85
-event/5209be2e,event/0467b589,CONTRAST,"['timidly', 'explained']",0.85
-event/c9aaf735,event/0467b589,CONTRAST,"['stopped', 'timidly explained']",0.85
-event/0467b589,event/2f7ecbf2,CONTRAST,"['timidly', 'explained', 'referred', 'mother']",0.85
-event/c9aaf735,event/6ca43a74,CONTRAST,"['stopped', 'exclaimed']",0.8
-event/0467b589,event/6ca43a74,CONTRAST,"['timidly', 'exclaimed']",0.8
-event/2f7ecbf2,event/90b84c3e,CONTRAST,"['referred', 'asked', 'father', 'mother']",0.85
-event/2f7ecbf2,event/f451ea20,CONTRAST,"['referred', 'acknowledged', 'presence', 'another person']",0.75
-event/90b84c3e,event/f451ea20,CONTRAST,"['asked', 'acknowledged', 'presence']",0.75
-event/bcd46419,event/db405121,CONTRAST,"['came back', 'referred to', 'another person']",0.75
-event/90b84c3e,event/db405121,CONTRAST,"['asked', 'referred', 'father', 'mother', 'him too']",0.75
-event/f451ea20,event/db405121,CONTRAST,"['acknowledged', 'referred']",0.8
-event/bcd46419,event/e04aafb1,CONTRAST,"['came back', 'late of this parish']",0.75
-event/90b84c3e,event/e04aafb1,CONTRAST,"['asked', 'identified', 'father', 'late']",0.85
-event/f451ea20,event/e04aafb1,EXPLANATION,"['acknowledged', 'identified']",0.85
-event/db405121,event/e04aafb1,CONTRAST,"['too', 'late']",0.85
-event/f451ea20,event/07c1af06,CONTRAST,"['acknowledged', 'muttered']",0.8
-event/e04aafb1,event/07c1af06,CONTRAST,"['late of this parish', 'muttered']",0.75
-event/db405121,event/58efa0e2,CONTRAST,"['too', 'who', 'other person']",0.75
-event/e04aafb1,event/58efa0e2,CONTRAST,"['late of this parish', 'who the other person lives with']",0.75
-event/07c1af06,event/58efa0e2,CONTRAST,"['muttered', 'asked']",0.7
-event/e04aafb1,event/042951e5,CONTRAST,"['implied', ""hasn't made up his mind"", 'fate']",0.85
-event/07c1af06,event/042951e5,CONTRAST,"['implied', ""hasn't made up his mind""]",0.85
-event/2e082757,event/042951e5,EXPLANATION,"['considered', 'implied', ""hasn't made up his mind""]",0.85
-event/58efa0e2,event/042951e5,CONTRAST,"['implied', ""hasn't made up his mind"", 'fate']",0.85
-event/58efa0e2,event/0b2a11b0,CONTRAST,"['asked', 'introduced', 'husband']",0.75
-event/37e4eb83,event/0b2a11b0,CONTRAST,"['sister', 'husband']",0.85
-event/58efa0e2,event/c5c3b1ce,CONTRAST,"['asked', 'refers', 'sister']",0.85
-event/37e4eb83,event/c5c3b1ce,EXPLANATION,"['introduced', 'refers to']",0.9
-event/0b2a11b0,event/c5c3b1ce,CONTRAST,"['husband', 'sister']",0.85
-event/042951e5,event/c2ff13e7,CONTRAST,"['implied', ""hasn't made up his mind"", 'addresses', 'sir']",0.7
-event/c5c3b1ce,event/9fca0a5e,CONTRAST,"['sister', 'blacksmith']",0.75
-event/c2ff13e7,event/9fca0a5e,CONTRAST,"['addresses', 'said']",0.75
-event/c2ff13e7,event/60266535,CONTRAST,"['darkly', 'several times']",0.75
-event/9fca0a5e,event/60266535,CONTRAST,"['darkly', 'several times']",0.75
-event/94303c0d,event/60266535,CONTRAST,"['looked down', 'looked darkly']",0.85
-event/60266535,event/4567cdec,CONTRAST,"['darkly', 'came closer']",0.75
-event/60266535,event/3fce1e48,CONTRAST,"['darkly', 'took']",0.85
-event/4567cdec,event/3fce1e48,CONTRAST,"['came closer', 'took by both arms']",0.8
-event/60266535,event/5dcd8eb0,CONTRAST,"['looked darkly', 'tilted back']",0.75
-event/4567cdec,event/5dcd8eb0,CONTRAST,"['closer', 'tilted', 'back as far as he could hold him']",0.85
-event/60266535,event/788e9af7,CONTRAST,"['looked', 'darkly', 'powerfully']",0.85
-event/4567cdec,event/faab2d4c,CONTRAST,"['closer', 'looked helplessly']",0.85
-event/788e9af7,event/faab2d4c,CONTRAST,"['looked powerfully down', 'looked helplessly up']",0.85
-event/5dcd8eb0,event/e70c5870,CONTRAST,"['tilted', 'stated', 'whether', 'let to live']",0.75
-event/788e9af7,event/e70c5870,CONTRAST,"['looked powerfully', 'stated the question']",0.75
-event/faab2d4c,event/e70c5870,CONTRAST,"['helplessly', 'question', 'let to live']",0.85
-event/39ea1a89,event/e70c5870,CONTRAST,"['asked', 'stated', 'whether']",0.85
-event/788e9af7,event/fe6c6d3d,CONTRAST,"['looked powerfully down', 'tilted over']",0.85
-event/e70c5870,event/fe6c6d3d,CONTRAST,"['stated', 'tilted']",0.75
-event/faab2d4c,event/4e3634d6,CONTRAST,"['helplessly', 'greater sense of helplessness']",0.85
-event/39ea1a89,event/4e3634d6,CONTRAST,['helplessness'],0.8
-event/e70c5870,event/4e3634d6,CONTRAST,"['helplessness', 'question']",0.8
-event/fe6c6d3d,event/4e3634d6,CONTRAST,"['tilted', 'felt', 'helplessness']",0.75
-event/39ea1a89,event/bff40d85,CONTRAST,"['asked', 'felt', 'danger']",0.85
-event/e70c5870,event/bff40d85,CONTRAST,"['danger', 'let to live']",0.85
-event/fe6c6d3d,event/bff40d85,CONTRAST,"['tilted', 'felt', 'danger']",0.75
-event/4e3634d6,event/bff40d85,CONTRAST,"['greater sense of helplessness', 'sense of danger']",0.85
-event/e70c5870,event/2737c6a7,CONTRAST,"['stated', 'demanded']",0.85
-event/fe6c6d3d,event/2737c6a7,CONTRAST,"['tilted', 'demanded']",0.85
-event/4e3634d6,event/2737c6a7,CONTRAST,"['felt', 'demanded']",0.85
-event/bff40d85,event/2737c6a7,CONTRAST,"['felt a sense of danger', 'demanded']",0.85
-event/fe6c6d3d,event/7533a3ab,CONTRAST,"['demanded', 'tilted']",0.85
-event/4e3634d6,event/7533a3ab,CONTRAST,"['felt', 'demanded']",0.85
-event/bff40d85,event/7533a3ab,CONTRAST,"['felt a sense of danger', 'demanded food']",0.85
-event/2737c6a7,event/7533a3ab,CONTRAST,"['demanded', 'file', 'food', 'wittles']",0.85
-event/4e3634d6,event/3f9b04c7,CONTRAST,"['felt', 'threatened']",0.85
-event/bff40d85,event/3f9b04c7,CONTRAST,"['felt a sense of danger', 'threatened with violence']",0.85
-event/2737c6a7,event/3f9b04c7,CONTRAST,"['demanded', 'threatened']",0.85
-event/7533a3ab,event/3f9b04c7,CONTRAST,"['demanded', 'threatened']",0.85
-event/bff40d85,event/fd0dc162,CONTRAST,"['felt a sense of danger', 'tilted repeatedly']",0.85
-event/2737c6a7,event/fd0dc162,CONTRAST,"['demanded', 'tilted', 'repeatedly']",0.85
-event/7533a3ab,event/fd0dc162,CONTRAST,"['demanded', 'tilted']",0.85
-event/3f9b04c7,event/fd0dc162,CONTRAST,"['threatened', 'tilted']",0.85
-event/2737c6a7,event/59e5b7dd,CONTRAST,"['demanded', 'felt', 'frightened']",0.85
-event/7533a3ab,event/59e5b7dd,CONTRAST,"['demanded', 'frightened']",0.8
-event/3f9b04c7,event/59e5b7dd,CONTRAST,"['threatened', 'frightened']",0.85
-event/fd0dc162,event/59e5b7dd,CONTRAST,['dreadfully frightened'],0.8
-event/fd0dc162,event/9ebc191e,CONTRAST,"['tilted', 'felt giddy']",0.75
-event/59e5b7dd,event/9ebc191e,CONTRAST,"['dreadfully frightened', 'giddy']",0.85
-event/3f9b04c7,event/13d15815,CONTRAST,"['threatened', 'clung']",0.85
-event/fd0dc162,event/13d15815,CONTRAST,"['tilted', 'clung']",0.85
-event/59e5b7dd,event/13d15815,CONTRAST,"['frightened', 'clung']",0.85
-event/9ebc191e,event/13d15815,CONTRAST,"['but', 'however', 'on the other hand']",0.75
-event/fd0dc162,event/731438db,CONTRAST,"['tilted', 'asked', 'let', 'upright']",0.85
-event/59e5b7dd,event/731438db,CONTRAST,"['frightened', 'asked', 'let', 'keep upright']",0.85
-event/9ebc191e,event/731438db,CONTRAST,"['giddy', 'upright']",0.85
-event/13d15815,event/731438db,CONTRAST,"['clung', 'asked', 'let', 'upright']",0.85
-event/59e5b7dd,event/2b2a3c3b,CONTRAST,"['frightened', 'hope', 'sick']",0.85
-event/9ebc191e,event/2b2a3c3b,CONTRAST,"['giddy', 'hope', 'sick']",0.85
-event/13d15815,event/2b2a3c3b,CONTRAST,"['clung', 'hope', 'sick']",0.75
-event/731438db,event/2b2a3c3b,CONTRAST,"['asked', 'hope', 'not be sick']",0.75
-event/2b2a3c3b,event/54c163de,CONTRAST,"['hope', 'not be sick', 'attend more']",0.8
-event/13d15815,event/666f0d3e,CONTRAST,"['clung', 'tremendous dip and roll']",0.75
-event/731438db,event/666f0d3e,CONTRAST,"['asked', 'let', 'gave', 'dip', 'roll']",0.85
-event/666f0d3e,event/3675a222,CONTRAST,"['upright position', 'tremendous dip and roll']",0.85
-event/6bcbee0c,event/3675a222,CONTRAST,"['jumped', 'held', 'upright']",0.75
-event/54c163de,event/3c65d84b,CONTRAST,"['hope', 'fearful']",0.85
-event/666f0d3e,event/3c65d84b,CONTRAST,"['tremendous', 'fearful']",0.85
-event/3675a222,event/3c65d84b,CONTRAST,['fearful terms'],0.75
-event/3c65d84b,event/276ad22b,CONTRAST,"['fearful terms', 'demanded']",0.75
-event/3675a222,event/58ed203f,CONTRAST,"['held', 'threatened', 'violence', 'upright', 'comply']",0.85
-event/3c65d84b,event/58ed203f,CONTRAST,"['fearful terms', 'threatened', 'violence', 'comply']",0.85
-event/276ad22b,event/58ed203f,CONTRAST,"['demanded', 'threatened', 'if he did not comply']",0.85
-event/3675a222,event/bb375da7,CONTRAST,"['not alone', 'hiding']",0.75
-event/3c65d84b,event/bb375da7,CONTRAST,"['fearful terms', 'not alone', 'hiding']",0.85
-event/276ad22b,event/bb375da7,CONTRAST,"['implied', 'not alone', 'mentioned', 'hiding']",0.85
-event/58ed203f,event/bb375da7,CONTRAST,"['threatened', 'implied', 'not alone', 'hiding']",0.85
-event/3c65d84b,event/7973a915,CONTRAST,"['fearful terms', 'felt fear', 'threats']",0.85
-event/276ad22b,event/7973a915,CONTRAST,"['demanded', 'felt fear', 'threats']",0.85
-event/58ed203f,event/7973a915,EXPLANATION,"['threatened', 'felt fear', 'response']",0.85
-event/bb375da7,event/7973a915,CONTRAST,"['implied', 'felt fear', 'threats']",0.85
-event/58ed203f,event/2895b0d9,CONTRAST,"['threatened', 'secret way']",0.75
-event/bb375da7,event/2895b0d9,CONTRAST,"['not alone', 'hiding', 'secret way']",0.85
-event/7973a915,event/2895b0d9,CONTRAST,"['fear', 'secret', 'getting at']",0.75
-event/58ed203f,event/be611acc,CONTRAST,"['threatened', 'hide']",0.8
-event/bb375da7,event/be611acc,CONTRAST,"['not alone', 'hiding', 'attempts to hide']",0.85
-event/7973a915,event/be611acc,CONTRAST,"['fear', 'hide']",0.75
-event/2895b0d9,event/be611acc,CONTRAST,"['secret', 'hide']",0.85
-event/bb375da7,event/7f73f462,CONTRAST,"['not alone', 'hiding', 'locks his door']",0.85
-event/7973a915,event/7f73f462,CONTRAST,"['fear', 'locks']",0.8
-event/2895b0d9,event/7f73f462,CONTRAST,"['secret', 'locks']",0.8
-event/be611acc,event/c052418a,CONTRAST,"['hide', 'warm']",0.85
-event/2895b0d9,event/c7e09230,CONTRAST,"['secret', 'tucks']",0.75
-event/be611acc,event/36835a6e,EXPLANATION,"['attempts to hide', 'draws the clothes over his head']",0.85
-event/c052418a,event/36835a6e,CONTRAST,"['warm', 'draws', 'clothes', 'over his head']",0.85
-event/c7e09230,event/36835a6e,CONTRAST,"['tucks', 'draws', 'over his head']",0.85
-event/7f73f462,event/960ef67b,EXPLANATION,"['comfortable', 'safe']",0.85
-event/c052418a,event/960ef67b,EXPLANATION,"['warm', 'comfortable', 'safe']",0.85
-event/c7e09230,event/960ef67b,EXPLANATION,"['thinks', 'comfortable', 'safe']",0.85
-event/36835a6e,event/960ef67b,CONTRAST,"['comfortable', 'safe']",0.8
-event/c7e09230,event/8a46dfd2,CONTRAST,"['softly', 'creeps', 'tucks']",0.85
-event/960ef67b,event/8a46dfd2,CONTRAST,"['thinks', 'creeps']",0.85
-event/c7e09230,event/5ab8b656,CONTRAST,"['tears', 'tucks']",0.85
-event/36835a6e,event/5ab8b656,CONTRAST,"['draws', 'tears']",0.85
-event/960ef67b,event/5ab8b656,CONTRAST,"['thinks', 'tears']",0.85
-event/8a46dfd2,event/5ab8b656,CONTRAST,"['softly creeps', 'tears open']",0.85
-event/36835a6e,event/dd3c18c1,CONTRAST,"['keeping', 'harming']",0.8
-event/960ef67b,event/dd3c18c1,CONTRAST,"['thinks', 'keeping', 'harming']",0.85
-event/8a46dfd2,event/dd3c18c1,CONTRAST,"['softly creeps', 'keeping from harming']",0.85
-event/5ab8b656,event/dd3c18c1,CONTRAST,"['tears', 'keeping from harming']",0.85
-event/960ef67b,event/3cd49454,CONTRAST,"['thinks', 'hard', 'hold off']",0.85
-event/8a46dfd2,event/3cd49454,CONTRAST,"['softly creeps', 'finds it very hard', 'hold off']",0.85
-event/5ab8b656,event/3cd49454,CONTRAST,"['tears', 'hard to hold off']",0.85
-event/dd3c18c1,event/3cd49454,CONTRAST,"['hard', 'keeping', 'harming']",0.85
-event/dd3c18c1,event/35541825,CONTRAST,"['keeping', 'harming', 'asks']",0.75
-event/dd3c18c1,event/5e4ffab8,CONTRAST,"['keeping', 'harming', 'get', 'broken bits of food']",0.85
-event/fa613bc2,event/5e4ffab8,CONTRAST,"['but', 'however', 'on the other hand']",0.85
-event/5e4ffab8,event/ecc6ac02,CONTRAST,"['get', 'come', 'broken bits of food', 'early in the morning']",0.85
-event/35541825,event/b860cd88,CONTRAST,"['asks', 'said']",0.85
-event/fa613bc2,event/b860cd88,CONTRAST,"['said', 'if you don’t']",0.85
-event/5e4ffab8,event/b860cd88,CONTRAST,"['get', 'broken bits of food', 'said', 'strike you dead']",0.75
-event/ecc6ac02,event/b860cd88,CONTRAST,"['but', 'however', 'on the other hand']",0.75
-event/b860cd88,event/02fcebf9,CONTRAST,"['said', 'pursued']",0.85
-event/b860cd88,event/bba55582,CONTRAST,"['reminded', 'undertook', 'strike you dead']",0.75
-event/02fcebf9,event/bba55582,CONTRAST,"['pursued', 'reminded', 'conversation', 'listener', 'undertook']",0.75
-event/ecc6ac02,event/57c557ec,CONTRAST,"['reminded', 'young man']",0.75
-event/02fcebf9,event/57c557ec,CONTRAST,"['reminded', 'young man']",0.75
-event/bba55582,event/57c557ec,CONTRAST,"['reminded', 'listener']",0.75
-event/b860cd88,event/8d975e6d,CONTRAST,"['said', 'instructed']",0.75
-event/02fcebf9,event/8d975e6d,CONTRAST,"['pursued', 'instructed']",0.75
-event/bba55582,event/8d975e6d,CONTRAST,"['reminded', 'instructed']",0.8
-event/bba55582,event/09992456,CONTRAST,"['reminded', 'wish']",0.75
-event/57c557ec,event/09992456,CONTRAST,"['reminded', 'wish']",0.75
-event/8d975e6d,event/09992456,CONTRAST,"['instructed', 'expressed a wish']",0.85
-event/407f38c4,event/09992456,CONTRAST,"['glanced', 'cold wet flat', 'expressed a wish', 'frog']",0.85
-event/57c557ec,event/6fded52c,CONTRAST,"['reminded', 'wish']",0.75
-event/407f38c4,event/6fded52c,CONTRAST,"['glanced', 'cold wet flat', 'expressed a wish', 'eel']",0.85
-event/09992456,event/6fded52c,CONTRAST,"['wish', 'be', 'frog', 'eel']",0.85
-event/407f38c4,event/1adc4771,CONTRAST,"['cold', 'wet', 'shuddering']",0.85
-event/09992456,event/1adc4771,CONTRAST,"['wish', 'shuddering body']",0.85
-event/6fded52c,event/1adc4771,CONTRAST,"['wish', 'hugged', 'shuddering']",0.85
-event/407f38c4,event/9753272e,CONTRAST,"['cold', 'wet', 'clasped', 'hold']",0.85
-event/09992456,event/9753272e,CONTRAST,"['as if', 'to hold himself together']",0.75
-event/6fded52c,event/9753272e,CONTRAST,"['as if', 'to hold himself together']",0.75
-event/1adc4771,event/9753272e,CONTRAST,"['shuddering', 'hold himself together']",0.85
-event/1adc4771,event/44241451,CONTRAST,"['shuddering', 'limped']",0.85
-event/9753272e,event/44241451,CONTRAST,"['as if', 'towards']",0.75
-event/6fded52c,event/ce64310d,CONTRAST,"['expressed a wish', 'saw him go', 'picking his way']",0.8
-event/1adc4771,event/ce64310d,CONTRAST,"['shuddering', 'picking his way']",0.85
-event/9753272e,event/ce64310d,CONTRAST,"['as if', 'go', 'picking']",0.75
-event/44241451,event/ce64310d,CONTRAST,"['limped', 'picking his way']",0.85
-event/1adc4771,event/f6ee76a9,CONTRAST,"['shuddering', 'eluding', 'dead people']",0.85
-event/9753272e,event/f6ee76a9,CONTRAST,"['as if', 'eluding']",0.85
-event/44241451,event/f6ee76a9,CONTRAST,"['limped', 'eluding', 'dead people']",0.85
-event/ce64310d,event/f6ee76a9,CONTRAST,"['eluding', 'dead people']",0.85
-event/9753272e,event/188b58cb,CONTRAST,"['as if', 'cautiously']",0.75
-event/44241451,event/188b58cb,CONTRAST,"['limped', 'dead', 'stretching up', 'cautiously']",0.85
-event/ce64310d,event/188b58cb,CONTRAST,"['saw', 'go', 'dead', 'stretching', 'cautiously']",0.85
-event/f6ee76a9,event/188b58cb,CONTRAST,"['eluding', 'stretching up cautiously']",0.85
-event/44241451,event/8abe8936,CONTRAST,"['limped', 'dead people', 'pull him in']",0.85
-event/ce64310d,event/8abe8936,CONTRAST,"['go', 'dead people', 'pull him in']",0.85
-event/f6ee76a9,event/8abe8936,CONTRAST,"['eluding', 'trying to get', 'pull him in']",0.85
-event/188b58cb,event/8abe8936,CONTRAST,"['cautiously', 'trying', 'pull']",0.85
-event/8abe8936,event/0b03e175,CONTRAST,"['trying to get', 'came to']",0.75
-event/8abe8936,event/331dfe6d,CONTRAST,"['trying to', 'got over']",0.8
-event/0b03e175,event/331dfe6d,CONTRAST,"['came', 'got over']",0.85
-event/8abe8936,event/bc68dc0e,CONTRAST,"['trying to', 'turned round']",0.75
-event/8abe8936,event/85ad6c9f,CONTRAST,"['trying to get', 'set my face towards']",0.85
-event/0b03e175,event/85ad6c9f,CONTRAST,"['low church wall', 'home']",0.75
-event/bc68dc0e,event/85ad6c9f,CONTRAST,"['turned round', 'set my face towards']",0.8
-event/331dfe6d,event/9aec5747,CONTRAST,"['got over', 'made the best use']",0.75
-event/bc68dc0e,event/9aec5747,CONTRAST,"['turned round', 'made the best use']",0.75
-event/331dfe6d,event/757492c6,CONTRAST,['over'],0.7
-event/bc68dc0e,event/757492c6,CONTRAST,"['turned round', 'looked over my shoulder']",0.8
-event/85ad6c9f,event/757492c6,CONTRAST,"['set my face towards', 'looked over my shoulder']",0.85
-event/85ad6c9f,event/30a13607,CONTRAST,"['set my face towards home', 'going on again towards the river']",0.85
-event/85ad6c9f,event/be945dda,CONTRAST,"['still', 'hugging']",0.75
-event/9aec5747,event/be945dda,CONTRAST,"['best use', 'still hugging']",0.75
-event/757492c6,event/be945dda,CONTRAST,"['still', 'hugging']",0.85
-event/30a13607,event/be945dda,CONTRAST,"['still', 'again']",0.8
-event/9aec5747,event/3b569512,CONTRAST,"['best use', 'sore feet']",0.85
-event/757492c6,event/3b569512,CONTRAST,"['looked over my shoulder', 'picking his way', 'sore feet', 'great stones']",0.85
-event/30a13607,event/3b569512,CONTRAST,"['sore feet', 'great stones']",0.85
-event/be945dda,event/3b569512,CONTRAST,"['still', 'sore', 'picking his way']",0.85
-event/757492c6,event/8d5f4f60,CONTRAST,"['looked over my shoulder', 'marshes', 'long black horizontal line']",0.75
-event/30a13607,event/8d5f4f60,CONTRAST,"['again', 'appeared', 'long', 'black', 'horizontal']",0.75
-event/3b569512,event/8d5f4f60,CONTRAST,"['sore feet', 'great stones', 'long black horizontal line']",0.8
-event/30a13607,event/8d564ae3,CONTRAST,"['again', 'another']",0.75
-event/3b569512,event/8d564ae3,CONTRAST,"['sore feet', 'great stones', 'horizontal line']",0.85
-event/8d5f4f60,event/8d564ae3,CONTRAST,"['appeared', 'as', 'horizontal line']",0.85
-event/be945dda,event/03392695,CONTRAST,"['still', 'angry', 'dense', 'black']",0.85
-event/3b569512,event/03392695,CONTRAST,"['sore feet', 'angry red lines', 'dense black lines']",0.85
-event/8d5f4f60,event/03392695,CONTRAST,"['appeared', 'long', 'black', 'red', 'angry', 'dense', 'intermixed']",0.85
-event/8d564ae3,event/03392695,CONTRAST,"['appeared', 'as', 'lines']",0.85
-event/3b569512,event/d2e6a9a8,CONTRAST,"['sore feet', 'stopped to look']",0.85
-event/8d5f4f60,event/c83551a5,CONTRAST,"['appeared', 'faintly make out', 'only two black things']",0.85
-event/8d564ae3,event/c83551a5,CONTRAST,"['appeared', 'faintly make out', 'only two black things']",0.85
-event/03392695,event/c83551a5,CONTRAST,"['angry', 'dense', 'faintly', 'only']",0.85
-event/d2e6a9a8,event/c83551a5,CONTRAST,"['stopped', 'faintly make out', 'only two black things']",0.8
-event/8d564ae3,event/60b36d7a,CONTRAST,"['appeared', 'observed']",0.75
-event/03392695,event/60b36d7a,CONTRAST,"['appeared', 'observed']",0.75
-event/c83551a5,event/60b36d7a,CONTRAST,"['faintly', 'only', 'observed']",0.85
-event/03392695,event/4da9306e,CONTRAST,"['angry', 'ugly']",0.85
-event/d2e6a9a8,event/4da9306e,CONTRAST,"['ugly', 'look after']",0.85
-event/c83551a5,event/4da9306e,CONTRAST,"['ugly', 'only two black things']",0.85
-event/60b36d7a,event/4da9306e,CONTRAST,"['ugly', 'observed']",0.85
-event/d2e6a9a8,event/6eb2f929,CONTRAST,"['stopped', 'look', 'observed']",0.75
-event/c83551a5,event/6eb2f929,CONTRAST,"['only', 'two', 'black', 'gibbet', 'chains']",0.85
-event/60b36d7a,event/6eb2f929,CONTRAST,"['observed', 'by which', 'with chains hanging']",0.85
-event/4da9306e,event/6eb2f929,CONTRAST,"['ugly', 'chains']",0.8
-event/c83551a5,event/1468cee0,CONTRAST,"['only', 'two', 'limping']",0.85
-event/60b36d7a,event/1468cee0,CONTRAST,"['observed', 'perceived', 'limping', 'gibbet']",0.85
-event/4da9306e,event/1468cee0,CONTRAST,"['ugly', 'limping']",0.85
-event/60b36d7a,event/43cb0672,CONTRAST,"['observed', 'thought', 'was']",0.75
-event/4da9306e,event/43cb0672,CONTRAST,"['ugly', 'thought', 'come to life']",0.85
-event/6eb2f929,event/43cb0672,CONTRAST,"['thought', 'was']",0.8
-event/1468cee0,event/43cb0672,CONTRAST,"['perceived', 'thought', 'limping', 'pirate']",0.85
-event/4da9306e,event/dd463184,CONTRAST,"['ugly', 'imagined']",0.85
-event/6eb2f929,event/dd463184,CONTRAST,"['imagined', 'going back', 'hook himself up again']",0.85
-event/1468cee0,event/dd463184,CONTRAST,"['perceived', 'imagined', 'limping', 'going back']",0.85
-event/43cb0672,event/dd463184,CONTRAST,"['thought', 'imagined']",0.85
-event/6eb2f929,event/b7c9ceef,CONTRAST,"['horrible', 'thought', 'observed']",0.75
-event/1468cee0,event/b7c9ceef,CONTRAST,"['perceived', 'thought about', 'horrible']",0.85
-event/43cb0672,event/b7c9ceef,CONTRAST,"['thought', 'horrible', 'man']",0.85
-event/dd463184,event/b7c9ceef,CONTRAST,"['imagined', 'thought about', 'horrible']",0.85
-event/1468cee0,event/69dd78ca,CONTRAST,"['limping', 'gaze', 'horrible']",0.85
-event/43cb0672,event/69dd78ca,CONTRAST,"['thought', 'saw', 'horrible']",0.85
-event/dd463184,event/69dd78ca,CONTRAST,"['imagined', 'saw', 'horrible']",0.85
-event/b7c9ceef,event/69dd78ca,CONTRAST,"['thought', 'saw', 'gaze']",0.85
-event/43cb0672,event/e805c584,CONTRAST,"['thought', 'wondered']",0.75
-event/dd463184,event/e805c584,CONTRAST,"['imagined', 'wondered', 'thought']",0.75
-event/b7c9ceef,event/e805c584,CONTRAST,"['wondered', 'thought about']",0.85
-event/69dd78ca,event/e805c584,CONTRAST,"['wondered', 'thought about']",0.85
-event/dd463184,event/ee204a52,CONTRAST,"['imagined', 'looked all around', 'horrible young man']",0.85
-event/69dd78ca,event/ee204a52,CONTRAST,"['saw', 'looked', 'gaze', 'after']",0.85
-event/e805c584,event/ee204a52,CONTRAST,"['wondered', 'looked', 'horrible young man']",0.85
-event/b7c9ceef,event/c0336df5,CONTRAST,"['thought about', 'could see no signs of']",0.85
-event/69dd78ca,event/c0336df5,CONTRAST,"['saw', 'could see no signs']",0.85
-event/e805c584,event/c0336df5,CONTRAST,"['wondered', 'could see no signs']",0.85
-event/ee204a52,event/c0336df5,CONTRAST,"['looked all around', 'could see no signs']",0.85
-event/69dd78ca,event/77322920,CONTRAST,"['frightened', 'horrible']",0.85
-event/e805c584,event/77322920,CONTRAST,"['wondered', 'frightened']",0.75
-event/ee204a52,event/77322920,CONTRAST,"['horrible', 'frightened']",0.85
-event/c0336df5,event/77322920,CONTRAST,"['horrible', 'frightened']",0.85
-event/77322920,event/11475679,CONTRAST,"['frightened', 'ran home without stopping']",0.85
+event/63922cb3,event/4f9c7ad1,CONTRAST,"['revealed', 'name']",0.85
+event/63922cb3,event/e5fdf84b,EXPLANATION,"['revealed', 'infant tongue', 'names', 'Pip']",0.85
+event/4f9c7ad1,event/e5fdf84b,EXPLANATION,"['revealed', 'infant tongue', 'make of', 'nothing longer or more explicit']",0.85
+event/63922cb3,event/fe79e59d,EXPLANATION,"['revealed', 'called']",0.85
+event/4f9c7ad1,event/fe79e59d,CONTRAST,"['revealed', 'called']",0.85
+event/e5fdf84b,event/fe79e59d,EXPLANATION,"['infant tongue', 'called himself']",0.85
+event/63922cb3,event/1ec594b3,EXPLANATION,"['revealed', 'called']",0.85
+event/4f9c7ad1,event/1ec594b3,CONTRAST,"['revealed', 'called']",0.85
+event/e5fdf84b,event/1ec594b3,EXPLANATION,"['infant tongue', 'could only make', 'came to be called']",0.85
+event/fe79e59d,event/1ec594b3,CONTRAST,"['called himself', 'came to be called']",0.85
+event/4f9c7ad1,event/fbf09d2f,CONTRAST,"['revealed', 'gives']",0.8
+event/e5fdf84b,event/fbf09d2f,EXPLANATION,"['infant tongue', 'names', 'Pip', 'Pirrip', ""father's family name""]",0.85
+event/fe79e59d,event/fbf09d2f,EXPLANATION,"['called himself', 'gives', 'family name']",0.85
+event/1ec594b3,event/fbf09d2f,EXPLANATION,"['called', 'gives', 'family name']",0.85
+event/e5fdf84b,event/65dc6d26,CONTRAST,"['only', 'longer', 'explicit', 'authority']",0.85
+event/fe79e59d,event/65dc6d26,EXPLANATION,"['called himself', 'states', 'family name', 'authority', 'tombstone', 'sister']",0.85
+event/1ec594b3,event/65dc6d26,EXPLANATION,"['called', 'states', 'authority', 'tombstone', 'sister']",0.85
+event/fbf09d2f,event/65dc6d26,EXPLANATION,"['gives', 'states', 'authority', 'tombstone', 'sister']",0.85
+event/fe79e59d,event/4b48c598,CONTRAST,"['never saw', 'father or mother']",0.85
+event/1ec594b3,event/4b48c598,CONTRAST,"['never saw', 'called']",0.8
+event/fbf09d2f,event/4b48c598,CONTRAST,"['never saw', 'father', 'family name']",0.85
+event/65dc6d26,event/4b48c598,CONTRAST,"['never saw', 'father', 'mother']",0.85
+event/1ec594b3,event/c70703fd,CONTRAST,"['never saw', 'likeness', 'parents']",0.85
+event/fbf09d2f,event/c70703fd,CONTRAST,"['never saw', 'likeness', 'family name']",0.85
+event/65dc6d26,event/c70703fd,CONTRAST,"['never saw', 'likeness']",0.85
+event/4b48c598,event/c70703fd,EXPLANATION,"['never saw', 'likeness', 'parents']",0.85
+event/fbf09d2f,event/75ff4db5,CONTRAST,"['reflects', 'fancies', 'derived', 'tombstones']",0.85
+event/65dc6d26,event/75ff4db5,EXPLANATION,"['reflects', 'derived', 'tombstone']",0.85
+event/4b48c598,event/75ff4db5,EXPLANATION,"['derived', 'fancies', 'tombstones']",0.85
+event/c70703fd,event/75ff4db5,CONTRAST,"['never saw', 'first fancies', 'derived from']",0.85
+event/4b48c598,event/cc954075,CONTRAST,"['never saw', 'describes', 'tombstone']",0.85
+event/c70703fd,event/cc954075,CONTRAST,"['never saw', 'describes']",0.85
+event/75ff4db5,event/cc954075,EXPLANATION,"['derived', 'reflects', 'describes']",0.85
+event/4b48c598,event/8f6d9f60,CONTRAST,"['never saw', 'odd idea', 'square, stout, dark man']",0.85
+event/c70703fd,event/8f6d9f60,CONTRAST,"['never saw', 'odd idea', 'likeness', 'square, stout, dark man']",0.85
+event/75ff4db5,event/8f6d9f60,CONTRAST,"['reflects', 'odd idea', 'derived', 'fancies']",0.85
+event/cc954075,event/8f6d9f60,CONTRAST,"['odd idea', 'square', 'stout', 'dark man']",0.85
+event/c70703fd,event/2ff3fa0e,CONTRAST,"['never saw', 'childish conclusion']",0.85
+event/75ff4db5,event/2ff3fa0e,CONTRAST,"['reflects', 'derived', 'childish conclusion']",0.85
+event/cc954075,event/2ff3fa0e,CONTRAST,"['describes', 'conclusion', 'childish']",0.8
+event/8f6d9f60,event/2ff3fa0e,CONTRAST,"['odd idea', 'childish conclusion']",0.85
+event/75ff4db5,event/9968a12a,CONTRAST,"['freckled', 'sickly', 'tombstones']",0.85
+event/cc954075,event/9968a12a,CONTRAST,"['describes', 'perceived', 'freckled', 'sickly']",0.85
+event/8f6d9f60,event/9968a12a,CONTRAST,"['odd idea', 'perceived', 'freckled', 'sickly']",0.85
+event/2ff3fa0e,event/9968a12a,CONTRAST,"['childish conclusion', 'freckled', 'sickly']",0.85
+event/2ff3fa0e,event/d1a05c4c,CONTRAST,"['childish conclusion', 'neat row', 'grave']",0.75
+event/9968a12a,event/d1a05c4c,CONTRAST,"['freckled', 'sickly', 'grave']",0.85
+event/2ff3fa0e,event/13932c21,CONTRAST,"['childish conclusion', 'sacred', 'memory']",0.75
+event/d1a05c4c,event/13932c21,EXPLANATION,"['sacred', 'memory']",0.85
+event/2ff3fa0e,event/fad63d27,CONTRAST,"['childish conclusion', 'believed', 'brothers', 'born on their backs']",0.75
+event/9968a12a,event/fad63d27,CONTRAST,"['perceived', 'believed', 'sickly', 'born on their backs']",0.85
+event/13932c21,event/fad63d27,EXPLANATION,"['sacred', 'memory', 'believed', 'born']",0.85
+event/13932c21,event/c1c77aee,CONTRAST,"['sacred', 'believed', 'hands in their trousers-pockets']",0.85
+event/fad63d27,event/c1c77aee,CONTRAST,"['believed', 'hands in their trousers-pockets']",0.85
+event/d1a05c4c,event/93b12826,CONTRAST,"['beside the grave', 'state of existence']",0.75
+event/13932c21,event/93b12826,CONTRAST,"['sacred', 'memory', 'thought', 'never', 'state of existence']",0.85
+event/fad63d27,event/93b12826,CONTRAST,"['believed', 'thought', 'never', 'all', 'state of existence']",0.85
+event/c1c77aee,event/93b12826,CONTRAST,"['believed', 'thought', 'never', 'in this state of existence']",0.85
+event/13932c21,event/16f74a7a,CONTRAST,"['sacred', 'reflected', 'early death']",0.85
+event/fad63d27,event/16f74a7a,CONTRAST,"['believed', 'reflected', 'early death']",0.85
+event/c1c77aee,event/16f74a7a,CONTRAST,"['believed', 'reflected', 'early death']",0.85
+event/93b12826,event/16f74a7a,CONTRAST,"['thought', 'reflected', 'early death']",0.85
+event/fad63d27,event/12c5776d,CONTRAST,"['believed', 'gained', 'impression']",0.75
+event/c1c77aee,event/12c5776d,CONTRAST,"['believed', 'impression']",0.75
+event/93b12826,event/12c5776d,CONTRAST,"['thought', 'impression', 'identity']",0.75
+event/16f74a7a,event/12c5776d,CONTRAST,"['reflected', 'early death', 'gained', 'vivid', 'broad impression']",0.75
+event/c1c77aee,event/20a75a2b,CONTRAST,"['believed', 'found out', 'bleak place', 'churchyard']",0.85
+event/93b12826,event/20a75a2b,CONTRAST,"['thought', 'found out', 'bleak place', 'churchyard']",0.85
+event/16f74a7a,event/20a75a2b,CONTRAST,"['reflected', 'bleak', 'overgrown', 'churchyard']",0.75
+event/12c5776d,event/20a75a2b,CONTRAST,"['gained a vivid and broad impression', 'bleak place overgrown with nettles']",0.85
+event/93b12826,event/5fb52743,CONTRAST,"['thought', 'discovered', 'dead', 'buried']",0.85
+event/16f74a7a,event/5fb52743,CONTRAST,"['reflected', 'discovered', 'dead', 'buried']",0.85
+event/12c5776d,event/5fb52743,CONTRAST,"['gained a vivid and broad impression', 'discovered', 'were dead and buried']",0.85
+event/20a75a2b,event/5fb52743,EXPLANATION,"['found out', 'discovered', 'dead and buried']",0.85
+event/16f74a7a,event/f36d5398,CONTRAST,"['reflected', 'discovered', 'also dead']",0.85
+event/12c5776d,event/f36d5398,CONTRAST,"['gained a vivid and broad impression', 'discovered', 'also dead and buried']",0.85
+event/20a75a2b,event/f36d5398,CONTRAST,"['found out', 'discovered', 'bleak place', 'also dead and buried']",0.85
+event/5fb52743,event/f36d5398,CONTRAST,"['also', 'discovered', 'dead', 'buried']",0.85
+event/12c5776d,event/97c2b8b7,EXPLANATION,"['gained a vivid and broad impression', 'discovered', 'dark flat wilderness', 'marshes']",0.85
+event/20a75a2b,event/97c2b8b7,CONTRAST,"['bleak', 'dark', 'flat', 'wilderness', 'marshes']",0.85
+event/20a75a2b,event/387eb776,CONTRAST,"['bleak', 'overgrown', 'churchyard', 'low', 'leaden', 'river']",0.85
+event/97c2b8b7,event/387eb776,CONTRAST,"['beyond', 'was']",0.85
+event/97c2b8b7,event/cd39f1b3,CONTRAST,"['dark flat wilderness', 'distant savage lair', 'marshes', 'sea']",0.85
+event/387eb776,event/cd39f1b3,CONTRAST,"['discovered', 'beyond', 'distant', 'savage', 'rushing']",0.85
+event/f36d5398,event/5cb06026,CONTRAST,"['afraid', 'cry', 'discovered', 'dead']",0.85
+event/97c2b8b7,event/5cb06026,CONTRAST,"['discovered', 'afraid', 'cry']",0.85
+event/387eb776,event/5cb06026,CONTRAST,"['discovered', 'afraid', 'cry']",0.85
+event/cd39f1b3,event/5cb06026,CONTRAST,"['distant savage lair', 'small bundle of shivers', 'afraid', 'cry']",0.85
+event/97c2b8b7,event/7a60a821,CONTRAST,"['discovered', 'started up']",0.85
+event/387eb776,event/7a60a821,CONTRAST,"['discovered', 'started up', 'among the graves']",0.85
+event/cd39f1b3,event/7a60a821,CONTRAST,"['distant savage lair', 'graves', 'church porch']",0.85
+event/5cb06026,event/7a60a821,CONTRAST,"['afraid', 'cry', 'started up']",0.85
+event/cd39f1b3,event/9ea27bf2,CONTRAST,"['distant', 'savage', 'terrible']",0.85
+event/5cb06026,event/9ea27bf2,CONTRAST,"['afraid', 'cry', 'terrible voice']",0.85
+event/cd39f1b3,event/35d258c4,CONTRAST,"['distant savage lair', 'threatened', 'little devil']",0.75
+event/5cb06026,event/35d258c4,CONTRAST,"['afraid', 'threatened', 'cry', 'devil']",0.85
+event/9ea27bf2,event/35d258c4,CONTRAST,"['cried', 'threatened', 'terrible', 'cut the throat']",0.85
+event/5cb06026,event/9043a132,CONTRAST,"['small bundle of shivers', 'little devil']",0.85
+event/9ea27bf2,event/9043a132,CONTRAST,"['cried', 'called', 'terrible', 'little devil']",0.85
+event/35d258c4,event/9043a132,CONTRAST,"['threatened', 'called']",0.8
+event/7a60a821,event/9f1b1071,CONTRAST,"['fearful', 'coarse grey', 'great iron on his leg']",0.85
+event/9ea27bf2,event/9f1b1071,CONTRAST,"['terrible voice', 'fearful man', 'coarse grey', 'great iron on his leg']",0.85
+event/35d258c4,event/9f1b1071,CONTRAST,"['threatened', 'fearful', 'devil', 'coarse grey']",0.85
+event/9043a132,event/9f1b1071,CONTRAST,"['called', 'fearful', 'coarse grey', 'iron on his leg']",0.85
+event/9043a132,event/8a8012e4,CONTRAST,"['called', 'no']",0.8
+event/9f1b1071,event/8a8012e4,CONTRAST,"['fearful', 'coarse grey', 'great iron', 'no hat']",0.85
+event/9043a132,event/0182b047,CONTRAST,"['called', 'wore']",0.75
+event/9f1b1071,event/0182b047,CONTRAST,"['fearful', 'coarse grey', 'great iron', 'broken shoes']",0.85
+event/9f1b1071,event/583505cf,CONTRAST,"['fearful', 'coarse grey', 'great iron', 'old rag']",0.85
+event/8a8012e4,event/583505cf,CONTRAST,"['no hat', 'old rag']",0.85
+event/0182b047,event/583505cf,CONTRAST,"['broken shoes', 'old rag']",0.85
+event/9f1b1071,event/03eec9c7,CONTRAST,"['fearful', 'coarse grey', 'great iron', 'soaked in water']",0.85
+event/583505cf,event/03eec9c7,CONTRAST,"['old rag', 'soaked in water']",0.85
+event/0182b047,event/ac41827b,CONTRAST,"['wore', 'broken', 'smothered', 'mud']",0.85
+event/583505cf,event/ac41827b,CONTRAST,"['old rag', 'smothered in mud']",0.85
+event/03eec9c7,event/ac41827b,CONTRAST,"['soaked', 'smothered', 'water', 'mud']",0.85
+event/0182b047,event/ff5a94f9,CONTRAST,"['broken shoes', 'lamed', 'stones']",0.85
+event/583505cf,event/ff5a94f9,CONTRAST,"['old rag', 'lamed', 'stones']",0.85
+event/ac41827b,event/ff5a94f9,CONTRAST,"['smothered', 'lamed']",0.85
+event/583505cf,event/d7d2f78e,CONTRAST,"['old rag', 'cut', 'flints']",0.85
+event/ac41827b,event/d7d2f78e,CONTRAST,"['smothered', 'cut']",0.85
+event/ff5a94f9,event/d7d2f78e,CONTRAST,"['lamed', 'cut']",0.85
+event/ac41827b,event/3d858992,CONTRAST,"['smothered', 'stung']",0.85
+event/ff5a94f9,event/3d858992,CONTRAST,"['but', 'however', 'on the other hand']",0.85
+event/d7d2f78e,event/3d858992,CONTRAST,"['cut', 'stung']",0.85
+event/ac41827b,event/fe0bd532,CONTRAST,"['smothered', 'torn']",0.85
+event/ff5a94f9,event/fe0bd532,CONTRAST,"['lamed', 'torn', 'stones', 'briars']",0.85
+event/d7d2f78e,event/fe0bd532,CONTRAST,"['cut', 'torn', 'flints', 'briars']",0.85
+event/3d858992,event/fe0bd532,CONTRAST,"['stung', 'torn', 'nettles', 'briars']",0.85
+event/d7d2f78e,event/4e5670ea,CONTRAST,"['but', 'however', 'although']",0.8
+event/3d858992,event/4e5670ea,CONTRAST,"['but', 'however', 'although']",0.75
+event/fe0bd532,event/4e5670ea,CONTRAST,"['torn', 'limped']",0.8
+event/d7d2f78e,event/76179b3b,EXPLANATION,"['cut', 'shivered']",0.85
+event/3d858992,event/76179b3b,CONTRAST,"['but', 'however', 'yet']",0.8
+event/fe0bd532,event/76179b3b,CONTRAST,"['torn', 'shivered']",0.8
+event/4e5670ea,event/76179b3b,CONTRAST,"['limped', 'shivered']",0.85
+event/fe0bd532,event/e1d06373,CONTRAST,"['torn', 'glared']",0.8
+event/fe0bd532,event/64d73e0f,CONTRAST,"['torn', 'growled']",0.85
+event/e1d06373,event/64d73e0f,CONTRAST,"['glared', 'growled']",0.85
+event/76179b3b,event/0b558c23,EXPLANATION,"['shivered', 'teeth chattered']",0.85
+event/e1d06373,event/0b558c23,CONTRAST,"['glared', 'chattered']",0.85
+event/64d73e0f,event/0b558c23,CONTRAST,"['growled', 'chattered']",0.85
+event/64d73e0f,event/ed798850,CONTRAST,"['growled', 'seized']",0.85
+event/0b558c23,event/ed798850,CONTRAST,"['seized', 'chattered']",0.75
+event/e1d06373,event/a3482c67,CONTRAST,"['glared', 'pleaded', 'terror']",0.85
+event/64d73e0f,event/a3482c67,CONTRAST,"['growled', 'pleaded', 'terror']",0.85
+event/0b558c23,event/a3482c67,CONTRAST,"['chattered', 'pleaded', 'terror']",0.75
+event/ed798850,event/a3482c67,CONTRAST,"['seized', 'pleaded', 'terror']",0.85
+event/64d73e0f,event/669ca926,CONTRAST,"['growled', 'expressed', 'plea']",0.8
+event/a3482c67,event/669ca926,CONTRAST,"['pleaded in terror', 'expressed a plea']",0.8
+event/0b558c23,event/9b273375,CONTRAST,"['stared', 'chattered']",0.75
+event/ed798850,event/ca509e3f,CONTRAST,"['seized', 'commanded']",0.85
+event/a3482c67,event/ca509e3f,CONTRAST,"['pleaded in terror', 'commanded']",0.85
+event/669ca926,event/ca509e3f,CONTRAST,"['plea', 'commanded']",0.85
+event/9b273375,event/ca509e3f,CONTRAST,"['stared', 'commanded']",0.85
+event/a3482c67,event/f74991d5,CONTRAST,"['pleaded in terror', 'asked to be shown']",0.75
+event/669ca926,event/f74991d5,CONTRAST,"['plea', 'asked']",0.75
+event/9b273375,event/f74991d5,CONTRAST,"['stared', 'asked']",0.75
+event/ca509e3f,event/f74991d5,CONTRAST,"['commanded', 'asked']",0.8
+event/669ca926,event/11bf170c,CONTRAST,"['plea', 'instructed']",0.75
+event/9b273375,event/11bf170c,CONTRAST,"['stared', 'instructed', 'point out']",0.75
+event/ca509e3f,event/11bf170c,CONTRAST,"['commanded', 'instructed']",0.8
+event/f74991d5,event/11bf170c,CONTRAST,"['asked', 'instructed', 'shown', 'point out']",0.85
+event/9b273375,event/b5f8b2cf,CONTRAST,"['stared', 'pointed']",0.75
+event/11bf170c,event/b5f8b2cf,CONTRAST,"['instructed', 'pointed']",0.75
+event/11bf170c,event/56d4f5cf,CONTRAST,"['instructed', 'turned upside down']",0.85
+event/b5f8b2cf,event/56d4f5cf,CONTRAST,"['pointed', 'turned', 'upside down']",0.75
+event/bced0ad7,event/56d4f5cf,CONTRAST,"['upside down', 'flat in-shore']",0.8
+event/e9b608ac,event/56d4f5cf,CONTRAST,"['looked at', 'turned upside down']",0.85
+event/e9b608ac,event/f1409943,CONTRAST,"['looked at', 'emptied']",0.85
+event/bced0ad7,event/0304a283,CONTRAST,['but'],0.8
+event/e9b608ac,event/0304a283,CONTRAST,"['looked at', 'contained nothing but']",0.85
+event/56d4f5cf,event/0304a283,CONTRAST,"['upside down', 'contained nothing but']",0.85
+event/f1409943,event/0304a283,CONTRAST,"['emptied', 'contained nothing but']",0.85
+event/e9b608ac,event/558226a8,CONTRAST,"['looked', 'came to itself']",0.75
+event/56d4f5cf,event/558226a8,CONTRAST,"['upside down', 'came to itself']",0.75
+event/56d4f5cf,event/cdb02b69,CONTRAST,"['upside down', 'head over heels']",0.85
+event/f1409943,event/cdb02b69,CONTRAST,"['emptied', 'made', 'head over heels']",0.75
+event/0304a283,event/cdb02b69,CONTRAST,"['but', 'before']",0.8
+event/558226a8,event/cdb02b69,CONTRAST,['before'],0.8
+event/0304a283,event/f4c16364,CONTRAST,"['but', 'under']",0.8
+event/558226a8,event/f4c16364,CONTRAST,"['came to itself', 'saw', 'under his feet']",0.75
+event/cdb02b69,event/f4c16364,CONTRAST,"['before', 'saw', 'under']",0.85
+event/0304a283,event/61f2df93,CONTRAST,['but'],0.8
+event/cdb02b69,event/61f2df93,CONTRAST,['before'],0.8
+event/f4c16364,event/61f2df93,CONTRAST,"['saw', 'under', 'seated', 'high']",0.85
+event/f4c16364,event/c4204f87,CONTRAST,"['trembling', 'ravenously']",0.85
+event/61f2df93,event/c4204f87,CONTRAST,"['trembling', 'ravenously']",0.85
+event/c4204f87,event/fe683e95,CONTRAST,"['trembling', 'ravenously']",0.85
+event/61f2df93,event/d95be92d,CONTRAST,"['commented', 'fat cheeks']",0.8
+event/c4204f87,event/d95be92d,CONTRAST,"['trembling', 'ravenously', 'commented', 'fat cheeks']",0.85
+event/57e998b1,event/d95be92d,CONTRAST,"['licked', 'commented', 'fat cheeks']",0.75
+event/c4204f87,event/214f629d,CONTRAST,"['trembling', 'ravenously', 'believed', 'fat']",0.85
+event/fe683e95,event/214f629d,CONTRAST,"['ravenously', 'believed', 'fat']",0.8
+event/57e998b1,event/214f629d,CONTRAST,"['licked his lips', 'believed', 'fat']",0.8
+event/d95be92d,event/214f629d,CONTRAST,"['commented', 'believed']",0.8
+event/d95be92d,event/1a86166c,CONTRAST,"['commented', 'undersized']",0.85
+event/214f629d,event/1a86166c,CONTRAST,"['believed', 'fat', 'undersized']",0.85
+event/d95be92d,event/2b70c4ac,CONTRAST,"['not strong', 'fat cheeks']",0.8
+event/214f629d,event/2b70c4ac,CONTRAST,"['believed', 'not']",0.8
+event/1a86166c,event/2b70c4ac,CONTRAST,"['undersized', 'not strong']",0.85
+event/d95be92d,event/8d7ea535,CONTRAST,"['commented', 'threatened']",0.8
+event/1a86166c,event/8d7ea535,CONTRAST,"['undersized', 'threatened']",0.85
+event/2b70c4ac,event/8d7ea535,CONTRAST,"['not strong', 'threatened']",0.8
+event/214f629d,event/f523d462,CONTRAST,"['believed', 'expressed a desire']",0.8
+event/1a86166c,event/23d9b638,CONTRAST,"['undersized', 'considering']",0.75
+event/8d7ea535,event/23d9b638,CONTRAST,"['threatened', 'indicated', 'considering']",0.85
+event/8d7ea535,event/f21e70b6,CONTRAST,"['threatened', 'earnestly expressed', 'hope']",0.85
+event/f523d462,event/f21e70b6,CONTRAST,"['desire', 'hope']",0.85
+event/23d9b638,event/f21e70b6,CONTRAST,"['indicated', 'considering', 'hope', 'wouldn’t']",0.85
+event/8d7ea535,event/e6b1b5e0,CONTRAST,"['threatened', 'held tighter']",0.85
+event/f523d462,event/e6b1b5e0,CONTRAST,"['desire', 'held tighter']",0.75
+event/23d9b638,event/e6b1b5e0,CONTRAST,"['indicated', 'considering', 'held tighter']",0.75
+event/f21e70b6,event/e6b1b5e0,CONTRAST,"['earnestly', 'hope', 'held tighter']",0.85
+event/f21e70b6,event/4e4ce3c8,CONTRAST,"['earnestly', 'hope', 'partly', 'keeping', 'tombstone']",0.75
+event/e6b1b5e0,event/4e4ce3c8,CONTRAST,"['tighter', 'partly', 'keeping myself']",0.85
+event/f21e70b6,event/17bd1826,CONTRAST,"['hope', 'keeping myself from crying']",0.75
+event/e6b1b5e0,event/17bd1826,EXPLANATION,"['held tighter', 'keeping myself from crying']",0.85
+event/4e4ce3c8,event/17bd1826,CONTRAST,"['keeping', 'partly', 'tombstone', 'crying']",0.85
+event/e6b1b5e0,event/bca844ed,CONTRAST,"['tombstone', 'asked', 'where']",0.75
+event/4e4ce3c8,event/bca844ed,CONTRAST,"['partly', 'asked']",0.7
+event/17bd1826,event/5b517906,CONTRAST,"['partly', 'stopped']",0.75
+event/4b36bf90,event/5b517906,CONTRAST,"['started', 'stopped']",0.9
+event/2d8196fc,event/5b517906,CONTRAST,"['short run', 'stopped']",0.85
+event/5b517906,event/b0fcc56a,CONTRAST,"['stopped', 'looked over his shoulder']",0.8
+event/4b36bf90,event/f57f3094,CONTRAST,"['timidly', 'explained']",0.85
+event/5b517906,event/f57f3094,CONTRAST,"['stopped', 'timidly explained']",0.85
+event/f57f3094,event/e88b6e70,EXPLANATION,"['explained', 'mentioned']",0.8
+event/5b517906,event/a288b326,CONTRAST,"['stopped', 'exclaimed']",0.8
+event/f57f3094,event/a288b326,CONTRAST,"['timidly', 'exclaimed']",0.85
+event/b0fcc56a,event/a781a319,CONTRAST,"['looked over his shoulder', 'came back']",0.75
+event/e88b6e70,event/985ae104,CONTRAST,"['asked', 'if', 'along with']",0.85
+event/e88b6e70,event/867f26cd,CONTRAST,"['mentioned', 'acknowledged', 'presence', 'another person']",0.75
+event/985ae104,event/867f26cd,CONTRAST,"['asked', 'acknowledged', 'presence', 'along with']",0.75
+event/a781a319,event/7096b14d,CONTRAST,"['came back', 'referred to', 'another person']",0.7
+event/985ae104,event/7096b14d,CONTRAST,"['asked', 'referred', 'father', 'mother', 'him too']",0.75
+event/867f26cd,event/7096b14d,CONTRAST,"['acknowledged', 'referred']",0.75
+event/a781a319,event/7cf55a7d,CONTRAST,"['came back', 'late of this parish']",0.75
+event/985ae104,event/7cf55a7d,CONTRAST,"['asked', 'identified', 'father', 'late']",0.85
+event/867f26cd,event/7cf55a7d,EXPLANATION,"['acknowledged', 'identified']",0.85
+event/7096b14d,event/7cf55a7d,CONTRAST,"['too', 'late of this parish']",0.8
+event/867f26cd,event/4b64dc65,CONTRAST,"['acknowledged', 'muttered']",0.8
+event/7096b14d,event/f8183ef8,CONTRAST,"['too', 'who', 'other person']",0.75
+event/7cf55a7d,event/f8183ef8,CONTRAST,"['late of this parish', 'who the other person lives with']",0.75
+event/4b64dc65,event/f8183ef8,CONTRAST,"['muttered', 'asked']",0.8
+event/7cf55a7d,event/4199a4da,CONTRAST,"['implied threat', 'late of this parish']",0.75
+event/4b64dc65,event/4199a4da,CONTRAST,"['muttered', 'implied', 'threat']",0.85
+event/62f13781,event/4199a4da,CONTRAST,"['considered', 'implied', 'threat']",0.75
+event/f8183ef8,event/4199a4da,CONTRAST,"['asked', 'implied', 'threat', 'life']",0.85
+event/4b64dc65,event/d87a7520,CONTRAST,"['muttered', 'expressed uncertainty']",0.8
+event/62f13781,event/d87a7520,CONTRAST,"['considered', 'expressed uncertainty']",0.85
+event/4199a4da,event/d87a7520,CONTRAST,"['implied a threat', 'expressed uncertainty']",0.85
+event/f8183ef8,event/7f71d8f4,CONTRAST,"['asked', 'introduced', 'husband']",0.75
+event/347325e9,event/7f71d8f4,CONTRAST,"['sister', 'husband']",0.85
+event/4199a4da,event/a4a782a2,CONTRAST,"['implied threat', 'refers to', 'my sister']",0.75
+event/347325e9,event/a4a782a2,EXPLANATION,"['introduced', 'refers to']",0.9
+event/7f71d8f4,event/a4a782a2,CONTRAST,"['husband', 'sister']",0.85
+event/a4a782a2,event/6a6d554e,CONTRAST,"['sister', 'Blacksmith']",0.75
+event/d7969d1f,event/6a6d554e,CONTRAST,"['addresses', 'said']",0.75
+event/d7969d1f,event/2d47db4d,CONTRAST,"['darkly', 'several times']",0.75
+event/ebed3b3f,event/2d47db4d,CONTRAST,"['looked down', 'looked darkly']",0.8
+event/6a6d554e,event/2d47db4d,CONTRAST,"['darkly', 'eh']",0.75
+event/6a6d554e,event/1d96d2d4,CONTRAST,"['eh', 'came closer']",0.7
+event/2d47db4d,event/1d96d2d4,CONTRAST,"['darkly', 'came closer']",0.85
+event/2d47db4d,event/cd488bf8,CONTRAST,"['darkly', 'took', 'both arms']",0.85
+event/1d96d2d4,event/cd488bf8,CONTRAST,"['came closer', 'took by both arms']",0.8
+event/2d47db4d,event/e9724595,CONTRAST,"['looked darkly', 'tilted back']",0.85
+event/1d96d2d4,event/e9724595,CONTRAST,"['closer', 'tilted', 'back as far as he could hold him']",0.85
+event/2d47db4d,event/e056135f,CONTRAST,"['looked', 'darkly', 'powerfully']",0.85
+event/1d96d2d4,event/e9878fcd,CONTRAST,"['closer', 'helplessly']",0.85
+event/e056135f,event/e9878fcd,CONTRAST,"['looked powerfully down', 'looked helplessly up']",0.9
+event/e9724595,event/2f2a83e6,CONTRAST,"['tilted', 'question', 'let to live']",0.75
+event/e056135f,event/2f2a83e6,CONTRAST,"['looked powerfully down', 'stated the question']",0.85
+event/e9878fcd,event/2f2a83e6,CONTRAST,"['helplessly', 'question', 'let to live']",0.75
+event/ae0280f5,event/2f2a83e6,CONTRAST,"['asked', 'stated', 'whether']",0.85
+event/e056135f,event/28c930f0,CONTRAST,"['looked powerfully down', 'tilted over']",0.85
+event/2f2a83e6,event/28c930f0,CONTRAST,"['stated', 'tilted']",0.75
+event/e9878fcd,event/600ab68a,EXPLANATION,"['helplessly', 'greater sense of helplessness']",0.85
+event/ae0280f5,event/600ab68a,CONTRAST,['helplessness'],0.75
+event/2f2a83e6,event/600ab68a,CONTRAST,['greater sense of helplessness'],0.85
+event/28c930f0,event/600ab68a,CONTRAST,"['tilted', 'felt', 'helplessness']",0.75
+event/ae0280f5,event/9279591b,CONTRAST,"['asked', 'felt', 'danger']",0.85
+event/2f2a83e6,event/9279591b,CONTRAST,"['question', 'felt', 'danger']",0.85
+event/28c930f0,event/9279591b,CONTRAST,"['tilted', 'felt', 'danger']",0.75
+event/600ab68a,event/9279591b,CONTRAST,"['greater sense of helplessness', 'sense of danger']",0.85
+event/2f2a83e6,event/aee34694,CONTRAST,"['stated', 'demanded']",0.85
+event/28c930f0,event/aee34694,CONTRAST,"['demanded', 'tilted']",0.8
+event/600ab68a,event/aee34694,CONTRAST,"['felt', 'demanded']",0.85
+event/9279591b,event/aee34694,CONTRAST,"['felt a sense of danger', 'demanded']",0.85
+event/28c930f0,event/5ab2d0f3,CONTRAST,"['tilted', 'demanded']",0.85
+event/600ab68a,event/5ab2d0f3,CONTRAST,"['felt', 'demanded']",0.85
+event/9279591b,event/5ab2d0f3,CONTRAST,"['felt a sense of danger', 'demanded food']",0.85
+event/aee34694,event/5ab2d0f3,CONTRAST,"['demanded', 'file', 'food']",0.85
+event/600ab68a,event/a9b71859,CONTRAST,"['helplessness', 'threatened', 'violence']",0.85
+event/9279591b,event/a9b71859,CONTRAST,"['felt a sense of danger', 'threatened with violence']",0.85
+event/aee34694,event/a9b71859,CONTRAST,"['demanded', 'threatened']",0.85
+event/5ab2d0f3,event/a9b71859,CONTRAST,"['demanded', 'threatened']",0.85
+event/9279591b,event/4d06c4f1,CONTRAST,"['felt a sense of danger', 'repeated his demands']",0.85
+event/aee34694,event/32d537c8,CONTRAST,"['demanded', 'felt', 'frightened']",0.85
+event/5ab2d0f3,event/32d537c8,CONTRAST,"['demanded', 'frightened']",0.75
+event/a9b71859,event/32d537c8,CONTRAST,"['threatened', 'frightened']",0.85
+event/4d06c4f1,event/32d537c8,CONTRAST,"['repeated', 'demands', 'felt', 'frightened']",0.85
+event/32d537c8,event/ba4df395,CONTRAST,"['dreadfully frightened', 'giddy']",0.85
+event/a9b71859,event/a367d3a3,CONTRAST,"['threatened', 'clung']",0.85
+event/4d06c4f1,event/a367d3a3,CONTRAST,"['repeated', 'clung']",0.85
+event/32d537c8,event/a367d3a3,CONTRAST,"['frightened', 'clung']",0.85
+event/ba4df395,event/a367d3a3,CONTRAST,"['giddy', 'clung']",0.85
+event/32d537c8,event/2adad392,CONTRAST,"['frightened', 'asked', 'let', 'upright']",0.85
+event/ba4df395,event/2adad392,CONTRAST,"['giddy', 'keep upright']",0.85
+event/a367d3a3,event/2adad392,CONTRAST,"['clung', 'asked', 'let', 'upright']",0.85
+event/32d537c8,event/50c1561b,CONTRAST,"['frightened', 'hope', 'sick']",0.85
+event/ba4df395,event/50c1561b,CONTRAST,"['giddy', 'hope', 'sick']",0.85
+event/a367d3a3,event/50c1561b,CONTRAST,"['clung', 'hope', 'sick']",0.75
+event/2adad392,event/50c1561b,CONTRAST,"['asked', 'hope', 'not be sick']",0.8
+event/50c1561b,event/24336446,CONTRAST,"['hope', 'not be sick', 'hope to attend more']",0.8
+event/a367d3a3,event/c38f9f16,CONTRAST,"['clung', 'tremendous dip and roll']",0.75
+event/2adad392,event/c38f9f16,CONTRAST,"['asked', 'let', 'gave', 'dip', 'roll']",0.85
+event/c38f9f16,event/cf127421,CONTRAST,"['gave', 'held']",0.85
+event/c38f9f16,event/b24e701f,CONTRAST,"['tremendous dip and roll', 'upright position']",0.85
+event/42c5b7ef,event/b24e701f,CONTRAST,"['jumped', 'upright position']",0.75
+event/c38f9f16,event/d76e4477,CONTRAST,"['tremendous', 'fearful']",0.85
+event/42c5b7ef,event/d76e4477,CONTRAST,"['fearful', 'jumped']",0.75
+event/b24e701f,event/d76e4477,CONTRAST,"['fearful', 'upright']",0.75
+event/cf127421,event/45cb7945,CONTRAST,"['held', 'demanded']",0.85
+event/b24e701f,event/45cb7945,CONTRAST,"['positioned', 'demanded']",0.75
+event/d76e4477,event/45cb7945,CONTRAST,"['fearful', 'demanded']",0.8
+event/cf127421,event/fd2ebc18,CONTRAST,"['held', 'threatened', 'violence', 'comply']",0.85
+event/b24e701f,event/fd2ebc18,CONTRAST,"['threatened', 'violence', 'failed to comply']",0.85
+event/d76e4477,event/fd2ebc18,CONTRAST,"['fearful', 'threatened', 'violence', 'comply']",0.85
+event/45cb7945,event/fd2ebc18,CONTRAST,"['demanded', 'threatened', 'if he failed to comply']",0.85
+event/b24e701f,event/fb9a7be3,CONTRAST,"['not alone', 'hiding']",0.75
+event/d76e4477,event/fb9a7be3,CONTRAST,"['fearful', 'implied', 'not alone', 'hiding']",0.85
+event/45cb7945,event/fb9a7be3,CONTRAST,"['implied', 'not alone', 'mentioned', 'hiding']",0.85
+event/fd2ebc18,event/fb9a7be3,CONTRAST,"['implied', 'not alone', 'mentioned', 'hiding']",0.85
+event/d76e4477,event/e7591327,CONTRAST,"['worse', 'fearful']",0.85
+event/45cb7945,event/e7591327,CONTRAST,"['worse', 'demanded']",0.85
+event/fd2ebc18,event/e7591327,CONTRAST,"['worse', 'than']",0.85
+event/fb9a7be3,event/e7591327,CONTRAST,"['not alone', 'worse than']",0.85
+event/45cb7945,event/c379b375,CONTRAST,"['demanded', 'felt fear', 'threats']",0.85
+event/fd2ebc18,event/c379b375,EXPLANATION,"['threatened', 'felt fear', 'response']",0.85
+event/fb9a7be3,event/c379b375,CONTRAST,"['implied', 'not alone', 'fear', 'threats']",0.85
+event/e7591327,event/c379b375,CONTRAST,"['worse', 'fear', 'threats']",0.85
+event/fd2ebc18,event/9cf47ec5,CONTRAST,"['threatened', 'secret way']",0.75
+event/fb9a7be3,event/9cf47ec5,CONTRAST,"['not alone', 'hiding', 'secret way']",0.75
+event/e7591327,event/9cf47ec5,CONTRAST,"['worse', 'secret']",0.85
+event/c379b375,event/9cf47ec5,CONTRAST,"['fear', 'secret', 'threats', 'getting at']",0.75
+event/fb9a7be3,event/fddc08ae,CONTRAST,"['not alone', 'hiding', 'attempts to hide']",0.8
+event/e7591327,event/fddc08ae,CONTRAST,"['worse', 'hide']",0.85
+event/9cf47ec5,event/fddc08ae,CONTRAST,"['secret', 'hide']",0.85
+event/e7591327,event/a4cd9f7a,CONTRAST,"['worse', 'locks']",0.75
+event/c379b375,event/a4cd9f7a,CONTRAST,"['fear', 'locks']",0.85
+event/9cf47ec5,event/a4cd9f7a,CONTRAST,"['secret', 'locks']",0.75
+event/fddc08ae,event/b76900d2,CONTRAST,"['hide', 'warm']",0.85
+event/9cf47ec5,event/2929fa25,CONTRAST,"['secret', 'tucks']",0.75
+event/fddc08ae,event/28ba68de,EXPLANATION,"['attempts to hide', 'draws the clothes over his head']",0.85
+event/b76900d2,event/28ba68de,CONTRAST,"['warm', 'draws', 'clothes']",0.85
+event/2929fa25,event/28ba68de,CONTRAST,"['tucks', 'draws', 'over his head']",0.85
+event/a4cd9f7a,event/be8de5a4,EXPLANATION,"['comfortable', 'safe']",0.85
+event/b76900d2,event/be8de5a4,EXPLANATION,"['warm', 'comfortable', 'safe']",0.85
+event/2929fa25,event/be8de5a4,EXPLANATION,"['thinks', 'comfortable', 'safe']",0.85
+event/28ba68de,event/be8de5a4,CONTRAST,"['comfortable', 'safe']",0.85
+event/2929fa25,event/ebd654d6,CONTRAST,"['softly', 'creeps', 'tucks']",0.75
+event/be8de5a4,event/ebd654d6,CONTRAST,"['thinks', 'creeps']",0.85
+event/2929fa25,event/7c0f1486,CONTRAST,"['tears', 'tucks']",0.85
+event/28ba68de,event/7c0f1486,CONTRAST,"['draws', 'tears']",0.85
+event/be8de5a4,event/7c0f1486,CONTRAST,"['thinks', 'comfortable', 'safe', 'tears', 'open']",0.85
+event/ebd654d6,event/7c0f1486,CONTRAST,"['softly creeps', 'tears open']",0.85
+event/28ba68de,event/21742e09,CONTRAST,"['keeping', 'harming']",0.75
+event/be8de5a4,event/21742e09,CONTRAST,"['thinks himself comfortable', 'keeping from harming']",0.85
+event/ebd654d6,event/21742e09,CONTRAST,"['softly creeps', 'keeping from harming']",0.85
+event/7c0f1486,event/21742e09,CONTRAST,"['tears', 'keeping from harming']",0.85
+event/be8de5a4,event/6904fe9d,CONTRAST,"['thinks', 'hard', 'safe', 'finds']",0.85
+event/ebd654d6,event/6904fe9d,CONTRAST,"['softly creeps', 'finds it very hard', 'hold off']",0.85
+event/7c0f1486,event/6904fe9d,CONTRAST,"['tears', 'hard to hold off']",0.85
+event/21742e09,event/6904fe9d,CONTRAST,"['keeping', 'hard to hold off']",0.85
+event/21742e09,event/7b08c830,CONTRAST,"['keeping', 'harming', 'asks']",0.85
+event/21742e09,event/def01331,CONTRAST,"['keeping', 'harming', 'get', 'broken bits of food']",0.85
+event/6904fe9d,event/def01331,CONTRAST,"['hard', 'get', 'broken bits']",0.75
+event/d4f6a1b8,event/def01331,CONTRAST,"['but', 'however', 'on the other hand']",0.85
+event/def01331,event/b6793817,CONTRAST,"['get', 'come', 'broken bits of food', 'early in the morning']",0.85
+event/7b08c830,event/12c5c913,CONTRAST,"['asks', 'said']",0.85
+event/d4f6a1b8,event/12c5c913,CONTRAST,"['said', 'if you don’t']",0.85
+event/def01331,event/12c5c913,CONTRAST,"['get', 'broken bits of food', 'said', 'strike you dead']",0.85
+event/b6793817,event/12c5c913,CONTRAST,"['but', 'however', 'on the other hand']",0.75
+event/d4f6a1b8,event/c4ab2a97,CONTRAST,"['but', 'however']",0.75
+event/12c5c913,event/c4ab2a97,CONTRAST,"['said', 'pursued']",0.85
+event/b6793817,event/396700a5,CONTRAST,"['reminded', 'undertook']",0.75
+event/12c5c913,event/396700a5,CONTRAST,"['reminded', 'undertook', 'strike you dead']",0.75
+event/c4ab2a97,event/396700a5,CONTRAST,"['pursued', 'reminded', 'conversation', 'listener', 'undertook']",0.75
+event/b6793817,event/2059cbad,CONTRAST,"['reminded', 'young man']",0.75
+event/12c5c913,event/2059cbad,CONTRAST,"['reminded', 'young man']",0.75
+event/c4ab2a97,event/2059cbad,CONTRAST,"['reminded', 'pursued']",0.75
+event/396700a5,event/2059cbad,CONTRAST,"['reminded', 'listener']",0.75
+event/12c5c913,event/b0759705,CONTRAST,"['said', 'instructed']",0.75
+event/c4ab2a97,event/b0759705,CONTRAST,"['pursued', 'instructed']",0.8
+event/396700a5,event/b0759705,CONTRAST,"['reminded', 'instructed']",0.8
+event/396700a5,event/eec2e5d3,CONTRAST,"['reminded', 'wish']",0.75
+event/2059cbad,event/eec2e5d3,CONTRAST,"['reminded', 'wish']",0.75
+event/b0759705,event/eec2e5d3,CONTRAST,"['instructed', 'wish']",0.8
+event/11ef0d14,event/eec2e5d3,CONTRAST,"['glanced', 'cold wet flat', 'wish', 'frog']",0.85
+event/2059cbad,event/985248b3,CONTRAST,"['reminded', 'wish']",0.75
+event/11ef0d14,event/985248b3,CONTRAST,"['glanced', 'cold wet flat', 'expressed a wish', 'eel']",0.85
+event/eec2e5d3,event/985248b3,CONTRAST,"['wish', 'be', 'frog', 'eel']",0.85
+event/11ef0d14,event/547f4bfe,CONTRAST,"['cold', 'wet', 'shuddering']",0.85
+event/eec2e5d3,event/547f4bfe,CONTRAST,"['wish', 'shuddering body']",0.85
+event/985248b3,event/547f4bfe,CONTRAST,"['wish', 'hugged', 'shuddering']",0.85
+event/11ef0d14,event/28788e0d,CONTRAST,"['glanced', 'cold wet flat', 'limped', 'low church wall']",0.85
+event/547f4bfe,event/28788e0d,CONTRAST,"['shuddering', 'limped']",0.85
+event/985248b3,event/9f12dc51,CONTRAST,"['expressed a wish', 'saw him go', 'picking his way']",0.8
+event/547f4bfe,event/9f12dc51,CONTRAST,"['shuddering', 'picking his way']",0.8
+event/28788e0d,event/9f12dc51,CONTRAST,"['limped', 'picking his way']",0.85
+event/985248b3,event/d5a38197,CONTRAST,"['as if', 'eluding']",0.85
+event/547f4bfe,event/d5a38197,CONTRAST,"['shuddering', 'eluding', 'dead people']",0.85
+event/28788e0d,event/d5a38197,CONTRAST,"['limped', 'eluding', 'dead people']",0.85
+event/9f12dc51,event/d5a38197,CONTRAST,"['eluding', 'dead people', 'nettles', 'brambles']",0.85
+event/547f4bfe,event/f6f409a6,CONTRAST,"['shuddering', 'dead', 'cautiously']",0.85
+event/28788e0d,event/f6f409a6,CONTRAST,"['limped', 'dead', 'stretching up', 'cautiously']",0.85
+event/9f12dc51,event/f6f409a6,CONTRAST,"['saw', 'go', 'dead', 'stretching', 'cautiously']",0.85
+event/d5a38197,event/f6f409a6,CONTRAST,"['eluding', 'stretching up', 'cautiously', 'graves']",0.85
+event/28788e0d,event/3abf5242,CONTRAST,"['limped', 'dead people', 'pull him in']",0.85
+event/9f12dc51,event/3abf5242,CONTRAST,"['go', 'dead people', 'pull him in']",0.85
+event/d5a38197,event/3abf5242,CONTRAST,"['eluding', 'trying to get', 'pull him in']",0.85
+event/f6f409a6,event/3abf5242,CONTRAST,"['cautiously', 'trying', 'pull']",0.85
+event/3abf5242,event/3ad68478,CONTRAST,"['trying to', 'got over']",0.8
+event/1cf50896,event/3ad68478,CONTRAST,"['came', 'got over']",0.85
+event/3abf5242,event/195c7687,CONTRAST,"['trying to get', 'turned round']",0.85
+event/3abf5242,event/4fca512e,CONTRAST,"['trying to get', 'set my face towards']",0.85
+event/1cf50896,event/4fca512e,CONTRAST,"['low church wall', 'home']",0.75
+event/3ad68478,event/4fca512e,CONTRAST,"['got over', 'set my face towards']",0.75
+event/195c7687,event/4fca512e,CONTRAST,"['turned round', 'set my face towards']",0.8
+event/3ad68478,event/057628b4,CONTRAST,"['got over', 'made the best use']",0.7
+event/3ad68478,event/9a171c3c,CONTRAST,['over'],0.7
+event/195c7687,event/9a171c3c,CONTRAST,"['turned round', 'looked over my shoulder']",0.8
+event/4fca512e,event/9a171c3c,CONTRAST,"['set my face towards', 'looked over my shoulder']",0.85
+event/4fca512e,event/3e54770d,CONTRAST,"['towards', 'again']",0.8
+event/057628b4,event/3e54770d,CONTRAST,"['best use', 'going on again']",0.7
+event/4fca512e,event/20c82c2d,CONTRAST,"['still', 'hugging']",0.75
+event/057628b4,event/20c82c2d,CONTRAST,"['best use', 'still hugging']",0.75
+event/9a171c3c,event/20c82c2d,CONTRAST,"['still', 'hugging']",0.85
+event/3e54770d,event/20c82c2d,CONTRAST,"['still', 'again']",0.8
+event/057628b4,event/cf34aaf6,CONTRAST,"['best use', 'sore feet']",0.85
+event/9a171c3c,event/cf34aaf6,CONTRAST,"['looked over my shoulder', 'picking his way', 'sore feet', 'great stones']",0.85
+event/3e54770d,event/cf34aaf6,CONTRAST,"['sore feet', 'great stones']",0.85
+event/20c82c2d,event/cf34aaf6,CONTRAST,"['still', 'sore', 'hugging', 'picking']",0.85
+event/9a171c3c,event/50eaf4f6,CONTRAST,"['looked over', 'appeared', 'long black horizontal line']",0.75
+event/3e54770d,event/50eaf4f6,CONTRAST,"['towards', 'appeared', 'as']",0.75
+event/cf34aaf6,event/50eaf4f6,CONTRAST,"['sore feet', 'great stones', 'long black horizontal line']",0.85
+event/3e54770d,event/b9369e79,CONTRAST,"['again', 'appeared', 'another']",0.75
+event/cf34aaf6,event/b9369e79,CONTRAST,"['sore feet', 'great stones', 'horizontal line']",0.85
+event/50eaf4f6,event/b9369e79,CONTRAST,"['appeared', 'as', 'horizontal line']",0.85
+event/20c82c2d,event/acf01194,CONTRAST,"['still', 'angry', 'dense', 'black']",0.85
+event/cf34aaf6,event/acf01194,CONTRAST,"['sore feet', 'angry red lines', 'dense black lines']",0.85
+event/50eaf4f6,event/acf01194,CONTRAST,"['appeared', 'long', 'black', 'red', 'angry', 'dense', 'intermixed']",0.85
+event/b9369e79,event/acf01194,CONTRAST,"['appeared', 'horizontal line', 'row', 'angry', 'dense', 'intermixed']",0.85
+event/cf34aaf6,event/03abf800,CONTRAST,"['sore feet', 'stopped to look']",0.8
+event/50eaf4f6,event/5c7f9638,CONTRAST,"['appeared', 'faintly make out', 'only two black things']",0.85
+event/b9369e79,event/5c7f9638,CONTRAST,"['appeared', 'faintly make out', 'only two black things']",0.85
+event/acf01194,event/5c7f9638,CONTRAST,"['angry', 'dense', 'faintly', 'only two']",0.85
+event/03abf800,event/5c7f9638,CONTRAST,"['stopped', 'faintly make out', 'only two black things']",0.85
+event/b9369e79,event/99f57b7e,CONTRAST,"['appeared', 'observed']",0.75
+event/acf01194,event/99f57b7e,CONTRAST,"['appeared', 'observed']",0.75
+event/5c7f9638,event/99f57b7e,CONTRAST,"['only', 'observed']",0.85
+event/acf01194,event/aedd002b,CONTRAST,"['angry', 'ugly']",0.75
+event/03abf800,event/aedd002b,CONTRAST,"['ugly', 'look after']",0.85
+event/5c7f9638,event/aedd002b,CONTRAST,"['ugly', 'only two black things']",0.85
+event/99f57b7e,event/aedd002b,CONTRAST,"['ugly', 'when near']",0.85
+event/03abf800,event/22c48bb5,CONTRAST,"['stopped', 'look', 'observed']",0.85
+event/5c7f9638,event/22c48bb5,CONTRAST,"['only', 'two', 'black', 'gibbet', 'chains']",0.85
+event/99f57b7e,event/22c48bb5,CONTRAST,"['observed', 'beacon', 'gibbet', 'chains']",0.85
+event/aedd002b,event/22c48bb5,CONTRAST,"['ugly', 'chains']",0.75
+event/5c7f9638,event/6994c258,CONTRAST,"['faintly', 'only', 'limping']",0.85
+event/99f57b7e,event/6994c258,CONTRAST,"['observed', 'perceived', 'limping']",0.85
+event/aedd002b,event/6994c258,CONTRAST,"['ugly', 'limping']",0.85
+event/22c48bb5,event/6994c258,CONTRAST,"['observed', 'perceived', 'limping']",0.85
+event/99f57b7e,event/7b7cb2ac,CONTRAST,"['observed', 'thought', 'was']",0.85
+event/aedd002b,event/7b7cb2ac,CONTRAST,"['ugly', 'thought', 'come to life']",0.85
+event/22c48bb5,event/7b7cb2ac,CONTRAST,"['thought', 'come to life']",0.8
+event/6994c258,event/7b7cb2ac,CONTRAST,"['perceived', 'thought', 'limping', 'pirate', 'come to life']",0.85
+event/aedd002b,event/e8f4283e,CONTRAST,"['ugly', 'imagined']",0.85
+event/22c48bb5,event/e8f4283e,CONTRAST,"['imagined', 'going back', 'hook himself up again']",0.85
+event/6994c258,event/e8f4283e,CONTRAST,"['perceived', 'imagined', 'limping', 'going back']",0.85
+event/7b7cb2ac,event/e8f4283e,CONTRAST,"['thought', 'imagined']",0.85
+event/22c48bb5,event/0d2c6957,CONTRAST,"['horrible', 'thought', 'observed']",0.75
+event/6994c258,event/0d2c6957,CONTRAST,"['perceived', 'thought', 'horrible']",0.8
+event/7b7cb2ac,event/0d2c6957,CONTRAST,"['thought', 'horrible', 'man']",0.8
+event/e8f4283e,event/0d2c6957,CONTRAST,"['imagined', 'thought about', 'horrible']",0.85
+event/6994c258,event/c26d3e04,CONTRAST,"['limping', 'gaze', 'horrible']",0.85
+event/7b7cb2ac,event/c26d3e04,CONTRAST,"['thought', 'saw', 'horrible']",0.75
+event/e8f4283e,event/c26d3e04,CONTRAST,"['imagined', 'saw', 'horrible']",0.85
+event/0d2c6957,event/c26d3e04,CONTRAST,"['thought', 'saw', 'gaze']",0.85
+event/7b7cb2ac,event/8b496ff4,CONTRAST,"['thought', 'wondered']",0.75
+event/e8f4283e,event/8b496ff4,CONTRAST,"['imagined', 'wondered', 'thought']",0.75
+event/0d2c6957,event/8b496ff4,CONTRAST,"['wondered', 'thought about']",0.85
+event/c26d3e04,event/8b496ff4,CONTRAST,"['wondered', 'thought about']",0.85
+event/e8f4283e,event/654cd373,CONTRAST,"['imagined', 'looked all around', 'horrible young man']",0.85
+event/c26d3e04,event/654cd373,CONTRAST,"['horrible young man', 'gaze', 'looked all around']",0.85
+event/8b496ff4,event/654cd373,CONTRAST,"['wondered', 'looked', 'horrible young man']",0.85
+event/0d2c6957,event/964fccdf,CONTRAST,"['thought about', 'could see no signs of']",0.85
+event/c26d3e04,event/964fccdf,CONTRAST,"['saw', 'could see no signs']",0.85
+event/8b496ff4,event/964fccdf,CONTRAST,"['wondered', 'could see no signs']",0.85
+event/654cd373,event/964fccdf,CONTRAST,"['looked all around', 'could see no signs']",0.85
+event/c26d3e04,event/21fd1f14,CONTRAST,"['frightened', 'horrible']",0.85
+event/8b496ff4,event/21fd1f14,CONTRAST,"['wondered', 'frightened']",0.75
+event/654cd373,event/21fd1f14,CONTRAST,"['horrible', 'frightened']",0.85
+event/964fccdf,event/21fd1f14,CONTRAST,"['horrible', 'frightened']",0.85
+event/21fd1f14,event/abf31038,CONTRAST,"['frightened', 'ran home without stopping']",0.85

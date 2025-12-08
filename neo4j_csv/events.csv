@@ -1,188 +1,190 @@
 :ID,name,event_category,actionType,source_quote,confidence,sequence,chapter,time,location
-event/900dd2c7,The narrator's father’s family name is revealed to be Pirrip,CHARACTER_INTRODUCTION,CHARACTER_INTRODUCTION,,0.7254,0,1,,
-event/97af6fc1,The narrator's Christian name is revealed to be Philip,CHARACTER_INTRODUCTION,CHARACTER_INTRODUCTION,,0.7355,1,1,,
-event/eab6f274,The narrator's infant tongue could make of both names nothing longer or more explicit than Pip,DISCOVERY,DISCOVERY,,0.7116,2,1,,
-event/94fefd04,The narrator called himself Pip,IDENTITY_DECLARATION,IDENTITY_DECLARATION,,0.7327,3,1,,
-event/82943b82,The narrator came to be called Pip,IDENTITY_DECLARATION,IDENTITY_DECLARATION,,0.73,4,1,,
-event/2c57cf0e,The narrator gives Pirrip as his father's family name,ACKNOWLEDGMENT,ACKNOWLEDGMENT,,0.74,5,1,,
-event/9a02dd56,The narrator states that he never saw his father or mother,ACKNOWLEDGMENT,ACKNOWLEDGMENT,,0.7455,6,1,,
-event/5d775e1c,The narrator states that he never saw any likeness of either of them,ACKNOWLEDGMENT,ACKNOWLEDGMENT,,0.7517,7,1,,
-event/db6c4794,The narrator reflects on his first fancies regarding what his parents were like,REFLECTION,REFLECTION,,0.7221,8,1,,
-event/edaf32ff,The narrator derives his fancies about his parents from their tombstones,DISCOVERY,DISCOVERY,,0.72,9,1,,
-event/cff71c8c,The narrator describes the shape of the letters on his father's tombstone,DESCRIPTION,DESCRIPTION,,0.7041,10,1,,
-event/66c1e494,"The narrator has an odd idea that his father was a square, stout, dark man with curly black hair",CHARACTER_INTRODUCTION,CHARACTER_INTRODUCTION,,0.7207,11,1,,
-event/24b3e1f4,The narrator drew a childish conclusion about his mother.,THOUGHT,THOUGHT,,0.6598,12,1,,
-event/360b5d74,The narrator perceived that his mother was freckled and sickly.,EMOTION,EMOTION,,0.6516,13,1,,
-event/14e9ee75,Five little stone lozenges were arranged in a neat row beside the grave,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.68,14,1,,Grave
-event/72a38974,The lozenges were sacred to the memory of five little brothers of Philip Pirrip,ACKNOWLEDGMENT,ACKNOWLEDGMENT,,0.76,15,1,,Grave
-event/2ec5bb04,Philip Pirrip believed that his brothers had all been born on their backs,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7016,16,1,,Grave
-event/a04c2b0d,Philip Pirrip believed that his brothers had their hands in their trousers-pockets,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7036,17,1,,Grave
-event/2c1aa49b,Philip Pirrip believed that his brothers had never taken their hands out in this state of existence,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7,18,1,,Grave
-event/fe58aa39,Philip Pirrip reflected on the early death of his brothers,REFLECTION,REFLECTION,,0.6846,19,1,,Grave
-event/9c1d7e15,The narrator gained a vivid and broad impression of the identity of things,DISCOVERY,DISCOVERY,,0.7834,20,1,Memorable raw afternoon towards evening,Marsh country
-event/bd644966,The narrator found out for certain that the bleak place overgrown with nettles was the churchyard,DISCOVERY,DISCOVERY,,0.76,21,1,Memorable raw afternoon towards evening,Churchyard
-event/12fb476b,"The narrator found out that Philip Pirrip, late of this parish, and Georgiana, wife of the above, were dead and buried",DISCOVERY,DISCOVERY,,0.7621,22,1,Memorable raw afternoon towards evening,Churchyard
-event/4a0f1f9b,"The narrator found out that Alexander, Bartholomew, Abraham, Tobias, and Roger, infant children of the aforesaid, were also dead and buried",DISCOVERY,DISCOVERY,,0.7662,23,1,Memorable raw afternoon towards evening,Churchyard
-event/71181368,The narrator found out that the dark flat wilderness beyond the churchyard was the marshes,DISCOVERY,DISCOVERY,,0.76,24,1,Memorable raw afternoon towards evening,Marshes
-event/e2320f43,The narrator found out that the low leaden line beyond was the river,DISCOVERY,DISCOVERY,,0.7713,25,1,Memorable raw afternoon towards evening,River
-event/55f29258,The narrator found out that the distant savage lair from which the wind was rushing was the sea,DISCOVERY,DISCOVERY,,0.76,26,1,Memorable raw afternoon towards evening,Sea
-event/5873a1e0,Pip was a small bundle of shivers growing afraid of it all and beginning to cry,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.756,27,1,Memorable raw afternoon towards evening,Sea
-event/affe10b0,A man started up from among the graves at the side of the church porch,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.7851,28,1,Memorable raw afternoon towards evening,Church porch
-event/8b36d780,A man cried a terrible voice,DIALOGUE,DIALOGUE,,0.7973,29,1,Memorable raw afternoon towards evening,Church porch
-event/df2e5b1b,A man threatened to cut the throat of a little devil,ACTION_TENSION,ACTION_TENSION,,0.7865,30,1,Memorable raw afternoon towards evening,Church porch
-event/0cda9890,Philip Pirrip was called a little devil,DISMISSAL,DISMISSAL,,0.7826,31,1,Memorable raw afternoon towards evening,Church porch
-event/93ebab0e,"A fearful man appeared, all in coarse grey, with a great iron on his leg",CHARACTER_INTRODUCTION,CHARACTER_INTRODUCTION,,0.7277,32,1,Memorable raw afternoon towards evening,Church porch
-event/c5d5a034,The man had no hat,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.7126,33,1,Memorable raw afternoon towards evening,Church porch
-event/23632289,The man wore broken shoes,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.7,34,1,Memorable raw afternoon towards evening,Church porch
-event/2602ce69,The man had an old rag tied round his head,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.7,35,1,Memorable raw afternoon towards evening,Church porch
-event/c3892b67,The man was soaked in water,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.68,36,1,Memorable raw afternoon towards evening,Church porch
-event/98f7edf1,The man was smothered in mud,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.6887,37,1,Memorable raw afternoon towards evening,Church porch
-event/63151fd5,The man was lamed by stones,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.6997,38,1,Memorable raw afternoon towards evening,Church porch
-event/ce1d9952,The man was cut by flints,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.6998,39,1,Memorable raw afternoon towards evening,Church porch
-event/d2681c62,The man was stung by nettles,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.695,40,1,Memorable raw afternoon towards evening,Church porch
-event/37ed44f7,The man was torn by briars,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.6982,41,1,Memorable raw afternoon towards evening,Church porch
-event/0221fb11,The man limped,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7282,42,1,Memorable raw afternoon towards evening,Church porch
-event/7dc286c0,The man shivered,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.734,43,1,Memorable raw afternoon towards evening,Church porch
-event/2d3e300d,The man glared,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7448,44,1,Memorable raw afternoon towards evening,Church porch
-event/69fc07d4,The man growled,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7394,45,1,Memorable raw afternoon towards evening,Church porch
-event/9bcafefe,The man's teeth chattered in his head,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7367,46,1,Memorable raw afternoon towards evening,Church porch
-event/18a59c8e,The man seized Philip Pirrip by the chin,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7488,47,1,Memorable raw afternoon towards evening,Church porch
-event/99625e27,Philip Pirrip pleaded in terror,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.6471,48,1,Memorable raw afternoon towards evening,Church porch
-event/40ba1309,Philip Pirrip expressed a plea,DIALOGUE,DIALOGUE,,0.6657,49,1,Memorable raw afternoon towards evening,Church porch
-event/17f42de1,The man stared at Philip Pirrip,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7354,50,1,Memorable raw afternoon towards evening,Church porch
-event/5baab928,The man commanded Philip Pirrip to give it mouth,DIALOGUE,DIALOGUE,,0.7298,51,1,Memorable raw afternoon towards evening,Church porch
-event/94afe542,The man asked to be shown where someone lives,DIALOGUE,DIALOGUE,,0.668,52,1,Memorable raw afternoon towards evening,Church porch
-event/affbc492,The man instructed to point out the place,DIALOGUE,DIALOGUE,,0.663,53,1,Memorable raw afternoon towards evening,Church porch
-event/84f3cf05,I pointed to where our village lay,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.8112,54,1,Memorable raw afternoon towards evening,Flat in-shore among the alder-trees and pollards
-event/a3704144,Our village lay on the flat in-shore among the alder-trees and pollards,DISCOVERY,DISCOVERY,,0.7049,55,1,Memorable raw afternoon towards evening,Flat in-shore among the alder-trees and pollards
-event/216c6f22,The man looked at Philip Pirrip for a moment,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7416,56,1,Memorable raw afternoon towards evening,Flat in-shore among the alder-trees and pollards
-event/118e4d85,The man turned Philip Pirrip upside down,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7412,57,1,Memorable raw afternoon towards evening,Flat in-shore among the alder-trees and pollards
-event/c53990a7,The man emptied Philip Pirrip's pockets,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7345,58,1,Memorable raw afternoon towards evening,Flat in-shore among the alder-trees and pollards
-event/b0a230ac,Philip Pirrip's pockets contained nothing but a piece of bread,DISCOVERY,DISCOVERY,,0.7035,59,1,Memorable raw afternoon towards evening,Flat in-shore among the alder-trees and pollards
-event/2bc997fd,The church came to itself,ADAPTATION_TO_CHANGE,ADAPTATION_TO_CHANGE,,0.649,60,1,Memorable raw afternoon towards evening,Churchyard
-event/e1505ac5,The man made the church go head over heels before Philip Pirrip,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7738,61,1,Memorable raw afternoon towards evening,Churchyard
-event/79e9f0d0,Philip Pirrip saw the steeple under his feet,PERCEPTION,PERCEPTION,,0.7502,62,1,Memorable raw afternoon towards evening,Churchyard
-event/f9f36d18,Philip Pirrip was seated on a high tombstone,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.778,63,1,Memorable raw afternoon towards evening,Churchyard
-event/53712509,Philip Pirrip was trembling while the man ate the bread ravenously,EMOTION,EMOTION,,0.7952,64,1,Memorable raw afternoon towards evening,Churchyard
-event/e2511029,The man ate the bread ravenously,ACTION_TENSION,ACTION_TENSION,,0.7654,65,1,Memorable raw afternoon towards evening,Churchyard
-event/533c1bc6,The man licked his lips,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7395,66,1,Memorable raw afternoon towards evening,Churchyard
-event/50018bce,The man commented on the fat cheeks of Philip Pirrip,DIALOGUE,DIALOGUE,,0.7456,67,1,Memorable raw afternoon towards evening,Churchyard
-event/07b2e7bd,The narrator believed they were fat,THOUGHT,THOUGHT,,0.7337,68,1,Memorable raw afternoon towards evening,Churchyard
-event/e82b2130,The narrator was undersized for his years,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.7366,69,1,Memorable raw afternoon towards evening,Churchyard
-event/3b826a1c,The narrator was not strong,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.7354,70,1,Memorable raw afternoon towards evening,Churchyard
-event/6a2cd365,The man threatened with a shake of his head,ACTION_TENSION,ACTION_TENSION,,0.7259,71,1,Memorable raw afternoon towards evening,Churchyard
-event/1193010b,The man expressed a desire to eat,ASPIRATION,ASPIRATION,,0.7235,72,1,Memorable raw afternoon towards evening,Churchyard
-event/9cc812a8,The man indicated he had half a mind to eat them,DIALOGUE,DIALOGUE,,0.7002,73,1,Memorable raw afternoon towards evening,Churchyard
-event/17004f0d,I earnestly expressed my hope that he wouldn’t,DIALOGUE,DIALOGUE,,0.7499,74,1,Memorable raw afternoon towards evening,Churchyard
-event/3f09a400,I held tighter to the tombstone,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7483,75,1,Memorable raw afternoon towards evening,Churchyard
-event/7debfcbc,I wanted to keep myself upon the tombstone,ASPIRATION,ASPIRATION,,0.7324,76,1,Memorable raw afternoon towards evening,Churchyard
-event/89677a6c,I wanted to keep myself from crying,ASPIRATION,ASPIRATION,,0.7428,77,1,Memorable raw afternoon towards evening,Churchyard
-event/a8452911,The man asked where Philip Pirrip's mother was,DIALOGUE,DIALOGUE,,0.7437,78,1,Memorable raw afternoon towards evening,Churchyard
-event/5209be2e,He started,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7821,79,1,Memorable raw afternoon towards evening,Churchyard
-event/089c8fea,He made a short run,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.752,80,1,Memorable raw afternoon towards evening,Churchyard
-event/c9aaf735,He stopped,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.773,81,1,Memorable raw afternoon towards evening,Churchyard
-event/85f186c8,He looked over his shoulder,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7458,82,1,Memorable raw afternoon towards evening,Churchyard
-event/0467b589,I timidly explained.,DIALOGUE,DIALOGUE,,0.7625,83,1,Memorable raw afternoon towards evening,Churchyard
-event/2f7ecbf2,I referred to Georgiana as my mother.,DIALOGUE,DIALOGUE,,0.7165,84,1,Memorable raw afternoon towards evening,Churchyard
-event/6ca43a74,He exclaimed 'Oh!',EMOTION,EMOTION,,0.7586,85,1,Memorable raw afternoon towards evening,Churchyard
-event/bcd46419,He came back.,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.7656,86,1,Memorable raw afternoon towards evening,Churchyard
-event/90b84c3e,He asked if that was his father along with his mother.,DIALOGUE,DIALOGUE,,0.7308,87,1,Memorable raw afternoon towards evening,Churchyard
-event/f451ea20,The speaker acknowledged the presence of another person.,ACKNOWLEDGMENT,ACKNOWLEDGMENT,,0.7508,88,1,Memorable raw afternoon towards evening,Churchyard
-event/db405121,The speaker referred to another person as 'him too'.,DIALOGUE,DIALOGUE,,0.739,89,1,Memorable raw afternoon towards evening,Churchyard
-event/e04aafb1,The speaker identified the other person as 'late of this parish'.,DIALOGUE,DIALOGUE,,0.7509,90,1,Memorable raw afternoon towards evening,Churchyard
-event/07c1af06,He muttered,DIALOGUE,DIALOGUE,,0.7755,91,1,Memorable raw afternoon towards evening,Churchyard
-event/2e082757,He considered,CONTEMPLATION,CONTEMPLATION,,0.7562,92,1,Memorable raw afternoon towards evening,Churchyard
-event/58efa0e2,He asked who the other person lives with,DIALOGUE,DIALOGUE,,0.7454,93,1,Memorable raw afternoon towards evening,Churchyard
-event/042951e5,He implied that he hasn't made up his mind about the other person's fate,DIALOGUE,DIALOGUE,,0.7292,94,1,Memorable raw afternoon towards evening,Churchyard
-event/37e4eb83,Mrs. Joe Gargery is introduced as the sister of the narrator.,CHARACTER_INTRODUCTION,CHARACTER_INTRODUCTION,,0.7535,95,1,Memorable raw afternoon towards evening,Churchyard
-event/0b2a11b0,Joe Gargery is introduced as the husband of Mrs. Joe Gargery.,CHARACTER_INTRODUCTION,CHARACTER_INTRODUCTION,,0.7541,96,1,Memorable raw afternoon towards evening,Churchyard
-event/c5c3b1ce,The narrator refers to Mrs. Joe Gargery as 'my sister'.,DIALOGUE,DIALOGUE,,0.7556,97,1,Memorable raw afternoon towards evening,Churchyard
-event/c2ff13e7,The narrator addresses someone as 'sir'.,DIALOGUE,DIALOGUE,,0.7618,98,1,Memorable raw afternoon towards evening,Churchyard
-event/9fca0a5e,"A character said 'Blacksmith, eh?'",DIALOGUE,DIALOGUE,,0.665,99,1,Memorable raw afternoon towards evening,Churchyard
-event/94303c0d,A character looked down at his leg,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.6639,100,1,Memorable raw afternoon towards evening,Churchyard
-event/60266535,The convict looked darkly at his leg and Philip Pirrip several times,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7318,101,1,Memorable raw afternoon towards evening,Churchyard
-event/4567cdec,Abel Magwitch came closer to Philip Pirrip's tombstone,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.7471,102,1,Memorable raw afternoon towards evening,Graveyard
-event/3fce1e48,Abel Magwitch took Philip Pirrip by both arms,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7278,103,1,Memorable raw afternoon towards evening,Graveyard
-event/5dcd8eb0,Abel Magwitch tilted Philip Pirrip back as far as he could hold him,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7288,104,1,Memorable raw afternoon towards evening,Graveyard
-event/788e9af7,Abel Magwitch's eyes looked powerfully down into Philip Pirrip's,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7153,105,1,Memorable raw afternoon towards evening,Graveyard
-event/faab2d4c,Philip Pirrip looked helplessly up into Abel Magwitch's eyes,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7302,106,1,Memorable raw afternoon towards evening,Graveyard
-event/39ea1a89,The convict asked Philip Pirrip if he knew what a file is,DIALOGUE,DIALOGUE,,0.7256,107,1,Memorable raw afternoon towards evening,Graveyard
-event/e70c5870,The convict stated the question being whether Philip Pirrip is to be let to live,DIALOGUE,DIALOGUE,,0.7309,108,1,Memorable raw afternoon towards evening,Graveyard
-event/fe6c6d3d,He tilted Philip Pirrip over a little more,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7566,109,1,Memorable raw afternoon towards evening,Graveyard
-event/4e3634d6,Philip Pirrip felt a greater sense of helplessness,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7379,110,1,Memorable raw afternoon towards evening,Graveyard
-event/bff40d85,Philip Pirrip felt a sense of danger,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7361,111,1,Memorable raw afternoon towards evening,Graveyard
-event/2737c6a7,The convict demanded a file from Philip Pirrip.,DIALOGUE,DIALOGUE,,0.754,112,1,Memorable raw afternoon towards evening,Graveyard
-event/7533a3ab,The convict demanded food (wittles) from Philip Pirrip.,DIALOGUE,DIALOGUE,,0.7519,113,1,Memorable raw afternoon towards evening,Graveyard
-event/3f9b04c7,The convict threatened Philip Pirrip with violence.,DIALOGUE,DIALOGUE,,0.7484,114,1,Memorable raw afternoon towards evening,Graveyard
-event/fd0dc162,The convict tilted Philip Pirrip repeatedly.,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7537,115,1,Memorable raw afternoon towards evening,Graveyard
-event/59e5b7dd,The narrator felt dreadfully frightened,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7578,116,1,Memorable raw afternoon towards evening,Graveyard
-event/9ebc191e,The narrator felt giddy,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7775,117,1,Memorable raw afternoon towards evening,Graveyard
-event/13d15815,The narrator clung to the man with both hands,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7434,118,1,Memorable raw afternoon towards evening,Graveyard
-event/731438db,The narrator asked the man to let him keep upright,DIALOGUE,DIALOGUE,,0.7543,119,1,Memorable raw afternoon towards evening,Graveyard
-event/2b2a3c3b,The narrator expressed hope to not be sick,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7582,120,1,Memorable raw afternoon towards evening,Graveyard
-event/54c163de,The narrator expressed hope to attend more,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.774,121,1,Memorable raw afternoon towards evening,Graveyard
-event/666f0d3e,He gave me a most tremendous dip and roll,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7483,122,1,Memorable raw afternoon towards evening,Graveyard
-event/6bcbee0c,The church jumped over its own weathercock,ACTION_TENSION,ACTION_TENSION,,0.6279,123,1,Memorable raw afternoon towards evening,Graveyard
-event/3675a222,"He held me by the arms, in an upright position on the top of the stone",PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7408,124,1,Memorable raw afternoon towards evening,Graveyard
-event/3c65d84b,He went on in these fearful terms,DIALOGUE,DIALOGUE,,0.7015,125,1,Memorable raw afternoon towards evening,Graveyard
-event/276ad22b,The convict demanded the file and food to be brought to him the next morning.,DIALOGUE,DIALOGUE,,0.6908,126,1,Tomorrow morning,Old Battery
-event/58ed203f,The convict threatened Philip Pirrip with violence if he did not comply.,DIALOGUE,DIALOGUE,,0.684,127,1,Tomorrow morning,Old Battery
-event/bb375da7,The convict implied he was not alone and mentioned a young man hiding with him.,DIALOGUE,DIALOGUE,,0.6981,128,1,Tomorrow morning,Old Battery
-event/7973a915,Philip Pirrip felt fear in response to the convict's threats.,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.6525,129,1,Tomorrow morning,Old Battery
-event/2895b0d9,The young man has a secret way of getting at a boy.,DISCOVERY,DISCOVERY,,0.7499,130,1,Tomorrow morning,Old Battery
-event/be611acc,A boy attempts to hide himself from the young man.,ACTION_TENSION,ACTION_TENSION,,0.7199,131,1,Tomorrow morning,Old Battery
-event/7f73f462,The boy locks his door.,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.72,132,1,Tomorrow morning,Old Battery
-event/c052418a,The boy is warm in bed.,STATE_CHANGE,STATE_CHANGE,,0.72,133,1,Tomorrow morning,Old Battery
-event/c7e09230,The boy tucks himself up.,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7343,134,1,Tomorrow morning,Old Battery
-event/36835a6e,The boy draws the clothes over his head.,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7226,135,1,Tomorrow morning,Old Battery
-event/960ef67b,The boy thinks himself comfortable and safe.,EMOTION,EMOTION,,0.7162,136,1,Tomorrow morning,Old Battery
-event/8a46dfd2,The young man softly creeps towards the boy.,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.72,137,1,Tomorrow morning,Old Battery
-event/5ab8b656,The young man tears the boy open.,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7247,138,1,Tomorrow morning,Old Battery
-event/dd3c18c1,The speaker is keeping the young man from harming the boy.,SUPPORT,SUPPORT,,0.7557,139,1,Tomorrow morning,Old Battery
-event/3cd49454,The speaker finds it very hard to hold the young man off of the boy's inside.,EMOTIONAL_CONFLICT,EMOTIONAL_CONFLICT,,0.7343,140,1,Tomorrow morning,Old Battery
-event/35541825,The speaker asks the boy what he says.,DIALOGUE,DIALOGUE,,0.7497,141,1,Tomorrow morning,Old Battery
-event/fa613bc2,I said that I would get him the file,DIALOGUE,DIALOGUE,,0.7274,142,1,Tomorrow morning,Old Battery
-event/5e4ffab8,I would get him what broken bits of food I could,DIALOGUE,DIALOGUE,,0.7299,143,1,Tomorrow morning,Old Battery
-event/ecc6ac02,"I would come to him at the Battery, early in the morning",DIALOGUE,DIALOGUE,,0.77,144,1,Early morning,Battery
-event/b860cd88,The man said 'Say Lord strike you dead if you don’t!',DIALOGUE,DIALOGUE,,0.765,145,1,Early morning,Battery
-event/02fcebf9,He pursued the conversation,DIALOGUE,DIALOGUE,,0.7498,146,1,Early morning,Battery
-event/bba55582,He reminded the listener of what they undertook,DIALOGUE,DIALOGUE,,0.7423,147,1,Early morning,Battery
-event/57c557ec,He reminded the listener of the young man,DIALOGUE,DIALOGUE,,0.7484,148,1,Early morning,Battery
-event/8d975e6d,He instructed the listener to get home,DIALOGUE,DIALOGUE,,0.7534,149,1,Early morning,Battery
-event/407f38c4,He glanced about him over the cold wet flat,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7649,150,1,Early morning,Cold wet flat
-event/09992456,He expressed a wish to be a frog,ASPIRATION,ASPIRATION,,0.7299,151,1,Early morning,Cold wet flat
-event/6fded52c,He expressed a wish to be an eel,ASPIRATION,ASPIRATION,,0.7322,152,1,Early morning,Cold wet flat
-event/1adc4771,He hugged his shuddering body in both his arms,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7586,153,1,Early morning,Cold wet flat
-event/9753272e,"He clasped himself, as if to hold himself together",PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7481,154,1,Early morning,Cold wet flat
-event/44241451,He limped towards the low church wall,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.7935,155,1,Early morning,Churchyard
-event/ce64310d,"I saw him go, picking his way among the nettles and brambles",PERCEPTION,PERCEPTION,,0.8062,156,1,Early morning,Churchyard
-event/f6ee76a9,He looked in my young eyes as if he were eluding the hands of the dead people,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7617,157,1,Early morning,Churchyard
-event/188b58cb,The dead people were stretching up cautiously out of their graves,IMPLICIT_EVENT,IMPLICIT_EVENT,,0.6335,158,1,Early morning,Churchyard
-event/8abe8936,The dead people were trying to get a twist upon his ankle and pull him in,IMPLICIT_EVENT,IMPLICIT_EVENT,,0.6402,159,1,Early morning,Churchyard
-event/0b03e175,He came to the low church wall,ARRIVAL,ARRIVAL,,0.8083,160,1,Early morning,Church wall
-event/331dfe6d,He got over the low church wall,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.8106,161,1,Early morning,Church wall
-event/bc68dc0e,He turned round to look for me,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7686,162,1,Early morning,Church wall
-event/85ad6c9f,I set my face towards home,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7907,163,1,Early morning,Church wall
-event/9aec5747,I made the best use of my legs,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7783,164,1,Early morning,Church wall
-event/757492c6,I looked over my shoulder,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7757,165,1,Early morning,Church wall
-event/30a13607,I saw him going on again towards the river,PERCEPTION,PERCEPTION,,0.8062,166,1,Early morning,River
-event/be945dda,He was still hugging himself in both arms,STATE_CHANGE,STATE_CHANGE,,0.7745,167,1,Early morning,River
-event/3b569512,He was picking his way with his sore feet among the great stones,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7967,168,1,Early morning,Marshes
-event/8d5f4f60,The marshes appeared as a long black horizontal line.,DISCOVERY,DISCOVERY,,0.6827,169,1,Early morning,Marshes
-event/8d564ae3,The river appeared as another horizontal line.,DISCOVERY,DISCOVERY,,0.6906,170,1,Early morning,River
-event/03392695,The sky appeared as a row of long angry red lines and dense black lines intermixed.,DISCOVERY,DISCOVERY,,0.7036,171,1,Early morning,Sky
-event/d2e6a9a8,The narrator stopped to look after him.,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7548,172,1,Early morning,Sky
-event/c83551a5,The narrator could faintly make out the only two black things in the prospect,PERCEPTION,PERCEPTION,,0.7821,173,1,Early morning,Edge of the river
-event/60b36d7a,The narrator observed the beacon by which the sailors steered,PERCEPTION,PERCEPTION,,0.7656,174,1,Early morning,Edge of the river
-event/4da9306e,The narrator described the beacon as an ugly thing when near it,EMOTION,EMOTION,,0.7513,175,1,Early morning,Near the beacon
-event/6eb2f929,The narrator observed a gibbet with chains hanging to it,PERCEPTION,PERCEPTION,,0.7775,176,1,Early morning,Edge of the river
-event/1468cee0,The narrator perceived that the man was limping towards the gibbet,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.7761,177,1,Early morning,Near the gibbet
-event/43cb0672,The narrator thought the man was the pirate come to life,CONTEMPLATION,CONTEMPLATION,,0.693,178,1,Early morning,Near the gibbet
-event/dd463184,The narrator imagined the man was going back to hook himself up again,CONTEMPLATION,CONTEMPLATION,,0.7028,179,1,Early morning,Near the gibbet
-event/b7c9ceef,The narrator thought about the horrible young man,CONTEMPLATION,CONTEMPLATION,,0.7343,180,1,Early morning,Near the gibbet
-event/69dd78ca,The narrator saw the cattle lifting their heads to gaze after the horrible young man,PERCEPTION,PERCEPTION,,0.7167,181,1,Early morning,Near the gibbet
-event/e805c584,The narrator wondered whether the cattle thought about the horrible young man,CONTEMPLATION,CONTEMPLATION,,0.6919,182,1,Early morning,Near the gibbet
-event/ee204a52,The narrator looked all around for the horrible young man,SEARCH,SEARCH,,0.7361,183,1,Early morning,Near the gibbet
-event/c0336df5,The narrator could see no signs of the horrible young man,DISCOVERY,DISCOVERY,,0.714,184,1,Early morning,Near the gibbet
-event/77322920,The narrator felt frightened again,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7433,185,1,Early morning,Near the gibbet
-event/11475679,The narrator ran home without stopping,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.8015,186,1,Early morning,Home
+event/63922cb3,The narrator's father’s family name is revealed to be Pirrip,CHARACTER_INTRODUCTION,CHARACTER_INTRODUCTION,,0.7254,0,1,,
+event/4f9c7ad1,The narrator's Christian name is revealed to be Philip,CHARACTER_INTRODUCTION,CHARACTER_INTRODUCTION,,0.7355,1,1,,
+event/e5fdf84b,The narrator's infant tongue could only make of both names nothing longer or more explicit than Pip,DISCOVERY,DISCOVERY,,0.7098,2,1,,
+event/fe79e59d,The narrator called himself Pip,IDENTITY_DECLARATION,IDENTITY_DECLARATION,,0.7327,3,1,,
+event/1ec594b3,The narrator came to be called Pip,IDENTITY_DECLARATION,IDENTITY_DECLARATION,,0.73,4,1,,
+event/fbf09d2f,The narrator gives Pirrip as his father's family name,ACKNOWLEDGMENT,ACKNOWLEDGMENT,,0.74,5,1,,
+event/65dc6d26,The narrator states that his father’s family name is on the authority of his tombstone and his sister,ACKNOWLEDGMENT,ACKNOWLEDGMENT,,0.7409,6,1,,
+event/4b48c598,The narrator mentions that he never saw his father or mother,ACKNOWLEDGMENT,ACKNOWLEDGMENT,,0.7462,7,1,,
+event/c70703fd,The narrator states that he never saw any likeness of his parents,ACKNOWLEDGMENT,ACKNOWLEDGMENT,,0.7481,8,1,,
+event/75ff4db5,The narrator reflects that his first fancies regarding his parents were derived from their tombstones,REFLECTION,REFLECTION,,0.74,9,1,,
+event/cc954075,The narrator describes the shape of the letters on his father’s tombstone,DISCOVERY,DISCOVERY,,0.7461,10,1,,
+event/8f6d9f60,"The narrator has an odd idea about his father being a square, stout, dark man with curly black hair",CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7415,11,1,,
+event/2ff3fa0e,The narrator drew a childish conclusion about his mother,THOUGHT,THOUGHT,,0.7366,12,1,,
+event/9968a12a,The narrator perceived that his mother was freckled and sickly,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7101,13,1,,
+event/d1a05c4c,Five little stone lozenges were arranged in a neat row beside the grave,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.68,14,1,,Grave
+event/13932c21,The lozenges were sacred to the memory of five little brothers of Philip Pirrip,ACKNOWLEDGMENT,ACKNOWLEDGMENT,,0.76,15,1,,Grave
+event/fad63d27,Philip Pirrip believed that his brothers had all been born on their backs,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7016,16,1,,Grave
+event/c1c77aee,Philip Pirrip believed that his brothers had their hands in their trousers-pockets,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7036,17,1,,Grave
+event/93b12826,Philip Pirrip thought his brothers had never taken their hands out in this state of existence,CONTEMPLATION,CONTEMPLATION,,0.68,18,1,,Grave
+event/16f74a7a,Philip Pirrip reflected on the early death of his brothers,DESPAIR,DESPAIR,,0.7246,19,1,,Grave
+event/12c5776d,The narrator gained a vivid and broad impression of the identity of things,DISCOVERY,DISCOVERY,,0.7834,20,1,Memorable raw afternoon towards evening,Marsh country
+event/20a75a2b,The narrator found out for certain that the bleak place overgrown with nettles was the churchyard,DISCOVERY,DISCOVERY,,0.76,21,1,Memorable raw afternoon towards evening,Churchyard
+event/5fb52743,"The narrator discovered that Philip Pirrip and Georgiana, wife of Philip Pirrip, were dead and buried",DISCOVERY,DISCOVERY,,0.7632,22,1,Memorable raw afternoon towards evening,Churchyard
+event/f36d5398,"The narrator discovered that Alexander, Bartholomew, Abraham, Tobias, and Roger were also dead and buried",DISCOVERY,DISCOVERY,,0.7675,23,1,Memorable raw afternoon towards evening,Churchyard
+event/97c2b8b7,The narrator discovered that the dark flat wilderness beyond the churchyard was the marshes,DISCOVERY,DISCOVERY,,0.76,24,1,Memorable raw afternoon towards evening,Marshes
+event/387eb776,The narrator discovered that the low leaden line beyond was the river,DISCOVERY,DISCOVERY,,0.7675,25,1,Memorable raw afternoon towards evening,River
+event/cd39f1b3,The narrator discovered that the distant savage lair from which the wind was rushing was the sea,DISCOVERY,DISCOVERY,,0.76,26,1,Memorable raw afternoon towards evening,Sea
+event/5cb06026,Pip was a small bundle of shivers growing afraid of it all and beginning to cry,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.756,27,1,Memorable raw afternoon towards evening,Sea
+event/7a60a821,A man started up from among the graves at the side of the church porch,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.7851,28,1,Memorable raw afternoon towards evening,Church porch
+event/9ea27bf2,A man cried a terrible voice,DIALOGUE,DIALOGUE,,0.7973,29,1,Memorable raw afternoon towards evening,Church porch
+event/35d258c4,A man threatened to cut the throat of a little devil,ACTION_TENSION,ACTION_TENSION,,0.7865,30,1,Memorable raw afternoon towards evening,Church porch
+event/9043a132,Philip Pirrip was called a little devil,DISMISSAL,DISMISSAL,,0.7826,31,1,Memorable raw afternoon towards evening,Church porch
+event/9f1b1071,"A fearful man appeared, all in coarse grey, with a great iron on his leg.",CHARACTER_INTRODUCTION,CHARACTER_INTRODUCTION,,0.7275,32,1,Memorable raw afternoon towards evening,Church porch
+event/8a8012e4,The man had no hat.,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.7075,33,1,Memorable raw afternoon towards evening,Church porch
+event/0182b047,The man wore broken shoes.,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.7,34,1,Memorable raw afternoon towards evening,Church porch
+event/583505cf,The man had an old rag tied round his head.,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.7,35,1,Memorable raw afternoon towards evening,Church porch
+event/03eec9c7,The man had been soaked in water.,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.6835,36,1,Memorable raw afternoon towards evening,Church porch
+event/ac41827b,The man had been smothered in mud.,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.6896,37,1,Memorable raw afternoon towards evening,Church porch
+event/ff5a94f9,The man had been lamed by stones.,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.6967,38,1,Memorable raw afternoon towards evening,Church porch
+event/d7d2f78e,The man had been cut by flints.,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.6966,39,1,Memorable raw afternoon towards evening,Church porch
+event/3d858992,The man had been stung by nettles.,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.6927,40,1,Memorable raw afternoon towards evening,Church porch
+event/fe0bd532,The man had been torn by briars.,CHARACTER_TRANSFORMATION,CHARACTER_TRANSFORMATION,,0.6961,41,1,Memorable raw afternoon towards evening,Church porch
+event/4e5670ea,The man limped.,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7224,42,1,Memorable raw afternoon towards evening,Church porch
+event/76179b3b,The man shivered.,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7322,43,1,Memorable raw afternoon towards evening,Church porch
+event/e1d06373,The man glared.,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7198,44,1,Memorable raw afternoon towards evening,Church porch
+event/64d73e0f,The man growled.,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7132,45,1,Memorable raw afternoon towards evening,Church porch
+event/0b558c23,The man's teeth chattered in his head.,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7357,46,1,Memorable raw afternoon towards evening,Church porch
+event/ed798850,The man seized Philip Pirrip by the chin.,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7489,47,1,Memorable raw afternoon towards evening,Church porch
+event/a3482c67,Philip Pirrip pleaded in terror,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.6471,48,1,Memorable raw afternoon towards evening,Church porch
+event/669ca926,Philip Pirrip expressed a plea,DIALOGUE,DIALOGUE,,0.6657,49,1,Memorable raw afternoon towards evening,Church porch
+event/9b273375,The man stared at Philip Pirrip,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7354,50,1,Memorable raw afternoon towards evening,Church porch
+event/ca509e3f,The man commanded Philip Pirrip to give it mouth,DIALOGUE,DIALOGUE,,0.7298,51,1,Memorable raw afternoon towards evening,Church porch
+event/f74991d5,The man asked to be shown where someone lives,DIALOGUE,DIALOGUE,,0.668,52,1,Memorable raw afternoon towards evening,Church porch
+event/11bf170c,The man instructed to point out the place,DIALOGUE,DIALOGUE,,0.663,53,1,Memorable raw afternoon towards evening,Church porch
+event/b5f8b2cf,I pointed to where our village lay,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7912,54,1,Memorable raw afternoon towards evening,Flat in-shore among the alder-trees and pollards
+event/bced0ad7,Our village lay on the flat in-shore among the alder-trees and pollards,DISCOVERY,DISCOVERY,,0.6849,55,1,Memorable raw afternoon towards evening,Flat in-shore among the alder-trees and pollards
+event/e9b608ac,The man looked at Philip Pirrip for a moment,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7416,56,1,Memorable raw afternoon towards evening,Flat in-shore among the alder-trees and pollards
+event/56d4f5cf,The man turned Philip Pirrip upside down,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7412,57,1,Memorable raw afternoon towards evening,Flat in-shore among the alder-trees and pollards
+event/f1409943,The man emptied Philip Pirrip's pockets,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7345,58,1,Memorable raw afternoon towards evening,Flat in-shore among the alder-trees and pollards
+event/0304a283,Philip Pirrip's pockets contained nothing but a piece of bread,DISCOVERY,DISCOVERY,,0.7035,59,1,Memorable raw afternoon towards evening,Flat in-shore among the alder-trees and pollards
+event/558226a8,The church came to itself,ADAPTATION_TO_CHANGE,ADAPTATION_TO_CHANGE,,0.649,60,1,Memorable raw afternoon towards evening,Churchyard
+event/cdb02b69,The man made the church go head over heels before Philip Pirrip,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7538,61,1,Memorable raw afternoon towards evening,Churchyard
+event/f4c16364,Philip Pirrip saw the steeple under his feet,PERCEPTION,PERCEPTION,,0.7702,62,1,Memorable raw afternoon towards evening,Churchyard
+event/61f2df93,Philip Pirrip was seated on a high tombstone,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.778,63,1,Memorable raw afternoon towards evening,Churchyard
+event/c4204f87,Philip Pirrip was trembling while the man ate the bread ravenously,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7952,64,1,Memorable raw afternoon towards evening,Churchyard
+event/fe683e95,The man ate the bread ravenously,ACTION_TENSION,ACTION_TENSION,,0.7254,65,1,Memorable raw afternoon towards evening,Churchyard
+event/57e998b1,The man licked his lips,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7395,66,1,Memorable raw afternoon towards evening,Churchyard
+event/d95be92d,The man commented on the fat cheeks of Philip Pirrip,DIALOGUE,DIALOGUE,,0.7456,67,1,Memorable raw afternoon towards evening,Churchyard
+event/214f629d,The narrator believed they were fat,THOUGHT,THOUGHT,,0.7337,68,1,Memorable raw afternoon towards evening,Churchyard
+event/1a86166c,The narrator was undersized for his years,STATE_CHANGE,STATE_CHANGE,,0.7366,69,1,Memorable raw afternoon towards evening,Churchyard
+event/2b70c4ac,The narrator was not strong,STATE_CHANGE,STATE_CHANGE,,0.7354,70,1,Memorable raw afternoon towards evening,Churchyard
+event/8d7ea535,The man threatened with a shake of his head,ACTION_TENSION,ACTION_TENSION,,0.7259,71,1,Memorable raw afternoon towards evening,Churchyard
+event/f523d462,The man expressed a desire to eat,ASPIRATION,ASPIRATION,,0.7235,72,1,Memorable raw afternoon towards evening,Churchyard
+event/23d9b638,The man indicated he was considering an action,DECISION_MAKING,DECISION_MAKING,,0.7085,73,1,Memorable raw afternoon towards evening,Churchyard
+event/f21e70b6,I earnestly expressed my hope that he wouldn’t,DIALOGUE,DIALOGUE,,0.7499,74,1,Memorable raw afternoon towards evening,Churchyard
+event/e6b1b5e0,I held tighter to the tombstone,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7483,75,1,Memorable raw afternoon towards evening,Churchyard
+event/4e4ce3c8,I was partly keeping myself upon the tombstone,EMOTION,EMOTION,,0.7287,76,1,Memorable raw afternoon towards evening,Churchyard
+event/17bd1826,I was partly keeping myself from crying,EMOTION,EMOTION,,0.7374,77,1,Memorable raw afternoon towards evening,Churchyard
+event/bca844ed,The man asked where Philip Pirrip's mother was,DIALOGUE,DIALOGUE,,0.7437,78,1,Memorable raw afternoon towards evening,Churchyard
+event/4b36bf90,He started,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7821,79,1,Memorable raw afternoon towards evening,Churchyard
+event/2d8196fc,He made a short run,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.752,80,1,Memorable raw afternoon towards evening,Churchyard
+event/5b517906,He stopped,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.773,81,1,Memorable raw afternoon towards evening,Churchyard
+event/b0fcc56a,He looked over his shoulder,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7458,82,1,Memorable raw afternoon towards evening,Churchyard
+event/f57f3094,I timidly explained.,DIALOGUE,DIALOGUE,,0.7625,83,1,Memorable raw afternoon towards evening,Churchyard
+event/e88b6e70,I mentioned Georgiana as my mother.,DIALOGUE,DIALOGUE,,0.7305,84,1,Memorable raw afternoon towards evening,Churchyard
+event/a288b326,He exclaimed 'Oh!',EMOTION,EMOTION,,0.7586,85,1,Memorable raw afternoon towards evening,Churchyard
+event/a781a319,He came back.,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.7656,86,1,Memorable raw afternoon towards evening,Churchyard
+event/985ae104,He asked if that was his father along with his mother.,DIALOGUE,DIALOGUE,,0.7308,87,1,Memorable raw afternoon towards evening,Churchyard
+event/867f26cd,The speaker acknowledged the presence of another person.,ACKNOWLEDGMENT,ACKNOWLEDGMENT,,0.7508,88,1,Memorable raw afternoon towards evening,Churchyard
+event/7096b14d,The speaker referred to another person as 'him too'.,DIALOGUE,DIALOGUE,,0.739,89,1,Memorable raw afternoon towards evening,Churchyard
+event/7cf55a7d,The speaker identified the other person as 'late of this parish'.,DIALOGUE,DIALOGUE,,0.7509,90,1,Memorable raw afternoon towards evening,Churchyard
+event/4b64dc65,He muttered,DIALOGUE,DIALOGUE,,0.7755,91,1,Memorable raw afternoon towards evening,Churchyard
+event/62f13781,He considered,CONTEMPLATION,CONTEMPLATION,,0.7562,92,1,Memorable raw afternoon towards evening,Churchyard
+event/f8183ef8,He asked who the other person lives with,DIALOGUE,DIALOGUE,,0.7454,93,1,Memorable raw afternoon towards evening,Churchyard
+event/4199a4da,He implied a threat about the other person's life,DANGER_AWARENESS,DANGER_AWARENESS,,0.7635,94,1,Memorable raw afternoon towards evening,Churchyard
+event/d87a7520,He expressed uncertainty about his decision,EMOTION,EMOTION,,0.7435,95,1,Memorable raw afternoon towards evening,Churchyard
+event/347325e9,Mrs. Joe Gargery is introduced as the sister of the narrator.,CHARACTER_INTRODUCTION,CHARACTER_INTRODUCTION,,0.7535,96,1,Memorable raw afternoon towards evening,Churchyard
+event/7f71d8f4,Joe Gargery is introduced as the husband of Mrs. Joe Gargery.,CHARACTER_INTRODUCTION,CHARACTER_INTRODUCTION,,0.7541,97,1,Memorable raw afternoon towards evening,Churchyard
+event/a4a782a2,The narrator refers to Mrs. Joe Gargery as 'my sister'.,DIALOGUE,DIALOGUE,,0.7556,98,1,Memorable raw afternoon towards evening,Churchyard
+event/d7969d1f,The narrator addresses someone as 'sir'.,DIALOGUE,DIALOGUE,,0.7618,99,1,Memorable raw afternoon towards evening,Churchyard
+event/ebed3b3f,He looked down at his leg,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7578,100,1,Memorable raw afternoon towards evening,Churchyard
+event/6a6d554e,"He said 'Blacksmith, eh?'",DIALOGUE,DIALOGUE,,0.7479,101,1,Memorable raw afternoon towards evening,Churchyard
+event/2d47db4d,The convict looked darkly at his leg and Philip Pirrip several times,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7318,102,1,Memorable raw afternoon towards evening,Churchyard
+event/1d96d2d4,Abel Magwitch came closer to Philip Pirrip's tombstone,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.7471,103,1,Memorable raw afternoon towards evening,Graveyard
+event/cd488bf8,Abel Magwitch took Philip Pirrip by both arms,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7278,104,1,Memorable raw afternoon towards evening,Graveyard
+event/e9724595,Abel Magwitch tilted Philip Pirrip back as far as he could hold him,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7288,105,1,Memorable raw afternoon towards evening,Graveyard
+event/e056135f,Abel Magwitch's eyes looked powerfully down into Philip Pirrip's eyes,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7171,106,1,Memorable raw afternoon towards evening,Graveyard
+event/e9878fcd,Philip Pirrip's eyes looked helplessly up into Abel Magwitch's eyes,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7351,107,1,Memorable raw afternoon towards evening,Graveyard
+event/ae0280f5,The convict asked Philip Pirrip if he knows what a file is,DIALOGUE,DIALOGUE,,0.7266,108,1,Memorable raw afternoon towards evening,Graveyard
+event/2f2a83e6,The convict stated the question being whether Philip Pirrip is to be let to live,DIALOGUE,DIALOGUE,,0.7309,109,1,Memorable raw afternoon towards evening,Graveyard
+event/28c930f0,He tilted Philip Pirrip over a little more,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7566,110,1,Memorable raw afternoon towards evening,Graveyard
+event/600ab68a,Philip Pirrip felt a greater sense of helplessness,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7379,111,1,Memorable raw afternoon towards evening,Graveyard
+event/9279591b,Philip Pirrip felt a sense of danger,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7361,112,1,Memorable raw afternoon towards evening,Graveyard
+event/aee34694,The convict demanded a file from Philip Pirrip.,DIALOGUE,DIALOGUE,,0.754,113,1,Memorable raw afternoon towards evening,Graveyard
+event/5ab2d0f3,The convict demanded food from Philip Pirrip.,DIALOGUE,DIALOGUE,,0.7566,114,1,Memorable raw afternoon towards evening,Graveyard
+event/a9b71859,The convict threatened Philip Pirrip with violence.,DIALOGUE,DIALOGUE,,0.7484,115,1,Memorable raw afternoon towards evening,Graveyard
+event/4d06c4f1,The convict repeated his demands to Philip Pirrip.,DIALOGUE,DIALOGUE,,0.7564,116,1,Memorable raw afternoon towards evening,Graveyard
+event/32d537c8,The narrator felt dreadfully frightened,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7578,117,1,Memorable raw afternoon towards evening,Graveyard
+event/ba4df395,The narrator felt giddy,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7775,118,1,Memorable raw afternoon towards evening,Graveyard
+event/a367d3a3,The narrator clung to the man with both hands,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7434,119,1,Memorable raw afternoon towards evening,Graveyard
+event/2adad392,The narrator asked the man to let him keep upright,DIALOGUE,DIALOGUE,,0.7543,120,1,Memorable raw afternoon towards evening,Graveyard
+event/50c1561b,The narrator expressed hope to not be sick,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7582,121,1,Memorable raw afternoon towards evening,Graveyard
+event/24336446,The narrator expressed hope to attend more,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.774,122,1,Memorable raw afternoon towards evening,Graveyard
+event/c38f9f16,He gave Philip Pirrip a most tremendous dip and roll,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7369,123,1,Memorable raw afternoon towards evening,Graveyard
+event/42c5b7ef,The church jumped over its own weathercock,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.6079,124,1,Memorable raw afternoon towards evening,Graveyard
+event/cf127421,He held Philip Pirrip by the arms,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7343,125,1,Memorable raw afternoon towards evening,Graveyard
+event/b24e701f,He positioned Philip Pirrip in an upright position on the top of the stone,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7306,126,1,Memorable raw afternoon towards evening,Graveyard
+event/d76e4477,He went on in fearful terms,DIALOGUE,DIALOGUE,,0.7268,127,1,Memorable raw afternoon towards evening,Graveyard
+event/45cb7945,The convict demanded the file and food to be brought to him the next morning.,DIALOGUE,DIALOGUE,,0.6908,128,1,Tomorrow morning,Old Battery
+event/fd2ebc18,The convict threatened Pip with violence if he failed to comply.,DIALOGUE,DIALOGUE,,0.6511,129,1,Tomorrow morning,Old Battery
+event/fb9a7be3,The convict implied he was not alone and mentioned a young man hiding with him.,DIALOGUE,DIALOGUE,,0.6581,130,1,Tomorrow morning,Old Battery
+event/e7591327,The convict expressed that the young man with him is worse than he is.,DIALOGUE,DIALOGUE,,0.6586,131,1,Tomorrow morning,Old Battery
+event/c379b375,Pip felt fear in response to the convict's threats.,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.6618,132,1,Tomorrow morning,Old Battery
+event/9cf47ec5,The young man has a secret way of getting at a boy.,DISCOVERY,DISCOVERY,,0.7499,133,1,Tomorrow morning,Old Battery
+event/fddc08ae,A boy attempts to hide himself from the young man.,ACTION_TENSION,ACTION_TENSION,,0.7199,134,1,Tomorrow morning,Old Battery
+event/a4cd9f7a,The boy locks his door.,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.72,135,1,Tomorrow morning,Old Battery
+event/b76900d2,The boy is warm in bed.,STATE_CHANGE,STATE_CHANGE,,0.72,136,1,Tomorrow morning,Old Battery
+event/2929fa25,The boy tucks himself up.,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7343,137,1,Tomorrow morning,Old Battery
+event/28ba68de,The boy draws the clothes over his head.,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7226,138,1,Tomorrow morning,Old Battery
+event/be8de5a4,The boy thinks himself comfortable and safe.,EMOTION,EMOTION,,0.7162,139,1,Tomorrow morning,Old Battery
+event/ebd654d6,The young man softly creeps towards the boy.,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.72,140,1,Tomorrow morning,Old Battery
+event/7c0f1486,The young man tears the boy open.,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7247,141,1,Tomorrow morning,Old Battery
+event/21742e09,The speaker is keeping the young man from harming the boy.,SUPPORT,SUPPORT,,0.7557,142,1,Tomorrow morning,Old Battery
+event/6904fe9d,The speaker finds it very hard to hold the young man off the boy's inside.,EMOTIONAL_CONFLICT,EMOTIONAL_CONFLICT,,0.7336,143,1,Tomorrow morning,Old Battery
+event/7b08c830,The speaker asks the boy what he says.,DIALOGUE,DIALOGUE,,0.7697,144,1,Tomorrow morning,Old Battery
+event/d4f6a1b8,I said that I would get him the file,DIALOGUE,DIALOGUE,,0.7474,145,1,Tomorrow morning,Old Battery
+event/def01331,I would get him what broken bits of food I could,DIALOGUE,DIALOGUE,,0.7499,146,1,Tomorrow morning,Old Battery
+event/b6793817,"I would come to him at the Battery, early in the morning",DIALOGUE,DIALOGUE,,0.79,147,1,Early morning,Battery
+event/12c5c913,The man said 'Say Lord strike you dead if you don’t!',DIALOGUE,DIALOGUE,,0.765,148,1,Early morning,Battery
+event/c4ab2a97,He pursued the conversation.,DIALOGUE,DIALOGUE,,0.7468,149,1,Early morning,Battery
+event/396700a5,He reminded the listener of what they undertook.,DIALOGUE,DIALOGUE,,0.7476,150,1,Early morning,Battery
+event/2059cbad,He reminded the listener of the young man.,DIALOGUE,DIALOGUE,,0.7491,151,1,Early morning,Battery
+event/b0759705,He instructed the listener to get home.,DIALOGUE,DIALOGUE,,0.7518,152,1,Early morning,Battery
+event/11ef0d14,He glanced about him over the cold wet flat,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7649,153,1,Early morning,Cold wet flat
+event/eec2e5d3,He expressed a wish to be a frog,ASPIRATION,ASPIRATION,,0.7299,154,1,Early morning,Cold wet flat
+event/985248b3,He expressed a wish to be an eel,ASPIRATION,ASPIRATION,,0.7322,155,1,Early morning,Cold wet flat
+event/547f4bfe,He hugged his shuddering body in both his arms,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7586,156,1,Early morning,Cold wet flat
+event/28788e0d,He limped towards the low church wall,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.7935,157,1,Early morning,Churchyard
+event/9f12dc51,"I saw him go, picking his way among the nettles and brambles",PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.8062,158,1,Early morning,Churchyard
+event/d5a38197,He looked in my young eyes as if he were eluding the hands of the dead people,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7617,159,1,Early morning,Churchyard
+event/f6f409a6,The dead people were stretching up cautiously out of their graves,DANGER_AWARENESS,DANGER_AWARENESS,,0.7535,160,1,Early morning,Graveyard
+event/3abf5242,The dead people were trying to get a twist upon his ankle and pull him in,DANGER_AWARENESS,DANGER_AWARENESS,,0.7602,161,1,Early morning,Graveyard
+event/1cf50896,He came to the low church wall,ARRIVAL,ARRIVAL,,0.7883,162,1,Early morning,Church wall
+event/3ad68478,He got over the low church wall,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7906,163,1,Early morning,Church wall
+event/195c7687,He turned round to look for me,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7486,164,1,Early morning,Church wall
+event/4fca512e,I set my face towards home,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7907,165,1,Early morning,Church wall
+event/057628b4,I made the best use of my legs,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7783,166,1,Early morning,Church wall
+event/9a171c3c,I looked over my shoulder,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7557,167,1,Early morning,Church wall
+event/3e54770d,I saw him going on again towards the river,PERCEPTION,PERCEPTION,,0.7862,168,1,Early morning,River
+event/20c82c2d,He was still hugging himself in both arms,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7545,169,1,Early morning,River
+event/cf34aaf6,He was picking his way with his sore feet among the great stones,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7767,170,1,Early morning,Marshes
+event/50eaf4f6,The marshes appeared as a long black horizontal line.,DISCOVERY,DISCOVERY,,0.6827,171,1,Early morning,Marshes
+event/b9369e79,The river appeared as another horizontal line.,DISCOVERY,DISCOVERY,,0.6906,172,1,Early morning,River
+event/acf01194,The sky appeared as a row of long angry red lines and dense black lines intermixed.,DISCOVERY,DISCOVERY,,0.7036,173,1,Early morning,Sky
+event/03abf800,The narrator stopped to look after him.,PHYSICAL_ACTION,PHYSICAL_ACTION,,0.7548,174,1,Early morning,Sky
+event/5c7f9638,The narrator could faintly make out the only two black things in the prospect,PERCEPTION,PERCEPTION,,0.7821,175,1,Early morning,Edge of the river
+event/99f57b7e,The narrator observed the beacon by which the sailors steered,PERCEPTION,PERCEPTION,,0.7656,176,1,Early morning,Edge of the river
+event/aedd002b,The narrator described the beacon as an ugly thing when near it,EMOTION,EMOTION,,0.7513,177,1,Early morning,Near the beacon
+event/22c48bb5,The narrator observed a gibbet with chains hanging to it,PERCEPTION,PERCEPTION,,0.7775,178,1,Early morning,Edge of the river
+event/6994c258,The narrator perceived a man limping towards the gibbet,PERCEPTION,PERCEPTION,,0.7787,179,1,Early morning,Near the gibbet
+event/7b7cb2ac,The narrator thought the man was the pirate come to life,CONTEMPLATION,CONTEMPLATION,,0.753,180,1,Early morning,Near the gibbet
+event/e8f4283e,The narrator imagined the man going back to hook himself up again,CONTEMPLATION,CONTEMPLATION,,0.7618,181,1,Early morning,Near the gibbet
+event/0d2c6957,The narrator thought about the horrible young man,CONTEMPLATION,CONTEMPLATION,,0.7343,182,1,Early morning,Near the gibbet
+event/c26d3e04,The narrator saw the cattle lifting their heads to gaze after the horrible young man,PERCEPTION,PERCEPTION,,0.7167,183,1,Early morning,Near the gibbet
+event/8b496ff4,The narrator wondered whether the cattle thought about the horrible young man,CONTEMPLATION,CONTEMPLATION,,0.6919,184,1,Early morning,Near the gibbet
+event/654cd373,The narrator looked all around for the horrible young man,SEARCH,SEARCH,,0.7361,185,1,Early morning,Near the gibbet
+event/964fccdf,The narrator could see no signs of the horrible young man,PERCEPTION,PERCEPTION,,0.714,186,1,Early morning,Near the gibbet
+event/21fd1f14,The narrator felt frightened again,CHARACTER_EMOTION,CHARACTER_EMOTION,,0.7433,187,1,Early morning,Near the gibbet
+event/abf31038,The narrator ran home without stopping,PHYSICAL_MOVEMENT,PHYSICAL_MOVEMENT,,0.7615,188,1,Early morning,Near the gibbet
