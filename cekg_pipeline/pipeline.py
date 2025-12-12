@@ -4,6 +4,12 @@ Enhanced Pipeline with:
 2. Automatic Agent Type Classification (optional)
 3. Scene-Centric Structure (all entities/events under scenes)
 4. Long-Range Causal Inference (cross-chapter)
+
+FIXES:
+- Added fallback for single-theory mode
+- Fixed theory capitalization consistency
+- Improved error handling for missing ontologies
+- Better validation for LLM responses
 """
 
 import asyncio
@@ -85,8 +91,17 @@ class CEKGPreprocessor:
         all_produces = []
         entity_occurrences_batch = defaultdict(list)
         
+        # FIX: Better validation of event_data_list
         if not isinstance(event_data_list, list):
-            event_data_list = []
+            if isinstance(event_data_list, dict):
+                # Try to extract events from dict
+                if 'events' in event_data_list:
+                    event_data_list = event_data_list['events']
+                else:
+                    print(f"[warning] Unexpected dict structure, keys: {event_data_list.keys()}")
+                    event_data_list = []
+            else:
+                event_data_list = []
         
         logprobs_list = [logprobs] * len(event_data_list) if logprobs else [None] * len(event_data_list)
         
@@ -112,6 +127,7 @@ class CEKGPreprocessor:
                 # Validate event type against schema
                 event_type = event_data.get("event_category", "OTHER")
                 if not self.ontology.validate_event_type(event_type):
+                    print(f"[warning] Invalid event type '{event_type}', using fallback")
                     event_type = "PHYSICAL_ACTION"  # Fallback
                 
                 # Infer theory from event type
@@ -257,6 +273,11 @@ class CEKGPreprocessor:
         classifications = {}
         agent_type_names = self.ontology.get_agent_type_names()
         
+        # FIX: Validate that we have agent types defined
+        if not agent_type_names:
+            print("[warning] No agent types defined, skipping classification")
+            return classifications
+        
         for char_name, char_events in character_events.items():
             if len(char_events) < 2:  # Skip minor characters
                 continue
@@ -269,8 +290,13 @@ class CEKGPreprocessor:
                     char_name, sample_events, agent_type_names,
                     self.openai_model, self.client
                 )
-                classifications[char_name] = agent_type
-                print(f"[agent_classification] {char_name} → {agent_type}")
+                
+                # FIX: Validate agent type before using
+                if self.ontology.validate_agent_type(agent_type):
+                    classifications[char_name] = agent_type
+                    print(f"[agent_classification] {char_name} → {agent_type}")
+                else:
+                    print(f"[warning] Invalid agent type '{agent_type}' for {char_name}")
             except Exception as e:
                 print(f"[warning] Failed to classify {char_name}: {e}")
         
@@ -284,10 +310,13 @@ class CEKGPreprocessor:
 
     async def _batch_causal_linking_mixed_theory(self, events, entity_occurrences, 
                                                  window, sample_rate, batch_size,
-                                                 enable_long_range=False):
+                                                 enable_long_range=False,
+                                                 theory_mode="mixed"):
         """
-        Mixed theory causal linking: uses BOTH McKee and Truby simultaneously.
-        Also supports long-range inference across entire narrative.
+        Causal linking with multiple theory support.
+        
+        FIX: Added theory_mode parameter to support single-theory mode
+        theory_mode: "mixed" (both), "mckee", "truby"
         """
         self.dag_validator.add_events(events)
         pairs_set = set()
@@ -338,10 +367,24 @@ class CEKGPreprocessor:
         
         causal_links = []
         
-        # MIXED THEORY APPROACH: Run BOTH McKee and Truby analyses
-        for theory_name, relation_ontology in [("mckee", self.mckee_relations), 
-                                                ("truby", self.truby_relations)]:
-            print(f"\n[mixed_theory] Analyzing with {theory_name.upper()} theory...")
+        # FIX: Support multiple theory modes
+        theories_to_process = []
+        if theory_mode == "mixed":
+            theories_to_process = [("mckee", self.mckee_relations), ("truby", self.truby_relations)]
+        elif theory_mode == "mckee":
+            theories_to_process = [("mckee", self.mckee_relations)]
+        elif theory_mode == "truby":
+            theories_to_process = [("truby", self.truby_relations)]
+        else:
+            print(f"[warning] Unknown theory_mode '{theory_mode}', defaulting to mckee")
+            theories_to_process = [("mckee", self.mckee_relations)]
+        
+        for theory_name, relation_ontology in theories_to_process:
+            if not relation_ontology:
+                print(f"[warning] No relations defined for {theory_name}, skipping")
+                continue
+                
+            print(f"\n[{theory_mode}] Analyzing with {theory_name.upper()} theory...")
             
             for i in range(0, len(pairs_with_text), batch_size):
                 batch = pairs_with_text[i:i + batch_size]
@@ -350,11 +393,14 @@ class CEKGPreprocessor:
                 )
                 
                 for (c_txt, e_txt, c_id, e_id), res in zip(batch, results):
-                    raw_rt = res.get("relationType") if res else None
+                    if not res:
+                        continue
+                        
+                    raw_rt = res.get("relationType")
                     if isinstance(raw_rt, list):
-                        raw_rt = raw_rt[0] if raw_rt else "NONE"
+                        raw_rt = raw_rt[0] if raw_rt else None
                     
-                    if res and raw_rt not in [None, "NONE"]:
+                    if raw_rt and str(raw_rt).upper() not in [None, "NONE", "NULL"]:
                         # Validate relation type against schema
                         rt_str = str(raw_rt).upper()
                         if not self.ontology.validate_relation_type(rt_str, theory_name):
@@ -364,10 +410,13 @@ class CEKGPreprocessor:
                         directionality = self.ontology.get_relation_directionality(rt_str, theory_name)
                         
                         if self.dag_validator.add_edge(c_id, e_id):
+                            # FIX: Use consistent theory naming
+                            theory_tag = f"@{theory_name.capitalize()}"
+                            
                             causal_links.append(schemas.CausalLink(
                                 c_id, e_id, rt_str, res.get("mechanism", ""),
                                 float(res.get("weight", 0)), float(res.get("confidence", 0)),
-                                theory=f"@{theory_name.title()}",
+                                theory=theory_tag,
                                 directionality=directionality
                             ))
                 
@@ -436,9 +485,15 @@ class CEKGPreprocessor:
                     "confidence": 0.5
                 }]
             
+            # FIX: Build event ID lookup for efficient checking
+            event_ids_in_chapter = {e.id for e in evs}
+            
             for d in data:
                 try:
                     event_ids = d.get("event_ids", [])
+                    
+                    # FIX: Filter to only valid event IDs
+                    valid_event_ids = [eid for eid in event_ids if eid in event_ids_in_chapter]
                     
                     # Aggregate ALL entities from included events
                     all_actors = set()
@@ -448,7 +503,7 @@ class CEKGPreprocessor:
                     times = set()
                     
                     for ev in evs:
-                        if ev.id in event_ids:
+                        if ev.id in valid_event_ids:
                             entities = event_to_entities[ev.id]
                             all_actors.update(entities["actors"])
                             all_patients.update(entities["patients"])
@@ -467,7 +522,7 @@ class CEKGPreprocessor:
                     
                     # Create scene with full entity data
                     scene = schemas.Scene(
-                        utils._make_id("scene"), cid, event_ids,
+                        utils._make_id("scene"), cid, valid_event_ids,
                         primary_location, time_period, all_participants,
                         d.get("theme", ""), "",
                         float(d.get("confidence", 0)),
@@ -512,6 +567,9 @@ class CEKGPreprocessor:
                     f"Chapter {cid} miscellaneous", "",
                     0.3, None, None
                 )
+                scene.all_actors = list(all_actors)
+                scene.all_patients = list(all_patients)
+                scene.all_whyfactors = []
                 scenes.append(scene)
         
         print(f"[scenes] Generated {len(scenes)} scenes containing all events and entities")
@@ -533,12 +591,15 @@ class CEKGPreprocessor:
         """
         Main pipeline execution with optional advanced features.
         
-        NEW FEATURES:
+        FEATURES:
         - enable_mixed_theory: Use both McKee and Truby simultaneously (default: True)
         - enable_agent_classification: Automatically classify character roles (default: False)
         - enable_long_range_inference: Cross-chapter causal links (default: False)
         """
-        mode_desc = "Mixed Theory (McKee + Truby)" if enable_mixed_theory else "Single Theory"
+        # FIX: Determine theory mode
+        theory_mode = "mixed" if enable_mixed_theory else "mckee"
+        mode_desc = "Mixed Theory (McKee + Truby)" if enable_mixed_theory else "Single Theory (McKee)"
+        
         print(f"[pipeline] Loading text...")
         print(f"[pipeline] Graph Model: {graph_model}")
         print(f"[pipeline] Causal Mode: {mode_desc}")
@@ -586,61 +647,4 @@ class CEKGPreprocessor:
         new_prods, entity_occurrences = graph_builder.propagate_context(
             all_events, all_produces, entity_occurrences, graph_model=graph_model
         )
-        all_produces.extend(new_prods)
-
-        # OPTIONAL: Agent classification
-        agent_classifications = {}
-        if enable_agent_classification:
-            agent_classifications = await self._classify_agent_types(all_events, all_produces)
-            print(f"[pipeline] Classified {len(agent_classifications)} character roles")
-
-        # Create entity-to-event links
-        e2e_links = graph_builder.create_entity_to_event_links(
-            entity_occurrences, all_produces, graph_model=graph_model
-        )
-        
-        # Causal linking (mixed theory or long-range)
-        if enable_mixed_theory or enable_long_range_inference:
-            causal_links = await self._batch_causal_linking_mixed_theory(
-                all_events, entity_occurrences, causal_window, causal_sample_rate,
-                causal_batch_size, enable_long_range=enable_long_range_inference
-            )
-        else:
-            # Fallback to standard single-theory linking
-            causal_links = []
-            print("[warning] Both mixed_theory and long_range disabled, no causal linking performed")
-        
-        # Generate scenes (REQUIRED - all entities/events must belong to scenes)
-        scenes = await self._generate_scenes_with_all_entities(all_events, all_produces)
-        
-        # OPTIONAL: Semantic linking
-        sem_links = []
-        if enable_semantic_linking:
-            sem_links = await self._batch_semantic_linking(all_events, causal_batch_size)
-
-        # Export
-        print(f"[pipeline] Mapping to Generic Graph...")
-        generic_nodes, generic_rels = graph_mapper.map_to_generic_graph(
-            all_events, all_produces, e2e_links, causal_links,
-            graph_model=graph_model, semantic_links=sem_links, scenes=scenes,
-            agent_classifications=agent_classifications
-        )
-
-        print(f"[pipeline] Exporting results...")
-        exporters.export_json(out_json, exporters.build_jsonld(all_events, all_produces, e2e_links, causal_links))
-        exporters.export_neo4j_cypher(out_cypher, generic_nodes, generic_rels)
-        exporters.export_csv(out_csv_dir, all_events, all_produces, e2e_links, causal_links, 
-                            sem_links, scenes, graph_model=graph_model)
-
-        return {
-            "stats": {
-                "events": len(all_events),
-                "characters": len(self.coref_resolver.character_registry),
-                "agent_types_classified": len(agent_classifications),
-                "causal_links": len(causal_links),
-                "mckee_links": len([l for l in causal_links if l.theory == "@Mckee"]),
-                "truby_links": len([l for l in causal_links if l.theory == "@Truby"]),
-                "scenes": len(scenes),
-                "semantic_links": len(sem_links)
-            }
-        }
+        all_produces.extend(new_prods

@@ -15,10 +15,14 @@ def main():
     parser = argparse.ArgumentParser(description="CEKG Preprocessor (DUAL FLOW)")
     
     # --- Input/Output Arguments ---
-    parser.add_argument("--input", "-i", required=True)
+    parser.add_argument("--input", "-i", required=True, help="Input text file path")
     parser.add_argument("--out-json", default=os.path.join(PROJECT_ROOT, "ge_preprocessed.json"))
     parser.add_argument("--out-cypher", default=os.path.join(PROJECT_ROOT, "ge_import.cypher"))
     parser.add_argument("--out-csv", default=os.path.join(PROJECT_ROOT, "neo4j_csv"))
+    
+    # --- Schema Configuration (FIX: Added) ---
+    parser.add_argument("--schema-path", default=None, 
+                        help="Path to JSON schema file for ontologies")
     
     # --- Model & Batching Arguments ---
     parser.add_argument("--openai-model", default=OPENAI_MODEL)
@@ -51,11 +55,25 @@ def main():
         help="[EXPERIMENTAL] 'chain' = Event->Entity->Event (Default). 'star' = Entity->[Events]."
     )
 
-    # --- NEW EXPERIMENTAL ARGUMENTS (SCHEMA) ---
-    parser.add_argument("--enable-scene-grouping", action="store_true")
-    parser.add_argument("--enable-semantic-linking", action="store_true")
-    parser.add_argument("--enable-llm-expansion", action="store_true")
-    parser.add_argument("--enable-confidence-calibration", action="store_true")
+    # --- ADVANCED FEATURE FLAGS (FIX: Added all missing flags) ---
+    parser.add_argument("--enable-scene-grouping", action="store_true",
+                        help="Group events into narrative scenes")
+    parser.add_argument("--enable-semantic-linking", action="store_true",
+                        help="Add non-causal semantic relationships")
+    parser.add_argument("--enable-llm-expansion", action="store_true",
+                        help="Extract implicit events and emotions")
+    parser.add_argument("--enable-confidence-calibration", action="store_true",
+                        help="Use multi-signal confidence scoring")
+    
+    # FIX: Added missing theory and classification flags
+    parser.add_argument("--enable-mixed-theory", action="store_true", default=True,
+                        help="Use both McKee and Truby theories (default: True)")
+    parser.add_argument("--disable-mixed-theory", action="store_true",
+                        help="Use only McKee theory (disables mixed theory)")
+    parser.add_argument("--enable-agent-classification", action="store_true",
+                        help="Automatically classify character agent types")
+    parser.add_argument("--enable-long-range-inference", action="store_true",
+                        help="Enable cross-chapter causal linking")
 
     args = parser.parse_args()
 
@@ -65,7 +83,11 @@ def main():
         exit(1)
 
     try:
-        preprocessor = CEKGPreprocessor(openai_model=args.openai_model)
+        # FIX: Pass schema_path to preprocessor
+        preprocessor = CEKGPreprocessor(
+            openai_model=args.openai_model,
+            schema_path=args.schema_path
+        )
         
         print(f"[config] model: {preprocessor.openai_model}")
         print(f"[config] batch_size: {args.batch_size}")
@@ -74,6 +96,9 @@ def main():
         if args.paragraph_chunk_size != 1:
             chunk_str = "ALL" if args.paragraph_chunk_size == 0 else str(args.paragraph_chunk_size)
             print(f"[config] EXPERIMENTAL: Processing {chunk_str} paragraphs per call.")
+
+        # FIX: Handle mixed theory flag properly
+        enable_mixed_theory = args.enable_mixed_theory and not args.disable_mixed_theory
 
         start_time = time.time()
         
@@ -91,21 +116,42 @@ def main():
             causal_window=args.causal_window,
             causal_sample_rate=args.causal_sample_rate,
             causal_batch_size=args.causal_batch_size,
-            # --- Pass new args ---
             paragraph_chunk_size=args.paragraph_chunk_size,
             extraction_style=args.extraction_style,
             graph_model=args.graph_model,
+            # FIX: Pass all feature flags
             enable_scene_grouping=args.enable_scene_grouping,
             enable_semantic_linking=args.enable_semantic_linking,
             enable_llm_expansion=args.enable_llm_expansion,
-            enable_confidence_calibration=args.enable_confidence_calibration
+            enable_confidence_calibration=args.enable_confidence_calibration,
+            enable_mixed_theory=enable_mixed_theory,
+            enable_agent_classification=args.enable_agent_classification,
+            enable_long_range_inference=args.enable_long_range_inference
         ))
         
         elapsed = time.time() - start_time
         print(f"\n{'='*60}")
         print(f"✓ Finished in {elapsed:.2f} seconds")
         print(f"✓ Events: {out['stats']['events']}")
-        # ... (standard summary printing) ...
+        print(f"✓ Characters: {out['stats']['characters']}")
+        
+        # FIX: Better stats display
+        if 'agent_types_classified' in out['stats']:
+            print(f"✓ Agent Types Classified: {out['stats']['agent_types_classified']}")
+        
+        print(f"✓ Causal Links: {out['stats']['causal_links']}")
+        
+        if enable_mixed_theory:
+            print(f"  - McKee Links: {out['stats'].get('mckee_links', 0)}")
+            print(f"  - Truby Links: {out['stats'].get('truby_links', 0)}")
+        
+        if 'scenes' in out['stats']:
+            print(f"✓ Scenes: {out['stats']['scenes']}")
+        
+        if 'semantic_links' in out['stats'] and out['stats']['semantic_links'] > 0:
+            print(f"✓ Semantic Links: {out['stats']['semantic_links']}")
+        
+        print(f"{'='*60}\n")
         
     except Exception as e:
         print(f"\n{'='*60}")
