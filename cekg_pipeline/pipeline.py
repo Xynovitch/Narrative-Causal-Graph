@@ -332,154 +332,155 @@ class CEKGPreprocessor:
         return classifications
 
     async def _batch_causal_linking_mixed_theory(self, events, entity_occurrences, 
-                                                 window, sample_rate, batch_size,
-                                                 enable_long_range=False,
-                                                 theory_mode="mixed"):
+                                             window, sample_rate, batch_size,
+                                             enable_long_range=False,
+                                             theory_mode="mixed",
+                                             max_concurrent_calls=10):
         """
-        Causal linking with multiple theory support.
-        OPTIMIZED: Uses bulk processing (prompt stuffing) to handle high volume.
+        100% Fidelity causal linking with parallel processing optimization.
         """
+        from .optimized_linking import process_all_pairs_maximum_efficiency
+        
         self.dag_validator.add_events(events)
-        pairs_set = set()
+        
+        all_causal_links = []
+        mckee_link_count = 0
+        truby_link_count = 0
         
         if enable_long_range:
-            print("[long_range] Enabling UNLIMITED cross-chapter inference (Bulk Mode)...")
+            print("[long_range] Processing ALL pairs with parallel optimization...")
             
-            # 1. GLOBAL SCAN: Compare events to ALL previous events
-            for i, ev in enumerate(events):
-                # Look back at ALL previous events (O(N^2))
-                for j in range(0, i):
-                    if events[j].sequence < ev.sequence:
-                        pairs_set.add((events[j].id, ev.id))
+            # Determine theories to process
+            theories_to_process = []
+            if theory_mode == "mixed":
+                theories_to_process = [
+                    (THEORY_MCKEE_LOWER, self.mckee_relations, THEORY_MCKEE), 
+                    (THEORY_TRUBY_LOWER, self.truby_relations, THEORY_TRUBY)
+                ]
+            elif theory_mode == THEORY_MCKEE_LOWER:
+                theories_to_process = [(THEORY_MCKEE_LOWER, self.mckee_relations, THEORY_MCKEE)]
+            elif theory_mode == THEORY_TRUBY_LOWER:
+                theories_to_process = [(THEORY_TRUBY_LOWER, self.truby_relations, THEORY_TRUBY)]
             
-            # 2. FORCE NARRATIVE ARC (Chapter 1 <-> Chapter 52 Logic)
-            if len(events) > 200:
-                print("[long_range] Forcing Start-to-End narrative arc connections...")
-                first_segment = events[:100]
-                last_segment = events[-100:]
+            # Process each theory
+            for theory_name, relation_ontology, theory_tag in theories_to_process:
+                if not relation_ontology:
+                    continue
                 
-                forced_pairs = 0
-                for start_ev in first_segment:
-                    for end_ev in last_segment:
-                        if start_ev.sequence < end_ev.sequence:
-                            pairs_set.add((start_ev.id, end_ev.id))
-                            forced_pairs += 1
-                print(f"[long_range] Added {forced_pairs} forced narrative arc pairs.")
-
+                links, count = await process_all_pairs_maximum_efficiency(
+                    events=events,
+                    assess_pairs_bulk_func=llm_service.assess_pairs_bulk,
+                    model=self.openai_model,
+                    client=self.client,
+                    relation_ontology=relation_ontology,
+                    theory_name=theory_name,
+                    dag_validator=self.dag_validator,
+                    ontology_validator=self.ontology,
+                    max_concurrent_calls=max_concurrent_calls,
+                    truncate_descriptions=True
+                )
+                
+                all_causal_links.extend(links)
+                
+                if theory_tag == THEORY_MCKEE:
+                    mckee_link_count += count
+                elif theory_tag == THEORY_TRUBY:
+                    truby_link_count += count
+        
         else:
-            # Standard window-based (within chapter boundaries)
+            # Standard window-based (short-range) - KEEP EXISTING LOGIC
+            pairs_set = set()
+            
+            # Window-based pairs
             for i, ev in enumerate(events):
                 start = max(0, i - window)
                 for j in range(start, i):
                     if events[j].sequence < ev.sequence and events[j].chapter == ev.chapter:
                         pairs_set.add((events[j].id, ev.id))
-        
-        # Entity co-occurrence pairs
-        for k, occs in entity_occurrences.items():
-            if k.startswith("actor:") or k.startswith("patient:"):
-                for i in range(len(occs) - 1):
-                    c_id, c_seq = occs[i]
-                    e_id, e_seq = occs[i + 1]
-                    if c_seq < e_seq:
-                        pairs_set.add((c_id, e_id))
-        
-        # Sample if too many pairs (High Budget Limit)
-        pairs_list = list(pairs_set)
-        SAMPLING_LIMIT = 50000 if enable_long_range else 5000
-        
-        if len(pairs_list) > SAMPLING_LIMIT:
-            random.shuffle(pairs_list)
-            pairs_list = pairs_list[:SAMPLING_LIMIT]
-            print(f"[causal] Heavy sampling: {len(pairs_list)} pairs from {len(pairs_set)} candidates (Limit: {SAMPLING_LIMIT})")
-        else:
-            print(f"[causal] Processing {len(pairs_list)} candidate pairs.")
-        
-        # Map IDs back to full event objects
-        ev_map = {e.id: e for e in events}
-        # Create list of tuples: (cause_text, effect_text, cause_id, effect_id)
-        pairs_with_text = []
-        for c, e in pairs_list:
-            if c in ev_map and e in ev_map:
-                pairs_with_text.append((
-                    ev_map[c].raw_description, 
-                    ev_map[e].raw_description, 
-                    c, 
-                    e
-                ))
-        
-        causal_links = []
-        mckee_link_count = 0
-        truby_link_count = 0
-        
-        # Determine theories to process
-        theories_to_process = []
-        if theory_mode == "mixed":
-            theories_to_process = [(THEORY_MCKEE_LOWER, self.mckee_relations), 
-                                  (THEORY_TRUBY_LOWER, self.truby_relations)]
-        elif theory_mode == THEORY_MCKEE_LOWER:
-            theories_to_process = [(THEORY_MCKEE_LOWER, self.mckee_relations)]
-        elif theory_mode == THEORY_TRUBY_LOWER:
-            theories_to_process = [(THEORY_TRUBY_LOWER, self.truby_relations)]
-        
-        # --- BULK PROCESSING LOOP ---
-        BULK_SIZE = 20  # Stuff 20 pairs into one prompt to save API calls
-        
-        for theory_name, relation_ontology in theories_to_process:
-            if not relation_ontology:
-                continue
-                
-            print(f"\n[{theory_mode}] Analyzing {len(pairs_with_text)} pairs with {theory_name.upper()} (Bulk Mode)...")
             
-            # Chunk the pairs
-            for i in range(0, len(pairs_with_text), BULK_SIZE):
-                batch_pairs = pairs_with_text[i : i + BULK_SIZE]
+            # Entity co-occurrence pairs
+            for k, occs in entity_occurrences.items():
+                if k.startswith("actor:") or k.startswith("patient:"):
+                    for i in range(len(occs) - 1):
+                        c_id, c_seq = occs[i]
+                        e_id, e_seq = occs[i + 1]
+                        if c_seq < e_seq:
+                            pairs_set.add((c_id, e_id))
+            
+            pairs_list = list(pairs_set)
+            
+            # Sample if needed
+            if len(pairs_list) > 5000:
+                import random
+                random.shuffle(pairs_list)
+                pairs_list = pairs_list[:5000]
+            
+            # Map to event objects
+            ev_map = {e.id: e for e in events}
+            pairs_with_text = [
+                (ev_map[c].raw_description, ev_map[e].raw_description, c, e)
+                for c, e in pairs_list if c in ev_map and e in ev_map
+            ]
+            
+            # Determine theories
+            theories_to_process = []
+            if theory_mode == "mixed":
+                theories_to_process = [
+                    (THEORY_MCKEE_LOWER, self.mckee_relations, THEORY_MCKEE),
+                    (THEORY_TRUBY_LOWER, self.truby_relations, THEORY_TRUBY)
+                ]
+            elif theory_mode == THEORY_MCKEE_LOWER:
+                theories_to_process = [(THEORY_MCKEE_LOWER, self.mckee_relations, THEORY_MCKEE)]
+            elif theory_mode == THEORY_TRUBY_LOWER:
+                theories_to_process = [(THEORY_TRUBY_LOWER, self.truby_relations, THEORY_TRUBY)]
+            
+            # Process with existing bulk method
+            BULK_SIZE = 20
+            for theory_name, relation_ontology, theory_tag in theories_to_process:
+                if not relation_ontology:
+                    continue
                 
-                # CALL BULK FUNCTION (Optimized)
-                results = await llm_service.assess_pairs_bulk(
-                    batch_pairs, self.openai_model, self.client, relation_ontology
-                )
+                print(f"\n[{theory_name}] Analyzing {len(pairs_with_text)} pairs...")
                 
-                # Process results
-                for (c_txt, e_txt, c_id, e_id), res in zip(batch_pairs, results):
-                    if not res: 
-                        continue # Skip failed items
+                for i in range(0, len(pairs_with_text), BULK_SIZE):
+                    batch_pairs = pairs_with_text[i:i + BULK_SIZE]
                     
-                    raw_rt = res.get("relationType")
-                    if raw_rt and str(raw_rt).upper() not in ["NONE", "NULL", "None"]:
-                        # Validate relation type against schema
-                        rt_str = str(raw_rt).upper()
-                        if not self.ontology.validate_relation_type(rt_str, theory_name):
+                    results = await llm_service.assess_pairs_bulk(
+                        batch_pairs, self.openai_model, self.client, relation_ontology
+                    )
+                    
+                    for (c_txt, e_txt, c_id, e_id), res in zip(batch_pairs, results):
+                        if not res:
                             continue
                         
-                        # Get directionality from schema
-                        directionality = self.ontology.get_relation_directionality(rt_str, theory_name)
-                        
-                        if self.dag_validator.add_edge(c_id, e_id):
-                            # Use consistent theory naming
-                            theory_tag = normalize_theory_name(theory_name)
+                        raw_rt = res.get("relationType")
+                        if raw_rt and str(raw_rt).upper() not in ["NONE", "NULL", "None"]:
+                            rt_str = str(raw_rt).upper()
                             
-                            causal_links.append(schemas.CausalLink(
-                                c_id, e_id, rt_str, res.get("mechanism", ""),
-                                float(res.get("weight", 0)), float(res.get("confidence", 0)),
-                                theory=theory_tag,
-                                directionality=directionality
-                            ))
+                            if not self.ontology.validate_relation_type(rt_str, theory_name):
+                                continue
                             
-                            # Track counts
-                            if theory_tag == THEORY_MCKEE:
-                                mckee_link_count += 1
-                            elif theory_tag == THEORY_TRUBY:
-                                truby_link_count += 1
-                
-                # Progress logging
-                if (i // BULK_SIZE) % 10 == 0:
-                    print(f"[{theory_name}] Processed {min(i + BULK_SIZE, len(pairs_with_text))}/{len(pairs_with_text)} pairs")
+                            directionality = self.ontology.get_relation_directionality(rt_str, theory_name)
+                            
+                            if self.dag_validator.add_edge(c_id, e_id):
+                                all_causal_links.append(schemas.CausalLink(
+                                    c_id, e_id, rt_str, res.get("mechanism", ""),
+                                    float(res.get("weight", 0)),
+                                    float(res.get("confidence", 0)),
+                                    theory=theory_tag,
+                                    directionality=directionality
+                                ))
+                                
+                                if theory_tag == THEORY_MCKEE:
+                                    mckee_link_count += 1
+                                elif theory_tag == THEORY_TRUBY:
+                                    truby_link_count += 1
         
-        print(f"[causal linking] Created {len(causal_links)} total links")
+        print(f"[causal linking] Created {len(all_causal_links)} total links")
         if theory_mode == "mixed":
             print(f"  - McKee: {mckee_link_count}, Truby: {truby_link_count}")
         
-        return causal_links, mckee_link_count, truby_link_count
+        return all_causal_links, mckee_link_count, truby_link_count
 
     async def _batch_semantic_linking(self, events, batch_size):
         """Perform semantic (non-causal) linking between events"""
@@ -639,19 +640,19 @@ class CEKGPreprocessor:
         print(f"[scenes] Generated {len(scenes)} scenes containing all events and entities")
         return scenes
 
-    async def run_async(self, text_path, out_json, out_cypher, out_csv_dir,
-                       max_chapters=None, batch_size=5, causal_window=10, 
-                       causal_sample_rate=0.5, causal_batch_size=10, 
-                       paragraph_chunk_size=1, extraction_style="detailed",
-                       graph_model="star",
-                       # Optional features
-                       enable_mixed_theory=True,
-                       enable_agent_classification=False,
-                       enable_long_range_inference=False,
-                       enable_scene_grouping=True,
-                       enable_semantic_linking=False,
-                       enable_llm_expansion=True,
-                       enable_confidence_calibration=True):
+    def run_async(self, text_path, out_json, out_cypher, out_csv_dir,
+                   max_chapters=None, batch_size=5, causal_window=10, 
+                   causal_sample_rate=0.5, causal_batch_size=10, 
+                   paragraph_chunk_size=1, extraction_style="detailed",
+                   graph_model="star",
+                   enable_mixed_theory=True,
+                   enable_agent_classification=False,
+                   enable_long_range_inference=False,
+                   enable_scene_grouping=True,
+                   enable_semantic_linking=False,
+                   enable_llm_expansion=True,
+                   enable_confidence_calibration=True,
+                   max_concurrent_calls=10):
         """
         Main pipeline execution with optional advanced features.
         """
@@ -722,7 +723,7 @@ class CEKGPreprocessor:
         print(f"\n[causal] Starting causal analysis ({mode_desc})...")
         causal_links, mckee_count, truby_count = await self._batch_causal_linking_mixed_theory(
             all_events, entity_occurrences, causal_window, causal_sample_rate,
-            causal_batch_size, enable_long_range_inference, theory_mode
+            causal_batch_size, enable_long_range_inference, theory_mode, max_concurrent_calls  
         )
         
         # Semantic linking (optional)
