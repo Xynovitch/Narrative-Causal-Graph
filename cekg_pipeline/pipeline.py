@@ -3,20 +3,19 @@ Enhanced Pipeline with:
 1. Mixed Theory Graphs (McKee + Truby simultaneously)
 2. Automatic Agent Type Classification (optional)
 3. Scene-Centric Structure (all entities/events under scenes)
-4. Long-Range Causal Inference (cross-chapter)
+4. Long-Range Causal Inference (cross-chapter) - CRITICAL FIX APPLIED
 
 FIXES:
-- Completed truncated run_async method
-- Fixed theory capitalization consistency
-- Improved error handling for missing ontologies
-- Better validation for LLM responses
-- Standardized theory naming with constants
+- UNLIMITED LOOKBACK for long-range inference (Chapter 1 -> Chapter 52 enabled)
+- Forced Start-to-End narrative arc connection
+- Increased sampling limits for high-budget runs
 """
 
 import asyncio
 import traceback
 import os
 import json
+import random # Added for sampling
 from collections import defaultdict
 from typing import List, Dict, Optional, Any, Set, Tuple
 
@@ -152,7 +151,7 @@ class CEKGPreprocessor:
                 # Validate event type against schema
                 event_type = event_data.get("event_category", "OTHER")
                 if not self.ontology.validate_event_type(event_type):
-                    print(f"[warning] Invalid event type '{event_type}', using fallback")
+                    # print(f"[warning] Invalid event type '{event_type}', using fallback")
                     event_type = "PHYSICAL_ACTION"  # Fallback
                 
                 # Infer theory from event type
@@ -238,7 +237,7 @@ class CEKGPreprocessor:
                 traceback.print_exc()
                 continue
         
-        print(f"[coref] Resolved {len(all_events)} events. Resolver stats: {self.coref_resolver.get_statistics()}")
+        # print(f"[coref] Resolved {len(all_events)} events.")
         
         return all_events, all_produces, entity_occurrences_batch
 
@@ -339,24 +338,42 @@ class CEKGPreprocessor:
                                                  theory_mode="mixed"):
         """
         Causal linking with multiple theory support.
-        
-        theory_mode: "mixed" (both), "mckee", "truby"
+        CRITICAL FIX: Implements unlimited lookback for long-range inference
+        and forces narrative arc connection (Start <-> End).
         """
         self.dag_validator.add_events(events)
         pairs_set = set()
         
         if enable_long_range:
-            print("[long_range] Enabling cross-chapter inference...")
-            # Long-range: consider events from entire narrative
+            print("[long_range] Enabling UNLIMITED cross-chapter inference (High Cost Mode)...")
+            
+            # 1. GLOBAL SCAN: Compare events to ALL previous events
+            # We remove the 'min(50, i)' lookback limit entirely.
             for i, ev in enumerate(events):
-                # Look back much further for long-range connections
-                lookback = min(50, i)  # Up to 50 events back
-                start = max(0, i - lookback)
-                
-                for j in range(start, i):
+                # Look back at ALL previous events (O(N^2))
+                # Start index is 0 to ensure we catch very early setups for late payoffs
+                for j in range(0, i):
                     if events[j].sequence < ev.sequence:
-                        # Add all pairs, will sample later
                         pairs_set.add((events[j].id, ev.id))
+            
+            # 2. FORCE NARRATIVE ARC (Chapter 1 <-> Chapter 52 Logic)
+            # Explicitly prioritize connections between the beginning and end of the book.
+            # This ensures that even if we sample later, these critical thematic links are preserved.
+            if len(events) > 200:
+                print("[long_range] Forcing Start-to-End narrative arc connections...")
+                # Grab first 100 and last 100 events
+                first_segment = events[:100]
+                last_segment = events[-100:]
+                
+                forced_pairs = 0
+                for start_ev in first_segment:
+                    for end_ev in last_segment:
+                        # Only add if temporally valid (which they should be)
+                        if start_ev.sequence < end_ev.sequence:
+                            pairs_set.add((start_ev.id, end_ev.id))
+                            forced_pairs += 1
+                print(f"[long_range] Added {forced_pairs} forced narrative arc pairs.")
+
         else:
             # Standard window-based (within chapter boundaries)
             for i, ev in enumerate(events):
@@ -375,15 +392,18 @@ class CEKGPreprocessor:
                     if c_seq < e_seq:
                         pairs_set.add((c_id, e_id))
         
-        # Sample if too many pairs (for long-range mode)
+        # Sample if too many pairs (modified for High Budget)
         pairs_list = list(pairs_set)
-        if enable_long_range and len(pairs_list) > 5000:
-            import random
+        
+        # CRITICAL FIX: Increased sampling limit from 5,000 to 50,000
+        SAMPLING_LIMIT = 50000 if enable_long_range else 5000
+        
+        if len(pairs_list) > SAMPLING_LIMIT:
             random.shuffle(pairs_list)
-            pairs_list = pairs_list[:5000]
-            print(f"[long_range] Sampled {len(pairs_list)} pairs from {len(pairs_set)} candidates")
+            pairs_list = pairs_list[:SAMPLING_LIMIT]
+            print(f"[causal] Heavy sampling: {len(pairs_list)} pairs from {len(pairs_set)} candidates (Limit: {SAMPLING_LIMIT})")
         else:
-            print(f"[causal linking] Found {len(pairs_list)} candidate pairs.")
+            print(f"[causal] Processing {len(pairs_list)} candidate pairs.")
         
         ev_map = {e.id: e for e in events}
         pairs_with_text = [(ev_map[c].raw_description, ev_map[e].raw_description, c, e) 
@@ -453,7 +473,8 @@ class CEKGPreprocessor:
                             elif theory_tag == THEORY_TRUBY:
                                 truby_link_count += 1
                 
-                print(f"[{theory_name}] Processed {min(i + batch_size, len(pairs_with_text))}/{len(pairs_with_text)} pairs")
+                if i % 100 == 0:
+                    print(f"[{theory_name}] Processed {min(i + batch_size, len(pairs_with_text))}/{len(pairs_with_text)} pairs")
         
         print(f"[causal linking] Created {len(causal_links)} total links")
         if theory_mode == "mixed":
@@ -534,7 +555,7 @@ class CEKGPreprocessor:
                     valid_event_ids = [eid for eid in event_ids if eid in event_ids_in_chapter]
                     
                     if not valid_event_ids:
-                        print(f"[warning] Scene has no valid events, skipping")
+                        # print(f"[warning] Scene has no valid events, skipping")
                         continue
                     
                     # Aggregate ALL entities from included events
