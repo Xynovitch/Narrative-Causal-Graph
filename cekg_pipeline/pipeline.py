@@ -3,19 +3,20 @@ Enhanced Pipeline with:
 1. Mixed Theory Graphs (McKee + Truby simultaneously)
 2. Automatic Agent Type Classification (optional)
 3. Scene-Centric Structure (all entities/events under scenes)
-4. Long-Range Causal Inference (cross-chapter) - CRITICAL FIX APPLIED
+4. Long-Range Causal Inference (cross-chapter) - OPTIMIZED
 
 FIXES:
-- UNLIMITED LOOKBACK for long-range inference (Chapter 1 -> Chapter 52 enabled)
+- UNLIMITED LOOKBACK for long-range inference
 - Forced Start-to-End narrative arc connection
-- Increased sampling limits for high-budget runs
+- Increased sampling limits (50,000) for high-budget runs
+- PROMPT STUFFING: Uses bulk assessment to reduce API calls by 95%
 """
 
 import asyncio
 import traceback
 import os
 import json
-import random # Added for sampling
+import random
 from collections import defaultdict
 from typing import List, Dict, Optional, Any, Set, Tuple
 
@@ -237,8 +238,6 @@ class CEKGPreprocessor:
                 traceback.print_exc()
                 continue
         
-        # print(f"[coref] Resolved {len(all_events)} events.")
-        
         return all_events, all_produces, entity_occurrences_batch
 
     async def _process_text_chunk(self, text_chunk, chapter_id, enable_llm_expansion, 
@@ -338,37 +337,30 @@ class CEKGPreprocessor:
                                                  theory_mode="mixed"):
         """
         Causal linking with multiple theory support.
-        CRITICAL FIX: Implements unlimited lookback for long-range inference
-        and forces narrative arc connection (Start <-> End).
+        OPTIMIZED: Uses bulk processing (prompt stuffing) to handle high volume.
         """
         self.dag_validator.add_events(events)
         pairs_set = set()
         
         if enable_long_range:
-            print("[long_range] Enabling UNLIMITED cross-chapter inference (High Cost Mode)...")
+            print("[long_range] Enabling UNLIMITED cross-chapter inference (Bulk Mode)...")
             
             # 1. GLOBAL SCAN: Compare events to ALL previous events
-            # We remove the 'min(50, i)' lookback limit entirely.
             for i, ev in enumerate(events):
                 # Look back at ALL previous events (O(N^2))
-                # Start index is 0 to ensure we catch very early setups for late payoffs
                 for j in range(0, i):
                     if events[j].sequence < ev.sequence:
                         pairs_set.add((events[j].id, ev.id))
             
             # 2. FORCE NARRATIVE ARC (Chapter 1 <-> Chapter 52 Logic)
-            # Explicitly prioritize connections between the beginning and end of the book.
-            # This ensures that even if we sample later, these critical thematic links are preserved.
             if len(events) > 200:
                 print("[long_range] Forcing Start-to-End narrative arc connections...")
-                # Grab first 100 and last 100 events
                 first_segment = events[:100]
                 last_segment = events[-100:]
                 
                 forced_pairs = 0
                 for start_ev in first_segment:
                     for end_ev in last_segment:
-                        # Only add if temporally valid (which they should be)
                         if start_ev.sequence < end_ev.sequence:
                             pairs_set.add((start_ev.id, end_ev.id))
                             forced_pairs += 1
@@ -379,11 +371,10 @@ class CEKGPreprocessor:
             for i, ev in enumerate(events):
                 start = max(0, i - window)
                 for j in range(start, i):
-                    # Respect chapter boundaries unless long_range enabled
                     if events[j].sequence < ev.sequence and events[j].chapter == ev.chapter:
                         pairs_set.add((events[j].id, ev.id))
         
-        # Entity co-occurrence pairs (works for both modes)
+        # Entity co-occurrence pairs
         for k, occs in entity_occurrences.items():
             if k.startswith("actor:") or k.startswith("patient:"):
                 for i in range(len(occs) - 1):
@@ -392,10 +383,8 @@ class CEKGPreprocessor:
                     if c_seq < e_seq:
                         pairs_set.add((c_id, e_id))
         
-        # Sample if too many pairs (modified for High Budget)
+        # Sample if too many pairs (High Budget Limit)
         pairs_list = list(pairs_set)
-        
-        # CRITICAL FIX: Increased sampling limit from 5,000 to 50,000
         SAMPLING_LIMIT = 50000 if enable_long_range else 5000
         
         if len(pairs_list) > SAMPLING_LIMIT:
@@ -405,15 +394,24 @@ class CEKGPreprocessor:
         else:
             print(f"[causal] Processing {len(pairs_list)} candidate pairs.")
         
+        # Map IDs back to full event objects
         ev_map = {e.id: e for e in events}
-        pairs_with_text = [(ev_map[c].raw_description, ev_map[e].raw_description, c, e) 
-                           for c, e in pairs_list if c in ev_map and e in ev_map]
+        # Create list of tuples: (cause_text, effect_text, cause_id, effect_id)
+        pairs_with_text = []
+        for c, e in pairs_list:
+            if c in ev_map and e in ev_map:
+                pairs_with_text.append((
+                    ev_map[c].raw_description, 
+                    ev_map[e].raw_description, 
+                    c, 
+                    e
+                ))
         
         causal_links = []
         mckee_link_count = 0
         truby_link_count = 0
         
-        # Support multiple theory modes
+        # Determine theories to process
         theories_to_process = []
         if theory_mode == "mixed":
             theories_to_process = [(THEORY_MCKEE_LOWER, self.mckee_relations), 
@@ -422,32 +420,32 @@ class CEKGPreprocessor:
             theories_to_process = [(THEORY_MCKEE_LOWER, self.mckee_relations)]
         elif theory_mode == THEORY_TRUBY_LOWER:
             theories_to_process = [(THEORY_TRUBY_LOWER, self.truby_relations)]
-        else:
-            print(f"[warning] Unknown theory_mode '{theory_mode}', defaulting to mckee")
-            theories_to_process = [(THEORY_MCKEE_LOWER, self.mckee_relations)]
+        
+        # --- BULK PROCESSING LOOP ---
+        BULK_SIZE = 20  # Stuff 20 pairs into one prompt to save API calls
         
         for theory_name, relation_ontology in theories_to_process:
             if not relation_ontology:
-                print(f"[warning] No relations defined for {theory_name}, skipping")
                 continue
                 
-            print(f"\n[{theory_mode}] Analyzing with {theory_name.upper()} theory...")
+            print(f"\n[{theory_mode}] Analyzing {len(pairs_with_text)} pairs with {theory_name.upper()} (Bulk Mode)...")
             
-            for i in range(0, len(pairs_with_text), batch_size):
-                batch = pairs_with_text[i:i + batch_size]
-                results = await llm_service.batch_assess_pairs(
-                    batch, self.openai_model, self.client, relation_ontology
+            # Chunk the pairs
+            for i in range(0, len(pairs_with_text), BULK_SIZE):
+                batch_pairs = pairs_with_text[i : i + BULK_SIZE]
+                
+                # CALL BULK FUNCTION (Optimized)
+                results = await llm_service.assess_pairs_bulk(
+                    batch_pairs, self.openai_model, self.client, relation_ontology
                 )
                 
-                for (c_txt, e_txt, c_id, e_id), res in zip(batch, results):
-                    if not res:
-                        continue
-                        
-                    raw_rt = res.get("relationType")
-                    if isinstance(raw_rt, list):
-                        raw_rt = raw_rt[0] if raw_rt else None
+                # Process results
+                for (c_txt, e_txt, c_id, e_id), res in zip(batch_pairs, results):
+                    if not res: 
+                        continue # Skip failed items
                     
-                    if raw_rt and str(raw_rt).upper() not in [None, "NONE", "NULL"]:
+                    raw_rt = res.get("relationType")
+                    if raw_rt and str(raw_rt).upper() not in ["NONE", "NULL", "None"]:
                         # Validate relation type against schema
                         rt_str = str(raw_rt).upper()
                         if not self.ontology.validate_relation_type(rt_str, theory_name):
@@ -467,14 +465,15 @@ class CEKGPreprocessor:
                                 directionality=directionality
                             ))
                             
-                            # Track counts by theory
+                            # Track counts
                             if theory_tag == THEORY_MCKEE:
                                 mckee_link_count += 1
                             elif theory_tag == THEORY_TRUBY:
                                 truby_link_count += 1
                 
-                if i % 100 == 0:
-                    print(f"[{theory_name}] Processed {min(i + batch_size, len(pairs_with_text))}/{len(pairs_with_text)} pairs")
+                # Progress logging
+                if (i // BULK_SIZE) % 10 == 0:
+                    print(f"[{theory_name}] Processed {min(i + BULK_SIZE, len(pairs_with_text))}/{len(pairs_with_text)} pairs")
         
         print(f"[causal linking] Created {len(causal_links)} total links")
         if theory_mode == "mixed":
@@ -555,7 +554,6 @@ class CEKGPreprocessor:
                     valid_event_ids = [eid for eid in event_ids if eid in event_ids_in_chapter]
                     
                     if not valid_event_ids:
-                        # print(f"[warning] Scene has no valid events, skipping")
                         continue
                     
                     # Aggregate ALL entities from included events
@@ -656,11 +654,6 @@ class CEKGPreprocessor:
                        enable_confidence_calibration=True):
         """
         Main pipeline execution with optional advanced features.
-        
-        FEATURES:
-        - enable_mixed_theory: Use both McKee and Truby simultaneously (default: True)
-        - enable_agent_classification: Automatically classify character roles (default: False)
-        - enable_long_range_inference: Cross-chapter causal links (default: False)
         """
         # Determine theory mode
         theory_mode = "mixed" if enable_mixed_theory else THEORY_MCKEE_LOWER
@@ -725,7 +718,7 @@ class CEKGPreprocessor:
         if enable_agent_classification:
             agent_classifications = await self._classify_agent_types(all_events, all_produces)
         
-        # Causal linking with theory support
+        # Causal linking with theory support (OPTIMIZED)
         print(f"\n[causal] Starting causal analysis ({mode_desc})...")
         causal_links, mckee_count, truby_count = await self._batch_causal_linking_mixed_theory(
             all_events, entity_occurrences, causal_window, causal_sample_rate,

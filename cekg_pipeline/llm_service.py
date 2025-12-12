@@ -1,5 +1,5 @@
 """
-Enhanced LLM Service with Agent Type Classification
+Enhanced LLM Service with Agent Type Classification and Bulk Causal Processing
 """
 import json
 import asyncio
@@ -119,6 +119,34 @@ PROMPT_CAUSAL_PAIR = (
     "EVENT B (Effect/Posterior): \"{effect_text}\"\n\n"
     "Return ONLY the JSON object:"
 )
+
+# --- NEW BULK PROMPT ---
+PROMPT_CAUSAL_BATCH = """You are a literary causal analyst.
+Analyze the following list of {count} Event Pairs.
+For EACH pair, determine the relationship using the dictionary.
+
+**Relationship Dictionary:**
+[{relation_ontology}]
+
+**Input Pairs:**
+{pairs_text}
+
+**Output Format:**
+Return a JSON object with a "results" list. Each result must have:
+- "index": The ID number of the pair (1, 2, 3...)
+- "relationType": ONE valid category from the dictionary (or "NONE")
+- "mechanism": Short explanation (<=15 words)
+- "confidence": Float 0.0-1.0
+
+Example JSON:
+{{
+  "results": [
+    {{"index": 1, "relationType": "DIRECT_CAUSE", "mechanism": "Pip's theft caused guilt", "confidence": 0.9}},
+    {{"index": 2, "relationType": "NONE", "mechanism": "Unrelated events", "confidence": 0.0}}
+  ]
+}}
+
+Return ONLY the JSON object:"""
 
 PROMPT_SEMANTIC_PAIR = (
     "You are a literary analyst.\n"
@@ -277,6 +305,67 @@ async def batch_assess_pairs(pairs, model, client, relationship_ontology=None):
     
     tasks = [_assess(c, e) for c, e, _, _ in pairs]
     return await asyncio.gather(*tasks)
+
+async def assess_pairs_bulk(
+    pairs_batch: List[tuple], 
+    model: str, 
+    client: Any, 
+    relation_ontology: List[str]
+) -> List[Optional[Dict]]:
+    """
+    Assess multiple pairs in a single API call to save costs.
+    pairs_batch: List of (cause_text, effect_text, cause_id, effect_id)
+    """
+    if not pairs_batch:
+        return []
+
+    # 1. Format the pairs into a numbered list string
+    pairs_text_lines = []
+    for i, (c_text, e_text, _, _) in enumerate(pairs_batch, 1):
+        # Truncate text to save tokens
+        c_short = c_text[:100].replace("\n", " ")
+        e_short = e_text[:100].replace("\n", " ")
+        pairs_text_lines.append(f"Pair {i}:\n  [A] {c_short}\n  [B] {e_short}")
+    
+    pairs_block = "\n\n".join(pairs_text_lines)
+    ontology_str = ", ".join(relation_ontology)
+    
+    # 2. Construct Prompt
+    prompt = PROMPT_CAUSAL_BATCH.format(
+        count=len(pairs_batch),
+        relation_ontology=ontology_str,
+        pairs_text=pairs_block
+    )
+    
+    # 3. Check Cache (Use hash of the whole batch string)
+    key = _hash_for_cache(f"bulk_causal:{pairs_block}:{ontology_str}", model)
+    
+    try:
+        # Call LLM (standard _async_llm_json_call from previous code)
+        # Note: We use a larger max_token limit for bulk responses
+        data, _ = await _async_llm_json_call(
+            prompt, model, client, assessment_cache, key, max_tokens=2048
+        )
+        
+        # 4. Parse Results Map
+        # We need to map the "index" back to the original order
+        results_map = {}
+        if isinstance(data, dict) and "results" in data:
+            for item in data["results"]:
+                idx = item.get("index")
+                if idx is not None:
+                    results_map[idx] = item
+        
+        # 5. Return ordered list matching input
+        ordered_results = []
+        for i in range(1, len(pairs_batch) + 1):
+            ordered_results.append(results_map.get(i, None))
+            
+        return ordered_results
+
+    except Exception as e:
+        print(f"[error] Bulk assessment failed: {e}")
+        return [None] * len(pairs_batch) # Fail gracefully
 
 async def batch_assess_semantic_pairs(pairs, model, client):
     async def _assess_sem(cause, effect):
