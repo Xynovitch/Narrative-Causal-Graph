@@ -21,21 +21,34 @@ class DAGViolationError(CEKGError):
 class CEKEvent:
     """
     Event is the central node in the CEKG.
-    Updated to match both branches with proper field names.
+    Now includes theory-based event classification.
     """
     id: str
-    raw_description: str  # Natural language description (from Experimental)
-    event_category: str   # Event type category (from Experimental)
-    action_type: str      # Canonical action verb
-    time_context: Optional[str]      # Temporal reference (from Dynamic)
-    location_context: Optional[str]  # Spatial reference (from Dynamic)
-    actors: List[str]     # List of actor names
-    patients: List[str]   # List of patient names
+    raw_description: str
+    event_category: str  # Maps to event_types from schema (e.g., "ACKNOWLEDGMENT", "ACTION_TENSION")
+    action_type: str
+    time_context: Optional[str]
+    location_context: Optional[str]
+    actors: List[str]
+    patients: List[str]
     chapter: int
     sequence: int = 0
     confidence: float = 1.0
     source_quote: str = ""
-    why_factors: List[str] = field(default_factory=list)  # Motivational factors
+    why_factors: List[str] = field(default_factory=list)
+    theory: str = "McKee"  # Theory attribution (@McKee or @Truby)
+
+@dataclass
+class AgentRole:
+    """
+    Represents an agent's role in the narrative.
+    Maps to AgentTypeDictionary from schema.
+    """
+    agent_id: str
+    agent_name: str
+    agent_type: str  # e.g., "PROTAGONIST_HERO", "MORAL_ANTAGONIST", "CRISIS_FORCER"
+    theory: str  # "@McKee" or "@Truby"
+    events_involved: List[str] = field(default_factory=list)
 
 @dataclass
 class EventProducesEntity:
@@ -43,9 +56,11 @@ class EventProducesEntity:
     event_id: str
     entity_id: str
     entity_name: str
-    entity_type: str  # "actor", "patient", "whyfactor", "place"
+    entity_type: str  # "actor", "patient", "whyfactor", "place", "time"
     relationship: str  # "PRODUCES_ACTOR", "PRODUCES_PATIENT", etc.
     strength: float
+    agent_type: Optional[str] = None  # Maps to AgentTypeDictionary if entity_type is actor/patient
+    theory: Optional[str] = None  # Theory attribution for agents
 
 @dataclass
 class EntityPointsToEvent:
@@ -61,14 +76,44 @@ class EntityPointsToEvent:
 class CausalLink:
     """
     Event -[:CAUSES]-> Event
-    Updated to use dynamic relation_type instead of fixed enum.
+    Now uses theory-based relation types from RelationTypeDictionary.
     """
     source_event_id: str
     target_event_id: str
-    relation_type: str  # Dynamic string (e.g., "DIRECT_CAUSE", "ENABLES", "PREVENTS")
-    mechanism: str      # Explanation of how the causation works
-    weight: float       # Strength of causal influence
-    confidence: float   # Confidence in this assessment
+    relation_type: str  # From RelationTypeDictionary (e.g., "DIRECT_CAUSE", "MORAL_CHALLENGE")
+    mechanism: str
+    weight: float
+    confidence: float
+    theory: str = "McKee"  # "@McKee" or "@Truby"
+    directionality: str = "uni"  # "uni" or "bi" from schema
+
+@dataclass
+class PlaceContext:
+    """
+    Represents a narrative place with its functional role.
+    Maps to PlaceTypeDictionary from schema.
+    """
+    id: str
+    name: str
+    place_type: str  # e.g., "MORAL_BATTLEFIELD", "CRISIS_ARENA", "TRANSFORMATION_THRESHOLD"
+    narrative_significance: str
+    conflict_function: Optional[str] = None
+    moral_function: Optional[str] = None
+    theory: str = "McKee"
+    events: List[str] = field(default_factory=list)
+
+@dataclass
+class TimeContext:
+    """
+    Represents a narrative time period with its structural role.
+    Maps to TimeTypeDictionary from schema.
+    """
+    id: str
+    time_type: str  # e.g., "CRISIS_BEAT", "CLIMAX_INTERVAL", "MORALAWAKENING_PHASE"
+    narrative_effect: str
+    structural_or_moral_function: str
+    theory: str = "McKee"
+    events: List[str] = field(default_factory=list)
 
 # ----------------------------- Experimental Features -------------------------
 
@@ -77,13 +122,12 @@ class SemanticLink:
     """
     Event -[:EXPLAINS/CONTRASTS]-> Event
     Non-causal semantic relationships between events.
-    NEW from Experimental Features Branch.
     """
     id: str
     source_event_ids: List[str]
     target_event_ids: List[str]
-    relation: str  # "explanation", "elaboration", "contrast", "parallelism"
-    cue: Optional[List[str]]  # Discourse markers (e.g., ["because", "therefore"])
+    relation: str
+    cue: Optional[List[str]]
     confidence: float
 
 @dataclass
@@ -91,17 +135,24 @@ class Scene:
     """
     A grouping of events into a narrative scene.
     Scenes cluster events by temporal, spatial, and thematic coherence.
-    NEW from Experimental Features Branch.
+    ALL entities and events must belong to at least one scene.
     """
     id: str
     chapter: int
     included_event_ids: List[str]
     primary_location: Optional[str]
     time_period: Optional[str]
-    participants: List[str]
-    theme: str      # LLM-generated theme description
-    summary: str    # Brief summary of the scene
+    participants: List[str]  # All actors and patients in scene
+    theme: str
+    summary: str
     confidence: float
+    place_type: Optional[str] = None  # Maps to PlaceTypeDictionary
+    time_type: Optional[str] = None  # Maps to TimeTypeDictionary
+    
+    # Extended entity lists (stored but not in core properties)
+    all_actors: List[str] = field(default_factory=list)
+    all_patients: List[str] = field(default_factory=list)
+    all_whyfactors: List[str] = field(default_factory=list)
 
 # ----------------------------- Generic Graph Schemas -------------------------
 
@@ -111,9 +162,9 @@ class GenericNode:
     A generic node for any graph database.
     Separates graph structure from domain logic.
     """
-    uid: str  # The unique ID for this node
-    label: str  # The Neo4j label (e.g., "Event", "Agent", "Scene")
-    properties: Dict[str, Any]  # All other data as key-value pairs
+    uid: str
+    label: str
+    properties: Dict[str, Any]
 
 @dataclass
 class GenericRelationship:
@@ -123,5 +174,5 @@ class GenericRelationship:
     """
     start_node_uid: str
     end_node_uid: str
-    rel_type: str  # The relationship type (e.g., "CAUSES", "ACTS_IN", "INCLUDES")
-    properties: Dict[str, Any]  # All edge properties as key-value pairs
+    rel_type: str
+    properties: Dict[str, Any]

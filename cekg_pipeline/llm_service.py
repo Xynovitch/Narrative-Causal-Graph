@@ -1,3 +1,6 @@
+"""
+Enhanced LLM Service with Agent Type Classification
+"""
 import json
 import asyncio
 import re
@@ -8,40 +11,47 @@ try:
 except ImportError:
     openai = None
 
+# Assumed internal imports based on context
 from .schemas import ExtractionError, CEKEvent
 from .utils import BoundedCache, _hash_for_cache
 from .config import CACHE_MAX_SIZE
 
+# ---------------------------------------------------------------------------
 # Caches
+# ---------------------------------------------------------------------------
 event_extraction_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 assessment_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 semantic_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 scene_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
+agent_classification_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 
-# Default ontologies
+# ---------------------------------------------------------------------------
+# Default Ontologies
+# ---------------------------------------------------------------------------
 DEFAULT_EVENT_ONTOLOGY = [
-    "PHYSICAL_MOVEMENT", "COMMUNICATION_VERBAL", "INTERNAL_THOUGHT", 
-    "EMOTIONAL_REACTION", "OBSERVATION", "CONFLICT_PHYSICAL", 
+    "PHYSICAL_MOVEMENT", "COMMUNICATION_VERBAL", "INTERNAL_THOUGHT",
+    "EMOTIONAL_REACTION", "OBSERVATION", "CONFLICT_PHYSICAL",
     "SOCIAL_INTERACTION", "STATE_CHANGE", "ACQUISITION", "TRAVEL"
 ]
 
 DEFAULT_RELATIONSHIP_ONTOLOGY = [
-    "DIRECT_CAUSE", "ENABLES", "PREVENTS", "TRIGGERS", "MOTIVATES", 
+    "DIRECT_CAUSE", "ENABLES", "PREVENTS", "TRIGGERS", "MOTIVATES",
     "INTERRUPTS", "INHIBITS", "PRECEDES"
 ]
 
+# ---------------------------------------------------------------------------
 # Prompts
-JSON_START = "```json"
-JSON_END = "```"
+# ---------------------------------------------------------------------------
+JSON_START = "json"
+JSON_END = ""
 
 PROMPT_DETAILED_INSTRUCTIONS = """Extract EVERY distinct event from this text. An event is ANY action, perception, dialogue, emotion, or state change. Be granular."""
 PROMPT_HIGH_LEVEL_INSTRUCTIONS = """Extract only the MAJOR narrative events or ideas from this text."""
-
 PROMPT_EXPANSION_ADDON = """
-**Additional Tasks:**
-1. Find Implicit Events (psychological/emotional).
-2. Group Compound Events.
-3. Coreference Resolution (Normalize names).
+Additional Tasks:
+- Find Implicit Events (psychological/emotional).
+- Group Compound Events.
+- Coreference Resolution (Normalize names).
 """
 
 PROMPT_BASE_TEMPLATE = f"""You are an expert literary analyst.
@@ -126,12 +136,38 @@ PROMPT_SCENE_GROUPING = """Group these events into narrative scenes.
 Input JSON: {event_list_json}
 Output JSON: {{"scenes": [{{"event_ids": [], "theme": "...", "confidence": 0.9}}]}}"""
 
-def init_openai_client(api_key: str) -> openai.OpenAI:
+PROMPT_AGENT_CLASSIFICATION = """You are a narrative theory expert.
+
+Analyze this character's role in the story and classify them using ONE agent type from the list below.
+
+**Character Name:** {character_name}
+
+**Their Actions in the Story:**
+{event_descriptions}
+
+**Available Agent Types:**
+{agent_type_list}
+
+**Instructions:**
+1. Consider the character's NARRATIVE FUNCTION, not just their actions
+2. Choose the SINGLE BEST agent type that describes their primary role
+3. Return ONLY valid JSON with these fields:
+   - agentType: ONE type from the list above
+   - explanation: Brief justification (max 30 words)
+   - confidence: float 0.0-1.0
+
+Return ONLY the JSON object:"""
+
+# ---------------------------------------------------------------------------
+# Service Functions
+# ---------------------------------------------------------------------------
+
+def init_openai_client(api_key: str) -> Any:
     if openai is None:
         raise RuntimeError("openai package not installed.")
     return openai.OpenAI(api_key=api_key)
 
-async def _async_llm_json_call(prompt: str, model: str, client: openai.OpenAI, 
+async def _async_llm_json_call(prompt: str, model: str, client: Any, 
                                cache: BoundedCache, cache_key: str, 
                                max_tokens: int = 4096) -> Any:
     cached = await cache.get(cache_key)
@@ -141,6 +177,7 @@ async def _async_llm_json_call(prompt: str, model: str, client: openai.OpenAI,
     for attempt in range(3):
         try:
             loop = asyncio.get_event_loop()
+            
             def make_req():
                 return client.chat.completions.create(
                     model=model,
@@ -148,7 +185,7 @@ async def _async_llm_json_call(prompt: str, model: str, client: openai.OpenAI,
                     response_format={"type": "json_object"},
                     max_tokens=max_tokens,
                     temperature=0.0,
-                    timeout=30  # Added timeout
+                    timeout=30
                 )
             
             resp = await loop.run_in_executor(None, make_req)
@@ -213,7 +250,7 @@ async def batch_extract_events(paragraphs, model, client, enable_llm_expansion,
                                request_logprobs, extraction_style, event_ontology=None):
     tasks = [
         extract_events_from_text(p, cid, model, client, enable_llm_expansion,
-                                request_logprobs, extraction_style, event_ontology)
+                                 request_logprobs, extraction_style, event_ontology)
         for p, cid in paragraphs
     ]
     results = await asyncio.gather(*tasks, return_exceptions=True)
@@ -260,7 +297,7 @@ async def extract_scenes_from_chapter_async(chapter_events, chapter_id, model, c
     if len(chapter_events) > 300:
         chapter_events = chapter_events[:300]
     simple = [{"id": e.id, "desc": e.raw_description, "seq": e.sequence} 
-             for e in chapter_events]
+              for e in chapter_events]
     prompt = PROMPT_SCENE_GROUPING.format(event_list_json=json.dumps(simple))
     key = _hash_for_cache(f"scene:{chapter_id}:{len(simple)}", model)
     try:
@@ -271,10 +308,42 @@ async def extract_scenes_from_chapter_async(chapter_events, chapter_id, model, c
     except:
         return []
 
+async def classify_agent_type(character_name: str, event_descriptions: List[str],
+                              agent_type_names: List[str], model: str, 
+                              client: Any) -> str:
+    """
+    NEW: Classify a character's agent type using LLM.
+    Returns the agent type name (e.g., "PROTAGONIST_HERO")
+    """
+    # Truncate event list if too long
+    events_text = "\n".join([f"- {desc[:100]}" for desc in event_descriptions[:15]])
+    types_text = "\n".join([f"- {name}" for name in agent_type_names])
+    
+    prompt = PROMPT_AGENT_CLASSIFICATION.format(
+        character_name=character_name,
+        event_descriptions=events_text,
+        agent_type_list=types_text
+    )
+    
+    key = _hash_for_cache(f"agent:{character_name}:{len(event_descriptions)}", model)
+    
+    try:
+        data, _ = await _async_llm_json_call(
+            prompt, model, client, agent_classification_cache, key, 512
+        )
+        
+        if isinstance(data, dict) and "agentType" in data:
+            return data["agentType"]
+        return "STRUCTURAL_AGENT"  # Default fallback
+    except Exception as e:
+        print(f"[warning] Agent classification failed for {character_name}: {e}")
+        return "STRUCTURAL_AGENT"
+
 async def get_cache_sizes():
     return {
         "event_extraction_cache_size": await event_extraction_cache.size(),
         "assessment_cache_size": await assessment_cache.size(),
         "semantic_cache_size": await semantic_cache.size(),
-        "scene_cache_size": await scene_cache.size()
+        "scene_cache_size": await scene_cache.size(),
+        "agent_classification_cache_size": await agent_classification_cache.size()
     }

@@ -1,3 +1,13 @@
+"""
+Updated Graph Mapper with Scene-Centric Structure
+
+Key Changes:
+1. All events belong to scenes
+2. All entities belong to scenes (through events)
+3. Supports agent type classification
+4. Handles mixed theory graphs
+"""
+
 from collections import defaultdict
 from typing import List, Dict, Any, Tuple, Optional
 from . import schemas
@@ -16,9 +26,6 @@ def _escape_props(props: Dict[str, Any]) -> Dict[str, Any]:
 def _sanitize_name_for_id(name: str) -> str:
     """
     Creates a safe ID string from a name for canonical IDs.
-    1. Lowercase
-    2. Replace spaces with underscores
-    3. Remove quotes, colons, and other problematic chars
     """
     if not name:
         return "unknown"
@@ -33,11 +40,12 @@ def map_to_generic_graph(
     causal_links: List[schemas.CausalLink],
     graph_model: str = "star",
     semantic_links: Optional[List[schemas.SemanticLink]] = None,
-    scenes: Optional[List[schemas.Scene]] = None
+    scenes: Optional[List[schemas.Scene]] = None,
+    agent_classifications: Optional[Dict[str, str]] = None
 ) -> Tuple[List[schemas.GenericNode], List[schemas.GenericRelationship]]:
     """
     Maps specific pipeline data into generic nodes and relationships.
-    Handles the logic for Star vs Chain topology for Neo4j export.
+    Scene-centric: all entities and events are linked to scenes.
     """
     nodes: Dict[str, schemas.GenericNode] = {}
     relationships: List[schemas.GenericRelationship] = []
@@ -46,8 +54,11 @@ def map_to_generic_graph(
         semantic_links = []
     if scenes is None:
         scenes = []
+    if agent_classifications is None:
+        agent_classifications = {}
 
     print(f"[graph_mapper] Mapping to generic graph (model: {graph_model})")
+    print(f"[graph_mapper] Scene-centric structure with {len(scenes)} scenes")
 
     # 1. Map Events to Nodes
     for ev in events:
@@ -60,6 +71,7 @@ def map_to_generic_graph(
                 "eventType": "event",
                 "category": ev.event_category,
                 "actionType": ev.action_type,
+                "theory": ev.theory,
                 "confidence": ev.confidence,
                 "chapter": ev.chapter,
                 "sequence": ev.sequence,
@@ -69,18 +81,26 @@ def map_to_generic_graph(
             })
         )
 
-    # 2. Map Entities to Nodes
+    # 2. Map Entities to Nodes (with agent types if available)
     entities_by_type = defaultdict(dict)
     for prod in event_produces:
-        entities_by_type[prod.entity_type][prod.entity_id] = prod.entity_name
+        entities_by_type[prod.entity_type][prod.entity_id] = {
+            "name": prod.entity_name,
+            "agent_type": prod.agent_type,
+            "theory": prod.theory
+        }
 
     # Consolidate Agents & WhyFactors
     all_entities = []
     for t in ['actor', 'patient', 'whyfactor']:
-        for eid, ename in entities_by_type.get(t, {}).items():
-            all_entities.append((eid, ename, t))
+        for eid, edata in entities_by_type.get(t, {}).items():
+            all_entities.append((eid, edata, t))
 
-    for entity_id, entity_name, entity_type in all_entities:
+    for entity_id, entity_data, entity_type in all_entities:
+        entity_name = entity_data["name"]
+        agent_type = entity_data.get("agent_type")
+        theory = entity_data.get("theory", "@McKee")
+        
         # Determine Node ID based on Graph Model
         if graph_model == "star":
             # Global Canonical ID
@@ -88,7 +108,6 @@ def map_to_generic_graph(
             if entity_type == 'whyfactor':
                 safe_name = safe_name[:30]
             
-            # Use 'agent' prefix for both actor and patient
             prefix = "agent" if entity_type in ['actor', 'patient'] else entity_type
             node_uid = f"{prefix}_{safe_name}"
         else:
@@ -98,13 +117,25 @@ def map_to_generic_graph(
         label = "Agent" if entity_type in ['actor', 'patient'] else "WhyFactor"
         
         if node_uid not in nodes:
+            props = {
+                "id": node_uid,
+                "name": entity_name
+            }
+            
+            # Add agent type if classified
+            if agent_type:
+                props["agentType"] = agent_type
+                props["theory"] = theory
+            
             nodes[node_uid] = schemas.GenericNode(
                 uid=node_uid,
                 label=label,
-                properties=_escape_props({"id": node_uid, "name": entity_name})
+                properties=_escape_props(props)
             )
 
-    # 3. Map Scenes (New Feature)
+    # 3. Map Scenes (CRITICAL: All events and entities belong to scenes)
+    event_to_scene = {}  # Track which scene each event belongs to
+    
     for scene in scenes:
         if scene.id not in nodes:
             nodes[scene.id] = schemas.GenericNode(
@@ -116,7 +147,9 @@ def map_to_generic_graph(
                     "chapter": scene.chapter,
                     "confidence": scene.confidence,
                     "location": scene.primary_location or "",
-                    "time": scene.time_period or ""
+                    "time": scene.time_period or "",
+                    "place_type": scene.place_type or "",
+                    "time_type": scene.time_type or ""
                 })
             )
         
@@ -129,15 +162,20 @@ def map_to_generic_graph(
                     rel_type="INCLUDES",
                     properties={}
                 ))
+                event_to_scene[event_id] = scene.id
         
-        # FIX: Create Scene -> Agent Relationships
-        # This makes agents "part of" the scene rather than just mentioned in properties
-        for participant_name in scene.participants:
-            # Find the canonical agent ID for this participant
+        # Scene -> Agent Relationships (all participants in scene)
+        # Use the extended entity lists from scene
+        all_scene_participants = set()
+        if hasattr(scene, 'all_actors'):
+            all_scene_participants.update(scene.all_actors)
+        if hasattr(scene, 'all_patients'):
+            all_scene_participants.update(scene.all_patients)
+        
+        for participant_name in all_scene_participants:
             safe_name = _sanitize_name_for_id(participant_name)
             agent_uid = f"agent_{safe_name}"
             
-            # Only create relationship if the agent node exists
             if agent_uid in nodes:
                 relationships.append(schemas.GenericRelationship(
                     start_node_uid=scene.id,
@@ -145,6 +183,20 @@ def map_to_generic_graph(
                     rel_type="HAS_PARTICIPANT",
                     properties={}
                 ))
+        
+        # Scene -> WhyFactor Relationships
+        if hasattr(scene, 'all_whyfactors'):
+            for whyfactor_name in scene.all_whyfactors:
+                safe_name = _sanitize_name_for_id(whyfactor_name[:30])
+                why_uid = f"whyfactor_{safe_name}"
+                
+                if why_uid in nodes:
+                    relationships.append(schemas.GenericRelationship(
+                        start_node_uid=scene.id,
+                        end_node_uid=why_uid,
+                        rel_type="HAS_MOTIVATION",
+                        properties={}
+                    ))
 
     # 4. Map Relationships (Star vs Chain Logic)
     if graph_model == "star":
@@ -155,7 +207,6 @@ def map_to_generic_graph(
             if link.entity_type == 'whyfactor':
                 safe_name = safe_name[:30]
             
-            # Use 'agent' prefix for both actor and patient
             prefix = "agent" if link.entity_type in ['actor', 'patient'] else link.entity_type
             canonical_uid = f"{prefix}_{safe_name}"
 
@@ -200,7 +251,7 @@ def map_to_generic_graph(
                 properties={}
             ))
 
-    # 6. Causal Links (Same for both models)
+    # 6. Causal Links (Mixed Theory - includes both McKee and Truby)
     for link in causal_links:
         relationships.append(schemas.GenericRelationship(
             start_node_uid=link.source_event_id,
@@ -209,11 +260,13 @@ def map_to_generic_graph(
             properties=_escape_props({
                 "mechanism": utils._truncate_safe(link.mechanism, 200),
                 "weight": link.weight,
-                "confidence": link.confidence
+                "confidence": link.confidence,
+                "theory": link.theory,
+                "directionality": link.directionality
             })
         ))
 
-    # 7. Semantic Links (New Feature)
+    # 7. Semantic Links
     for link in semantic_links:
         for source_id in link.source_event_ids:
             for target_id in link.target_event_ids:
@@ -229,4 +282,11 @@ def map_to_generic_graph(
                     ))
 
     print(f"[graph_mapper] Created {len(nodes)} nodes and {len(relationships)} relationships")
+    print(f"[graph_mapper] Scene-centric structure: {len(scenes)} scenes containing {len(events)} events")
+    
+    # Verify all events belong to scenes
+    orphan_events = [e.id for e in events if e.id not in event_to_scene]
+    if orphan_events:
+        print(f"[warning] Found {len(orphan_events)} orphan events not in any scene")
+    
     return list(nodes.values()), relationships
