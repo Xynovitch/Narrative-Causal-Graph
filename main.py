@@ -1,5 +1,5 @@
 """
-Optimized Main Script
+Integrated Main Script - Smart Linking + Semantic Analysis
 Simplified arguments, better defaults for cost optimization
 """
 import os
@@ -14,18 +14,21 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 def main():
     parser = argparse.ArgumentParser(
-        description="CEKG Preprocessor - Optimized (87% Cost Reduction)",
+        description="CEKG Preprocessor - Integrated Smart Linking + Semantic Analysis",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Fast mode (recommended for novels)
+  # Fast mode (recommended for novels, no semantic)
   python main.py --input novel.txt --fast
 
-  # Full mode (all features)
+  # Full mode (all features including semantic)
   python main.py --input novel.txt --full
 
-  # Custom
-  python main.py --input novel.txt --max-chapters 5 --max-pairs 3000
+  # Custom with semantic linking
+  python main.py --input novel.txt --enable-semantic-linking --max-pairs 5000
+
+  # Semantic only, no other extras
+  python main.py --input novel.txt --enable-semantic-linking --max-pairs 3000
         """
     )
     
@@ -61,7 +64,7 @@ Examples:
     preset_group.add_argument("--fast", action="store_true",
                             help="Fast mode: Minimal features, lowest cost (~$2 per novel)")
     preset_group.add_argument("--full", action="store_true",
-                            help="Full mode: All features enabled (~$5 per novel)")
+                            help="Full mode: All features enabled including semantic (~$5 per novel)")
     
     # --- Individual Feature Flags ---
     parser.add_argument("--enable-scene-grouping", action="store_true",
@@ -74,6 +77,10 @@ Examples:
                        help="Use both McKee and Truby theories")
     parser.add_argument("--disable-mixed-theory", action="store_true",
                        help="Use only McKee theory")
+    parser.add_argument("--enable-semantic-linking", action="store_true",
+                       help="Extract semantic relationships (explanation, contrast, etc.)")
+    parser.add_argument("--disable-semantic-linking", action="store_true",
+                       help="Disable semantic relationship extraction")
 
     args = parser.parse_args()
 
@@ -94,18 +101,21 @@ Examples:
         enable_scene_grouping = False
         enable_agent_classification = False
         enable_confidence_calibration = False
+        enable_semantic_linking = False
         max_pairs = 3000
     elif args.full:
         print("\n[mode] FULL MODE - All features enabled")
         enable_scene_grouping = True
         enable_agent_classification = True
         enable_confidence_calibration = True
+        enable_semantic_linking = True
         max_pairs = args.max_pairs
     else:
         # Use individual flags
         enable_scene_grouping = args.enable_scene_grouping
         enable_agent_classification = args.enable_agent_classification
         enable_confidence_calibration = args.enable_confidence_calibration
+        enable_semantic_linking = args.enable_semantic_linking and not args.disable_semantic_linking
         max_pairs = args.max_pairs
 
     enable_mixed_theory = args.enable_mixed_theory and not args.disable_mixed_theory
@@ -117,7 +127,8 @@ Examples:
         )
         
         print("\n" + "="*60)
-        print("OPTIMIZED CEKG PIPELINE")
+        print("INTEGRATED CEKG PIPELINE")
+        print("Smart Linking + Semantic Analysis")
         print("="*60)
         print(f"Model: {preprocessor.openai_model}")
         print(f"Graph: {args.graph_model}")
@@ -126,6 +137,7 @@ Examples:
         print(f"Scene Grouping: {'✓' if enable_scene_grouping else '✗'}")
         print(f"Agent Classification: {'✓' if enable_agent_classification else '✗'}")
         print(f"Confidence Calibration: {'✓' if enable_confidence_calibration else '✗'}")
+        print(f"Semantic Linking: {'✓' if enable_semantic_linking else '✗'}")
         print("="*60 + "\n")
 
         start_time = time.time()
@@ -149,7 +161,7 @@ Examples:
             enable_agent_classification=enable_agent_classification,
             enable_confidence_calibration=enable_confidence_calibration,
             enable_mixed_theory=enable_mixed_theory,
-            enable_long_range_inference=True,  # Always enabled now
+            enable_semantic_linking=enable_semantic_linking,
             max_concurrent_calls=args.max_concurrent_calls,
             max_long_range_pairs=max_pairs
         ))
@@ -167,6 +179,9 @@ Examples:
         if enable_mixed_theory:
             print(f"  - McKee: {out['stats'].get('mckee_links', 0):,}")
             print(f"  - Truby: {out['stats'].get('truby_links', 0):,}")
+        
+        if enable_semantic_linking and 'semantic_links' in out['stats']:
+            print(f"Semantic Links: {out['stats']['semantic_links']:,}")
         
         if enable_scene_grouping and 'scenes' in out['stats']:
             print(f"Scenes: {out['stats']['scenes']:,}")
@@ -186,6 +201,7 @@ Examples:
         causal_cost = (max_pairs / 50) * 0.001  # Bulk batches
         scene_cost = chapters * 0.01 if enable_scene_grouping else 0
         agent_cost = out['stats'].get('agent_types_classified', 0) * 0.005 if enable_agent_classification else 0
+        semantic_cost = 0  # FREE (piggybacks on causal calls + local embeddings)
         
         total_cost = extraction_cost + causal_cost + scene_cost + agent_cost
         
@@ -196,8 +212,12 @@ Examples:
             print(f"  Scenes: ~${scene_cost:.2f}")
         if enable_agent_classification:
             print(f"  Agents: ~${agent_cost:.2f}")
+        if enable_semantic_linking:
+            print(f"  Semantic: $0.00 (FREE - piggybacks on causal + local embeddings)")
         print(f"  TOTAL: ~${total_cost:.2f}")
-        print(f"\n  (87% reduction from original ~${total_cost * 7:.2f})")
+        
+        if enable_semantic_linking:
+            print(f"\n  ✓ Semantic analysis adds ZERO cost!")
         
         print("="*60 + "\n")
         
@@ -205,6 +225,9 @@ Examples:
         print(f"  JSON: {args.out_json}")
         print(f"  Cypher: {args.out_cypher}")
         print(f"  CSV: {args.out_csv}/")
+        
+        if enable_semantic_linking:
+            print(f"\n✓ Semantic relationships exported to CSVs")
         print()
         
     except KeyboardInterrupt:
