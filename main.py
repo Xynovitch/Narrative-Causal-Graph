@@ -74,6 +74,16 @@ def main():
                         help="Automatically classify character agent types")
     parser.add_argument("--enable-long-range-inference", action="store_true",
                         help="Enable cross-chapter causal linking")
+    parser.add_argument(
+    "--max-concurrent-calls",
+    type=int,
+    default=10,
+    help="Maximum concurrent API calls for long-range inference (default: 10)"
+)
+    # In main.py, add this argument around line 50-60:
+    parser.add_argument("--max-long-range-pairs", type=int, default=50000,
+                    help="Maximum pairs to evaluate in long-range mode (default: 50000)")
+
 
     args = parser.parse_args()
 
@@ -126,7 +136,9 @@ def main():
             enable_confidence_calibration=args.enable_confidence_calibration,
             enable_mixed_theory=enable_mixed_theory,
             enable_agent_classification=args.enable_agent_classification,
-            enable_long_range_inference=args.enable_long_range_inference
+            enable_long_range_inference=args.enable_long_range_inference,
+            max_concurrent_calls=args.max_concurrent_calls,
+            max_long_range_pairs=args.max_long_range_pairs  
         ))
         
         elapsed = time.time() - start_time

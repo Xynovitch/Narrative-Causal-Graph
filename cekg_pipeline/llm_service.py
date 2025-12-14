@@ -202,23 +202,40 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
     if cached is not None:
         return cached, None
 
+    # --- SMART PARAMETER SELECTION ---
+    # Reasoning models (o1, gpt-5) use different params than standard GPT-4
+    is_reasoning_model = "gpt-5" in model or "o1" in model
+    
+    request_kwargs = {
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        "response_format": {"type": "json_object"},
+        "timeout": 600
+    }
+
+    if is_reasoning_model:
+        # GPT-5 / Reasoning Models
+        request_kwargs["max_completion_tokens"] = max_tokens
+        request_kwargs["temperature"] = 1.0  # Must be 1 (default)
+        request_kwargs["seed"] = 42          # <--- FOR REPLICABILITY
+    else:
+        # GPT-4 / Standard Models
+        request_kwargs["max_tokens"] = max_tokens
+        request_kwargs["temperature"] = 0.0  # Force deterministic
+        request_kwargs["seed"] = 42          # Extra safety
+    # ---------------------------------
+
     for attempt in range(3):
         try:
             loop = asyncio.get_event_loop()
             
             def make_req():
-                return client.chat.completions.create(
-                    model=model,
-                    messages=[{"role": "user", "content": prompt}],
-                    response_format={"type": "json_object"},
-                    max_tokens=max_tokens,
-                    temperature=0.0,
-                    timeout=30
-                )
+                return client.chat.completions.create(**request_kwargs)
             
             resp = await loop.run_in_executor(None, make_req)
             text = resp.choices[0].message.content.strip()
             
+            # (Keep the rest of your existing JSON parsing logic here...)
             json_match = re.search(r"```(?:json)?\n?(.*?)```", text, re.DOTALL)
             if json_match:
                 text = json_match.group(1).strip()
@@ -244,7 +261,6 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
                 return [], None
             await asyncio.sleep(1)
     return [], None
-
 def _get_extraction_prompt(text_input, chapter_id, extraction_style, 
                            enable_llm_expansion, event_ontology):
     instr = PROMPT_HIGH_LEVEL_INSTRUCTIONS if extraction_style == "high-level" else PROMPT_DETAILED_INSTRUCTIONS

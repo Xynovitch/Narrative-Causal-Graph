@@ -1,0 +1,2470 @@
+{
+  "event_types": [
+    {
+      "name": "ACKNOWLEDGMENT",
+      "explanation": "A character consciously recognizes a fact, shift, or consequence that alters the direction of the plot.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "ACTION_TENSION",
+      "explanation": "A moment where physical or situational stakes intensify, increasing plot tension.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "ADAPTATION_TO_CHANGE",
+      "explanation": "A character adjusts behavior in response to a newly introduced challenge or reversal.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "ADVICE_OFFERED",
+      "explanation": "A mentor or ally imparts guidance that shapes the protagonist’s moral or strategic choices.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "ALLY_GATHERING",
+      "explanation": "The protagonist recruits or unifies allies for the coming conflict.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "ANTICIPATION",
+      "explanation": "Characters foresee an event or outcome, building emotional or structural tension.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "ARRIVAL",
+      "explanation": "A character enters a new setting, prompting narrative reorientation.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "ASPIRATION_REVEALED",
+      "explanation": "The protagonist expresses core longing or ambition that defines narrative direction.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "AUTHOR_INTENT_SIGNAL",
+      "explanation": "The narrative subtly conveys thematic or moral framing chosen by the storyteller.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "AUTONOMY_ASSERTION",
+      "explanation": "A character asserts independence against controlling forces, indicating moral stance.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "CHARACTER_EMOTION_SPIKE",
+      "explanation": "A sharp rise in character emotion that influences subsequent choices.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "CHARACTER_INTRODUCTION",
+      "explanation": "A new character enters the story, altering dynamics or stakes.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "CHARACTER_TRANSFORMATION_SIGNAL",
+      "explanation": "An early indicator that the protagonist is moving toward internal change.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "COMMUNITY_STRESS",
+      "explanation": "A community or group faces tension, shaping societal pressures on the hero.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "COMPANIONSHIP_FORMED",
+      "explanation": "A relationship bond strengthens, affecting moral or emotional stakes.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "COMPARISON_POINT",
+      "explanation": "The narrative contrasts situations or characters to highlight change or conflict.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "COMPETITION_INITIATED",
+      "explanation": "A rivalry begins, symbolizing opposition or moral tension.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "CONFLICT_IGNITION",
+      "explanation": "The story introduces or escalates a core conflict.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "CONNECTION_DEEPENED",
+      "explanation": "Two characters strengthen an emotional or moral bond.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "CONTEMPLATION",
+      "explanation": "The protagonist reflects on their motives, choices, or direction.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "CULTURAL_DISCOVERY",
+      "explanation": "Characters encounter new cultural norms, provoking adaptation or conflict.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "CULTURAL_INTERACTION",
+      "explanation": "Diverging cultural values clash, generating moral or psychological tension.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "DANGER_AWARENESS",
+      "explanation": "Characters become aware of an imminent threat, motivating action.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "DEATH_EVENT",
+      "explanation": "A death alters stakes, value charges, or moral direction.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "DECEPTION_ATTEMPT",
+      "explanation": "A character attempts to mislead others, revealing moral weakness.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "DECISION_MAKING_POINT",
+      "explanation": "The protagonist chooses a direction, shaping narrative trajectory.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "DESPAIR_MOMENT",
+      "explanation": "The character reaches emotional low point, emphasizing moral conflict.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "DETERMINATION_SURGE",
+      "explanation": "The protagonist commits to a goal with renewed force.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "DEUS_EX_MACHINA_SIGNAL",
+      "explanation": "An external solution appears suddenly, resolving a conflict unnaturally.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "DIALOGUE_EXCHANGE",
+      "explanation": "Conversation reveals new information, conflict, or moral argument.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "DISCOURAGEMENT_EVENT",
+      "explanation": "A setback weakens the protagonist’s resolve.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "DISCOVERY_MOMENT",
+      "explanation": "The plot advances when a new truth or clue is found.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "DISMISSAL",
+      "explanation": "A character rejects an idea or person, signaling relational or moral divide.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "DREAM_STATE",
+      "explanation": "A dream or symbolic sequence reveals internal conflict.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "EMOTION_SURGE",
+      "explanation": "An emotional spike shifts character motivation or scene energy.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "EMOTIONAL_CONFLICT",
+      "explanation": "Two internal desires or values clash within a character.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "ENTERPRISE_CHAOS",
+      "explanation": "Organizational instability disrupts plans and increases narrative stakes.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "ENVIRONMENTAL_CHALLENGE",
+      "explanation": "Nature or setting presents a direct obstacle to progress.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "ENVIRONMENTAL_INTERACTION",
+      "explanation": "A character’s relationship with setting reveals psychology or morality.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "EXPLORATION",
+      "explanation": "The protagonist investigates a world, idea, or person, advancing plot or theme.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "EXPRESSION_OF_RELIEF",
+      "explanation": "A moment where tension drops, revealing vulnerability or intimacy.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "FEELING_OF_IMPOTENCE",
+      "explanation": "A character becomes aware of their limitations, intensifying internal conflict.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "FORESHADOWING",
+      "explanation": "Hints of future events appear, altering audience expectations.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "GOAL_DRIVEN_ACTION",
+      "explanation": "The protagonist takes purposeful action toward their objective.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "HARDSHIP_EVENT",
+      "explanation": "A difficulty challenges the character's moral or emotional resources.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "HEALTH_CRISIS",
+      "explanation": "Illness or injury shifts stakes and emotional pressures.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "INCITING_EVENT",
+      "explanation": "The event that disrupts balance and demands the protagonist take action.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "INFORMATION_MANAGEMENT",
+      "explanation": "A character conceals, reveals, or manipulates information to influence others.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "INTERACTION_WITH_ENVIRONMENT",
+      "explanation": "Physical movement through space reflects internal or plot tension.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "INTERPERSONAL_INTERACTION",
+      "explanation": "Characters exchange actions or behaviors that affect relationship dynamics.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "JOURNEY_INITIATED",
+      "explanation": "A literal or metaphorical journey begins, reshaping the narrative landscape.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "LEADERSHIP_ASSERTED",
+      "explanation": "A character steps into a leadership role, defining moral or strategic authority.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "LEGAL_ACTION_TAKEN",
+      "explanation": "The law is invoked to resolve or escalate conflict.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "LONGING_REVEALED",
+      "explanation": "The character expresses emotional or psychological yearning.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "MEDIA_INTERACTION",
+      "explanation": "Characters engage with news or communication platforms, shifting public stakes.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "MORAL_CONFLICT",
+      "explanation": "Two ethical values or duties come into opposition within a character.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "MYSTERY_PRESENTED",
+      "explanation": "A narrative question emerges, creating curiosity and forward momentum.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "NATURE_CONFLICT",
+      "explanation": "The environment or natural forces challenge characters in thematic ways.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "NOSTALGIA_TRIGGER",
+      "explanation": "The past emotionally resurfaces, informing character decisions.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "OPPONENT_CONFRONTATION",
+      "explanation": "The protagonist meets active resistance from an opposing character.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "PARENTAL_CONCERN",
+      "explanation": "Family-based emotional pressure emerges, shaping motivations.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "PHYSICAL_ACTION",
+      "explanation": "A kinetic action moves the plot forward or escalates danger.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "PHYSICAL_CONFLICT",
+      "explanation": "Characters physically clash, raising stakes or value reversals.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "PHYSICAL_DISTANCE_CREATED",
+      "explanation": "Characters separate physically, symbolizing emotional or moral distance.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "PHYSICAL_MOVEMENT",
+      "explanation": "Movement through space reflects pursuit, escape, or intent.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "PLOT_SETUP_PAYOFF",
+      "explanation": "An earlier setup is paid off, confirming thematic or causal logic.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "PLOT_STRUCTURE_SIGNAL",
+      "explanation": "A moment clarifies the story’s structural phase or pivot.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "POISON_INTRODUCED",
+      "explanation": "A harmful influence—literal or symbolic—enters the story.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "PRIVACY_DESIRE",
+      "explanation": "The character withdraws emotionally or socially, revealing internal struggle.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "PUBLIC_GATHERING",
+      "explanation": "A social event becomes a site of tension, revelation, or turning point.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "PURCHASE_ACTION",
+      "explanation": "Buying or acquiring something signals desire, need, or symbolic meaning.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "RECOGNITION_POINT",
+      "explanation": "A character realizes a key truth, prompting change.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "REFLECTION_MOMENT",
+      "explanation": "A character pauses to evaluate moral, emotional, or strategic direction.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "RELATIONSHIP_NURTURING",
+      "explanation": "A relationship strengthens through care or intimacy.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "RELATIONSHIP_TENSION_SPIKE",
+      "explanation": "Pressure escalates within a relationship, forcing decisions.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "REMINISCENCE",
+      "explanation": "A character recalls the past in a way that shifts emotional context.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "REVEALING_INTENTIONS",
+      "explanation": "A character openly states goals or motives, clarifying conflict.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "RUMOR_SPREADING",
+      "explanation": "Information circulates socially, influencing reputations and tension.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "SAFETY_ASSURANCE",
+      "explanation": "Characters reassure one another, temporarily reducing fear.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "SEARCH_ACTION",
+      "explanation": "A character looks for an object, person, or truth that advances plot.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "SEARCH_FOR_VALIDATION",
+      "explanation": "A character seeks approval from a figure or community, emphasizing moral need.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "SEEKING_APPROVAL",
+      "explanation": "The protagonist tries to win praise or acceptance, revealing insecurity.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "SEEKING_COMFORT",
+      "explanation": "A character looks for emotional refuge, exposing vulnerability.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "SELF_DISCOVERY",
+      "explanation": "A realization about identity or moral flaw emerges.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "SELF_REFLECTION",
+      "explanation": "A character turns inward to examine motives or desires.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "SENSE_OF_FEAR",
+      "explanation": "Fear rises, indicating threat or internal psychological struggle.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "SOCIAL_BONDING",
+      "explanation": "Characters connect socially, reinforcing or challenging moral alignment.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "SOCIAL_DYNAMIC_SHIFT",
+      "explanation": "The hierarchy or relationships within a group change.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "SOCIAL_INTERACTION_EVENT",
+      "explanation": "A social exchange reveals desires, conflicts, or values.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "SUPPORT_OFFERED",
+      "explanation": "A character provides emotional or strategic help.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "THEME_INTRODUCTION",
+      "explanation": "The narrative suggests the central thematic conflict.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "THOUGHT_PROCESS",
+      "explanation": "Inner monologue clarifies motivations or dilemmas.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "TRANSFORMATION_SIGNAL",
+      "explanation": "A shift in behavior hints at the protagonist’s eventual change.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "TRANSPORTATION_EVENT",
+      "explanation": "Movement between locations changes plot accessibility or stakes.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "UNREQUITED_FEELINGS",
+      "explanation": "One-sided emotional attachment causes internal and external tension.",
+      "theory": "@Truby"
+    },
+    {
+      "name": "WEALTH_DISPLAY",
+      "explanation": "A display of resources signals power imbalance or moral contrast.",
+      "theory": "@McKee"
+    },
+    {
+      "name": "YEARNING_REVEALED",
+      "explanation": "A deep emotional longing is expressed, shaping moral conflict.",
+      "theory": "@Truby"
+    }
+  ]
+}
+
+{
+  "AgentTypeDictionary": [
+    {
+      "name": "ACT_BREAK_AGENT",
+      "explanation": "Forces a major transition between narrative acts by altering the story’s momentum.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "ACT_BREAK_AGENT",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "CLIMAX_AGENT",
+      "explanation": "Pushes the protagonist into the final decisive confrontation that resolves core value tensions.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "CLIMAX_AGENT",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "COMPASSION_TRIGGER",
+      "explanation": "A character whose presence evokes empathy and unlocks the hero’s emotional or moral openness.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "COMPASSION_TRIGGER",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "CONFLICT_INTENSIFIER",
+      "explanation": "Escalates narrative tension by raising stakes or worsening circumstances.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "CONFLICT_INTENSIFIER",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "CONSCIENCE_VOICE",
+      "explanation": "Acts as a moral compass urging the hero toward ethical behavior or self-correction.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "CONSCIENCE_VOICE",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "CRISIS_FORCER",
+      "explanation": "Compels the protagonist to face an unavoidable dilemma at the core of the story.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "CRISIS_FORCER",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "EMOTIONAL_OPPONENT",
+      "explanation": "Stirs emotional conflict by provoking insecurity, fear, or attachment dilemmas.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "EMOTIONAL_OPPONENT",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "ESCALATION_AGENT",
+      "explanation": "Raises the intensity of the external conflict, increasing narrative urgency.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "ESCALATION_AGENT",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "ETHICAL_CHALLENGER",
+      "explanation": "Confronts the hero’s assumptions about right and wrong, forcing deeper ethical reflection.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "ETHICAL_CHALLENGER",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "FALSE_ALLY",
+      "explanation": "Pretends loyalty while serving their own agenda, disrupting trust and alignment.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "FALSE_ALLY",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "GAP_EXPANDER",
+      "explanation": "Creates a discrepancy between expectation and outcome, forcing protagonist adaptation.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "GAP_EXPANDER",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "GHOST_BEARER",
+      "explanation": "Reveals or embodies the hero’s traumatic past, activating psychological need for change.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "GHOST_BEARER",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "INCITING_OPPONENT",
+      "explanation": "Introduces the initial disturbance that forces the protagonist into action.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "INCITING_OPPONENT",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "INNER_CRITIC",
+      "explanation": "Embodies internalized shame or judgment, pushing the hero toward introspection.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "INNER_CRITIC",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MOMENTUM_BREAKER",
+      "explanation": "Interrupts the protagonist’s forward movement, altering pacing or direction.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "MOMENTUM_BREAKER",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "MORAL_ALLY",
+      "explanation": "Supports the hero by reinforcing shared ethical values and moral resilience.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "MORAL_ALLY",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_ANTAGONIST",
+      "explanation": "Advances a flawed or destructive moral worldview that the hero must confront.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "MORAL_ANTAGONIST",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_BLOCKER",
+      "explanation": "Obstructs the hero’s attempts at moral improvement, intensifying internal conflict.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "MORAL_BLOCKER",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_CATALYST",
+      "explanation": "Triggers a moral awakening or shift in the hero.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "MORAL_CATALYST",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_GUIDE",
+      "explanation": "Offers a vision of stronger moral conduct, shaping the hero’s development.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "MORAL_GUIDE",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_PROVOKER",
+      "explanation": "Provokes confrontations that reveal deeper moral truths to the hero.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "MORAL_PROVOKER",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_REFLECTOR",
+      "explanation": "Reflects the hero’s virtues or flaws, clarifying moral positioning.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "MORAL_REFLECTOR",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_TEMPTER",
+      "explanation": "Tempts the hero with an easier but morally inferior path.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "MORAL_TEMPTER",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_WITNESS",
+      "explanation": "Observes and judges the hero’s actions, framing the moral stakes.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "MORAL_WITNESS",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "OBSTACLE_AGENT",
+      "explanation": "Physically or situationally blocks the protagonist’s progress.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "OBSTACLE_AGENT",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "PLOT_BLOCKER",
+      "explanation": "Introduces an obstacle that temporarily halts forward plot development.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "PLOT_BLOCKER",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "PLOT_DISRUPTOR",
+      "explanation": "Unexpectedly alters the trajectory of events, forcing new strategies.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "PLOT_DISRUPTOR",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "PLOT_REVERSER",
+      "explanation": "Causes a reversal that shifts character goals or plot momentum.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "PLOT_REVERSER",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "PRESSURE_CATALYST",
+      "explanation": "Applies time, social, or situational pressure to accelerate conflict.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "PRESSURE_CATALYST",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "PROTAGONIST_HERO",
+      "explanation": "Pursues the central desire and undergoes psychological and moral transformation.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "PROTAGONIST_HERO",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "PSYCHOLOGICAL_ALLY",
+      "explanation": "Supports the hero emotionally or mentally, easing internal conflicts.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "PSYCHOLOGICAL_ALLY",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "PSYCHOLOGICAL_MIRROR",
+      "explanation": "Represents or echoes the hero’s internal weaknesses or fears.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "PSYCHOLOGICAL_MIRROR",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "PSYCHOLOGICAL_OPPONENT",
+      "explanation": "Challenges the hero’s internal limitations, fears, or unresolved wounds.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "PSYCHOLOGICAL_OPPONENT",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "RIVAL",
+      "explanation": "Competes directly with the hero for the same objective or desire.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "RIVAL",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "RESOLUTION_AGENT",
+      "explanation": "Enables the protagonist to restore balance or resolve final value conflicts.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "RESOLUTION_AGENT",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "REVELATION_GIVER",
+      "explanation": "Provides essential insight that changes the hero’s understanding.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "REVELATION_GIVER",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "REVERSAL_ALLY",
+      "explanation": "Supports the protagonist but unintentionally triggers a reversal in fortune.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "REVERSAL_ALLY",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "SCENE_BLOCKER",
+      "explanation": "Derails the expected outcome of a scene, increasing dramatic tension.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "SCENE_BLOCKER",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "SCENE_CATALYST",
+      "explanation": "Initiates or accelerates scene-level action and energy shifts.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "SCENE_CATALYST",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "SCENE_DIVIDER",
+      "explanation": "Interrupts the expected dramatic rhythm of a scene, shifting emotional focus.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "SCENE_DIVIDER",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "SCENE_ESCALATOR",
+      "explanation": "Intensifies conflict within a scene, moving it toward a turning point.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "SCENE_ESCALATOR",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "SHADOW_OPPONENT",
+      "explanation": "Represents the hero’s darkest possible self, warning of moral collapse.",
+      "theory": "@Truby",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "SHADOW_OPPONENT",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "STAKE_RAISER",
+      "explanation": "Increases the consequences of failure or success, heightening emotional investment.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "STAKE_RAISER",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "STRUCTURAL_ANTAGONIST",
+      "explanation": "Provides systemic or persistent opposition driving external conflict.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "STRUCTURAL_ANTAGONIST",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "STRUCTURAL_FOIL",
+      "explanation": "Contrasts the protagonist’s values or strategies, illuminating structural tensions.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "STRUCTURAL_FOIL",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "TURNING_POINT_DRIVER",
+      "explanation": "Initiates a major shift in value or direction within the plot.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "TURNING_POINT_DRIVER",
+        "theory": "McKee"
+      }
+    },
+    {
+      "name": "VALUE_GUARDIAN",
+      "explanation": "Embodies a threatened core value, clarifying stakes and theme.",
+      "theory": "@McKee",
+      "neo4jLabel": "AgentType",
+      "neo4jProperties": {
+        "agentType": "VALUE_GUARDIAN",
+        "theory": "McKee"
+      }
+      {
+      "name": "STRUCTURAL_AGENT",
+      "theory": "@McKee",
+      "description": "A character who serves a functional role in the plot without significant moral agency."
+    },
+    }
+  ]
+}
+{
+  "RelationTypeDictionary_Truby": [
+    {
+      "name": "ALLY_ALIGNMENT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "AllyAlignment",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "ALLY_BETRAYAL",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "AllyBetrayal",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "ALLY_DEPENDENCE",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "AllyDependence",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "ALLY_SUPPORT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "AllySupport",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "BACKSTORY_PRESSURE",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "BackstoryPressure",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "CHARACTER_WEB_TENSION",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "CharacterWebTension",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "COMPASSION_TRIGGER",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "CompassionTrigger",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "CONSCIENCE_CONFLICT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "ConscienceConflict",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "DESIRE_ALIGNMENT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "DesireAlignment",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "DESIRE_COMPETITION",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "DesireCompetition",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "DESIRE_OBSTRUCTION",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "DesireObstruction",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "EMOTIONAL_DEPENDENCE",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "EmotionalDependence",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "EMOTIONAL_DISTANCE",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "EmotionalDistance",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "EMOTIONAL_MANIPULATION",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "EmotionalManipulation",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "ETHICAL_ALIGNMENT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "EthicalAlignment",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "ETHICAL_CONFRONTATION",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "EthicalConfrontation",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "FAKE_ALLY_DECEPTION",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "FakeAllyDeception",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "FAMILY_PRESSURE",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "FamilyPressure",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "GHOST_INFLUENCE",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "GhostInfluence",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "IDEALOGICAL_ALIGNMENT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "IdealogicalAlignment",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "IDEOLOGICAL_CONFLICT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "IdeologicalConflict",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "INTERPERSONAL_BOUNDARY",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "InterpersonalBoundary",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "INTERPERSONAL_CARE",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "InterpersonalCare",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "INTERPERSONAL_CONFLICT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "InterpersonalConflict",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "INTERPERSONAL_DEPENDENCY",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "InterpersonalDependency",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "INTERPERSONAL_PROJECTION",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "InterpersonalProjection",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "LOYALTY_CONFLICT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "LoyaltyConflict",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_ALIGNMENT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "MoralAlignment",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_CHALLENGE",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "MoralChallenge",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_COLLISION",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "MoralCollision",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_CORRUPTION_INFLUENCE",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "MoralCorruptionInfluence",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_GUIDANCE",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "MoralGuidance",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_JUDGMENT",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "MoralJudgment",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_PRESSURE",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "MoralPressure",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_REINFORCEMENT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "MoralReinforcement",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_REJECTION",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "MoralRejection",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_REVELATION_TRIGGER",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "MoralRevelationTrigger",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "MORAL_SUPPORT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "MoralSupport",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "OPPOSITION_ESCALATION",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "OppositionEscalation",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "OPPOSITION_MIRRORING",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "OppositionMirroring",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "OPPOSITION_PRESSURE",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "OppositionPressure",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "PSYCHOLOGICAL_CHALLENGE",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "PsychologicalChallenge",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "PSYCHOLOGICAL_MIRRORING",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "PsychologicalMirroring",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "PSYCHOLOGICAL_PRESSURE",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "PsychologicalPressure",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "PSYCHOLOGICAL_REINFORCEMENT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "PsychologicalReinforcement",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "RELATIONAL_CONTRAST",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "RelationalContrast",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "RELATIONAL_DEPENDENCE",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "RelationalDependence",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "RELATIONAL_FRAGMENTATION",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "RelationalFragmentation",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "RELATIONAL_LOYALTY",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "RelationalLoyalty",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "SELF_REVELATION_INFLUENCE",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "SelfRevelationInfluence",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "SHADOW_ALIGNMENT",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "ShadowAlignment",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "SHADOW_PROJECTION",
+      "directionality": "uni",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "ShadowProjection",
+        "theory": "Truby"
+      }
+    },
+    {
+      "name": "VALUE_CONTRAST",
+      "directionality": "bi",
+      "theory": "@Truby",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {
+        "relationType": "ValueContrast",
+        "theory": "Truby"
+      }
+    }
+  ]
+}
+{
+  "RelationTypeDictionary_McKee": [
+    {
+      "name": "ACT_BREAK_CAUSE",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "ActBreakCause", "theory": "McKee"}
+    },
+    {
+      "name": "ACTION_ESCALATION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "ActionEscalation", "theory": "McKee"}
+    },
+    {
+      "name": "BEAT_PROGRESSion",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "BeatProgression", "theory": "McKee"}
+    },
+    {
+      "name": "CAUSES_REVERSAL",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "CausesReversal", "theory": "McKee"}
+    },
+    {
+      "name": "CLIMAX_DRIVE",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "ClimaxDrive", "theory": "McKee"}
+    },
+    {
+      "name": "CONSEQUENCE_CHAINING",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "ConsequenceChaining", "theory": "McKee"}
+    },
+    {
+      "name": "CRISIS_FORCE",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "CrisisForce", "theory": "McKee"}
+    },
+    {
+      "name": "DELAYED_PAYOFF_LINK",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "DelayedPayoffLink", "theory": "McKee"}
+    },
+    {
+      "name": "ESCALATES_CONFLICT",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "EscalatesConflict", "theory": "McKee"}
+    },
+    {
+      "name": "EVENT_ENABLES_NEXT",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "EventEnablesNext", "theory": "McKee"}
+    },
+    {
+      "name": "EVENT_REINFORCEMENT",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "EventReinforcement", "theory": "McKee"}
+    },
+    {
+      "name": "EXPECTED_RESULT_SHIFT",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "ExpectedResultShift", "theory": "McKee"}
+    },
+    {
+      "name": "GAP_AMPLIFICATION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "GapAmplification", "theory": "McKee"}
+    },
+    {
+      "name": "GAP_CREATION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "GapCreation", "theory": "McKee"}
+    },
+    {
+      "name": "INCITING_CAUSE",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "IncitingCause", "theory": "McKee"}
+    },
+    {
+      "name": "LEADS_TO_COMPLICATION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "LeadsToComplication", "theory": "McKee"}
+    },
+    {
+      "name": "LEADS_TO_CRISIS",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "LeadsToCrisis", "theory": "McKee"}
+    },
+    {
+      "name": "LEADS_TO_RESOLUTION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "LeadsToResolution", "theory": "McKee"}
+    },
+    {
+      "name": "MOMENTUM_SHIFT",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "MomentumShift", "theory": "McKee"}
+    },
+    {
+      "name": "NEGATIVE_REVERSAL_TRIGGER",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "NegativeReversalTrigger", "theory": "McKee"}
+    },
+    {
+      "name": "OBSTACLE_CHAINING",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "ObstacleChaining", "theory": "McKee"}
+    },
+    {
+      "name": "PLOT_BRANCHING",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "PlotBranching", "theory": "McKee"}
+    },
+    {
+      "name": "PLOT_CONVERGENCE",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "PlotConvergence", "theory": "McKee"}
+    },
+    {
+      "name": "PLOT_DISRUPTION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "PlotDisruption", "theory": "McKee"}
+    },
+    {
+      "name": "PLOT_PROPULSION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "PlotPropulsion", "theory": "McKee"}
+    },
+    {
+      "name": "PLOT_REALIGNMENT",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "PlotRealignment", "theory": "McKee"}
+    },
+    {
+      "name": "PLOT_REVISION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "PlotRevision", "theory": "McKee"}
+    },
+    {
+      "name": "POINT_OF_NO_RETURN_CAUSE",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "PointOfNoReturnCause", "theory": "McKee"}
+    },
+    {
+      "name": "PREVENTS_OUTCOME",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "PreventsOutcome", "theory": "McKee"}
+    },
+    {
+      "name": "REINFORCES_GOAL",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "ReinforcesGoal", "theory": "McKee"}
+    },
+    {
+      "name": "REINFORCES_STAKES",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "ReinforcesStakes", "theory": "McKee"}
+    },
+    {
+      "name": "REINFORCES_THEME",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "ReinforcesTheme", "theory": "McKee"}
+    },
+    {
+      "name": "REVEALS_INFORMATION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "RevealsInformation", "theory": "McKee"}
+    },
+    {
+      "name": "REVERSAL_ACTIVATION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "ReversalActivation", "theory": "McKee"}
+    },
+    {
+      "name": "SCENE_CAUSATION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "SceneCausation", "theory": "McKee"}
+    },
+    {
+      "name": "SCENE_CHAINING",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "SceneChaining", "theory": "McKee"}
+    },
+    {
+      "name": "SCENE_REVERSAL",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "SceneReversal", "theory": "McKee"}
+    },
+    {
+      "name": "SEQUEL_CAUSATION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "SequelCausation", "theory": "McKee"}
+    },
+    {
+      "name": "SETUP_PAYOFF_LINK",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "SetupPayoffLink", "theory": "McKee"}
+    },
+    {
+      "name": "STAKE_ESCALATION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "StakeEscalation", "theory": "McKee"}
+    },
+    {
+      "name": "STRUCTURAL_ALIGNMENT",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "StructuralAlignment", "theory": "McKee"}
+    },
+    {
+      "name": "STRUCTURAL_DEPENDENCE",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "StructuralDependence", "theory": "McKee"}
+    },
+    {
+      "name": "STRUCTURAL_PRESSURE",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "StructuralPressure", "theory": "McKee"}
+    },
+    {
+      "name": "STRUCTURAL_PROPULSION",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "StructuralPropulsion", "theory": "McKee"}
+    },
+    {
+      "name": "STRUCTURAL_REALIGNMENT",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "StructuralRealignment", "theory": "McKee"}
+    },
+    {
+      "name": "TURNING_POINT_CAUSE",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "TurningPointCause", "theory": "McKee"}
+    },
+    {
+      "name": "VALUE_SHIFT_CAUSE",
+      "directionality": "uni",
+      "theory": "@McKee",
+      "neo4jLabel": "RelationType",
+      "neo4jProperties": {"relationType": "ValueShiftCause", "theory": "McKee"}
+    }
+  ]
+}
+{
+  "PlaceTypeDictionary": [
+
+    {
+      "name": "ACTBREAK_THRESHOLD",
+      "narrativeSignificance": "Boundary between major structural acts.",
+      "conflictFunction": "Shifts narrative momentum.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "ActBreak_Threshold", "theory": "McKee" }
+    },
+    {
+      "name": "CHARACTERWEB_CONVERGENCESITE",
+      "narrativeSignificance": "A space where multiple character relationships intersect and expose dynamics.",
+      "moralFunction": "Reveals conflicting moral pressures.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "CharacterWeb_ConvergenceSite", "theory": "Truby" }
+    },
+    {
+      "name": "CIRCLING_CONSEQUENCEZONE",
+      "narrativeSignificance": "Place where the effects of prior actions unfold.",
+      "conflictFunction": "Clarifies stakes through impact.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Circling_ConsequenceZone", "theory": "McKee" }
+    },
+    {
+      "name": "CLIMAX_STAGE",
+      "narrativeSignificance": "Setting of the story’s final conflict.",
+      "conflictFunction": "Delivers transformational resolution.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Climax_Stage", "theory": "McKee" }
+    },
+    {
+      "name": "CONFLICT_ENGINEROOM",
+      "narrativeSignificance": "Location generating continuous conflict pressure.",
+      "conflictFunction": "Drives external tension.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Conflict_EngineRoom", "theory": "McKee" }
+    },
+    {
+      "name": "CONFLICT_SATURATIONCHAMBER",
+      "narrativeSignificance": "Space overloaded with competing forces.",
+      "conflictFunction": "Pushes narrative to a breaking point.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Conflict_SaturationChamber", "theory": "McKee" }
+    },
+    {
+      "name": "CONFRONTATION_CORRIDOR",
+      "narrativeSignificance": "Setting where direct conflict erupts.",
+      "conflictFunction": "Transforms tension into action.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Confrontation_Corridor", "theory": "McKee" }
+    },
+    {
+      "name": "CRISIS_ARENA",
+      "narrativeSignificance": "Site of protagonist’s decisive dilemma.",
+      "conflictFunction": "Forces irreversible choice.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Crisis_Arena", "theory": "McKee" }
+    },
+    {
+      "name": "DESIRE_ARENA",
+      "narrativeSignificance": "Primary setting where the hero actively pursues desire.",
+      "moralFunction": "Clarifies ambition and motivation.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Desire_Arena", "theory": "Truby" }
+    },
+    {
+      "name": "DESIRE_BLOCKADEZONE",
+      "narrativeSignificance": "A place that obstructs pursuit of the hero’s goal.",
+      "moralFunction": "Forces reevaluation of priorities.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Desire_BlockadeZone", "theory": "Truby" }
+    },
+    {
+      "name": "ESCALATION_PLATFORM",
+      "narrativeSignificance": "A location where external conflict intensifies.",
+      "conflictFunction": "Pushes story toward crisis.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Escalation_Platform", "theory": "McKee" }
+    },
+    {
+      "name": "ETHICAL_NEGOTIATIONSPACE",
+      "narrativeSignificance": "A site where characters debate or negotiate moral frameworks.",
+      "moralFunction": "Tests hero's ethical position.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Ethical_NegotiationSpace", "theory": "Truby" }
+    },
+    {
+      "name": "EXPECTATIONGAP_ZONE",
+      "narrativeSignificance": "Place where surprising outcomes occur.",
+      "conflictFunction": "Creates reversals and tension.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "ExpectationGap_Zone", "theory": "McKee" }
+    },
+    {
+      "name": "FALSE_MORALSTAGE",
+      "narrativeSignificance": "A deceptive setting that obscures true ethical dynamics.",
+      "moralFunction": "Challenges hero’s moral intuition.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "False_MoralStage", "theory": "Truby" }
+    },
+    {
+      "name": "FALSE_SANCTUARY",
+      "narrativeSignificance": "Appears safe but hides moral or emotional danger.",
+      "moralFunction": "Misleads the hero into flawed decisions.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "False_Sanctuary", "theory": "Truby" }
+    },
+    {
+      "name": "GHOST_LADENSPACE",
+      "narrativeSignificance": "A location tied to trauma or backstory.",
+      "moralFunction": "Reactivates suppressed emotional wounds.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Ghost_LadenSpace", "theory": "Truby" }
+    },
+    {
+      "name": "HIDDENTRUTH_CHAMBER",
+      "narrativeSignificance": "A concealed or symbolic place that holds essential revelations.",
+      "moralFunction": "Clarifies motivations and thematic stakes.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "HiddenTruth_Chamber", "theory": "Truby" }
+    },
+    {
+      "name": "INCITING_LOCATION",
+      "narrativeSignificance": "Site of the narrative’s inciting incident.",
+      "conflictFunction": "Launches the central conflict.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Inciting_Location", "theory": "McKee" }
+    },
+    {
+      "name": "INNERCONFLICT_ZONE",
+      "narrativeSignificance": "A setting reflecting the hero’s psychological fragmentation.",
+      "moralFunction": "Externalizes inner struggle.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "InnerConflict_Zone", "theory": "Truby" }
+    },
+    {
+      "name": "INNERREVELATION_CORRIDOR",
+      "narrativeSignificance": "A liminal or symbolic passage where inner shifts occur.",
+      "moralFunction": "Prepares the hero for transformation.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "InnerRevelation_Corridor", "theory": "Truby" }
+    },
+    {
+      "name": "MOMENTUM_DROPZONE",
+      "narrativeSignificance": "Place where narrative pace temporarily decreases.",
+      "conflictFunction": "Prepares next escalation.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Momentum_DropZone", "theory": "McKee" }
+    },
+    {
+      "name": "MORAL_BATTLEFIELD",
+      "narrativeSignificance": "A place where competing ethical values collide.",
+      "moralFunction": "Intensifies moral conflict.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Moral_Battlefield", "theory": "Truby" }
+    },
+    {
+      "name": "MORAL_BATTLEGROUNDINTERIOR",
+      "narrativeSignificance": "Internalized or symbolic site of ideological struggle.",
+      "moralFunction": "Deepens moral confrontation.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Moral_BattlegroundInterior", "theory": "Truby" }
+    },
+    {
+      "name": "MORAL_CONVERGENCEPOINT",
+      "narrativeSignificance": "Where all moral arguments converge toward thematic meaning.",
+      "moralFunction": "Clarifies moral thesis.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Moral_ConvergencePoint", "theory": "Truby" }
+    },
+    {
+      "name": "MORAL_FRONTIER",
+      "narrativeSignificance": "A symbolic or literal boundary testing ethical identity.",
+      "moralFunction": "Catalyzes ethical evolution.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Moral_Frontier", "theory": "Truby" }
+    },
+    {
+      "name": "MORAL_HOMEBASE",
+      "narrativeSignificance": "Location embodying the hero’s baseline ethical orientation.",
+      "moralFunction": "Provides value reference point.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Moral_HomeBase", "theory": "Truby" }
+    },
+    {
+      "name": "MORAL_TESTINGGROUND",
+      "narrativeSignificance": "Setting where the hero's moral weaknesses surface.",
+      "moralFunction": "Forces difficult ethical choices.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Moral_TestingGround", "theory": "Truby" }
+    },
+    {
+      "name": "MORAL_TRAP",
+      "narrativeSignificance": "A location constructed to exploit the hero’s ethical vulnerability.",
+      "moralFunction": "Provokes flawed decisions.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Moral_Trap", "theory": "Truby" }
+    },
+    {
+      "name": "OBSTACLE_FIELD",
+      "narrativeSignificance": "Space filled with external resistance.",
+      "conflictFunction": "Increases physical or situational struggle.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Obstacle_Field", "theory": "McKee" }
+    },
+    {
+      "name": "OPPOSITION_FORTRESS",
+      "narrativeSignificance": "The moral or ideological stronghold of the opponent.",
+      "moralFunction": "Clarifies opposing worldviews.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Opposition_Fortress", "theory": "Truby" }
+    },
+    {
+      "name": "OPPOSITION_TERRITORY",
+      "narrativeSignificance": "Space controlled by the antagonist.",
+      "moralFunction": "Highlights moral contrast with the hero.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Opposition_Territory", "theory": "Truby" }
+    },
+    {
+      "name": "PEAKTENSION_SUMMIT",
+      "narrativeSignificance": "Setting where tension reaches maximum.",
+      "conflictFunction": "Prepares the climax.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "PeakTension_Summit", "theory": "McKee" }
+    },
+    {
+      "name": "PRESSURE_CHAMBER",
+      "narrativeSignificance": "A compressed environment that forces rapid decisions.",
+      "conflictFunction": "Amplifies immediate stakes.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Pressure_Chamber", "theory": "McKee" }
+    },
+    {
+      "name": "PROGRESSIVECOMPLICATION_ZONE",
+      "narrativeSignificance": "Area where complications escalate in intensity.",
+      "conflictFunction": "Drives structural tension upward.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "ProgressiveComplication_Zone", "theory": "McKee" }
+    },
+    {
+      "name": "PSYCHOLOGICAL_PRESSUREZONE",
+      "narrativeSignificance": "A setting that amplifies internal conflict.",
+      "moralFunction": "Pushes hero toward self-recognition.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Psychological_PressureZone", "theory": "Truby" }
+    },
+    {
+      "name": "PSYCHOLOGICAL_SANCTUARY",
+      "narrativeSignificance": "A temporary refuge that stabilizes emotional state.",
+      "moralFunction": "Allows reflection and healing.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Psychological_Sanctuary", "theory": "Truby" }
+    },
+    {
+      "name": "RESOLUTION_GROUND",
+      "narrativeSignificance": "Setting where the story returns to stability post-climax.",
+      "conflictFunction": "Displays consequences and restored balance.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Resolution_Ground", "theory": "McKee" }
+    },
+    {
+      "name": "REVELATION_CHAMBER",
+      "narrativeSignificance": "A setting where hidden truths surface.",
+      "moralFunction": "Enables moral or psychological insight.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Revelation_Chamber", "theory": "Truby" }
+    },
+    {
+      "name": "REVERSAL_JUNCTION",
+      "narrativeSignificance": "Location where plotlines twist or reconnect.",
+      "conflictFunction": "Generates new narrative alignment.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Reversal_Junction", "theory": "McKee" }
+    },
+    {
+      "name": "REVERSAL_PLATFORM",
+      "narrativeSignificance": "Site of major reversals or surprises.",
+      "conflictFunction": "Alters direction of conflict.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Reversal_Platform", "theory": "McKee" }
+    },
+    {
+      "name": "SCENEOBSTACLE_POINT",
+      "narrativeSignificance": "Place where immediate scene-level obstacles appear.",
+      "conflictFunction": "Redirects moment-to-moment action.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "SceneObstacle_Point", "theory": "McKee" }
+    },
+    {
+      "name": "SCENETURNINGPOINT_SITE",
+      "narrativeSignificance": "Location where scene values shift polarity.",
+      "conflictFunction": "Redirects scene outcome.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "SceneTurningPoint_Site", "theory": "McKee" }
+    },
+    {
+      "name": "SELFREVELATION_GROUND",
+      "narrativeSignificance": "Place of profound personal insight.",
+      "moralFunction": "Catalyzes transformation.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "SelfRevelation_Ground", "theory": "Truby" }
+    },
+    {
+      "name": "STAKES_ELEVATIONZONE",
+      "narrativeSignificance": "Place where the consequences of failure become more severe.",
+      "conflictFunction": "Raises urgency and emotional stakes.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "StakesElevation_Zone", "theory": "McKee" }
+    },
+    {
+      "name": "STRUCTURALPIVOT_SPACE",
+      "narrativeSignificance": "Site used to pivot the act structure.",
+      "conflictFunction": "Redirects architectural flow of narrative.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "StructuralPivot_Space", "theory": "McKee" }
+    },
+    {
+      "name": "STRUCTURALRESOLUTION_SITE",
+      "narrativeSignificance": "Final place where structural arcs conclude.",
+      "conflictFunction": "Finalizes thematic and value shifts.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "StructuralResolution_Site", "theory": "McKee" }
+    },
+    {
+      "name": "TRANSFORMATION_THRESHOLD",
+      "narrativeSignificance": "Symbolic boundary marking psychological or moral change.",
+      "moralFunction": "Marks transition to new self-understanding.",
+      "theory": "@Truby",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "Transformation_Threshold", "theory": "Truby" }
+    },
+    {
+      "name": "VALUESHIFT_LOCATION",
+      "narrativeSignificance": "Place where major value reversals occur.",
+      "conflictFunction": "Redirects trajectory of story values.",
+      "theory": "@McKee",
+      "neo4jLabel": "PlaceType",
+      "neo4jProperties": { "placeType": "ValueShift_Location", "theory": "McKee" }
+    }
+  ]
+}
+{
+  "TimeTypeDictionary": [
+
+    {
+      "name": "ACTSHIFT_TRANSITION",
+      "narrativeEffect": "Indicates temporal shift into a new structural act.",
+      "structuralOrMoralFunction": "Realigns plot architecture.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "ActShift_Transition", "theory": "McKee" }
+    },
+    {
+      "name": "CHARACTERWEBCONVERGENCE_MOMENT",
+      "narrativeEffect": "Aligns multiple character forces in time.",
+      "structuralOrMoralFunction": "Shapes moral realignment and relational shifts.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "CharacterWebConvergence_Moment", "theory": "Truby" }
+    },
+    {
+      "name": "CLIMAX_INTERVAL",
+      "narrativeEffect": "Rapid escalation toward final confrontation.",
+      "structuralOrMoralFunction": "Resolves central conflict causally.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "Climax_Interval", "theory": "McKee" }
+    },
+    {
+      "name": "CONFLICTSURGE_MOMENT",
+      "narrativeEffect": "Sharp spike in dramatic tension.",
+      "structuralOrMoralFunction": "Pushes story toward crisis.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "ConflictSurge_Moment", "theory": "McKee" }
+    },
+    {
+      "name": "CRISIS_BEAT",
+      "narrativeEffect": "Heightens tension at the decisive dilemma.",
+      "structuralOrMoralFunction": "Forces protagonist’s fateful choice.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "Crisis_Beat", "theory": "McKee" }
+    },
+    {
+      "name": "DESIREREASSESSMENT_INTERVAL",
+      "narrativeEffect": "Pauses pursuit long enough for the hero to reconsider goals.",
+      "structuralOrMoralFunction": "Tests whether desire is authentic or misguided.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "DesireReassessment_Interval", "theory": "Truby" }
+    },
+    {
+      "name": "ESCALATION_RHYTHM",
+      "narrativeEffect": "Increases narrative tempo and structural pressure.",
+      "structuralOrMoralFunction": "Builds toward larger complications.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "Escalation_Rhythm", "theory": "McKee" }
+    },
+    {
+      "name": "ETHICALDILEMMA_WINDOW",
+      "narrativeEffect": "Suspends forward momentum to foreground a moral choice.",
+      "structuralOrMoralFunction": "Reveals moral weakness through indecision.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "EthicalDilemma_Window", "theory": "Truby" }
+    },
+    {
+      "name": "FALSEGOAL_PHASE",
+      "narrativeEffect": "Creates an interval where the protagonist believes they are succeeding.",
+      "structuralOrMoralFunction": "Highlights flawed reasoning or misguided desire.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "FalseGoal_Phase", "theory": "Truby" }
+    },
+    {
+      "name": "GAPEMERGENCE_TIME",
+      "narrativeEffect": "Highlights the difference between expectation and result.",
+      "structuralOrMoralFunction": "Forces protagonist adaptation.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "GapEmergence_Time", "theory": "McKee" }
+    },
+    {
+      "name": "GHOSTRESURGENCE_PHASE",
+      "narrativeEffect": "Reactivates past trauma or internalized pressure.",
+      "structuralOrMoralFunction": "Forces confrontation with underlying psychological need.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "GhostResurgence_Phase", "theory": "Truby" }
+    },
+    {
+      "name": "INCITINGINCIDENT_POINT",
+      "narrativeEffect": "Disrupts stability and initiates the story.",
+      "structuralOrMoralFunction": "Begins causal progression.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "IncitingIncident_Point", "theory": "McKee" }
+    },
+    {
+      "name": "INNERTURBULENCE_PERIOD",
+      "narrativeEffect": "Heightens emotional instability.",
+      "structuralOrMoralFunction": "Pushes the hero toward emotional breakthrough.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "InnerTurbulence_Period", "theory": "Truby" }
+    },
+    {
+      "name": "MORALAWAKENING_PHASE",
+      "narrativeEffect": "Signals emergence of new ethical clarity.",
+      "structuralOrMoralFunction": "Prepares the hero for self-revelation.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "MoralAwakening_Phase", "theory": "Truby" }
+    },
+    {
+      "name": "MORALCRISIS_SUSPENSION",
+      "narrativeEffect": "Creates temporal tension before a significant ethical decision.",
+      "structuralOrMoralFunction": "Heightens moral stakes.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "MoralCrisis_Suspension", "theory": "Truby" }
+    },
+    {
+      "name": "MORALPRESSURE_INTERVAL",
+      "narrativeEffect": "Increases ethical conflict and emotional tension.",
+      "structuralOrMoralFunction": "Challenges hero’s moral stance.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "MoralPressure_Interval", "theory": "Truby" }
+    },
+    {
+      "name": "MORALSTANDSTILL_MOMENT",
+      "narrativeEffect": "Narrative freezes around ethical paralysis.",
+      "structuralOrMoralFunction": "Exposes inability to act morally.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "MoralStandstill_Moment", "theory": "Truby" }
+    },
+    {
+      "name": "OPPOSITIONCLARIFICATION_MOMENT",
+      "narrativeEffect": "Reveals deeper truths about the opponent.",
+      "structuralOrMoralFunction": "Sharpens moral or psychological contrast.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "OppositionClarification_Moment", "theory": "Truby" }
+    },
+    {
+      "name": "OPPOSITIONGROWTH_INTERVAL",
+      "narrativeEffect": "Expands the opponent’s leverage.",
+      "structuralOrMoralFunction": "Deepens conflict and moral stakes.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "OppositionGrowth_Interval", "theory": "Truby" }
+    },
+    {
+      "name": "PROGRESSIVECOMPLICATION_SEQUENCE",
+      "narrativeEffect": "Accelerates pace as stakes rise.",
+      "structuralOrMoralFunction": "Builds toward crisis structurally.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "ProgressiveComplication_Sequence", "theory": "McKee" }
+    },
+    {
+      "name": "RELATIONALSHIFT_MOMENT",
+      "narrativeEffect": "Temporal pivot where relational dynamics shift.",
+      "structuralOrMoralFunction": "Alters alliances and oppositions.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "RelationalShift_Moment", "theory": "Truby" }
+    },
+    {
+      "name": "RESOLUTION_ECHOPHASE",
+      "narrativeEffect": "Softens narrative energy after climax.",
+      "structuralOrMoralFunction": "Clarifies thematic consequences.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "Resolution_EchoPhase", "theory": "McKee" }
+    },
+    {
+      "name": "RESOLUTION_SPAN",
+      "narrativeEffect": "Restores equilibrium and displays outcomes.",
+      "structuralOrMoralFunction": "Finalizes causal chain.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "Resolution_Span", "theory": "McKee" }
+    },
+    {
+      "name": "REVERSAL_BEAT",
+      "narrativeEffect": "Shifts direction unexpectedly.",
+      "structuralOrMoralFunction": "Redirects narrative expectation.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "Reversal_Beat", "theory": "McKee" }
+    },
+    {
+      "name": "SCENEBEAT_INTERVAL",
+      "narrativeEffect": "Controls micro-rhythms of dramatic movement.",
+      "structuralOrMoralFunction": "Shapes scene architecture.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "SceneBeat_Interval", "theory": "McKee" }
+    },
+    {
+      "name": "SEL FDOUBT_INTERVAL",
+      "narrativeEffect": "Slows action to highlight internal insecurity.",
+      "structuralOrMoralFunction": "Clarifies psychological vulnerability.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "SelfDoubt_Interval", "theory": "Truby" }
+    },
+    {
+      "name": "SELFREVELATION_MOMENT",
+      "narrativeEffect": "Creates abrupt internal clarity or insight.",
+      "structuralOrMoralFunction": "Triggers transformation.",
+      "theory": "@Truby",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "SelfRevelation_Moment", "theory": "Truby" }
+    },
+    {
+      "name": "SUSPENSE_WINDOW",
+      "narrativeEffect": "Elevates anticipation and delay.",
+      "structuralOrMoralFunction": "Improves tension before revelation.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "Suspense_Window", "theory": "McKee" }
+    },
+    {
+      "name": "TENSION_PLATEAU",
+      "narrativeEffect": "Holds tension temporarily at a high level.",
+      "structuralOrMoralFunction": "Prepares for surge or reversal.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "Tension_Plateau", "theory": "McKee" }
+    },
+    {
+      "name": "TURNINGPOINT_MOMENT",
+      "narrativeEffect": "Marks a moment of value reversal.",
+      "structuralOrMoralFunction": "Redirects protagonist trajectory.",
+      "theory": "@McKee",
+      "neo4jLabel": "TimeType",
+      "neo4jProperties": { "timeType": "TurningPoint_Moment", "theory": "McKee" }
+    }
+  ]
+}

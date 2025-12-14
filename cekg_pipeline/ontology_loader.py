@@ -4,8 +4,9 @@ Loads and validates event types, relation types, agent types, etc. from schema f
 """
 import json
 import os
-from typing import Dict, List, Optional, Set
-from dataclasses import dataclass
+import re
+from typing import Dict, List, Optional, Any
+from dataclasses import dataclass, field
 
 @dataclass
 class EventType:
@@ -13,6 +14,9 @@ class EventType:
     name: str
     theory: str
     description: str = ""
+    # Optional metadata from schema
+    neo4j_label: Optional[str] = None
+    neo4j_properties: Optional[Dict[str, Any]] = None
 
 @dataclass
 class RelationType:
@@ -21,6 +25,9 @@ class RelationType:
     theory: str
     directionality: str  # "uni" or "bi"
     description: str = ""
+    # Optional metadata from schema
+    neo4j_label: Optional[str] = None
+    neo4j_properties: Optional[Dict[str, Any]] = None
 
 @dataclass
 class AgentType:
@@ -28,6 +35,9 @@ class AgentType:
     name: str
     theory: str
     description: str = ""
+    # Optional metadata from schema
+    neo4j_label: Optional[str] = None
+    neo4j_properties: Optional[Dict[str, Any]] = None
 
 class OntologyManager:
     """Manages narrative theory ontologies"""
@@ -45,48 +55,90 @@ class OntologyManager:
             self._load_defaults()
     
     def _load_from_file(self, path: str):
-        """Load ontologies from JSON schema file"""
+        """Load ontologies from JSON schema file with robust parsing for custom formats"""
         try:
             with open(path, 'r', encoding='utf-8') as f:
-                schema = json.load(f)
+                raw_data = f.read()
+
+            # --- FIX 1: Handle Multiple Root Objects (concatenated JSON) ---
+            try:
+                # First, try standard load (in case the file is actually valid)
+                schema = json.loads(raw_data)
+            except json.JSONDecodeError:
+                # If that fails, assume it's multiple objects stacked like {...}{...}
+                # We use regex to insert commas between objects and wrap the whole thing in a list
+                formatted_data = re.sub(r'\}\s*\{', '},{', raw_data)
+                formatted_data = f"[{formatted_data}]"
+                
+                try:
+                    list_of_dicts = json.loads(formatted_data)
+                    # Merge all independent objects into one single schema dictionary
+                    schema = {}
+                    for d in list_of_dicts:
+                        schema.update(d)
+                except json.JSONDecodeError:
+                    print(f"[error] Could not parse schema file even with auto-correction.")
+                    raise
+
+            # --- FIX 2: Accept Custom Key Names & Split Lists ---
             
-            # Load event types
-            for evt in schema.get("EventTypeDictionary", []):
+            # 1. Event Types
+            event_source = schema.get("EventTypeDictionary", [])
+            if not event_source:
+                event_source = schema.get("event_types", [])
+
+            for evt in event_source:
+                desc = evt.get("description", evt.get("explanation", ""))
                 self.event_types[evt["name"]] = EventType(
                     name=evt["name"],
                     theory=evt.get("theory", "@McKee"),
-                    description=evt.get("description", "")
+                    description=desc,
+                    neo4j_label=evt.get("neo4jLabel"),
+                    neo4j_properties=evt.get("neo4jProperties")
                 )
             
-            # Load relation types
-            for rel in schema.get("RelationTypeDictionary", []):
+            # 2. Relation Types: Combine Truby/McKee lists if separate
+            relation_source = schema.get("RelationTypeDictionary", [])
+            if not relation_source:
+                relation_source = (
+                    schema.get("RelationTypeDictionary_Truby", []) + 
+                    schema.get("RelationTypeDictionary_McKee", [])
+                )
+
+            for rel in relation_source:
                 self.relation_types[rel["name"]] = RelationType(
                     name=rel["name"],
                     theory=rel.get("theory", "@McKee"),
                     directionality=rel.get("directionality", "uni"),
-                    description=rel.get("description", "")
+                    description=rel.get("description", ""),
+                    neo4j_label=rel.get("neo4jLabel"),
+                    neo4j_properties=rel.get("neo4jProperties")
                 )
             
-            # Load agent types
+            # 3. Agent Types
             for agent in schema.get("AgentTypeDictionary", []):
+                desc = agent.get("description", agent.get("explanation", ""))
                 self.agent_types[agent["name"]] = AgentType(
                     name=agent["name"],
                     theory=agent.get("theory", "@McKee"),
-                    description=agent.get("description", "")
+                    description=desc,
+                    neo4j_label=agent.get("neo4jLabel"),
+                    neo4j_properties=agent.get("neo4jProperties")
                 )
             
-            # Load place types
+            # 4. Place Types
             for place in schema.get("PlaceTypeDictionary", []):
                 self.place_types[place["name"]] = place.get("theory", "@McKee")
             
-            # Load time types
+            # 5. Time Types
             for time in schema.get("TimeTypeDictionary", []):
                 self.time_types[time["name"]] = time.get("theory", "@McKee")
             
-            print(f"[ontology] Loaded schema from {path}")
+            print(f"[ontology] Successfully loaded custom schema from {path}")
             print(f"[ontology] Event types: {len(self.event_types)}")
             print(f"[ontology] Relation types: {len(self.relation_types)}")
             print(f"[ontology] Agent types: {len(self.agent_types)}")
+
         except Exception as e:
             print(f"[warning] Failed to load schema from {path}: {e}")
             print("[ontology] Falling back to defaults")
