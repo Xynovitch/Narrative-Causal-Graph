@@ -189,22 +189,32 @@ class OntologyManager:
     def get_relation_type_names(self, theory: Optional[str] = None) -> List[str]:
         """Get relation type names, optionally filtered by theory"""
         if theory:
-            theory_normalized = f"@{theory.title()}" if not theory.startswith("@") else theory
-            return [name for name, rel in self.relation_types.items() 
-                    if rel.theory == theory_normalized]
+            # FIX: Handle McKee/Truby capitalization specifically or use loose matching
+            target = theory.lower().replace("@", "")
+            
+            matches = []
+            for name, rel in self.relation_types.items():
+                rel_theory_lower = rel.theory.lower().replace("@", "")
+                if rel_theory_lower == target:
+                    matches.append(name)
+            return matches
+            
         return list(self.relation_types.keys())
     
     def get_agent_type_names(self, theory: Optional[str] = None) -> List[str]:
         """Get agent type names, optionally filtered by theory"""
         if theory:
-            theory_normalized = f"@{theory.title()}" if not theory.startswith("@") else theory
-            return [name for name, agent in self.agent_types.items() 
-                    if agent.theory == theory_normalized]
+            # FIX: Case-insensitive matching
+            target = theory.lower().replace("@", "")
+            
+            matches = []
+            for name, agent in self.agent_types.items():
+                agent_theory_lower = agent.theory.lower().replace("@", "")
+                if agent_theory_lower == target:
+                    matches.append(name)
+            return matches
+            
         return list(self.agent_types.keys())
-    
-    def validate_event_type(self, event_type: str) -> bool:
-        """Check if event type is valid"""
-        return event_type in self.event_types
     
     def validate_relation_type(self, relation_type: str, theory: Optional[str] = None) -> bool:
         """Check if relation type is valid for the given theory"""
@@ -212,10 +222,16 @@ class OntologyManager:
             return False
         
         if theory:
-            theory_normalized = f"@{theory.title()}" if not theory.startswith("@") else theory
-            return self.relation_types[relation_type].theory == theory_normalized
+            # FIX: Case-insensitive matching
+            target = theory.lower().replace("@", "")
+            actual = self.relation_types[relation_type].theory.lower().replace("@", "")
+            return actual == target
         
         return True
+    
+    def validate_event_type(self, event_type: str) -> bool:
+        """Check if event type is valid"""
+        return event_type in self.event_types
     
     def validate_agent_type(self, agent_type: str) -> bool:
         """Check if agent type is valid"""

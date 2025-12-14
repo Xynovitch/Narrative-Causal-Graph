@@ -5,6 +5,7 @@ Key changes:
 2. Chapter-level extraction support
 3. Removed redundant instructions
 4. Strategic model selection
+5. STRICTER ENTITY FILTERING (No inanimate objects)
 """
 import json
 import asyncio
@@ -30,10 +31,10 @@ scene_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 agent_classification_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 
 # ---------------------------------------------------------------------------
-# Compressed Prompts (70% shorter, same accuracy)
+# Compressed Prompts (Optimized for Accuracy)
 # ---------------------------------------------------------------------------
 
-# OPTIMIZED: Compressed event extraction prompt
+# OPTIMIZED: Strict entity filtering added
 PROMPT_EVENT_EXTRACTION = """Extract ALL narrative events as JSON.
 
 Format:
@@ -58,14 +59,16 @@ Rules:
 1. ALWAYS use FULL character names (never "he", "she", "the boy")
 2. event_category from: [{ontology}]
 3. Include location/time if mentioned
-4. actors = who DOES action, patients = who RECEIVES action
+4. ACTORS/PATIENTS MUST BE SENTIENT (People, Personified Animals).
+   - DO NOT include objects (e.g. "beer", "door", "hands", "eyes") as actors/patients.
+   - If an object is acted upon, include it in the 'raw_description' but leave 'patients' empty.
 
 Chapter {chapter_id}:
 {text}
 
 JSON only:"""
 
-# OPTIMIZED: Bulk causal assessment (reduced verbosity)
+# OPTIMIZED: Bulk causal assessment
 PROMPT_CAUSAL_BULK = """Analyze {count} event pairs for causal relationships.
 
 Relations: {relations}
@@ -87,17 +90,19 @@ Rules:
 
 JSON only:"""
 
-# OPTIMIZED: Agent classification (minimal)
+# OPTIMIZED: Agent classification (Added NON_AGENT fallback)
 PROMPT_AGENT_CLASS = """Classify character role.
 
 Character: {name}
 Actions: {actions}
-Types: {types}
+Types: {types}, NON_AGENT
 
 JSON:
-{{"agentType": "TYPE", "explanation": "brief reason", "confidence": 0.9}}"""
+{{"agentType": "TYPE", "explanation": "brief reason", "confidence": 0.9}}
 
-# OPTIMIZED: Scene grouping (minimal)
+Rule: If the 'Character' is an inanimate object, place, or body part, return "NON_AGENT"."""
+
+# OPTIMIZED: Scene grouping
 PROMPT_SCENE = """Group events into scenes by theme/location/time.
 
 Events: {events}
@@ -191,20 +196,19 @@ async def extract_events_from_text(text_input, chapter_id, model, client,
         event_ontology = ["PHYSICAL_MOVEMENT", "COMMUNICATION_VERBAL", 
                           "INTERNAL_THOUGHT", "EMOTIONAL_REACTION"]
     
-    # Truncate if too long (save tokens)
-    text_truncated = text_input[:15000] if len(text_input) > 15000 else text_input
+    # Use full text input (trusting pipeline chunking - NO TRUNCATION HERE)
     
     ont_str = ", ".join(event_ontology[:20])  # Limit ontology length
     
     prompt = PROMPT_EVENT_EXTRACTION.format(
         ontology=ont_str,
         chapter_id=chapter_id,
-        text=text_truncated
+        text=text_input
     )
     
-    # Create smarter cache key (exclude full text)
+    # Create smarter cache key
     key = _hash_for_cache(
-        f"{chapter_id}:{len(text_input)}:{extraction_style}:v4",
+        f"{chapter_id}:{len(text_input)}:{extraction_style}:v5_strict",
         model
     )
     
@@ -215,7 +219,7 @@ async def extract_events_from_text(text_input, chapter_id, model, client,
 
 async def batch_extract_events(paragraphs, model, client, enable_llm_expansion,
                                request_logprobs, extraction_style, event_ontology=None):
-    """Kept for compatibility, but prefer extract_events_from_text with full chapter"""
+    """Kept for compatibility"""
     tasks = [
         extract_events_from_text(p, cid, model, client, enable_llm_expansion,
                                  request_logprobs, extraction_style, event_ontology)
@@ -232,7 +236,6 @@ async def assess_pairs_bulk(
 ) -> List[Optional[Dict]]:
     """
     OPTIMIZED: Assess multiple pairs in single call
-    Now with compressed prompt
     """
     if not pairs_batch:
         return []
@@ -245,7 +248,7 @@ async def assess_pairs_bulk(
         pairs_text_lines.append(f"{i}. [{c_short}] → [{e_short}]")
     
     pairs_block = "\n".join(pairs_text_lines)
-    ontology_str = ", ".join(relation_ontology[:15])  # Limit length
+    ontology_str = ", ".join(relation_ontology[:15])
     
     prompt = PROMPT_CAUSAL_BULK.format(
         count=len(pairs_batch),
@@ -257,7 +260,7 @@ async def assess_pairs_bulk(
     
     try:
         data, _ = await _async_llm_json_call(
-            prompt, model, client, assessment_cache, key, max_tokens=2048
+            prompt, model, client, assessment_cache, key, max_tokens=16000
         )
         
         results_map = {}
@@ -303,7 +306,12 @@ async def classify_agent_type(character_name: str, event_descriptions: List[str]
         )
         
         if isinstance(data, dict) and "agentType" in data:
-            return data["agentType"]
+            agent_type = data["agentType"]
+            if agent_type == "NON_AGENT":
+                 # Return a safe fallback that isn't a narrative role
+                return "STRUCTURAL_AGENT" 
+            return agent_type
+            
         return "STRUCTURAL_AGENT"
     except Exception as e:
         print(f"[warning] Agent classification failed for {character_name}: {e}")

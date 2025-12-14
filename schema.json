@@ -487,7 +487,6 @@
     }
   ]
 }
-
 {
   "AgentTypeDictionary": [
     {
@@ -959,11 +958,11 @@
         "agentType": "VALUE_GUARDIAN",
         "theory": "McKee"
       }
-      {
+    },
+    {
       "name": "STRUCTURAL_AGENT",
       "theory": "@McKee",
       "description": "A character who serves a functional role in the plot without significant moral agency."
-    },
     }
   ]
 }

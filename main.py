@@ -18,17 +18,29 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Fast mode (recommended for novels, no semantic)
+  # Fast mode (no semantic, medium granularity)
   python main.py --input novel.txt --fast
 
-  # Full mode (all features including semantic)
+  # Full mode (everything including semantic, medium granularity)
   python main.py --input novel.txt --full
 
-  # Custom with semantic linking
-  python main.py --input novel.txt --enable-semantic-linking --max-pairs 5000
+  # High granularity (like old paragraph-by-paragraph, ~300 events/chapter)
+  python main.py --input novel.txt --chunk-size 1500
 
-  # Semantic only, no other extras
-  python main.py --input novel.txt --enable-semantic-linking --max-pairs 3000
+  # Ultra-high granularity (maximum detail, higher cost)
+  python main.py --input novel.txt --chunk-size 800
+
+  # Low granularity (fast and cheap, ~50 events/chapter)
+  python main.py --input novel.txt --chunk-size 6000
+
+  # Custom: High granularity + semantic + mixed theory
+  python main.py --input novel.txt --chunk-size 1500 --enable-semantic-linking --enable-mixed-theory
+
+Chunk Size Guide:
+  800-1200:  Ultra-high granularity (~400-500 events/chapter, higher cost)
+  1500-2000: High granularity (~250-350 events/chapter, moderate cost)
+  3000-4000: Medium granularity (~100-150 events/chapter, balanced) [DEFAULT]
+  5000-8000: Low granularity (~30-60 events/chapter, lowest cost)
         """
     )
     
@@ -54,6 +66,8 @@ Examples:
                        help="Maximum causal pairs to evaluate (default: 5000, recommended: 3000-8000)")
     parser.add_argument("--max-concurrent-calls", type=int, default=10,
                        help="Concurrent API calls (default: 10)")
+    parser.add_argument("--chunk-size", type=int, default=3000,
+                       help="Characters per extraction chunk (default: 3000, lower=more granular, higher=cheaper)")
     
     # --- Graph Model ---
     parser.add_argument("--graph-model", choices=["chain", "star"], default="star",
@@ -133,6 +147,7 @@ Examples:
         print(f"Model: {preprocessor.openai_model}")
         print(f"Graph: {args.graph_model}")
         print(f"Theory: {'Mixed (McKee + Truby)' if enable_mixed_theory else 'McKee only'}")
+        print(f"Chunk Size: {args.chunk_size} chars (~{args.chunk_size//800} paragraphs)")
         print(f"Max Pairs: {max_pairs:,}")
         print(f"Scene Grouping: {'✓' if enable_scene_grouping else '✗'}")
         print(f"Agent Classification: {'✓' if enable_agent_classification else '✗'}")
@@ -163,7 +178,8 @@ Examples:
             enable_mixed_theory=enable_mixed_theory,
             enable_semantic_linking=enable_semantic_linking,
             max_concurrent_calls=args.max_concurrent_calls,
-            max_long_range_pairs=max_pairs
+            max_long_range_pairs=max_pairs,
+            chunk_size=args.chunk_size
         ))
         
         elapsed = time.time() - start_time
@@ -198,6 +214,12 @@ Examples:
         
         # Rough cost calculation
         extraction_cost = chapters * 0.05  # ~$0.05 per chapter
+        
+        # Adjust extraction cost based on chunk size
+        # Smaller chunks = more API calls but better granularity
+        chunk_multiplier = 3000 / args.chunk_size  # baseline is 3000
+        extraction_cost *= chunk_multiplier
+        
         causal_cost = (max_pairs / 50) * 0.001  # Bulk batches
         scene_cost = chapters * 0.01 if enable_scene_grouping else 0
         agent_cost = out['stats'].get('agent_types_classified', 0) * 0.005 if enable_agent_classification else 0

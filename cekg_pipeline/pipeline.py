@@ -1,6 +1,7 @@
 """
 Integrated Pipeline - Smart Causal Linking + Semantic Analysis
 Combines optimized_linking.py and integrated_semantic.py for best results
+Now with configurable chunking for granularity control
 """
 
 import asyncio
@@ -8,6 +9,7 @@ import traceback
 import os
 import json
 import random
+import textwrap
 from collections import defaultdict
 from typing import List, Dict, Optional, Any, Set, Tuple
 
@@ -18,6 +20,8 @@ from .integrated_semantic import (
     process_pairs_with_semantic_linking,
     create_hybrid_semantic_links
 )
+# --- FIX: IMPORT RESOLVER ---
+from .coreference_resolver import get_resolver
 
 try:
     from sentence_transformers import SentenceTransformer, util
@@ -54,6 +58,9 @@ class CEKGPreprocessor:
         self.event_ontology = self.ontology.get_event_type_names()
         self.mckee_relations = self.ontology.get_relation_type_names(THEORY_MCKEE_LOWER)
         self.truby_relations = self.ontology.get_relation_type_names(THEORY_TRUBY_LOWER)
+        
+        # Initialize resolver
+        self.resolver = get_resolver()
         
         print(f"[pipeline] Initialized with {len(self.event_ontology)} event types")
         print(f"[pipeline] McKee relations: {len(self.mckee_relations)}")
@@ -123,7 +130,9 @@ class CEKGPreprocessor:
                     theory=theory
                 )
                 
-                # Direct actor/patient extraction
+                # --- FIX: USE RESOLVER TO FILTER PRONOUNS ---
+                
+                # Direct actor extraction with filtering
                 raw_actors = event_data.get("actors", [])
                 if isinstance(raw_actors, str):
                     raw_actors = [raw_actors]
@@ -132,6 +141,10 @@ class CEKGPreprocessor:
                 for actor in raw_actors:
                     if isinstance(actor, str) and len(actor) > 1:
                         actor_name = actor.strip()
+                        # Strict pronoun/generic filtering
+                        if not self.resolver.is_valid_character_name(actor_name):
+                            continue
+                            
                         clean_actors.append(actor_name)
                         aid = graph_builder._generate_entity_id(actor_name, "agent", event.id, graph_model)
                         all_produces.append(schemas.EventProducesEntity(
@@ -142,6 +155,7 @@ class CEKGPreprocessor:
                 
                 event.actors = clean_actors
 
+                # Direct patient extraction with filtering
                 raw_patients = event_data.get("patients", [])
                 if isinstance(raw_patients, str):
                     raw_patients = [raw_patients]
@@ -150,6 +164,10 @@ class CEKGPreprocessor:
                 for patient in raw_patients:
                     if isinstance(patient, str) and len(patient) > 1:
                         pat_name = patient.strip()
+                        # Strict pronoun/generic filtering
+                        if not self.resolver.is_valid_character_name(pat_name):
+                            continue
+
                         clean_patients.append(pat_name)
                         pid = graph_builder._generate_entity_id(pat_name, "agent", event.id, graph_model)
                         all_produces.append(schemas.EventProducesEntity(
@@ -175,21 +193,72 @@ class CEKGPreprocessor:
         
         return all_events, all_produces, entity_occurrences_batch
 
-    async def _process_chapter_unified(self, chapter_text, chapter_id, 
+    async def _process_chapter_chunked(self, chapter_text, chapter_id, 
                                       enable_confidence_calibration, 
-                                      extraction_style, graph_model):
-        """Process entire chapter in ONE API call"""
+                                      extraction_style, graph_model,
+                                      chunk_size=3000):
+        """
+        HYBRID APPROACH: Process chapter in smart chunks
+        - Splits chapter into ~chunk_size char chunks (configurable)
+        - Processes chunks concurrently
+        - Maintains granularity while reducing API calls
+        """
         try:
-            print(f"[chapter {chapter_id}] Processing {len(chapter_text)} chars in SINGLE call...")
+            # Split chapter into overlapping chunks to maintain context
+            chunks = []
+            sentences = chapter_text.split('. ')
+            current_chunk = []
+            current_length = 0
             
-            data, logprobs = await llm_service.extract_events_from_text(
-                chapter_text, chapter_id, self.openai_model, self.client,
-                False, False, extraction_style, self.event_ontology
-            )
+            for sentence in sentences:
+                sentence = sentence.strip() + '. '
+                if current_length + len(sentence) > chunk_size and current_chunk:
+                    chunks.append(''.join(current_chunk))
+                    # Keep last 2 sentences for context overlap
+                    current_chunk = current_chunk[-2:] if len(current_chunk) > 2 else []
+                    current_length = sum(len(s) for s in current_chunk)
+                
+                current_chunk.append(sentence)
+                current_length += len(sentence)
             
-            return self._parse_event_json_data(
-                data, chapter_id, logprobs, enable_confidence_calibration, graph_model
-            )
+            if current_chunk:
+                chunks.append(''.join(current_chunk))
+            
+            print(f"[chapter {chapter_id}] Processing {len(chunks)} chunks ({len(chapter_text)} chars total)")
+            
+            # Process chunks concurrently (reduces total time)
+            tasks = []
+            for i, chunk in enumerate(chunks):
+                tasks.append(llm_service.extract_events_from_text(
+                    chunk, f"{chapter_id}.{i}", self.openai_model, self.client,
+                    False, False, extraction_style, self.event_ontology
+                ))
+            
+            results = await asyncio.gather(*tasks, return_exceptions=True)
+            
+            # Merge all events from chunks
+            all_events = []
+            all_produces = []
+            entity_occurrences_batch = defaultdict(list)
+            
+            for result in results:
+                if isinstance(result, Exception):
+                    print(f"[warning] Chunk processing failed: {result}")
+                    continue
+                
+                data, logprobs = result
+                events, produces, occurrences = self._parse_event_json_data(
+                    data, chapter_id, logprobs, enable_confidence_calibration, graph_model
+                )
+                
+                all_events.extend(events)
+                all_produces.extend(produces)
+                for k, v in occurrences.items():
+                    entity_occurrences_batch[k].extend(v)
+            
+            print(f"[chapter {chapter_id}] Extracted {len(all_events)} events from {len(chunks)} chunks")
+            return all_events, all_produces, entity_occurrences_batch
+            
         except Exception as e:
             print(f"[error] Chapter processing failed: {e}")
             return [], [], defaultdict(list)
@@ -503,9 +572,11 @@ class CEKGPreprocessor:
                    enable_confidence_calibration=True,
                    enable_semantic_linking=True,
                    max_concurrent_calls=10,
-                   max_long_range_pairs=5000):
+                   max_long_range_pairs=5000,
+                   chunk_size=3000):
         """
         INTEGRATED PIPELINE: Smart causal linking + semantic analysis
+        Now with configurable chunk_size for granularity control
         """
         
         theory_mode = "mixed" if enable_mixed_theory else THEORY_MCKEE_LOWER
@@ -513,13 +584,14 @@ class CEKGPreprocessor:
         
         print(f"\n{'='*60}")
         print(f"INTEGRATED CEKG PIPELINE")
-        print(f"Smart Causal Linking + Semantic Analysis")
+        print(f"Smart Linking + Semantic Analysis")
         print(f"{'='*60}")
         print(f"[pipeline] Graph Model: {graph_model}")
         print(f"[pipeline] Theory Mode: {mode_desc}")
+        print(f"[pipeline] Chunk Size: {chunk_size} chars (~{chunk_size//800} paragraphs)")
         print(f"[pipeline] Max Causal Pairs: {max_long_range_pairs:,}")
         print(f"[pipeline] Semantic Linking: {'✓' if enable_semantic_linking else '✗'}")
-        print(f"[pipeline] Processing Mode: CHAPTER-LEVEL (1 call per chapter)")
+        print(f"[pipeline] Processing Mode: CHUNKED (concurrent chunks per chapter)")
         print(f"{'='*60}\n")
         
         raw = text_processor.load_text(text_path)
@@ -528,11 +600,12 @@ class CEKGPreprocessor:
         all_events, all_produces, entity_occurrences = [], [], defaultdict(list)
         self.global_event_sequence = 0
 
-        # Process each chapter
+        # Process each chapter with chunking
         for cid, txt in chapters:
-            print(f"\n[chapter {cid}] Processing entire chapter...")
-            e, p, o = await self._process_chapter_unified(
-                txt, cid, enable_confidence_calibration, "detailed", graph_model
+            print(f"\n[chapter {cid}] Processing with smart chunking...")
+            e, p, o = await self._process_chapter_chunked(
+                txt, cid, enable_confidence_calibration, "detailed", graph_model,
+                chunk_size=chunk_size
             )
             all_events.extend(e)
             all_produces.extend(p)
@@ -618,7 +691,7 @@ class CEKGPreprocessor:
         print(f"Scenes: {len(scenes):,}")
         print(f"DAG Valid: {is_valid_dag}")
         print(f"{'='*60}\n")
-        
+
         return {
             "stats": {
                 "events": len(all_events),
