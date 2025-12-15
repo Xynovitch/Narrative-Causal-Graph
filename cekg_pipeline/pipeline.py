@@ -1,9 +1,10 @@
 """
-Integrated Pipeline - Smart Causal Linking + Semantic Analysis
+Integrated Pipeline - Smart Causal Linking + Semantic Analysis + Checkpoint System
 
-FIX: 
+Features:
 1. Retry logic for failed chunks
 2. Proper coreference resolution using resolver
+3. Automatic checkpointing and recovery (Stateful processing)
 """
 
 import asyncio
@@ -14,6 +15,7 @@ import random
 import textwrap
 from collections import defaultdict
 from typing import List, Dict, Optional, Any, Set, Tuple
+from dataclasses import asdict
 
 from . import config, schemas, utils, text_processor, llm_service, graph_builder, graph_mapper, exporters
 from .ontology_loader import get_ontology_manager, OntologyManager
@@ -23,6 +25,7 @@ from .integrated_semantic import (
     create_hybrid_semantic_links
 )
 from .coreference_resolver import get_resolver
+from .checkpoint_manager import CheckpointManager
 
 try:
     from sentence_transformers import SentenceTransformer, util
@@ -48,9 +51,11 @@ def normalize_theory_name(theory: str) -> str:
         return THEORY_MCKEE
 
 class CEKGPreprocessor:
-    def __init__(self, openai_model: Optional[str] = None, schema_path: Optional[str] = None):
+    def __init__(self, openai_model: Optional[str] = None, schema_path: Optional[str] = None,
+                 checkpoint_dir: str = "./checkpoints", enable_checkpoints: bool = True):
         if not config.OPENAI_API_KEY:
             raise RuntimeError("OPENAI_API_KEY not set.")
+        
         self.openai_model = openai_model or config.OPENAI_MODEL
         self.client = llm_service.init_openai_client(config.OPENAI_API_KEY)
         self.dag_validator = utils.DAGValidator()
@@ -63,10 +68,58 @@ class CEKGPreprocessor:
         # Initialize resolver
         self.resolver = get_resolver()
         
+        # Checkpoint system
+        self.enable_checkpoints = enable_checkpoints
+        self.checkpoint_mgr = None
+        if enable_checkpoints:
+            self.checkpoint_dir = checkpoint_dir
+
         print(f"[pipeline] Initialized with {len(self.event_ontology)} event types")
-        print(f"[pipeline] McKee relations: {len(self.mckee_relations)}")
-        print(f"[pipeline] Truby relations: {len(self.truby_relations)}")
+        print(f"[pipeline] Checkpoints: {'✓ Enabled' if enable_checkpoints else '✗ Disabled'}")
+
+    def _init_checkpoint_manager(self, text_path: str):
+        """Initialize checkpoint manager with run ID based on input file"""
+        if not self.enable_checkpoints:
+            return
+        
+        run_id = f"{os.path.basename(text_path)}_{int(os.path.getmtime(text_path))}"
+        self.checkpoint_mgr = CheckpointManager(
+            checkpoint_dir=self.checkpoint_dir,
+            run_id=run_id
+        )
+        print(f"\n{self.checkpoint_mgr.get_progress_summary()}\n")
+
+    # ==========================================
+    # Serialization Helpers
+    # ==========================================
+    def _serialize_events(self, events):
+        return [asdict(e) for e in events]
     
+    def _deserialize_events(self, data):
+        return [schemas.CEKEvent(**d) for d in data]
+    
+    def _serialize_links(self, links):
+        return [asdict(link) for link in links]
+    
+    def _deserialize_event_produces(self, data):
+        return [schemas.EventProducesEntity(**d) for d in data]
+    
+    def _deserialize_entity_points_to(self, data):
+        return [schemas.EntityPointsToEvent(**d) for d in data]
+    
+    def _deserialize_causal_links(self, data):
+        return [schemas.CausalLink(**d) for d in data]
+    
+    def _deserialize_semantic_links(self, data):
+        return [schemas.SemanticLink(**d) for d in data]
+    
+    def _deserialize_scenes(self, data):
+        return [schemas.Scene(**d) for d in data]
+
+    # ==========================================
+    # Core Logic Methods (With Fixes)
+    # ==========================================
+
     def _calculate_calibrated_confidence(self, event_data, logprobs):
         """Simplified confidence calculation"""
         p_llm = float(event_data.get("confidence", 0.7))
@@ -84,7 +137,6 @@ class CEKGPreprocessor:
                                enable_confidence_calibration, graph_model="star"):
         """
         Parse event data with PROPER coreference resolution
-        
         FIX: Actually use resolver.resolve() instead of just validation
         """
         all_events = []
@@ -239,7 +291,6 @@ class CEKGPreprocessor:
                                       chunk_size=3000):
         """
         HYBRID APPROACH: Process chapter in smart chunks
-        
         FIX: Added retry logic and better error handling
         """
         try:
@@ -318,12 +369,6 @@ class CEKGPreprocessor:
             print(f"[error] Chapter processing failed: {e}")
             traceback.print_exc()
             return [], [], defaultdict(list)
-
-    # ... (rest of the methods remain the same as in the original file)
-    # _classify_agent_types, _integrated_causal_and_semantic_linking, 
-    # _generate_scenes_optimized, run_async
-    
-    # These are unchanged and working correctly
 
     async def _classify_agent_types(self, events: List[schemas.CEKEvent], 
                                     event_produces: List[schemas.EventProducesEntity]) -> Dict[str, str]:
@@ -635,78 +680,205 @@ class CEKGPreprocessor:
                    enable_semantic_linking=True,
                    max_concurrent_calls=10,
                    max_long_range_pairs=5000,
-                   chunk_size=3000):
+                   chunk_size=3000,
+                   resume_from_checkpoint=True):
         """
-        INTEGRATED PIPELINE: Smart causal linking + semantic analysis
-        Now with configurable chunk_size for granularity control
+        INTEGRATED PIPELINE: Smart causal linking + semantic analysis + Checkpoints
         """
         
+        # Initialize checkpoint manager
+        if self.enable_checkpoints:
+            self._init_checkpoint_manager(text_path)
+
         theory_mode = "mixed" if enable_mixed_theory else THEORY_MCKEE_LOWER
         mode_desc = "Mixed Theory" if enable_mixed_theory else "Single Theory"
         
         print(f"\n{'='*60}")
         print(f"INTEGRATED CEKG PIPELINE")
-        print(f"Smart Linking + Semantic Analysis")
+        print(f"Smart Linking + Semantic Analysis + Checkpoints")
         print(f"{'='*60}")
         print(f"[pipeline] Graph Model: {graph_model}")
         print(f"[pipeline] Theory Mode: {mode_desc}")
-        print(f"[pipeline] Chunk Size: {chunk_size} chars (~{chunk_size//800} paragraphs)")
-        print(f"[pipeline] Max Causal Pairs: {max_long_range_pairs:,}")
-        print(f"[pipeline] Semantic Linking: {'✓' if enable_semantic_linking else '✗'}")
-        print(f"[pipeline] Processing Mode: CHUNKED (concurrent chunks per chapter)")
+        print(f"[pipeline] Chunk Size: {chunk_size} chars")
+        print(f"[pipeline] Max Pairs: {max_long_range_pairs:,}")
         print(f"{'='*60}\n")
         
-        raw = text_processor.load_text(text_path)
-        chapters = text_processor.split_chapters(raw)[:max_chapters] if max_chapters else text_processor.split_chapters(raw)
-        
-        all_events, all_produces, entity_occurrences = [], [], defaultdict(list)
-        self.global_event_sequence = 0
+        # ============================================================
+        # STAGE 1: TEXT LOADING & CHAPTER SPLITTING
+        # ============================================================
+        if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("text_split"):
+            print("[resume] Loading chapters from checkpoint...")
+            data = self.checkpoint_mgr.load_checkpoint("text_split")
+            chapters = data["chapters"]
+        else:
+            print("[stage 1/6] Loading and splitting text...")
+            raw = text_processor.load_text(text_path)
+            chapters = text_processor.split_chapters(raw)[:max_chapters] if max_chapters else text_processor.split_chapters(raw)
+            
+            if self.checkpoint_mgr:
+                self.checkpoint_mgr.save_checkpoint(
+                    "text_split",
+                    {"chapters": chapters, "max_chapters": max_chapters},
+                    description=f"Split into {len(chapters)} chapters"
+                )
 
-        # Process each chapter with chunking
-        for cid, txt in chapters:
-            print(f"\n[chapter {cid}] Processing with smart chunking...")
-            e, p, o = await self._process_chapter_chunked(
-                txt, cid, enable_confidence_calibration, "detailed", graph_model,
-                chunk_size=chunk_size
+        # ============================================================
+        # STAGE 2: EVENT EXTRACTION
+        # ============================================================
+        if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("extraction"):
+            print("[resume] Loading extraction from checkpoint...")
+            data = self.checkpoint_mgr.load_checkpoint("extraction")
+            all_events = self._deserialize_events(data["events"])
+            all_produces = self._deserialize_event_produces(data["produces"])
+            entity_occurrences = defaultdict(list, data["entity_occurrences"])
+            self.global_event_sequence = data["global_event_sequence"]
+        else:
+            print("[stage 2/6] Extracting events...")
+            all_events, all_produces, entity_occurrences = [], [], defaultdict(list)
+            self.global_event_sequence = 0
+            
+            # Use improved chunk processing from your new code
+            for cid, txt in chapters:
+                print(f"\n[chapter {cid}] Processing with smart chunking...")
+                e, p, o = await self._process_chapter_chunked(
+                    txt, cid, enable_confidence_calibration, "detailed", graph_model,
+                    chunk_size=chunk_size
+                )
+                all_events.extend(e)
+                all_produces.extend(p)
+                for k, v in o.items():
+                    entity_occurrences[k].extend(v)
+                print(f"[chapter {cid}] Extracted {len(e)} events")
+            
+            print(f"\n[extraction] Total events extracted: {len(all_events)}")
+            
+            if self.checkpoint_mgr:
+                self.checkpoint_mgr.save_checkpoint(
+                    "extraction",
+                    {
+                        "events": self._serialize_events(all_events),
+                        "produces": self._serialize_links(all_produces),
+                        "entity_occurrences": {k: v for k, v in entity_occurrences.items()},
+                        "global_event_sequence": self.global_event_sequence
+                    },
+                    description=f"Extracted {len(all_events)} events from {len(chapters)} chapters"
+                )
+        
+        # ============================================================
+        # STAGE 3: CONTEXT PROPAGATION
+        # ============================================================
+        if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("context_propagation"):
+            print("[resume] Loading context propagation from checkpoint...")
+            data = self.checkpoint_mgr.load_checkpoint("context_propagation")
+            all_events = self._deserialize_events(data["events"])
+            all_produces = self._deserialize_event_produces(data["produces"])
+            entity_occurrences = defaultdict(list, data["entity_occurrences"])
+            entity_to_event_links = self._deserialize_entity_points_to(data["entity_to_event_links"])
+        else:
+            print("[stage 3/6] Propagating context...")
+            all_events = graph_builder.propagate_context_attributes(all_events)
+            new_prods, entity_occurrences = graph_builder.propagate_context(
+                all_events, all_produces, entity_occurrences, graph_model=graph_model
             )
-            all_events.extend(e)
-            all_produces.extend(p)
-            for k, v in o.items():
-                entity_occurrences[k].extend(v)
-            print(f"[chapter {cid}] Extracted {len(e)} events")
-
-        print(f"\n[pipeline] Total events extracted: {len(all_events)}")
+            all_produces.extend(new_prods)
+            
+            entity_to_event_links = graph_builder.create_entity_to_event_links(
+                entity_occurrences, all_produces, graph_model=graph_model
+            )
+            
+            if self.checkpoint_mgr:
+                self.checkpoint_mgr.save_checkpoint(
+                    "context_propagation",
+                    {
+                        "events": self._serialize_events(all_events),
+                        "produces": self._serialize_links(all_produces),
+                        "entity_occurrences": {k: v for k, v in entity_occurrences.items()},
+                        "entity_to_event_links": self._serialize_links(entity_to_event_links)
+                    },
+                    description=f"Propagated context, created {len(entity_to_event_links)} entity→event links"
+                )
         
-        # Context propagation
-        all_events = graph_builder.propagate_context_attributes(all_events)
-        new_prods, entity_occurrences = graph_builder.propagate_context(
-            all_events, all_produces, entity_occurrences, graph_model=graph_model
-        )
-        all_produces.extend(new_prods)
-        
-        entity_to_event_links = graph_builder.create_entity_to_event_links(
-            entity_occurrences, all_produces, graph_model=graph_model
-        )
-        
-        # Agent classification (optional)
+        # ============================================================
+        # STAGE 4: AGENT CLASSIFICATION (Optional)
+        # ============================================================
         agent_classifications = {}
         if enable_agent_classification:
-            agent_classifications = await self._classify_agent_types(all_events, all_produces)
+            if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("agent_classification"):
+                print("[resume] Loading agent classifications from checkpoint...")
+                data = self.checkpoint_mgr.load_checkpoint("agent_classification")
+                agent_classifications = data["agent_classifications"]
+                for prod in all_produces:
+                    if prod.entity_type in ['actor', 'patient'] and prod.entity_name in agent_classifications:
+                        prod.agent_type = agent_classifications[prod.entity_name]
+            else:
+                print("[stage 4/6] Classifying agents...")
+                agent_classifications = await self._classify_agent_types(all_events, all_produces)
+                
+                if self.checkpoint_mgr:
+                    self.checkpoint_mgr.save_checkpoint(
+                        "agent_classification",
+                        {"agent_classifications": agent_classifications},
+                        description=f"Classified {len(agent_classifications)} agents"
+                    )
         
-        # INTEGRATED: Causal + Semantic Linking
-        causal_links, semantic_links, mckee_count, truby_count = await self._integrated_causal_and_semantic_linking(
-            all_events, 
-            entity_occurrences, 
-            theory_mode, 
-            max_concurrent_calls, 
-            max_long_range_pairs,
-            enable_semantic_linking
-        )
+        # ============================================================
+        # STAGE 5: CAUSAL & SEMANTIC LINKING
+        # ============================================================
+        if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("linking"):
+            print("[resume] Loading links from checkpoint...")
+            data = self.checkpoint_mgr.load_checkpoint("linking")
+            causal_links = self._deserialize_causal_links(data["causal_links"])
+            semantic_links = self._deserialize_semantic_links(data["semantic_links"])
+            mckee_count = data["mckee_count"]
+            truby_count = data["truby_count"]
+            
+            # Restore DAG state
+            self.dag_validator.add_events(all_events)
+            for link in causal_links:
+                self.dag_validator.add_edge(link.source_event_id, link.target_event_id)
+        else:
+            print("[stage 5/6] Causal & semantic linking...")
+            # Use improved linking from your new code
+            causal_links, semantic_links, mckee_count, truby_count = await self._integrated_causal_and_semantic_linking(
+                all_events, 
+                entity_occurrences, 
+                theory_mode, 
+                max_concurrent_calls, 
+                max_long_range_pairs,
+                enable_semantic_linking
+            )
+            
+            if self.checkpoint_mgr:
+                self.checkpoint_mgr.save_checkpoint(
+                    "linking",
+                    {
+                        "causal_links": self._serialize_links(causal_links),
+                        "semantic_links": self._serialize_links(semantic_links),
+                        "mckee_count": mckee_count,
+                        "truby_count": truby_count
+                    },
+                    description=f"Created {len(causal_links)} causal + {len(semantic_links)} semantic links"
+                )
         
-        # Scene grouping (optional)
+        # ============================================================
+        # STAGE 6: SCENE GROUPING (Optional)
+        # ============================================================
         scenes = []
         if enable_scene_grouping:
-            scenes = await self._generate_scenes_optimized(all_events, all_produces)
+            if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("scenes"):
+                print("[resume] Loading scenes from checkpoint...")
+                data = self.checkpoint_mgr.load_checkpoint("scenes")
+                scenes = self._deserialize_scenes(data["scenes"])
+            else:
+                print("[stage 6/6] Generating scenes...")
+                scenes = await self._generate_scenes_optimized(all_events, all_produces)
+                
+                if self.checkpoint_mgr:
+                    self.checkpoint_mgr.save_checkpoint(
+                        "scenes",
+                        {"scenes": self._serialize_links(scenes)},
+                        description=f"Generated {len(scenes)} scenes"
+                    )
         
         all_characters = set()
         for prod in all_produces:

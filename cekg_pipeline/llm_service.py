@@ -154,40 +154,42 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
     is_scene_extraction = "Group events into scenes" in prompt
     
     if is_integrated_assessment:
-        # Integrated mode returns BOTH causal AND semantic per pair
-        # ~100 tokens for causal + ~100 tokens for semantic = 200 per result
+        # Integrated mode - be EXTREMELY generous
         pair_count = prompt.count("->")
-        required_tokens = 1000 + (200 * pair_count) + 500
+        required_tokens = 3000 + (400 * pair_count) + 2000
         max_tokens = min(required_tokens, 16000)
         
         print(f"[llm] Integrated (causal+semantic): {pair_count} pairs → {max_tokens} tokens")
         
     elif is_bulk_assessment:
-        # Standard causal-only assessment
-        # ~120 tokens per result
+        # Standard causal - very generous allocation
         pair_count = prompt.count("->")
-        required_tokens = 500 + (120 * pair_count) + 500
+        required_tokens = 2000 + (300 * pair_count) + 2000
         max_tokens = min(required_tokens, 16000)
         
         print(f"[llm] Bulk causal: {pair_count} pairs → {max_tokens} tokens")
         
     elif is_event_extraction:
-        # Event extraction: estimate based on input text size
+        # Event extraction - EXTREMELY generous
+        # Just allocate maximum or near-maximum tokens
         input_chars = len(prompt)
-        estimated_events = input_chars // 200
-        required_tokens = (estimated_events * 150) + 1000
+        estimated_events = max(input_chars // 100, 15)  # Very aggressive estimate
+        required_tokens = (estimated_events * 400) + 4000  # Huge per-event + large base
         max_tokens = min(required_tokens, 16000)
         
-        if estimated_events > 50:
-            print(f"[llm] Event extraction: ~{estimated_events} events → {max_tokens} tokens")
+        # If we're close to limit, just use maximum
+        if max_tokens > 12000:
+            max_tokens = 16000
+        
+        print(f"[llm] Event extraction: ~{estimated_events} events → {max_tokens} tokens (input: {input_chars} chars)")
         
     elif is_scene_extraction:
-        # Scene extraction needs moderate space
-        max_tokens = min(max_tokens, 8000)
+        # Scene extraction - generous
+        max_tokens = 12000
     
     else:
-        # Default: ensure minimum reasonable allocation
-        max_tokens = max(max_tokens, 2048)
+        # Default: very generous
+        max_tokens = max(max_tokens, 8000)
     
     # ============================================================================
     # END FIX
@@ -222,20 +224,19 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
             # ✅ FIX: Enhanced truncation detection with actionable guidance
             finish_reason = resp.choices[0].finish_reason
             if finish_reason == "length":
-                actual_tokens = len(text) // 4
+                actual_tokens = max(len(text) // 4, 1)  # Avoid showing 0
                 print(f"")
                 print(f"{'='*70}")
                 print(f"⚠️  WARNING: RESPONSE TRUNCATED")
                 print(f"{'='*70}")
                 print(f"Allocated: {max_tokens} tokens")
-                print(f"Used: ~{actual_tokens}+ tokens (hit limit)")
+                print(f"Actual response: {len(text)} chars (~{actual_tokens} tokens)")
                 print(f"")
-                print(f"SOLUTION:")
-                print(f"1. Reduce batch size in optimized_linking.py:")
-                print(f"   Change: BULK_SIZE = min(..., 30)  # was 50")
-                print(f"")
-                print(f"2. Or reduce in integrated_semantic.py:")
-                print(f"   Change: bulk_size=25  # was 50")
+                print(f"This means the response hit the token limit and was cut off.")
+                print(f"Tokens have been INCREASED in this fix. If this persists:")
+                print(f"1. Check if input text is exceptionally long")
+                print(f"2. Consider reducing chunk_size parameter (smaller chunks)")
+                print(f"3. Or reduce batch_size if doing bulk operations")
                 print(f"{'='*70}")
                 print(f"")
                 # Continue processing - try to salvage partial response
