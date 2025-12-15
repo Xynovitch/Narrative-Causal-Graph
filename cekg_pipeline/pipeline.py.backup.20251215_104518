@@ -106,7 +106,7 @@ class CEKGPreprocessor:
                     event_data, logprobs_list[i]
                 ) if enable_confidence_calibration else float(event_data.get("confidence", 0.7))
                 
-                event_type = event_data.get("event_category", event_data.get("action_type", "OTHER"))
+                event_type = event_data.get("event_category", "OTHER")
                 if not self.ontology.validate_event_type(event_type):
                     event_type = "PHYSICAL_ACTION"
                 
@@ -118,9 +118,10 @@ class CEKGPreprocessor:
                 self.global_event_sequence += 1
                 
                 event = schemas.CEKEvent(
-                id=utils._make_id("event"),
-                raw_description=event_data.get("raw_description", event_data.get("name", "Untitled")),
-                action_type=event_type,
+                    id=utils._make_id("event"),
+                    raw_description=event_data.get("raw_description", event_data.get("name", "Untitled")),
+                    event_category=event_type,
+                    action_type=event_type,
                     time_context=event_data.get("time_context"),
                     location_context=event_data.get("location_context"),
                     actors=[], patients=[], why_factors=why_factors_list,

@@ -69,6 +69,7 @@ def map_to_generic_graph(
                 "id": ev.id,
                 "name": ev.raw_description,
                 "eventType": "event",
+                "category": ev.event_category,
                 "actionType": ev.action_type,
                 "theory": ev.theory,
                 "confidence": ev.confidence,
@@ -118,17 +119,13 @@ def map_to_generic_graph(
         if node_uid not in nodes:
             props = {
                 "id": node_uid,
-                "name": entity_name,
-                "entityType": entity_type
+                "name": entity_name
             }
             
             # Add agent type if classified
             if agent_type:
                 props["agentType"] = agent_type
                 props["theory"] = theory
-            else:
-                props["agentType"] = "STRUCTURAL_AGENT"
-                props["theory"] = theory or "@McKee"
             
             nodes[node_uid] = schemas.GenericNode(
                 uid=node_uid,

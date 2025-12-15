@@ -81,40 +81,25 @@ def export_json(path: str, data: Dict[str, Any]):
 
 def _format_cypher_properties(props: Dict[str, Any]) -> str:
     """Helper to format a properties dictionary into a Cypher string."""
-    if not props:
-        return "{}"
-    
     prop_list = []
     for k, v in props.items():
-        if v is None:
-            continue
-        
-        safe_key = str(k).replace('"', '\\"')
-        
         if isinstance(v, str):
-            safe_val = _escape_cypher_string(v)
-            prop_list.append(f'{safe_key}: "{safe_val}"')
+            prop_list.append(f"{k}: \"{v}\"") 
         elif isinstance(v, bool):
-            prop_list.append(f'{safe_key}: {str(v).lower()}')
-        elif isinstance(v, (int, float)):
-            prop_list.append(f'{safe_key}: {v}')
+            prop_list.append(f"{k}: {str(v).lower()}")
+        elif v is None:
+            prop_list.append(f"{k}: null")
         else:
-            safe_val = _escape_cypher_string(str(v))
-            prop_list.append(f'{safe_key}: "{safe_val}"')
-    
-    return "{" + ", ".join(prop_list) + "}"
+            prop_list.append(f"{k}: {v}")
+    return f"{{{', '.join(prop_list)}}}"
 
 
 def export_neo4j_cypher(
     path: str,
     nodes: List[GenericNode],
-    relationships: List[GenericRelationship],
-    batch_size: int = 1000
+    relationships: List[GenericRelationship]
 ):
-    """
-    Export a generic graph to a Neo4j Cypher script.
-    Fixed: Generates clean, valid Cypher with proper batching.
-    """
+    """Export a generic graph to a Neo4j Cypher script."""
     
     base_path, _ = os.path.splitext(path)
     path = base_path + ".txt"
@@ -122,97 +107,53 @@ def export_neo4j_cypher(
     lines = []
     lines.append("// ============================================================")
     lines.append("// CEKG Cypher Import Script (Generated)")
-    lines.append(f"// Total Nodes: {len(nodes)}")
-    lines.append(f"// Total Relationships: {len(relationships)}")
-    lines.append("// ============================================================")
-    lines.append("")
+    lines.append("// ============================================================\n")
     
-    # 1. Create Constraint/Index setup
-    lines.append("// --- INDEXES ---")
-    lines.append("CREATE CONSTRAINT event_id IF NOT EXISTS FOR (e:Event) REQUIRE e.id IS UNIQUE;")
-    lines.append("CREATE CONSTRAINT agent_id IF NOT EXISTS FOR (a:Agent) REQUIRE a.id IS UNIQUE;")
-    lines.append("CREATE CONSTRAINT scene_id IF NOT EXISTS FOR (s:Scene) REQUIRE s.id IS UNIQUE;")
-    lines.append("CREATE INDEX event_sequence IF NOT EXISTS FOR (e:Event) ON (e.sequence);")
-    lines.append("CREATE INDEX event_chapter IF NOT EXISTS FOR (e:Event) ON (e.chapter);")
-    lines.append("")
-    
-    # 2. Create Nodes in Batches
-    lines.append("// ============================================================")
-    lines.append("// NODES (Batched)")
-    lines.append("// ============================================================")
-    lines.append("")
-    
+    # 1. Create Nodes
+    lines.append("// 1. CREATE NODES")
     nodes_by_label = defaultdict(list)
     for node in nodes:
         nodes_by_label[node.label].append(node)
-    
-    statement_count = 0
-    
-    for label, node_list in nodes_by_label.items():
-        lines.append(f"// --- {label} Nodes ({len(node_list):,}) ---")
         
-        for i in range(0, len(node_list), batch_size):
-            batch = node_list[i:i + batch_size]
-            batch_num = (i // batch_size) + 1
-            total_batches = (len(node_list) + batch_size - 1) // batch_size
-            
-            if len(node_list) > batch_size:
-                lines.append(f"// Batch {batch_num}/{total_batches}")
-            
-            for node in batch:
-                props_str = _format_cypher_properties(node.properties)
-                safe_uid = _escape_cypher_string(node.uid)
-                
-                lines.append(f'MERGE (n:{label} {{id: "{safe_uid}"}}) SET n = {props_str};')
-                statement_count += 1
-            
-            lines.append("")
-    
+    for label, node_list in nodes_by_label.items():
+        lines.append(f"// --- {label} Nodes ({len(node_list)}) ---")
+        for node in node_list:
+            props_str = _format_cypher_properties(node.properties)
+            safe_uid = _escape_cypher_string(node.uid)
+            lines.append(f"MERGE (n:{label} {{id: \"{safe_uid}\"}}) SET n = {props_str};")
+        lines.append("")
+
     lines.append("// ============================================================")
-    lines.append("// RELATIONSHIPS (Batched)")
-    lines.append("// ============================================================")
-    lines.append("")
-    
-    # 3. Create Relationships in Batches
+    lines.append("// 2. CREATE RELATIONSHIPS")
+    lines.append("// ============================================================\n")
+
+    # 2. Create Relationships
     rels_by_type = defaultdict(list)
     for rel in relationships:
         rels_by_type[rel.rel_type].append(rel)
-    
+
     for rel_type, rel_list in rels_by_type.items():
-        lines.append(f"// --- {rel_type} Relationships ({len(rel_list):,}) ---")
-        
-        for i in range(0, len(rel_list), batch_size):
-            batch = rel_list[i:i + batch_size]
-            batch_num = (i // batch_size) + 1
-            total_batches = (len(rel_list) + batch_size - 1) // batch_size
-            
-            if len(rel_list) > batch_size:
-                lines.append(f"// Batch {batch_num}/{total_batches}")
-            
-            for rel in batch:
-                props_str = _format_cypher_properties(rel.properties)
-                safe_start_uid = _escape_cypher_string(rel.start_node_uid)
-                safe_end_uid = _escape_cypher_string(rel.end_node_uid)
-                
-                lines.append(
-                    f'MATCH (a {{id: "{safe_start_uid}"}}), (b {{id: "{safe_end_uid}"}}) '
-                    f'MERGE (a)-[r:{rel_type}]->(b) SET r = {props_str};'
-                )
-                statement_count += 1
-            
-            lines.append("")
+        lines.append(f"// --- {rel_type} Relationships ({len(rel_list)}) ---")
+        for rel in rel_list:
+            props_str = _format_cypher_properties(rel.properties)
+            safe_start_uid = _escape_cypher_string(rel.start_node_uid)
+            safe_end_uid = _escape_cypher_string(rel.end_node_uid)
+            lines.append(
+                f"MATCH (a {{id: \"{safe_start_uid}\"}}), (b {{id: \"{safe_end_uid}\"}}) "
+                f"MERGE (a)-[r:{rel_type}]->(b) SET r = {props_str};"
+            )
+        lines.append("")
     
     lines.append("// ============================================================")
-    lines.append("// IMPORT COMPLETE")
-    lines.append(f"// Total Statements: {statement_count:,}")
+    lines.append("// SCRIPT COMPLETE")
+    lines.append(f"// Total Nodes: {len(nodes)}")
+    lines.append(f"// Total Relationships: {len(relationships)}")
     lines.append("// ============================================================")
-    
+
     with open(path, "w", encoding="utf-8") as f:
         f.write('\n'.join(lines))
     
-    print(f"[export] Cypher exported: {statement_count:,} statements to {path}")
-    print(f"[export] File size: {len(lines):,} lines")
-
+    print(f"[export] Cypher exported: {len(lines)} statements to {path}")
 
 
 def export_csv(

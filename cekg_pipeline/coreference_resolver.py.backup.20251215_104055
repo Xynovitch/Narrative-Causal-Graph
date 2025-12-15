@@ -64,29 +64,6 @@ class CoreferenceResolver:
         
         return True
     
-
-    def normalize_character_name(self, name: str) -> str:
-        """
-        Normalize character names: "Pip (Child)" -> "Pip", "Young Pip" -> "Pip"
-        """
-        if not name:
-            return name
-        
-        # Remove parentheticals
-        name = re.sub(r'\s*\([^)]*\)', '', name)
-        
-        # Remove age descriptors
-        for desc in ['Young', 'Old', 'Little', 'Elder', 'Older', 'Younger']:
-            if name.startswith(desc + ' '):
-                name = name[len(desc):].strip()
-        
-        # Remove titles (if not the only name)
-        words = name.split()
-        if len(words) > 1 and words[0] in ['Mr.', 'Mrs.', 'Miss', 'Ms.', 'Dr.', 'Sir', 'Lady', 'Lord']:
-            name = ' '.join(words[1:])
-        
-        return name.strip()
-
     def register_character(self, canonical_name: str, aliases: List[str] = None):
         """Register a character with their canonical name and known aliases"""
         if not self.is_valid_character_name(canonical_name):

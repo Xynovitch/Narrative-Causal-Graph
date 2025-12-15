@@ -106,7 +106,7 @@ class CEKGPreprocessor:
                     event_data, logprobs_list[i]
                 ) if enable_confidence_calibration else float(event_data.get("confidence", 0.7))
                 
-                event_type = event_data.get("event_category", event_data.get("action_type", "OTHER"))
+                event_type = event_data.get("event_category", "OTHER")
                 if not self.ontology.validate_event_type(event_type):
                     event_type = "PHYSICAL_ACTION"
                 
@@ -118,9 +118,10 @@ class CEKGPreprocessor:
                 self.global_event_sequence += 1
                 
                 event = schemas.CEKEvent(
-                id=utils._make_id("event"),
-                raw_description=event_data.get("raw_description", event_data.get("name", "Untitled")),
-                action_type=event_type,
+                    id=utils._make_id("event"),
+                    raw_description=event_data.get("raw_description", event_data.get("name", "Untitled")),
+                    event_category=event_type,
+                    action_type=event_type,
                     time_context=event_data.get("time_context"),
                     location_context=event_data.get("location_context"),
                     actors=[], patients=[], why_factors=why_factors_list,
@@ -131,7 +132,7 @@ class CEKGPreprocessor:
                 
                 # --- FIX: USE RESOLVER TO FILTER PRONOUNS ---
                 
-                # Direct actor extraction with RESOLVER
+                # Direct actor extraction with filtering
                 raw_actors = event_data.get("actors", [])
                 if isinstance(raw_actors, str):
                     raw_actors = [raw_actors]
@@ -140,28 +141,21 @@ class CEKGPreprocessor:
                 for actor in raw_actors:
                     if isinstance(actor, str) and len(actor) > 1:
                         actor_name = actor.strip()
-                        
-                        # Validate first
+                        # Strict pronoun/generic filtering
                         if not self.resolver.is_valid_character_name(actor_name):
                             continue
-                        
-                        # FIX: Actually use resolver to get canonical name
-                        canonical_name = self.resolver.resolve(actor_name)
-                        
-                        if not canonical_name:
-                            continue
-                        
-                        clean_actors.append(canonical_name)
-                        aid = graph_builder._generate_entity_id(canonical_name, "agent", event.id, graph_model)
+                            
+                        clean_actors.append(actor_name)
+                        aid = graph_builder._generate_entity_id(actor_name, "agent", event.id, graph_model)
                         all_produces.append(schemas.EventProducesEntity(
-                            event.id, aid, canonical_name, "actor", "PRODUCES_ACTOR", 1.0,
+                            event.id, aid, actor_name, "actor", "PRODUCES_ACTOR", 1.0,
                             agent_type=None, theory=theory
                         ))
-                        entity_occurrences_batch[f"actor:{canonical_name.lower()}"].append((event.id, seq))
+                        entity_occurrences_batch[f"actor:{actor_name.lower()}"].append((event.id, seq))
                 
                 event.actors = clean_actors
 
-                # Direct patient extraction with RESOLVER
+                # Direct patient extraction with filtering
                 raw_patients = event_data.get("patients", [])
                 if isinstance(raw_patients, str):
                     raw_patients = [raw_patients]
@@ -170,24 +164,17 @@ class CEKGPreprocessor:
                 for patient in raw_patients:
                     if isinstance(patient, str) and len(patient) > 1:
                         pat_name = patient.strip()
-                        
-                        # Validate first
+                        # Strict pronoun/generic filtering
                         if not self.resolver.is_valid_character_name(pat_name):
                             continue
-                        
-                        # FIX: Actually use resolver to get canonical name
-                        canonical_name = self.resolver.resolve(pat_name)
-                        
-                        if not canonical_name:
-                            continue
-                        
-                        clean_patients.append(canonical_name)
-                        pid = graph_builder._generate_entity_id(canonical_name, "agent", event.id, graph_model)
+
+                        clean_patients.append(pat_name)
+                        pid = graph_builder._generate_entity_id(pat_name, "agent", event.id, graph_model)
                         all_produces.append(schemas.EventProducesEntity(
-                            event.id, pid, canonical_name, "patient", "PRODUCES_PATIENT", 1.0,
+                            event.id, pid, pat_name, "patient", "PRODUCES_PATIENT", 1.0,
                             agent_type=None, theory=theory
                         ))
-                        entity_occurrences_batch[f"patient:{canonical_name.lower()}"].append((event.id, seq))
+                        entity_occurrences_batch[f"patient:{pat_name.lower()}"].append((event.id, seq))
                 
                 event.patients = clean_patients
                 

@@ -25,6 +25,7 @@ class CEKEvent:
     """
     id: str
     raw_description: str
+    event_category: str  # Maps to event_types from schema (e.g., "ACKNOWLEDGMENT", "ACTION_TENSION")
     action_type: str
     time_context: Optional[str]
     location_context: Optional[str]
