@@ -1,13 +1,18 @@
 """
-Optimized LLM Service - 87% Cost Reduction
+Optimized LLM Service - 87% Cost Reduction + Truncation Fix
 Key changes:
 1. Compressed prompts (30% token reduction)
 2. Chapter-level extraction support
 3. Removed redundant instructions
 4. Strategic model selection
 5. STRICTER ENTITY FILTERING (No inanimate objects)
+6. ✅ FIX: Dynamic max_tokens sizing to prevent JSON truncation
 
-FIX: Proper max_tokens sizing to prevent JSON truncation
+WHAT WAS FIXED:
+- Integrated semantic + causal returns ~200 tokens per pair (not 120)
+- Added automatic detection of operation type
+- Dynamic token allocation based on batch size
+- Enhanced truncation warnings with actionable guidance
 """
 import json
 import asyncio
@@ -36,7 +41,6 @@ agent_classification_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 # Compressed Prompts (Optimized for Accuracy)
 # ---------------------------------------------------------------------------
 
-# OPTIMIZED: Strict entity filtering added
 PROMPT_EVENT_EXTRACTION = """Extract ALL narrative events as JSON.
 
 Format:
@@ -70,7 +74,6 @@ Chapter {chapter_id}:
 
 JSON only:"""
 
-# OPTIMIZED: Bulk causal assessment
 PROMPT_CAUSAL_BULK = """Analyze {count} event pairs for causal relationships.
 
 Relations: {relations}
@@ -92,7 +95,6 @@ Rules:
 
 JSON only:"""
 
-# OPTIMIZED: Agent classification (Added NON_AGENT fallback)
 PROMPT_AGENT_CLASS = """Classify character role.
 
 Character: {name}
@@ -104,7 +106,6 @@ JSON:
 
 Rule: If the 'Character' is an inanimate object, place, or body part, return "NON_AGENT"."""
 
-# OPTIMIZED: Scene grouping
 PROMPT_SCENE = """Group events into scenes by theme/location/time.
 
 Events: {events}
@@ -125,12 +126,16 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
                                cache: BoundedCache, cache_key: str, 
                                max_tokens: int = 4096) -> Any:
     """
-    Optimized LLM call with:
-    - Proper caching
-    - Smart parameter selection
-    - Error handling
+    Optimized LLM call with intelligent max_tokens allocation
     
-    FIX: Proper max_tokens calculation to prevent truncation
+    ✅ FIX: Prevents JSON truncation by detecting operation type and
+            dynamically calculating required output tokens
+    
+    How it works:
+    1. Detects if this is bulk assessment, event extraction, etc.
+    2. Calculates required tokens based on operation type
+    3. Allocates sufficient space to prevent truncation
+    4. Provides actionable warnings if truncation still occurs
     """
     cached = await cache.get(cache_key)
     if cached is not None:
@@ -138,17 +143,55 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
 
     is_reasoning_model = "gpt-5" in model or "o1" in model
     
-    # FIX: Calculate required output tokens based on prompt
-    # For bulk operations, ensure enough space for full response
-    estimated_input_tokens = len(prompt) // 4
+    # ============================================================================
+    # ✅ FIX: DYNAMIC TOKEN ALLOCATION
+    # ============================================================================
     
-    # FIX: Ensure max_tokens is sufficient for the response
-    # Bulk operations need more space
-    if "Analyze" in prompt and "pairs" in prompt:
-        # Bulk assessment - need ~100 tokens per result
+    # Detect operation type from prompt content
+    is_bulk_assessment = "Analyze" in prompt and "pairs" in prompt
+    is_integrated_assessment = "BOTH causal AND semantic" in prompt
+    is_event_extraction = "Extract ALL narrative events" in prompt
+    is_scene_extraction = "Group events into scenes" in prompt
+    
+    if is_integrated_assessment:
+        # Integrated mode returns BOTH causal AND semantic per pair
+        # ~100 tokens for causal + ~100 tokens for semantic = 200 per result
         pair_count = prompt.count("->")
-        required_output = max(pair_count * 120, max_tokens)  # 120 tokens per result
-        max_tokens = min(required_output, 16000)  # Cap at model limit
+        required_tokens = 1000 + (200 * pair_count) + 500
+        max_tokens = min(required_tokens, 16000)
+        
+        print(f"[llm] Integrated (causal+semantic): {pair_count} pairs → {max_tokens} tokens")
+        
+    elif is_bulk_assessment:
+        # Standard causal-only assessment
+        # ~120 tokens per result
+        pair_count = prompt.count("->")
+        required_tokens = 500 + (120 * pair_count) + 500
+        max_tokens = min(required_tokens, 16000)
+        
+        print(f"[llm] Bulk causal: {pair_count} pairs → {max_tokens} tokens")
+        
+    elif is_event_extraction:
+        # Event extraction: estimate based on input text size
+        input_chars = len(prompt)
+        estimated_events = input_chars // 200
+        required_tokens = (estimated_events * 150) + 1000
+        max_tokens = min(required_tokens, 16000)
+        
+        if estimated_events > 50:
+            print(f"[llm] Event extraction: ~{estimated_events} events → {max_tokens} tokens")
+        
+    elif is_scene_extraction:
+        # Scene extraction needs moderate space
+        max_tokens = min(max_tokens, 8000)
+    
+    else:
+        # Default: ensure minimum reasonable allocation
+        max_tokens = max(max_tokens, 2048)
+    
+    # ============================================================================
+    # END FIX
+    # ============================================================================
     
     request_kwargs = {
         "model": model,
@@ -176,12 +219,28 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
             resp = await loop.run_in_executor(None, make_req)
             text = resp.choices[0].message.content.strip()
             
-            # FIX: Check for truncation
+            # ✅ FIX: Enhanced truncation detection with actionable guidance
             finish_reason = resp.choices[0].finish_reason
             if finish_reason == "length":
-                print(f"[warning] Response truncated (finish_reason=length), needed {max_tokens}+ tokens")
-                # Try to parse anyway, but warn user
+                actual_tokens = len(text) // 4
+                print(f"")
+                print(f"{'='*70}")
+                print(f"⚠️  WARNING: RESPONSE TRUNCATED")
+                print(f"{'='*70}")
+                print(f"Allocated: {max_tokens} tokens")
+                print(f"Used: ~{actual_tokens}+ tokens (hit limit)")
+                print(f"")
+                print(f"SOLUTION:")
+                print(f"1. Reduce batch size in optimized_linking.py:")
+                print(f"   Change: BULK_SIZE = min(..., 30)  # was 50")
+                print(f"")
+                print(f"2. Or reduce in integrated_semantic.py:")
+                print(f"   Change: bulk_size=25  # was 50")
+                print(f"{'='*70}")
+                print(f"")
+                # Continue processing - try to salvage partial response
             
+            # Extract JSON from markdown if present
             json_match = re.search(r"```(?:json)?\n?(.*?)```", text, re.DOTALL)
             if json_match:
                 text = json_match.group(1).strip()
@@ -189,9 +248,11 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
             try:
                 data = json.loads(text)
             except json.JSONDecodeError:
+                # Clean control characters and retry
                 cleaned = ''.join([c for c in text if ord(c) >= 32 or c in '\n\r\t'])
                 data = json.loads(cleaned)
             
+            # Normalize data structure
             if isinstance(data, dict):
                 if 'events' in data and isinstance(data['events'], list):
                     data = data['events']
@@ -205,22 +266,22 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
             if attempt == 2:
                 print(f"[error] LLM call failed after 3 attempts: {e}")
                 return [], None
-            await asyncio.sleep(1)
+            await asyncio.sleep(2 ** attempt)  # Exponential backoff
+    
     return [], None
 
 async def extract_events_from_text(text_input, chapter_id, model, client,
                                    enable_llm_expansion, request_logprobs,
                                    extraction_style, event_ontology=None):
     """
-    OPTIMIZED: Now handles full chapters efficiently
+    OPTIMIZED: Handles full chapters efficiently
+    ✅ FIX: Automatic token allocation via _async_llm_json_call
     """
     if not event_ontology:
         event_ontology = ["PHYSICAL_MOVEMENT", "COMMUNICATION_VERBAL", 
                           "INTERNAL_THOUGHT", "EMOTIONAL_REACTION"]
     
-    # Use full text input (trusting pipeline chunking - NO TRUNCATION HERE)
-    
-    ont_str = ", ".join(event_ontology[:20])  # Limit ontology length
+    ont_str = ", ".join(event_ontology[:20])
     
     prompt = PROMPT_EVENT_EXTRACTION.format(
         ontology=ont_str,
@@ -228,20 +289,14 @@ async def extract_events_from_text(text_input, chapter_id, model, client,
         text=text_input
     )
     
-    # Create smarter cache key
     key = _hash_for_cache(
         f"{chapter_id}:{len(text_input)}:{extraction_style}:v5_strict",
         model
     )
     
-    # FIX: Set appropriate max_tokens based on input size
-    # Estimate: 1 event per 200 chars, 150 tokens per event
-    estimated_events = len(text_input) // 200
-    required_tokens = max(estimated_events * 150, 4096)
-    max_tokens = min(required_tokens, 16000)  # Cap at model limit
-    
+    # No need to specify max_tokens - auto-detected
     data, logprobs = await _async_llm_json_call(
-        prompt, model, client, event_extraction_cache, key, max_tokens
+        prompt, model, client, event_extraction_cache, key
     )
     return (data if isinstance(data, list) else [data]), logprobs
 
@@ -264,13 +319,12 @@ async def assess_pairs_bulk(
 ) -> List[Optional[Dict]]:
     """
     OPTIMIZED: Assess multiple pairs in single call
-    
-    FIX: Proper max_tokens calculation based on batch size
+    ✅ FIX: Automatic token allocation + enhanced truncation detection
     """
     if not pairs_batch:
         return []
 
-    # Format pairs (truncate to save tokens)
+    # Format pairs (truncate descriptions to save input tokens)
     pairs_text_lines = []
     for i, (c_text, e_text, _, _) in enumerate(pairs_batch, 1):
         c_short = c_text[:80].replace("\n", " ")
@@ -288,14 +342,11 @@ async def assess_pairs_bulk(
     
     key = _hash_for_cache(f"bulk:{len(pairs_batch)}:{ontology_str[:50]}", model)
     
-    # FIX: Calculate required tokens for response
-    # Each result needs ~100-120 tokens
-    required_tokens = len(pairs_batch) * 120 + 500  # 500 for JSON structure
-    max_tokens = min(required_tokens, 16000)
+    # ✅ No need to specify max_tokens - auto-detected by _async_llm_json_call
     
     try:
         data, _ = await _async_llm_json_call(
-            prompt, model, client, assessment_cache, key, max_tokens=max_tokens
+            prompt, model, client, assessment_cache, key
         )
         
         results_map = {}
@@ -309,9 +360,22 @@ async def assess_pairs_bulk(
         for i in range(1, len(pairs_batch) + 1):
             ordered_results.append(results_map.get(i, None))
         
-        # FIX: Warn if we got fewer results than expected (truncation)
-        if len(results_map) < len(pairs_batch):
-            print(f"[warning] Got {len(results_map)}/{len(pairs_batch)} results - possible truncation")
+        # ✅ FIX: Enhanced data loss detection with severity levels
+        missing_count = len(pairs_batch) - len(results_map)
+        if missing_count > 0:
+            loss_pct = (missing_count / len(pairs_batch)) * 100
+            
+            if loss_pct > 30:
+                print(f"")
+                print(f"🔴 CRITICAL DATA LOSS: {missing_count}/{len(pairs_batch)} results missing ({loss_pct:.1f}%)")
+                print(f"🔴 IMMEDIATE ACTION REQUIRED:")
+                print(f"   Reduce BULK_SIZE to 25 in optimized_linking.py or integrated_semantic.py")
+                print(f"")
+            elif loss_pct > 10:
+                print(f"⚠️  Data loss: {missing_count}/{len(pairs_batch)} missing ({loss_pct:.1f}%)")
+                print(f"   Consider reducing batch size to 30-35")
+            else:
+                print(f"⚠️  Minor loss: {missing_count}/{len(pairs_batch)} missing ({loss_pct:.1f}%)")
             
         return ordered_results
 
@@ -323,7 +387,7 @@ async def classify_agent_type(character_name: str, event_descriptions: List[str]
                               agent_type_names: List[str], model: str, 
                               client: Any) -> str:
     """
-    OPTIMIZED: Compressed prompt, cheaper model option
+    OPTIMIZED: Compressed prompt, cheaper model for classification
     """
     # Use cheaper model for simple classification
     cheap_model = "gpt-3.5-turbo" if "gpt-4" in model else model
@@ -347,7 +411,6 @@ async def classify_agent_type(character_name: str, event_descriptions: List[str]
         if isinstance(data, dict) and "agentType" in data:
             agent_type = data["agentType"]
             if agent_type == "NON_AGENT":
-                 # Return a safe fallback that isn't a narrative role
                 return "STRUCTURAL_AGENT" 
             return agent_type
             
