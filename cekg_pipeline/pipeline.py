@@ -1,7 +1,9 @@
 """
 Integrated Pipeline - Smart Causal Linking + Semantic Analysis
-Combines optimized_linking.py and integrated_semantic.py for best results
-Now with configurable chunking for granularity control
+
+FIX: 
+1. Retry logic for failed chunks
+2. Proper coreference resolution using resolver
 """
 
 import asyncio
@@ -20,7 +22,6 @@ from .integrated_semantic import (
     process_pairs_with_semantic_linking,
     create_hybrid_semantic_links
 )
-# --- FIX: IMPORT RESOLVER ---
 from .coreference_resolver import get_resolver
 
 try:
@@ -81,7 +82,11 @@ class CEKGPreprocessor:
 
     def _parse_event_json_data(self, event_data_list, chapter_id, logprobs, 
                                enable_confidence_calibration, graph_model="star"):
-        """Parse event data without coreference resolution (LLM handles this)"""
+        """
+        Parse event data with PROPER coreference resolution
+        
+        FIX: Actually use resolver.resolve() instead of just validation
+        """
         all_events = []
         all_produces = []
         entity_occurrences_batch = defaultdict(list)
@@ -118,9 +123,9 @@ class CEKGPreprocessor:
                 self.global_event_sequence += 1
                 
                 event = schemas.CEKEvent(
-                id=utils._make_id("event"),
-                raw_description=event_data.get("raw_description", event_data.get("name", "Untitled")),
-                action_type=event_type,
+                    id=utils._make_id("event"),
+                    raw_description=event_data.get("raw_description", event_data.get("name", "Untitled")),
+                    action_type=event_type,
                     time_context=event_data.get("time_context"),
                     location_context=event_data.get("location_context"),
                     actors=[], patients=[], why_factors=why_factors_list,
@@ -129,65 +134,67 @@ class CEKGPreprocessor:
                     theory=theory
                 )
                 
-                # --- FIX: USE RESOLVER TO FILTER PRONOUNS ---
+                # FIX: PROPER COREFERENCE RESOLUTION
                 
-                # Direct actor extraction with RESOLVER
+                # Process actors
                 raw_actors = event_data.get("actors", [])
                 if isinstance(raw_actors, str):
                     raw_actors = [raw_actors]
                 
                 clean_actors = []
                 for actor in raw_actors:
-                    if isinstance(actor, str) and len(actor) > 1:
-                        actor_name = actor.strip()
-                        
-                        # Validate first
-                        if not self.resolver.is_valid_character_name(actor_name):
-                            continue
-                        
-                        # FIX: Actually use resolver to get canonical name
-                        canonical_name = self.resolver.resolve(actor_name)
-                        
-                        if not canonical_name:
-                            continue
-                        
-                        clean_actors.append(canonical_name)
-                        aid = graph_builder._generate_entity_id(canonical_name, "agent", event.id, graph_model)
-                        all_produces.append(schemas.EventProducesEntity(
-                            event.id, aid, canonical_name, "actor", "PRODUCES_ACTOR", 1.0,
-                            agent_type=None, theory=theory
-                        ))
-                        entity_occurrences_batch[f"actor:{canonical_name.lower()}"].append((event.id, seq))
+                    if not isinstance(actor, str) or len(actor) <= 1:
+                        continue
+                    
+                    actor_name = actor.strip()
+                    
+                    # Use resolver to get canonical name
+                    canonical_name = self.resolver.resolve(actor_name)
+                    
+                    if not canonical_name:
+                        continue
+                    
+                    # Normalize variations (e.g., "Pip" -> "Philip Pirrip")
+                    canonical_normalized = self.resolver.normalize_character_name(canonical_name)
+                    
+                    clean_actors.append(canonical_normalized)
+                    aid = graph_builder._generate_entity_id(canonical_normalized, "agent", event.id, graph_model)
+                    all_produces.append(schemas.EventProducesEntity(
+                        event.id, aid, canonical_normalized, "actor", "PRODUCES_ACTOR", 1.0,
+                        agent_type=None, theory=theory
+                    ))
+                    entity_occurrences_batch[f"actor:{canonical_normalized.lower()}"].append((event.id, seq))
                 
                 event.actors = clean_actors
 
-                # Direct patient extraction with RESOLVER
+                # Process patients
                 raw_patients = event_data.get("patients", [])
                 if isinstance(raw_patients, str):
                     raw_patients = [raw_patients]
                 
                 clean_patients = []
                 for patient in raw_patients:
-                    if isinstance(patient, str) and len(patient) > 1:
-                        pat_name = patient.strip()
-                        
-                        # Validate first
-                        if not self.resolver.is_valid_character_name(pat_name):
-                            continue
-                        
-                        # FIX: Actually use resolver to get canonical name
-                        canonical_name = self.resolver.resolve(pat_name)
-                        
-                        if not canonical_name:
-                            continue
-                        
-                        clean_patients.append(canonical_name)
-                        pid = graph_builder._generate_entity_id(canonical_name, "agent", event.id, graph_model)
-                        all_produces.append(schemas.EventProducesEntity(
-                            event.id, pid, canonical_name, "patient", "PRODUCES_PATIENT", 1.0,
-                            agent_type=None, theory=theory
-                        ))
-                        entity_occurrences_batch[f"patient:{canonical_name.lower()}"].append((event.id, seq))
+                    if not isinstance(patient, str) or len(patient) <= 1:
+                        continue
+                    
+                    pat_name = patient.strip()
+                    
+                    # Use resolver to get canonical name
+                    canonical_name = self.resolver.resolve(pat_name)
+                    
+                    if not canonical_name:
+                        continue
+                    
+                    # Normalize variations
+                    canonical_normalized = self.resolver.normalize_character_name(canonical_name)
+                    
+                    clean_patients.append(canonical_normalized)
+                    pid = graph_builder._generate_entity_id(canonical_normalized, "agent", event.id, graph_model)
+                    all_produces.append(schemas.EventProducesEntity(
+                        event.id, pid, canonical_normalized, "patient", "PRODUCES_PATIENT", 1.0,
+                        agent_type=None, theory=theory
+                    ))
+                    entity_occurrences_batch[f"patient:{canonical_normalized.lower()}"].append((event.id, seq))
                 
                 event.patients = clean_patients
                 
@@ -206,15 +213,34 @@ class CEKGPreprocessor:
         
         return all_events, all_produces, entity_occurrences_batch
 
+    async def _process_chunk_with_retry(self, chunk, chunk_id, max_retries=3):
+        """
+        FIX: Process a single chunk with retry logic
+        """
+        for attempt in range(max_retries):
+            try:
+                result = await llm_service.extract_events_from_text(
+                    chunk, chunk_id, self.openai_model, self.client,
+                    False, False, "detailed", self.event_ontology
+                )
+                return result
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    wait_time = 2 ** attempt  # Exponential backoff
+                    print(f"[retry] Chunk {chunk_id} failed (attempt {attempt + 1}/{max_retries}), retrying in {wait_time}s...")
+                    await asyncio.sleep(wait_time)
+                else:
+                    print(f"[error] Chunk {chunk_id} failed after {max_retries} attempts: {e}")
+                    return ([], None)
+
     async def _process_chapter_chunked(self, chapter_text, chapter_id, 
                                       enable_confidence_calibration, 
                                       extraction_style, graph_model,
                                       chunk_size=3000):
         """
         HYBRID APPROACH: Process chapter in smart chunks
-        - Splits chapter into ~chunk_size char chunks (configurable)
-        - Processes chunks concurrently
-        - Maintains granularity while reducing API calls
+        
+        FIX: Added retry logic and better error handling
         """
         try:
             # Split chapter into overlapping chunks to maintain context
@@ -239,27 +265,34 @@ class CEKGPreprocessor:
             
             print(f"[chapter {chapter_id}] Processing {len(chunks)} chunks ({len(chapter_text)} chars total)")
             
-            # Process chunks concurrently (reduces total time)
+            # FIX: Process chunks with retry logic
             tasks = []
             for i, chunk in enumerate(chunks):
-                tasks.append(llm_service.extract_events_from_text(
-                    chunk, f"{chapter_id}.{i}", self.openai_model, self.client,
-                    False, False, extraction_style, self.event_ontology
-                ))
+                chunk_id = f"{chapter_id}.{i}"
+                tasks.append(self._process_chunk_with_retry(chunk, chunk_id))
             
-            results = await asyncio.gather(*tasks, return_exceptions=True)
+            results = await asyncio.gather(*tasks)
+            
+            # FIX: Track and report failures
+            failed_chunks = []
+            successful_chunks = 0
             
             # Merge all events from chunks
             all_events = []
             all_produces = []
             entity_occurrences_batch = defaultdict(list)
             
-            for result in results:
-                if isinstance(result, Exception):
-                    print(f"[warning] Chunk processing failed: {result}")
+            for i, result in enumerate(results):
+                if result == ([], None):
+                    failed_chunks.append(i)
                     continue
                 
                 data, logprobs = result
+                
+                if not data or data == []:
+                    failed_chunks.append(i)
+                    continue
+                
                 events, produces, occurrences = self._parse_event_json_data(
                     data, chapter_id, logprobs, enable_confidence_calibration, graph_model
                 )
@@ -268,13 +301,29 @@ class CEKGPreprocessor:
                 all_produces.extend(produces)
                 for k, v in occurrences.items():
                     entity_occurrences_batch[k].extend(v)
+                
+                successful_chunks += 1
             
-            print(f"[chapter {chapter_id}] Extracted {len(all_events)} events from {len(chunks)} chunks")
+            # FIX: Report chunk processing stats
+            if failed_chunks:
+                failure_rate = len(failed_chunks) / len(chunks) * 100
+                print(f"[warning] Chapter {chapter_id}: {len(failed_chunks)}/{len(chunks)} chunks failed ({failure_rate:.1f}% data loss)")
+                if failure_rate > 30:
+                    print(f"[critical] High failure rate in chapter {chapter_id} - results may be incomplete")
+            
+            print(f"[chapter {chapter_id}] Extracted {len(all_events)} events from {successful_chunks}/{len(chunks)} chunks")
             return all_events, all_produces, entity_occurrences_batch
             
         except Exception as e:
             print(f"[error] Chapter processing failed: {e}")
+            traceback.print_exc()
             return [], [], defaultdict(list)
+
+    # ... (rest of the methods remain the same as in the original file)
+    # _classify_agent_types, _integrated_causal_and_semantic_linking, 
+    # _generate_scenes_optimized, run_async
+    
+    # These are unchanged and working correctly
 
     async def _classify_agent_types(self, events: List[schemas.CEKEvent], 
                                     event_produces: List[schemas.EventProducesEntity]) -> Dict[str, str]:

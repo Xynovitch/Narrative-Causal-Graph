@@ -6,6 +6,8 @@ Key changes:
 3. Removed redundant instructions
 4. Strategic model selection
 5. STRICTER ENTITY FILTERING (No inanimate objects)
+
+FIX: Proper max_tokens sizing to prevent JSON truncation
 """
 import json
 import asyncio
@@ -127,12 +129,26 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
     - Proper caching
     - Smart parameter selection
     - Error handling
+    
+    FIX: Proper max_tokens calculation to prevent truncation
     """
     cached = await cache.get(cache_key)
     if cached is not None:
         return cached, None
 
     is_reasoning_model = "gpt-5" in model or "o1" in model
+    
+    # FIX: Calculate required output tokens based on prompt
+    # For bulk operations, ensure enough space for full response
+    estimated_input_tokens = len(prompt) // 4
+    
+    # FIX: Ensure max_tokens is sufficient for the response
+    # Bulk operations need more space
+    if "Analyze" in prompt and "pairs" in prompt:
+        # Bulk assessment - need ~100 tokens per result
+        pair_count = prompt.count("->")
+        required_output = max(pair_count * 120, max_tokens)  # 120 tokens per result
+        max_tokens = min(required_output, 16000)  # Cap at model limit
     
     request_kwargs = {
         "model": model,
@@ -159,6 +175,12 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
             
             resp = await loop.run_in_executor(None, make_req)
             text = resp.choices[0].message.content.strip()
+            
+            # FIX: Check for truncation
+            finish_reason = resp.choices[0].finish_reason
+            if finish_reason == "length":
+                print(f"[warning] Response truncated (finish_reason=length), needed {max_tokens}+ tokens")
+                # Try to parse anyway, but warn user
             
             json_match = re.search(r"```(?:json)?\n?(.*?)```", text, re.DOTALL)
             if json_match:
@@ -212,8 +234,14 @@ async def extract_events_from_text(text_input, chapter_id, model, client,
         model
     )
     
+    # FIX: Set appropriate max_tokens based on input size
+    # Estimate: 1 event per 200 chars, 150 tokens per event
+    estimated_events = len(text_input) // 200
+    required_tokens = max(estimated_events * 150, 4096)
+    max_tokens = min(required_tokens, 16000)  # Cap at model limit
+    
     data, logprobs = await _async_llm_json_call(
-        prompt, model, client, event_extraction_cache, key, 16000
+        prompt, model, client, event_extraction_cache, key, max_tokens
     )
     return (data if isinstance(data, list) else [data]), logprobs
 
@@ -236,6 +264,8 @@ async def assess_pairs_bulk(
 ) -> List[Optional[Dict]]:
     """
     OPTIMIZED: Assess multiple pairs in single call
+    
+    FIX: Proper max_tokens calculation based on batch size
     """
     if not pairs_batch:
         return []
@@ -258,9 +288,14 @@ async def assess_pairs_bulk(
     
     key = _hash_for_cache(f"bulk:{len(pairs_batch)}:{ontology_str[:50]}", model)
     
+    # FIX: Calculate required tokens for response
+    # Each result needs ~100-120 tokens
+    required_tokens = len(pairs_batch) * 120 + 500  # 500 for JSON structure
+    max_tokens = min(required_tokens, 16000)
+    
     try:
         data, _ = await _async_llm_json_call(
-            prompt, model, client, assessment_cache, key, max_tokens=16000
+            prompt, model, client, assessment_cache, key, max_tokens=max_tokens
         )
         
         results_map = {}
@@ -273,6 +308,10 @@ async def assess_pairs_bulk(
         ordered_results = []
         for i in range(1, len(pairs_batch) + 1):
             ordered_results.append(results_map.get(i, None))
+        
+        # FIX: Warn if we got fewer results than expected (truncation)
+        if len(results_map) < len(pairs_batch):
+            print(f"[warning] Got {len(results_map)}/{len(pairs_batch)} results - possible truncation")
             
         return ordered_results
 

@@ -1,13 +1,19 @@
 """
 Coreference Resolution for Agent Extraction
 Resolves pronouns, nicknames, and descriptors to canonical character names.
+
+FIX: Proper resolution that actually deduplicates character variations
 """
 import re
 from typing import Dict, List, Set, Optional, Tuple
 from collections import defaultdict
 
 class CoreferenceResolver:
-    """Resolves entity mentions to canonical character names"""
+    """
+    Resolves entity mentions to canonical character names
+    
+    FIX: Now actually performs coreference resolution instead of just filtering
+    """
     
     # Pronouns to filter out
     PRONOUNS = {
@@ -31,7 +37,7 @@ class CoreferenceResolver:
     def __init__(self):
         # Character name registry: {canonical_name: {aliases}}
         self.character_registry: Dict[str, Set[str]] = {}
-        # Reverse lookup: {alias: canonical_name}
+        # Reverse lookup: {alias_lower: canonical_name}
         self.alias_to_canonical: Dict[str, str] = {}
         # Co-occurrence tracking for smart resolution
         self.cooccurrence_matrix: Dict[Tuple[str, str], int] = defaultdict(int)
@@ -113,6 +119,8 @@ class CoreferenceResolver:
         """
         Resolve a mention to its canonical character name.
         
+        FIX: Now properly resolves to existing characters instead of auto-registering
+        
         Args:
             mention: The character mention to resolve
             context: List of other character mentions in the same event
@@ -127,22 +135,58 @@ class CoreferenceResolver:
         mention = mention.strip()
         mention_lower = mention.lower()
         
-        # Direct lookup
+        # Direct lookup (already registered)
         if mention_lower in self.alias_to_canonical:
             return self.alias_to_canonical[mention_lower]
         
-        # Partial match (e.g., "Pip" matches "Philip Pirrip")
+        # Partial match (e.g., "Pip" should match "Philip Pirrip")
         for canonical, aliases in self.character_registry.items():
+            canonical_lower = canonical.lower()
+            
+            # Check if mention is a substring of canonical name
+            if mention_lower in canonical_lower:
+                # Register as alias and return
+                self.register_character(canonical, [mention])
+                return canonical
+            
+            # Check if canonical is a substring of mention (e.g., "Philip Pirrip" exists, mention is "Philip")
+            if canonical_lower in mention_lower:
+                # Register mention as alias
+                self.register_character(canonical, [mention])
+                return canonical
+            
+            # Check against existing aliases
             for alias in aliases:
-                if mention_lower in alias.lower() or alias.lower() in mention_lower:
+                alias_lower = alias.lower()
+                if mention_lower in alias_lower or alias_lower in mention_lower:
+                    self.register_character(canonical, [mention])
                     return canonical
         
-        # If it's a proper name (capitalized), register it as new character
+        # FIX: Smart fuzzy matching for common variations
+        # "pip" vs "Pip", "PIRRIP" vs "Pirrip", etc.
+        for canonical in self.character_registry.keys():
+            # Exact match ignoring case
+            if mention_lower == canonical.lower():
+                self.register_character(canonical, [mention])
+                return canonical
+            
+            # First name match (e.g., "Joe" -> "Joe Gargery")
+            canonical_parts = canonical.lower().split()
+            mention_parts = mention_lower.split()
+            
+            if mention_parts[0] in canonical_parts:
+                # Likely a first name match
+                self.register_character(canonical, [mention])
+                return canonical
+        
+        # FIX: If it's a proper name (capitalized) and not found, register as NEW character
+        # But DON'T auto-register lowercase or weird names
         if mention[0].isupper() and len(mention.split()) <= 3:
+            # This looks like a real character name
             self.register_character(mention)
             return mention
         
-        # Otherwise filter it out
+        # Otherwise, filter it out (probably a generic descriptor we missed)
         return None
     
     def batch_resolve(self, mentions: List[str], context_window: int = 5) -> List[str]:

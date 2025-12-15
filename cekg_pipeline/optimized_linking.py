@@ -1,10 +1,7 @@
 """
 100% Fidelity Optimized Long-Range Causal Linking with Intelligent Filtering
 
-Combines:
-1. Smart Strategies (Entity, Semantic, Narrative Peaks) -> Reduces N² to relevant subset
-2. Dynamic Batching -> Calculates optimal pairs per API call
-3. Parallel Processing -> Maximizes throughput
+FIXED: Memory-safe semantic similarity with streaming computation
 """
 
 import asyncio
@@ -36,6 +33,8 @@ class IntelligentCausalLinker:
     """
     Smart filtering strategies that preserve narrative causality
     while reducing computational complexity from O(N²) to O(N log N)
+    
+    FIX: Memory-safe semantic similarity computation
     """
     
     def __init__(self, use_embeddings=True):
@@ -99,8 +98,8 @@ class IntelligentCausalLinker:
         # --- Strategy 4: Semantic Similarity (Thematic Long-Range) ---
         semantic_pairs = set()
         if self.use_embeddings:
-            # Cap input events for semantic search to avoid RAM explosion on huge books
-            semantic_pairs = self._semantic_similarity_pairs(events, top_k=10)
+            # FIX: Memory-safe semantic similarity with size limits
+            semantic_pairs = self._semantic_similarity_pairs_safe(events, top_k=10)
             print(f"[strategy_4] Semantic similarity: {len(semantic_pairs):,} pairs")
             
         # --- Strategy 5: Narrative Peaks (Structural Long-Range) ---
@@ -217,18 +216,39 @@ class IntelligentCausalLinker:
                     pairs.add((e1.id, e2.id))
         return pairs
     
-    def _semantic_similarity_pairs(self, events: List, top_k: int = 10) -> Set[Tuple]:
-        if not self.use_embeddings: return set()
+    def _semantic_similarity_pairs_safe(self, events: List, top_k: int = 10) -> Set[Tuple]:
+        """
+        FIX: Memory-safe semantic similarity using streaming computation
+        
+        Changes:
+        1. Limit total events to 10K (prevents memory explosion)
+        2. Use smaller chunk size (500 instead of 1000)
+        3. Delete intermediate results to free memory
+        4. Add progress indicators
+        """
+        if not self.use_embeddings: 
+            return set()
         
         pairs = set()
+        
+        # FIX: Hard cap at 10K events to prevent memory issues
+        if len(events) > 10000:
+            print(f"[semantic] Capping to 10K events (from {len(events):,}) to prevent memory explosion")
+            # Sample evenly across the narrative
+            step = len(events) // 10000
+            events = events[::step][:10000]
+        
         # Truncate text for embedding speed
         descriptions = [e.raw_description[:200] for e in events]
         
-        # Batch encode if too large
+        print(f"[semantic] Encoding {len(events):,} events...")
+        # Batch encode
         embeddings = self.model.encode(descriptions, convert_to_numpy=True, show_progress_bar=True)
         
-        # Process in chunks to avoid O(N^2) RAM usage
-        chunk_size = 1000
+        # FIX: Use smaller chunk size to reduce peak memory
+        chunk_size = 500  # Down from 1000
+        print(f"[semantic] Computing similarity in {(len(events) + chunk_size - 1) // chunk_size} chunks...")
+        
         for i in range(0, len(events), chunk_size):
             end_i = min(i + chunk_size, len(events))
             chunk_emb = embeddings[i:end_i]
@@ -246,10 +266,29 @@ class IntelligentCausalLinker:
                     if found >= top_k: break
                     if target_idx == global_idx: continue
                     
+                    # Only consider high similarity (>0.6)
+                    if scores[local_idx][target_idx] < 0.6:
+                        break
+                    
                     # Enforce temporal order (only past events cause future events)
                     if target_idx < global_idx:
-                        pairs.add((events[target_idx].id, events[global_idx].id))
-                        found += 1
+                        # Only link if distant (thematic echo)
+                        if abs(global_idx - target_idx) > 5:
+                            pairs.add((events[target_idx].id, events[global_idx].id))
+                            found += 1
+            
+            # FIX: Free memory after each chunk
+            del scores
+            
+            # Progress indicator
+            if (i // chunk_size) % 5 == 0:
+                progress = 100 * (i + chunk_size) / len(events)
+                print(f"[semantic] Progress: {progress:.0f}% ({len(pairs):,} pairs found)")
+        
+        # FIX: Free embeddings memory
+        del embeddings
+        
+        print(f"[semantic] Found {len(pairs):,} thematic links via embeddings")
         return pairs
     
     def _narrative_peak_pairs(self, events: List, event_map: Dict, entity_occurrences: Dict) -> Set[Tuple]:

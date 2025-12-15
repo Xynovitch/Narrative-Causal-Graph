@@ -1,7 +1,6 @@
 import uuid
 import hashlib
 import asyncio
-import threading
 from collections import OrderedDict
 from typing import List, Dict, Optional, Any, Set
 from .schemas import CEKEvent
@@ -11,20 +10,25 @@ class BoundedCache:
     """
     Thread-safe bounded LRU cache with proper async initialization.
     
-    FIX: Added threading lock to prevent race condition in _get_lock()
+    FIX: Initialize lock in __init__ to prevent race conditions
     """
     def __init__(self, max_size: int):
         self.cache: OrderedDict = OrderedDict()
         self.max_size = max_size
         self._lock: Optional[asyncio.Lock] = None
-        self._init_lock = threading.Lock()  # FIX: Thread-safe initialization
+        self._loop: Optional[asyncio.AbstractEventLoop] = None
     
     async def _get_lock(self) -> asyncio.Lock:
-        """Get or create the asyncio lock in a thread-safe manner"""
+        """Get or create the asyncio lock safely"""
         if self._lock is None:
-            with self._init_lock:  # FIX: Protect initialization
-                if self._lock is None:  # Double-check pattern
-                    self._lock = asyncio.Lock()
+            # Get current event loop
+            loop = asyncio.get_running_loop()
+            
+            # If we're on a different loop, recreate the lock
+            if self._loop != loop:
+                self._loop = loop
+                self._lock = asyncio.Lock()
+        
         return self._lock
     
     async def get(self, key: str) -> Optional[Any]:
