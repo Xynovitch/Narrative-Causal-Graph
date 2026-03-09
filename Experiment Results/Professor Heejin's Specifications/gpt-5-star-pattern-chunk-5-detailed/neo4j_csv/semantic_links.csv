@@ -1,0 +1,387 @@
+:START_ID,:END_ID,:TYPE,cue,confidence
+event/6b1365fd,event/11acc421,EXPLANATION,or,0.8
+event/5286b7be,event/540fe936,CONTRAST,but,0.8
+event/59480b17,event/c5a5c042,CONTRAST,"but, however",0.7
+event/55870039,event/ac1f73ff,CONTRAST,"but, however",0.8
+event/c5a5c042,event/af070c89,CONTRAST,"but, however",0.7
+event/3ebc1b5d,event/1ba7af76,CONTRAST,"but, however",0.8
+event/4876a46c,event/29d31bf8,PARALLELISM,,0.8
+event/658e9129,event/6cf5c280,ELABORATION,"so as to, greater sense of",0.9
+event/fe95ce12,event/ae63cb75,ELABORATION,"being, you know",0.8
+event/7f3b752b,event/67214038,ELABORATION,"because, therefore",0.8
+event/57df8a40,event/714ba1c8,CONTRAST,"but, however",0.7
+event/4a5c4a28,event/8f82b207,CONTRAST,"not nearly so, nor yet so",0.8
+event/714ba1c8,event/7e16a546,CONTRAST,"and, not",0.9
+event/af070c89,event/e2a9e9b7,ELABORATION,"that, seems to me",0.7
+event/de59c287,event/1506fca0,EXPLANATION,on the authority of,0.8
+event/711e3f9e,event/e554578a,ELABORATION,"and, also",0.8
+event/097335f4,event/cae9831a,CONTRAST,"if, but",0.7
+event/8c576e02,event/6f83feba,EXPLANATION,"to give, therefore",0.85
+event/83d0de1c,event/4d0f3d23,CONTRAST,"in comparison with, but",0.8
+event/7d089f83,event/a2f58031,ELABORATION,,0.8
+event/c7783e24,event/950d3bcd,ELABORATION,"with, among",0.8
+event/779a57b7,event/5a9407af,ELABORATION,,0.9
+event/ccc0bdae,event/1107b4fc,ELABORATION,"all, with",0.8
+event/345a9515,event/ce798fe7,CONTRAST,and,0.8
+event/4b5924f1,event/b7fde553,PARALLELISM,,0.85
+event/4baac7b8,event/59480b17,ELABORATION,"which, about",0.8
+event/5b743135,event/711e3f9e,ELABORATION,"over, up",0.8
+event/6330a707,event/bdfe789c,CONTRAST,,0.7
+event/4b5924f1,event/8f82b207,CONTRAST,"not nearly so, nor yet so",0.85
+event/33cc0f5c,event/0ab8b034,ELABORATION,"in vain, attempt to hide",0.8
+event/711e3f9e,event/e719e5a6,CONTRAST,and,0.8
+event/0c8b5fd1,event/6f83feba,ELABORATION,"to give, sense of",0.8
+event/c75f5c12,event/534f1fef,ELABORATION,"where, place",0.8
+event/7e16a546,event/963fa318,CONTRAST,"if, not",0.8
+event/7d089f83,event/69a4d27c,ELABORATION,and,0.9
+event/65b050bf,event/7a2449b3,CONTRAST,as if,0.7
+event/4b5924f1,event/043c7f6a,ELABORATION,by which,0.7
+event/c008a20f,event/c75f5c12,CONTRAST,"but, however",0.7
+event/4fdba892,event/11acc421,CONTRAST,or,0.8
+event/963fa318,event/55870039,CONTRAST,"if, but",0.7
+event/c1efe709,event/f5604cfe,CONTRAST,"darkly, several times",0.7
+event/b7fde553,event/9352d9b5,CONTRAST,"like, when you were near it",0.7
+event/18ab4882,event/ed09297e,ELABORATION,then,0.8
+event/f40f620b,event/eacab95e,CONTRAST,"but, however",0.7
+event/539228f8,event/ea934bc2,ELABORATION,also,0.8
+event/f5604cfe,event/8c576e02,CONTRAST,"but, however",0.7
+event/8f82b207,event/80576e18,CONTRAST,"not, yet, only",0.8
+event/12c82c6f,event/cc9b1865,CONTRAST,"if, kindly, please",0.8
+event/4f78b1ce,event/c9c299c3,CONTRAST,"but, now",0.8
+event/b7fde553,event/80576e18,ELABORATION,,0.7
+event/3ebc1b5d,event/ccc0bdae,CONTRAST,"but, however",0.7
+event/9352d9b5,event/2006bc51,CONTRAST,"like, ugly",0.7
+event/ccc0bdae,event/11acc421,CONTRAST,or,0.8
+event/701ad840,event/5fc7df96,CONTRAST,,0.7
+event/12893ca6,event/6b8769a1,CONTRAST,"but, however",0.7
+event/b601e1bf,event/e45f9d71,CONTRAST,as you may think,0.8
+event/a711e2dd,event/83d0de1c,CONTRAST,in comparison with,0.8
+event/5cc29abd,event/448542e2,ELABORATION,"under, because",0.8
+event/8e89ffd2,event/ee2ab1c2,ELABORATION,called,0.9
+event/96a0b384,event/80576e18,CONTRAST,"only, seemed",0.7
+event/c7783e24,event/4b5924f1,CONTRAST,"as, then",0.8
+event/29d31bf8,event/9f84fd1c,PARALLELISM,,0.9
+event/35fa82c6,event/ca4faf94,ELABORATION,,0.8
+event/8c576e02,event/6cf5c280,ELABORATION,"so as to, greater sense of",0.8
+event/67214038,event/cae9831a,CONTRAST,"if, but",0.7
+event/59480b17,event/ae4ee0a1,ELABORATION,that,0.8
+event/32f3486c,event/4baac7b8,CONTRAST,"but, however",0.8
+event/350fca5b,event/5019fa91,CONTRAST,as if,0.7
+event/9f18cd24,event/5286b7be,CONTRAST,"but, however",0.7
+event/11acc421,event/1107b4fc,CONTRAST,,0.7
+event/4876a46c,event/ce798fe7,PARALLELISM,,0.8
+event/711e3f9e,event/7f3b752b,CONTRAST,"but, however",0.7
+event/f5604cfe,event/55d8e981,CONTRAST,"but, however",0.7
+event/4876a46c,event/1f8defc0,ELABORATION,who,0.8
+event/8b82a891,event/c5a5c042,CONTRAST,"but, however",0.7
+event/db7f6cbb,event/5c13cb8c,ELABORATION,,0.8
+event/0c8b5fd1,event/6cf5c280,ELABORATION,"so as to, greater sense",0.8
+event/6b8769a1,event/1b932f0a,EXPLANATION,and so,0.8
+event/2006bc51,event/268f52ab,ELABORATION,as if,0.8
+event/23153d02,event/8b82a891,CONTRAST,,0.8
+event/c91057cf,event/963fa318,CONTRAST,"if, but",0.8
+event/7573bb99,event/5b743135,ELABORATION,"in order to, to, so that",0.8
+event/eacab95e,event/8b82a891,ELABORATION,that,0.8
+event/ca3957cb,event/5e21b7a8,ELABORATION,while,0.8
+event/eacab95e,event/23153d02,ELABORATION,,0.8
+event/ac1f73ff,event/88a1ed7f,EXPLANATION,to,0.8
+event/05c23842,event/de59c287,ELABORATION,,0.9
+event/4f78b1ce,event/ce881653,ELABORATION,"wondered, thought",0.8
+event/f62d43c1,event/5019fa91,ELABORATION,as if,0.8
+event/345a9515,event/a2f58031,ELABORATION,,0.9
+event/268f52ab,event/4f78b1ce,CONTRAST,"as if, after",0.7
+event/8b82a891,event/59480b17,CONTRAST,"but, however",0.7
+event/4f78b1ce,event/fae90c32,CONTRAST,"but, however",0.8
+event/18ab4882,event/e4310004,ELABORATION,in an upright position,0.8
+event/7d089f83,event/345a9515,CONTRAST,,0.8
+event/32f3486c,event/b9e341ca,ELABORATION,regarding,0.8
+event/57df8a40,event/d9d3e81d,CONTRAST,"but, however",0.7
+event/80576e18,event/9352d9b5,ELABORATION,like,0.8
+event/6f83feba,event/ae63cb75,CONTRAST,"but, however",0.7
+event/db7f6cbb,event/2f281f50,ELABORATION,,0.85
+event/1f8defc0,event/63c81048,CONTRAST,,0.7
+event/ea934bc2,event/8b4dbd3f,ELABORATION,too,0.8
+event/23153d02,event/c5a5c042,CONTRAST,"but, however",0.8
+event/25232dd4,event/613a98f8,CONTRAST,"but, however",0.7
+event/7573bb99,event/e554578a,ELABORATION,and,0.8
+event/af070c89,event/ae4ee0a1,ELABORATION,that,0.9
+event/42dc2a7f,event/55870039,CONTRAST,"but, however",0.8
+event/e554578a,event/e719e5a6,CONTRAST,"but, however",0.8
+event/32f3486c,event/f40f620b,ELABORATION,,0.9
+event/963fa318,event/47aea17c,CONTRAST,"if, partly",0.7
+event/4fdba892,event/ccc0bdae,CONTRAST,"from, among",0.7
+event/9352d9b5,event/7c06951e,CONTRAST,"like, ugly, other",0.8
+event/6f83feba,event/12893ca6,CONTRAST,or,0.8
+event/e45f9d71,event/33cc0f5c,CONTRAST,"as you may think, peculiar to himself",0.8
+event/dbc97928,event/3ebc1b5d,CONTRAST,"but, however",0.8
+event/83f9f15a,event/2540425a,CONTRAST,"but, however",0.7
+event/63c81048,event/c008a20f,CONTRAST,"but, however",0.7
+event/eacab95e,event/59480b17,ELABORATION,"which, about",0.8
+event/fe95ce12,event/6cf5c280,ELABORATION,"after, so as to",0.8
+event/1506fca0,event/32f3486c,CONTRAST,"as, but",0.8
+event/f5604cfe,event/658e9129,CONTRAST,as far as,0.7
+event/80576e18,event/043c7f6a,ELABORATION,"which, by which",0.8
+event/a0a64ec4,event/867d453a,CONTRAST,"but, however",0.8
+event/83d0de1c,event/0ab8b034,CONTRAST,"in comparison, in vain",0.8
+event/63c81048,event/d5e58a78,PARALLELISM,,0.9
+event/7a2449b3,event/bdfe789c,ELABORATION,"as if, cautiously",0.8
+event/0e05b194,event/950d3bcd,CONTRAST,"but, however",0.8
+event/7573bb99,event/5c19698e,CONTRAST,"but, however",0.7
+event/3806a3bd,event/bdfe789c,CONTRAST,"but, however",0.7
+event/6cf5c280,event/a30fc003,ELABORATION,to give,0.9
+event/cc9b1865,event/53b8738b,CONTRAST,"perhaps, shouldn't",0.7
+event/6b8769a1,event/cc9b1865,ELABORATION,"and, so",0.8
+event/db7f6cbb,event/779a57b7,ELABORATION,also,0.8
+event/a2f58031,event/9f84fd1c,PARALLELISM,,0.8
+event/a711e2dd,event/b601e1bf,ELABORATION,"in these fearful terms, shall be",0.8
+event/5a9407af,event/2f281f50,ELABORATION,,0.8
+event/ca93846d,event/e554578a,EXPLANATION,"because, therefore",0.8
+event/5019fa91,event/65b050bf,CONTRAST,"among, as if",0.7
+event/af070c89,event/db7f6cbb,ELABORATION,that,0.7
+event/69a4d27c,event/4876a46c,CONTRAST,"but, however",0.7
+event/31c4e437,event/701ad840,ELABORATION,,0.9
+event/5286b7be,event/0e05b194,ELABORATION,and,0.8
+event/e7b8310e,event/32f3486c,ELABORATION,as,0.8
+event/8b82a891,event/ae4ee0a1,CONTRAST,"but, however",0.8
+event/1107b4fc,event/69a4d27c,ELABORATION,,0.8
+event/53b8738b,event/18ab4882,CONTRAST,"perhaps, but",0.7
+event/d5e58a78,event/c008a20f,CONTRAST,"but, however",0.7
+event/9352d9b5,event/268f52ab,CONTRAST,"like, as if",0.8
+event/d9d3e81d,event/c235c4e0,CONTRAST,"but, however",0.8
+event/4d0f3d23,event/0ab8b034,CONTRAST,"in vain, attempt to hide",0.8
+event/6919721e,event/cae9831a,CONTRAST,"but, however",0.7
+event/1506fca0,event/4baac7b8,CONTRAST,unreasonably,0.8
+event/d4866a90,event/d8a6b8bf,CONTRAST,"but, however",0.8
+event/e2a9e9b7,event/db7f6cbb,ELABORATION,"for certain, seems to me",0.8
+event/e554578a,event/7f3b752b,CONTRAST,"but, however",0.8
+event/5019fa91,event/3806a3bd,CONTRAST,"but, however",0.7
+event/7d089f83,event/4876a46c,ELABORATION,and,0.8
+event/c235c4e0,event/963fa318,CONTRAST,if,0.7
+event/a711e2dd,event/e45f9d71,CONTRAST,as you may think,0.8
+event/bba196a1,event/6469b454,CONTRAST,"but, however",0.7
+event/0ab8b034,event/ca93846d,CONTRAST,"but, however",0.8
+event/ac1f73ff,event/47aea17c,EXPLANATION,to keep,0.8
+event/5e21b7a8,event/714ba1c8,CONTRAST,"while, but",0.8
+event/cae9831a,event/350fca5b,CONTRAST,"wish, if",0.7
+event/12c82c6f,event/53b8738b,CONTRAST,"perhaps, shouldn't",0.7
+event/711e3f9e,event/5c19698e,PARALLELISM,,0.7
+event/448542e2,event/d9d3e81d,CONTRAST,"but, however",0.7
+event/33cc0f5c,event/ca93846d,ELABORATION,"of, may",0.7
+event/de59c287,event/32f3486c,CONTRAST,"as, but",0.8
+event/be8ba94d,event/ca4faf94,ELABORATION,"my sister, wife of",0.8
+event/c235c4e0,event/7e16a546,ELABORATION,,0.9
+event/55d8e981,event/8c576e02,CONTRAST,,0.7
+event/e2a9e9b7,event/779a57b7,CONTRAST,"but, however",0.7
+event/6330a707,event/65b050bf,ELABORATION,among,0.8
+event/b7fde553,event/7c06951e,CONTRAST,"and, but",0.7
+event/658e9129,event/fe95ce12,CONTRAST,"but, however",0.7
+event/dbc97928,event/4fdba892,CONTRAST,"beyond, from which",0.8
+event/6f83feba,event/ba348de4,CONTRAST,and,0.8
+event/a30fc003,event/ae63cb75,CONTRAST,"but, however",0.7
+event/714ba1c8,event/c91057cf,CONTRAST,"but, however",0.8
+event/ed09297e,event/b601e1bf,CONTRAST,"but, however",0.8
+event/3806a3bd,event/7a2449b3,CONTRAST,as if,0.7
+event/043c7f6a,event/7c06951e,CONTRAST,"but, on the other hand",0.8
+event/268f52ab,event/bba196a1,CONTRAST,,0.7
+event/c7783e24,event/4a5c4a28,CONTRAST,still,0.7
+event/8e89ffd2,event/de59c287,ELABORATION,"as, namely",0.8
+event/83f9f15a,event/539228f8,ELABORATION,also,0.7
+event/31c4e437,event/d5e58a78,CONTRAST,and,0.8
+event/a30fc003,event/12893ca6,CONTRAST,or,0.8
+event/d9d3e81d,event/714ba1c8,ELABORATION,"what, I believe",0.8
+event/a2f58031,event/4876a46c,CONTRAST,,0.8
+event/658e9129,event/8c576e02,ELABORATION,"as, into",0.8
+event/e7b8310e,event/ee2ab1c2,ELABORATION,and,0.9
+event/950d3bcd,event/96a0b384,ELABORATION,for,0.8
+event/d8a6b8bf,event/540fe936,CONTRAST,but,0.8
+event/8f82b207,event/b7fde553,CONTRAST,"not, just, and",0.85
+event/6330a707,event/7a2449b3,ELABORATION,as if,0.8
+event/1107b4fc,event/345a9515,CONTRAST,"but, however",0.8
+event/32f3486c,event/eacab95e,CONTRAST,"but, however",0.8
+event/88a1ed7f,event/47aea17c,CONTRAST,to keep myself,0.8
+event/043c7f6a,event/268f52ab,CONTRAST,as if,0.7
+event/5cc29abd,event/bda0e383,PARALLELISM,,0.9
+event/714ba1c8,event/c235c4e0,CONTRAST,"but, however",0.8
+event/12893ca6,event/cc9b1865,CONTRAST,"if, but",0.7
+event/96a0b384,event/b7fde553,CONTRAST,and,0.8
+event/25de4a00,event/ca3957cb,ELABORATION,but,0.8
+event/11acc421,event/7d089f83,CONTRAST,"but, however",0.7
+event/b9e341ca,event/eacab95e,ELABORATION,"regarding, idea",0.8
+event/6469b454,event/c9c299c3,CONTRAST,but,0.8
+event/96a0b384,event/8f82b207,CONTRAST,"not nearly so, nor yet so",0.8
+event/1f8defc0,event/31c4e437,PARALLELISM,,0.8
+event/e719e5a6,event/7f3b752b,CONTRAST,"but, however",0.7
+event/4876a46c,event/9f84fd1c,PARALLELISM,,0.85
+event/ae63cb75,event/12893ca6,CONTRAST,or,0.8
+event/c5a5c042,event/ae4ee0a1,CONTRAST,"but, however",0.8
+event/55d8e981,event/0c8b5fd1,CONTRAST,"but, however",0.8
+event/15c46efa,event/5e21b7a8,CONTRAST,while,0.7
+event/9f18cd24,event/540fe936,CONTRAST,but,0.8
+event/ae4ee0a1,event/db7f6cbb,CONTRAST,"but, however",0.7
+event/345a9515,event/4876a46c,CONTRAST,and,0.8
+event/0c8b5fd1,event/a30fc003,ELABORATION,"to give, sense of",0.8
+event/ce881653,event/c9c299c3,CONTRAST,but,0.8
+event/05c23842,event/e7b8310e,EXPLANATION,so,0.8
+event/8c576e02,event/fe95ce12,CONTRAST,"but, however",0.7
+event/5c19698e,event/e719e5a6,CONTRAST,,0.8
+event/db7f6cbb,event/5a9407af,ELABORATION,,0.8
+event/b601e1bf,event/33cc0f5c,CONTRAST,"but, however",0.7
+event/d5e58a78,event/5fc7df96,CONTRAST,"but, however",0.8
+event/ed09297e,event/e4310004,ELABORATION,,0.8
+event/5b743135,event/e554578a,ELABORATION,and,0.8
+event/e554578a,event/5c19698e,CONTRAST,"but, however",0.8
+event/ae4ee0a1,event/779a57b7,CONTRAST,"but, however",0.8
+event/e45f9d71,event/83d0de1c,CONTRAST,in comparison with,0.85
+event/4fdba892,event/3ebc1b5d,CONTRAST,"but, however",0.8
+event/5c13cb8c,event/4fdba892,CONTRAST,"beyond, from which",0.8
+event/33cc0f5c,event/5b743135,ELABORATION,"of, way",0.8
+event/b9e341ca,event/23153d02,ELABORATION,regarding,0.8
+event/c0fa6780,event/8c576e02,ELABORATION,"because, as, which means",0.8
+event/4baac7b8,event/eacab95e,ELABORATION,gave me an odd idea,0.7
+event/6b8769a1,event/53b8738b,CONTRAST,"perhaps, shouldn't",0.7
+event/e554578a,event/097335f4,CONTRAST,"but, however",0.7
+event/a30fc003,event/ba348de4,CONTRAST,and,0.8
+event/5e21b7a8,event/c235c4e0,CONTRAST,"while, at that time",0.7
+event/0c8b5fd1,event/fe95ce12,CONTRAST,"but, however",0.7
+event/1107b4fc,event/7d089f83,CONTRAST,"but, however",0.8
+event/5e21b7a8,event/d9d3e81d,CONTRAST,"but, however",0.7
+event/bba196a1,event/ce881653,CONTRAST,"but, however",0.7
+event/268f52ab,event/6469b454,CONTRAST,"as if, horrible",0.8
+event/c5a5c042,event/db7f6cbb,CONTRAST,"but, however",0.7
+event/59480b17,event/af070c89,ELABORATION,that,0.8
+event/658e9129,event/0c8b5fd1,CONTRAST,"most, helplessly",0.8
+event/1107b4fc,event/a2f58031,ELABORATION,and,0.8
+event/1ba7af76,event/1107b4fc,CONTRAST,"but, however",0.8
+event/ce798fe7,event/9f84fd1c,PARALLELISM,,0.9
+event/963fa318,event/ac1f73ff,CONTRAST,"if, but",0.7
+event/5b743135,event/e719e5a6,CONTRAST,and,0.8
+event/ee2ab1c2,event/de59c287,ELABORATION,"as, called",0.8
+event/5b743135,event/5c19698e,ELABORATION,"that, will",0.8
+event/55870039,event/47aea17c,EXPLANATION,"to, because",0.8
+event/8e89ffd2,event/1506fca0,ELABORATION,on the authority of,0.8
+event/e45f9d71,event/4d0f3d23,CONTRAST,"as, but",0.8
+event/f4bdf49d,event/5019fa91,ELABORATION,as if,0.8
+event/534f1fef,event/92e245de,ELABORATION,"where, among",0.8
+event/7e16a546,event/42dc2a7f,CONTRAST,"but, however",0.8
+event/2006bc51,event/4f78b1ce,CONTRAST,as,0.8
+event/7f3b752b,event/d9ccdf37,CONTRAST,"but, however",0.7
+event/3806a3bd,event/65b050bf,ELABORATION,among,0.8
+event/83d0de1c,event/33cc0f5c,CONTRAST,"in comparison, but",0.8
+event/779a57b7,event/5c13cb8c,ELABORATION,,0.8
+event/5c19698e,event/7f3b752b,EXPLANATION,"because, therefore",0.8
+event/4b5924f1,event/80576e18,ELABORATION,"as, then",0.8
+event/bda0e383,event/448542e2,CONTRAST,before,0.7
+event/ae63cb75,event/ba348de4,PARALLELISM,,0.8
+event/12893ca6,event/1b932f0a,CONTRAST,"but, however",0.7
+event/1b932f0a,event/cc9b1865,ELABORATION,"if, please",0.7
+event/ee2ab1c2,event/f40f620b,CONTRAST,"never, either",0.8
+event/0e05b194,event/4a5c4a28,CONTRAST,still,0.7
+event/9352d9b5,event/bba196a1,CONTRAST,,0.7
+event/779a57b7,event/2f281f50,ELABORATION,,0.9
+event/bc8ec6bd,event/83d0de1c,CONTRAST,in comparison with,0.8
+event/f4bdf49d,event/65b050bf,CONTRAST,"among, and",0.7
+event/57df8a40,event/7e16a546,CONTRAST,and not,0.8
+event/4d0f3d23,event/33cc0f5c,ELABORATION,"peculiar, way",0.8
+event/7573bb99,event/711e3f9e,ELABORATION,"over, draw",0.8
+event/12c82c6f,event/6b8769a1,EXPLANATION,"because, and so",0.8
+event/31c4e437,event/63c81048,CONTRAST,and,0.8
+event/c0fa6780,event/0c8b5fd1,ELABORATION,"up, looked, helplessly",0.8
+event/bdfe789c,event/d8a6b8bf,CONTRAST,"but, however",0.7
+event/1506fca0,event/b9e341ca,ELABORATION,regarding,0.7
+event/e4310004,event/b601e1bf,CONTRAST,"but, however",0.7
+event/18ab4882,event/a711e2dd,CONTRAST,"but, however",0.7
+event/613a98f8,event/3e23e17f,ELABORATION,considering,0.7
+event/5019fa91,event/7a2449b3,CONTRAST,as if,0.7
+event/fa9319f8,event/5fc7df96,CONTRAST,"but, however",0.8
+event/e719e5a6,event/097335f4,CONTRAST,"but, however",0.7
+event/8c576e02,event/0c8b5fd1,CONTRAST,"down, up, powerfully, helplessly",0.9
+event/5cc29abd,event/ca3957cb,CONTRAST,but,0.8
+event/53b8738b,event/696c9a8b,CONTRAST,"but, however",0.8
+event/e7b8310e,event/de59c287,ELABORATION,"as, which means",0.8
+event/5c13cb8c,event/3ebc1b5d,CONTRAST,"but, however",0.8
+event/ce798fe7,event/29d31bf8,PARALLELISM,,0.8
+event/c0fa6780,event/658e9129,ELABORATION,as far as,0.8
+event/7ae5111e,event/83f9f15a,ELABORATION,and,0.9
+event/f40f620b,event/4baac7b8,CONTRAST,"but, however",0.7
+event/c91057cf,event/42dc2a7f,CONTRAST,"if, but",0.7
+event/8f82b207,event/9352d9b5,CONTRAST,like,0.8
+event/6919721e,event/67214038,ELABORATION,"that, what",0.8
+event/963fa318,event/88a1ed7f,ELABORATION,"to, upon",0.8
+event/6a24c75e,event/f5604cfe,ELABORATION,and,0.8
+event/a2f58031,event/29d31bf8,PARALLELISM,,0.8
+event/c008a20f,event/5fc7df96,ELABORATION,,0.9
+event/0ab8b034,event/711e3f9e,ELABORATION,"for example, such as",0.8
+event/7f3b752b,event/097335f4,ELABORATION,"because, therefore",0.8
+event/950d3bcd,event/b7fde553,CONTRAST,and,0.8
+event/42dc2a7f,event/ac1f73ff,CONTRAST,"but, however",0.7
+event/1506fca0,event/f40f620b,CONTRAST,"never, either",0.8
+event/8e89ffd2,event/e7b8310e,ELABORATION,so,0.9
+event/5286b7be,event/4a5c4a28,CONTRAST,still,0.7
+event/e4310004,event/e45f9d71,CONTRAST,as you may think,0.8
+event/043c7f6a,event/9352d9b5,CONTRAST,like,0.8
+event/950d3bcd,event/8f82b207,CONTRAST,"not nearly so, nor yet so",0.8
+event/8b82a891,event/af070c89,CONTRAST,"but, however",0.8
+event/ba348de4,event/12893ca6,CONTRAST,or,0.8
+event/d8a6b8bf,event/0e05b194,ELABORATION,and,0.7
+event/6cf5c280,event/6f83feba,ELABORATION,to give,0.9
+event/a30fc003,event/12c82c6f,CONTRAST,"but, however",0.7
+event/ee2ab1c2,event/1506fca0,ELABORATION,on the authority of,0.8
+event/9f84fd1c,event/1f8defc0,CONTRAST,"but, however",0.7
+event/f40f620b,event/b9e341ca,CONTRAST,"never, regarding",0.7
+event/8f82b207,event/043c7f6a,CONTRAST,"not, yet",0.8
+event/1f8defc0,event/701ad840,PARALLELISM,,0.8
+event/6cf5c280,event/ba348de4,CONTRAST,and,0.7
+event/de59c287,event/b9e341ca,ELABORATION,regarding,0.8
+event/80576e18,event/7c06951e,ELABORATION,"which, that",0.8
+event/7ae5111e,event/867d453a,ELABORATION,and,0.8
+event/7ae5111e,event/a0a64ec4,ELABORATION,and,0.9
+event/d9d3e81d,event/7e16a546,CONTRAST,and,0.8
+event/69a4d27c,event/345a9515,CONTRAST,"but, however",0.7
+event/3ebc1b5d,event/6b1365fd,CONTRAST,"but, however",0.8
+event/63c81048,event/701ad840,CONTRAST,and,0.7
+event/b9e341ca,event/4baac7b8,EXPLANATION,"because, derived from",0.8
+event/613a98f8,event/ca4faf94,CONTRAST,"but, however",0.7
+event/6f83feba,event/a30fc003,PARALLELISM,,1.0
+event/b601e1bf,event/83d0de1c,CONTRAST,"in comparison with, whereas",0.8
+event/448542e2,event/15c46efa,ELABORATION,"under, on",0.8
+event/de59c287,event/f40f620b,CONTRAST,"and, never",0.8
+event/5c19698e,event/097335f4,CONTRAST,"but, however",0.7
+event/613a98f8,event/be8ba94d,ELABORATION,then,0.8
+event/afa829f1,event/5019fa91,CONTRAST,,0.7
+event/701ad840,event/c008a20f,CONTRAST,"but, however",0.7
+event/b9e341ca,event/8b82a891,ELABORATION,"regarding, that",0.8
+event/96a0b384,event/4b5924f1,ELABORATION,,0.7
+event/bda0e383,event/5e21b7a8,CONTRAST,while,0.7
+event/6b1365fd,event/1107b4fc,CONTRAST,"but, however",0.8
+event/05c23842,event/ee2ab1c2,ELABORATION,and,0.9
+event/bc8ec6bd,event/b601e1bf,CONTRAST,"but, however",0.8
+event/e45f9d71,event/0ab8b034,CONTRAST,"as, in vain",0.8
+event/0e05b194,event/540fe936,CONTRAST,but,0.8
+event/59480b17,event/e2a9e9b7,CONTRAST,"but, however",0.7
+event/867d453a,event/2540425a,CONTRAST,"but, however",0.7
+event/1b932f0a,event/18ab4882,ELABORATION,"with, and",0.8
+event/d5e58a78,event/701ad840,ELABORATION,and,0.8
+event/83d0de1c,event/ca93846d,CONTRAST,"in comparison, may",0.7
+event/cc9b1865,event/18ab4882,CONTRAST,"but, however",0.8
+event/5286b7be,event/c7783e24,CONTRAST,"but, while",0.8
+event/c235c4e0,event/42dc2a7f,CONTRAST,,0.7
+event/3ebc1b5d,event/11acc421,CONTRAST,or,0.8
+event/05c23842,event/8e89ffd2,ELABORATION,"and, nothing longer or more explicit than",0.9
+event/a2f58031,event/ce798fe7,CONTRAST,,0.8
+event/d9d3e81d,event/c91057cf,ELABORATION,"if, couldn't",0.8
+event/acaaa237,event/350fca5b,CONTRAST,or,0.7
+event/7c06951e,event/268f52ab,ELABORATION,as if,0.8
+event/bc8ec6bd,event/e45f9d71,CONTRAST,as you may think,0.8
+event/5e21b7a8,event/57df8a40,ELABORATION,,0.8
+event/42dc2a7f,event/963fa318,CONTRAST,"if, but",0.8
+event/15c46efa,event/d9d3e81d,CONTRAST,"but, however",0.7
+event/e7b8310e,event/1506fca0,ELABORATION,on the authority of,0.8
+event/4a5c4a28,event/950d3bcd,CONTRAST,"but, however",0.7
+event/c75f5c12,event/92e245de,ELABORATION,,0.9
+event/1b932f0a,event/53b8738b,CONTRAST,"perhaps, shouldn't",0.7
+event/65b050bf,event/bdfe789c,CONTRAST,"cautiously, among",0.7
+event/4f78b1ce,event/6469b454,CONTRAST,"but, however",0.8
+event/e719e5a6,event/67214038,CONTRAST,"but, however",0.7
+event/11acc421,event/1ba7af76,CONTRAST,"or, but",0.8
+event/12c82c6f,event/1b932f0a,ELABORATION,"with, as",0.8
+event/fae90c32,event/c9c299c3,CONTRAST,but,0.8

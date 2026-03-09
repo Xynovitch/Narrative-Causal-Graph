@@ -1,0 +1,161 @@
+:ID,name,eventType,actionType,source_quote,causeWeight,confidence,sequence,chapter,time,location
+event/23cd98ed,Pip identifies himself with a name,reflection/emotion,identify,"So, I called myself Pip, and came to be called Pip.",1.0,0.9,0,1,,
+event/b760a944,Pip reflects on his family name,reflection/emotion,reflect,"My father’s family name being Pirrip, and my Christian name Philip...",1.0,0.8,1,1,,
+event/6a7f14fe,Pip struggles with pronunciation,reflection/emotion,struggle,my infant tongue could make of both names nothing longer or more explicit than Pip.,1.0,0.7,2,1,,
+event/3c85710d,Pip identifies his family name,reflection/emotion,give,I give Pirrip as my father’s family name,1.0,0.7,3,1,,
+event/f7cc372f,Pip references his father's tombstone,perception/recognition,reference,on the authority of his tombstone,1.0,0.6,4,1,,
+event/7c2d8479,Pip mentions his sister,perception/recognition,mention,"and my sister,—Mrs. Joe Gargery, who married the blacksmith.",1.0,0.5,5,1,,
+event/f3d7db57,Pip reflects on never seeing his parents,reflection/emotion,reflect,As I never saw my father or my mother,1.0,0.8,6,1,,
+event/168b2644,Pip notes the absence of likeness of his parents,perception/recognition,note,and never saw any likeness of either of them,1.0,0.6,7,1,,
+event/fb23f5b7,Pip reflects on the time before photographs,reflection/emotion,reflect,(for their days were long before the days of photographs),1.0,0.5,8,1,,
+event/3b172c9c,Pip derives fancies about his parents from tombstones,reflection/emotion,derive,my first fancies regarding what they were like were unreasonably derived from their tombstones.,1.0,0.7,9,1,,
+event/5c011a34,Pip imagines his father's appearance,reflection/emotion,imagine,"The shape of the letters on my father’s, gave me an odd idea that he was a square, stout, dark man, with curly black hair.",1.0,0.6,10,1,,
+event/66b75bb0,Pip draws a conclusion about his mother,reflection/emotion,draw,I drew a childish conclusion that my mother was freckled and sickly.,1.0,0.7,11,1,,
+event/3112b56c,Pip perceives the inscription,perception/recognition,perceive,"From the character and turn of the inscription, “_Also Georgiana Wife of the Above_,”",1.0,0.6,12,1,,
+event/734dbf9d,Pip perceives the grave markers,perception/recognition,perceive,"To five little stone lozenges, each about a foot and a half long, which were arranged in a neat row beside their grave...",1.0,0.9,13,1,,
+event/7b887074,Pip reflects on his deceased brothers,reflection/emotion,reflect,"who gave up trying to get a living, exceedingly early in that universal struggle...",1.0,0.8,14,1,,
+event/573e24b1,Pip expresses a belief about his brothers,reflection/emotion,believe,I am indebted for a belief I religiously entertained that they had all been born on their backs with their hands in their trousers-pockets...,1.0,0.8,15,1,,
+event/95f60f48,Pip perceives the marsh country,perception/recognition,perceive,"Ours was the marsh country, down by the river, within, as the river wound, twenty miles of the sea.",1.0,0.9,16,1,afternoon towards evening,marsh country
+event/8ee9f7cd,Pip reflects on his impression,reflection/emotion,reflect,My first most vivid and broad impression of the identity of things seems to me to have been gained on a memorable raw afternoon towards evening.,1.0,0.8,17,1,,marsh country
+event/8e0b3073,Pip recognizes the churchyard,perception/recognition,recognize,I found out for certain that this bleak place overgrown with nettles was the churchyard,1.0,0.9,18,1,,churchyard
+event/b33f8cfa,Pip learns about the deceased,perception/recognition,learn,"that Philip Pirrip, late of this parish, and also Georgiana wife of the above, were dead and buried",1.0,0.8,19,1,,churchyard
+event/76794ee2,Pip learns about the infant children,perception/recognition,learn,"that Alexander, Bartholomew, Abraham, Tobias, and Roger, infant children of the aforesaid, were also dead and buried",1.0,0.8,20,1,,churchyard
+event/39ee4883,Pip perceives the marshes,perception/recognition,perceive,"the dark flat wilderness beyond the churchyard, intersected with dikes and mounds and gates, with scattered cattle feeding on it, was the marshes",1.0,0.7,21,1,,marshes
+event/b9aa27a8,Pip perceives the river,perception/recognition,perceive,the low leaden line beyond was the river,1.0,0.7,22,1,,marshes
+event/309e2546,Pip perceives the sea,perception/recognition,perceive,the distant savage lair from which the wind was rushing was the sea,1.0,0.7,23,1,,marshes
+event/d7ede6e2,Pip feels afraid,reflection/emotion,feel,the small bundle of shivers growing afraid of it all,1.0,0.9,24,1,,marshes
+event/c52160ad,Pip begins to cry,reflection/emotion,fear,beginning to cry,1.0,0.9,25,1,,marshes
+event/a5bbf1d3,A man starts up from among the graves,movement/departure,start,as a man started up from among the graves at the side of the church porch.,1.0,0.7,26,1,,church porch
+event/d91cb099,A man cries out to keep quiet,encounter/dialogue,fear,"“Hold your noise!” cried a terrible voice,",1.0,0.8,27,1,,church porch
+event/c9ca5f4a,A man threatens a little devil,conflict/threat,threaten,"“Keep still, you little devil, or I’ll cut your throat!”",1.0,0.9,28,1,,church porch
+event/62df8e22,Fearful man appears,perception/recognition,appear,"A fearful man, all in coarse grey, with a great iron on his leg.",1.0,0.7,29,1,,church porch
+event/26905bb9,Man's appearance described,perception/recognition,describe,"A man with no hat, and with broken shoes, and with an old rag tied round his head.",1.0,0.6,30,1,,church porch
+event/36cc5f83,Man's condition detailed,perception/recognition,detail,"A man who had been soaked in water, and smothered in mud, and lamed by stones, and cut by flints, and stung by nettles, and torn by briars.",1.0,0.6,31,1,,church porch
+event/0849133b,Man limps,action,limp,"who limped, and shivered, and glared, and growled;",1.0,0.6,32,1,,church porch
+event/92134c5e,Man shivers,action,shiver,"who limped, and shivered, and glared, and growled;",1.0,0.6,33,1,,church porch
+event/07c6b73d,Man glares,action,glare,"who limped, and shivered, and glared, and growled;",1.0,0.6,34,1,,church porch
+event/86cf3887,Man growls,action,growl,"who limped, and shivered, and glared, and growled;",1.0,0.6,35,1,,church porch
+event/59592dbc,Man's teeth chatter,action,chatter,whose teeth chattered in his head,1.0,0.6,36,1,,church porch
+event/32c3a10c,Man seizes Pip,action,seize,as he seized me by the chin.,1.0,0.7,37,1,,church porch
+event/3e296ebb,Pip pleads for mercy,encounter/dialogue,plead,"Oh! Don’t cut my throat, sir,” I pleaded in terror.",1.0,0.9,38,1,,church porch
+event/c346a52c,Pip expresses terror,reflection/emotion,feel,I pleaded in terror.,1.0,0.9,39,1,,church porch
+event/cdd72180,Pip begs not to be harmed,encounter/dialogue,beg,"Pray don’t do it, sir.",1.0,0.9,40,1,,church porch
+event/7a6e1750,Man speaks to Pip,encounter/dialogue,speak,"“Once more,” said the man, staring at me.",1.0,0.9,41,1,,church porch
+event/9363b59b,Man demands action from Pip,action,demand,“Give it mouth!”,1.0,0.9,42,1,,church porch
+event/872967fb,Man stares at Pip,perception/recognition,stare,staring at me.,1.0,0.8,43,1,,church porch
+event/c46c1fca,Man asks for Pip's home location,encounter/dialogue,demand,"“Show us where you live,” said the man.",1.0,0.8,44,1,,church porch
+event/346a2904,Man demands Pip to point out his home,encounter/dialogue,demand,“Pint out the place!”,1.0,0.9,45,1,,church porch
+event/7ac741c0,Pip points to the village,action,point,"I pointed to where our village lay, on the flat in-shore among the alder-trees and pollards, a mile or more from the church.",1.0,1.0,46,1,,the flat in-shore among the alder-trees and pollards
+event/98caa49a,Man looks at Pip,perception/recognition,watch,"The man, after looking at me for a moment,",1.0,0.8,47,1,,the flat in-shore among the alder-trees and pollards
+event/7be5184a,Man turns Pip upside down,action,turn,"turned me upside down,",1.0,0.9,48,1,,the flat in-shore among the alder-trees and pollards
+event/d49dd3b0,Man empties Pip's pockets,action,empty,and emptied my pockets.,1.0,0.9,49,1,,the flat in-shore among the alder-trees and pollards
+event/4b67ee9c,Pip finds nothing in pockets,reflection/emotion,perceive,There was nothing in them but a piece of bread.,1.0,0.7,50,1,,the flat in-shore among the alder-trees and pollards
+event/7b00ba3d,Church comes to itself,movement/departure,come,"when the church came to itself,",1.0,0.6,51,1,,church
+event/ef2b637e,Pip sees the steeple under his feet,perception/recognition,perceive,"I saw the steeple under my feet,",1.0,0.7,52,1,,church
+event/2811f6de,Pip is seated on a high tombstone,action,seat,"I was seated on a high tombstone,",1.0,0.8,53,1,,high tombstone
+event/9ceafd6e,Pip trembles,reflection/emotion,fear,trembling while he ate the bread ravenously.,1.0,0.9,54,1,,high tombstone
+event/1e8db4e6,Man eats the bread ravenously,action,eat,while he ate the bread ravenously.,1.0,0.9,55,1,,high tombstone
+event/5cc19add,Man comments on Pip's appearance,encounter/dialogue,comment,"You young dog,” said the man, licking his lips, “what fat cheeks you ha’ got.",1.0,0.9,56,1,,high tombstone
+event/42036a63,Pip perceives the size of others,perception/recognition,believe,I believe they were fat,1.0,0.6,57,1,at that time,high tombstone
+event/7fe10dd4,Pip reflects on his own size and strength,reflection/emotion,reflect,"though I was at that time undersized for my years, and not strong",1.0,0.7,58,1,at that time,high tombstone
+event/c52ba2ee,Man expresses desire to eat,conflict/threat,express,"Darn me if I couldn’t eat ’em,” said the man, with a threatening shake of his head",1.0,0.8,59,1,,high tombstone
+event/8155c64d,Man contemplates eating,reflection/emotion,contemplate,and if I han’t half a mind to’t!,1.0,0.7,60,1,,high tombstone
+event/1388d863,Pip expresses hope,reflection/emotion,express,I earnestly expressed my hope that he wouldn’t,1.0,0.7,61,1,,high tombstone
+event/742d570e,Pip holds tighter to the tombstone,action,hold,held tighter to the tombstone on which he had put me,1.0,0.8,62,1,,high tombstone
+event/d99380f5,Pip keeps himself from crying,action,keep,"partly, to keep myself from crying",1.0,0.8,63,1,,high tombstone
+event/12d74065,Man asks about Pip's mother,encounter/dialogue,demand,“Now lookee here!” said the man. “Where’s your mother?”,1.0,0.9,64,1,,high tombstone
+event/1e33045e,Pip starts running,movement/departure,start,"He started, made a short run",1.0,0.8,65,1,,high tombstone
+event/d06b8de5,Pip stops running,movement/departure,stop,and stopped,1.0,0.8,66,1,,high tombstone
+event/69e9a0c9,Pip looks over his shoulder,perception/recognition,watch,and looked over his shoulder,1.0,0.8,67,1,,high tombstone
+event/b35a53f3,Pip explains his relationship to Georgiana,encounter/dialogue,explain,"There, sir!” I timidly explained.",1.0,0.7,68,1,,high tombstone
+event/2d06a97c,Pip identifies Georgiana as his mother,perception/recognition,identify,Also Georgiana. That’s my mother.,1.0,0.8,69,1,,high tombstone
+event/3eb45751,Pip expresses surprise,reflection/emotion,exclaim,Oh!,1.0,0.9,70,1,,high tombstone
+event/0db9a2e3,Pip returns to the conversation,movement/departure,return,"said he, coming back.",1.0,0.8,71,1,,high tombstone
+event/71ca650a,Pip inquires about family,encounter/dialogue,demand,And is that your father alonger your mother?,1.0,0.9,72,1,,high tombstone
+event/3e06ffd1,Pip acknowledges presence,encounter/dialogue,acknowledge,"Yes, sir,” said I;",1.0,0.9,73,1,,high tombstone
+event/e7a08ed8,Pip identifies another person,encounter/dialogue,identify,him too;,1.0,0.8,74,1,,high tombstone
+event/2afd0668,Pip states the person's affiliation,encounter/dialogue,state,late of this parish.,1.0,0.7,75,1,,high tombstone
+event/657ebff3,Pip is considered by Magwitch,perception/recognition,consider,"“Ha!” he muttered then, considering.",1.0,0.7,76,1,,high tombstone
+event/56b6f1ac,Magwitch questions Pip's living situation,encounter/dialogue,question,"“Who d’ye live with,—supposin’ you’re kindly let to live, which I han’t made up my mind about?”",1.0,0.7,77,1,,high tombstone
+event/e1130deb,Introduction of Mrs. Joe Gargery,other,introduce,"My sister, sir,—Mrs. Joe Gargery,—wife of Joe Gargery, the blacksmith, sir.",1.0,0.7,78,1,,high tombstone
+event/e1917650,Magwitch speaks to Pip,encounter/dialogue,speak,"“Blacksmith, eh?” said he.",1.0,0.8,79,1,,high tombstone
+event/a02d4b8b,Magwitch looks at his leg,perception/recognition,watch,And looked down at his leg.,1.0,0.7,80,1,,high tombstone
+event/766876f4,Magwitch looks at Pip's leg and Pip several times,perception/recognition,watch,After darkly looking at his leg and me several times,1.0,0.7,81,1,,high tombstone
+event/c1210eb5,Magwitch approaches Pip's tombstone,movement/departure,come closer,he came closer to my tombstone,1.0,0.8,82,1,,tombstone
+event/74fcf2ef,Magwitch takes Pip by both arms,action,take,took me by both arms,1.0,0.9,83,1,,tombstone
+event/9e39aa8a,Magwitch tilts Pip back,action,tilt,tilted me back as far as he could hold me,1.0,0.8,84,1,,tombstone
+event/263fc53b,Magwitch looks powerfully into Pip's eyes,perception/recognition,watch,his eyes looked most powerfully down into mine,1.0,0.9,85,1,,tombstone
+event/52643e66,Pip looks helplessly up into Magwitch's eyes,perception/recognition,watch,and mine looked most helplessly up into his,1.0,0.8,86,1,,tombstone
+event/a8298261,Magwitch questions Pip about living,conflict/threat,question,"Now lookee here,” he said, “the question being whether you’re to be let to live.",1.0,0.8,87,1,,tombstone
+event/d301cc7f,Magwitch asks about a file,encounter/dialogue,demand,You know what a file is?,1.0,0.7,88,1,,tombstone
+event/166e8d23,Pip feels helpless,reflection/emotion,feel,so as to give me a greater sense of helplessness,1.0,0.9,89,1,,tombstone
+event/fcca2ff6,Pip perceives danger,perception/recognition,perceive,so as to give me a greater sense of helplessness and danger,1.0,0.9,90,1,,tombstone
+event/1e3c3829,Pip is tilted over,action,tilt,he tilted me over a little more,1.0,0.7,91,1,,tombstone
+event/0a346ca7,Request for a file,assistance/exchange,request,You get me a file.,1.0,0.8,92,1,,tombstone
+event/28d50411,Request for wittles,assistance/exchange,request,And you get me wittles.,1.0,0.8,93,1,,tombstone
+event/6d6e5e95,Threat of violence,conflict/threat,threaten,Or I’ll have your heart and liver out.,1.0,0.9,94,1,,tombstone
+event/85eba14f,Tilting Pip,action,tilt,He tilted me again.,1.0,0.7,95,1,,tombstone
+event/8a14d100,Pip feels frightened,reflection/emotion,feel,I was dreadfully frightened,1.0,0.9,96,1,,tombstone
+event/bc7941f5,Pip feels giddy,reflection/emotion,feel,and so giddy,1.0,0.8,97,1,,tombstone
+event/00b9abd2,Pip clings to Magwitch,action,cling,I clung to him with both hands,1.0,0.9,98,1,,tombstone
+event/57db3832,Pip requests assistance from Magwitch,encounter/dialogue,request,"and said, 'If you would kindly please to let me keep upright, sir'",1.0,0.9,99,1,,tombstone
+event/4dc6a63a,Pip expresses hope to avoid sickness,reflection/emotion,express,perhaps I shouldn’t be sick,1.0,0.8,100,1,,tombstone
+event/3b8ac632,Pip expresses desire to attend more,reflection/emotion,express,and perhaps I could attend more,1.0,0.7,101,1,,tombstone
+event/152d2d26,Pip experiences a tremendous dip and roll,action,experience,"He gave me a most tremendous dip and roll, so that the church jumped over its own weathercock.",1.0,0.8,102,1,,church
+event/6b169491,Magwitch holds Pip by the arms,action,hold,"Then, he held me by the arms, in an upright position on the top of the stone.",1.0,0.9,103,1,,church
+event/e8e12fca,Magwitch speaks in fearful terms,encounter/dialogue,speak,and went on in these fearful terms:,1.0,0.8,104,1,,church
+event/fdaf1189,Magwitch demands items from Pip,encounter/dialogue,demand,"You bring me, to-morrow morning early, that file and them wittles.",1.0,0.9,105,1,tomorrow morning early,old Battery
+event/4160d83d,Magwitch threatens Pip,conflict/threat,threaten,"You fail, or you go from my words in any partickler, no matter how small it is, and your heart and your liver shall be tore out, roasted, and ate.",1.0,0.9,106,1,,old Battery
+event/0dc4c246,Magwitch reveals he is not alone,perception/recognition,reveal,"Now, I ain’t alone, as you may think I am.",1.0,0.8,107,1,,old Battery
+event/ae823e24,Magwitch mentions the young man,perception/recognition,mention,"There’s a young man hid with me, in comparison with which young man I am a Angel.",1.0,0.7,108,1,,old Battery
+event/260f7c2a,Magwitch states the young man hears him,perception/recognition,state,That young man hears the words I speak.,1.0,0.7,109,1,,old Battery
+event/96376c59,The young man has a secret way of getting at a boy,perception/recognition,recognize,"That young man has a secret way pecooliar to himself, of getting at a boy, and at his heart, and at his liver.",1.0,0.8,110,1,,old Battery
+event/4edf4863,A boy attempts to hide from the young man,action,attempt,It is in vain for a boy to attempt to hide himself from that young man.,1.0,0.7,111,1,,old Battery
+event/e250e1a5,The boy locks his door,action,lock,A boy may lock his door.,1.0,0.6,112,1,,old Battery
+event/ba8f84d8,The boy is warm in bed,state change,be,may be warm in bed.,1.0,0.5,113,1,,old Battery
+event/49c9854a,The boy tucks himself up,action,tuck,may tuck himself up.,1.0,0.5,114,1,,old Battery
+event/ccd6a35a,The boy draws the clothes over his head,action,draw,may draw the clothes over his head.,1.0,0.6,115,1,,old Battery
+event/0e6c4c36,The boy thinks himself comfortable and safe,reflection/emotion,imagine,may think himself comfortable and safe.,1.0,0.5,116,1,,old Battery
+event/ef0fcc1a,The young man softly creeps to the boy,action,creep,that young man will softly creep and creep his way to him.,1.0,0.8,117,1,,old Battery
+event/afdd7acb,The young man tears the boy open,action,tear,and tear him open.,1.0,0.8,118,1,,old Battery
+event/6b774ee0,The speaker is keeping the young man from harming the boy,assistance/exchange,keep,"I am a keeping that young man from harming of you at the present moment, with great difficulty.",1.0,0.8,119,1,present moment,old Battery
+event/d66b33d7,The speaker finds it hard to hold the young man off,reflection/emotion,perceive,I find it wery hard to hold that young man off of your inside.,1.0,0.7,120,1,,old Battery
+event/fe0d8e0f,The speaker expresses difficulty in keeping the young man away,reflection/emotion,express,with great difficulty.,1.0,0.6,121,1,,old Battery
+event/0c070c1f,The speaker asks the boy what he says,encounter/dialogue,demand,"Now, what do you say?",1.0,0.5,122,1,,old Battery
+event/b41894f6,Promise to bring the file,assistance/exchange,promise,I said that I would get him the file,1.0,0.9,123,1,early in the morning,the Battery
+event/3f4563c6,Promise to bring broken bits of food,assistance/exchange,promise,I would get him what broken bits of food I could,1.0,0.9,124,1,early in the morning,the Battery
+event/cc3ffcf9,Plan to visit at the Battery,movement/departure,plan,"I would come to him at the Battery, early in the morning",1.0,0.9,125,1,early in the morning,the Battery
+event/d4b93b4e,Man threatens with curse,encounter/dialogue,threaten,“Say Lord strike you dead if you don’t!” said the man.,1.0,0.8,126,1,,the Battery
+event/3373c56b,Pip is reminded of his undertaking,reflection/emotion,remember,you remember what you’ve undertook,1.0,0.7,127,1,,the Battery
+event/06c82226,Pip is reminded of the young man,reflection/emotion,remember,you remember that young man,1.0,0.7,128,1,,the Battery
+event/91e291cb,Pip is instructed to go home,encounter/dialogue,instruct,and you get home!,1.0,0.8,129,1,,the Battery
+event/5686e115,Pip expresses a wish to be a frog or an eel,reflection/emotion,wish,I wish I was a frog. Or a eel!,1.0,0.9,130,1,,the Battery
+event/21b797bd,Pip glances about him,perception/recognition,glance,glancing about him over the cold wet flat,1.0,0.8,131,1,,cold wet flat
+event/5af20959,Pip observes the man limping,perception/recognition,perceive,"As I saw him go, picking his way among the nettles, and among the brambles that bound the green mounds...",1.0,0.8,132,1,,cold wet flat
+event/72f1e3df,The man hugs his body,action,hug,"he hugged his shuddering body in both his arms,—clasping himself, as if to hold himself together,—",1.0,0.9,133,1,,cold wet flat
+event/465574cc,The man limps towards the church wall,movement/departure,limp,and limped towards the low church wall.,1.0,0.8,134,1,,low church wall
+event/a5d3f9cc,Pip perceives the man eluding the dead,perception/recognition,perceive,"he looked in my young eyes as if he were eluding the hands of the dead people, stretching up cautiously out of their graves...",1.0,0.8,135,1,,low church wall
+event/8308518d,The man is cautious,reflection/emotion,be cautious,stretching up cautiously out of their graves...,1.0,0.9,136,1,,low church wall
+event/42d8dbc2,Pip sees the man turning,perception/recognition,perceive,"When I saw him turning, I set my face towards home",1.0,0.9,137,1,,low church wall
+event/c56921aa,Pip sets his face towards home,action,set,I set my face towards home,1.0,0.9,138,1,,low church wall
+event/b652ecdf,Pip makes use of his legs,action,make use,and made the best use of my legs,1.0,0.8,139,1,,low church wall
+event/704f6f20,Pip looks over his shoulder,action,watch,But presently I looked over my shoulder,1.0,0.8,140,1,,low church wall
+event/dda2c27b,Pip sees the man going towards the river,perception/recognition,perceive,and saw him going on again towards the river,1.0,0.9,141,1,,river
+event/3e83ca34,The man hugs himself,action,hug,still hugging himself in both arms,1.0,0.8,142,1,,river
+event/c460aa25,The man picks his way among stones,action,pick,picking his way with his sore feet among the great stones dropped into the marshes,1.0,0.8,143,1,,marshes
+event/58c18a61,Pip stops to look,movement/departure,stop,as I stopped to look after him,1.0,0.9,144,1,,marshes
+event/c081635e,Pip perceives the marshes,perception/recognition,perceive,The marshes were just a long black horizontal line then,1.0,0.8,145,1,,the marshes
+event/8eca0394,Pip perceives the river,perception/recognition,perceive,"and the river was just another horizontal line, not nearly so broad nor yet so black",1.0,0.8,146,1,,the river
+event/c4563c0d,Pip perceives the sky,perception/recognition,perceive,and the sky was just a row of long angry red lines and dense black lines intermixed,1.0,0.8,147,1,,the sky
+event/f45fa188,Pip perceives the black things,perception/recognition,make out,I could faintly make out the only two black things in all the prospect that seemed to be standing upright,1.0,0.8,148,1,,river
+event/2ddd7108,Pip identifies the beacon,perception/recognition,identify,one of these was the beacon by which the sailors steered,1.0,0.7,149,1,,river
+event/b95f7229,Pip describes the beacon,reflection/emotion,describe,an ugly thing when you were near it,1.0,0.7,150,1,,river
+event/be51e614,Pip identifies the gibbet,perception/recognition,identify,"the other, a gibbet, with some chains hanging to it which had once held a pirate",1.0,0.8,151,1,,river
+event/8986667a,A man limps towards the gibbet,movement/departure,limp,The man was limping on towards this latter,1.0,0.6,152,1,,river
+event/6bcc5e3a,Pip perceives the man as the pirate,perception/recognition,perceive,"as if he were the pirate come to life, and come down, and going back to hook himself up again",1.0,0.8,153,1,,river
+event/5d8896d5,Pip perceives the cattle lifting their heads,perception/recognition,perceive,as I saw the cattle lifting their heads to gaze after him,1.0,0.8,154,1,,river
+event/5f8580d4,Pip wonders about the cattle's thoughts,reflection/emotion,wonder,I wondered whether they thought so too,1.0,0.7,155,1,,river
+event/1f7ca27d,Pip looks around for the young man,action,watch,I looked all round for the horrible young man,1.0,0.8,156,1,,river
+event/f4a8feba,Pip does not see signs of the young man,perception/recognition,not perceive,and could see no signs of him,1.0,0.8,157,1,,river
+event/b5b177c9,Pip feels frightened again,reflection/emotion,feel,But now I was frightened again,1.0,0.9,158,1,,river
+event/de79cc9e,Pip runs home,movement/departure,run,and ran home without stopping,1.0,0.9,159,1,,river

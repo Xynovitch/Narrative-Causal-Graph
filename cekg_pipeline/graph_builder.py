@@ -3,186 +3,204 @@ from typing import List, Dict, Tuple
 from .schemas import CEKEvent, EventProducesEntity, EntityPointsToEvent
 from .utils import _make_id
 
+def _generate_entity_id(name: str, type_prefix: str, event_id: str, graph_model: str) -> str:
+    """
+    Generates an Entity ID based on the graph model.
+    - Star model: Canonical global ID (e.g., "agent_pip")
+    - Chain model: Event-specific instance ID (e.g., "agent_pip_event_001")
+    """
+    clean_name = name.strip().lower().replace(' ', '_')
+    base_id = f"{type_prefix}_{clean_name}"
+    
+    if graph_model == "chain":
+        return _make_id(f"{base_id}_{event_id}")
+    else:
+        return _make_id(base_id)
+
+def propagate_context_attributes(events: List[CEKEvent]) -> List[CEKEvent]:
+    """
+    Pass 1: Propagate Location and Time attributes within the event chain.
+    This ensures that events inherit context from previous events when not explicitly stated.
+    """
+    print("[context] Propagating Location and Time attributes within the event chain...")
+    
+    current_location = None
+    current_time = None
+    
+    sorted_events = sorted(events, key=lambda x: x.sequence)
+    
+    for event in sorted_events:
+        # Propagate location
+        if event.location_context:
+            current_location = event.location_context
+        elif current_location:
+            event.location_context = current_location
+            
+        # Propagate time
+        if event.time_context:
+            current_time = event.time_context
+        elif current_time:
+            event.time_context = current_time
+
+    return sorted_events
+
 def propagate_context(
     events: List[CEKEvent], 
     event_produces: List[EventProducesEntity],
-    entity_occurrences: Dict[str, List[Tuple[str, int]]]
+    entity_occurrences: Dict[str, List[Tuple[str, int]]],
+    graph_model: str = "star"
 ) -> Tuple[List[EventProducesEntity], Dict[str, List[Tuple[str, int]]]]:
     """
-    Pass 2: Iterate through all events and propagate location, actor,
-    and whyfactor context to fill in the blanks.
+    Pass 2: Propagate Entity context (Actors, WhyFactors) across events.
+    When an entity is not explicitly mentioned in an event, it inherits the
+    currently active entities from the narrative context.
     
-    NOTE: This function MUTATES the `events` list in place (to update
-    location) but returns NEW lists for `EventProducesEntity` and
-    `entity_occurrences`.
+    This implements "contextual persistence" - entities remain active until
+    new entities are introduced.
     """
-    print("[context] Propagating stateful context (locations, actors, whyfactors)...")
-    current_location_name = None
-    # {actor_key: (actor_name, actor_type, relationship)}
-    current_actors = {}
-    # [(factor_name, factor_type, relationship, strength), ...]
-    current_whyfactors = []
-
-    newly_produced = [] # To store new links we create
+    print(f"[context] Propagating entity context (Mode: {graph_model})...")
     
-    # Build a lookup for explicitly produced entities
+    current_actors = {}  # {actor_key: (actor_name, actor_type, relationship)}
+    current_whyfactors = []  # [(factor_name, factor_type, relationship, strength)]
+    newly_produced = []
+    
+    # Build lookup for explicitly produced entities
     prods_by_event = defaultdict(list)
     for prod in event_produces:
         prods_by_event[prod.event_id].append(prod)
 
-    # IMPORTANT: Assumes `events` is already sorted by sequence
-    for event in events:
-        
+    sorted_events = sorted(events, key=lambda x: x.sequence)
+
+    for event in sorted_events:
         explicit_actors = {}
-        explicit_location_name = None
         explicit_whyfactors = []
         
-        # Check for entities explicitly extracted for this event
+        # Identify explicitly mentioned entities in this event
         for prod in prods_by_event[event.id]:
-            if prod.entity_type == 'actor' or prod.entity_type == 'patient':
+            if prod.entity_type in ['actor', 'patient']:
                 key = prod.entity_name.lower()
                 explicit_actors[key] = (prod.entity_name, prod.entity_type, prod.relationship)
-            elif prod.entity_type == 'place':
-                explicit_location_name = prod.entity_name
             elif prod.entity_type == 'whyfactor':
-                explicit_whyfactors.append((prod.entity_name, 'whyfactor', 'PRODUCES_MOTIVATION', prod.strength))
+                explicit_whyfactors.append(prod)
 
-        
-        # 1. Propagate Location
-        if explicit_location_name:
-            # This event sets a new location
-            current_location_name = explicit_location_name
-        elif current_location_name:
-            # This event is missing a location. Assign the current one.
-            event.location = current_location_name # Update event object
-            loc_key = current_location_name.lower()
-            new_loc_id = _make_id(f"place_{loc_key.replace(' ', '_')}")
-            event.location_id = new_loc_id # Update event object
-            
-            new_prod = EventProducesEntity(
-                event_id=event.id,
-                entity_id=new_loc_id,
-                entity_name=current_location_name,
-                entity_type="place",
-                relationship="PRODUCES_LOCATION",
-                strength=0.5 # Lower strength for inferred context
-            )
-            newly_produced.append(new_prod)
-            entity_occurrences[f"place:{loc_key}"].append((event.id, event.sequence))
-
-        # 2. Propagate Actors
+        # Propagate Actors
         if explicit_actors:
-            # This event defines a new set of actors
+            # New actors introduced - update context
             current_actors = explicit_actors
         elif current_actors:
-            # This event is missing actors. Assign the current ones.
+            # No new actors - propagate existing context
             for actor_key, (actor_name, actor_type, actor_rel) in current_actors.items():
-                new_actor_id = _make_id(f"agent_{actor_key.replace(' ', '_')}")
+                new_actor_id = _generate_entity_id(actor_name, "agent", event.id, graph_model)
                 new_prod = EventProducesEntity(
                     event_id=event.id,
                     entity_id=new_actor_id,
                     entity_name=actor_name,
                     entity_type=actor_type,
                     relationship=actor_rel,
-                    strength=0.5 # Lower strength for inferred context
+                    strength=0.5  # Lower strength for inferred context
                 )
                 newly_produced.append(new_prod)
                 entity_occurrences[f"{actor_type}:{actor_key}"].append((event.id, event.sequence))
 
-        # 3. Propagate WhyFactors
+        # Propagate WhyFactors
         if explicit_whyfactors:
-            # This event defines a new set of whyfactors
+            # New motivations introduced - update context
             current_whyfactors = explicit_whyfactors
         elif current_whyfactors:
-            # This event is missing whyfactors. Assign the current ones.
-            for factor_name, factor_type, factor_rel, factor_strength in current_whyfactors:
-                factor_key = factor_name.lower()
-                new_factor_id = _make_id(f"why_{factor_key[:30].replace(' ', '_')}")
+            # No new motivations - propagate existing context
+            for w_prod in current_whyfactors:
+                new_factor_id = _generate_entity_id(w_prod.entity_name, "why", event.id, graph_model)
                 new_prod = EventProducesEntity(
                     event_id=event.id,
                     entity_id=new_factor_id,
-                    entity_name=factor_name,
-                    entity_type=factor_type,
-                    relationship=factor_rel,
-                    strength=factor_strength # Propagate original strength
+                    entity_name=w_prod.entity_name,
+                    entity_type=w_prod.entity_type,
+                    relationship=w_prod.relationship,
+                    strength=w_prod.strength
                 )
                 newly_produced.append(new_prod)
-                entity_occurrences[f"whyfactor:{factor_key}"].append((event.id, event.sequence))
+                entity_occurrences[f"whyfactor:{w_prod.entity_name.lower()}"].append((event.id, event.sequence))
     
-    print(f"[context] Propagated context, created {len(newly_produced)} new entity links.")
-    
-    # Re-sort all occurrence lists since we added new ones in parallel
+    # Sort all occurrence lists by sequence
     for key in entity_occurrences:
         entity_occurrences[key].sort(key=lambda x: x[1])
         
+    print(f"[context] Created {len(newly_produced)} propagated entity links")
     return newly_produced, entity_occurrences
 
 def create_entity_to_event_links(
     entity_occurrences: Dict[str, List[Tuple[str, int]]],
-    event_produces: List[EventProducesEntity]
+    event_produces: List[EventProducesEntity],
+    graph_model: str = "star"
 ) -> List[EntityPointsToEvent]:
-    """Create Entity -[:X]-> NextEvent links based on entity occurrences"""
-    print("[linking] Creating entity→event links...")
+    """
+    Create Entity -> Event links with O(1) lookup optimization.
     
+    Star Mode: Canonical Entity -> ACTS_IN -> Event (entity points to its own event)
+    Chain Mode: Entity Instance -> ACTS_IN -> NextEvent (entity points to next event)
+    """
+    print(f"[linking] Creating entity -> event links (Mode: {graph_model})...")
     new_links = []
     
+    # Build O(1) lookup map: (event_id, entity_name_lower, entity_type) -> (entity_id, strength)
+    prod_lookup = {}
+    for p in event_produces:
+        key = (p.event_id, p.entity_name.strip().lower(), p.entity_type)
+        prod_lookup[key] = (p.entity_id, p.strength)
+
     for entity_key, occurrences in entity_occurrences.items():
-        # Already sorted by propagate_context
-        
-        # Parse entity type and name
-        try:
-            entity_type, entity_name = entity_key.split(":", 1)
-            target_name_lower = entity_name.strip().lower()
-        except ValueError:
-            print(f"[linking] Skipping malformed entity key: {entity_key}")
+        # Skip place entities (handled separately if needed)
+        if "place:" in entity_key:
             continue
         
-        # Create links from each occurrence to the next
-        for i in range(len(occurrences) - 1):
-            current_event_id, current_seq = occurrences[i]
-            next_event_id, next_seq = occurrences[i + 1]
+        try:
+            entity_type, entity_name = entity_key.split(":", 1)
+            clean_name = entity_name.strip().lower()
+        except ValueError:
+            continue
             
-            entity_id = None
-            strength = 0.5  # Default strength
-            
-            # Find the entity_id and strength produced by the current event
-            for prod in event_produces:
-                if not prod.entity_name:
-                    continue
+        # Determine relationship type
+        if entity_type == "actor":
+            rel = "ACTS_IN"
+        elif entity_type == "patient":
+            rel = "AFFECTED_IN"
+        elif entity_type == "whyfactor":
+            rel = "MOTIVATES"
+        else:
+            continue
+
+        if graph_model == "star":
+            # STAR: Entity points to its OWN event (canonical entity -> all its events)
+            for evt_id, seq in occurrences:
+                found = prod_lookup.get((evt_id, clean_name, entity_type))
+                if found:
+                    ent_id, strength = found
+                    new_links.append(EntityPointsToEvent(
+                        entity_id=ent_id,
+                        entity_name=entity_name,
+                        entity_type=entity_type,
+                        next_event_id=evt_id,
+                        relationship=rel,
+                        strength=strength
+                    ))
+        else:
+            # CHAIN: Entity instance points to NEXT event
+            for i in range(len(occurrences) - 1):
+                curr_evt, _ = occurrences[i]
+                next_evt, _ = occurrences[i + 1]
                 
-                prod_name = prod.entity_name.strip().lower()
-                
-                # Match on event, type, and name
-                if prod.event_id == current_event_id and \
-                   prod.entity_type == entity_type and \
-                   prod_name == target_name_lower:
+                # Lookup entity from CURRENT event
+                found = prod_lookup.get((curr_evt, clean_name, entity_type))
+                if found:
+                    ent_id, strength = found
+                    new_links.append(EntityPointsToEvent(
+                        entity_id=ent_id,
+                        entity_name=entity_name,
+                        entity_type=entity_type,
+                        next_event_id=next_evt,
+                        relationship=rel,
+                        strength=strength
+                    ))
                     
-                    entity_id = prod.entity_id
-                    strength = prod.strength  # <-- CAPTURE STRENGTH HERE
-                    break # Found the match
-            
-            if entity_id:
-                # Determine relationship type based on the entity type
-                if entity_type == "actor":
-                    rel_type = "ACTS_IN"
-                elif entity_type == "patient":
-                    rel_type = "AFFECTED_IN"
-                elif entity_type == "whyfactor":
-                    rel_type = "MOTIVATES"
-                elif entity_type == "place":
-                    rel_type = "HOSTS"
-                else:
-                    continue
-                
-                # Add the new Entity->Event link
-                new_links.append(EntityPointsToEvent(
-                    entity_id=entity_id,
-                    entity_name=entity_name,
-                    entity_type=entity_type,
-                    next_event_id=next_event_id,
-                    relationship=rel_type,
-                    strength=strength
-                ))
-    
-    print(f"[linking] Created {len(new_links)} entity→event links")
+    print(f"[linking] Created {len(new_links)} entity -> event links")
     return new_links

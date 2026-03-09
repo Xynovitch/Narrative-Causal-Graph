@@ -1,427 +1,949 @@
+"""
+Integrated Pipeline - Smart Causal Linking + Semantic Analysis + Checkpoint System
+
+Features:
+1. Retry logic for failed chunks
+2. Proper coreference resolution using resolver
+3. Automatic checkpointing and recovery (Stateful processing)
+"""
+
 import asyncio
 import traceback
+import os
+import json
 import random
+import textwrap
 from collections import defaultdict
 from typing import List, Dict, Optional, Any, Set, Tuple
+from dataclasses import asdict
 
-# Import from our new modules
-from . import config
-from . import schemas
-from . import utils
-from . import text_processor
-from . import llm_service
-from . import graph_builder  # <-- FIX: This import was missing
-from . import graph_mapper
-from . import exporters
+from . import config, schemas, utils, text_processor, llm_service, graph_builder, graph_mapper, exporters
+from .ontology_loader import get_ontology_manager, OntologyManager
+from .optimized_linking import intelligent_long_range_linking
+from .integrated_semantic import (
+    process_pairs_with_semantic_linking,
+    create_hybrid_semantic_links
+)
+from .coreference_resolver import get_resolver
+from .checkpoint_manager import CheckpointManager
+
+try:
+    from sentence_transformers import SentenceTransformer, util
+    SENTENCE_TRANSFORMER_MODEL = SentenceTransformer('all-MiniLM-L6-v2')
+except ImportError:
+    SENTENCE_TRANSFORMER_MODEL = None
+    print("[warning] 'sentence-transformers' library not found.")
+
+THEORY_MCKEE = "@McKee"
+THEORY_TRUBY = "@Truby"
+THEORY_MCKEE_LOWER = "mckee"
+THEORY_TRUBY_LOWER = "truby"
+
+def normalize_theory_name(theory: str) -> str:
+    if not theory:
+        return THEORY_MCKEE
+    theory_lower = theory.lower().replace("@", "")
+    if theory_lower == THEORY_MCKEE_LOWER:
+        return THEORY_MCKEE
+    elif theory_lower == THEORY_TRUBY_LOWER:
+        return THEORY_TRUBY
+    else:
+        return THEORY_MCKEE
 
 class CEKGPreprocessor:
-    
-    def __init__(self, openai_model: Optional[str] = None):
+    def __init__(self, openai_model: Optional[str] = None, schema_path: Optional[str] = None,
+                 checkpoint_dir: str = "./checkpoints", enable_checkpoints: bool = True):
         if not config.OPENAI_API_KEY:
-             raise RuntimeError("OPENAI_API_KEY not set. Please set the environment variable.")
+            raise RuntimeError("OPENAI_API_KEY not set.")
         
         self.openai_model = openai_model or config.OPENAI_MODEL
         self.client = llm_service.init_openai_client(config.OPENAI_API_KEY)
         self.dag_validator = utils.DAGValidator()
         self.global_event_sequence = 0
+        self.ontology = get_ontology_manager(schema_path)
+        self.event_ontology = self.ontology.get_event_type_names()
+        self.mckee_relations = self.ontology.get_relation_type_names(THEORY_MCKEE_LOWER)
+        self.truby_relations = self.ontology.get_relation_type_names(THEORY_TRUBY_LOWER)
         
-    async def _process_event_batch(
-        self, 
-        paragraphs_with_chapter: List[tuple[str, int]]
-    ) -> Tuple[List[schemas.CEKEvent], List[schemas.EventProducesEntity], Dict[str, List[Tuple[str, int]]]]:
+        # Initialize resolver
+        self.resolver = get_resolver()
+        
+        # Checkpoint system
+        self.enable_checkpoints = enable_checkpoints
+        self.checkpoint_mgr = None
+        if enable_checkpoints:
+            self.checkpoint_dir = checkpoint_dir
+
+        print(f"[pipeline] Initialized with {len(self.event_ontology)} event types")
+        print(f"[pipeline] Checkpoints: {'✓ Enabled' if enable_checkpoints else '✗ Disabled'}")
+
+    def _init_checkpoint_manager(self, text_path: str):
+        """Initialize checkpoint manager with run ID based on input file"""
+        if not self.enable_checkpoints:
+            return
+        
+        run_id = f"{os.path.basename(text_path)}_{int(os.path.getmtime(text_path))}"
+        self.checkpoint_mgr = CheckpointManager(
+            checkpoint_dir=self.checkpoint_dir,
+            run_id=run_id
+        )
+        print(f"\n{self.checkpoint_mgr.get_progress_summary()}\n")
+
+    # ==========================================
+    # Serialization Helpers
+    # ==========================================
+    def _serialize_events(self, events):
+        return [asdict(e) for e in events]
+    
+    def _deserialize_events(self, data):
+        return [schemas.CEKEvent(**d) for d in data]
+    
+    def _serialize_links(self, links):
+        return [asdict(link) for link in links]
+    
+    def _deserialize_event_produces(self, data):
+        return [schemas.EventProducesEntity(**d) for d in data]
+    
+    def _deserialize_entity_points_to(self, data):
+        return [schemas.EntityPointsToEvent(**d) for d in data]
+    
+    def _deserialize_causal_links(self, data):
+        return [schemas.CausalLink(**d) for d in data]
+    
+    def _deserialize_semantic_links(self, data):
+        return [schemas.SemanticLink(**d) for d in data]
+    
+    def _deserialize_scenes(self, data):
+        return [schemas.Scene(**d) for d in data]
+
+    # ==========================================
+    # Core Logic Methods (With Fixes)
+    # ==========================================
+
+    def _calculate_calibrated_confidence(self, event_data, logprobs):
+        """Simplified confidence calculation"""
+        p_llm = float(event_data.get("confidence", 0.7))
+        score = 1.0
+        if not event_data.get("actors"): score -= 0.2
+        if not event_data.get("location_context"): score -= 0.1
+        return round((0.6 * p_llm) + (0.4 * score), 4)
+
+    def _infer_theory_from_event_type(self, event_type: str) -> str:
+        if event_type in self.ontology.event_types:
+            return normalize_theory_name(self.ontology.event_types[event_type].theory)
+        return THEORY_MCKEE
+
+    def _parse_event_json_data(self, event_data_list, chapter_id, logprobs, 
+                               enable_confidence_calibration, graph_model="star"):
         """
-        Process a batch of paragraphs, return parsed objects.
-        This is where the logic from your old `process_chapter_events` lives.
+        Parse event data with PROPER coreference resolution
+        FIX: Actually use resolver.resolve() instead of just validation
         """
         all_events = []
         all_produces = []
         entity_occurrences_batch = defaultdict(list)
-
-        # 1. Get JSON data from LLM service
-        try:
-            events_batch_json = await llm_service.batch_extract_events(
-                paragraphs_with_chapter, 
-                self.openai_model,
-                self.client
-            )
-        except Exception as e:
-            print(f"[error] Batch processing failed: {e}")
-            traceback.print_exc()
-            return [], [], {} # Return empty on total batch failure
-
-        # 2. Parse JSON into schema objects
-        for (para, chapter_id), para_events_json in zip(paragraphs_with_chapter, events_batch_json):
-            if isinstance(para_events_json, Exception) or not para_events_json:
-                continue
+        
+        if not isinstance(event_data_list, list):
+            if isinstance(event_data_list, dict):
+                if 'events' in event_data_list:
+                    event_data_list = event_data_list['events']
+                else:
+                    event_data_list = []
+            else:
+                event_data_list = []
+        
+        if not event_data_list:
+            return all_events, all_produces, entity_occurrences_batch
+        
+        logprobs_list = [logprobs] * len(event_data_list) if logprobs else [None] * len(event_data_list)
+        
+        for i, event_data in enumerate(event_data_list):
+            try:
+                confidence = self._calculate_calibrated_confidence(
+                    event_data, logprobs_list[i]
+                ) if enable_confidence_calibration else float(event_data.get("confidence", 0.7))
                 
-            for event_data in para_events_json:
-                try:
-                    why_factors = utils._normalize_weights(event_data.get("whyFactors", []))
-                    if not why_factors:
-                        # LLM failed to provide mandatory whyFactor
-                        print(f"[warning] LLM failed to provide mandatory whyFactor for event: {event_data.get('name')}")
-                        why_factors = [{"factor": "narrative progression", "weight": 1.0, "category": "Contextual Cause"}]
+                event_type = event_data.get("event_category", event_data.get("action_type", "OTHER"))
+                if not self.ontology.validate_event_type(event_type):
+                    event_type = "PHYSICAL_ACTION"
+                
+                theory = self._infer_theory_from_event_type(event_type)
+                raw_why = event_data.get("why_factors", [])
+                why_factors_list = [str(w) for w in raw_why] if isinstance(raw_why, list) else []
+                
+                seq = self.global_event_sequence
+                self.global_event_sequence += 1
+                
+                event = schemas.CEKEvent(
+                    id=utils._make_id("event"),
+                    raw_description=event_data.get("raw_description", event_data.get("name", "Untitled")),
+                    action_type=event_type,
+                    time_context=event_data.get("time_context"),
+                    location_context=event_data.get("location_context"),
+                    actors=[], patients=[], why_factors=why_factors_list,
+                    chapter=chapter_id, sequence=seq, confidence=confidence,
+                    source_quote=event_data.get("quote", ""),
+                    theory=theory
+                )
+                
+                # FIX: PROPER COREFERENCE RESOLUTION
+                
+                # Process actors
+                raw_actors = event_data.get("actors", [])
+                if isinstance(raw_actors, str):
+                    raw_actors = [raw_actors]
+                
+                clean_actors = []
+                for actor in raw_actors:
+                    if not isinstance(actor, str) or len(actor) <= 1:
+                        continue
+                    
+                    actor_name = actor.strip()
+                    
+                    # Use resolver to get canonical name
+                    canonical_name = self.resolver.resolve(actor_name)
+                    
+                    if not canonical_name:
+                        continue
+                    
+                    # Normalize variations (e.g., "Pip" -> "Philip Pirrip")
+                    canonical_normalized = self.resolver.normalize_character_name(canonical_name)
+                    
+                    clean_actors.append(canonical_normalized)
+                    aid = graph_builder._generate_entity_id(canonical_normalized, "agent", event.id, graph_model)
+                    all_produces.append(schemas.EventProducesEntity(
+                        event.id, aid, canonical_normalized, "actor", "PRODUCES_ACTOR", 1.0,
+                        agent_type=None, theory=theory
+                    ))
+                    entity_occurrences_batch[f"actor:{canonical_normalized.lower()}"].append((event.id, seq))
+                
+                event.actors = clean_actors
 
-                    cause_weight = sum(wf.get("weight", 0) for wf in why_factors)
+                # Process patients
+                raw_patients = event_data.get("patients", [])
+                if isinstance(raw_patients, str):
+                    raw_patients = [raw_patients]
+                
+                clean_patients = []
+                for patient in raw_patients:
+                    if not isinstance(patient, str) or len(patient) <= 1:
+                        continue
                     
-                    action_type = event_data.get("actionType", "")
-                    action_type = config.CONTROLLED_ACTION_ONTOLOGY.get(action_type.lower(), action_type)
+                    pat_name = patient.strip()
                     
-                    raw_location = event_data.get("location")
-                    location = raw_location.strip() if raw_location else None
-                    location_id = f"place/{location.lower().replace(' ', '_')}" if location else None
+                    # Use resolver to get canonical name
+                    canonical_name = self.resolver.resolve(pat_name)
                     
-                    event_sequence = self.global_event_sequence
-                    self.global_event_sequence += 1
+                    if not canonical_name:
+                        continue
                     
-                    event = schemas.CEKEvent(
-                        id=utils._make_id("event"),
-                        name=event_data.get("name", ""),
-                        eventType=event_data.get("eventType", "other"),
-                        actionType=action_type,
-                        source_quote=event_data.get("quote", ""),
-                        time=event_data.get("time"),
-                        location=location,
-                        location_id=location_id,
-                        causeWeight=cause_weight,
-                        confidence=float(event_data.get("confidence", 0.7)),
-                        chapter=chapter_id, # Use the chapter_id passed in
-                        sequence=event_sequence
-                    )
-                    all_events.append(event)
+                    # Normalize variations
+                    canonical_normalized = self.resolver.normalize_character_name(canonical_name)
                     
-                    # --- Process Entities ---
-                    
-                    # Actors
-                    actors = event_data.get("actors", [])
-                    if not actors and event_data.get("actor"): # Handle fallback
-                         actors = [{"name": event_data["actor"], "strength": 1.0}]
-                    
-                    for actor in actors:
-                        raw_actor_name = actor.get("name")
-                        if raw_actor_name:
-                            actor_name = raw_actor_name.strip()
-                            actor_key = actor_name.lower()
-                            actor_id = utils._make_id(f"agent_{actor_key.replace(' ', '_')}")
-                            
-                            all_produces.append(schemas.EventProducesEntity(
-                                event_id=event.id, entity_id=actor_id,
-                                entity_name=actor_name, entity_type="actor",
-                                relationship="PRODUCES_ACTOR",
-                                strength=float(actor.get("strength", 1.0))
-                            ))
-                            entity_occurrences_batch[f"actor:{actor_key}"].append((event.id, event.sequence))
-                    
-                    # Patients
-                    patients = event_data.get("patients", [])
-                    if not patients and event_data.get("patient"): # Handle fallback
-                        patients = [{"name": event_data["patient"], "strength": 1.0}]
+                    clean_patients.append(canonical_normalized)
+                    pid = graph_builder._generate_entity_id(canonical_normalized, "agent", event.id, graph_model)
+                    all_produces.append(schemas.EventProducesEntity(
+                        event.id, pid, canonical_normalized, "patient", "PRODUCES_PATIENT", 1.0,
+                        agent_type=None, theory=theory
+                    ))
+                    entity_occurrences_batch[f"patient:{canonical_normalized.lower()}"].append((event.id, seq))
+                
+                event.patients = clean_patients
+                
+                for wf in why_factors_list:
+                    wid = graph_builder._generate_entity_id(wf[:30], "why", event.id, graph_model)
+                    all_produces.append(schemas.EventProducesEntity(
+                        event.id, wid, wf, "whyfactor", "PRODUCES_MOTIVATION", 1.0,
+                        theory=theory
+                    ))
+                    entity_occurrences_batch[f"whyfactor:{wf.lower()}"].append((event.id, seq))
 
-                    for patient in patients:
-                        raw_patient_name = patient.get("name")
-                        if raw_patient_name:
-                            patient_name = raw_patient_name.strip()
-                            patient_key = patient_name.lower()
-                            patient_id = utils._make_id(f"agent_{patient_key.replace(' ', '_')}")
-                            
-                            all_produces.append(schemas.EventProducesEntity(
-                                event_id=event.id, entity_id=patient_id,
-                                entity_name=patient_name, entity_type="patient",
-                                relationship="PRODUCES_PATIENT",
-                                strength=float(patient.get("strength", 1.0))
-                            ))
-                            entity_occurrences_batch[f"patient:{patient_key}"].append((event.id, event.sequence))
-
-                    # WhyFactors
-                    for wf in why_factors:
-                        raw_factor = wf.get('factor')
-                        if raw_factor:
-                            factor_name = raw_factor.strip()
-                            factor_key = factor_name.lower()
-                            wf_id = utils._make_id(f"why_{factor_key[:30].replace(' ', '_')}")
-                            
-                            all_produces.append(schemas.EventProducesEntity(
-                                event_id=event.id, entity_id=wf_id,
-                                entity_name=factor_name, entity_type="whyfactor",
-                                relationship="PRODUCES_MOTIVATION",
-                                strength=wf.get('weight', 0.5) # Use weight as strength
-                            ))
-                            entity_occurrences_batch[f"whyfactor:{factor_key}"].append((event.id, event.sequence))
-
-                    # Location
-                    if location:
-                        location_key = location.lower()
-                        place_id = utils._make_id(f"place_{location_key.replace(' ', '_')}")
-                        
-                        all_produces.append(schemas.EventProducesEntity(
-                            event_id=event.id, entity_id=place_id,
-                            entity_name=location, entity_type="place",
-                            relationship="PRODUCES_LOCATION", strength=0.8
-                        ))
-                        entity_occurrences_batch[f"place:{location_key}"].append((event.id, event.sequence))
-                    
-                except Exception as e:
-                    print(f"[warning] Failed to process single event: {event_data.get('name')}. Error: {e}")
-                    traceback.print_exc()
-                    continue
+                all_events.append(event)
+            except Exception as e:
+                print(f"[warning] Event parse error: {e}")
+                continue
         
         return all_events, all_produces, entity_occurrences_batch
 
-    async def _batch_causal_linking(
-        self,
-        events: List[schemas.CEKEvent],
-        entity_occurrences: Dict[str, List[Tuple[str, int]]],
-        window: int, 
-        sample_rate: float, 
-        batch_size: int
-    ) -> List[schemas.CausalLink]:
+    async def _process_chunk_with_retry(self, chunk, chunk_id, max_retries=3):
+        """
+        FIX: Process a single chunk with retry logic
+        """
+        for attempt in range(max_retries):
+            try:
+                result = await llm_service.extract_events_from_text(
+                    chunk, chunk_id, self.openai_model, self.client,
+                    False, False, "detailed", self.event_ontology
+                )
+                return result
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    wait_time = 2 ** attempt  # Exponential backoff
+                    print(f"[retry] Chunk {chunk_id} failed (attempt {attempt + 1}/{max_retries}), retrying in {wait_time}s...")
+                    await asyncio.sleep(wait_time)
+                else:
+                    print(f"[error] Chunk {chunk_id} failed after {max_retries} attempts: {e}")
+                    return ([], None)
+
+    async def _process_chapter_chunked(self, chapter_text, chapter_id, 
+                                      enable_confidence_calibration, 
+                                      extraction_style, graph_model,
+                                      chunk_size=3000):
+        """
+        HYBRID APPROACH: Process chapter in smart chunks
+        FIX: Added retry logic and better error handling
+        """
+        try:
+            # Split chapter into overlapping chunks to maintain context
+            chunks = []
+            sentences = chapter_text.split('. ')
+            current_chunk = []
+            current_length = 0
+            
+            for sentence in sentences:
+                sentence = sentence.strip() + '. '
+                if current_length + len(sentence) > chunk_size and current_chunk:
+                    chunks.append(''.join(current_chunk))
+                    # Keep last 2 sentences for context overlap
+                    current_chunk = current_chunk[-2:] if len(current_chunk) > 2 else []
+                    current_length = sum(len(s) for s in current_chunk)
+                
+                current_chunk.append(sentence)
+                current_length += len(sentence)
+            
+            if current_chunk:
+                chunks.append(''.join(current_chunk))
+            
+            print(f"[chapter {chapter_id}] Processing {len(chunks)} chunks ({len(chapter_text)} chars total)")
+            
+            # FIX: Process chunks with retry logic
+            tasks = []
+            for i, chunk in enumerate(chunks):
+                chunk_id = f"{chapter_id}.{i}"
+                tasks.append(self._process_chunk_with_retry(chunk, chunk_id))
+            
+            results = await asyncio.gather(*tasks)
+            
+            # FIX: Track and report failures
+            failed_chunks = []
+            successful_chunks = 0
+            
+            # Merge all events from chunks
+            all_events = []
+            all_produces = []
+            entity_occurrences_batch = defaultdict(list)
+            
+            for i, result in enumerate(results):
+                if result == ([], None):
+                    failed_chunks.append(i)
+                    continue
+                
+                data, logprobs = result
+                
+                if not data or data == []:
+                    failed_chunks.append(i)
+                    continue
+                
+                events, produces, occurrences = self._parse_event_json_data(
+                    data, chapter_id, logprobs, enable_confidence_calibration, graph_model
+                )
+                
+                all_events.extend(events)
+                all_produces.extend(produces)
+                for k, v in occurrences.items():
+                    entity_occurrences_batch[k].extend(v)
+                
+                successful_chunks += 1
+            
+            # FIX: Report chunk processing stats
+            if failed_chunks:
+                failure_rate = len(failed_chunks) / len(chunks) * 100
+                print(f"[warning] Chapter {chapter_id}: {len(failed_chunks)}/{len(chunks)} chunks failed ({failure_rate:.1f}% data loss)")
+                if failure_rate > 30:
+                    print(f"[critical] High failure rate in chapter {chapter_id} - results may be incomplete")
+            
+            print(f"[chapter {chapter_id}] Extracted {len(all_events)} events from {successful_chunks}/{len(chunks)} chunks")
+            return all_events, all_produces, entity_occurrences_batch
+            
+        except Exception as e:
+            print(f"[error] Chapter processing failed: {e}")
+            traceback.print_exc()
+            return [], [], defaultdict(list)
+
+    async def _classify_agent_types(self, events: List[schemas.CEKEvent], 
+                                    event_produces: List[schemas.EventProducesEntity]) -> Dict[str, str]:
+        """Agent classification with cheaper model"""
+        print("[agent_classification] Analyzing character roles...")
+        character_events = defaultdict(list)
+        for event in events:
+            for actor in event.actors:
+                character_events[actor].append(event.raw_description)
+            for patient in event.patients:
+                character_events[patient].append(event.raw_description)
+        
+        classifications = {}
+        agent_type_names = self.ontology.get_agent_type_names()
+        
+        if not agent_type_names:
+            print("[warning] No agent types defined, skipping classification")
+            return classifications
+        
+        for char_name, char_events in character_events.items():
+            if len(char_events) < 2:
+                continue
+            
+            sample_events = char_events[:10] if len(char_events) > 10 else char_events
+            
+            try:
+                agent_type = await llm_service.classify_agent_type(
+                    char_name, sample_events, agent_type_names,
+                    self.openai_model, self.client
+                )
+                
+                if self.ontology.validate_agent_type(agent_type):
+                    classifications[char_name] = agent_type
+                    print(f"[agent_classification] {char_name} → {agent_type}")
+            except Exception as e:
+                print(f"[warning] Failed to classify {char_name}: {e}")
+        
+        for prod in event_produces:
+            if prod.entity_type in ['actor', 'patient']:
+                if prod.entity_name in classifications:
+                    prod.agent_type = classifications[prod.entity_name]
+        
+        return classifications
+
+    async def _integrated_causal_and_semantic_linking(
+        self, 
+        events, 
+        entity_occurrences, 
+        theory_mode="mixed",
+        max_concurrent_calls=10,
+        max_pairs=5000,
+        enable_semantic=True
+    ):
+        """
+        INTEGRATED: Smart causal linking + semantic analysis in ONE pass
+        Uses optimized_linking.py for intelligence + integrated_semantic.py for dual extraction
+        """
+        print(f"\n{'='*60}")
+        print(f"INTEGRATED CAUSAL + SEMANTIC ANALYSIS")
+        print(f"{'='*60}")
         
         self.dag_validator.add_events(events)
-        print(f"[dag] Initialized DAG validator with {len(events)} events")
+        all_causal_links = []
+        all_semantic_links = []
+        mckee_link_count = 0
+        truby_link_count = 0
         
-        pairs_to_assess_set: Set[tuple[str, str]] = set()
-        causal_links = []
-
-        # --- PASS 1: LOCAL WINDOW ---
-        print("[causal linking] Pass 1/3: Assessing local window...")
-        for i, ev in enumerate(events):
-            start = max(0, i - window)
-            for j in range(start, i):
-                cand = events[j]
-                if cand.sequence >= ev.sequence:
-                    continue
-                pairs_to_assess_set.add((cand.id, ev.id))
-
-        # --- PASS 2: SHARED ACTOR/PATIENT ---
-        print("[causal linking] Pass 2/3: Assessing shared actors...")
-        for entity_key, occurrences in entity_occurrences.items():
-            if not (entity_key.startswith("actor:") or entity_key.startswith("patient:")):
+        # Determine theories to process
+        theories_to_process = []
+        if theory_mode == "mixed":
+            theories_to_process = [
+                (THEORY_MCKEE_LOWER, self.mckee_relations, THEORY_MCKEE), 
+                (THEORY_TRUBY_LOWER, self.truby_relations, THEORY_TRUBY)
+            ]
+        elif theory_mode == THEORY_MCKEE_LOWER:
+            theories_to_process = [(THEORY_MCKEE_LOWER, self.mckee_relations, THEORY_MCKEE)]
+        elif theory_mode == THEORY_TRUBY_LOWER:
+            theories_to_process = [(THEORY_TRUBY_LOWER, self.truby_relations, THEORY_TRUBY)]
+        
+        # Import the smart linker
+        from .optimized_linking import IntelligentCausalLinker
+        linker = IntelligentCausalLinker(use_embeddings=True)
+        
+        # Get smart candidate pairs (replaces aggressive filtering)
+        print(f"\n[smart_linking] Generating intelligent candidate pairs...")
+        candidate_pairs = linker.get_candidate_pairs(
+            events, entity_occurrences, max_pairs
+        )
+        
+        if not candidate_pairs:
+            print("[warning] No candidate pairs found")
+            return [], [], 0, 0
+        
+        # Convert to text format for assessment
+        event_map = {e.id: e for e in events}
+        pairs_with_text = []
+        
+        for cause_id, effect_id in candidate_pairs:
+            if cause_id in event_map and effect_id in event_map:
+                cause = event_map[cause_id]
+                effect = event_map[effect_id]
+                
+                # Truncate for efficiency
+                cause_text = cause.raw_description[:150]
+                effect_text = effect.raw_description[:150]
+                
+                pairs_with_text.append((cause_text, effect_text, cause_id, effect_id))
+        
+        print(f"[smart_linking] Selected {len(pairs_with_text):,} high-quality pairs")
+        
+        # Process each theory with integrated semantic analysis
+        for theory_name, relation_ontology, theory_tag in theories_to_process:
+            if not relation_ontology:
                 continue
-            for i in range(len(occurrences) - 1):
-                cause_event_id, _ = occurrences[i]
-                effect_event_id, _ = occurrences[i+1]
-                cause_seq = self.dag_validator.event_sequence_map.get(cause_event_id)
-                effect_seq = self.dag_validator.event_sequence_map.get(effect_event_id)
-                if cause_seq is not None and effect_seq is not None and cause_seq < effect_seq:
-                    pairs_to_assess_set.add((cause_event_id, effect_event_id))
-
-        # --- PASS 3: SHARED LOCATION ---
-        print("[causal linking] Pass 3/3: Assessing shared locations...")
-        for entity_key, occurrences in entity_occurrences.items():
-            if not entity_key.startswith("place:"):
-                continue
-            for i in range(len(occurrences) - 1):
-                cause_event_id, _ = occurrences[i]
-                effect_event_id, _ = occurrences[i+1]
-                cause_seq = self.dag_validator.event_sequence_map.get(cause_event_id)
-                effect_seq = self.dag_validator.event_sequence_map.get(effect_event_id)
-                if cause_seq is not None and effect_seq is not None and cause_seq < effect_seq:
-                    pairs_to_assess_set.add((cause_event_id, effect_event_id))
-
-        print(f"[causal linking] Found {len(pairs_to_assess_set)} unique candidate pairs.")
-        
-        event_map_by_id = {ev.id: ev for ev in events}
-        
-        pairs_to_assess = []
-        for cause_id, effect_id in pairs_to_assess_set:
-            cause_ev = event_map_by_id.get(cause_id)
-            effect_ev = event_map_by_id.get(effect_id)
             
-            if cause_ev and effect_ev:
-                pairs_to_assess.append((
-                    cause_ev.source_quote, effect_ev.source_quote, cause_id, effect_id
-                ))
-        
-        # Optional: Sampling
-        # if len(pairs_to_assess) > (len(events) * 10): # Simple heuristic
-        #     pairs_to_assess = random.sample(pairs_to_assess, int(len(pairs_to_assess) * sample_rate))
-        
-        print(f"[causal linking] Assessing {len(pairs_to_assess)} final pairs via LLM...")
-        
-        accepted_edges = 0
-        rejected_edges = 0
-        
-        for batch_start in range(0, len(pairs_to_assess), batch_size):
-            batch = pairs_to_assess[batch_start:batch_start + batch_size]
+            print(f"\n{'='*60}")
+            print(f"THEORY: {theory_tag}")
+            print(f"{'='*60}")
             
-            assessments = await llm_service.batch_assess_pairs(
-                batch, self.openai_model, self.client
-            )
-            
-            for (cause_quote, effect_quote, cause_id, effect_id), assessment in zip(batch, assessments):
-                if assessment is None or assessment.get("relationType") == "none":
-                    continue
+            if enable_semantic:
+                # INTEGRATED: Both causal and semantic in ONE API call
+                print(f"[{theory_name}] Using INTEGRATED assessment (causal + semantic)")
                 
-                if not self.dag_validator.add_edge(cause_id, effect_id):
-                    # This rejects cycles or duplicate edges
-                    rejected_edges += 1
-                    continue
-                
-                cause_seq = self.dag_validator.event_sequence_map.get(cause_id)
-                effect_seq = self.dag_validator.event_sequence_map.get(effect_id)
-                
-                if cause_seq is None or effect_seq is None:
-                    # This should not happen if add_edge succeeded, but good to check
-                    rejected_edges += 1
-                    continue
-                
-                link = schemas.CausalLink(
-                    cause_id=cause_id,
-                    effect_id=effect_id,
-                    relationType=assessment.get("relationType", "causes"),
-                    mechanism=assessment.get("mechanism", ""),
-                    sign=assessment.get("sign", "0"),
-                    weight=float(assessment.get("weight", 0.0)),
-                    confidence=float(assessment.get("confidence", 0.0)),
-                    cause_sequence=cause_seq,
-                    effect_sequence=effect_seq
+                causal_links, semantic_links = await process_pairs_with_semantic_linking(
+                    pairs_with_text,
+                    self.openai_model,
+                    self.client,
+                    relation_ontology,
+                    theory_name,
+                    self.dag_validator,
+                    self.ontology,
+                    llm_service._async_llm_json_call,
+                    max_concurrent_calls,
+                    bulk_size=50
                 )
-                causal_links.append(link)
-                accepted_edges += 1
-            
-            print(f"[causal] Progress: {min(batch_start + batch_size, len(pairs_to_assess))}/{len(pairs_to_assess)} "
-                  f"(accepted: {accepted_edges}, rejected: {rejected_edges})")
-        
-        print(f"[dag] Final edge statistics: {accepted_edges} accepted, {rejected_edges} rejected")
-        stats = self.dag_validator.get_stats()
-        print(f"[dag] ✓ DAG validated: {stats['nodes']} nodes, {stats['edges']} edges")
-        print(f"[dag] Max in-degree: {stats['max_in_degree']}, Max out-degree: {stats['max_out_degree']}")
-        
-        return causal_links
-
-    async def run_async(self, text_path: str, 
-                       out_json: str,
-                       out_cypher: str,
-                       out_csv_dir: str,
-                       max_chapters: Optional[int],
-                       batch_size: int,
-                       causal_window: int,
-                       causal_sample_rate: float,
-                       causal_batch_size: int) -> Dict[str, Any]:
-        """Main async pipeline orchestrator"""
-        
-        print("[pipeline] Loading text...")
-        raw = text_processor.load_text(text_path)
-        chapters = text_processor.split_chapters(raw)
-
-        if max_chapters is not None:
-            chapters = chapters[:max_chapters]
-
-        print(f"[pipeline] Processing {len(chapters)} chapters")
-        print(f"[pipeline] DUAL FLOW: Event→Entity→Event chains ✓")
-
-        # --- Store all data in local lists ---
-        all_events: List[schemas.CEKEvent] = []
-        all_produces: List[schemas.EventProducesEntity] = []
-        entity_occurrences = defaultdict(list)
-        self.global_event_sequence = 0 # Reset sequence counter
-
-        for chapter_id, chapter_text in chapters:
-            paragraphs = text_processor.split_into_paragraphs(chapter_text)
-            print(f"[chapter {chapter_id}] Processing {len(paragraphs)} paragraphs...")
-            
-            for i in range(0, len(paragraphs), batch_size):
-                batch_paras = paragraphs[i:i+batch_size]
-                batch_with_chapter = [(para, chapter_id) for para in batch_paras]
                 
+                all_causal_links.extend(causal_links)
+                all_semantic_links.extend(semantic_links)
+                
+                if theory_tag == THEORY_MCKEE:
+                    mckee_link_count += len(causal_links)
+                elif theory_tag == THEORY_TRUBY:
+                    truby_link_count += len(causal_links)
+                
+            else:
+                # Standard causal-only processing
+                print(f"[{theory_name}] Using standard causal assessment")
+                
+                results = []
+                BULK_SIZE = 50
+                
+                for i in range(0, len(pairs_with_text), BULK_SIZE * max_concurrent_calls):
+                    batch_end = min(i + BULK_SIZE * max_concurrent_calls, len(pairs_with_text))
+                    
+                    chunks = []
+                    for j in range(i, batch_end, BULK_SIZE):
+                        chunk = pairs_with_text[j:j + BULK_SIZE]
+                        chunks.append(llm_service.assess_pairs_bulk(
+                            chunk, self.openai_model, self.client, relation_ontology
+                        ))
+                    
+                    chunk_results = await asyncio.gather(*chunks)
+                    
+                    for chunk_result in chunk_results:
+                        results.extend(chunk_result)
+                    
+                    if (i // (BULK_SIZE * max_concurrent_calls)) % 5 == 0:
+                        progress = 100 * len(results) / len(pairs_with_text)
+                        print(f"[progress] {len(results):,}/{len(pairs_with_text):,} ({progress:.1f}%)")
+                
+                # Create causal links
+                for pair, result in zip(pairs_with_text, results):
+                    if not result:
+                        continue
+                    
+                    _, _, cause_id, effect_id = pair
+                    
+                    rel_type = result.get("relationType")
+                    if not rel_type or str(rel_type).upper() in ["NONE", "NULL"]:
+                        continue
+                    
+                    rt_str = str(rel_type).upper()
+                    
+                    if not self.ontology.validate_relation_type(rt_str, theory_name):
+                        continue
+                    
+                    directionality = self.ontology.get_relation_directionality(rt_str, theory_name)
+                    
+                    if self.dag_validator.add_edge(cause_id, effect_id):
+                        all_causal_links.append(schemas.CausalLink(
+                            cause_id, effect_id, rt_str, result.get("mechanism", ""),
+                            float(result.get("weight", 0)),
+                            float(result.get("confidence", 0)),
+                            theory=theory_tag,
+                            directionality=directionality
+                        ))
+                        
+                        if theory_tag == THEORY_MCKEE:
+                            mckee_link_count += 1
+                        elif theory_tag == THEORY_TRUBY:
+                            truby_link_count += 1
+        
+        # Add local embedding-based semantic links (high quality, zero cost)
+        if enable_semantic:
+            print(f"\n[semantic] Adding local embedding-based thematic links...")
+            all_semantic_links = create_hybrid_semantic_links(events, all_semantic_links)
+        
+        print(f"\n{'='*60}")
+        print(f"FINAL RESULTS")
+        print(f"{'='*60}")
+        print(f"Pairs Evaluated: {len(pairs_with_text):,}")
+        print(f"Causal Links: {len(all_causal_links):,}")
+        if theory_mode == "mixed":
+            print(f"  - McKee: {mckee_link_count:,}")
+            print(f"  - Truby: {truby_link_count:,}")
+        if enable_semantic:
+            print(f"Semantic Links: {len(all_semantic_links):,}")
+        print(f"{'='*60}\n")
+        
+        return all_causal_links, all_semantic_links, mckee_link_count, truby_link_count
+
+    async def _generate_scenes_optimized(self, events, event_produces):
+        """Scene generation with cheaper model"""
+        print("[scenes] Creating scene-centric structure...")
+        scenes = []
+        by_chap = defaultdict(list)
+        for e in events:
+            by_chap[e.chapter].append(e)
+        
+        event_to_entities = defaultdict(lambda: {"actors": set(), "patients": set(), "whyfactors": set()})
+        for prod in event_produces:
+            if prod.entity_type == "actor":
+                event_to_entities[prod.event_id]["actors"].add(prod.entity_name)
+            elif prod.entity_type == "patient":
+                event_to_entities[prod.event_id]["patients"].add(prod.entity_name)
+            elif prod.entity_type == "whyfactor":
+                event_to_entities[prod.event_id]["whyfactors"].add(prod.entity_name)
+        
+        for cid, evs in by_chap.items():
+            data = await llm_service.extract_scenes_from_chapter_async(
+                evs, cid, self.openai_model, self.client
+            )
+            
+            if not data:
+                data = [{
+                    "event_ids": [e.id for e in evs],
+                    "theme": f"Chapter {cid} narrative",
+                    "confidence": 0.5
+                }]
+            
+            event_ids_in_chapter = {e.id for e in evs}
+            
+            for d in data:
                 try:
-                    events, produces, occ_batch = await self._process_event_batch(batch_with_chapter)
+                    event_ids = d.get("event_ids", [])
+                    valid_event_ids = [eid for eid in event_ids if eid in event_ids_in_chapter]
                     
-                    all_events.extend(events)
-                    all_produces.extend(produces)
-                    for key, val_list in occ_batch.items():
-                        entity_occurrences[key].extend(val_list)
+                    if not valid_event_ids:
+                        continue
                     
-                    print(f"[chapter {chapter_id}] Batch {i//batch_size + 1}: extracted {len(events)} events")
-                
+                    all_actors = set()
+                    all_patients = set()
+                    all_whyfactors = set()
+                    locations = set()
+                    times = set()
+                    
+                    for ev in evs:
+                        if ev.id in valid_event_ids:
+                            entities = event_to_entities[ev.id]
+                            all_actors.update(entities["actors"])
+                            all_patients.update(entities["patients"])
+                            all_whyfactors.update(entities["whyfactors"])
+                            
+                            if ev.location_context:
+                                locations.add(ev.location_context)
+                            if ev.time_context:
+                                times.add(ev.time_context)
+                    
+                    primary_location = list(locations)[0] if locations else None
+                    time_period = list(times)[0] if times else None
+                    all_participants = list(all_actors | all_patients)
+                    
+                    scene = schemas.Scene(
+                        utils._make_id("scene"), cid, valid_event_ids,
+                        primary_location, time_period, all_participants,
+                        d.get("theme", ""), "",
+                        float(d.get("confidence", 0)),
+                        place_type=None, time_type=None
+                    )
+                    
+                    scene.all_actors = list(all_actors)
+                    scene.all_patients = list(all_patients)
+                    scene.all_whyfactors = list(all_whyfactors)
+                    
+                    scenes.append(scene)
                 except Exception as e:
-                    print(f"[error] Failed processing batch {i//batch_size + 1} in chapter {chapter_id}: {e}")
-                    traceback.print_exc()
-                    continue # Try next batch
-
-        if not all_events:
-            raise schemas.CEKGError("No events were extracted")
-
-        print(f"[pipeline] Total events extracted: {len(all_events)}")
+                    print(f"[warning] Failed to create scene: {e}")
         
-        # Events are already sorted by sequence number from the batch processor
+        print(f"[scenes] Generated {len(scenes)} scenes")
+        return scenes
 
-        # --- FIX: REINSTATE THE CALLS TO GRAPH_BUILDER ---
-        # Run Pass 2: Propagate context
-        # Note: propagate_context mutates all_events in place, but returns new lists
-        newly_produced, entity_occurrences = graph_builder.propagate_context(
-            all_events, all_produces, entity_occurrences
-        )
-        all_produces.extend(newly_produced)
-        print(f"[pipeline] Total event->entity productions after context: {len(all_produces)}")
-
-        # Create entity→event links
-        entity_to_event_links = graph_builder.create_entity_to_event_links(
-            entity_occurrences, all_produces
-        )
-        # --- END FIX ---
-
-        # Causal linking
-        print(f"[pipeline] Starting causal linking")
-        causal_links = []
-        try:
-            causal_links = await self._batch_causal_linking(
-                events=all_events,
-                entity_occurrences=entity_occurrences,
-                window=causal_window,
-                sample_rate=causal_sample_rate,
-                batch_size=causal_batch_size
-            )
-        except Exception as e:
-            print(f"[warning] Causal linking failed: {e}")
-            traceback.print_exc()
+    async def run_async(self, text_path, out_json, out_cypher, out_csv_dir,
+                   max_chapters=None,
+                   graph_model="star",
+                   enable_mixed_theory=True,
+                   enable_agent_classification=False,
+                   enable_scene_grouping=True,
+                   enable_confidence_calibration=True,
+                   enable_semantic_linking=True,
+                   max_concurrent_calls=10,
+                   max_long_range_pairs=5000,
+                   chunk_size=3000,
+                   resume_from_checkpoint=True):
+        """
+        INTEGRATED PIPELINE: Smart causal linking + semantic analysis + Checkpoints
+        """
         
-        # Export results
-        print(f"[pipeline] Mapping data to generic graph...")
-        csvs = {}
-        try:
-            # 1. Map to generic graph structure
-            generic_nodes, generic_rels = graph_mapper.map_to_generic_graph(
-                all_events, all_produces, entity_to_event_links, causal_links
-            )
-            
-            print(f"[pipeline] Exporting results...")
-            
-            # 2. Export JSON-LD (uses old lists)
-            json_data = exporters.build_jsonld(
-                all_events, all_produces, entity_to_event_links, causal_links
-            )
-            exporters.export_json(out_json, json_data)
-            
-            # 3. Export Cypher (uses new generic lists)
-            exporters.export_neo4j_cypher(
-                out_cypher, generic_nodes, generic_rels
-            )
-            
-            # 4. Export CSV (uses old lists)
-            csvs = exporters.export_csv(
-                out_csv_dir, all_events, all_produces, entity_to_event_links, causal_links
-            )
-        except Exception as e:
-            print(f"[error] Export failed: {e}")
-            traceback.print_exc()
-            # Don't raise, just report stats
+        # Initialize checkpoint manager
+        if self.enable_checkpoints:
+            self._init_checkpoint_manager(text_path)
 
+        theory_mode = "mixed" if enable_mixed_theory else THEORY_MCKEE_LOWER
+        mode_desc = "Mixed Theory" if enable_mixed_theory else "Single Theory"
+        
+        print(f"\n{'='*60}")
+        print(f"INTEGRATED CEKG PIPELINE")
+        print(f"Smart Linking + Semantic Analysis + Checkpoints")
+        print(f"{'='*60}")
+        print(f"[pipeline] Graph Model: {graph_model}")
+        print(f"[pipeline] Theory Mode: {mode_desc}")
+        print(f"[pipeline] Chunk Size: {chunk_size} chars")
+        print(f"[pipeline] Max Pairs: {max_long_range_pairs:,}")
+        print(f"{'='*60}\n")
+        
+        # ============================================================
+        # STAGE 1: TEXT LOADING & CHAPTER SPLITTING
+        # ============================================================
+        if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("text_split"):
+            print("[resume] Loading chapters from checkpoint...")
+            data = self.checkpoint_mgr.load_checkpoint("text_split")
+            chapters = data["chapters"]
+        else:
+            print("[stage 1/6] Loading and splitting text...")
+            raw = text_processor.load_text(text_path)
+            chapters = text_processor.split_chapters(raw)[:max_chapters] if max_chapters else text_processor.split_chapters(raw)
+            
+            if self.checkpoint_mgr:
+                self.checkpoint_mgr.save_checkpoint(
+                    "text_split",
+                    {"chapters": chapters, "max_chapters": max_chapters},
+                    description=f"Split into {len(chapters)} chapters"
+                )
+
+        # ============================================================
+        # STAGE 2: EVENT EXTRACTION
+        # ============================================================
+        if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("extraction"):
+            print("[resume] Loading extraction from checkpoint...")
+            data = self.checkpoint_mgr.load_checkpoint("extraction")
+            all_events = self._deserialize_events(data["events"])
+            all_produces = self._deserialize_event_produces(data["produces"])
+            entity_occurrences = defaultdict(list, data["entity_occurrences"])
+            self.global_event_sequence = data["global_event_sequence"]
+        else:
+            print("[stage 2/6] Extracting events...")
+            all_events, all_produces, entity_occurrences = [], [], defaultdict(list)
+            self.global_event_sequence = 0
+            
+            # Use improved chunk processing from your new code
+            for cid, txt in chapters:
+                print(f"\n[chapter {cid}] Processing with smart chunking...")
+                e, p, o = await self._process_chapter_chunked(
+                    txt, cid, enable_confidence_calibration, "detailed", graph_model,
+                    chunk_size=chunk_size
+                )
+                all_events.extend(e)
+                all_produces.extend(p)
+                for k, v in o.items():
+                    entity_occurrences[k].extend(v)
+                print(f"[chapter {cid}] Extracted {len(e)} events")
+            
+            print(f"\n[extraction] Total events extracted: {len(all_events)}")
+            
+            if self.checkpoint_mgr:
+                self.checkpoint_mgr.save_checkpoint(
+                    "extraction",
+                    {
+                        "events": self._serialize_events(all_events),
+                        "produces": self._serialize_links(all_produces),
+                        "entity_occurrences": {k: v for k, v in entity_occurrences.items()},
+                        "global_event_sequence": self.global_event_sequence
+                    },
+                    description=f"Extracted {len(all_events)} events from {len(chapters)} chapters"
+                )
+        
+        # ============================================================
+        # STAGE 3: CONTEXT PROPAGATION
+        # ============================================================
+        if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("context_propagation"):
+            print("[resume] Loading context propagation from checkpoint...")
+            data = self.checkpoint_mgr.load_checkpoint("context_propagation")
+            all_events = self._deserialize_events(data["events"])
+            all_produces = self._deserialize_event_produces(data["produces"])
+            entity_occurrences = defaultdict(list, data["entity_occurrences"])
+            entity_to_event_links = self._deserialize_entity_points_to(data["entity_to_event_links"])
+        else:
+            print("[stage 3/6] Propagating context...")
+            all_events = graph_builder.propagate_context_attributes(all_events)
+            new_prods, entity_occurrences = graph_builder.propagate_context(
+                all_events, all_produces, entity_occurrences, graph_model=graph_model
+            )
+            all_produces.extend(new_prods)
+            
+            entity_to_event_links = graph_builder.create_entity_to_event_links(
+                entity_occurrences, all_produces, graph_model=graph_model
+            )
+            
+            if self.checkpoint_mgr:
+                self.checkpoint_mgr.save_checkpoint(
+                    "context_propagation",
+                    {
+                        "events": self._serialize_events(all_events),
+                        "produces": self._serialize_links(all_produces),
+                        "entity_occurrences": {k: v for k, v in entity_occurrences.items()},
+                        "entity_to_event_links": self._serialize_links(entity_to_event_links)
+                    },
+                    description=f"Propagated context, created {len(entity_to_event_links)} entity→event links"
+                )
+        
+        # ============================================================
+        # STAGE 4: AGENT CLASSIFICATION (Optional)
+        # ============================================================
+        agent_classifications = {}
+        if enable_agent_classification:
+            if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("agent_classification"):
+                print("[resume] Loading agent classifications from checkpoint...")
+                data = self.checkpoint_mgr.load_checkpoint("agent_classification")
+                agent_classifications = data["agent_classifications"]
+                for prod in all_produces:
+                    if prod.entity_type in ['actor', 'patient'] and prod.entity_name in agent_classifications:
+                        prod.agent_type = agent_classifications[prod.entity_name]
+            else:
+                print("[stage 4/6] Classifying agents...")
+                agent_classifications = await self._classify_agent_types(all_events, all_produces)
+                
+                if self.checkpoint_mgr:
+                    self.checkpoint_mgr.save_checkpoint(
+                        "agent_classification",
+                        {"agent_classifications": agent_classifications},
+                        description=f"Classified {len(agent_classifications)} agents"
+                    )
+        
+        # ============================================================
+        # STAGE 5: CAUSAL & SEMANTIC LINKING
+        # ============================================================
+        if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("linking"):
+            print("[resume] Loading links from checkpoint...")
+            data = self.checkpoint_mgr.load_checkpoint("linking")
+            causal_links = self._deserialize_causal_links(data["causal_links"])
+            semantic_links = self._deserialize_semantic_links(data["semantic_links"])
+            mckee_count = data["mckee_count"]
+            truby_count = data["truby_count"]
+            
+            # Restore DAG state
+            self.dag_validator.add_events(all_events)
+            for link in causal_links:
+                self.dag_validator.add_edge(link.source_event_id, link.target_event_id)
+        else:
+            print("[stage 5/6] Causal & semantic linking...")
+            # Use improved linking from your new code
+            causal_links, semantic_links, mckee_count, truby_count = await self._integrated_causal_and_semantic_linking(
+                all_events, 
+                entity_occurrences, 
+                theory_mode, 
+                max_concurrent_calls, 
+                max_long_range_pairs,
+                enable_semantic_linking
+            )
+            
+            if self.checkpoint_mgr:
+                self.checkpoint_mgr.save_checkpoint(
+                    "linking",
+                    {
+                        "causal_links": self._serialize_links(causal_links),
+                        "semantic_links": self._serialize_links(semantic_links),
+                        "mckee_count": mckee_count,
+                        "truby_count": truby_count
+                    },
+                    description=f"Created {len(causal_links)} causal + {len(semantic_links)} semantic links"
+                )
+        
+        # ============================================================
+        # STAGE 6: SCENE GROUPING (Optional)
+        # ============================================================
+        scenes = []
+        if enable_scene_grouping:
+            if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("scenes"):
+                print("[resume] Loading scenes from checkpoint...")
+                data = self.checkpoint_mgr.load_checkpoint("scenes")
+                scenes = self._deserialize_scenes(data["scenes"])
+            else:
+                print("[stage 6/6] Generating scenes...")
+                scenes = await self._generate_scenes_optimized(all_events, all_produces)
+                
+                if self.checkpoint_mgr:
+                    self.checkpoint_mgr.save_checkpoint(
+                        "scenes",
+                        {"scenes": self._serialize_links(scenes)},
+                        description=f"Generated {len(scenes)} scenes"
+                    )
+        
+        all_characters = set()
+        for prod in all_produces:
+            if prod.entity_type in ['actor', 'patient']:
+                all_characters.add(prod.entity_name)
+        
+        print(f"\n{'='*60}")
+        print(f"EXPORTING RESULTS")
+        print(f"{'='*60}")
+        
+        jsonld = exporters.build_jsonld(
+            all_events, all_produces, entity_to_event_links, causal_links
+        )
+        exporters.export_json(out_json, jsonld)
+        
+        csv_paths = exporters.export_csv(
+            out_csv_dir, all_events, all_produces, entity_to_event_links,
+            causal_links, semantic_links, scenes, graph_model
+        )
+        
+        nodes, relationships = graph_mapper.map_to_generic_graph(
+            all_events, all_produces, entity_to_event_links, causal_links,
+            graph_model, semantic_links, scenes, agent_classifications
+        )
+        
+        exporters.export_neo4j_cypher(out_cypher, nodes, relationships)
+        
         dag_stats = self.dag_validator.get_stats()
+        is_valid_dag = self.dag_validator.validate_dag()
+        
         cache_stats = await llm_service.get_cache_sizes()
+        
+        print(f"\n{'='*60}")
+        print(f"PIPELINE COMPLETE")
+        print(f"{'='*60}")
+        print(f"Events: {len(all_events):,}")
+        print(f"Characters: {len(all_characters):,}")
+        print(f"Causal Links: {len(causal_links):,}")
+        if enable_mixed_theory:
+            print(f"  - McKee: {mckee_count:,}")
+            print(f"  - Truby: {truby_count:,}")
+        if enable_semantic_linking:
+            print(f"Semantic Links: {len(semantic_links):,}")
+        print(f"Scenes: {len(scenes):,}")
+        print(f"DAG Valid: {is_valid_dag}")
+        print(f"{'='*60}\n")
 
         return {
-            "json": out_json, 
-            "cypher": out_cypher, 
-            "csv": csvs,
             "stats": {
                 "events": len(all_events),
-                "event_produces_entity": len(all_produces),
-                "entity_points_to_event": len(entity_to_event_links),
+                "characters": len(all_characters),
                 "causal_links": len(causal_links),
-                "cached_event_extractions": cache_stats["event_extraction_cache_size"],
-                "cached_causal_assessments": cache_stats["assessment_cache_size"],
-                "chapters_processed": len(set(ev.chapter for ev in all_events)),
-                "dag_stats": dag_stats
-            }
+                "mckee_links": mckee_count if enable_mixed_theory else len(causal_links),
+                "truby_links": truby_count if enable_mixed_theory else 0,
+                "semantic_links": len(semantic_links),
+                "scenes": len(scenes),
+                "agent_types_classified": len(agent_classifications),
+                "dag_valid": is_valid_dag,
+                "dag_stats": dag_stats,
+                "cache_stats": cache_stats
+            },
+            "events": all_events,
+            "causal_links": causal_links,
+            "semantic_links": semantic_links,
+            "scenes": scenes,
+            "agent_classifications": agent_classifications,
+            "csv_paths": csv_paths
         }

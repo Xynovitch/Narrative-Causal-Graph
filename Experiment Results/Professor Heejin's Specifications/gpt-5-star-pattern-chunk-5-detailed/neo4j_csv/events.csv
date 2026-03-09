@@ -1,0 +1,177 @@
+:ID,name,eventType,actionType,source_quote,causeWeight,confidence,sequence,chapter,time,location
+event/d060ebf3,Infant tongue cannot say full names,other,mispronounce,my infant tongue could make of both names nothing longer or more explicit than Pip.,1.0,0.93,0,1,infancy,
+event/441cbba4,Pip names himself Pip,transformation,name,"So, I, called myself Pip",1.0,0.96,1,1,infancy,
+event/744f4608,Others come to call him Pip,communication,name,and came to be called Pip.,1.0,0.92,2,1,after he calls himself Pip,
+event/bc439683,Pip reports father’s family name as Pirrip,communication,state,"I give Pirrip as my father’s family name, on the authority of his tombstone",1.0,0.95,3,1,narration present,
+event/26432d99,Pip’s sister marries the blacksmith,transformation,marry,"my sister,—Mrs. Joe Gargery, who married the blacksmith.",1.0,0.92,4,1,before narration present,
+event/3f44d653,Pip has never seen his father,perception/recognition,not_see,As I never saw my father,1.0,0.94,5,1,throughout Pip’s life up to then,
+event/38ac4381,Pip has never seen his mother,perception/recognition,not_see,or my mother,1.0,0.94,6,1,throughout Pip’s life up to then,
+event/ecc70151,Pip has never seen any likeness of his parents,perception/recognition,not_see,and never saw any likeness of either of them,1.0,0.93,7,1,childhood,
+event/b74d1681,Pip has unreasonable fancies about parents’ appearance from tombstones,emotion,imagine,my first fancies regarding what they were like were unreasonably derived from their tombstones.,1.0,0.95,8,1,childhood,churchyard with tombstones
+event/c5d3429e,"Pip interprets shape of letters to imagine father as square, stout, dark with curly hair",perception/recognition,infer,"The shape of the letters on my father’s, gave me an odd idea that he was a square, stout, dark man, with curly black hair.",1.0,0.96,9,1,childhood,churchyard at father’s tombstone
+event/a0de06a5,Pip reads or notes the inscription about Georgiana,perception/recognition,read,"From the character and turn of the inscription, “Also Georgiana Wife of the Above,”",1.0,0.9,10,1,childhood,mother’s tombstone
+event/f54afb3c,Pip draws childish conclusion that mother was freckled and sickly,perception/recognition,conclude,I drew a childish conclusion that my mother was freckled and sickly.,1.0,0.96,11,1,childhood,churchyard at mother’s tombstone
+event/7cb78de4,Five little brothers die young (give up trying to get a living),transformation,die,"five little brothers of mine,—who gave up trying to get a living, exceedingly early in that universal struggle",1.0,0.9,12,1,before Pip’s memories,marsh country graveyard
+event/1f4eff21,The five brothers are commemorated by five little stone lozenges,other,commemorate,"To five little stone lozenges... which were arranged in a neat row beside their grave, and were sacred to the memory of five little brothers of mine",1.0,0.88,13,1,after their deaths,beside their grave
+event/416b8459,Pip forms belief about brothers’ posture and pockets at birth,perception/recognition,believe,I am indebted for a belief I religiously entertained that they had all been born on their backs with their hands in their trousers-pockets,1.0,0.96,14,1,childhood,graveyard near the stone lozenges
+event/f0234d7e,Pip religiously entertains this belief for some time,emotion,entertain,I am indebted for a belief I religiously entertained,1.0,0.9,15,1,extended period in childhood,graveyard near the stone lozenges
+event/25d55cad,Pip recognizes his home region as marsh country by the river,perception/recognition,recognize,"Ours was the marsh country, down by the river",1.0,0.95,16,1,general childhood setting,"the marsh country, down by the river"
+event/4e67e895,Pip estimates distance from river to sea as twenty miles,perception/recognition,estimate,"within, as the river wound, twenty miles of the sea.",1.0,0.9,17,1,"narration present, referring to past",marsh country along the river
+event/5de36473,Pip experiences first vivid and broad impression of the identity of things,perception/recognition,experience,My first most vivid and broad impression of the identity of things seems to me to have been gained on a memorable raw afternoon towards evening.,1.0,0.96,18,1,a memorable raw afternoon towards evening in childhood,marsh country (implied outdoors)
+event/67fd5090,Narrator realizes place is a churchyard,perception/recognition,realize,I found out for certain that this bleak place overgrown with nettles was the churchyard,1.0,1.0,19,1,At such a time,bleak place overgrown with nettles / churchyard
+event/974e3c4f,Pip understands Philip Pirrip is dead and buried,perception/recognition,understand,"Philip Pirrip, late of this parish ... were dead and buried",1.0,0.96,20,1,At such a time,churchyard
+event/19d29bda,Pip understands Georgiana is dead and buried,perception/recognition,understand,"and also Georgiana wife of the above, were dead and buried",1.0,0.96,21,1,At such a time,churchyard
+event/239125ad,"Pip understands Alexander, Bartholomew, Abraham, Tobias, and Roger are dead and buried",perception/recognition,understand,"Alexander, Bartholomew, Abraham, Tobias, and Roger, infant children of the aforesaid, were also dead and buried",1.0,0.96,22,1,At such a time,churchyard
+event/c1ebd2c3,Pip recognizes dark flat wilderness as marshes,perception/recognition,identify,the dark flat wilderness beyond the churchyard ... was the marshes,1.0,0.97,23,1,At such a time,dark flat wilderness beyond the churchyard
+event/51106281,Pip notices marshes are intersected with dikes and mounds and gates,perception/recognition,notice,intersected with dikes and mounds and gates,1.0,0.95,24,1,At such a time,marshes
+event/7c13cc53,Pip perceives scattered cattle feeding on the marshes,perception/recognition,perceive,with scattered cattle feeding on it,1.0,0.97,25,1,At such a time,marshes
+event/154b7a70,Pip recognizes the low leaden line as the river,perception/recognition,identify,and that the low leaden line beyond was the river,1.0,0.97,26,1,At such a time,low leaden line beyond the marshes
+event/e33f6a39,Pip recognizes distant savage lair as the sea,perception/recognition,identify,and that the distant savage lair from which the wind was rushing was the sea,1.0,0.97,27,1,At such a time,distant savage lair
+event/26fc2daa,Pip recognizes himself as the small bundle of shivers,perception/recognition,recognize,"and that the small bundle of shivers growing afraid of it all and beginning to cry, was Pip",1.0,0.98,28,1,At such a time,churchyard
+event/375aed40,Pip grows afraid of the surroundings,emotion,fear,the small bundle of shivers growing afraid of it all,1.0,0.98,29,1,At such a time,churchyard and surrounding marshes
+event/e3349793,Pip begins to cry,emotion,fear,small bundle of shivers ... beginning to cry,1.0,0.98,30,1,At such a time,churchyard
+event/3530ff6d,Terrible voice orders Pip to hold his noise,communication,command,“Hold your noise!” cried a terrible voice,1.0,0.99,31,1,immediately after Pip begins to cry,among the graves at the side of the church porch
+event/9ff33eb4,Man starts up from among the graves,movement,rise,as a man started up from among the graves,1.0,0.99,32,1,as he cries out,among the graves at the side of the church porch
+event/47a8e791,Man threatens to cut Pip’s throat,conflict,threaten,"“Keep still, you little devil, or I’ll cut your throat!”",1.0,0.99,33,1,immediately after starting up,side of the church porch
+event/930ec32e,Narrator describes the man’s clothing and iron on leg,perception/recognition,observe,"A fearful man, all in coarse grey, with a great iron on his leg",1.0,0.98,34,1,immediately after man appears,churchyard near church porch
+event/cff8fc57,"Pip notices man has no hat, broken shoes, and rag around head",perception/recognition,notice,"A man with no hat, and with broken shoes, and with an old rag tied round his head",1.0,0.98,35,1,immediately after previous observation,churchyard near church porch
+event/b0e89038,"Pip recognizes the man has been soaked, smothered, lamed, cut, stung, and torn",perception/recognition,infer,"A man who had been soaked in water, and smothered in mud, and lamed by stones, and cut by flints, and stung by nettles, and torn by briars",1.0,0.96,36,1,immediately after noticing his clothing,marsh country / churchyard
+event/62398135,Pip perceives the man limping,perception/recognition,perceive,who limped,1.0,0.94,37,1,during initial encounter,churchyard near church porch
+event/701c9bde,Pip perceives the man shivering,perception/recognition,perceive,and shivered,1.0,0.94,38,1,during initial encounter,churchyard
+event/e6dfc058,Pip perceives the man glaring,perception/recognition,perceive,and glared,1.0,0.95,39,1,during initial encounter,churchyard
+event/45c0cdf3,Pip perceives the man growling,perception/recognition,hear,and growled,1.0,0.95,40,1,during initial encounter,churchyard
+event/fd5be405,Pip notices the man’s teeth chattering,perception/recognition,notice,whose teeth chattered in his head,1.0,0.96,41,1,during initial encounter,churchyard
+event/5f8c72bd,Man seizes Pip by the chin,movement,grab,as he seized me by the chin,1.0,0.99,42,1,during initial confrontation,churchyard
+event/ea1ddf0f,Pip pleads for his throat not to be cut,communication,plead,"“Oh! Don’t cut my throat, sir,” I pleaded in terror. “Pray don’t do it, sir.”",1.0,0.99,43,1,immediately after being seized,churchyard
+event/e8f87fdf,Pip experiences terror,emotion,fear,I pleaded in terror,1.0,0.99,44,1,while pleading,churchyard
+event/b1311c95,"Man speaks again, saying 'Once more'",communication,say,"“Once more,” said the man",1.0,0.95,45,1,after Pip’s initial pleading,churchyard
+event/34c6f586,Man stares at Pip,perception/recognition,stare,"said the man, staring at me",1.0,0.96,46,1,while saying 'Once more',churchyard
+event/a5b22377,Man commands Pip to 'Give it mouth',communication,command,“Give it mouth!”,1.0,0.97,47,1,immediately after 'Once more',churchyard
+event/24db9f8c,Man orders child to show where he lives,communication,command,"“Show us where you live,” said the man. “Pint out the place!”",0.9990000000000001,0.99,48,1,,churchyard
+event/d466fd41,Child indicates location of village,movement,point,"I pointed to where our village lay, on the flat in-shore among the alder-trees and pollards",1.0,0.99,49,1,,"where our village lay, on the flat in-shore among the alder-trees and pollards, a mile or more from the church"
+event/00fde77e,Man pauses to inspect the child,perception/recognition,watch,"The man, after looking at me for a moment",1.0,0.96,50,1,after I pointed,"where our village lay, on the flat in-shore among the alder-trees and pollards, a mile or more from the church"
+event/94c4575d,Man overturns the child,movement,turn,turned me upside down,1.0,0.99,51,1,after looking at me for a moment,"where our village lay, on the flat in-shore among the alder-trees and pollards, a mile or more from the church"
+event/eb6fb3ed,Man empties child’s pockets,other,search,and emptied my pockets,1.0,0.99,52,1,immediately after turning me upside down,"where our village lay, on the flat in-shore among the alder-trees and pollards, a mile or more from the church"
+event/75e808f0,Narrator notes only a piece of bread in pockets,perception/recognition,realize,There was nothing in them but a piece of bread.,1.0,0.98,53,1,during/after pockets are emptied,"where our village lay, on the flat in-shore among the alder-trees and pollards, a mile or more from the church"
+event/27ffcc24,Narrator experiences disorientation at church seeming inverted,perception/recognition,perceive,"he made it go head over heels before me, and I saw the steeple under my feet",1.0,0.97,54,1,when the man turns him upside down,near the church
+event/d5f58d93,Church metaphorically ‘comes to itself’ for the narrator,perception/recognition,recover,"When the church came to itself,—for he was so sudden and strong",1.0,0.9,55,1,When the church came to itself,near the church
+event/21efe6c6,Narrator is seated on a high tombstone,movement,sit,I was seated on a high tombstone,1.0,0.86,56,1,when the church came to itself,on a high tombstone
+event/ffab9d2e,Narrator trembles in fear,emotion,fear,trembling while he ate the bread ravenously,1.0,0.99,57,1,while he ate the bread,on a high tombstone
+event/fd463b40,Man eats the bread ravenously,other,eat,while he ate the bread ravenously,1.0,0.99,58,1,while the narrator trembles,near the tombstone
+event/f74c27a2,"Man verbally abuses the child, calling him a young dog",communication,insult,"“You young dog,” said the man",1.0,0.99,59,1,after eating the bread,near the tombstone
+event/94126a3b,Man licks his lips after eating,other,lick,"said the man, licking his lips",1.0,0.95,60,1,as he speaks to the child,near the tombstone
+event/60665bbf,Man comments on the child’s fat cheeks,communication,remark,“what fat cheeks you ha’ got.”,1.0,0.99,61,1,in the same speech,near the tombstone
+event/f67004bc,Narrator expresses belief about his own fat cheeks,emotion,believe,I believe they were fat,1.0,0.98,62,1,retrospective narration,near the tombstone
+event/6924529c,Narrator states he was undersized for his years,communication,state,though I was at that time undersized for my years,1.0,0.98,63,1,at that time,near the tombstone
+event/503be001,Narrator states he was not strong,communication,admit,and not strong.,1.0,0.98,64,1,at that time,near the tombstone
+event/84259fed,Man threatens to eat the boy,communication,threaten,"“Darn me if I couldn’t eat ’em,” said the man, with a threatening shake of his head, “and if I han’t half a mind to’t!”",0.9990000000000001,1.0,65,1,,near the tombstone
+event/ddbcab73,Boy hopes the man won’t eat him,emotion,hope,I earnestly expressed my hope that he wouldn’t,1.0,1.0,66,1,,on the tombstone
+event/88c17de4,Boy expresses his hope verbally,communication,express,I earnestly expressed my hope that he wouldn’t,1.0,0.96,67,1,,on the tombstone
+event/fb8c8118,Boy tightens his grip on the tombstone,movement,hold,and held tighter to the tombstone on which he had put me,1.0,1.0,68,1,,on the tombstone
+event/b2239ddb,Boy tries to keep himself on the tombstone,movement,stay,"partly, to keep myself upon it",0.9990000000000001,0.94,69,1,,on the tombstone
+event/129dcc78,Boy tries to keep himself from crying,emotion,restrain,"partly, to keep myself from crying",1.0,1.0,70,1,,on the tombstone
+event/0bd0bc44,Man demands to know where the boy’s mother is,communication,demand,“Now lookee here!” said the man. “Where’s your mother?”,0.9990000000000001,1.0,71,1,,on the tombstone
+event/febe0b5b,Man starts suddenly,movement,start,He started,1.0,0.74,72,1,,on the tombstone
+event/24222105,Man makes a short run,movement,run,made a short run,1.0,0.78,73,1,,on the tombstone
+event/9c9dc902,Man stops after running,movement,stop,and stopped,1.0,0.86,74,1,,on the tombstone
+event/fcb79fdd,Man looks over his shoulder,perception/recognition,watch,and looked over his shoulder,1.0,0.9,75,1,,on the tombstone
+event/654be1ad,Boy timidly explains where his mother is,communication,explain,"“There, sir!” I timidly explained. “Also Georgiana. That’s my mother.”",1.0,1.0,76,1,,near the tombstones
+event/be2f62c9,Boy identifies Georgiana as his mother,communication,identify,“Also Georgiana. That’s my mother.”,1.0,1.0,77,1,,near the tombstones
+event/7a9a0fdc,Boy feels timidity while speaking,emotion,fear,"“There, sir!” I timidly explained.",1.0,0.96,78,1,,near the tombstones
+event/3bbb618f,Man speaks exclamation on returning,communication,say,"“Oh!” said he, coming back.",1.0,0.9,79,1,moment of his return,unspecified nearby place (where he comes back)
+event/423ab7b1,Man returns to the narrator,movement,come,"said he, coming back.",1.0,0.9,80,1,just before he speaks,place where the narrator is (near the graves)
+event/20c8a7ab,Man asks if those are the narrator's parents,communication,demand,“And is that your father alonger your mother?”,1.0,0.96,81,1,immediately after he comes back,near the narrator and the graves
+event/cd699429,Narrator confirms parents and adds detail,communication,say,"“Yes, sir,” said I; “him too; late of this parish.”",1.0,0.96,82,1,immediately after being asked about parents,same place by the graves
+event/8fb62fe7,Man mutters and considers,perception/recognition,consider,"“Ha!” he muttered then, considering.",1.0,0.9,83,1,after narrator’s confirmation,same site near the graves
+event/e5493b52,"Man asks who narrator lives with, threatening life",communication,demand,"“Who d’ye live with,—supposin’ you’re kindly let to live, which I han’t made up my mind about?”",1.0,0.97,84,1,immediately after he mutters,same site near the graves
+event/0ee2f071,Man expresses uncertainty about letting boy live,conflict,threaten,"“supposin’ you’re kindly let to live, which I han’t made up my mind about”",1.0,0.96,85,1,embedded in his question,same site near the graves
+event/f2599412,Narrator states he lives with his sister and identifies her,communication,say,"“My sister, sir,—Mrs. Joe Gargery,—wife of Joe Gargery, the blacksmith, sir.”",1.0,0.97,86,1,right after the man’s question,same site near the graves
+event/89a395ba,Narrator identifies Joe Gargery as a blacksmith,communication,identify,"“wife of Joe Gargery, the blacksmith, sir.”",0.9990000000000001,0.93,87,1,within same reply about his sister,same site near the graves
+event/e7852593,Man repeats and acknowledges blacksmith information,communication,say,"“Blacksmith, eh?” said he.",1.0,0.95,88,1,after hearing Joe is a blacksmith,same site near the graves
+event/32e89fb9,Man looks down at his leg,perception/recognition,watch,And looked down at his leg.,1.0,0.98,89,1,"immediately after saying “Blacksmith, eh?”",same site near the graves
+event/d934d40f,Man looks darkly at his leg and Pip,perception/recognition,watch,After darkly looking at his leg and me several times,1.0,0.93,90,1,after darkly looking,by the tombstone
+event/da8fb73d,Man comes closer to the tombstone,movement,approach,he came closer to my tombstone,1.0,0.96,91,1,after looking several times,my tombstone
+event/23db875d,Man takes Pip by both arms,movement,grip,took me by both arms,1.0,0.98,92,1,as he came closer,my tombstone
+event/0fa10d6a,Man tilts Pip back to his limit,movement,tilt,and tilted me back as far as he could hold me,1.0,0.98,93,1,immediately after taking him by the arms,my tombstone
+event/03c63d58,Man looks powerfully down into Pip’s eyes,perception/recognition,stare,so that his eyes looked most powerfully down into mine,1.0,0.97,94,1,while holding Pip tilted back,by the tombstone
+event/9ad7c6d4,Pip looks helplessly up at the man,perception/recognition,watch,and mine looked most helplessly up into his,1.0,0.97,95,1,while being held and tilted,by the tombstone
+event/40e8f917,Man begins speaking with warning about life,communication,say,"“Now lookee here,” he said, “the question being whether you’re to be let to live.",1.0,0.96,96,1,after tilting Pip back,by the tombstone
+event/4b697889,Man asks if Pip knows what a file is,communication,demand,You know what a file is?”,1.0,0.97,97,1,during the initial threat,by the tombstone
+event/790d8e57,Man tilts Pip further after each question,movement,tilt,"After each question he tilted me over a little more, so as to give me a greater sense of helplessness and danger.",1.0,0.98,98,1,after each question,by the tombstone
+event/456a94fa,Man orders Pip to get him a file,communication,command,“You get me a file.”,1.0,0.96,99,1,following the questions,by the tombstone
+event/96efa59b,Man tilts Pip again after ordering the file,movement,tilt,He tilted me again.,1.0,0.97,100,1,immediately after the command about the file,by the tombstone
+event/1fc209e2,Man orders Pip to get him wittles,communication,command,“And you get me wittles.”,1.0,0.96,101,1,after ordering the file,by the tombstone
+event/832f148d,Man tilts Pip again after ordering wittles,movement,tilt,He tilted me again.,1.0,0.97,102,1,immediately after the command about wittles,by the tombstone
+event/5a0b6e57,Man orders Pip to bring both file and wittles,communication,command,“You bring ’em both to me.”,1.0,0.96,103,1,after the prior commands,by the tombstone
+event/9031a84c,Man tilts Pip again after ordering both,movement,tilt,He tilted me again.,1.0,0.96,104,1,immediately after saying bring them both,by the tombstone
+event/7f95ad8e,Man threatens to take Pip’s heart and liver out,communication,threaten,“Or I’ll have your heart and liver out.”,1.0,0.98,105,1,after commanding Pip to bring both items,by the tombstone
+event/3811de1a,Man tilts Pip again after making lethal threat,movement,tilt,He tilted me again.,1.0,0.97,106,1,immediately after threatening Pip’s life,by the tombstone
+event/a6f1b76e,Pip feels dreadfully frightened,emotion,fear,I was dreadfully frightened,1.0,0.99,107,1,after repeated threats and tilting,by the tombstone
+event/89cba537,Pip feels giddy,emotion,dizzy,and so giddy,1.0,0.97,108,1,while being repeatedly tilted back,by the tombstone
+event/c250f076,Pip clings to the man with both hands,movement,cling,that I clung to him with both hands,1.0,0.98,109,1,when he is frightened and giddy,by the tombstone
+event/841cf743,Pip politely asks to be allowed to keep upright,communication,request,"and said, “If you would kindly please to let me keep upright, sir",1.0,0.99,110,1,while clinging to the man,by the tombstone
+event/2b289f3a,Pip explains that uprightness might prevent sickness and improve attention,communication,explain,"perhaps I shouldn’t be sick, and perhaps I could attend more.”",1.0,0.98,111,1,in the same speech requesting to stand upright,by the tombstone
+event/1adfc414,Man dips and rolls the narrator,movement,dip,"He gave me a most tremendous dip and roll, so that the church jumped over its own weathercock.",1.0,0.97,112,1,then,on the top of the stone near the church
+event/c8446ed4,Man holds narrator upright by the arms,movement,hold,"Then, he held me by the arms, in an upright position on the top of the stone",1.0,0.97,113,1,then,on the top of the stone
+event/3962a937,Man continues speaking fearfully,communication,speak,and went on in these fearful terms:—,1.0,0.97,114,1,then,on the top of the stone
+event/a9a5b845,Man orders boy to bring file and food,communication,command,"“You bring me, to-morrow morning early, that file and them wittles.",1.0,0.98,115,1,to-morrow morning early (future),on the top of the stone
+event/68197964,Man specifies location of rendezvous at the old Battery,communication,instruct,"You bring the lot to me, at that old Battery over yonder.",1.0,0.96,116,1,to-morrow morning early (future),that old Battery over yonder
+event/1e7f50df,Man commands boy to stay silent about him,communication,forbid,you never dare to say a word or dare to make a sign concerning your having seen such a person as me,1.0,0.98,117,1,ongoing future,on the top of the stone
+event/ac84ccaa,Man threatens to kill boy if he disobeys,conflict,threaten,"You fail, or you go from my words in any partickler...and your heart and your liver shall be tore out, roasted, and ate.",1.0,0.98,118,1,conditional future,on the top of the stone
+event/c4e03f53,Man asserts he is not alone,communication,claim,"Now, I ain’t alone, as you may think I am.",1.0,0.97,119,1,present,on the top of the stone
+event/5505fdd2,Man claims a young man is hidden with him,communication,claim,There’s a young man hid with me,1.0,0.96,120,1,present,with me (near the marshes/stone)
+event/02de31bf,Man compares himself favorably to the young man,communication,compare,in comparison with which young man I am a Angel.,1.0,0.95,121,1,present,on the top of the stone
+event/67338777,Man states young man hears his words,communication,assert,That young man hears the words I speak.,1.0,0.95,122,1,present,"nearby, hidden"
+event/b3e1d293,Man describes young man’s peculiar way of getting at a boy,communication,describe,"That young man has a secret way pecooliar to himself, of getting at a boy, and at his heart, and at his liver.",1.0,0.97,123,1,general/habitual,on the top of the stone
+event/294b660c,Man claims hiding from young man is in vain,communication,threaten,It is in wain for a boy to attempt to hide himself from that young man.,1.0,0.96,124,1,conditional future/general,"various imagined places (locked room, bed)"
+event/4d88cc16,Man imagines boy locking door and going to bed,communication,imagine,"A boy may lock his door, may be warm in bed, may tuck himself up, may draw the clothes over his head",1.0,0.93,125,1,hypothetical future,boy’s room/bed (imagined)
+event/52c51ef1,Man asserts young man will creep to the boy and tear him open,communication,threaten,but that young man will softly creep and creep his way to him and tear him open.,1.0,0.97,126,1,conditional future,boy’s imagined sleeping place
+event/46f4f8cd,Man claims he is restraining young man from harming boy,communication,claim,"I am a keeping that young man from harming of you at the present moment, with great difficulty.",1.0,0.96,127,1,present,"at the present moment, near the stone"
+event/b167a556,Man states difficulty in holding young man off,communication,complain,I find it wery hard to hold that young man off of your inside.,1.0,0.95,128,1,present,near the stone
+event/fe76218e,Man demands boy’s response,communication,question,"Now, what do you say?”",1.0,0.98,129,1,present,on the top of the stone
+event/4181e532,Narrator promises to get the file,communication,promise,I said that I would get him the file,1.0,0.98,130,1,future (next morning),on the top of the stone
+event/9c9c7dae,Narrator promises to get broken bits of food,communication,promise,and I would get him what broken bits of food I could,1.0,0.97,131,1,future (next morning),on the top of the stone
+event/e333f7fa,Narrator promises to come to the Battery in the morning,communication,promise,"and I would come to him at the Battery, early in the morning.",1.0,0.98,132,1,early in the morning (future),the Battery
+event/a22d867e,Man commands narrator to swear an oath,communication,command,“Say Lord strike you dead if you don’t!” said the man.,1.0,0.98,133,1,immediately after narrator’s promise,on the top of the stone
+event/f6a5fef2,Man reminds listener of undertaking and orders them home,communication,remind,"“Now,” he pursued, “you remember what you’ve undertook, and you remember that young man, and you get home!”",1.0,0.97,134,1,Now,on the top of the stone
+event/a3ab2b4c,Narrator is reminded of what he undertook,perception/recognition,remember,“you remember what you’ve undertook”,1.0,0.86,135,1,Now,on the top of the stone
+event/1d5ad8eb,Narrator is reminded of the young man,perception/recognition,remember,“and you remember that young man”,1.0,0.91,136,1,Now,on the top of the stone
+event/8269cf34,Man exclaims dismissively 'Much of that!',communication,exclaim,“Much of that!” said he,1.0,0.9,137,1,,cold wet flat
+event/631abc41,Man glances about over the cold wet flat,perception/recognition,glance,glancing about him over the cold wet flat,1.0,0.96,138,1,,cold wet flat
+event/5a7dec76,Man wishes he were a frog,emotion,wish,“I wish I was a frog.,1.0,0.96,139,1,,cold wet flat
+event/82f58a9b,Man wishes he were an eel,emotion,wish,Or a eel!”,1.0,0.96,140,1,,cold wet flat
+event/0daeeccf,Man hugs his shuddering body,movement,hug,he hugged his shuddering body in both his arms,1.0,0.98,141,1,At the same time,near the low church wall
+event/4bca56d7,Man clasps himself as if to hold himself together,movement,clasp,"clasping himself, as if to hold himself together",1.0,0.93,142,1,At the same time,near the low church wall
+event/ba1b6614,Man limps towards the low church wall,movement,limp,and limped towards the low church wall,1.0,0.98,143,1,At the same time,towards the low church wall
+event/cfee5087,"Narrator sees man go, picking his way among nettles and brambles",perception/recognition,perceive,"As I saw him go, picking his way among the nettles, and among the brambles",1.0,0.97,144,1,As I saw him go,near the low church wall among the nettles and brambles
+event/de7309f3,Man picks his way among nettles and brambles,movement,pick,"picking his way among the nettles, and among the brambles that bound the green mounds",1.0,0.97,145,1,As he goes towards the wall,among the nettles and brambles that bound the green mounds
+event/001fbfc3,Narrator perceives man as eluding hands of dead people,perception/recognition,perceive,he looked in my young eyes as if he were eluding the hands of the dead people,1.0,0.95,146,1,as I saw him go,near the graves by the green mounds
+event/3a455736,Narrator imagines dead people stretching up from graves,perception/recognition,imagine,"dead people, stretching up cautiously out of their graves, to get a twist upon his ankle and pull him in",1.0,0.94,147,1,while watching him,their graves by the green mounds
+event/a8cc7ab9,Man comes to the low church wall,movement,arrive,When he came to the low church wall,1.0,0.98,148,1,When he came to the low church wall,low church wall
+event/6bcbdcf9,Man gets over the church wall like one with numbed legs,movement,climb,"he got over it, like a man whose legs were numbed and stiff",1.0,0.98,149,1,When he came to the low church wall,low church wall
+event/7bbcdd91,Man turns round to look for the narrator,perception/recognition,watch,and then turned round to look for me,1.0,0.98,150,1,and then,just beyond the low church wall
+event/5e660441,Narrator sees the man turning,perception/recognition,perceive,When I saw him turning,1.0,0.97,151,1,When I saw him turning,near the low church wall
+event/105a0f55,Narrator sets his face towards home,movement,turn,I set my face towards home,1.0,0.97,152,1,When I saw him turning,towards home
+event/ccb1bddb,Narrator makes the best use of his legs (hurries homeward),movement,hurry,and made the best use of my legs,1.0,0.98,153,1,immediately after turning towards home,towards home
+event/28198b21,Narrator looks over his shoulder,perception/recognition,watch,But presently I looked over my shoulder,1.0,0.98,154,1,presently,on the way towards home
+event/b7195672,Narrator sees man going on towards the river,perception/recognition,perceive,and saw him going on again towards the river,1.0,0.98,155,1,"presently, after narrator starts home",towards the river across the marshes
+event/c59df86f,Man continues hugging himself in both arms while walking,movement,hug,still hugging himself in both arms,1.0,0.97,156,1,as he goes on again towards the river,towards the river across the marshes
+event/b6bd64a9,Man picks his way with sore feet among great stones,movement,pick,picking his way with his sore feet among the great stones dropped into the marshes,1.0,0.98,157,1,as he goes on towards the river,among the great stones dropped into the marshes
+event/4ba672f6,Narrator stops to look after the man,perception/recognition,stop,as I stopped to look after him,1.0,0.94,158,1,then,on the marshes overlooking river and marsh line
+event/69f9b5e7,Narrator visually perceives marshes as a long black horizontal line,perception/recognition,perceive,The marshes were just a long black horizontal line then,1.0,0.98,159,1,"then, while stopped",marshes
+event/d4917010,Narrator visually perceives river as another horizontal line,perception/recognition,perceive,"and the river was just another horizontal line, not nearly so broad nor yet so black",1.0,0.98,160,1,"then, while stopped",river
+event/dfb4f907,Narrator visually perceives sky as angry red and dense black lines,perception/recognition,perceive,and the sky was just a row of long angry red lines and dense black lines intermixed,1.0,0.98,161,1,"then, while stopped",sky
+event/fa3dc26e,Narrator faintly perceives two black upright things by the river,perception/recognition,perceive,On the edge of the river I could faintly make out the only two black things in all the prospect that seemed to be standing upright,1.0,1.0,162,1,implicit present of narration,on the edge of the river
+event/60378d84,Narrator identifies one object as the beacon,perception/recognition,recognize,one of these was the beacon by which the sailors steered,1.0,1.0,163,1,same narrative moment,on the edge of the river
+event/ead2d1b0,Narrator evaluates the beacon as ugly up close,emotion,dislike,"like an unhooped cask upon a pole,—an ugly thing when you were near it",1.0,0.94,164,1,when near the beacon,near the beacon by the river
+event/227937ad,Narrator identifies the other object as a gibbet with chains,perception/recognition,recognize,"the other, a gibbet, with some chains hanging to it which had once held a pirate",1.0,1.0,165,1,same narrative scene,on the edge of the river
+event/1a149e64,Man limps toward the gibbet,movement,limp,The man was limping on towards this latter,1.0,0.96,166,1,present of described action,from near the river toward the gibbet
+event/3bd74a2e,Narrator imagines man as pirate come to life and returning to gibbet,perception/recognition,imagine,"as if he were the pirate come to life, and come down, and going back to hook himself up again",1.0,0.98,167,1,while watching the man limp toward the gibbet,"on the edge of the river, looking toward the gibbet"
+event/f94af1ef,Narrator experiences a terrible shock from this thought,emotion,startle,It gave me a terrible turn when I thought so,1.0,0.99,168,1,immediately after imagining the man as the pirate,on the edge of the river
+event/b0329d72,Narrator perceives cattle lifting their heads to gaze at the man,perception/recognition,perceive,as I saw the cattle lifting their heads to gaze after him,1.0,0.96,169,1,after the terrible turn,"near the river, within sight of the gibbet"
+event/9559d7b8,Cattle gaze after the man,perception/recognition,watch,the cattle lifting their heads to gaze after him,1.0,0.93,170,1,simultaneous with narrator’s observation,fields near the river
+event/0b37a956,Narrator wonders if cattle share his thought about the man being the pirate,perception/recognition,wonder,I wondered whether they thought so too,1.0,0.97,171,1,while seeing the cattle gaze,on the edge of the river
+event/31324327,Narrator looks around for the horrible young man,perception/recognition,search,I looked all round for the horrible young man,1.0,0.99,172,1,after observing the cattle,on the edge of the river and surrounding area
+event/8ce5c4a7,Narrator fails to see any sign of the horrible young man,perception/recognition,not-see,and could see no signs of him,1.0,0.98,173,1,immediately after searching,around the river area
+event/9f500af1,Narrator becomes frightened again,emotion,fear,But now I was frightened again,1.0,0.99,174,1,after failing to find the horrible young man,near the river
+event/64be66ee,Narrator runs home without stopping,movement,run,and ran home without stopping,1.0,1.0,175,1,immediately after becoming frightened again,from the river area to home

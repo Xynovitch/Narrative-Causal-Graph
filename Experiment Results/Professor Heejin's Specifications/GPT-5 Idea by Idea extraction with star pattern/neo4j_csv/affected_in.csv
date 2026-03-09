@@ -1,0 +1,12 @@
+:START_ID,:END_ID,:TYPE,strength
+agent_pip/a9caf5d7,event/02cd66d5,AFFECTED_IN,0.6
+agent_pip/e38df5a0,event/c48b60b0,AFFECTED_IN,1.0
+agent_pip/814d0fb3,event/9a531af4,AFFECTED_IN,0.9
+agent_pip/0636eef2,event/61448973,AFFECTED_IN,0.7
+agent_pip/73873895,event/416115f2,AFFECTED_IN,1.0
+agent_pip/9e339420,event/d5bbca8e,AFFECTED_IN,1.0
+agent_pip/3dca3c19,event/640af074,AFFECTED_IN,1.0
+agent_pip/cb7fd3e1,event/a3e60315,AFFECTED_IN,0.9
+agent_file/e960c638,event/a3e60315,AFFECTED_IN,0.4
+agent_file/7c1d54e4,event/dde423b3,AFFECTED_IN,0.6
+agent_food/ab2c9633,event/dde423b3,AFFECTED_IN,0.6

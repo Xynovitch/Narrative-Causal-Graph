@@ -1,0 +1,345 @@
+:ID,theme,chapter,confidence
+scene/0ed7eabe,Pip's childhood memories and beliefs,1,0.8
+scene/e55a3555,Pip's encounter with the convict,1,0.9
+scene/74001455,Events at the Gargery household involving Mrs. Joe and Joe Gargery,2,0.0
+scene/06b94d92,Events involving food and mealtime,2,0.0
+scene/d9648ca5,Events related to fear and anxiety,2,0.0
+scene/e8ee24c8,Pip's guilt and fear while walking through the marshes,3,0.8
+scene/d65f1798,Pip's journey towards the river,3,0.7
+scene/4607a141,Pip's memories of Joe and the Battery,3,0.6
+scene/d4cd280f,Encounter with a mysterious man at the Battery,3,0.8
+scene/67fa6001,Interaction with the man at the Battery,3,0.7
+scene/55ff257c,The man's strange behavior and conversation,3,0.6
+scene/c644600c,Revelation about the man's past and actions,3,0.7
+scene/47b1b251,Man's encounter with soldiers and his past actions,3,0.9
+scene/15b7ae47,Morning preparations at home,4,0.9
+scene/982163e2,Encounter with soldiers,4,0.8
+scene/a4d7e911,Journey to the Convict Settlement,5,0.9
+scene/c496de2f,Encounter with the Soldiers,5,0.8
+scene/0c3991f4,Philip's internal struggle with telling the truth to Joe Gargery,6,0.8
+scene/6dfc4f03,Joe Gargery's kindness towards Philip Pirrip,6,0.7
+scene/a37e0051,Mr. Wopsle's bad temper and behavior,6,0.6
+scene/07c15ca2,Chaotic events at home involving various characters,6,0.7
+scene/ea081746,Reading family tombs in the churchyard,7,0.0
+scene/5c889aae,Working at the forge with Joe,7,0.0
+scene/c21ae8e3,Attending Mr. Wopsle's evening school,7,0.0
+scene/62630202,Assisting Biddy in the shop,7,0.0
+scene/fcc9e5e9,Learning to read and write,7,0.0
+scene/fdb3fe30,Writing and delivering letters to Joe,7,0.0
+scene/5479b6a0,Discussing Joe's education and family history,7,0.0
+scene/2a3d678c,Joe's father and the couplet on his tombstone,7,0.0
+scene/12801f4f,Joe's loneliness and interactions with Pip's sister,7,0.0
+scene/33b20b49,Secrecy and Mrs. Joe's dominance,7,0.0
+scene/c71ba786,Joe's internal struggles and reflections,7,0.0
+scene/4011d62b,Uncle Pumblechook's visit and Mrs. Joe's absence,7,0.0
+scene/40da4a88,Philip Pirrip's transformation and departure,7,0.0
+scene/6cef63a6,Parting ways with Joe,7,0.0
+scene/a847f201,Arrival at Miss Havisham's house,8,0.0
+scene/9d22c670,Playing cards with Estella,8,0.0
+scene/4bde556e,Interaction with Estella,8,0.0
+scene/cbd02523,Events at Uncle Pumblechook's house,9,0.0
+scene/1f07c8ac,Conversations with Joe,9,0.0
+scene/5453b851,School events,10,0.8
+scene/67fa7ea0,Pub conversation,10,0.7
+scene/6919abeb,Home aftermath,10,0.6
+scene/4e816d7e,Events at Miss Havisham's house,11,0.0
+scene/3d0fb1f5,Encounter with the pale young gentleman,11,0.0
+scene/dd37f5ac,Interaction with the pale young gentleman,11,0.0
+scene/bb4a2db4,Events related to the pale young gentleman and Miss Havisham's house,12,0.0
+scene/fd02d43a,Family dynamics and conflicts,12,0.0
+scene/47e77374,Interactions with Miss Havisham and Estella,12,0.0
+scene/532091a0,Joe and Pip's visit to Miss Havisham's house,13,0.0
+scene/bfc39dc4,Pip's apprenticeship and dinner celebration,13,0.0
+scene/78869d78,Change in perception of home,14,0.8
+scene/29969115,Believing in different parts of the house,14,0.7
+scene/6b1ece1b,Working hard as an apprentice,14,0.6
+scene/6942e4a8,Growing up and facing challenges,14,0.7
+scene/c84beb6d,Education and Performance under Mr. Wopsle,15,0.8
+scene/929faac2,Thoughts and Discussions about Miss Havisham,15,0.7
+scene/8c4bf879,Conflict and Tension with Orlick,15,0.6
+scene/a310c6d9,Drama and Conflict in the Village,15,0.7
+scene/8d9b01ca,Events related to the attack on Pip's sister and the aftermath,16,0.0
+scene/856e8319,Birthday Celebration,17,0.8
+scene/b272b828,Miss Havisham's House,17,0.7
+scene/a850e637,Internal Conflict,17,0.6
+scene/33a86806,Learning and Teaching,17,0.7
+scene/e0aa3a08,Reflection and Recollection,17,0.6
+scene/1b77fbd4,Outdoor Walk and Conversation,17,0.7
+scene/47fbf271,Desire for Change and Unhappiness,17,0.6
+scene/de1dbd16,Acceptance and Moving On,17,0.6
+scene/a665a545,Emotional Connection and Gratitude,17,0.7
+scene/ce80748c,Friendship and Support,17,0.7
+scene/1a578c52,Relationship Dynamics and Uncertainty,17,0.7
+scene/a75166f9,Love and Regret,17,0.7
+scene/125ff4d3,Jealousy and Misunderstanding,17,0.6
+scene/f323b1e6,Indifference and Reassurance,17,0.7
+scene/727656d5,Observation and Caution,17,0.6
+scene/de121ba1,Confusion and Remembrance,17,0.7
+scene/07faa653,Understanding and Good Intentions,17,0.6
+scene/06de5a14,Self-Reflection and Discontent,17,0.6
+scene/5d89e46b,Events at the Three Jolly Bargemen,18,0.9
+scene/00d78aa9,Events at Pip's Home with Joe and Biddy,18,0.8
+scene/b35c08e3,Events at Joe's house and interactions with Joe and Biddy,19,0.0
+scene/a346d17e,Preparation and departure for London,19,0.0
+scene/8f393808,Journey to the metropolis,20,0.0
+scene/7f30845a,Meeting with Mr. Jaggers,20,0.0
+scene/d61e1c1f,Interaction with secret men,20,0.0
+scene/d86fe1ca,Conversation with Mike,20,0.0
+scene/f16bfaca,Exploring London with Mr. Wemmick,21,0.8
+scene/412cf59d,"Meeting Mr. Pocket, Junior",21,0.7
+scene/059a5a79,Meeting the pale young gentleman,22,0.0
+scene/7290e18f,Miss Havisham sending for Herbert Pocket,22,0.0
+scene/8e4c6ab2,Herbert Pocket describing Estella,22,0.0
+scene/b2c57e6d,Philip Pirrip and Herbert Pocket's conversation,22,0.0
+scene/e91ab229,Discussion about Mr. Jaggers,22,0.0
+scene/d90fbb61,Herbert Pocket's family history,22,0.0
+scene/c301904f,Establishing a friendship between Philip Pirrip and Herbert Pocket,22,0.0
+scene/b4c2f224,Dinner conversation,22,0.0
+scene/f7694f0d,Choosing the name Handel,22,0.0
+scene/6a4fa02f,Herbert Pocket telling the story of Miss Havisham,22,0.0
+scene/d3487a63,Miss Havisham's background,22,0.0
+scene/e6e0ce13,Disinheritance of Miss Havisham's brother,22,0.0
+scene/f43675e1,Miss Havisham's inheritance,22,0.0
+scene/d8533061,Differences between Miss Havisham and her brother,22,0.0
+scene/c9022f2a,Conversation about Miss Havisham's love life,22,0.0
+scene/f47bc244,Manipulation of Miss Havisham by a man,22,0.0
+scene/efc3c310,Miss Havisham's idolization of a man,22,0.0
+scene/926bc06d,Warnings to Miss Havisham,22,0.0
+scene/86c8eb08,Miss Havisham's anger towards her intended husband,22,0.0
+scene/9920da8e,Miss Havisham being stood up on her wedding day,22,0.0
+scene/dfaa90bf,Miss Havisham's reaction to the letter,22,0.0
+scene/7ac3d4b2,Miss Havisham's actions after being jilted,22,0.0
+scene/0d84321c,Miss Havisham's isolation,22,0.0
+scene/bf9827ca,Miss Havisham's manipulation and downfall,22,0.0
+scene/b9e73bd8,The legacy of Estella,22,0.0
+scene/dde92b6d,Understanding between Philip Pirrip and Herbert Pocket,22,0.0
+scene/2515263e,Discussion about Herbert Pocket's occupation,22,0.0
+scene/6dcbddff,Philip Pirrip's realization about Herbert Pocket,22,0.0
+scene/7f330aa3,Philip Pirrip's thoughts on Herbert Pocket,22,0.0
+scene/cb851a92,Philip Pirrip's awe of Herbert Pocket,22,0.0
+scene/39f8fbd1,Philip Pirrip's hesitation about Herbert Pocket,22,0.0
+scene/98f51076,Discussion about counting-house profitability,22,0.0
+scene/38b506ce,Herbert Pocket explaining the profitability of a counting-house,22,0.0
+scene/0bc46157,Activities with Herbert Pocket,22,0.0
+scene/d74f1240,Exploring the city with Herbert Pocket,22,0.0
+scene/d5c3518e,Lunch with Herbert Pocket,22,0.0
+scene/385e944c,Herbert Pocket reporting to the counting-house,22,0.0
+scene/2bf02abd,Returning to Barnard's Inn,22,0.0
+scene/4eb80681,Meeting Mrs. Pocket and her children,22,0.0
+scene/7589304c,Interaction with Mrs. Pocket and the nurse,22,0.0
+scene/8dd14baf,Mrs. Pocket's reaction to the children,22,0.0
+scene/b7866d51,Chaos with the Pocket children,22,0.0
+scene/480a33a4,Calming the Pocket children,22,0.0
+scene/48834d6d,Mrs. Pocket's reading habits,22,0.0
+scene/5850bff3,Handling the Pocket children,22,0.0
+scene/8af13a7a,Events with Mr. and Mrs. Pocket in their home,23,0.0
+scene/ff403e2a,Boating and river activities,23,0.0
+scene/ffbed88f,Mr. Pocket's advice and influence on Pip,24,0.8
+scene/33fcf2f0,Negotiation with Mr. Jaggers for money,24,0.7
+scene/22e41a98,Interaction with Wemmick at the office,24,0.6
+scene/2b6c49c9,Visit to Wemmick's office and discussion,24,0.7
+scene/0bd10a51,Exploration of Mr. Jaggers's office,24,0.8
+scene/e2762e31,Discussion about personal items and invitation,24,0.6
+scene/b66a02a6,Arrangement to visit Walworth and observation of Mr. Jaggers's house,24,0.7
+scene/b36a39db,Courtroom scene with Mr. Jaggers,24,0.8
+scene/7f99ddc2,Impact of Mr. Jaggers's presence on others,24,0.7
+scene/1490fc99,Interactions with Bentley Drummle and Startop,25,0.8
+scene/cf272f15,Relationships with Mr. and Mrs. Pocket,25,0.7
+scene/f7c6da86,Interactions with Mr. Wemmick,25,0.9
+scene/aef39393,Discussions about security and fortifications,25,0.6
+scene/a8785a89,Exploration of Wemmick's home and activities,25,0.8
+scene/7c5aa03e,Introduction to the Aged Parent,25,0.7
+scene/0230d0f9,Interaction with the Aged Parent and the neat little girl,25,0.6
+scene/b0fe58f5,Observations of Wemmick's daily routines,25,0.7
+scene/51a5a0ee,Visit to Little Britain with Wemmick,25,0.8
+scene/ada258ae,Preparation for dinner at Philip Pirrip's guardian's house,26,0.0
+scene/421e77b6,Dinner at Philip Pirrip's guardian's house,26,0.0
+scene/5f478095,After dinner conversation and departure from Philip Pirrip's guardian's house,26,0.0
+scene/1cd42b34,Philip Pirrip's conversation with his guardian after the dinner,26,0.0
+scene/8047921b,Mr. Gargery's trip to London,27,0.0
+scene/bc862425,Joe's arrival at Pip's place,27,0.0
+scene/a82c4436,Joe and Herbert's interaction,27,0.0
+scene/dd97407c,Joe's visit and conversation with Pip,27,0.0
+scene/f5bc4be3,Decision-making about where to stay,28,0.8
+scene/a7c57976,Journey on the coach with convicts,28,0.7
+scene/ff0e6f82,Morning walk and thoughts,29,0.9
+scene/ea36a8d8,Encounter with Orlick,29,0.8
+scene/d0d6e8bc,Conversation with Orlick,29,0.7
+scene/f5a70e86,Meeting Miss Havisham and Estella,29,0.8
+scene/b34ed74a,Walk and conversation with Estella and Philip Pirrip,29,0.9
+scene/8c5d6dcb,Conversation with Miss Havisham and Jaggers,29,0.8
+scene/e69f911f,Emotions and reflections,29,0.7
+scene/6c0e392c,Pip's guardian and Orlick,30,0.8
+scene/b5e1e097,Pip in the quiet old town,30,0.7
+scene/60a35848,Trabb's boy encounters,30,0.6
+scene/6127b3f3,Philip Pirrip and Herbert Pocket's conversations,30,0.7
+scene/be2bdac0,Arrival in Denmark and royal court,31,0.8
+scene/9c8abc53,Performance and entertainment,31,0.7
+scene/a00a74f4,Graveyard scene,31,0.6
+scene/57462704,Conversations and interactions,31,0.7
+scene/155a7456,Receiving and interpreting a mysterious note,32,0.8
+scene/1d82ac18,Preparing for a trip to London,32,0.7
+scene/2206da49,Visiting Newgate prison with Wemmick,32,0.9
+scene/d4af9a44,Conversation with the Colonel in Wemmick's greenhouse,32,0.8
+scene/8587e5e6,Interaction with the turnkey at Newgate prison,32,0.7
+scene/411501d5,Reflections and thoughts after the visit to Newgate,32,0.6
+scene/d142cd12,Events related to Estella and Pip's outing to Richmond,33,0.0
+scene/f8279d76,Events related to Pip's visit to the Pockets,33,0.0
+scene/ab95dae1,Chronic uneasiness and restlessness,34,0.8
+scene/bf09f79e,Contracting debt and financial troubles,34,0.7
+scene/841baf83,Dining expensively and social gatherings,34,0.6
+scene/beee1483,Financial struggles and hopefulness,34,0.7
+scene/d912803b,Visiting Hammersmith and Richmond,34,0.6
+scene/3f1399b8,Financial discussions and calculations,34,0.7
+scene/04d4035a,Business activities and meetings,34,0.6
+scene/3be0cf60,Writing and planning together,34,0.7
+scene/32a7fa71,Collaborative financial management,34,0.7
+scene/78b932e7,Productive and refreshing work sessions,34,0.8
+scene/6c272e5e,Estimating and discussing financial matters,34,0.7
+scene/2b1f444a,Admiration and appreciation for resourcefulness,34,0.6
+scene/a69bf04f,Managing responsibilities and debts,34,0.7
+scene/b51887e1,Cyclical pattern of incurring new debt,34,0.7
+scene/130e802c,Receiving and reading important letters,34,0.6
+scene/6e8422a6,Arrival at the house and village,35,0.8
+scene/dc2e0edd,Gathering and mourning at the funeral,35,0.7
+scene/a4a7a68d,Dinner and conversation with Joe and Biddy,35,0.6
+scene/1760bcae,Emotional conversation with Biddy,35,0.7
+scene/8fa65a90,Tension and misunderstanding with Biddy,35,0.6
+scene/dc8be061,Reflection and departure from Biddy,35,0.7
+scene/be5ea6b1,Final moments and farewell,35,0.8
+scene/4820f804,Philip Pirrip and Herbert Pocket coming of age,36,0.0
+scene/6b6bac36,Philip Pirrip receiving congratulations and invitations,36,0.0
+scene/f2cd0692,Pip inquiring about his benefactor,36,0.0
+scene/86df86e8,Pip receiving money from his benefactor,36,0.0
+scene/28e0cdc2,Pip's conversation with Mr. Jaggers about his benefactor,36,0.0
+scene/eb699ee2,Pip's interaction with Mr. Jaggers,36,0.0
+scene/86817378,Pip's interaction with Mr. Wemmick,36,0.0
+scene/b4292ad8,Various interactions and thoughts,36,0.0
+scene/2d204b6b,Visiting the old man's home,37,0.8
+scene/fa25a1dd,Discussion about the old man's son,37,0.7
+scene/982d4fe5,Walking to the drawbridge,37,0.6
+scene/52ed1511,Meeting Miss Skiffins,37,0.7
+scene/563f1b8d,Tea time at the Castle,37,0.8
+scene/05c9e732,Afternoon tea with Miss Skiffins,37,0.7
+scene/6557609f,Reading the newspaper,37,0.6
+scene/352b17e1,Saying goodbye to the Aged,37,0.7
+scene/244b0009,Correspondence with Wemmick,37,0.6
+scene/7ae5c118,Negotiation with Miss Skiffins' brother,37,0.7
+scene/4b8b73fb,Herbert's business opportunity,37,0.8
+scene/370713dd,Emotional reaction to Herbert's success,37,0.7
+scene/77ea9275,Reflecting on Estella,37,0.6
+scene/612df3e5,Estella's interactions with Miss Havisham and Pip,38,0.0
+scene/2442f3f0,Impending event and suspense,38,0.0
+scene/08ac5eed,Pip's Reflection and Loneliness,39,0.0
+scene/0fe36931,Pip's Emotional Turmoil,39,0.0
+scene/e2025579,Pip's Inner Conflict,39,0.0
+scene/6ff83f7b,Events related to the mysterious stranger and the watchman at the Lodge,40,0.0
+scene/d0e819a1,Events related to the convict Provis and his interactions with Pip and Herbert,40,0.0
+scene/361d0152,Conversation with Abel Magwitch and Herbert Pocket,41,0.0
+scene/81af33f3,Parting ways with Abel Magwitch,41,0.0
+scene/0ebe050f,Reunion with Herbert Pocket,41,0.0
+scene/ca003fa7,Planning the next steps with Herbert Pocket,41,0.0
+scene/93a46d2c,Emotional conversation between Herbert and Philip Pirrip,41,0.0
+scene/8bc3cada,Discussion about soldiering and danger,41,0.0
+scene/fe800d22,Concerns about Provis's safety,41,0.0
+scene/7aa03a2d,Decision-making and action planning,41,0.0
+scene/8ceefd1e,Confession and resolution,41,0.0
+scene/20b4d18d,Meeting with a mysterious person,41,0.0
+scene/3fd2e785,Discussion about future plans,41,0.0
+scene/98a2a19b,Dealing with a comrade's request,41,0.0
+scene/319e8d42,Confrontation with Pip's comrade,41,0.0
+scene/37ec144d,Early life and criminal activities of the narrator and Compeyson in Essex and Epsom races,42,0.0
+scene/0478cc02,Trial and conviction of the narrator and Compeyson,42,0.0
+scene/b1698103,Confrontation and aftermath between the narrator and Compeyson,42,0.0
+scene/bb79e38e,Fear and uncertainty,43,0.8
+scene/14facb84,Planning and preparation,43,0.7
+scene/747d2424,Consultation and decision-making,43,0.6
+scene/89d2b9f6,Travel and departure,43,0.7
+scene/7114b99f,Meeting at the Blue Boar,43,0.8
+scene/09afed1b,Awkward conversation with Drummle,43,0.7
+scene/05d11937,Tension and confrontation with Drummle,43,0.8
+scene/71f5fe47,Events at the coffee-room,43,0.9
+scene/0a066143,Events at Miss Havisham's house,44,0.0
+scene/21f8037f,Events after leaving Miss Havisham's house,44,0.0
+scene/fdf1e1ab,Nighttime in bed,45,0.0
+scene/3a8a21f7,Breakfast with Wemmick,45,0.0
+scene/199e7c52,Conversations with Herbert and Wemmick,45,0.0
+scene/8a6164ff,Exploring the outdoors,46,0.0
+scene/64f9719d,Confrontation with a character,46,0.0
+scene/771bd565,Romantic relationship,46,0.0
+scene/0512aa36,Planning and decision-making,46,0.0
+scene/aa6a9c51,Reflection and reminiscence,46,0.0
+scene/9ce27525,Preparation and anticipation,46,0.0
+scene/289c2da9,Passage of Time,47,0.9
+scene/30d7885e,Walking through the city,48,0.8
+scene/5fa5e7e3,Dinner invitation and travel to Gerrard Street,48,0.7
+scene/45240664,Discussion and agreement to visit Miss Havisham,48,0.6
+scene/f4495238,Conversation and observation at Miss Havisham's house,48,0.7
+scene/f7b915f6,Mysterious encounters and reflections,48,0.6
+scene/4b6563de,Social interactions and departures,48,0.8
+scene/12df7893,Casual conversations and inquiries,48,0.7
+scene/40ee3861,Legal case and investigation,48,0.9
+scene/940121d9,Farewell and return home,48,0.8
+scene/817a7d80,Philip Pirrip's journey to Miss Havisham's house,49,0.0
+scene/dd1f5ff5,Arrival at Miss Havisham's house,49,0.0
+scene/491737d1,Interaction with Miss Havisham,49,0.0
+scene/4e2a2480,Discussion with Miss Havisham about a secret,49,0.0
+scene/2e55e0de,Revelation of secret history to Miss Havisham,49,0.0
+scene/6fd9ff04,Miss Havisham's emotional response to the revelation,49,0.0
+scene/348543c3,Discussion about financial matters,49,0.0
+scene/03663fcd,Miss Havisham's concern for Pip's happiness,49,0.0
+scene/84e5b1c7,Miss Havisham's regret and self-reflection,49,0.0
+scene/55d2eedf,Miss Havisham's final request to Pip,49,0.0
+scene/14694d17,Miss Havisham's final moments,49,0.0
+scene/24292e6c,Tragic event involving Miss Havisham,49,0.0
+scene/2678b900,Reflection on Miss Havisham's life and choices,49,0.0
+scene/b8dbfae2,Aftermath of Miss Havisham's death,49,0.0
+scene/e5384a4d,Herbert Pocket changing bandages and discussing Provis,50,0.8
+scene/f773914c,Miss Havisham's cries waking the protagonist,50,0.7
+scene/0322c0ff,Herbert sitting with Provis and Clara taking care of Gruffandgrim,50,0.6
+scene/eec88c27,Herbert discussing Provis's past and relationship with Clara,50,0.7
+scene/0079e4b3,Herbert telling the story of the woman defended by Mr. Jaggers,50,0.8
+scene/c0d080dd,Provis's interactions with the young woman and her disappearance,50,0.7
+scene/ba1cbf45,Provis's animosity towards Compeyson and past events,50,0.6
+scene/e2bc2457,Philip Pirrip and Herbert Pocket discussing Provis and past revelations,50,0.8
+scene/44571723,Conversations and decisions with Herbert and Mr. Jaggers,51,0.0
+scene/610269d8,Discussion and decision-making at the office,51,0.0
+scene/eb366a5b,Revelations and discussions about Estella,51,0.0
+scene/305a3011,Hypothetical scenarios and moral dilemmas,51,0.0
+scene/7364c1f8,Arranging financial affairs with Clarriker and Herbert Pocket,52,0.0
+scene/16b49d45,Planning escape and travel with Herbert Pocket,52,0.0
+scene/f965ef7b,Journey to the old marshes,52,0.0
+scene/4982cea9,Conversation with the landlord about Mr. Pumblechook,52,0.0
+scene/b90b5025,Narrator leaving enclosed lands and walking in the countryside,53,0.8
+scene/eb618654,Narrator encountering a mysterious location and a light source,53,0.7
+scene/3ab71bb8,Narrator being attacked and threatened by Orlick,53,0.8
+scene/be3b83ed,Orlick confronting and threatening the narrator,53,0.7
+scene/7020660b,Narrator's internal struggle and fear of death,53,0.8
+scene/b1a0be1e,Narrator's internal struggle and fear of death,53,0.8
+scene/84462567,Orlick's animosity and threats towards the protagonist,53,0.7
+scene/6080a7b5,Orlick's threats and taunts towards the protagonist,53,0.8
+scene/6a3e49d2,Orlick's accusations and threats towards the protagonist,53,0.8
+scene/9b8c2142,Herbert and Startop assisting the protagonist,53,0.7
+scene/3a06ac5b,Deciding not to pursue Orlick and focusing on recovery,53,0.8
+scene/440b71cb,Narrator's gratitude and generosity towards Trabb's boy,53,0.7
+scene/0f11e795,Narrator's fear of illness and recovery process,53,0.8
+scene/30e32b4e,On the River Thames,54,0.9
+scene/bc77d08f,At the Tavern,54,0.8
+scene/12b80e8f,Legal Proceedings,55,0.8
+scene/7cf3d747,Career Planning,55,0.7
+scene/6b922e80,Social Interaction,55,0.6
+scene/3f9a4d1b,Wedding Preparation,55,0.7
+scene/464e9663,Wedding Ceremony,55,0.8
+scene/39521688,Post-Wedding Celebration,55,0.6
+scene/36277ee4,Prison scenes,56,0.9
+scene/ffb06ce5,Courtroom scenes,56,0.8
+scene/1bd488a0,Final moments scenes,56,0.7
+scene/50b59179,Chambers and Illness,57,0.0
+scene/58c4da7b,Garden Court and Miss Havisham,57,0.0
+scene/3f00607a,Joe and Pip's Relationship,57,0.0
+scene/90dc0a86,Events at the Blue Boar Inn,58,0.0
+scene/f4178bd1,Life with Herbert and Clara,58,0.0
+scene/11bada8f,Old kitchen and churchyard events,59,0.8
+scene/63933d9e,Reunion and farewell with Estella,59,0.9
+scene/fd2a6c4e,Final moments and departure,59,0.7
+scene/43a6c55e,Project Gutenberg information,59,0.6
