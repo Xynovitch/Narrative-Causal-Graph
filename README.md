@@ -929,6 +929,3 @@ After running the script, you will find the following outputs in your project di
 ## License
 
 This project is licensed under the [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). 
-
-If you use this work, please cite our DH2026 conference paper:
-*(You can add the citation for "Computational Modeling of Plot Causality in Literary Texts through Event Knowledge Graphs" here once it is published)*
