@@ -925,3 +925,10 @@ After running the script, you will find the following outputs in your project di
 3.  **`neo4j_csv/`** (or your `--out-csv` name)
 
       * A directory containing multiple CSV files (e.g., `events.csv`, `agents.csv`, `produces_actor.csv`). This format is optimized for high-speed bulk import using the `neo4j-admin database import` command.
+
+## License
+
+This project is licensed under the [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). 
+
+If you use this work, please cite our DH2026 conference paper:
+*(You can add the citation for "Computational Modeling of Plot Causality in Literary Texts through Event Knowledge Graphs" here once it is published)*
