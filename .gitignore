@@ -8,3 +8,7 @@ __pycache__/
 # Ignore virtual environment folders (if you use one)
 venv/
 .venv/
+
+# macOS metadata
+.DS_Store
+**/.DS_Store

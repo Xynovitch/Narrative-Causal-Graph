@@ -845,7 +845,27 @@ class CEKGPreprocessor:
                     )
         
         # ============================================================
-        # STAGE 5: CAUSAL & SEMANTIC LINKING
+        # STAGE 5: SCENE GROUPING (Optional)
+        # ============================================================
+        scenes = []
+        if enable_scene_grouping:
+            if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("scenes"):
+                print("[resume] Loading scenes from checkpoint...")
+                data = self.checkpoint_mgr.load_checkpoint("scenes")
+                scenes = self._deserialize_scenes(data["scenes"])
+            else:
+                print("[stage 5/6] Generating scenes...")
+                scenes = await self._generate_scenes_optimized(all_events, all_produces)
+                
+                if self.checkpoint_mgr:
+                    self.checkpoint_mgr.save_checkpoint(
+                        "scenes",
+                        {"scenes": self._serialize_links(scenes)},
+                        description=f"Generated {len(scenes)} scenes"
+                    )
+
+        # ============================================================
+        # STAGE 6: CAUSAL & SEMANTIC LINKING
         # ============================================================
         if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("linking"):
             print("[resume] Loading links from checkpoint...")
@@ -860,8 +880,7 @@ class CEKGPreprocessor:
             for link in causal_links:
                 self.dag_validator.add_edge(link.source_event_id, link.target_event_id)
         else:
-            print("[stage 5/6] Causal & semantic linking...")
-            # Use improved linking from your new code
+            print("[stage 6/6] Causal & semantic linking...")
             causal_links, semantic_links, mckee_count, truby_count = await self._integrated_causal_and_semantic_linking(
                 all_events, 
                 entity_occurrences, 
@@ -871,7 +890,7 @@ class CEKGPreprocessor:
                 enable_semantic_linking,
                 use_dynamic_context=use_dynamic_context,
                 thematic_threshold=thematic_threshold,
-                scenes=None
+                scenes=scenes
             )
             
             if self.checkpoint_mgr:
@@ -885,26 +904,6 @@ class CEKGPreprocessor:
                     },
                     description=f"Created {len(causal_links)} causal + {len(semantic_links)} semantic links"
                 )
-        
-        # ============================================================
-        # STAGE 6: SCENE GROUPING (Optional)
-        # ============================================================
-        scenes = []
-        if enable_scene_grouping:
-            if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("scenes"):
-                print("[resume] Loading scenes from checkpoint...")
-                data = self.checkpoint_mgr.load_checkpoint("scenes")
-                scenes = self._deserialize_scenes(data["scenes"])
-            else:
-                print("[stage 6/6] Generating scenes...")
-                scenes = await self._generate_scenes_optimized(all_events, all_produces)
-                
-                if self.checkpoint_mgr:
-                    self.checkpoint_mgr.save_checkpoint(
-                        "scenes",
-                        {"scenes": self._serialize_links(scenes)},
-                        description=f"Generated {len(scenes)} scenes"
-                    )
         
         all_characters = set()
         for prod in all_produces:
