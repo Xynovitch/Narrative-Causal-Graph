@@ -32,12 +32,14 @@ except ImportError:
 # PROMPTS
 # ---------------------------------------------------------------------------
 
-PROMPT_INTEGRATED_ASSESSMENT = """Analyze {count} event pairs for BOTH causal AND semantic relationships.
+PROMPT_INTEGRATED_ASSESSMENT = """Analyze {count} event pairs for BOTH causal AND semantic relationships using causal inference.
+
+Causal reasoning: Use counterfactuals ("Would the effect have occurred without the cause?") and hypotheticals ("If the first event had not happened, would the second still have happened?"). Only label as causal when there is clear necessary or sufficient dependence in the narrative.
 
 Causal Relations: {causal_relations}
 Semantic Relations: explanation, contrast, elaboration, parallel, foreshadowing
 
-Pairs:
+Pairs (cause → effect):
 {pairs}
 
 Return JSON with BOTH types:
@@ -57,9 +59,9 @@ Return JSON with BOTH types:
 }}
 
 Rules:
-1. causal.relationType: From list above or "NONE"
+1. causal.relationType: From list above or "NONE" (use NONE when no counterfactual dependence)
 2. semantic.relation: explanation, contrast, elaboration, parallel, foreshadowing, or "none"
-3. If no clear link, use "NONE" / "none"
+3. If no clear causal link (effect would have happened anyway), use "NONE"
 4. cue: List of words/phrases supporting the semantic link
 5. confidence: 0.0 to 1.0
 

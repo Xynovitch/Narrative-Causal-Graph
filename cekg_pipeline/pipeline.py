@@ -28,6 +28,12 @@ from .coreference_resolver import get_resolver
 from .checkpoint_manager import CheckpointManager
 
 try:
+    from .dynamic_context import get_dynamic_context_candidate_pairs
+    DYNAMIC_CONTEXT_AVAILABLE = True
+except ImportError:
+    DYNAMIC_CONTEXT_AVAILABLE = False
+
+try:
     from sentence_transformers import SentenceTransformer, util
     SENTENCE_TRANSFORMER_MODEL = SentenceTransformer('all-MiniLM-L6-v2')
 except ImportError:
@@ -420,11 +426,17 @@ class CEKGPreprocessor:
         theory_mode="mixed",
         max_concurrent_calls=10,
         max_pairs=5000,
-        enable_semantic=True
+        enable_semantic=True,
+        use_dynamic_context=True,
+        thematic_threshold=0.95,
+        scenes=None
     ):
         """
-        INTEGRATED: Smart causal linking + semantic analysis in ONE pass
-        Uses optimized_linking.py for intelligence + integrated_semantic.py for dual extraction
+        INTEGRATED: Smart causal linking + semantic analysis in ONE pass.
+        When use_dynamic_context=True, uses local thematic engine (double sliding
+        window + high thematic similarity) to find long-shot candidates and
+        local/scene pairs, minimizing GPT calls. Only event extraction and
+        linking use the remote LLM.
         """
         print(f"\n{'='*60}")
         print(f"INTEGRATED CAUSAL + SEMANTIC ANALYSIS")
@@ -448,15 +460,24 @@ class CEKGPreprocessor:
         elif theory_mode == THEORY_TRUBY_LOWER:
             theories_to_process = [(THEORY_TRUBY_LOWER, self.truby_relations, THEORY_TRUBY)]
         
-        # Import the smart linker
-        from .optimized_linking import IntelligentCausalLinker
-        linker = IntelligentCausalLinker(use_embeddings=True)
-        
-        # Get smart candidate pairs (replaces aggressive filtering)
-        print(f"\n[smart_linking] Generating intelligent candidate pairs...")
-        candidate_pairs = linker.get_candidate_pairs(
-            events, entity_occurrences, max_pairs
-        )
+        # Candidate pairs: dynamic context (local thematic + double sliding) or fallback to smart linker
+        candidate_pairs = []
+        if use_dynamic_context and DYNAMIC_CONTEXT_AVAILABLE:
+            print(f"\n[smart_linking] Using dynamic context windows (thematic >= {thematic_threshold})...")
+            candidate_pairs = get_dynamic_context_candidate_pairs(
+                events,
+                entity_occurrences,
+                scenes=scenes,
+                thematic_threshold=thematic_threshold,
+                max_pairs=max_pairs,
+            )
+        if not candidate_pairs:
+            from .optimized_linking import IntelligentCausalLinker
+            linker = IntelligentCausalLinker(use_embeddings=True)
+            print(f"\n[smart_linking] Fallback: generating intelligent candidate pairs...")
+            candidate_pairs = linker.get_candidate_pairs(
+                events, entity_occurrences, max_pairs
+            )
         
         if not candidate_pairs:
             print("[warning] No candidate pairs found")
@@ -681,7 +702,9 @@ class CEKGPreprocessor:
                    max_concurrent_calls=10,
                    max_long_range_pairs=5000,
                    chunk_size=3000,
-                   resume_from_checkpoint=True):
+                   resume_from_checkpoint=True,
+                   use_dynamic_context=True,
+                   thematic_threshold=0.95):
         """
         INTEGRATED PIPELINE: Smart causal linking + semantic analysis + Checkpoints
         """
@@ -845,7 +868,10 @@ class CEKGPreprocessor:
                 theory_mode, 
                 max_concurrent_calls, 
                 max_long_range_pairs,
-                enable_semantic_linking
+                enable_semantic_linking,
+                use_dynamic_context=use_dynamic_context,
+                thematic_threshold=thematic_threshold,
+                scenes=None
             )
             
             if self.checkpoint_mgr:

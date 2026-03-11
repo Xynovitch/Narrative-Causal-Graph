@@ -74,11 +74,14 @@ Chapter {chapter_id}:
 
 JSON only:"""
 
-PROMPT_CAUSAL_BULK = """Analyze {count} event pairs for causal relationships.
+PROMPT_CAUSAL_BULK = """Analyze {count} event pairs for causal relationships using causal inference.
+
+Use counterfactual reasoning: "Would the effect event have occurred without the cause event?" If the effect would not have happened (or would have been substantially different) without the cause, then there is a causal link.
+Use hypotheticals: "If the first event had not occurred, would the second still have happened?" Only label as causal when the cause is necessary or sufficient for the effect in the narrative.
 
 Relations: {relations}
 
-Pairs:
+Pairs (cause → effect):
 {pairs}
 
 Return JSON:
@@ -90,8 +93,9 @@ Return JSON:
 
 Rules:
 - relationType from list above or "NONE"
-- mechanism max 15 words
-- confidence 0.0-1.0
+- mechanism: brief counterfactual or mechanism (max 15 words)
+- confidence 0.0-1.0 (high only when counterfactual dependence is clear)
+- Use "NONE" when the effect would likely have occurred anyway, or when there is no necessary/sufficient link
 
 JSON only:"""
 

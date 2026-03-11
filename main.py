@@ -65,6 +65,10 @@ Examples:
                        help="Limit number of chapters to process")
     parser.add_argument("--max-pairs", type=int, default=5000,
                        help="Maximum causal pairs to evaluate (default: 5000)")
+    parser.add_argument("--thematic-threshold", type=float, default=0.95,
+                       help="Thematic similarity threshold for dynamic context (0.0-1.0, default: 0.95)")
+    parser.add_argument("--no-dynamic-context", action="store_true",
+                       help="Disable dynamic context windows (use legacy candidate pair generation)")
     parser.add_argument("--max-concurrent-calls", type=int, default=10,
                        help="Concurrent API calls (default: 10)")
     parser.add_argument("--chunk-size", type=int, default=3000,
@@ -140,6 +144,8 @@ Examples:
 
     enable_mixed_theory = args.enable_mixed_theory and not args.disable_mixed_theory
     enable_checkpoints = not args.no_checkpoints
+    use_dynamic_context = not args.no_dynamic_context
+    thematic_threshold = args.thematic_threshold
 
     try:
         # Initialize preprocessor
@@ -201,7 +207,9 @@ Examples:
             max_concurrent_calls=args.max_concurrent_calls,
             max_long_range_pairs=max_pairs,
             chunk_size=args.chunk_size,
-            resume_from_checkpoint=args.resume
+            resume_from_checkpoint=args.resume,
+            use_dynamic_context=use_dynamic_context,
+            thematic_threshold=thematic_threshold
         ))
         
         elapsed = time.time() - start_time
