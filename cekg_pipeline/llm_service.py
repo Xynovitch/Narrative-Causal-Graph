@@ -36,6 +36,7 @@ assessment_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 semantic_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 scene_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
 agent_classification_cache = BoundedCache(max_size=CACHE_MAX_SIZE)
+theme_annotation_cache = BoundedCache(max_size=5000)
 
 # ---------------------------------------------------------------------------
 # Compressed Prompts (Optimized for Accuracy)
@@ -447,11 +448,67 @@ async def extract_scenes_from_chapter_async(chapter_events, chapter_id, model, c
     except:
         return []
 
+PROMPT_THEME_ANNOTATION = """You are annotating participation of narrative events in structural theme chains.
+IMPORTANT:
+You are NOT interpreting literary meaning.
+You are identifying whether the event participates in a theme-related causal mechanism.
+Themes:
+POWER authority, command, hierarchy
+WEALTH transfer or control of material resources
+KINSHIP family or household relations
+JUSTICE rule violation, accusation, punishment
+KNOWLEDGE revelation or concealment of information
+
+Use only the event and its nearby causal context.
+Return JSON only.
+Required structure:
+{{
+  "event_id": "{event_id}",
+  "theme_annotations": {{
+    "POWER": {{...}},
+    "WEALTH": {{...}},
+    "KINSHIP": {{...}},
+    "JUSTICE": {{...}},
+    "KNOWLEDGE": {{...}}
+  }}
+}}
+Rules:
+Use involvement = direct | indirect | latent | none
+If involvement none, role must be null
+Evidence must be <=2 short sentences
+Signals must be event cues, not interpretation
+Use local causal context when deciding indirect roles
+
+Event context:
+{event_context}"""
+
+
+async def annotate_single_event_theme(event_context_json: str, model: str, client: Any) -> Any:
+    """Annotate a single event with V2 thematic roles using local causal context."""
+    event_id = ""
+    try:
+        ctx = json.loads(event_context_json)
+        event_id = ctx.get("event_id", "")
+    except Exception as e:
+        print(f"[warning] theme annotation: failed to parse context JSON: {e}")
+
+    prompt = PROMPT_THEME_ANNOTATION.format(
+        event_id=event_id,
+        event_context=event_context_json
+    )
+    key = _hash_for_cache(f"theme:{event_context_json[:200]}", model)
+    data, _ = await _async_llm_json_call(
+        prompt, model, client, theme_annotation_cache, key, max_tokens=2048
+    )
+    return data
+
+
 async def get_cache_sizes():
     return {
         "event_extraction_cache_size": await event_extraction_cache.size(),
         "assessment_cache_size": await assessment_cache.size(),
         "semantic_cache_size": await semantic_cache.size(),
         "scene_cache_size": await scene_cache.size(),
-        "agent_classification_cache_size": await agent_classification_cache.size()
+        "agent_classification_cache_size": await agent_classification_cache.size(),
+        "theme_annotation_cache_size": await theme_annotation_cache.size()
     }

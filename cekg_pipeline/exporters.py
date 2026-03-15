@@ -90,15 +90,6 @@ def _escape_cypher_value(v: Any) -> str:
     
     # String escaping - CORRECT ORDER
     s = str(v)
-    
-    # FIX: Order matters! Do quotes FIRST, then backslashes
-    s = s.replace('"', '\\"')      # Escape quotes first
-    s = s.replace('\\', '\\\\')    # Then escape backslashes (but not the ones we just added)
-    
-    # Actually, we need to be smarter - let's do it correctly:
-    # 1. Escape existing backslashes
-    # 2. Then escape quotes
-    s = str(v)
     s = s.replace('\\', '\\\\')  # Escape backslashes
     s = s.replace('"', '\\"')     # Escape quotes
     s = s.replace('\n', '\\n')    # Escape newlines
@@ -323,7 +314,8 @@ def build_jsonld(
             "relationType": link.relation_type,
             "mechanism": link.mechanism,
             "weight": link.weight,
-            "confidence": link.confidence
+            "confidence": link.confidence,
+            "edge_supertype": link.edge_supertype
         })
     
     return {"@graph": g}
@@ -377,7 +369,9 @@ def export_csv(
             "sequence": ev.sequence,
             "chapter": ev.chapter,
             "time": ev.time_context or "",
-            "location": ev.location_context or ""
+            "location": ev.location_context or "",
+            "scene_id": ev.scene_id or "",
+            "theme_annotations": json.dumps(ev.theme_annotations) if ev.theme_annotations else ""
         })
     
     # Agent nodes
@@ -478,7 +472,8 @@ def export_csv(
         "relationType": link.relation_type,
         "mechanism": link.mechanism,
         "weight": link.weight,
-        "confidence": link.confidence
+        "confidence": link.confidence,
+        "edge_supertype": link.edge_supertype or ""
     } for link in causal_links]
     
     # Scene nodes
@@ -555,4 +550,4 @@ def export_csv(
             out_paths[fname] = path
     
     print(f"[export] CSV exported: {len(out_paths)} active files to {out_dir}/")
-    return out_pathss
+    return out_paths

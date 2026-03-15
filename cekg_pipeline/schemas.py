@@ -36,6 +36,8 @@ class CEKEvent:
     source_quote: str = ""
     why_factors: List[str] = field(default_factory=list)
     theory: str = "McKee"  # Theory attribution (@McKee or @Truby)
+    theme_annotations: Dict[str, Any] = field(default_factory=dict)
+    scene_id: Optional[str] = None
 
 @dataclass
 class AgentRole:
@@ -85,6 +87,7 @@ class CausalLink:
     confidence: float
     theory: str = "McKee"  # "@McKee" or "@Truby"
     directionality: str = "uni"  # "uni" or "bi" from schema
+    edge_supertype: Optional[str] = None
 
 @dataclass
 class PlaceContext:

@@ -18,6 +18,7 @@ from typing import List, Dict, Optional, Any, Set, Tuple
 from dataclasses import asdict
 
 from . import config, schemas, utils, text_processor, llm_service, graph_builder, graph_mapper, exporters
+from .theme_annotation import annotate_event_themes
 from .ontology_loader import get_ontology_manager, OntologyManager
 from .optimized_linking import intelligent_long_range_linking
 from .integrated_semantic import (
@@ -905,11 +906,49 @@ class CEKGPreprocessor:
                     description=f"Created {len(causal_links)} causal + {len(semantic_links)} semantic links"
                 )
         
+        # ============================================================
+        # STAGE 7: THEME ANNOTATION
+        # ============================================================
+        if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("theme_annotation"):
+            print("[resume] Loading theme annotations from checkpoint...")
+            data = self.checkpoint_mgr.load_checkpoint("theme_annotation")
+            # Restore theme_annotations and scene_id onto events
+            ta_map = data.get("theme_annotations_by_event", {})
+            si_map = data.get("scene_id_by_event", {})
+            for ev in all_events:
+                if ev.id in ta_map:
+                    ev.theme_annotations = ta_map[ev.id]
+                if ev.id in si_map:
+                    ev.scene_id = si_map[ev.id]
+            # Restore edge_supertype onto causal links
+            es_map = data.get("edge_supertype_by_link", {})
+            for lnk in causal_links:
+                key = f"{lnk.source_event_id}__{lnk.target_event_id}"
+                if key in es_map:
+                    lnk.edge_supertype = es_map[key]
+        else:
+            print("[stage 7] Annotating themes...")
+            await annotate_event_themes(all_events, causal_links, scenes,
+                                        self.openai_model, self.client)
+            if self.checkpoint_mgr:
+                self.checkpoint_mgr.save_checkpoint(
+                    "theme_annotation",
+                    {
+                        "theme_annotations_by_event": {ev.id: ev.theme_annotations for ev in all_events},
+                        "scene_id_by_event": {ev.id: ev.scene_id for ev in all_events},
+                        "edge_supertype_by_link": {
+                            f"{lnk.source_event_id}__{lnk.target_event_id}": lnk.edge_supertype
+                            for lnk in causal_links
+                        },
+                    },
+                    description=f"Annotated themes for {len(all_events)} events"
+                )
+
         all_characters = set()
         for prod in all_produces:
             if prod.entity_type in ['actor', 'patient']:
                 all_characters.add(prod.entity_name)
-        
+
         print(f"\n{'='*60}")
         print(f"EXPORTING RESULTS")
         print(f"{'='*60}")

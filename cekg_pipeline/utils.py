@@ -1,7 +1,7 @@
 import uuid
 import hashlib
 import asyncio
-from collections import OrderedDict
+from collections import OrderedDict, deque
 from typing import List, Dict, Optional, Any, Set
 from .schemas import CEKEvent
 
@@ -76,7 +76,7 @@ def _escape_cypher_string(s: str) -> str:
     
     FIX: Added validation for None input
     """
-    if not s or s is None:
+    if not s:
         return ""
     
     # Convert to string if not already
@@ -96,7 +96,7 @@ def _truncate_safe(text: str, max_length: int = 200) -> str:
     
     FIX: Added validation for None and non-string input
     """
-    if not text or text is None:
+    if not text:
         return ""
     
     # Convert to string if not already
@@ -213,25 +213,17 @@ class DAGValidator:
         Check if adding edge from_node -> to_node would create a cycle.
         Uses DFS to detect if there's already a path from to_node to from_node.
         """
-        # If there's a path from to_node to from_node, adding this edge creates a cycle
         visited = set()
-        
-        def dfs(node: str) -> bool:
+        stack = [to_node]
+        while stack:
+            node = stack.pop()
             if node == from_node:
                 return True
-            
             if node in visited:
-                return False
-            
+                continue
             visited.add(node)
-            
-            for neighbor in self.adj_list.get(node, set()):
-                if dfs(neighbor):
-                    return True
-            
-            return False
-        
-        return dfs(to_node)
+            stack.extend(self.adj_list.get(node, set()))
+        return False
     
     def get_stats(self) -> Dict[str, Any]:
         """Get validator statistics"""
@@ -255,13 +247,13 @@ class DAGValidator:
         """
         # Copy in-degrees
         in_deg_copy = self.in_degree.copy()
-        queue = [node for node, deg in in_deg_copy.items() if deg == 0]
+        queue = deque(node for node, deg in in_deg_copy.items() if deg == 0)
         processed = 0
-        
+
         while queue:
-            node = queue.pop(0)
+            node = queue.popleft()
             processed += 1
-            
+
             for neighbor in self.adj_list.get(node, set()):
                 in_deg_copy[neighbor] -= 1
                 if in_deg_copy[neighbor] == 0:
