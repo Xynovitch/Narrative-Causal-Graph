@@ -18,13 +18,10 @@ from typing import List, Dict, Optional, Any, Set, Tuple
 from dataclasses import asdict
 
 from . import config, schemas, utils, text_processor, llm_service, graph_builder, graph_mapper, exporters
-from .theme_annotation import annotate_event_themes
+from .theme_annotation import annotate_event_themes, build_thematic_links
 from .ontology_loader import get_ontology_manager, OntologyManager
 from .optimized_linking import intelligent_long_range_linking
-from .integrated_semantic import (
-    process_pairs_with_semantic_linking,
-    create_hybrid_semantic_links
-)
+from .integrated_semantic import process_pairs_causal_only
 from .coreference_resolver import get_resolver
 from .checkpoint_manager import CheckpointManager
 
@@ -111,14 +108,11 @@ class CEKGPreprocessor:
     def _deserialize_event_produces(self, data):
         return [schemas.EventProducesEntity(**d) for d in data]
     
-    def _deserialize_entity_points_to(self, data):
-        return [schemas.EntityPointsToEvent(**d) for d in data]
-    
     def _deserialize_causal_links(self, data):
         return [schemas.CausalLink(**d) for d in data]
     
-    def _deserialize_semantic_links(self, data):
-        return [schemas.SemanticLink(**d) for d in data]
+    def _deserialize_thematic_links(self, data):
+        return [schemas.ThematicLink(**d) for d in data]
     
     def _deserialize_scenes(self, data):
         return [schemas.Scene(**d) for d in data]
@@ -140,8 +134,8 @@ class CEKGPreprocessor:
             return normalize_theory_name(self.ontology.event_types[event_type].theory)
         return THEORY_MCKEE
 
-    def _parse_event_json_data(self, event_data_list, chapter_id, logprobs, 
-                               enable_confidence_calibration, graph_model="star"):
+    def _parse_event_json_data(self, event_data_list, chapter_id, logprobs,
+                               enable_confidence_calibration):
         """
         Parse event data with PROPER coreference resolution
         FIX: Actually use resolver.resolve() instead of just validation
@@ -217,7 +211,7 @@ class CEKGPreprocessor:
                     canonical_normalized = self.resolver.normalize_character_name(canonical_name)
                     
                     clean_actors.append(canonical_normalized)
-                    aid = graph_builder._generate_entity_id(canonical_normalized, "agent", event.id, graph_model)
+                    aid = graph_builder._generate_entity_id(canonical_normalized, "agent")
                     all_produces.append(schemas.EventProducesEntity(
                         event.id, aid, canonical_normalized, "actor", "PRODUCES_ACTOR", 1.0,
                         agent_type=None, theory=theory
@@ -248,7 +242,7 @@ class CEKGPreprocessor:
                     canonical_normalized = self.resolver.normalize_character_name(canonical_name)
                     
                     clean_patients.append(canonical_normalized)
-                    pid = graph_builder._generate_entity_id(canonical_normalized, "agent", event.id, graph_model)
+                    pid = graph_builder._generate_entity_id(canonical_normalized, "agent")
                     all_produces.append(schemas.EventProducesEntity(
                         event.id, pid, canonical_normalized, "patient", "PRODUCES_PATIENT", 1.0,
                         agent_type=None, theory=theory
@@ -258,7 +252,7 @@ class CEKGPreprocessor:
                 event.patients = clean_patients
                 
                 for wf in why_factors_list:
-                    wid = graph_builder._generate_entity_id(wf[:30], "why", event.id, graph_model)
+                    wid = graph_builder._generate_entity_id(wf[:30], "why")
                     all_produces.append(schemas.EventProducesEntity(
                         event.id, wid, wf, "whyfactor", "PRODUCES_MOTIVATION", 1.0,
                         theory=theory
@@ -292,9 +286,9 @@ class CEKGPreprocessor:
                     print(f"[error] Chunk {chunk_id} failed after {max_retries} attempts: {e}")
                     return ([], None)
 
-    async def _process_chapter_chunked(self, chapter_text, chapter_id, 
-                                      enable_confidence_calibration, 
-                                      extraction_style, graph_model,
+    async def _process_chapter_chunked(self, chapter_text, chapter_id,
+                                      enable_confidence_calibration,
+                                      extraction_style,
                                       chunk_size=3000):
         """
         HYBRID APPROACH: Process chapter in smart chunks
@@ -352,7 +346,7 @@ class CEKGPreprocessor:
                     continue
                 
                 events, produces, occurrences = self._parse_event_json_data(
-                    data, chapter_id, logprobs, enable_confidence_calibration, graph_model
+                    data, chapter_id, logprobs, enable_confidence_calibration
                 )
                 
                 all_events.extend(events)
@@ -420,48 +414,43 @@ class CEKGPreprocessor:
         
         return classifications
 
-    async def _integrated_causal_and_semantic_linking(
-        self, 
-        events, 
-        entity_occurrences, 
+    async def _causal_linking(
+        self,
+        events,
+        entity_occurrences,
         theory_mode="mixed",
         max_concurrent_calls=10,
         max_pairs=5000,
-        enable_semantic=True,
         use_dynamic_context=True,
-        thematic_threshold=0.95,
-        scenes=None
+        thematic_threshold=0.80,
+        scenes=None,
     ):
         """
-        INTEGRATED: Smart causal linking + semantic analysis in ONE pass.
-        When use_dynamic_context=True, uses local thematic engine (double sliding
-        window + high thematic similarity) to find long-shot candidates and
-        local/scene pairs, minimizing GPT calls. Only event extraction and
-        linking use the remote LLM.
+        Causal linking stage: generates candidate pairs, then assesses them for
+        causal relationships via LLM. Thematic links are built separately after
+        theme annotation (see run_async stage 7).
         """
         print(f"\n{'='*60}")
-        print(f"INTEGRATED CAUSAL + SEMANTIC ANALYSIS")
+        print(f"CAUSAL LINKING")
         print(f"{'='*60}")
-        
+
         self.dag_validator.add_events(events)
         all_causal_links = []
-        all_semantic_links = []
         mckee_link_count = 0
         truby_link_count = 0
-        
-        # Determine theories to process
+
         theories_to_process = []
         if theory_mode == "mixed":
             theories_to_process = [
-                (THEORY_MCKEE_LOWER, self.mckee_relations, THEORY_MCKEE), 
+                (THEORY_MCKEE_LOWER, self.mckee_relations, THEORY_MCKEE),
                 (THEORY_TRUBY_LOWER, self.truby_relations, THEORY_TRUBY)
             ]
         elif theory_mode == THEORY_MCKEE_LOWER:
             theories_to_process = [(THEORY_MCKEE_LOWER, self.mckee_relations, THEORY_MCKEE)]
         elif theory_mode == THEORY_TRUBY_LOWER:
             theories_to_process = [(THEORY_TRUBY_LOWER, self.truby_relations, THEORY_TRUBY)]
-        
-        # Candidate pairs: dynamic context (local thematic + double sliding) or fallback to smart linker
+
+        # Candidate pair generation
         candidate_pairs = []
         if use_dynamic_context and DYNAMIC_CONTEXT_AVAILABLE:
             print(f"\n[smart_linking] Using dynamic context windows (thematic >= {thematic_threshold})...")
@@ -479,138 +468,65 @@ class CEKGPreprocessor:
             candidate_pairs = linker.get_candidate_pairs(
                 events, entity_occurrences, max_pairs
             )
-        
+
         if not candidate_pairs:
             print("[warning] No candidate pairs found")
-            return [], [], 0, 0
-        
-        # Convert to text format for assessment
+            return [], 0, 0
+
         event_map = {e.id: e for e in events}
         pairs_with_text = []
-        
         for cause_id, effect_id in candidate_pairs:
             if cause_id in event_map and effect_id in event_map:
                 cause = event_map[cause_id]
                 effect = event_map[effect_id]
-                
-                # Truncate for efficiency
-                cause_text = cause.raw_description[:150]
-                effect_text = effect.raw_description[:150]
-                
-                pairs_with_text.append((cause_text, effect_text, cause_id, effect_id))
-        
+                pairs_with_text.append((
+                    cause.raw_description[:150],
+                    effect.raw_description[:150],
+                    cause_id,
+                    effect_id
+                ))
+
         print(f"[smart_linking] Selected {len(pairs_with_text):,} high-quality pairs")
-        
-        # Process each theory with integrated semantic analysis
+
         for theory_name, relation_ontology, theory_tag in theories_to_process:
             if not relation_ontology:
                 continue
-            
+
             print(f"\n{'='*60}")
             print(f"THEORY: {theory_tag}")
             print(f"{'='*60}")
-            
-            if enable_semantic:
-                # INTEGRATED: Both causal and semantic in ONE API call
-                print(f"[{theory_name}] Using INTEGRATED assessment (causal + semantic)")
-                
-                causal_links, semantic_links = await process_pairs_with_semantic_linking(
-                    pairs_with_text,
-                    self.openai_model,
-                    self.client,
-                    relation_ontology,
-                    theory_name,
-                    self.dag_validator,
-                    self.ontology,
-                    llm_service._async_llm_json_call,
-                    max_concurrent_calls,
-                    bulk_size=50
-                )
-                
-                all_causal_links.extend(causal_links)
-                all_semantic_links.extend(semantic_links)
-                
-                if theory_tag == THEORY_MCKEE:
-                    mckee_link_count += len(causal_links)
-                elif theory_tag == THEORY_TRUBY:
-                    truby_link_count += len(causal_links)
-                
-            else:
-                # Standard causal-only processing
-                print(f"[{theory_name}] Using standard causal assessment")
-                
-                results = []
-                BULK_SIZE = 50
-                
-                for i in range(0, len(pairs_with_text), BULK_SIZE * max_concurrent_calls):
-                    batch_end = min(i + BULK_SIZE * max_concurrent_calls, len(pairs_with_text))
-                    
-                    chunks = []
-                    for j in range(i, batch_end, BULK_SIZE):
-                        chunk = pairs_with_text[j:j + BULK_SIZE]
-                        chunks.append(llm_service.assess_pairs_bulk(
-                            chunk, self.openai_model, self.client, relation_ontology
-                        ))
-                    
-                    chunk_results = await asyncio.gather(*chunks)
-                    
-                    for chunk_result in chunk_results:
-                        results.extend(chunk_result)
-                    
-                    if (i // (BULK_SIZE * max_concurrent_calls)) % 5 == 0:
-                        progress = 100 * len(results) / len(pairs_with_text)
-                        print(f"[progress] {len(results):,}/{len(pairs_with_text):,} ({progress:.1f}%)")
-                
-                # Create causal links
-                for pair, result in zip(pairs_with_text, results):
-                    if not result:
-                        continue
-                    
-                    _, _, cause_id, effect_id = pair
-                    
-                    rel_type = result.get("relationType")
-                    if not rel_type or str(rel_type).upper() in ["NONE", "NULL"]:
-                        continue
-                    
-                    rt_str = str(rel_type).upper()
-                    
-                    if not self.ontology.validate_relation_type(rt_str, theory_name):
-                        continue
-                    
-                    directionality = self.ontology.get_relation_directionality(rt_str, theory_name)
-                    
-                    if self.dag_validator.add_edge(cause_id, effect_id):
-                        all_causal_links.append(schemas.CausalLink(
-                            cause_id, effect_id, rt_str, result.get("mechanism", ""),
-                            float(result.get("weight", 0)),
-                            float(result.get("confidence", 0)),
-                            theory=theory_tag,
-                            directionality=directionality
-                        ))
-                        
-                        if theory_tag == THEORY_MCKEE:
-                            mckee_link_count += 1
-                        elif theory_tag == THEORY_TRUBY:
-                            truby_link_count += 1
-        
-        # Add local embedding-based semantic links (high quality, zero cost)
-        if enable_semantic:
-            print(f"\n[semantic] Adding local embedding-based thematic links...")
-            all_semantic_links = create_hybrid_semantic_links(events, all_semantic_links)
-        
+
+            causal_links = await process_pairs_causal_only(
+                pairs_with_text,
+                self.openai_model,
+                self.client,
+                relation_ontology,
+                theory_name,
+                self.dag_validator,
+                self.ontology,
+                llm_service._async_llm_json_call,
+                max_concurrent_calls,
+                bulk_size=50
+            )
+
+            all_causal_links.extend(causal_links)
+
+            if theory_tag == THEORY_MCKEE:
+                mckee_link_count += len(causal_links)
+            elif theory_tag == THEORY_TRUBY:
+                truby_link_count += len(causal_links)
+
         print(f"\n{'='*60}")
-        print(f"FINAL RESULTS")
+        print(f"CAUSAL LINKING RESULTS")
         print(f"{'='*60}")
         print(f"Pairs Evaluated: {len(pairs_with_text):,}")
         print(f"Causal Links: {len(all_causal_links):,}")
         if theory_mode == "mixed":
             print(f"  - McKee: {mckee_link_count:,}")
             print(f"  - Truby: {truby_link_count:,}")
-        if enable_semantic:
-            print(f"Semantic Links: {len(all_semantic_links):,}")
         print(f"{'='*60}\n")
-        
-        return all_causal_links, all_semantic_links, mckee_link_count, truby_link_count
+
+        return all_causal_links, mckee_link_count, truby_link_count
 
     async def _generate_scenes_optimized(self, events, event_produces):
         """Scene generation with cheaper model"""
@@ -694,20 +610,18 @@ class CEKGPreprocessor:
 
     async def run_async(self, text_path, out_json, out_cypher, out_csv_dir,
                    max_chapters=None,
-                   graph_model="star",
                    enable_mixed_theory=True,
                    enable_agent_classification=False,
                    enable_scene_grouping=True,
                    enable_confidence_calibration=True,
-                   enable_semantic_linking=True,
                    max_concurrent_calls=10,
                    max_long_range_pairs=5000,
                    chunk_size=3000,
                    resume_from_checkpoint=True,
                    use_dynamic_context=True,
-                   thematic_threshold=0.95):
+                   thematic_threshold=0.80):
         """
-        INTEGRATED PIPELINE: Smart causal linking + semantic analysis + Checkpoints
+        INTEGRATED PIPELINE: Causal linking + thematic annotation + Checkpoints
         """
         
         # Initialize checkpoint manager
@@ -719,9 +633,8 @@ class CEKGPreprocessor:
         
         print(f"\n{'='*60}")
         print(f"INTEGRATED CEKG PIPELINE")
-        print(f"Smart Linking + Semantic Analysis + Checkpoints")
+        print(f"Causal Linking + Thematic Annotation + Checkpoints")
         print(f"{'='*60}")
-        print(f"[pipeline] Graph Model: {graph_model}")
         print(f"[pipeline] Theory Mode: {mode_desc}")
         print(f"[pipeline] Chunk Size: {chunk_size} chars")
         print(f"[pipeline] Max Pairs: {max_long_range_pairs:,}")
@@ -765,7 +678,7 @@ class CEKGPreprocessor:
             for cid, txt in chapters:
                 print(f"\n[chapter {cid}] Processing with smart chunking...")
                 e, p, o = await self._process_chapter_chunked(
-                    txt, cid, enable_confidence_calibration, "detailed", graph_model,
+                    txt, cid, enable_confidence_calibration, "detailed",
                     chunk_size=chunk_size
                 )
                 all_events.extend(e)
@@ -797,29 +710,23 @@ class CEKGPreprocessor:
             all_events = self._deserialize_events(data["events"])
             all_produces = self._deserialize_event_produces(data["produces"])
             entity_occurrences = defaultdict(list, data["entity_occurrences"])
-            entity_to_event_links = self._deserialize_entity_points_to(data["entity_to_event_links"])
         else:
             print("[stage 3/6] Propagating context...")
             all_events = graph_builder.propagate_context_attributes(all_events)
             new_prods, entity_occurrences = graph_builder.propagate_context(
-                all_events, all_produces, entity_occurrences, graph_model=graph_model
+                all_events, all_produces, entity_occurrences
             )
             all_produces.extend(new_prods)
-            
-            entity_to_event_links = graph_builder.create_entity_to_event_links(
-                entity_occurrences, all_produces, graph_model=graph_model
-            )
-            
+
             if self.checkpoint_mgr:
                 self.checkpoint_mgr.save_checkpoint(
                     "context_propagation",
                     {
                         "events": self._serialize_events(all_events),
                         "produces": self._serialize_links(all_produces),
-                        "entity_occurrences": {k: v for k, v in entity_occurrences.items()},
-                        "entity_to_event_links": self._serialize_links(entity_to_event_links)
+                        "entity_occurrences": {k: v for k, v in entity_occurrences.items()}
                     },
-                    description=f"Propagated context, created {len(entity_to_event_links)} entity→event links"
+                    description=f"Propagated context for {len(all_events)} events"
                 )
         
         # ============================================================
@@ -866,49 +773,47 @@ class CEKGPreprocessor:
                     )
 
         # ============================================================
-        # STAGE 6: CAUSAL & SEMANTIC LINKING
+        # STAGE 6: CAUSAL LINKING
         # ============================================================
         if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("linking"):
-            print("[resume] Loading links from checkpoint...")
+            print("[resume] Loading causal links from checkpoint...")
             data = self.checkpoint_mgr.load_checkpoint("linking")
             causal_links = self._deserialize_causal_links(data["causal_links"])
-            semantic_links = self._deserialize_semantic_links(data["semantic_links"])
             mckee_count = data["mckee_count"]
             truby_count = data["truby_count"]
-            
+
             # Restore DAG state
             self.dag_validator.add_events(all_events)
             for link in causal_links:
                 self.dag_validator.add_edge(link.source_event_id, link.target_event_id)
         else:
-            print("[stage 6/6] Causal & semantic linking...")
-            causal_links, semantic_links, mckee_count, truby_count = await self._integrated_causal_and_semantic_linking(
-                all_events, 
-                entity_occurrences, 
-                theory_mode, 
-                max_concurrent_calls, 
+            print("[stage 6/7] Causal linking...")
+            causal_links, mckee_count, truby_count = await self._causal_linking(
+                all_events,
+                entity_occurrences,
+                theory_mode,
+                max_concurrent_calls,
                 max_long_range_pairs,
-                enable_semantic_linking,
                 use_dynamic_context=use_dynamic_context,
                 thematic_threshold=thematic_threshold,
-                scenes=scenes
+                scenes=scenes,
             )
-            
+
             if self.checkpoint_mgr:
                 self.checkpoint_mgr.save_checkpoint(
                     "linking",
                     {
                         "causal_links": self._serialize_links(causal_links),
-                        "semantic_links": self._serialize_links(semantic_links),
                         "mckee_count": mckee_count,
                         "truby_count": truby_count
                     },
-                    description=f"Created {len(causal_links)} causal + {len(semantic_links)} semantic links"
+                    description=f"Created {len(causal_links)} causal links"
                 )
         
         # ============================================================
-        # STAGE 7: THEME ANNOTATION
+        # STAGE 7: THEME ANNOTATION + THEMATIC LINKS
         # ============================================================
+        thematic_links = []
         if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("theme_annotation"):
             print("[resume] Loading theme annotations from checkpoint...")
             data = self.checkpoint_mgr.load_checkpoint("theme_annotation")
@@ -926,10 +831,14 @@ class CEKGPreprocessor:
                 key = f"{lnk.source_event_id}__{lnk.target_event_id}"
                 if key in es_map:
                     lnk.edge_supertype = es_map[key]
+            # Restore thematic links
+            thematic_links = self._deserialize_thematic_links(data.get("thematic_links", []))
         else:
-            print("[stage 7] Annotating themes...")
+            print("[stage 7/7] Annotating themes...")
             await annotate_event_themes(all_events, causal_links, scenes,
                                         self.openai_model, self.client)
+            print("[stage 7/7] Building thematic links from annotations...")
+            thematic_links = build_thematic_links(all_events)
             if self.checkpoint_mgr:
                 self.checkpoint_mgr.save_checkpoint(
                     "theme_annotation",
@@ -940,8 +849,9 @@ class CEKGPreprocessor:
                             f"{lnk.source_event_id}__{lnk.target_event_id}": lnk.edge_supertype
                             for lnk in causal_links
                         },
+                        "thematic_links": self._serialize_links(thematic_links),
                     },
-                    description=f"Annotated themes for {len(all_events)} events"
+                    description=f"Annotated themes for {len(all_events)} events, {len(thematic_links)} thematic links"
                 )
 
         all_characters = set()
@@ -954,18 +864,18 @@ class CEKGPreprocessor:
         print(f"{'='*60}")
         
         jsonld = exporters.build_jsonld(
-            all_events, all_produces, entity_to_event_links, causal_links
+            all_events, all_produces, causal_links
         )
         exporters.export_json(out_json, jsonld)
-        
+
         csv_paths = exporters.export_csv(
-            out_csv_dir, all_events, all_produces, entity_to_event_links,
-            causal_links, semantic_links, scenes, graph_model
+            out_csv_dir, all_events, all_produces,
+            causal_links, thematic_links, scenes
         )
-        
+
         nodes, relationships = graph_mapper.map_to_generic_graph(
-            all_events, all_produces, entity_to_event_links, causal_links,
-            graph_model, semantic_links, scenes, agent_classifications
+            all_events, all_produces, causal_links,
+            thematic_links, scenes, agent_classifications
         )
         
         exporters.export_neo4j_cypher(out_cypher, nodes, relationships)
@@ -984,8 +894,7 @@ class CEKGPreprocessor:
         if enable_mixed_theory:
             print(f"  - McKee: {mckee_count:,}")
             print(f"  - Truby: {truby_count:,}")
-        if enable_semantic_linking:
-            print(f"Semantic Links: {len(semantic_links):,}")
+        print(f"Thematic Links: {len(thematic_links):,}")
         print(f"Scenes: {len(scenes):,}")
         print(f"DAG Valid: {is_valid_dag}")
         print(f"{'='*60}\n")
@@ -997,7 +906,7 @@ class CEKGPreprocessor:
                 "causal_links": len(causal_links),
                 "mckee_links": mckee_count if enable_mixed_theory else len(causal_links),
                 "truby_links": truby_count if enable_mixed_theory else 0,
-                "semantic_links": len(semantic_links),
+                "thematic_links": len(thematic_links),
                 "scenes": len(scenes),
                 "agent_types_classified": len(agent_classifications),
                 "dag_valid": is_valid_dag,
@@ -1006,7 +915,7 @@ class CEKGPreprocessor:
             },
             "events": all_events,
             "causal_links": causal_links,
-            "semantic_links": semantic_links,
+            "thematic_links": thematic_links,
             "scenes": scenes,
             "agent_classifications": agent_classifications,
             "csv_paths": csv_paths

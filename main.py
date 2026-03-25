@@ -64,19 +64,15 @@ Examples:
     parser.add_argument("--max-chapters", type=int, default=None,
                        help="Limit number of chapters to process")
     parser.add_argument("--max-pairs", type=int, default=5000,
-                       help="Maximum causal pairs to evaluate (default: 5000)")
-    parser.add_argument("--thematic-threshold", type=float, default=0.95,
-                       help="Thematic similarity threshold for dynamic context (0.0-1.0, default: 0.95)")
+                       help="Maximum causal pairs to evaluate (default: 5000 / 25000 in --full)")
+    parser.add_argument("--thematic-threshold", type=float, default=0.80,
+                       help="Thematic similarity threshold for dynamic context (0.0-1.0, default: 0.80)")
     parser.add_argument("--no-dynamic-context", action="store_true",
                        help="Disable dynamic context windows (use legacy candidate pair generation)")
     parser.add_argument("--max-concurrent-calls", type=int, default=10,
                        help="Concurrent API calls (default: 10)")
     parser.add_argument("--chunk-size", type=int, default=3000,
                        help="Characters per extraction chunk (default: 3000)")
-    
-    # Graph Model
-    parser.add_argument("--graph-model", choices=["chain", "star"], default="star",
-                       help="Graph structure (default: star)")
     
     # Preset Modes
     preset_group = parser.add_mutually_exclusive_group()
@@ -91,8 +87,6 @@ Examples:
     parser.add_argument("--enable-confidence-calibration", action="store_true")
     parser.add_argument("--enable-mixed-theory", action="store_true", default=True)
     parser.add_argument("--disable-mixed-theory", action="store_true")
-    parser.add_argument("--enable-semantic-linking", action="store_true")
-    parser.add_argument("--disable-semantic-linking", action="store_true")
 
     args = parser.parse_args()
 
@@ -127,25 +121,29 @@ Examples:
         enable_scene_grouping = False
         enable_agent_classification = False
         enable_confidence_calibration = False
-        enable_semantic_linking = False
         max_pairs = 3000
     elif args.full:
         enable_scene_grouping = True
         enable_agent_classification = True
         enable_confidence_calibration = True
-        enable_semantic_linking = True
-        max_pairs = args.max_pairs
+        max_pairs = args.max_pairs if args.max_pairs != 5000 else 25000
     else:
         enable_scene_grouping = args.enable_scene_grouping
         enable_agent_classification = args.enable_agent_classification
         enable_confidence_calibration = args.enable_confidence_calibration
-        enable_semantic_linking = args.enable_semantic_linking and not args.disable_semantic_linking
         max_pairs = args.max_pairs
 
     enable_mixed_theory = args.enable_mixed_theory and not args.disable_mixed_theory
     enable_checkpoints = not args.no_checkpoints
     use_dynamic_context = not args.no_dynamic_context
     thematic_threshold = args.thematic_threshold
+
+    # Auto-detect schema.json in project root if not explicitly specified
+    if args.schema_path is None:
+        default_schema = os.path.join(PROJECT_ROOT, "schema.json")
+        if os.path.exists(default_schema):
+            args.schema_path = default_schema
+            print(f"[ontology] Auto-detected schema: {default_schema}")
 
     try:
         # Initialize preprocessor
@@ -174,7 +172,6 @@ Examples:
         print("INTEGRATED CEKG PIPELINE")
         print("="*60)
         print(f"Model: {preprocessor.openai_model}")
-        print(f"Graph: {args.graph_model}")
         print(f"Chunk Size: {args.chunk_size}")
         print(f"Max Pairs: {max_pairs:,}")
         print(f"Checkpoints: {'✓' if enable_checkpoints else '✗'}")
@@ -186,30 +183,27 @@ Examples:
         print(f"  Scene Grouping: {'✓' if enable_scene_grouping else '✗'}")
         print(f"  Agent Classification: {'✓' if enable_agent_classification else '✗'}")
         print(f"  Confidence Calibration: {'✓' if enable_confidence_calibration else '✗'}")
-        print(f"  Semantic Linking: {'✓' if enable_semantic_linking else '✗'}")
         print("="*60 + "\n")
 
         start_time = time.time()
         
         # Run pipeline
         out = asyncio.run(preprocessor.run_async(
-            text_path=input_path, 
-            out_json=args.out_json, 
-            out_cypher=args.out_cypher, 
+            text_path=input_path,
+            out_json=args.out_json,
+            out_cypher=args.out_cypher,
             out_csv_dir=args.out_csv,
             max_chapters=args.max_chapters,
-            graph_model=args.graph_model,
             enable_scene_grouping=enable_scene_grouping,
             enable_agent_classification=enable_agent_classification,
             enable_confidence_calibration=enable_confidence_calibration,
             enable_mixed_theory=enable_mixed_theory,
-            enable_semantic_linking=enable_semantic_linking,
             max_concurrent_calls=args.max_concurrent_calls,
             max_long_range_pairs=max_pairs,
             chunk_size=args.chunk_size,
             resume_from_checkpoint=args.resume,
             use_dynamic_context=use_dynamic_context,
-            thematic_threshold=thematic_threshold
+            thematic_threshold=thematic_threshold,
         ))
         
         elapsed = time.time() - start_time
@@ -226,10 +220,9 @@ Examples:
         if enable_mixed_theory:
             print(f"  - McKee: {out['stats'].get('mckee_links', 0):,}")
             print(f"  - Truby: {out['stats'].get('truby_links', 0):,}")
-        
-        if enable_semantic_linking:
-            print(f"Semantic Links: {out['stats']['semantic_links']:,}")
-        
+
+        print(f"Thematic Links: {out['stats'].get('thematic_links', 0):,}")
+
         if enable_scene_grouping:
             print(f"Scenes: {out['stats']['scenes']:,}")
         

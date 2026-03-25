@@ -11,8 +11,8 @@ except ImportError:
     pd = None
 
 from .schemas import (
-    CEKEvent, EventProducesEntity, EntityPointsToEvent, CausalLink,
-    GenericNode, GenericRelationship, Scene, SemanticLink
+    CEKEvent, EventProducesEntity, CausalLink,
+    GenericNode, GenericRelationship, Scene, ThematicLink
 )
 from .utils import _truncate_safe
 
@@ -265,19 +265,18 @@ def export_neo4j_cypher(
 def build_jsonld(
     events: List[CEKEvent],
     event_produces: List[EventProducesEntity],
-    entity_points_to: List[EntityPointsToEvent],
     causal_links: List[CausalLink]
 ) -> Dict[str, Any]:
     """Build JSON-LD representation"""
     g = []
-    
+
     # Events
     for ev in events:
         event_dict = asdict(ev)
         event_dict["@id"] = event_dict.pop("id")
         event_dict["type"] = "Event"
         g.append(event_dict)
-    
+
     # Event → Entity (production)
     for prod in event_produces:
         g.append({
@@ -290,20 +289,7 @@ def build_jsonld(
             "relationship": prod.relationship,
             "strength": prod.strength
         })
-    
-    # Entity → Event (pointing to next)
-    for ept in entity_points_to:
-        g.append({
-            "@id": f"{ept.entity_id}__{ept.relationship}__{ept.next_event_id}",
-            "type": "EntityPointsToEvent",
-            "from": ept.entity_id,
-            "to": ept.next_event_id,
-            "entity_name": ept.entity_name,
-            "entity_type": ept.entity_type,
-            "relationship": ept.relationship,
-            "strength": ept.strength
-        })
-    
+
     # Event → Event (causal)
     for link in causal_links:
         g.append({
@@ -317,7 +303,7 @@ def build_jsonld(
             "confidence": link.confidence,
             "edge_supertype": link.edge_supertype
         })
-    
+
     return {"@graph": g}
 
 def export_json(path: str, data: Dict[str, Any]):
@@ -333,24 +319,19 @@ def export_csv(
     out_dir: str,
     events: List[CEKEvent],
     event_produces: List[EventProducesEntity],
-    entity_points_to: List[EntityPointsToEvent],
     causal_links: List[CausalLink],
-    semantic_links: Optional[List[SemanticLink]] = None,
-    scenes: Optional[List[Scene]] = None,
-    graph_model: str = "star"
+    thematic_links: Optional[List[ThematicLink]] = None,
+    scenes: Optional[List[Scene]] = None
 ) -> Dict[str, str]:
-    """
-    Export DUAL FLOW structure to Neo4j CSV format.
-    Now supports conditional edge generation based on graph_model.
-    """
+    """Export star-model graph to Neo4j CSV format."""
     os.makedirs(out_dir, exist_ok=True)
-    
-    if semantic_links is None:
-        semantic_links = []
+
+    if thematic_links is None:
+        thematic_links = []
     if scenes is None:
         scenes = []
-    
-    print(f"[export] Exporting CSVs (graph_model: {graph_model})...")
+
+    print("[export] Exporting CSVs...")
     
     # Collect unique entities
     entities_by_type = defaultdict(dict)
@@ -388,69 +369,34 @@ def export_csv(
     whyfactor_rows = [{":ID": wid, "factor": name} 
                       for wid, name in entities_by_type.get("whyfactor", {}).items()]
     
-    # Edge generation logic (unchanged)
-    produces_actor_rows = []
-    produces_patient_rows = []
-    produces_motivation_rows = []
-    produces_location_rows = []
-
-    if graph_model != "star":
-        produces_actor_rows = [{
-            ":START_ID": prod.event_id,
-            ":END_ID": prod.entity_id,
-            ":TYPE": "PRODUCES_ACTOR",
-            "strength": prod.strength
-        } for prod in event_produces if prod.entity_type == "actor"]
-        
-        produces_patient_rows = [{
-            ":START_ID": prod.event_id,
-            ":END_ID": prod.entity_id,
-            ":TYPE": "PRODUCES_PATIENT",
-            "strength": prod.strength
-        } for prod in event_produces if prod.entity_type == "patient"]
-        
-        produces_motivation_rows = [{
-            ":START_ID": prod.event_id,
-            ":END_ID": prod.entity_id,
-            ":TYPE": "PRODUCES_MOTIVATION",
-            "weight": prod.strength
-        } for prod in event_produces if prod.entity_type == "whyfactor"]
-        
-        produces_location_rows = [{
-            ":START_ID": prod.event_id,
-            ":END_ID": prod.entity_id,
-            ":TYPE": "PRODUCES_LOCATION",
-            "specificity": prod.strength
-        } for prod in event_produces if prod.entity_type == "place"]
-    
-    # Entity → Event edges
+    # Entity → Event edges (derived directly from event_produces)
     acts_in_rows = [{
-        ":START_ID": ept.entity_id,
-        ":END_ID": ept.next_event_id,
+        ":START_ID": prod.entity_id,
+        ":END_ID": prod.event_id,
         ":TYPE": "ACTS_IN",
-        "strength": ept.strength
-    } for ept in entity_points_to if ept.relationship == "ACTS_IN"]
-    
+        "strength": prod.strength
+    } for prod in event_produces if prod.entity_type == "actor"]
+
     affected_in_rows = [{
-        ":START_ID": ept.entity_id,
-        ":END_ID": ept.next_event_id,
+        ":START_ID": prod.entity_id,
+        ":END_ID": prod.event_id,
         ":TYPE": "AFFECTED_IN",
-        "strength": ept.strength
-    } for ept in entity_points_to if ept.relationship == "AFFECTED_IN"]
-    
+        "strength": prod.strength
+    } for prod in event_produces if prod.entity_type == "patient"]
+
     motivates_rows = [{
-        ":START_ID": ept.entity_id,
-        ":END_ID": ept.next_event_id,
+        ":START_ID": prod.entity_id,
+        ":END_ID": prod.event_id,
         ":TYPE": "MOTIVATES",
-        "weight": ept.strength
-    } for ept in entity_points_to if ept.relationship == "MOTIVATES"]
-    
+        "weight": prod.strength
+    } for prod in event_produces if prod.entity_type == "whyfactor"]
+
     hosts_rows = [{
-        ":START_ID": ept.entity_id,
-        ":END_ID": ept.next_event_id,
+        ":START_ID": prod.entity_id,
+        ":END_ID": prod.event_id,
         ":TYPE": "HOSTS",
-        "specificity": ept.strength
-    } for ept in entity_points_to if ept.relationship == "HOSTS"]
+        "specificity": prod.strength
+    } for prod in event_produces if prod.entity_type == "place"]
     
     # Event -[:FOLLOWS]-> Event
     follows_rows = []
@@ -494,28 +440,24 @@ def export_csv(
                 ":TYPE": "INCLUDES"
             })
             
-    # Semantic Links
-    semantic_link_rows = []
-    for link in semantic_links:
-        for source_id in link.source_event_ids:
-            for target_id in link.target_event_ids:
-                semantic_link_rows.append({
-                    ":START_ID": source_id,
-                    ":END_ID": target_id,
-                    ":TYPE": link.relation.upper(),
-                    "cue": str(link.cue) if link.cue else "",
-                    "confidence": link.confidence
-                })
+    # Thematic Links
+    thematic_link_rows = [{
+        ":START_ID": link.source_event_id,
+        ":END_ID": link.target_event_id,
+        ":TYPE": "THEMATIC",
+        "theme": link.theme,
+        "source_involvement": link.source_involvement,
+        "target_involvement": link.target_involvement,
+        "source_role": link.source_role or "",
+        "target_role": link.target_role or "",
+        "confidence": link.confidence
+    } for link in thematic_links]
 
     files = {
         "events.csv": events_rows,
         "agents.csv": agent_rows,
         "places.csv": place_rows,
         "whyfactors.csv": whyfactor_rows,
-        "produces_actor.csv": produces_actor_rows,
-        "produces_patient.csv": produces_patient_rows,
-        "produces_motivation.csv": produces_motivation_rows,
-        "produces_location.csv": produces_location_rows,
         "acts_in.csv": acts_in_rows,
         "affected_in.csv": affected_in_rows,
         "motivates.csv": motivates_rows,
@@ -524,7 +466,7 @@ def export_csv(
         "causes.csv": causes_rows,
         "scenes.csv": scene_nodes_rows,
         "scene_includes_event.csv": scene_includes_rows,
-        "semantic_links.csv": semantic_link_rows
+        "thematic_links.csv": thematic_link_rows
     }
 
     def _write_csv(rows, path):

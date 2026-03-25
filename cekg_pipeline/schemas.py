@@ -64,16 +64,6 @@ class EventProducesEntity:
     theory: Optional[str] = None  # Theory attribution for agents
 
 @dataclass
-class EntityPointsToEvent:
-    """Entity -[:ACTS_IN/AFFECTED_IN/MOTIVATES/HOSTS]-> NextEvent"""
-    entity_id: str
-    entity_name: str
-    entity_type: str
-    next_event_id: str
-    relationship: str  # "ACTS_IN", "AFFECTED_IN", "MOTIVATES", "HOSTS"
-    strength: float
-
-@dataclass
 class CausalLink:
     """
     Event -[:CAUSES]-> Event
@@ -120,16 +110,20 @@ class TimeContext:
 # ----------------------------- Experimental Features -------------------------
 
 @dataclass
-class SemanticLink:
+class ThematicLink:
     """
-    Event -[:EXPLAINS/CONTRASTS]-> Event
-    Non-causal semantic relationships between events.
+    Event -[:THEMATIC]-> Event
+    Two events co-participating in the same structural theme (POWER, WEALTH, etc.)
+    where at least one has direct involvement.
     """
     id: str
-    source_event_ids: List[str]
-    target_event_ids: List[str]
-    relation: str
-    cue: Optional[List[str]]
+    source_event_id: str
+    target_event_id: str
+    theme: str  # e.g. "POWER", "WEALTH", "KINSHIP", "JUSTICE", "KNOWLEDGE"
+    source_involvement: str  # "direct" or "indirect"
+    target_involvement: str
+    source_role: Optional[str]
+    target_role: Optional[str]
     confidence: float
 
 @dataclass

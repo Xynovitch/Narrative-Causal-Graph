@@ -36,28 +36,27 @@ def _sanitize_name_for_id(name: str) -> str:
 def map_to_generic_graph(
     events: List[schemas.CEKEvent],
     event_produces: List[schemas.EventProducesEntity],
-    entity_points_to: List[schemas.EntityPointsToEvent],
     causal_links: List[schemas.CausalLink],
-    graph_model: str = "star",
-    semantic_links: Optional[List[schemas.SemanticLink]] = None,
+    thematic_links: Optional[List[schemas.ThematicLink]] = None,
     scenes: Optional[List[schemas.Scene]] = None,
     agent_classifications: Optional[Dict[str, str]] = None
 ) -> Tuple[List[schemas.GenericNode], List[schemas.GenericRelationship]]:
     """
-    Maps specific pipeline data into generic nodes and relationships.
+    Maps pipeline data into generic nodes and relationships (star model).
+    Canonical entity nodes — one node per character across the whole graph.
     Scene-centric: all entities and events are linked to scenes.
     """
     nodes: Dict[str, schemas.GenericNode] = {}
     relationships: List[schemas.GenericRelationship] = []
-    
-    if semantic_links is None:
-        semantic_links = []
+
+    if thematic_links is None:
+        thematic_links = []
     if scenes is None:
         scenes = []
     if agent_classifications is None:
         agent_classifications = {}
 
-    print(f"[graph_mapper] Mapping to generic graph (model: {graph_model})")
+    print(f"[graph_mapper] Mapping to generic graph (star model)")
     print(f"[graph_mapper] Scene-centric structure with {len(scenes)} scenes")
 
     # 1. Map Events to Nodes
@@ -100,18 +99,12 @@ def map_to_generic_graph(
         agent_type = entity_data.get("agent_type")
         theory = entity_data.get("theory", "@McKee")
         
-        # Determine Node ID based on Graph Model
-        if graph_model == "star":
-            # Global Canonical ID
-            safe_name = _sanitize_name_for_id(entity_name)
-            if entity_type == 'whyfactor':
-                safe_name = safe_name[:30]
-            
-            prefix = "agent" if entity_type in ['actor', 'patient'] else entity_type
-            node_uid = f"{prefix}_{safe_name}"
-        else:
-            # Event-Specific ID (Chain)
-            node_uid = entity_id
+        # Canonical global ID
+        safe_name = _sanitize_name_for_id(entity_name)
+        if entity_type == 'whyfactor':
+            safe_name = safe_name[:30]
+        prefix = "agent" if entity_type in ['actor', 'patient'] else entity_type
+        node_uid = f"{prefix}_{safe_name}"
 
         label = "Agent" if entity_type in ['actor', 'patient'] else "WhyFactor"
         
@@ -201,45 +194,23 @@ def map_to_generic_graph(
                         properties={}
                     ))
 
-    # 4. Map Relationships (Star vs Chain Logic)
-    if graph_model == "star":
-        print("[graph_mapper] Using 'star' model (Canonical Entity -> Events)")
-        # Star Mode: Canonical Entity -> ACTS_IN -> Event
-        for link in entity_points_to:
-            safe_name = _sanitize_name_for_id(link.entity_name)
-            if link.entity_type == 'whyfactor':
-                safe_name = safe_name[:30]
-            
-            prefix = "agent" if link.entity_type in ['actor', 'patient'] else link.entity_type
-            canonical_uid = f"{prefix}_{safe_name}"
-
-            if canonical_uid in nodes:
-                relationships.append(schemas.GenericRelationship(
-                    start_node_uid=canonical_uid,
-                    end_node_uid=link.next_event_id,
-                    rel_type=link.relationship,
-                    properties={"strength": link.strength}
-                ))
-    else:
-        print("[graph_mapper] Using 'chain' model (Event->Entity->Event)")
-        # Chain Mode: Event -> PRODUCES -> EntityInstance -> ACTS_IN -> NextEvent
-        
-        # 4a. Event -> Produces -> Entity
-        for prod in event_produces:
+    # 4. Map Entity -> Event Relationships (star model: canonical entity -> event)
+    _rel_type_map = {"actor": "ACTS_IN", "patient": "AFFECTED_IN", "whyfactor": "MOTIVATES", "place": "HOSTS"}
+    for prod in event_produces:
+        rel_type = _rel_type_map.get(prod.entity_type)
+        if not rel_type:
+            continue
+        safe_name = _sanitize_name_for_id(prod.entity_name)
+        if prod.entity_type == 'whyfactor':
+            safe_name = safe_name[:30]
+        prefix = "agent" if prod.entity_type in ['actor', 'patient'] else prod.entity_type
+        canonical_uid = f"{prefix}_{safe_name}"
+        if canonical_uid in nodes and prod.event_id in nodes:
             relationships.append(schemas.GenericRelationship(
-                start_node_uid=prod.event_id,
-                end_node_uid=prod.entity_id,
-                rel_type=prod.relationship,
+                start_node_uid=canonical_uid,
+                end_node_uid=prod.event_id,
+                rel_type=rel_type,
                 properties={"strength": prod.strength}
-            ))
-            
-        # 4b. Entity -> Acts_In -> NextEvent
-        for link in entity_points_to:
-            relationships.append(schemas.GenericRelationship(
-                start_node_uid=link.entity_id,
-                end_node_uid=link.next_event_id,
-                rel_type=link.relationship,
-                properties={"strength": link.strength}
             ))
 
     # 5. Map Event-Event (Follows) Relationships
@@ -269,20 +240,22 @@ def map_to_generic_graph(
             })
         ))
 
-    # 7. Semantic Links
-    for link in semantic_links:
-        for source_id in link.source_event_ids:
-            for target_id in link.target_event_ids:
-                if source_id in nodes and target_id in nodes:
-                    relationships.append(schemas.GenericRelationship(
-                        start_node_uid=source_id,
-                        end_node_uid=target_id,
-                        rel_type=link.relation.upper(),
-                        properties=_escape_props({
-                            "cue": str(link.cue) if link.cue else "",
-                            "confidence": link.confidence
-                        })
-                    ))
+    # 7. Thematic Links
+    for link in thematic_links:
+        if link.source_event_id in nodes and link.target_event_id in nodes:
+            relationships.append(schemas.GenericRelationship(
+                start_node_uid=link.source_event_id,
+                end_node_uid=link.target_event_id,
+                rel_type="THEMATIC",
+                properties=_escape_props({
+                    "theme": link.theme,
+                    "source_involvement": link.source_involvement,
+                    "target_involvement": link.target_involvement,
+                    "source_role": link.source_role or "",
+                    "target_role": link.target_role or "",
+                    "confidence": link.confidence
+                })
+            ))
 
     print(f"[graph_mapper] Created {len(nodes)} nodes and {len(relationships)} relationships")
     print(f"[graph_mapper] Scene-centric structure: {len(scenes)} scenes containing {len(events)} events")
