@@ -56,24 +56,36 @@ def map_to_generic_graph(
     print(f"[graph_mapper] Mapping to generic graph (star model)")
     print(f"[graph_mapper] Scene-centric structure with {len(scenes)} scenes")
 
+    _THEMES = ("POWER", "WEALTH", "KINSHIP", "JUSTICE", "KNOWLEDGE")
+
     # 1. Map Events to Nodes
     for ev in events:
+        props: Dict[str, Any] = {
+            "id": ev.id,
+            "name": ev.raw_description,
+            "eventType": "event",
+            "actionType": ev.action_type,
+            "theory": ev.theory,
+            "confidence": ev.confidence,
+            "chapter": ev.chapter,
+            "sequence": ev.sequence,
+            "location": ev.location_context or "",
+            "time": ev.time_context or "",
+            "source_quote": utils._truncate_safe(ev.source_quote, 300),
+        }
+        # Flatten theme involvement into queryable per-theme properties.
+        # theme_POWER / theme_WEALTH / theme_KINSHIP / theme_JUSTICE / theme_KNOWLEDGE
+        # values: "direct" | "indirect" | "none"
+        ta = ev.theme_annotations or {}
+        for theme in _THEMES:
+            td = ta.get(theme, {})
+            involvement = td.get("involvement", "none") if isinstance(td, dict) else "none"
+            props[f"theme_{theme}"] = involvement or "none"
+
         nodes[ev.id] = schemas.GenericNode(
             uid=ev.id,
             label="Event",
-            properties=_escape_props({
-                "id": ev.id,
-                "name": ev.raw_description,
-                "eventType": "event",
-                "actionType": ev.action_type,
-                "theory": ev.theory,
-                "confidence": ev.confidence,
-                "chapter": ev.chapter,
-                "sequence": ev.sequence,
-                "location": ev.location_context or "",
-                "time": ev.time_context or "",
-                "source_quote": utils._truncate_safe(ev.source_quote, 300)
-            })
+            properties=_escape_props(props)
         )
 
     # 2. Map Entities to Nodes (with agent types if available)
