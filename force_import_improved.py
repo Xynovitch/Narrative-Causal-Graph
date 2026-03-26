@@ -5,7 +5,7 @@ import re
 URI = "bolt://localhost:7687"
 USER = "neo4j"
 PASSWORD = "greeplace1!"  
-DB_NAME = "test"        
+DB_NAME = "20260326"        
 FILE_PATH = "ge_import.txt"
 
 def clean_statement(stmt):

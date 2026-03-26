@@ -245,7 +245,8 @@ def map_to_generic_graph(
                 "weight": link.weight,
                 "confidence": link.confidence,
                 "theory": link.theory,
-                "directionality": link.directionality
+                "directionality": link.directionality,
+                "edge_supertype": link.edge_supertype or ""
             })
         ))
 

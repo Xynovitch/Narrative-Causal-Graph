@@ -236,11 +236,10 @@ def export_neo4j_cypher(
                 safe_start_id = _escape_cypher_value(rel.start_node_uid)
                 safe_end_id = _escape_cypher_value(rel.end_node_uid)
                 
-                # FIX: Use ON CREATE SET pattern for relationships too
                 lines.append(
                     f'MATCH (a {{id: {safe_start_id}}}), (b {{id: {safe_end_id}}}) '
                     f'MERGE (a)-[r:{safe_rel_type}]->(b) '
-                    f'ON CREATE SET r = {props_str};'
+                    f'SET r = {props_str};'
                 )
                 statement_count += 1
             

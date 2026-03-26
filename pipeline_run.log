@@ -1,0 +1,1043 @@
+[ontology] Auto-detected schema: /Users/seungjinkim/Documents/Causal Event Knowledge Graph/schema.json
+[ontology] Successfully loaded custom schema from /Users/seungjinkim/Documents/Causal Event Knowledge Graph/schema.json
+[ontology] Event types: 97
+[ontology] Relation types: 100
+[ontology] Agent types: 48
+[pipeline] Initialized with 97 event types
+[pipeline] Checkpoints: ✓ Enabled
+
+============================================================
+INTEGRATED CEKG PIPELINE
+============================================================
+Model: gpt-4o
+Chunk Size: 3000
+Max Pairs: 999,999
+Checkpoints: ✓
+  Directory: ./checkpoints
+  Resume: ✓
+
+Features:
+  Theory: Mixed
+  Scene Grouping: ✓
+  Agent Classification: ✓
+  Confidence Calibration: ✓
+============================================================
+
+[checkpoint] Initialized: checkpoints/Great Expectations.txt_1762146485
+
+Run ID: Great Expectations.txt_1762146485
+Created: 2026-03-25T22:37:29.468992
+
+Completed Stages (7):
+  ✓ text_split
+    - Saved: 2026-03-25T22:37:29.475393
+    - Split into 59 chapters
+  ✓ extraction
+    - Saved: 2026-03-26T01:09:05.868616
+    - Extracted 3850 events from 59 chapters
+  ✓ context_propagation
+    - Saved: 2026-03-26T01:09:06.013407
+    - Propagated context for 3850 events
+  ✓ agent_classification
+    - Saved: 2026-03-26T01:11:25.512568
+    - Classified 89 agents
+  ✓ scenes
+    - Saved: 2026-03-26T01:25:19.358636
+    - Generated 294 scenes
+  ✓ linking
+    - Saved: 2026-03-26T01:27:36.665972
+    - Created 3564 causal links
+  ✓ theme_annotation
+    - Saved: 2026-03-26T01:45:32.039690
+    - Annotated themes for 3850 events, 3034951 thematic links
+
+Last Checkpoint: theme_annotation
+
+
+============================================================
+INTEGRATED CEKG PIPELINE
+Causal Linking + Thematic Annotation + Checkpoints
+============================================================
+[pipeline] Theory Mode: Mixed Theory
+[pipeline] Chunk Size: 3000 chars
+[pipeline] Max Pairs: 999,999
+============================================================
+
+[resume] Loading chapters from checkpoint...
+[checkpoint] ✓ Loaded: text_split (from 2026-03-25T22:37:29.475393)
+[passage_index] Segmenting 59 chapters into passages...
+[passage_index] Embedding 2,879 passages...
+[passage_index] Ready — 2,879 passages indexed.
+[stage 2/6] Extracting events...
+
+[chapter 1] Processing with smart chunking...
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+<frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+<frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+[sat] SAT sentence segmenter loaded.
+[chapter 1] Processing 4 chunks (9602 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4161 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4149 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4128 chars)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[llm] Event extraction: ~22 events → 16000 tokens (input: 2227 chars)
+[chapter 1] Extracted 27 events from 4/4 chunks
+[chapter 1] Extracted 27 events
+
+[chapter 2] Processing with smart chunking...
+[chapter 2] Processing 7 chunks (18252 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4121 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4123 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4141 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4147 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4152 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4136 chars)
+[llm] Event extraction: ~23 events → 16000 tokens (input: 2303 chars)
+[chapter 2] Extracted 47 events from 7/7 chunks
+[chapter 2] Extracted 47 events
+
+[chapter 3] Processing with smart chunking...
+[chapter 3] Processing 4 chunks (10137 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4141 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4170 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4139 chars)
+[llm] Event extraction: ~27 events → 16000 tokens (input: 2783 chars)
+[chapter 3] Extracted 35 events from 4/4 chunks
+[chapter 3] Extracted 35 events
+
+[chapter 4] Processing with smart chunking...
+[chapter 4] Processing 7 chunks (18575 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4136 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4162 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4131 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4167 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4171 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4116 chars)
+[llm] Event extraction: ~28 events → 16000 tokens (input: 2863 chars)
+[chapter 4] Extracted 56 events from 7/7 chunks
+[chapter 4] Extracted 56 events
+
+[chapter 5] Processing with smart chunking...
+[chapter 5] Processing 8 chunks (22386 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4164 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4132 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4118 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4170 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4180 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4121 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4162 chars)
+[llm] Event extraction: ~36 events → 16000 tokens (input: 3625 chars)
+[chapter 5] Extracted 85 events from 8/8 chunks
+[chapter 5] Extracted 85 events
+
+[chapter 6] Processing with smart chunking...
+[chapter 6] Processing 2 chunks (4107 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4178 chars)
+[llm] Event extraction: ~24 events → 16000 tokens (input: 2460 chars)
+[chapter 6] Extracted 7 events from 2/2 chunks
+[chapter 6] Extracted 7 events
+
+[chapter 7] Processing with smart chunking...
+[chapter 7] Processing 8 chunks (21366 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4123 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4151 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4168 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4145 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4110 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4148 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4160 chars)
+[llm] Event extraction: ~26 events → 16000 tokens (input: 2607 chars)
+[chapter 7] Extracted 65 events from 8/8 chunks
+[chapter 7] Extracted 65 events
+
+[chapter 8] Processing with smart chunking...
+[chapter 8] Processing 9 chunks (25149 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4165 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4151 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4122 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4121 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4175 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4155 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4130 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4148 chars)
+[llm] Event extraction: ~36 events → 16000 tokens (input: 3622 chars)
+[chapter 8] Extracted 74 events from 9/9 chunks
+[chapter 8] Extracted 74 events
+
+[chapter 9] Processing with smart chunking...
+[chapter 9] Processing 5 chunks (14244 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4179 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4174 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4145 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4119 chars)
+[llm] Event extraction: ~39 events → 16000 tokens (input: 3969 chars)
+[chapter 9] Extracted 42 events from 5/5 chunks
+[chapter 9] Extracted 42 events
+
+[chapter 10] Processing with smart chunking...
+[chapter 10] Processing 5 chunks (13556 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4177 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4155 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4148 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4127 chars)
+[llm] Event extraction: ~34 events → 16000 tokens (input: 3439 chars)
+[chapter 10] Extracted 53 events from 5/5 chunks
+[chapter 10] Extracted 53 events
+
+[chapter 11] Processing with smart chunking...
+[chapter 11] Processing 10 chunks (28663 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4138 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4177 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4163 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4171 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4165 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4143 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4136 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4140 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4131 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4136 chars)
+[chapter 11] Extracted 86 events from 10/10 chunks
+[chapter 11] Extracted 86 events
+
+[chapter 12] Processing with smart chunking...
+[chapter 12] Processing 5 chunks (12109 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4161 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4171 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4141 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4151 chars)
+[llm] Event extraction: ~18 events → 11200 tokens (input: 1881 chars)
+[chapter 12] Extracted 42 events from 5/5 chunks
+[chapter 12] Extracted 42 events
+
+[chapter 13] Processing with smart chunking...
+[chapter 13] Processing 6 chunks (15526 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4172 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4162 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4138 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4148 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4132 chars)
+[llm] Event extraction: ~25 events → 16000 tokens (input: 2567 chars)
+[chapter 13] Extracted 48 events from 6/6 chunks
+[chapter 13] Extracted 48 events
+
+[chapter 14] Processing with smart chunking...
+[chapter 14] Processing 2 chunks (4293 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4152 chars)
+[llm] Event extraction: ~26 events → 16000 tokens (input: 2647 chars)
+[chapter 14] Extracted 10 events from 2/2 chunks
+[chapter 14] Extracted 10 events
+
+[chapter 15] Processing with smart chunking...
+[chapter 15] Processing 9 chunks (23024 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4152 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4121 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4163 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4175 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4171 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4160 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4132 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4110 chars)
+[llm] Event extraction: ~15 events → 10000 tokens (input: 1565 chars)
+[chapter 15] Extracted 82 events from 9/9 chunks
+[chapter 15] Extracted 82 events
+
+[chapter 16] Processing with smart chunking...
+[chapter 16] Processing 4 chunks (10523 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4175 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4146 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4165 chars)
+[llm] Event extraction: ~31 events → 16000 tokens (input: 3184 chars)
+[chapter 16] Extracted 47 events from 4/4 chunks
+[chapter 16] Extracted 47 events
+
+[chapter 17] Processing with smart chunking...
+[chapter 17] Processing 7 chunks (17706 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4163 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4118 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4136 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4152 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4131 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4178 chars)
+[llm] Event extraction: ~18 events → 11200 tokens (input: 1847 chars)
+[chapter 17] Extracted 70 events from 7/7 chunks
+[chapter 17] Extracted 70 events
+
+[chapter 18] Processing with smart chunking...
+[chapter 18] Processing 10 chunks (27194 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4154 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4126 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4168 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4154 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4181 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4135 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4170 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4146 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4159 chars)
+[llm] Event extraction: ~27 events → 16000 tokens (input: 2732 chars)
+[chapter 18] Extracted 79 events from 10/10 chunks
+[chapter 18] Extracted 79 events
+
+[chapter 19] Processing with smart chunking...
+[chapter 19] Processing 11 chunks (30574 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4171 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4164 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4124 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4160 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4156 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4173 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4136 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4154 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4114 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4178 chars)
+[llm] Event extraction: ~33 events → 16000 tokens (input: 3352 chars)
+[chapter 19] Extracted 94 events from 11/11 chunks
+[chapter 19] Extracted 94 events
+
+[chapter 20] Processing with smart chunking...
+[chapter 20] Processing 6 chunks (16984 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4159 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4136 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4154 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4164 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4170 chars)
+[llm] Event extraction: ~39 events → 16000 tokens (input: 3911 chars)
+[chapter 20] Extracted 68 events from 6/6 chunks
+[chapter 20] Extracted 68 events
+
+[chapter 21] Processing with smart chunking...
+[chapter 21] Processing 4 chunks (9468 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4178 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4116 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4122 chars)
+[llm] Event extraction: ~21 events → 16000 tokens (input: 2102 chars)
+[chapter 21] Extracted 50 events from 4/4 chunks
+[chapter 21] Extracted 50 events
+
+[chapter 22] Processing with smart chunking...
+[chapter 22] Processing 10 chunks (26949 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4118 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4168 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4170 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4181 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4170 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4179 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4175 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4176 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4145 chars)
+[llm] Event extraction: ~25 events → 16000 tokens (input: 2542 chars)
+[chapter 22] Extracted 88 events from 10/10 chunks
+[chapter 22] Extracted 88 events
+
+[chapter 23] Processing with smart chunking...
+[chapter 23] Processing 7 chunks (17661 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4165 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4134 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4166 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4123 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4180 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4125 chars)
+[llm] Event extraction: ~19 events → 11600 tokens (input: 1920 chars)
+[chapter 23] Extracted 58 events from 7/7 chunks
+[chapter 23] Extracted 58 events
+
+[chapter 24] Processing with smart chunking...
+[chapter 24] Processing 5 chunks (12581 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4158 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4175 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4180 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4141 chars)
+[llm] Event extraction: ~23 events → 16000 tokens (input: 2351 chars)
+[chapter 24] Extracted 42 events from 5/5 chunks
+[chapter 24] Extracted 42 events
+
+[chapter 25] Processing with smart chunking...
+[chapter 25] Processing 6 chunks (15854 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4165 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4130 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4174 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4127 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4168 chars)
+[llm] Event extraction: ~27 events → 16000 tokens (input: 2789 chars)
+[chapter 25] Extracted 46 events from 6/6 chunks
+[chapter 25] Extracted 46 events
+
+[chapter 26] Processing with smart chunking...
+[chapter 26] Processing 6 chunks (15316 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4139 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4157 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4165 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4173 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4117 chars)
+[llm] Event extraction: ~23 events → 16000 tokens (input: 2388 chars)
+[chapter 26] Extracted 52 events from 6/6 chunks
+[chapter 26] Extracted 52 events
+
+[chapter 27] Processing with smart chunking...
+[chapter 27] Processing 6 chunks (16240 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4163 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4139 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4170 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4128 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4128 chars)
+[llm] Event extraction: ~32 events → 16000 tokens (input: 3263 chars)
+[chapter 27] Extracted 46 events from 6/6 chunks
+[chapter 27] Extracted 46 events
+
+[chapter 28] Processing with smart chunking...
+[chapter 28] Processing 5 chunks (13164 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4122 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4181 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4178 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4178 chars)
+[llm] Event extraction: ~28 events → 16000 tokens (input: 2867 chars)
+[chapter 28] Extracted 38 events from 5/5 chunks
+[chapter 28] Extracted 38 events
+
+[chapter 29] Processing with smart chunking...
+[chapter 29] Processing 10 chunks (26132 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4170 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4174 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4132 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4174 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4152 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4178 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4143 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4125 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4167 chars)
+[llm] Event extraction: ~15 events → 10000 tokens (input: 1560 chars)
+[chapter 29] Extracted 103 events from 10/10 chunks
+[chapter 29] Extracted 103 events
+
+[chapter 30] Processing with smart chunking...
+[chapter 30] Processing 7 chunks (18254 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4179 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4163 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4167 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4126 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4145 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4144 chars)
+[llm] Event extraction: ~22 events → 16000 tokens (input: 2276 chars)
+[chapter 30] Extracted 53 events from 7/7 chunks
+[chapter 30] Extracted 53 events
+
+[chapter 31] Processing with smart chunking...
+[chapter 31] Processing 5 chunks (11896 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4179 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4156 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4153 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4167 chars)
+[llm] Event extraction: ~17 events → 10800 tokens (input: 1719 chars)
+[chapter 31] Extracted 44 events from 5/5 chunks
+[chapter 31] Extracted 44 events
+
+[chapter 32] Processing with smart chunking...
+[chapter 32] Processing 5 chunks (12087 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4135 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4159 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4157 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4140 chars)
+[llm] Event extraction: ~19 events → 11600 tokens (input: 1903 chars)
+[chapter 32] Extracted 43 events from 5/5 chunks
+[chapter 32] Extracted 43 events
+
+[chapter 33] Processing with smart chunking...
+[chapter 33] Processing 6 chunks (14489 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4135 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4110 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4171 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4166 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4176 chars)
+[llm] Event extraction: ~15 events → 10000 tokens (input: 1448 chars)
+[chapter 33] Extracted 50 events from 6/6 chunks
+[chapter 33] Extracted 50 events
+
+[chapter 34] Processing with smart chunking...
+[chapter 34] Processing 5 chunks (12885 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4147 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4161 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4129 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4134 chars)
+[llm] Event extraction: ~27 events → 16000 tokens (input: 2740 chars)
+[chapter 34] Extracted 49 events from 5/5 chunks
+[chapter 34] Extracted 49 events
+
+[chapter 35] Processing with smart chunking...
+[chapter 35] Processing 6 chunks (16294 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4130 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4113 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4175 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4139 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4159 chars)
+[llm] Event extraction: ~32 events → 16000 tokens (input: 3251 chars)
+[chapter 35] Extracted 54 events from 6/6 chunks
+[chapter 35] Extracted 54 events
+
+[chapter 36] Processing with smart chunking...
+[chapter 36] Processing 5 chunks (13759 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4146 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4115 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4139 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4176 chars)
+[llm] Event extraction: ~36 events → 16000 tokens (input: 3677 chars)
+[chapter 36] Extracted 41 events from 5/5 chunks
+[chapter 36] Extracted 41 events
+
+[chapter 37] Processing with smart chunking...
+[chapter 37] Processing 6 chunks (15476 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4159 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4166 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4154 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4140 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4119 chars)
+[llm] Event extraction: ~24 events → 16000 tokens (input: 2448 chars)
+[chapter 37] Extracted 57 events from 6/6 chunks
+[chapter 37] Extracted 57 events
+
+[chapter 38] Processing with smart chunking...
+[chapter 38] Processing 10 chunks (26441 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4167 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4162 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4173 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4171 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4156 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4132 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4153 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4151 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4142 chars)
+[llm] Event extraction: ~20 events → 12000 tokens (input: 2035 chars)
+[chapter 38] Extracted 79 events from 10/10 chunks
+[chapter 38] Extracted 79 events
+
+[chapter 39] Processing with smart chunking...
+[chapter 39] Processing 9 chunks (25175 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4131 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4150 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4181 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4153 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4153 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4171 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4152 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4163 chars)
+[llm] Event extraction: ~34 events → 16000 tokens (input: 3439 chars)
+[chapter 39] Extracted 82 events from 9/9 chunks
+[chapter 39] Extracted 82 events
+
+[chapter 40] Processing with smart chunking...
+[chapter 40] Processing 10 chunks (27661 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4121 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4142 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4177 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4164 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4121 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4174 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4147 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4137 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4174 chars)
+[llm] Event extraction: ~34 events → 16000 tokens (input: 3401 chars)
+[chapter 40] Extracted 75 events from 10/10 chunks
+[chapter 40] Extracted 75 events
+
+[chapter 41] Processing with smart chunking...
+[chapter 41] Processing 4 chunks (11491 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4120 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4173 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4181 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4145 chars)
+[chapter 41] Extracted 38 events from 4/4 chunks
+[chapter 41] Extracted 38 events
+
+[chapter 42] Processing with smart chunking...
+[chapter 42] Processing 6 chunks (15337 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4119 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4161 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4130 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4174 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4133 chars)
+[llm] Event extraction: ~23 events → 16000 tokens (input: 2320 chars)
+[chapter 42] Extracted 57 events from 6/6 chunks
+[chapter 42] Extracted 57 events
+
+[chapter 43] Processing with smart chunking...
+[chapter 43] Processing 4 chunks (10465 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4170 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4141 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4173 chars)
+[llm] Event extraction: ~31 events → 16000 tokens (input: 3140 chars)
+[chapter 43] Extracted 28 events from 4/4 chunks
+[chapter 43] Extracted 28 events
+
+[chapter 44] Processing with smart chunking...
+[chapter 44] Processing 6 chunks (15223 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4119 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4127 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4160 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4164 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4168 chars)
+[llm] Event extraction: ~21 events → 16000 tokens (input: 2183 chars)
+[chapter 44] Extracted 47 events from 6/6 chunks
+[chapter 44] Extracted 47 events
+
+[chapter 45] Processing with smart chunking...
+[chapter 45] Processing 6 chunks (15927 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4136 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4134 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4158 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4162 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4122 chars)
+[llm] Event extraction: ~30 events → 16000 tokens (input: 3042 chars)
+[chapter 45] Extracted 64 events from 6/6 chunks
+[chapter 45] Extracted 64 events
+
+[chapter 46] Processing with smart chunking...
+[chapter 46] Processing 6 chunks (16236 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4127 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4139 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4151 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4119 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4175 chars)
+[llm] Event extraction: ~31 events → 16000 tokens (input: 3186 chars)
+[chapter 46] Extracted 57 events from 6/6 chunks
+[chapter 46] Extracted 57 events
+
+[chapter 47] Processing with smart chunking...
+[chapter 47] Processing 5 chunks (13710 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4175 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4175 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4128 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4180 chars)
+[llm] Event extraction: ~36 events → 16000 tokens (input: 3623 chars)
+[chapter 47] Extracted 52 events from 5/5 chunks
+[chapter 47] Extracted 52 events
+
+[chapter 48] Processing with smart chunking...
+[chapter 48] Processing 6 chunks (14579 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4178 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4169 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4177 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4163 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4121 chars)
+[llm] Event extraction: ~15 events → 10000 tokens (input: 1408 chars)
+[chapter 48] Extracted 46 events from 6/6 chunks
+[chapter 48] Extracted 46 events
+
+[chapter 49] Processing with smart chunking...
+[chapter 49] Processing 7 chunks (18788 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4152 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4152 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4168 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4112 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4133 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4132 chars)
+[llm] Event extraction: ~31 events → 16000 tokens (input: 3112 chars)
+[chapter 49] Extracted 82 events from 7/7 chunks
+[chapter 49] Extracted 82 events
+
+[chapter 50] Processing with smart chunking...
+[chapter 50] Processing 3 chunks (8017 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4147 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4111 chars)
+[llm] Event extraction: ~35 events → 16000 tokens (input: 3531 chars)
+[chapter 50] Extracted 23 events from 3/3 chunks
+[chapter 50] Extracted 23 events
+
+[chapter 51] Processing with smart chunking...
+[chapter 51] Processing 6 chunks (16241 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4132 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4181 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4174 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4116 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4176 chars)
+[llm] Event extraction: ~31 events → 16000 tokens (input: 3188 chars)
+[chapter 51] Extracted 55 events from 6/6 chunks
+[chapter 51] Extracted 55 events
+
+[chapter 52] Processing with smart chunking...
+[chapter 52] Processing 4 chunks (10976 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4112 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4147 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4179 chars)
+[llm] Event extraction: ~36 events → 16000 tokens (input: 3648 chars)
+[chapter 52] Extracted 34 events from 4/4 chunks
+[chapter 52] Extracted 34 events
+
+[chapter 53] Processing with smart chunking...
+[chapter 53] Processing 10 chunks (27248 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4144 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4159 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4113 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4172 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4179 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4179 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4140 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4151 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4167 chars)
+[llm] Event extraction: ~27 events → 16000 tokens (input: 2740 chars)
+[chapter 53] Extracted 101 events from 10/10 chunks
+[chapter 53] Extracted 101 events
+
+[chapter 54] Processing with smart chunking...
+[chapter 54] Processing 11 chunks (30189 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4169 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4177 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4158 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4148 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4111 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4139 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4164 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4136 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4127 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4157 chars)
+[llm] Event extraction: ~29 events → 16000 tokens (input: 2996 chars)
+[chapter 54] Extracted 123 events from 11/11 chunks
+[chapter 54] Extracted 123 events
+
+[chapter 55] Processing with smart chunking...
+[chapter 55] Processing 6 chunks (15395 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4177 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4170 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4132 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4175 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4144 chars)
+[llm] Event extraction: ~23 events → 16000 tokens (input: 2318 chars)
+[chapter 55] Extracted 70 events from 6/6 chunks
+[chapter 55] Extracted 70 events
+
+[chapter 56] Processing with smart chunking...
+[chapter 56] Processing 5 chunks (11621 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4143 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4137 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4145 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4179 chars)
+[llm] Event extraction: ~15 events → 10000 tokens (input: 1517 chars)
+[chapter 56] Extracted 40 events from 5/5 chunks
+[chapter 56] Extracted 40 events
+
+[chapter 57] Processing with smart chunking...
+[chapter 57] Processing 9 chunks (25389 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4165 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4118 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4125 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4140 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4126 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4134 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4132 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4174 chars)
+[llm] Event extraction: ~38 events → 16000 tokens (input: 3889 chars)
+[chapter 57] Extracted 71 events from 9/9 chunks
+[chapter 57] Extracted 71 events
+
+[chapter 58] Processing with smart chunking...
+[chapter 58] Processing 6 chunks (16209 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4169 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4130 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4171 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4179 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4171 chars)
+[llm] Event extraction: ~30 events → 16000 tokens (input: 3047 chars)
+[chapter 58] Extracted 57 events from 6/6 chunks
+[chapter 58] Extracted 57 events
+
+[chapter 59] Processing with smart chunking...
+[chapter 59] Processing 10 chunks (26137 chars total)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4153 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4164 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4126 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4160 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4175 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4146 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4169 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4158 chars)
+[llm] Event extraction: ~41 events → 16000 tokens (input: 4147 chars)
+[llm] Event extraction: ~15 events → 10000 tokens (input: 1456 chars)
+[warning] Chapter 59: 7/10 chunks failed (70.0% data loss)
+[critical] High failure rate in chapter 59 - results may be incomplete
+[chapter 59] Extracted 26 events from 3/10 chunks
+[chapter 59] Extracted 26 events
+
+[extraction] Total events extracted: 3338
+[checkpoint] ✓ Saved: extraction (57e26ac440cf4232)
+[stage 3/6] Propagating context...
+[context] Propagating Location and Time attributes within the event chain...
+[context] Propagating entity context...
+[context] Created 1889 propagated entity links
+[checkpoint] ✓ Saved: context_propagation (2ae15d40b9480283)
+[stage 4/6] Classifying agents...
+[agent_classification] Analyzing character roles...
+[agent_classification] Philip Pirrip → INCITING_OPPONENT
+[agent_classification] Unnamed Man → INCITING_OPPONENT
+[agent_classification] Joe Gargery → MORAL_ALLY
+[agent_classification] Wopsle → MOMENTUM_BREAKER
+[agent_classification] Uncle Pumblechook → FALSE_ALLY
+[agent_classification] Guests → STRUCTURAL_AGENT
+[agent_classification] Soldiers → CONFLICT_INTENSIFIER
+[agent_classification] The Sergeant → MORAL_CATALYST
+[agent_classification] Other Convict → MORAL_ANTAGONIST
+[agent_classification] Crew of Convicts → STRUCTURAL_AGENT
+[agent_classification] Biddy → MORAL_ALLY
+[agent_classification] Havisham → EMOTIONAL_OPPONENT
+[agent_classification] Estella → EMOTIONAL_OPPONENT
+[agent_classification] Pupils → STRUCTURAL_AGENT
+[agent_classification] Stranger → STRUCTURAL_AGENT
+[agent_classification] Strange Man → INCITING_OPPONENT
+[agent_classification] Camilla → EMOTIONAL_OPPONENT
+[agent_classification] Tom → STRUCTURAL_AGENT
+[agent_classification] Three ladies → STRUCTURAL_AGENT
+[agent_classification] Georgiana → EMOTIONAL_OPPONENT
+[agent_classification] Pip → MORAL_ALLY
+[agent_classification] Waiter → STRUCTURAL_AGENT
+[agent_classification] Orlick → MORAL_ANTAGONIST
+[agent_classification] Constables → STRUCTURAL_AGENT
+[agent_classification] Bow Street men → STRUCTURAL_AGENT
+[agent_classification] Jaggers → MORAL_CATALYST
+[agent_classification] Joseph Gargery → MORAL_GUIDE
+[agent_classification] Hackney-coachman → STRUCTURAL_AGENT
+[agent_classification] Clerk → STRUCTURAL_AGENT
+[agent_classification] Mike → MOMENTUM_BREAKER
+[agent_classification] Minister of Justice → MORAL_ANTAGONIST
+[agent_classification] Two men → STRUCTURAL_AGENT
+[agent_classification] Red-eyed little Jew → MORAL_ANTAGONIST
+[agent_classification] Crying woman → EMOTIONAL_OPPONENT
+[agent_classification] John Wemmick → MORAL_ALLY
+[agent_classification] A certain man → MORAL_ANTAGONIST
+[agent_classification] Flopson → MOMENTUM_BREAKER
+[agent_classification] Millers → MORAL_ALLY
+[agent_classification] Baby → STRUCTURAL_AGENT
+[agent_classification] Children → STRUCTURAL_AGENT
+[agent_classification] Drummle → MORAL_ANTAGONIST
+[agent_classification] Startop → MORAL_ALLY
+[agent_classification] Guardian → MORAL_ANTAGONIST
+[agent_classification] Anybody → MORAL_GUIDE
+[agent_classification] Thieves → MORAL_ANTAGONIST
+[agent_classification] Thief-takers → MORAL_ANTAGONIST
+[agent_classification] Aged Parent → STRUCTURAL_AGENT
+[agent_classification] Neat little girl → MORAL_ALLY
+[agent_classification] Molly → EMOTIONAL_OPPONENT
+[agent_classification] Spider → STRUCTURAL_AGENT
+[agent_classification] King of Denmark → MORAL_ANTAGONIST
+[agent_classification] Queen of Denmark → MORAL_ANTAGONIST
+[agent_classification] Gallery → STRUCTURAL_AGENT
+[agent_classification] Jewish man → MORAL_GUIDE
+[agent_classification] Clara Barley → MORAL_ALLY
+[agent_classification] Colonel → MORAL_ANTAGONIST
+[agent_classification] Turnkey → STRUCTURAL_AGENT
+[agent_classification] Clarriker → FALSE_ALLY
+[agent_classification] Abel Magwitch → MORAL_ALLY
+[agent_classification] Dreaded Visitor → STRUCTURAL_AGENT
+[agent_classification] Watchman → STRUCTURAL_AGENT
+[agent_classification] Woman → MORAL_ALLY
+[agent_classification] Prison visitors → STRUCTURAL_AGENT
+[agent_classification] Compeyson → MORAL_ANTAGONIST
+[agent_classification] Landlord → STRUCTURAL_AGENT
+[agent_classification] Arthur → MORAL_ALLY
+[agent_classification] Night-porter → STRUCTURAL_AGENT
+[agent_classification] Chamberlain → STRUCTURAL_AGENT
+[agent_classification] Jury → STRUCTURAL_AGENT
+[agent_classification] Surgeon → MORAL_GUIDE
+[agent_classification] Galley Crew → STRUCTURAL_AGENT
+[agent_classification] Officer → MORAL_GUIDE
+[agent_classification] Clergyman → MORAL_GUIDE
+[agent_classification] Judge → MORAL_GUIDE
+[checkpoint] ✓ Saved: agent_classification (258170f8448578be)
+[stage 5/6] Generating scenes...
+[scenes] Creating scene-centric structure...
+
+======================================================================
+⚠️  WARNING: RESPONSE TRUNCATED
+======================================================================
+Allocated: 12000 tokens
+Actual response: 33219 chars (~8304 tokens)
+
+This means the response hit the token limit and was cut off.
+Tokens have been INCREASED in this fix. If this persists:
+1. Check if input text is exceptionally long
+2. Consider reducing chunk_size parameter (smaller chunks)
+3. Or reduce batch_size if doing bulk operations
+======================================================================
+
+
+======================================================================
+⚠️  WARNING: RESPONSE TRUNCATED
+======================================================================
+Allocated: 12000 tokens
+Actual response: 33271 chars (~8317 tokens)
+
+This means the response hit the token limit and was cut off.
+Tokens have been INCREASED in this fix. If this persists:
+1. Check if input text is exceptionally long
+2. Consider reducing chunk_size parameter (smaller chunks)
+3. Or reduce batch_size if doing bulk operations
+======================================================================
+
+[scenes] Generated 251 scenes
+[scenes] Creating fallback scenes for 333 orphan events across 44 chapters
+[checkpoint] ✓ Saved: scenes (2c24a9adfc73a971)
+[stage 6/7] Causal linking...
+
+============================================================
+CAUSAL LINKING
+============================================================
+
+[smart_linking] Using dynamic context windows (thematic >= 0.5)...
+[dynamic_context] Building candidate pairs for 3,338 events (thematic >= 0.5)
+[dynamic_context] Adjacent pairs: 3,337
+[dynamic_context] Entity-guided pairs: 5,523
+[dynamic_context] BM25 keyword pairs: 11,944
+[dynamic_context] Encoding 3,338 events...
+[dynamic_context] Scene pairs (sim >= 0.5): 4,858
+[dynamic_context] Long-shot sliding: 534 pairs so far...
+[dynamic_context] Long-shot sliding: 1,813 pairs so far...
+[dynamic_context] Long-shot sliding: 2,520 pairs so far...
+[dynamic_context] Long-shot pairs (sim >= 0.5): 2,838
+[dynamic_context] Selected 23,203 pairs (adj=3,337, entity=2,696, bm25=11,304, scene=3,132, long-shot=2,734)
+[smart_linking] Selected 23,203 high-quality pairs
+
+============================================================
+THEORY: @McKee
+============================================================
+
+[mckee] Processing 23203 pairs (causal only)...
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[progress] Found 14 causal links so far (0%)...
+[progress] Found 214 causal links so far (11%)...
+[progress] Found 414 causal links so far (22%)...
+[progress] Found 613 causal links so far (32%)...
+[progress] Found 812 causal links so far (43%)...
+[progress] Found 1012 causal links so far (54%)...
+[progress] Found 1211 causal links so far (65%)...
+[progress] Found 1410 causal links so far (75%)...
+[progress] Found 1609 causal links so far (86%)...
+[progress] Found 1809 causal links so far (97%)...
+[llm] Bulk causal: 3 pairs → 4900 tokens
+[mckee] Final: 1825 causal links.
+
+============================================================
+THEORY: @Truby
+============================================================
+
+[truby] Processing 23203 pairs (causal only)...
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[llm] Bulk causal: 50 pairs → 16000 tokens
+[progress] Found 32 causal links so far (0%)...
+[progress] Found 282 causal links so far (11%)...
+[progress] Found 531 causal links so far (22%)...
+[progress] Found 781 causal links so far (32%)...
+[progress] Found 1031 causal links so far (43%)...
+[progress] Found 1280 causal links so far (54%)...
+[progress] Found 1528 causal links so far (65%)...
+[progress] Found 1777 causal links so far (75%)...
+[progress] Found 2026 causal links so far (86%)...
+[progress] Found 2276 causal links so far (97%)...
+[llm] Bulk causal: 3 pairs → 4900 tokens
+[truby] Final: 2296 causal links.
+
+============================================================
+CAUSAL LINKING RESULTS
+============================================================
+Pairs Evaluated: 23,203
+Causal Links: 4,121
+  - McKee: 1,825
+  - Truby: 2,296
+============================================================
+
+[checkpoint] ✓ Saved: linking (45d10e300d8ec9ad)
+[stage 7/7] Annotating themes...
+[theme] Attaching scene IDs to 3338 events...
+[theme] Assigning edge supertypes to 4121 causal links...
+[theme] Building local causal contexts...
+[theme] Annotating 3338 events with LLM (theme annotations)...
+[theme] Applying Theme-Bridge Rule...
+[theme] Theme annotation complete.
+[checkpoint] ✓ Saved: theme_annotation (5a5ca17ceef2e35d)
+
+============================================================
+EXPORTING RESULTS
+============================================================
+[export] JSON exported to /Users/seungjinkim/Documents/Causal Event Knowledge Graph/ge_preprocessed.json
+[export] Exporting CSVs...
+[export] Removed stale file: thematic_links.csv
+[export] CSV exported: 10 active files to /Users/seungjinkim/Documents/Causal Event Knowledge Graph/neo4j_csv/
+[graph_mapper] Mapping to generic graph (star model)
+[graph_mapper] Scene-centric structure with 295 scenes
+[graph_mapper] Created 4861 nodes and 22399 relationships
+[graph_mapper] Scene-centric structure: 295 scenes containing 3338 events
+[export] Cypher exported: 27,260 statements to /Users/seungjinkim/Documents/Causal Event Knowledge Graph/ge_import.txt
+[export] File size: 27,433 lines
+[export] Batch size: 500 (optimized for Neo4j)
+
+============================================================
+PIPELINE COMPLETE
+============================================================
+Events: 3,338
+Characters: 116
+Causal Links: 4,121
+  - McKee: 1,825
+  - Truby: 2,296
+Scenes: 295
+DAG Valid: True
+============================================================
+
+
+============================================================
+✓ PROCESSING COMPLETE
+============================================================
+Time: 30761.20s (512.7 minutes)
+Events: 3,338
+Characters: 116
+Causal Links: 4,121
+  - McKee: 1,825
+  - Truby: 2,296
+Scenes: 295
+Agent Types: 74
+
+DAG Valid: ✓
+============================================================
+
+Output files:
+  JSON: /Users/seungjinkim/Documents/Causal Event Knowledge Graph/ge_preprocessed.json
+  Cypher: /Users/seungjinkim/Documents/Causal Event Knowledge Graph/ge_import.cypher
+  CSV: /Users/seungjinkim/Documents/Causal Event Knowledge Graph/neo4j_csv/
+
+<sys>:0: DeprecationWarning: builtin type swigvarlink has no __module__ attribute

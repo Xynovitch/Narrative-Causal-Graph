@@ -1,14 +1,50 @@
 {
   "run_id": "Great Expectations.txt_1762146485",
-  "created_at": "2025-12-15T15:20:19.814284",
+  "created_at": "2026-03-25T22:37:29.468992",
   "stages": {
     "text_split": {
-      "saved_at": "2025-12-15T15:20:19.821140",
+      "saved_at": "2026-03-25T22:37:29.475393",
       "description": "Split into 59 chapters",
       "hash": "4bf819dc30ddb426",
       "file": "checkpoints/Great Expectations.txt_1762146485/text_split.checkpoint"
+    },
+    "extraction": {
+      "saved_at": "2026-03-26T04:41:34.674872",
+      "description": "Extracted 3338 events from 59 chapters",
+      "hash": "57e26ac440cf4232",
+      "file": "checkpoints/Great Expectations.txt_1762146485/extraction.checkpoint"
+    },
+    "context_propagation": {
+      "saved_at": "2026-03-26T04:41:34.919637",
+      "description": "Propagated context for 3338 events",
+      "hash": "2ae15d40b9480283",
+      "file": "checkpoints/Great Expectations.txt_1762146485/context_propagation.checkpoint"
+    },
+    "agent_classification": {
+      "saved_at": "2026-03-26T04:43:26.115522",
+      "description": "Classified 74 agents",
+      "hash": "258170f8448578be",
+      "file": "checkpoints/Great Expectations.txt_1762146485/agent_classification.checkpoint"
+    },
+    "scenes": {
+      "saved_at": "2026-03-26T12:21:27.968704",
+      "description": "Generated 295 scenes",
+      "hash": "2c24a9adfc73a971",
+      "file": "checkpoints/Great Expectations.txt_1762146485/scenes.checkpoint"
+    },
+    "linking": {
+      "saved_at": "2026-03-26T12:27:52.198876",
+      "description": "Created 4121 causal links",
+      "hash": "45d10e300d8ec9ad",
+      "file": "checkpoints/Great Expectations.txt_1762146485/linking.checkpoint"
+    },
+    "theme_annotation": {
+      "saved_at": "2026-03-26T12:41:46.476513",
+      "description": "Annotated themes for 3338 events",
+      "hash": "5a5ca17ceef2e35d",
+      "file": "checkpoints/Great Expectations.txt_1762146485/theme_annotation.checkpoint"
     }
   },
-  "last_checkpoint": "text_split",
-  "updated_at": "2025-12-15T15:20:19.828095"
+  "last_checkpoint": "theme_annotation",
+  "updated_at": "2026-03-26T12:41:46.578576"
 }

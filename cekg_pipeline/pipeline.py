@@ -946,7 +946,12 @@ class CEKGPreprocessor:
         print(f"\n{'='*60}")
         print(f"EXPORTING RESULTS")
         print(f"{'='*60}")
-        
+
+        # Always reapply supertype mapping at export time so checkpoint resumes
+        # pick up any updates to FINE_TO_SUPERTYPE without needing to re-annotate.
+        from .theme_annotation import assign_edge_supertypes
+        assign_edge_supertypes(causal_links)
+
         jsonld = exporters.build_jsonld(
             all_events, all_produces, causal_links
         )
