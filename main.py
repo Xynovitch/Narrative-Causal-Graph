@@ -65,8 +65,8 @@ Examples:
                        help="Limit number of chapters to process")
     parser.add_argument("--max-pairs", type=int, default=5000,
                        help="Maximum causal pairs to evaluate (default: 5000 / 25000 in --full)")
-    parser.add_argument("--thematic-threshold", type=float, default=0.80,
-                       help="Thematic similarity threshold for dynamic context (0.0-1.0, default: 0.80)")
+    parser.add_argument("--thematic-threshold", type=float, default=0.50,
+                       help="Cosine similarity threshold for long-range candidate pair discovery (0.0-1.0, default: 0.50)")
     parser.add_argument("--no-dynamic-context", action="store_true",
                        help="Disable dynamic context windows (use legacy candidate pair generation)")
     parser.add_argument("--max-concurrent-calls", type=int, default=10,
@@ -221,7 +221,6 @@ Examples:
             print(f"  - McKee: {out['stats'].get('mckee_links', 0):,}")
             print(f"  - Truby: {out['stats'].get('truby_links', 0):,}")
 
-        print(f"Thematic Links: {out['stats'].get('thematic_links', 0):,}")
 
         if enable_scene_grouping:
             print(f"Scenes: {out['stats']['scenes']:,}")

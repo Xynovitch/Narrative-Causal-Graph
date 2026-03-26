@@ -46,6 +46,7 @@ Rules:
 1. relationType: From list above or "NONE" (use NONE when no counterfactual dependence)
 2. If no clear causal link (effect would have happened anyway), use "NONE"
 3. confidence: 0.0 to 1.0
+4. If narrative context is provided for a pair, use it to ground your reasoning in the actual text.
 
 JSON only:"""
 
@@ -58,20 +59,31 @@ async def assess_pairs_causal(
     model: str,
     client: Any,
     causal_relations: List[str],
-    llm_call_function: Any
+    llm_call_function: Any,
+    passage_index: Optional[Any] = None,
 ) -> List[Optional[Dict]]:
     """
     Assesses a batch of pairs for causal links in a single API call.
+    If passage_index is provided, retrieved narrative context is injected
+    per pair to ground the LLM's causal reasoning in the actual text.
     Returns a list of result dicts (or None) aligned with pairs_batch.
     """
     if not pairs_batch:
         return []
 
+    use_rag = passage_index is not None and getattr(passage_index, "is_ready", False)
+
     pairs_text_lines = []
     for i, (c_text, e_text, _, _) in enumerate(pairs_batch, 1):
         c_short = c_text[:80].replace("\n", " ")
         e_short = e_text[:80].replace("\n", " ")
-        pairs_text_lines.append(f"{i}. [{c_short}] -> [{e_short}]")
+        line = f"{i}. [{c_short}] -> [{e_short}]"
+        if use_rag:
+            passages = passage_index.retrieve(f"{c_text} {e_text}", top_k=2)
+            if passages:
+                context = " | ".join(passages)
+                line += f"\n   Narrative context: \"{context[:250]}\""
+        pairs_text_lines.append(line)
 
     pairs_block = "\n".join(pairs_text_lines)
     causal_str = ", ".join(causal_relations[:15])
@@ -82,7 +94,8 @@ async def assess_pairs_causal(
         pairs=pairs_block
     )
 
-    cache_key = _hash_for_cache(f"causal:{len(pairs_batch)}:{causal_str[:50]}", model)
+    prefix = "causal_rag" if use_rag else "causal"
+    cache_key = _hash_for_cache(f"{prefix}:{len(pairs_batch)}:{causal_str[:50]}", model)
 
     try:
         data, _ = await llm_call_function(
@@ -118,7 +131,8 @@ async def process_pairs_causal_only(
     ontology_validator: Any,
     llm_call_function: Any,
     max_concurrent_calls: int = 10,
-    bulk_size: int = 50
+    bulk_size: int = 50,
+    passage_index: Optional[Any] = None,
 ) -> List[CausalLink]:
     """
     Main entry point called by pipeline.py.
@@ -137,7 +151,8 @@ async def process_pairs_causal_only(
         for j in range(i, batch_end, bulk_size):
             chunk = pairs_with_text[j:j + bulk_size]
             chunks.append(assess_pairs_causal(
-                chunk, model, client, relation_ontology, llm_call_function
+                chunk, model, client, relation_ontology, llm_call_function,
+                passage_index=passage_index,
             ))
             chunk_indices.append((j, j + len(chunk)))
 

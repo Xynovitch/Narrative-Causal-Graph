@@ -37,7 +37,6 @@ def map_to_generic_graph(
     events: List[schemas.CEKEvent],
     event_produces: List[schemas.EventProducesEntity],
     causal_links: List[schemas.CausalLink],
-    thematic_links: Optional[List[schemas.ThematicLink]] = None,
     scenes: Optional[List[schemas.Scene]] = None,
     agent_classifications: Optional[Dict[str, str]] = None
 ) -> Tuple[List[schemas.GenericNode], List[schemas.GenericRelationship]]:
@@ -49,8 +48,6 @@ def map_to_generic_graph(
     nodes: Dict[str, schemas.GenericNode] = {}
     relationships: List[schemas.GenericRelationship] = []
 
-    if thematic_links is None:
-        thematic_links = []
     if scenes is None:
         scenes = []
     if agent_classifications is None:
@@ -240,22 +237,6 @@ def map_to_generic_graph(
             })
         ))
 
-    # 7. Thematic Links
-    for link in thematic_links:
-        if link.source_event_id in nodes and link.target_event_id in nodes:
-            relationships.append(schemas.GenericRelationship(
-                start_node_uid=link.source_event_id,
-                end_node_uid=link.target_event_id,
-                rel_type="THEMATIC",
-                properties=_escape_props({
-                    "theme": link.theme,
-                    "source_involvement": link.source_involvement,
-                    "target_involvement": link.target_involvement,
-                    "source_role": link.source_role or "",
-                    "target_role": link.target_role or "",
-                    "confidence": link.confidence
-                })
-            ))
 
     print(f"[graph_mapper] Created {len(nodes)} nodes and {len(relationships)} relationships")
     print(f"[graph_mapper] Scene-centric structure: {len(scenes)} scenes containing {len(events)} events")

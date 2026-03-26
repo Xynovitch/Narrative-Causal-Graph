@@ -10,9 +10,8 @@ import json
 from collections import defaultdict
 from typing import List, Dict, Any, Optional
 
-from .schemas import CEKEvent, CausalLink, Scene, ThematicLink
+from .schemas import CEKEvent, CausalLink, Scene
 from .llm_service import annotate_single_event_theme
-from .utils import _make_id
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -267,81 +266,3 @@ async def annotate_event_themes(
     print(f"[theme] Theme annotation complete.")
 
 
-# ---------------------------------------------------------------------------
-# build_thematic_links
-# ---------------------------------------------------------------------------
-
-def build_thematic_links(
-    events: List[CEKEvent],
-    min_confidence: float = 0.80
-) -> List[ThematicLink]:
-    """
-    Create THEMATIC edges between events that co-participate in the same theme.
-
-    Rules:
-    - Both events must have involvement in {"direct", "indirect"} for the same theme.
-    - At least one event must have "direct" involvement (prevents indirect-indirect noise).
-    - Confidence = min(source_confidence, target_confidence) >= min_confidence.
-    """
-    # Group events by theme and involvement level
-    by_theme: Dict[str, Dict[str, List[CEKEvent]]] = {
-        theme: {"direct": [], "indirect": []} for theme in THEME_SET
-    }
-
-    for ev in events:
-        if not ev.theme_annotations:
-            continue
-        for theme in THEME_SET:
-            td = ev.theme_annotations.get(theme, {})
-            if not isinstance(td, dict):
-                continue
-            inv = td.get("involvement", "none")
-            conf = td.get("confidence") or 0.0
-            if inv in ("direct", "indirect") and conf >= min_confidence:
-                by_theme[theme][inv].append(ev)
-
-    links = []
-    seen: set = set()
-
-    def _add(ev_a: CEKEvent, ev_b: CEKEvent, theme: str) -> None:
-        if ev_a.id == ev_b.id:
-            return
-        key = (min(ev_a.id, ev_b.id), max(ev_a.id, ev_b.id), theme)
-        if key in seen:
-            return
-        seen.add(key)
-
-        td_a = ev_a.theme_annotations.get(theme, {})
-        td_b = ev_b.theme_annotations.get(theme, {})
-        conf = min(td_a.get("confidence") or 0.0, td_b.get("confidence") or 0.0)
-        if conf < min_confidence:
-            return
-
-        links.append(ThematicLink(
-            id=_make_id("thm"),
-            source_event_id=ev_a.id,
-            target_event_id=ev_b.id,
-            theme=theme,
-            source_involvement=td_a.get("involvement", "indirect"),
-            target_involvement=td_b.get("involvement", "indirect"),
-            source_role=td_a.get("role"),
-            target_role=td_b.get("role"),
-            confidence=conf,
-        ))
-
-    for theme in THEME_SET:
-        directs = by_theme[theme]["direct"]
-        indirects = by_theme[theme]["indirect"]
-
-        # direct ↔ direct
-        for i in range(len(directs)):
-            for j in range(i + 1, len(directs)):
-                _add(directs[i], directs[j], theme)
-
-        # direct ↔ indirect
-        for d_ev in directs:
-            for i_ev in indirects:
-                _add(d_ev, i_ev, theme)
-
-    print(f"[theme] Built {len(links)} thematic links across {len(THEME_SET)} themes.")
-    return links

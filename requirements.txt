@@ -2,3 +2,5 @@ openai
 pandas
 python-dotenv
 sentence-transformers
+rank-bm25
+wtpsplit

@@ -191,11 +191,15 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
     elif is_scene_extraction:
         # Scene extraction - generous
         max_tokens = 12000
-    
+
     else:
         # Default: very generous
         max_tokens = max(max_tokens, 8000)
-    
+
+    # Cap max_tokens to the model's actual output token limit
+    if "gpt-3.5" in model:
+        max_tokens = min(max_tokens, 4096)
+
     # ============================================================================
     # END FIX
     # ============================================================================
@@ -269,11 +273,17 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
             return data, getattr(resp.choices[0], "logprobs", None)
             
         except Exception as e:
+            err_str = str(e).lower()
+            is_rate_limit = "429" in err_str or "rate limit" in err_str or "quota" in err_str
+            if is_rate_limit:
+                # Re-raise immediately — short retries won't help; let the outer
+                # caller (_process_chunk_with_retry) handle the 30-90s backoff.
+                raise
             if attempt == 2:
                 print(f"[error] LLM call failed after 3 attempts: {e}")
                 return [], None
-            await asyncio.sleep(2 ** attempt)  # Exponential backoff
-    
+            await asyncio.sleep(2 ** attempt)  # Exponential backoff for non-rate-limit errors
+
     return [], None
 
 async def extract_events_from_text(text_input, chapter_id, model, client,
@@ -396,7 +406,7 @@ async def classify_agent_type(character_name: str, event_descriptions: List[str]
     OPTIMIZED: Compressed prompt, cheaper model for classification
     """
     # Use cheaper model for simple classification
-    cheap_model = "gpt-3.5-turbo" if "gpt-4" in model else model
+    cheap_model = "gpt-4o-mini" if "gpt-4o" in model else model
     
     events_text = "\n".join([f"- {desc[:60]}" for desc in event_descriptions[:10]])
     types_text = ", ".join(agent_type_names[:20])
@@ -429,8 +439,8 @@ async def extract_scenes_from_chapter_async(chapter_events, chapter_id, model, c
     """
     OPTIMIZED: Compressed prompt, cheaper model
     """
-    cheap_model = "gpt-3.5-turbo" if "gpt-4" in model else model
-    
+    cheap_model = "gpt-4o-mini" if "gpt-4o" in model else model
+
     if len(chapter_events) > 200:
         chapter_events = chapter_events[:200]
     

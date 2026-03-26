@@ -110,23 +110,6 @@ class TimeContext:
 # ----------------------------- Experimental Features -------------------------
 
 @dataclass
-class ThematicLink:
-    """
-    Event -[:THEMATIC]-> Event
-    Two events co-participating in the same structural theme (POWER, WEALTH, etc.)
-    where at least one has direct involvement.
-    """
-    id: str
-    source_event_id: str
-    target_event_id: str
-    theme: str  # e.g. "POWER", "WEALTH", "KINSHIP", "JUSTICE", "KNOWLEDGE"
-    source_involvement: str  # "direct" or "indirect"
-    target_involvement: str
-    source_role: Optional[str]
-    target_role: Optional[str]
-    confidence: float
-
-@dataclass
 class Scene:
     """
     A grouping of events into a narrative scene.

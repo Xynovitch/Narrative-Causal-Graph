@@ -12,7 +12,7 @@ except ImportError:
 
 from .schemas import (
     CEKEvent, EventProducesEntity, CausalLink,
-    GenericNode, GenericRelationship, Scene, ThematicLink
+    GenericNode, GenericRelationship, Scene
 )
 from .utils import _truncate_safe
 
@@ -320,14 +320,11 @@ def export_csv(
     events: List[CEKEvent],
     event_produces: List[EventProducesEntity],
     causal_links: List[CausalLink],
-    thematic_links: Optional[List[ThematicLink]] = None,
     scenes: Optional[List[Scene]] = None
 ) -> Dict[str, str]:
     """Export star-model graph to Neo4j CSV format."""
     os.makedirs(out_dir, exist_ok=True)
 
-    if thematic_links is None:
-        thematic_links = []
     if scenes is None:
         scenes = []
 
@@ -440,19 +437,6 @@ def export_csv(
                 ":TYPE": "INCLUDES"
             })
             
-    # Thematic Links
-    thematic_link_rows = [{
-        ":START_ID": link.source_event_id,
-        ":END_ID": link.target_event_id,
-        ":TYPE": "THEMATIC",
-        "theme": link.theme,
-        "source_involvement": link.source_involvement,
-        "target_involvement": link.target_involvement,
-        "source_role": link.source_role or "",
-        "target_role": link.target_role or "",
-        "confidence": link.confidence
-    } for link in thematic_links]
-
     files = {
         "events.csv": events_rows,
         "agents.csv": agent_rows,
@@ -466,8 +450,15 @@ def export_csv(
         "causes.csv": causes_rows,
         "scenes.csv": scene_nodes_rows,
         "scene_includes_event.csv": scene_includes_rows,
-        "thematic_links.csv": thematic_link_rows
     }
+
+    # Remove stale CSVs from previous pipeline versions
+    import glob as _glob
+    expected = {os.path.join(out_dir, fname) for fname in files}
+    for stale in _glob.glob(os.path.join(out_dir, "*.csv")):
+        if stale not in expected:
+            os.remove(stale)
+            print(f"[export] Removed stale file: {os.path.basename(stale)}")
 
     def _write_csv(rows, path):
         if not rows:

@@ -18,7 +18,7 @@ from typing import List, Dict, Optional, Any, Set, Tuple
 from dataclasses import asdict
 
 from . import config, schemas, utils, text_processor, llm_service, graph_builder, graph_mapper, exporters
-from .theme_annotation import annotate_event_themes, build_thematic_links
+from .theme_annotation import annotate_event_themes
 from .ontology_loader import get_ontology_manager, OntologyManager
 from .optimized_linking import intelligent_long_range_linking
 from .integrated_semantic import process_pairs_causal_only
@@ -30,6 +30,8 @@ try:
     DYNAMIC_CONTEXT_AVAILABLE = True
 except ImportError:
     DYNAMIC_CONTEXT_AVAILABLE = False
+
+from .passage_index import PassageIndex
 
 try:
     from sentence_transformers import SentenceTransformer, util
@@ -78,6 +80,8 @@ class CEKGPreprocessor:
         if enable_checkpoints:
             self.checkpoint_dir = checkpoint_dir
 
+        self._sat_model = None   # lazy-loaded on first chapter chunking call
+
         print(f"[pipeline] Initialized with {len(self.event_ontology)} event types")
         print(f"[pipeline] Checkpoints: {'✓ Enabled' if enable_checkpoints else '✗ Disabled'}")
 
@@ -92,6 +96,18 @@ class CEKGPreprocessor:
             run_id=run_id
         )
         print(f"\n{self.checkpoint_mgr.get_progress_summary()}\n")
+
+    def _get_sat_model(self):
+        """Lazy-load SAT sentence segmentation model (wtpsplit). Falls back to None."""
+        if self._sat_model is not False and self._sat_model is None:
+            try:
+                from wtpsplit import SaT
+                self._sat_model = SaT("sat-3l")
+                print("[sat] SAT sentence segmenter loaded.")
+            except (ImportError, Exception) as e:
+                self._sat_model = False   # sentinel: don't retry
+                print(f"[sat] wtpsplit not available, using regex split ({e})")
+        return self._sat_model if self._sat_model is not False else None
 
     # ==========================================
     # Serialization Helpers
@@ -111,8 +127,7 @@ class CEKGPreprocessor:
     def _deserialize_causal_links(self, data):
         return [schemas.CausalLink(**d) for d in data]
     
-    def _deserialize_thematic_links(self, data):
-        return [schemas.ThematicLink(**d) for d in data]
+
     
     def _deserialize_scenes(self, data):
         return [schemas.Scene(**d) for d in data]
@@ -266,9 +281,9 @@ class CEKGPreprocessor:
         
         return all_events, all_produces, entity_occurrences_batch
 
-    async def _process_chunk_with_retry(self, chunk, chunk_id, max_retries=3):
+    async def _process_chunk_with_retry(self, chunk, chunk_id, max_retries=5):
         """
-        FIX: Process a single chunk with retry logic
+        Process a single chunk with retry logic and rate-limit-aware backoff.
         """
         for attempt in range(max_retries):
             try:
@@ -278,9 +293,12 @@ class CEKGPreprocessor:
                 )
                 return result
             except Exception as e:
+                err_str = str(e).lower()
+                is_rate_limit = "429" in err_str or "rate limit" in err_str or "quota" in err_str
                 if attempt < max_retries - 1:
-                    wait_time = 2 ** attempt  # Exponential backoff
-                    print(f"[retry] Chunk {chunk_id} failed (attempt {attempt + 1}/{max_retries}), retrying in {wait_time}s...")
+                    # Rate limit: longer wait; other errors: exponential backoff
+                    wait_time = (30 + 15 * attempt) if is_rate_limit else (2 ** attempt)
+                    print(f"[retry] Chunk {chunk_id} failed (attempt {attempt + 1}/{max_retries}), retrying in {wait_time}s... ({e})")
                     await asyncio.sleep(wait_time)
                 else:
                     print(f"[error] Chunk {chunk_id} failed after {max_retries} attempts: {e}")
@@ -297,12 +315,26 @@ class CEKGPreprocessor:
         try:
             # Split chapter into overlapping chunks to maintain context
             chunks = []
-            sentences = chapter_text.split('. ')
+            sat = self._get_sat_model()
+            if sat is not None:
+                raw_sents = sat.split(chapter_text)
+            else:
+                import re as _re
+                raw_sents = _re.split(r'(?<=[.!?])\s+', chapter_text)
+            # Normalise: ensure each sentence ends with punctuation + space
+            sentences = []
+            for s in raw_sents:
+                s = s.strip()
+                if not s:
+                    continue
+                if s[-1] not in '.!?':
+                    s += '.'
+                sentences.append(s + ' ')
+
             current_chunk = []
             current_length = 0
-            
+
             for sentence in sentences:
-                sentence = sentence.strip() + '. '
                 if current_length + len(sentence) > chunk_size and current_chunk:
                     chunks.append(''.join(current_chunk))
                     # Keep last 2 sentences for context overlap
@@ -317,12 +349,15 @@ class CEKGPreprocessor:
             
             print(f"[chapter {chapter_id}] Processing {len(chunks)} chunks ({len(chapter_text)} chars total)")
             
-            # FIX: Process chunks with retry logic
-            tasks = []
-            for i, chunk in enumerate(chunks):
-                chunk_id = f"{chapter_id}.{i}"
-                tasks.append(self._process_chunk_with_retry(chunk, chunk_id))
-            
+            # Process chunks with retry logic, limiting to 3 concurrent per chapter
+            # to avoid triggering rate limits when a chapter has many chunks
+            _chapter_sem = asyncio.Semaphore(3)
+
+            async def _throttled_chunk(chunk, chunk_id):
+                async with _chapter_sem:
+                    return await self._process_chunk_with_retry(chunk, chunk_id)
+
+            tasks = [_throttled_chunk(chunk, f"{chapter_id}.{i}") for i, chunk in enumerate(chunks)]
             results = await asyncio.gather(*tasks)
             
             # FIX: Track and report failures
@@ -422,8 +457,9 @@ class CEKGPreprocessor:
         max_concurrent_calls=10,
         max_pairs=5000,
         use_dynamic_context=True,
-        thematic_threshold=0.80,
+        thematic_threshold=0.50,
         scenes=None,
+        passage_index=None,
     ):
         """
         Causal linking stage: generates candidate pairs, then assesses them for
@@ -506,7 +542,8 @@ class CEKGPreprocessor:
                 self.ontology,
                 llm_service._async_llm_json_call,
                 max_concurrent_calls,
-                bulk_size=50
+                bulk_size=50,
+                passage_index=passage_index,
             )
 
             all_causal_links.extend(causal_links)
@@ -606,6 +643,47 @@ class CEKGPreprocessor:
                     print(f"[warning] Failed to create scene: {e}")
         
         print(f"[scenes] Generated {len(scenes)} scenes")
+
+        # Fallback: assign orphan events (not in any scene) to catch-all scenes per chapter
+        assigned_event_ids = {eid for scene in scenes for eid in scene.included_event_ids}
+        orphans_by_chapter: Dict[int, List] = defaultdict(list)
+        for ev in events:
+            if ev.id not in assigned_event_ids:
+                orphans_by_chapter[ev.chapter].append(ev)
+
+        if orphans_by_chapter:
+            total_orphans = sum(len(v) for v in orphans_by_chapter.values())
+            print(f"[scenes] Creating fallback scenes for {total_orphans} orphan events across {len(orphans_by_chapter)} chapters")
+            for cid, orphan_evs in orphans_by_chapter.items():
+                all_actors = set()
+                all_patients = set()
+                all_whyfactors = set()
+                locations = set()
+                times = set()
+                for ev in orphan_evs:
+                    entities = event_to_entities[ev.id]
+                    all_actors.update(entities["actors"])
+                    all_patients.update(entities["patients"])
+                    all_whyfactors.update(entities["whyfactors"])
+                    if ev.location_context:
+                        locations.add(ev.location_context)
+                    if ev.time_context:
+                        times.add(ev.time_context)
+                scene = schemas.Scene(
+                    utils._make_id("scene"), cid,
+                    [ev.id for ev in orphan_evs],
+                    list(locations)[0] if locations else None,
+                    list(times)[0] if times else None,
+                    list(all_actors | all_patients),
+                    f"Chapter {cid} events",
+                    "",
+                    0.5,
+                )
+                scene.all_actors = list(all_actors)
+                scene.all_patients = list(all_patients)
+                scene.all_whyfactors = list(all_whyfactors)
+                scenes.append(scene)
+
         return scenes
 
     async def run_async(self, text_path, out_json, out_cypher, out_csv_dir,
@@ -619,7 +697,7 @@ class CEKGPreprocessor:
                    chunk_size=3000,
                    resume_from_checkpoint=True,
                    use_dynamic_context=True,
-                   thematic_threshold=0.80):
+                   thematic_threshold=0.50):
         """
         INTEGRATED PIPELINE: Causal linking + thematic annotation + Checkpoints
         """
@@ -658,6 +736,10 @@ class CEKGPreprocessor:
                     {"chapters": chapters, "max_chapters": max_chapters},
                     description=f"Split into {len(chapters)} chapters"
                 )
+
+        # Build passage index for RAG-grounded causal assessment (always, cheap)
+        passage_index = PassageIndex()
+        passage_index.build(chapters)
 
         # ============================================================
         # STAGE 2: EVENT EXTRACTION
@@ -797,6 +879,7 @@ class CEKGPreprocessor:
                 use_dynamic_context=use_dynamic_context,
                 thematic_threshold=thematic_threshold,
                 scenes=scenes,
+                passage_index=passage_index,
             )
 
             if self.checkpoint_mgr:
@@ -811,13 +894,11 @@ class CEKGPreprocessor:
                 )
         
         # ============================================================
-        # STAGE 7: THEME ANNOTATION + THEMATIC LINKS
+        # STAGE 7: THEME ANNOTATION
         # ============================================================
-        thematic_links = []
         if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("theme_annotation"):
             print("[resume] Loading theme annotations from checkpoint...")
             data = self.checkpoint_mgr.load_checkpoint("theme_annotation")
-            # Restore theme_annotations and scene_id onto events
             ta_map = data.get("theme_annotations_by_event", {})
             si_map = data.get("scene_id_by_event", {})
             for ev in all_events:
@@ -825,20 +906,15 @@ class CEKGPreprocessor:
                     ev.theme_annotations = ta_map[ev.id]
                 if ev.id in si_map:
                     ev.scene_id = si_map[ev.id]
-            # Restore edge_supertype onto causal links
             es_map = data.get("edge_supertype_by_link", {})
             for lnk in causal_links:
                 key = f"{lnk.source_event_id}__{lnk.target_event_id}"
                 if key in es_map:
                     lnk.edge_supertype = es_map[key]
-            # Restore thematic links
-            thematic_links = self._deserialize_thematic_links(data.get("thematic_links", []))
         else:
             print("[stage 7/7] Annotating themes...")
             await annotate_event_themes(all_events, causal_links, scenes,
                                         self.openai_model, self.client)
-            print("[stage 7/7] Building thematic links from annotations...")
-            thematic_links = build_thematic_links(all_events)
             if self.checkpoint_mgr:
                 self.checkpoint_mgr.save_checkpoint(
                     "theme_annotation",
@@ -849,9 +925,8 @@ class CEKGPreprocessor:
                             f"{lnk.source_event_id}__{lnk.target_event_id}": lnk.edge_supertype
                             for lnk in causal_links
                         },
-                        "thematic_links": self._serialize_links(thematic_links),
                     },
-                    description=f"Annotated themes for {len(all_events)} events, {len(thematic_links)} thematic links"
+                    description=f"Annotated themes for {len(all_events)} events"
                 )
 
         all_characters = set()
@@ -870,12 +945,12 @@ class CEKGPreprocessor:
 
         csv_paths = exporters.export_csv(
             out_csv_dir, all_events, all_produces,
-            causal_links, thematic_links, scenes
+            causal_links, scenes
         )
 
         nodes, relationships = graph_mapper.map_to_generic_graph(
             all_events, all_produces, causal_links,
-            thematic_links, scenes, agent_classifications
+            scenes, agent_classifications
         )
         
         exporters.export_neo4j_cypher(out_cypher, nodes, relationships)
@@ -894,7 +969,7 @@ class CEKGPreprocessor:
         if enable_mixed_theory:
             print(f"  - McKee: {mckee_count:,}")
             print(f"  - Truby: {truby_count:,}")
-        print(f"Thematic Links: {len(thematic_links):,}")
+
         print(f"Scenes: {len(scenes):,}")
         print(f"DAG Valid: {is_valid_dag}")
         print(f"{'='*60}\n")
@@ -906,7 +981,7 @@ class CEKGPreprocessor:
                 "causal_links": len(causal_links),
                 "mckee_links": mckee_count if enable_mixed_theory else len(causal_links),
                 "truby_links": truby_count if enable_mixed_theory else 0,
-                "thematic_links": len(thematic_links),
+
                 "scenes": len(scenes),
                 "agent_types_classified": len(agent_classifications),
                 "dag_valid": is_valid_dag,
@@ -915,7 +990,6 @@ class CEKGPreprocessor:
             },
             "events": all_events,
             "causal_links": causal_links,
-            "thematic_links": thematic_links,
             "scenes": scenes,
             "agent_classifications": agent_classifications,
             "csv_paths": csv_paths
