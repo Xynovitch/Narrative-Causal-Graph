@@ -33,7 +33,7 @@ except ImportError:
 
 # Defaults
 THEMATIC_SIMILARITY_THRESHOLD = 0.95
-BM25_TOP_K = 5   # top-K BM25 matches per event
+BM25_TOP_K = 10  # top-K BM25 matches per event
 LOCAL_WINDOW_SIZE = 5        # fallback window when embeddings unavailable
 DOUBLE_WINDOW_SIZE = 100     # events per sliding window (long-shot)
 DOUBLE_WINDOW_STEP = 50
@@ -245,11 +245,12 @@ def get_dynamic_context_candidate_pairs(
     Build candidate pairs for the remote LLM to label.
 
     With embeddings available:
-      - Adjacent pairs: always included.
+      - Adjacent pairs: always included (distance 1).
+      - Local window pairs: always included (distances 2–3, safety net for isolated events).
+      - Entity-guided: consecutive same-entity appearances.
+      - BM25 keyword pairs: top-K keyword-overlap matches per event.
       - Scene pairs: within-scene pairs filtered by >= thematic_threshold.
       - Long-shot pairs: double sliding window filtered by >= thematic_threshold.
-      - Entity-guided: consecutive same-entity appearances.
-      - Cap: even split between scene-filtered and long-shot pools.
 
     Without embeddings:
       - Falls back to proximity window + entity-guided pairs.
@@ -265,7 +266,18 @@ def get_dynamic_context_candidate_pairs(
     adjacent_pairs = get_adjacent_pairs(events)
     print(f"[dynamic_context] Adjacent pairs: {len(adjacent_pairs):,}")
 
-    # --- 2. Entity-guided pairs ---
+    # --- 2. Local window pairs (±3 positions) ---
+    # Always-on safety net: ensures events with no entity or keyword overlap
+    # still have some candidate pairs. Distances 2–3 complement adjacent (±1).
+    window_pairs: Set[Tuple[str, str]] = set()
+    for i in range(len(events)):
+        for j in range(i + 2, min(len(events), i + 4)):  # positions +2 and +3 only
+            a, b = events[i], events[j]
+            if a.sequence < b.sequence:
+                window_pairs.add((a.id, b.id))
+    print(f"[dynamic_context] Local window pairs (±3): {len(window_pairs):,}")
+
+    # --- 3. Entity-guided pairs ---
     entity_pairs: Set[Tuple[str, str]] = set()
     if use_entity_guided and entity_occurrences:
         for entity_key, occurrences in entity_occurrences.items():
@@ -278,14 +290,14 @@ def get_dynamic_context_candidate_pairs(
                     entity_pairs.add((c_id, e_id))
         print(f"[dynamic_context] Entity-guided pairs: {len(entity_pairs):,}")
 
-    # --- 3. BM25 keyword pairs ---
+    # --- 4. BM25 keyword pairs ---
     bm25_pairs: Set[Tuple[str, str]] = set()
     if _BM25_AVAILABLE:
         bm25_pairs = get_bm25_pairs(events)
         bm25_pairs = {p for p in bm25_pairs if p[0] in event_map and p[1] in event_map}
         print(f"[dynamic_context] BM25 keyword pairs: {len(bm25_pairs):,}")
 
-    # --- 4. Similarity-filtered pools (scene + long-shot) ---
+    # --- 5. Similarity-filtered pools (scene + long-shot) ---
     scene_pairs: Set[Tuple[str, str]] = set()
     long_shot_pairs: Set[Tuple[str, str]] = set()
 
@@ -321,24 +333,24 @@ def get_dynamic_context_candidate_pairs(
     if not scene_pairs and not long_shot_pairs:
         fallback = _get_local_fallback_pairs(events, scenes, local_window)
         print(f"[dynamic_context] Fallback local/scene pairs: {len(fallback):,}")
-        all_pairs = adjacent_pairs | entity_pairs | bm25_pairs | fallback
+        all_pairs = adjacent_pairs | window_pairs | entity_pairs | bm25_pairs | fallback
         all_list = list(all_pairs)
         if len(all_list) > max_pairs:
             all_list = all_list[:max_pairs]
             print(f"[dynamic_context] Capped to {len(all_list):,} pairs (max_pairs={max_pairs})")
         return all_list
 
-    # --- 5. Merge all pools ---
-    all_pairs = adjacent_pairs | entity_pairs | bm25_pairs | scene_pairs | long_shot_pairs
+    # --- 6. Merge all pools ---
+    all_pairs = adjacent_pairs | window_pairs | entity_pairs | bm25_pairs | scene_pairs | long_shot_pairs
 
     # Safety ceiling only
     if len(all_pairs) > max_pairs:
         print(f"[dynamic_context] Safety cap: {len(all_pairs):,} → {max_pairs:,} "
               f"(lower threshold or raise --max-pairs to avoid this)")
-        # Priority: scene-filtered > long-shot > BM25 > entity > adjacent
+        # Priority: scene-filtered > long-shot > BM25 > entity > window > adjacent
         result: List[Tuple[str, str]] = []
         seen: Set[Tuple[str, str]] = set()
-        for pool in (scene_pairs, long_shot_pairs, bm25_pairs, entity_pairs, adjacent_pairs):
+        for pool in (scene_pairs, long_shot_pairs, bm25_pairs, entity_pairs, window_pairs, adjacent_pairs):
             for p in pool:
                 if len(result) >= max_pairs:
                     break
@@ -348,10 +360,12 @@ def get_dynamic_context_candidate_pairs(
         all_pairs = set(result)
 
     all_list = list(all_pairs)
-    bm25_only = len(bm25_pairs - adjacent_pairs - entity_pairs)
+    bm25_only = len(bm25_pairs - adjacent_pairs - window_pairs - entity_pairs)
+    window_only = len(window_pairs - adjacent_pairs)
     print(f"[dynamic_context] Selected {len(all_list):,} pairs "
-          f"(adj={len(adjacent_pairs):,}, entity={len(entity_pairs - adjacent_pairs):,}, "
+          f"(adj={len(adjacent_pairs):,}, window={window_only:,}, "
+          f"entity={len(entity_pairs - adjacent_pairs - window_pairs):,}, "
           f"bm25={bm25_only:,}, "
-          f"scene={len(scene_pairs - adjacent_pairs - entity_pairs - bm25_pairs):,}, "
-          f"long-shot={len(long_shot_pairs - adjacent_pairs - entity_pairs - bm25_pairs - scene_pairs):,})")
+          f"scene={len(scene_pairs - adjacent_pairs - window_pairs - entity_pairs - bm25_pairs):,}, "
+          f"long-shot={len(long_shot_pairs - adjacent_pairs - window_pairs - entity_pairs - bm25_pairs - scene_pairs):,})")
     return all_list

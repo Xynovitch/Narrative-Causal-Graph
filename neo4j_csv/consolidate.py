@@ -14,12 +14,10 @@ node_files = [
 edge_files = [
     'acts_in.csv',
     'affected_in.csv',
-    'causal_links.csv',
     'causes.csv',
     'follows.csv',
     'motivates.csv',
     'scene_includes_event.csv',
-    'semantic_links.csv'
 ]
 
 # -----------------------------------------------------------------------------

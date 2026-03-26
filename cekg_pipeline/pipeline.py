@@ -582,50 +582,59 @@ class CEKGPreprocessor:
             elif prod.entity_type == "whyfactor":
                 event_to_entities[prod.event_id]["whyfactors"].add(prod.entity_name)
         
-        for cid, evs in by_chap.items():
-            data = await llm_service.extract_scenes_from_chapter_async(
-                evs, cid, self.openai_model, self.client
-            )
-            
+        # Run all chapter scene extractions concurrently (max 5 at once)
+        _scene_sem = asyncio.Semaphore(5)
+
+        async def _fetch_scenes(cid, evs):
+            async with _scene_sem:
+                data = await llm_service.extract_scenes_from_chapter_async(
+                    evs, cid, self.openai_model, self.client
+                )
             if not data:
                 data = [{
                     "event_ids": [e.id for e in evs],
                     "theme": f"Chapter {cid} narrative",
                     "confidence": 0.5
                 }]
-            
+            return cid, evs, data
+
+        chapter_results = await asyncio.gather(
+            *[_fetch_scenes(cid, evs) for cid, evs in by_chap.items()]
+        )
+
+        for cid, evs, data in chapter_results:
             event_ids_in_chapter = {e.id for e in evs}
-            
+
             for d in data:
                 try:
                     event_ids = d.get("event_ids", [])
                     valid_event_ids = [eid for eid in event_ids if eid in event_ids_in_chapter]
-                    
+
                     if not valid_event_ids:
                         continue
-                    
+
                     all_actors = set()
                     all_patients = set()
                     all_whyfactors = set()
                     locations = set()
                     times = set()
-                    
+
                     for ev in evs:
                         if ev.id in valid_event_ids:
                             entities = event_to_entities[ev.id]
                             all_actors.update(entities["actors"])
                             all_patients.update(entities["patients"])
                             all_whyfactors.update(entities["whyfactors"])
-                            
+
                             if ev.location_context:
                                 locations.add(ev.location_context)
                             if ev.time_context:
                                 times.add(ev.time_context)
-                    
+
                     primary_location = list(locations)[0] if locations else None
                     time_period = list(times)[0] if times else None
                     all_participants = list(all_actors | all_patients)
-                    
+
                     scene = schemas.Scene(
                         utils._make_id("scene"), cid, valid_event_ids,
                         primary_location, time_period, all_participants,
@@ -633,11 +642,11 @@ class CEKGPreprocessor:
                         float(d.get("confidence", 0)),
                         place_type=None, time_type=None
                     )
-                    
+
                     scene.all_actors = list(all_actors)
                     scene.all_patients = list(all_patients)
                     scene.all_whyfactors = list(all_whyfactors)
-                    
+
                     scenes.append(scene)
                 except Exception as e:
                     print(f"[warning] Failed to create scene: {e}")

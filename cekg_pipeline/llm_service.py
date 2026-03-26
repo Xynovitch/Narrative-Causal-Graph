@@ -189,8 +189,8 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
         print(f"[llm] Event extraction: ~{estimated_events} events → {max_tokens} tokens (input: {input_chars} chars)")
         
     elif is_scene_extraction:
-        # Scene extraction - generous
-        max_tokens = 12000
+        # Scene extraction — use maximum to avoid truncation on large chapters
+        max_tokens = 16000
 
     else:
         # Default: very generous
