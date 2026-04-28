@@ -458,36 +458,61 @@ async def extract_scenes_from_chapter_async(chapter_events, chapter_id, model, c
     except:
         return []
 
-PROMPT_THEME_ANNOTATION = """You are annotating participation of narrative events in structural theme chains.
-IMPORTANT:
-You are NOT interpreting literary meaning.
-You are identifying whether the event participates in a theme-related causal mechanism.
-Themes:
-POWER authority, command, hierarchy
-WEALTH transfer or control of material resources
-KINSHIP family or household relations
-JUSTICE rule violation, accusation, punishment
-KNOWLEDGE revelation or concealment of information
+PROMPT_THEME_ANNOTATION = """You annotate whether a narrative event participates in a *structural* theme chain.
 
-Use only the event and its nearby causal context.
-Return JSON only.
-Required structure:
+You are NOT interpreting literary meaning, mood, or symbolism.
+You are deciding whether the event materially advances a theme-related causal mechanism.
+
+THEMES (strict definitions — do not stretch):
+- POWER: explicit authority/command/coercion that constrains another agent's choices.
+  NOT POWER: a tone of voice, a polite request, narration of social rank.
+- WEALTH: transfer, gain, loss, or control of material resources, money, property, inheritance.
+  NOT WEALTH: mention of clothing, food, or a job title without a transfer/control event.
+- KINSHIP: a family/household tie is created, invoked, or broken.
+  NOT KINSHIP: characters merely speaking who happen to be relatives.
+- JUSTICE: rule/law/moral-norm violation, accusation, judgement, or punishment.
+  NOT JUSTICE: a stern tone, a verbal scolding, an oath without legal/moral force.
+- KNOWLEDGE: information is revealed, concealed, learned, or transmitted that *changes what someone can do*.
+  NOT KNOWLEDGE: ordinary speech ("replies", "asks") without epistemic shift.
+
+INVOLVEMENT levels (apply the highest that fits — be conservative):
+- direct:  the event IS the theme mechanism (e.g. money transferred = WEALTH direct).
+- indirect: the event is a necessary precondition for a theme mechanism in adjacent causal context.
+- latent:  the theme is signalled but the event itself is not the mechanism (use sparingly).
+- none:    no structural role.
+
+ROLES (only when involvement != none — pick the *single best fit*, do not default to mediating):
+- initiating:  starts the theme chain
+- enabling:    creates the precondition for a later theme event
+- escalating:  raises the stakes or magnitude of an ongoing theme conflict
+- constraining: blocks/limits theme progression
+- mediating:   passes a theme effect from one party to another (transfer, messenger, broker)
+- revealing:   exposes a previously hidden theme fact
+- resolving:   closes/settles the theme arc
+
+Hard rules:
+1. Each theme MUST appear in the output, even if involvement="none".
+2. If involvement="none": role=null, evidence="", signals=[], confidence=0.0.
+3. Otherwise confidence is REQUIRED: a float in [0.0, 1.0] reflecting how clear the structural mechanism is.
+   - 0.85+ only when the event text *itself* names the mechanism (e.g. "transferred 500 pounds").
+   - 0.5-0.85 when local causal context confirms the mechanism but the event text alone is weaker.
+   - <0.5 when the signal is plausible but contestable — and prefer "latent" or "none" instead.
+4. Do NOT activate a theme on weak verbs alone ("replies", "asks", "swear", "tells", "looks").
+   A theme requires a structural mechanism, not a tone.
+5. evidence: 1-2 short sentences quoting the *mechanism*, not the mood.
+6. signals: a JSON array of 1-4 short event cues (strings). Never a single string.
+
+Return JSON only:
 {{
   "event_id": "{event_id}",
   "theme_annotations": {{
-    "POWER": {{...}},
-    "WEALTH": {{...}},
-    "KINSHIP": {{...}},
-    "JUSTICE": {{...}},
+    "POWER":     {{"involvement": "...", "role": "...", "evidence": "...", "signals": ["..."], "confidence": 0.0}},
+    "WEALTH":    {{...}},
+    "KINSHIP":   {{...}},
+    "JUSTICE":   {{...}},
     "KNOWLEDGE": {{...}}
   }}
 }}
-Rules:
-Use involvement = direct | indirect | latent | none
-If involvement none, role must be null
-Evidence must be <=2 short sentences
-Signals must be event cues, not interpretation
-Use local causal context when deciding indirect roles
 
 Event context:
 {event_context}"""

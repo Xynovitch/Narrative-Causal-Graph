@@ -19,7 +19,22 @@ PROMPT_CAUSAL_ASSESSMENT = """Analyze {count} event pairs for causal relationshi
 
 Causal reasoning: Use counterfactuals ("Would the effect have occurred without the cause?") and hypotheticals ("If the first event had not happened, would the second still have happened?"). Only label as causal when there is clear necessary or sufficient dependence in the narrative.
 
-Causal Relations: {causal_relations}
+Available Causal Relations (use the *most specific* type that fits — do NOT default to generic enabling/precedence types when a specific psychological, social, or moral relation applies):
+{causal_relations}
+
+Selection guidance:
+- Prefer specific types like EMOTIONAL_TRIGGER, MORAL_CHALLENGE, IDENTITY_CONFLICT,
+  PERSONAL_TRANSFORMATION, REVEALS, EXPOSES, FORESHADOWS, BLOCKS, COMPLICATES,
+  CAUSES_REVERSAL, REDEEMS, PERSUASION_ATTEMPT, FAMILY_INFLUENCE,
+  INHERITED_OBLIGATION, DESIRE_OBSTRUCTION, MISSION_FAILURE, CONSCIENCE_CONFLICT,
+  PERCEPTION_SHIFT — when the cause matches that specific mechanism.
+- Use EVENT_ENABLES_NEXT only when the link is purely sequential enablement and
+  no more specific psychological / social / moral / epistemic mechanism applies.
+- Use DIRECT_CAUSE only when the cause is the proximate efficient cause and no
+  more descriptive type fits.
+- Do NOT pick the same relation type for every pair in this batch when they
+  differ in mechanism — variety should reflect real differences in how the
+  cause operates on the effect.
 
 Pairs (cause → effect):
 {pairs}
@@ -29,8 +44,8 @@ Return JSON:
   "results": [
     {{
       "index": 1,
-      "relationType": "DIRECT_CAUSE",
-      "mechanism": "Pip's theft led to guilt",
+      "relationType": "EMOTIONAL_TRIGGER",
+      "mechanism": "Estella's contempt produced shame about Pip's hands",
       "confidence": 0.9
     }},
     {{
@@ -45,8 +60,9 @@ Return JSON:
 Rules:
 1. relationType: From list above or "NONE" (use NONE when no counterfactual dependence)
 2. If no clear causal link (effect would have happened anyway), use "NONE"
-3. confidence: 0.0 to 1.0
+3. confidence: 0.0 to 1.0 — high only when the mechanism is explicit in the text
 4. If narrative context is provided for a pair, use it to ground your reasoning in the actual text.
+5. mechanism: <=15 words, name the *specific* mechanism, not a restatement of the cause.
 
 JSON only:"""
 
@@ -86,7 +102,10 @@ async def assess_pairs_causal(
         pairs_text_lines.append(line)
 
     pairs_block = "\n".join(pairs_text_lines)
-    causal_str = ", ".join(causal_relations[:15])
+    # Pass the full ontology so the LLM can pick from the specific relation types
+    # rather than always falling back to the first 15 (which biased the
+    # distribution toward EVENT_ENABLES_NEXT etc — see 0326 feedback).
+    causal_str = ", ".join(causal_relations)
 
     prompt = PROMPT_CAUSAL_ASSESSMENT.format(
         count=len(pairs_batch),
@@ -94,7 +113,9 @@ async def assess_pairs_causal(
         pairs=pairs_block
     )
 
-    prefix = "causal_rag" if use_rag else "causal"
+    # Bump the cache version so old narrow-relation results don't shadow the
+    # new diversified prompt.
+    prefix = "causal_rag_v2" if use_rag else "causal_v2"
     cache_key = _hash_for_cache(f"{prefix}:{len(pairs_batch)}:{causal_str[:50]}", model)
 
     try:

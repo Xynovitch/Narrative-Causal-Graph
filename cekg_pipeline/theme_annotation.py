@@ -201,14 +201,19 @@ def apply_theme_bridge_rule(
     Deterministic post-processing: if an event has involvement='none' for a theme
     but an adjacent cause or effect has involvement='direct', upgrade the event to
     involvement='indirect' and role='mediating'.
+
+    Records the bridge source so a reader can explain *why* the event was upgraded
+    (the previous version left evidence empty, which the 0326 feedback flagged).
     """
     event_map: Dict[str, CEKEvent] = {e.id: e for e in events}
 
-    # Build adjacency: event_id -> set of neighbour event_ids
-    neighbours: Dict[str, List[str]] = {}
+    # Build adjacency keyed by (event_id, neighbour_id) so we can recover the
+    # relation_type that justifies the bridge.
+    edges_out: Dict[str, List[CausalLink]] = {}
+    edges_in: Dict[str, List[CausalLink]] = {}
     for lnk in causal_links:
-        neighbours.setdefault(lnk.source_event_id, []).append(lnk.target_event_id)
-        neighbours.setdefault(lnk.target_event_id, []).append(lnk.source_event_id)
+        edges_out.setdefault(lnk.source_event_id, []).append(lnk)
+        edges_in.setdefault(lnk.target_event_id, []).append(lnk)
 
     for event in events:
         ann = event.theme_annotations
@@ -220,16 +225,52 @@ def apply_theme_bridge_rule(
                 continue
             if theme_data.get("involvement") != "none":
                 continue
-            # Check neighbours
-            for nb_id in neighbours.get(event.id, []):
-                nb = event_map.get(nb_id)
+
+            bridge_source: Optional[str] = None
+            bridge_relation: Optional[str] = None
+            bridge_confidence: float = 0.0
+
+            # Outgoing: this event causes a neighbour with direct involvement.
+            for lnk in edges_out.get(event.id, []):
+                nb = event_map.get(lnk.target_event_id)
                 if nb is None:
                     continue
-                nb_theme_data = nb.theme_annotations.get(theme, {})
-                if isinstance(nb_theme_data, dict) and nb_theme_data.get("involvement") == "direct":
-                    theme_data["involvement"] = "indirect"
-                    theme_data["role"] = "mediating"
+                nb_td = nb.theme_annotations.get(theme, {})
+                if isinstance(nb_td, dict) and nb_td.get("involvement") == "direct":
+                    bridge_source = nb.id
+                    bridge_relation = lnk.relation_type
+                    bridge_confidence = float(nb_td.get("confidence") or 0.0)
                     break
+
+            # Incoming: a neighbour with direct involvement causes this event.
+            if bridge_source is None:
+                for lnk in edges_in.get(event.id, []):
+                    nb = event_map.get(lnk.source_event_id)
+                    if nb is None:
+                        continue
+                    nb_td = nb.theme_annotations.get(theme, {})
+                    if isinstance(nb_td, dict) and nb_td.get("involvement") == "direct":
+                        bridge_source = nb.id
+                        bridge_relation = lnk.relation_type
+                        bridge_confidence = float(nb_td.get("confidence") or 0.0)
+                        break
+
+            if bridge_source is None:
+                continue
+
+            # Carry roughly half the neighbour's confidence forward, capped at 0.6.
+            propagated = min(0.6, max(0.2, bridge_confidence * 0.6))
+
+            theme_data["involvement"] = "indirect"
+            theme_data["role"] = "mediating"
+            theme_data["evidence"] = (
+                f"Bridge: linked to {bridge_source} via {bridge_relation or 'CAUSES'} "
+                f"which has direct {theme} involvement."
+            )
+            theme_data["signals"] = [f"bridge_from:{bridge_source}", f"via:{bridge_relation or 'CAUSES'}"]
+            theme_data["confidence"] = propagated
+            theme_data["bridge_source"] = bridge_source
+            theme_data["bridge_relation"] = bridge_relation
 
 
 # ---------------------------------------------------------------------------
@@ -290,30 +331,55 @@ async def annotate_event_themes(
             continue
         if isinstance(result, dict):
             annotations = result.get("theme_annotations", {})
-            # Validate and sanitise
             clean: Dict[str, Any] = {}
             for theme in THEME_SET:
                 td = annotations.get(theme, {})
                 if not isinstance(td, dict):
                     td = {}
+
                 involvement = td.get("involvement", "none")
                 if involvement not in INVOLVEMENT_SET:
                     involvement = "none"
+
                 role = td.get("role")
                 if involvement == "none":
                     role = None
                 elif role not in ROLE_SET:
                     role = None
-                confidence = td.get("confidence")
+
+                # Confidence must always be a float in [0,1]; never None.
+                raw_conf = td.get("confidence")
                 try:
-                    confidence = float(confidence) if confidence is not None else None
+                    confidence = float(raw_conf) if raw_conf is not None else 0.0
                 except (TypeError, ValueError):
-                    confidence = None
+                    confidence = 0.0
+                if confidence < 0.0:
+                    confidence = 0.0
+                elif confidence > 1.0:
+                    confidence = 1.0
+                if involvement == "none":
+                    confidence = 0.0
+
+                # Signals must always be a list.
+                raw_signals = td.get("signals", [])
+                if isinstance(raw_signals, str):
+                    raw_signals = [raw_signals] if raw_signals else []
+                elif not isinstance(raw_signals, list):
+                    raw_signals = []
+                signals = [str(s) for s in raw_signals if s]
+
+                evidence = td.get("evidence", "") or ""
+
+                # Drop low-confidence direct/indirect tags (< 0.4) to "latent" — this
+                # quiets the over-tagging that the feedback flagged on weak verbs.
+                if involvement in {"direct", "indirect"} and confidence < 0.4:
+                    involvement = "latent"
+
                 clean[theme] = {
                     "involvement": involvement,
                     "role": role,
-                    "evidence": td.get("evidence", ""),
-                    "signals": td.get("signals", ""),
+                    "evidence": evidence,
+                    "signals": signals,
                     "confidence": confidence,
                 }
             event.theme_annotations = clean

@@ -12,6 +12,7 @@ from collections import defaultdict
 from typing import List, Dict, Any, Tuple, Optional
 from . import schemas
 from . import utils
+from . import theme_graph
 
 def _escape_props(props: Dict[str, Any]) -> Dict[str, Any]:
     """Escapes all string properties for Cypher."""
@@ -73,14 +74,26 @@ def map_to_generic_graph(
             "time": ev.time_context or "",
             "source_quote": utils._truncate_safe(ev.source_quote, 300),
         }
-        # Flatten theme involvement into queryable per-theme properties.
-        # theme_POWER / theme_WEALTH / theme_KINSHIP / theme_JUSTICE / theme_KNOWLEDGE
-        # values: "direct" | "indirect" | "none"
+        # Flatten theme annotations into queryable per-theme properties.
+        # 0326 feedback C1: avoid the CONTAINS-on-JSON-text Cypher pattern.
         ta = ev.theme_annotations or {}
         for theme in _THEMES:
-            td = ta.get(theme, {})
-            involvement = td.get("involvement", "none") if isinstance(td, dict) else "none"
-            props[f"theme_{theme}"] = involvement or "none"
+            td = ta.get(theme, {}) if isinstance(ta, dict) else {}
+            if not isinstance(td, dict):
+                td = {}
+            involvement = td.get("involvement", "none") or "none"
+            role = td.get("role") or ""
+            try:
+                conf = float(td.get("confidence") or 0.0)
+            except (TypeError, ValueError):
+                conf = 0.0
+            # Keep the legacy short property name (theme_POWER = involvement) so
+            # existing dashboards keep working, plus add explicit qualified
+            # properties for the new structured fields.
+            props[f"theme_{theme}"] = involvement
+            props[f"theme_{theme}_involvement"] = involvement
+            props[f"theme_{theme}_role"] = role
+            props[f"theme_{theme}_confidence"] = conf
 
         nodes[ev.id] = schemas.GenericNode(
             uid=ev.id,
@@ -141,21 +154,69 @@ def map_to_generic_graph(
     # 3. Map Scenes (CRITICAL: All events and entities belong to scenes)
     event_to_scene = {}  # Track which scene each event belongs to
     
+    # Pre-compute per-scene theme rollups so we can flatten them onto Scene
+    # properties (event-segmentation feedback C3 — scene as plot-unit filter).
+    event_map_for_scenes = {e.id: e for e in events}
+    scene_theme_summary: Dict[str, Dict[str, Dict[str, Any]]] = {}
+    for sc in scenes:
+        per_theme: Dict[str, Dict[str, Any]] = {}
+        for theme in _THEMES:
+            direct_n = 0
+            indirect_n = 0
+            conf_sum = 0.0
+            n = 0
+            for eid in sc.included_event_ids:
+                ev = event_map_for_scenes.get(eid)
+                if ev is None:
+                    continue
+                td = (ev.theme_annotations or {}).get(theme, {})
+                if not isinstance(td, dict):
+                    continue
+                inv = (td.get("involvement") or "none").lower()
+                if inv in ("direct", "indirect"):
+                    n += 1
+                    if inv == "direct":
+                        direct_n += 1
+                    else:
+                        indirect_n += 1
+                    try:
+                        conf_sum += float(td.get("confidence") or 0.0)
+                    except (TypeError, ValueError):
+                        pass
+            avg_conf = round(conf_sum / n, 4) if n else 0.0
+            per_theme[theme] = {
+                "direct_count": direct_n,
+                "indirect_count": indirect_n,
+                "event_count": n,
+                "avg_confidence": avg_conf,
+            }
+        scene_theme_summary[sc.id] = per_theme
+
     for scene in scenes:
         if scene.id not in nodes:
+            scene_props = {
+                "id": scene.id,
+                "theme": scene.theme,
+                "chapter": scene.chapter,
+                "confidence": scene.confidence,
+                "location": scene.primary_location or "",
+                "time": scene.time_period or "",
+                "place_type": scene.place_type or "",
+                "time_type": scene.time_type or "",
+                "participant_count": len(scene.participants or []),
+                "event_count": len(scene.included_event_ids or []),
+            }
+            summary = scene_theme_summary.get(scene.id, {})
+            for theme in _THEMES:
+                stats = summary.get(theme, {})
+                scene_props[f"theme_{theme}_event_count"] = stats.get("event_count", 0)
+                scene_props[f"theme_{theme}_direct_count"] = stats.get("direct_count", 0)
+                scene_props[f"theme_{theme}_indirect_count"] = stats.get("indirect_count", 0)
+                scene_props[f"theme_{theme}_avg_confidence"] = stats.get("avg_confidence", 0.0)
             nodes[scene.id] = schemas.GenericNode(
                 uid=scene.id,
                 label="Scene",
-                properties=_escape_props({
-                    "id": scene.id,
-                    "theme": scene.theme,
-                    "chapter": scene.chapter,
-                    "confidence": scene.confidence,
-                    "location": scene.primary_location or "",
-                    "time": scene.time_period or "",
-                    "place_type": scene.place_type or "",
-                    "time_type": scene.time_type or ""
-                })
+                properties=_escape_props(scene_props)
             )
         
         # Scene -> Event Relationships
@@ -250,6 +311,21 @@ def map_to_generic_graph(
             })
         ))
 
+    # 7. Thematic edges — Event → Event with `theme` as an edge property.
+    #    These link events into subplots (one connected component per theme).
+    thematic_edges = theme_graph.build_thematic_event_edges(
+        events, causal_links=causal_links, scenes=scenes,
+    )
+    relationships.extend(thematic_edges)
+
+    # Per-theme breakdown for logging.
+    if thematic_edges:
+        from collections import Counter
+        theme_counts = Counter(e.properties.get("theme", "?") for e in thematic_edges)
+        breakdown = ", ".join(f"{t}={n}" for t, n in theme_counts.most_common())
+        print(f"[graph_mapper] Thematic edges: {len(thematic_edges)} ({breakdown})")
+    else:
+        print(f"[graph_mapper] Thematic edges: 0")
 
     print(f"[graph_mapper] Created {len(nodes)} nodes and {len(relationships)} relationships")
     print(f"[graph_mapper] Scene-centric structure: {len(scenes)} scenes containing {len(events)} events")

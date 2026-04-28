@@ -161,6 +161,9 @@ def export_neo4j_cypher(
     lines.append("CREATE CONSTRAINT scene_id IF NOT EXISTS FOR (s:Scene) REQUIRE s.id IS UNIQUE;")
     lines.append("CREATE INDEX event_sequence IF NOT EXISTS FOR (e:Event) ON (e.sequence);")
     lines.append("CREATE INDEX event_chapter IF NOT EXISTS FOR (e:Event) ON (e.chapter);")
+    # Index THEMATIC_LINK by its `theme` property so subplot queries (filter
+    # by theme on the edge) stay cheap.
+    lines.append("CREATE INDEX thematic_link_theme IF NOT EXISTS FOR ()-[r:THEMATIC_LINK]-() ON (r.theme);")
     lines.append("")
     
     # 2. Create Nodes in Batches
@@ -264,9 +267,11 @@ def export_neo4j_cypher(
 def build_jsonld(
     events: List[CEKEvent],
     event_produces: List[EventProducesEntity],
-    causal_links: List[CausalLink]
+    causal_links: List[CausalLink],
+    scenes: Optional[List[Scene]] = None,
 ) -> Dict[str, Any]:
-    """Build JSON-LD representation"""
+    """Build JSON-LD representation, including the Theme layer."""
+    from . import theme_graph as _tg
     g = []
 
     # Events
@@ -303,6 +308,21 @@ def build_jsonld(
             "edge_supertype": link.edge_supertype
         })
 
+    # Thematic edges: Event → Event with `theme` as a property.
+    # The connected component formed by edges sharing the same `theme` value
+    # is the subplot for that theme.
+    for rel in _tg.build_thematic_event_edges(
+        events, causal_links=causal_links, scenes=scenes,
+    ):
+        theme = rel.properties.get("theme", "")
+        g.append({
+            "@id": f"{rel.start_node_uid}__THEMATIC_LINK__{theme}__{rel.end_node_uid}",
+            "type": "ThematicEdge",
+            "from": rel.start_node_uid,
+            "to": rel.end_node_uid,
+            **rel.properties,
+        })
+
     return {"@graph": g}
 
 def export_json(path: str, data: Dict[str, Any]):
@@ -334,10 +354,12 @@ def export_csv(
     for prod in event_produces:
         entities_by_type[prod.entity_type][prod.entity_id] = prod.entity_name
     
-    # Event nodes
+    # Event nodes — theme annotations are flattened into per-theme columns so
+    # Neo4j can filter on them without CONTAINS-on-JSON-text (0326 feedback C1).
+    THEMES = ("POWER", "WEALTH", "KINSHIP", "JUSTICE", "KNOWLEDGE")
     events_rows = []
     for ev in events:
-        events_rows.append({
+        row = {
             ":ID": ev.id,
             "name": ev.raw_description,
             "actionType": ev.action_type,
@@ -348,8 +370,23 @@ def export_csv(
             "time": ev.time_context or "",
             "location": ev.location_context or "",
             "scene_id": ev.scene_id or "",
-            "theme_annotations": json.dumps(ev.theme_annotations) if ev.theme_annotations else ""
-        })
+        }
+        ann = ev.theme_annotations or {}
+        for theme in THEMES:
+            td = ann.get(theme, {}) if isinstance(ann, dict) else {}
+            if not isinstance(td, dict):
+                td = {}
+            row[f"theme_{theme}_involvement"] = td.get("involvement", "none") or "none"
+            row[f"theme_{theme}_role"] = td.get("role") or ""
+            try:
+                row[f"theme_{theme}_confidence"] = float(td.get("confidence") or 0.0)
+            except (TypeError, ValueError):
+                row[f"theme_{theme}_confidence"] = 0.0
+            row[f"theme_{theme}_evidence"] = td.get("evidence") or ""
+        # Keep the raw blob as well for downstream debugging but no longer the
+        # primary query path.
+        row["theme_annotations_raw"] = json.dumps(ann) if ann else ""
+        events_rows.append(row)
     
     # Agent nodes
     all_agents = {}
@@ -418,13 +455,47 @@ def export_csv(
         "edge_supertype": link.edge_supertype or ""
     } for link in causal_links]
     
-    # Scene nodes
-    scene_nodes_rows = [{
-        ":ID": scene.id,
-        "theme": scene.theme,
-        "chapter": scene.chapter,
-        "confidence": scene.confidence
-    } for scene in scenes]
+    # Scene nodes — rollup per-theme stats so scenes are queryable as
+    # plot-units (0326 feedback C3).
+    event_map_for_scenes = {e.id: e for e in events}
+    scene_nodes_rows = []
+    for scene in scenes:
+        row = {
+            ":ID": scene.id,
+            "theme": scene.theme,
+            "chapter": scene.chapter,
+            "confidence": scene.confidence,
+            "event_count": len(scene.included_event_ids or []),
+            "participant_count": len(scene.participants or []),
+        }
+        for theme in THEMES:
+            direct_n = 0
+            indirect_n = 0
+            conf_sum = 0.0
+            n = 0
+            for eid in scene.included_event_ids:
+                ev = event_map_for_scenes.get(eid)
+                if ev is None:
+                    continue
+                td = (ev.theme_annotations or {}).get(theme, {})
+                if not isinstance(td, dict):
+                    continue
+                inv = (td.get("involvement") or "none").lower()
+                if inv in ("direct", "indirect"):
+                    n += 1
+                    if inv == "direct":
+                        direct_n += 1
+                    else:
+                        indirect_n += 1
+                    try:
+                        conf_sum += float(td.get("confidence") or 0.0)
+                    except (TypeError, ValueError):
+                        pass
+            row[f"theme_{theme}_event_count"] = n
+            row[f"theme_{theme}_direct_count"] = direct_n
+            row[f"theme_{theme}_indirect_count"] = indirect_n
+            row[f"theme_{theme}_avg_confidence"] = round(conf_sum / n, 4) if n else 0.0
+        scene_nodes_rows.append(row)
     
     # Scene -> Event edges
     scene_includes_rows = []
@@ -435,7 +506,31 @@ def export_csv(
                 ":END_ID": event_id,
                 ":TYPE": "INCLUDES"
             })
-            
+
+    # ---- Thematic edges: Event -> Event with `theme` as edge property ----
+    # Themes are NOT separate nodes. The connected component induced by all
+    # edges sharing the same `theme` value is the corresponding subplot.
+    from . import theme_graph as _tg
+    thematic_edges = _tg.build_thematic_event_edges(
+        events, causal_links=causal_links, scenes=scenes,
+    )
+    thematic_link_rows = [{
+        ":START_ID": rel.start_node_uid,
+        ":END_ID": rel.end_node_uid,
+        ":TYPE": "THEMATIC_LINK",
+        "theme": rel.properties.get("theme", ""),
+        "source_role": rel.properties.get("source_role", ""),
+        "target_role": rel.properties.get("target_role", ""),
+        "source_involvement": rel.properties.get("source_involvement", ""),
+        "target_involvement": rel.properties.get("target_involvement", ""),
+        "source_confidence": rel.properties.get("source_confidence", 0.0),
+        "target_confidence": rel.properties.get("target_confidence", 0.0),
+        "confidence": rel.properties.get("confidence", 0.0),
+        "via": rel.properties.get("via", ""),
+        "scene_id": rel.properties.get("scene_id", ""),
+        "sequence_distance": rel.properties.get("sequence_distance", 0),
+    } for rel in thematic_edges]
+
     files = {
         "events.csv": events_rows,
         "agents.csv": agent_rows,
@@ -449,6 +544,7 @@ def export_csv(
         "causes.csv": causes_rows,
         "scenes.csv": scene_nodes_rows,
         "scene_includes_event.csv": scene_includes_rows,
+        "thematic_links.csv": thematic_link_rows,
     }
 
     # Remove stale CSVs from previous pipeline versions

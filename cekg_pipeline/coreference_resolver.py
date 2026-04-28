@@ -33,6 +33,60 @@ class CoreferenceResolver:
         'someone', 'something', 'anyone', 'everyone', 'nobody',
         'other', 'another', 'others', 'one'
     }
+
+    # Per-work canonical alias seeds. Resolves the "magwitch/convict/unknown
+    # man" / "pip/philip pirrip" problem that the 0326 feedback flagged: a
+    # character should map to one canonical agent regardless of how the LLM
+    # surfaced the mention.
+    KNOWN_WORK_ALIASES: Dict[str, Dict[str, List[str]]] = {
+        "great expectations": {
+            "Philip Pirrip": [
+                "Pip", "Pirrip", "young Pip", "the boy",
+                "Mr. Pip", "Handel",
+            ],
+            "Abel Magwitch": [
+                "Magwitch", "the convict", "convict", "the man",
+                "Provis", "Mr. Provis", "the stranger",
+                "the unknown man", "the runaway",
+            ],
+            "Joe Gargery": [
+                "Joe", "Mr. Gargery", "the blacksmith",
+            ],
+            "Mrs. Joe Gargery": [
+                "Mrs. Joe", "Mrs. Gargery", "Pip's sister", "his sister",
+            ],
+            "Estella Havisham": [
+                "Estella",
+            ],
+            "Miss Havisham": [
+                "Havisham", "the lady at Satis House",
+            ],
+            "Mr. Jaggers": [
+                "Jaggers", "the lawyer",
+            ],
+            "Herbert Pocket": [
+                "Herbert", "the pale young gentleman",
+            ],
+            "Biddy": [
+                "Biddy",
+            ],
+            "Compeyson": [
+                "Compeyson", "the second convict",
+            ],
+            "Bentley Drummle": [
+                "Drummle", "the spider",
+            ],
+            "John Wemmick": [
+                "Wemmick", "Mr. Wemmick",
+            ],
+            "Orlick": [
+                "Dolge Orlick", "Old Orlick",
+            ],
+            "Mr. Pumblechook": [
+                "Pumblechook", "Uncle Pumblechook",
+            ],
+        }
+    }
     
     def __init__(self):
         # Character name registry: {canonical_name: {aliases}}
@@ -41,6 +95,35 @@ class CoreferenceResolver:
         self.alias_to_canonical: Dict[str, str] = {}
         # Co-occurrence tracking for smart resolution
         self.cooccurrence_matrix: Dict[Tuple[str, str], int] = defaultdict(int)
+
+    def seed_from_work(self, work_title: str) -> int:
+        """
+        Pre-load canonical name aliases for a known work. Returns the number
+        of aliases registered. Safe to call multiple times — already-registered
+        aliases are skipped.
+
+        The 0326 feedback specifically called out the problem of the same
+        character being scattered across mentions like "Pip", "Philip Pirrip",
+        "Magwitch", "the convict", "the unknown man". Seeding before the LLM
+        sees any mention prevents those silos.
+        """
+        if not work_title:
+            return 0
+        key = work_title.lower().strip()
+        # Match by substring so callers can pass a path/filename.
+        seed = None
+        for known_key, aliases in self.KNOWN_WORK_ALIASES.items():
+            if known_key in key:
+                seed = aliases
+                break
+        if seed is None:
+            return 0
+
+        registered = 0
+        for canonical, aliases in seed.items():
+            self.register_character(canonical, aliases)
+            registered += len(aliases)
+        return registered
     
     def is_valid_character_name(self, name: str) -> bool:
         """Check if a name is valid (not pronoun, not generic)"""

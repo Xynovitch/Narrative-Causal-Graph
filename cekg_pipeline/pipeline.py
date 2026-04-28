@@ -728,6 +728,19 @@ class CEKGPreprocessor:
         print(f"{'='*60}\n")
         
         # ============================================================
+        # STAGE 0: SEED CANONICAL CHARACTER ALIASES (per-work dictionary)
+        # 0326 feedback C2: ensure "Pip" / "Philip Pirrip" / "Magwitch" /
+        # "the convict" collapse to single canonical agents instead of
+        # being scattered across many silos.
+        # ============================================================
+        try:
+            seeded = self.resolver.seed_from_work(os.path.basename(text_path))
+            if seeded:
+                print(f"[resolver] Seeded {seeded} canonical character aliases from work dictionary.")
+        except Exception as e:
+            print(f"[resolver] Alias seeding skipped: {e}")
+
+        # ============================================================
         # STAGE 1: TEXT LOADING & CHAPTER SPLITTING
         # ============================================================
         if self.checkpoint_mgr and resume_from_checkpoint and self.checkpoint_mgr.has_checkpoint("text_split"):
@@ -953,7 +966,7 @@ class CEKGPreprocessor:
         assign_edge_supertypes(causal_links)
 
         jsonld = exporters.build_jsonld(
-            all_events, all_produces, causal_links
+            all_events, all_produces, causal_links, scenes
         )
         exporters.export_json(out_json, jsonld)
 
