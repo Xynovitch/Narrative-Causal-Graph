@@ -7,6 +7,7 @@ Involvement: direct, indirect, latent, none
 """
 import asyncio
 import json
+import os
 from collections import defaultdict
 from typing import List, Dict, Any, Optional
 
@@ -277,12 +278,66 @@ def apply_theme_bridge_rule(
 # annotate_event_themes  (main entry point)
 # ---------------------------------------------------------------------------
 
+def _clean_theme_annotations(annotations_raw: Dict[str, Any]) -> Dict[str, Any]:
+    """Normalize/validate raw LLM output into the canonical theme_annotations dict."""
+    clean: Dict[str, Any] = {}
+    for theme in THEME_SET:
+        td = annotations_raw.get(theme, {})
+        if not isinstance(td, dict):
+            td = {}
+
+        involvement = td.get("involvement", "none")
+        if involvement not in INVOLVEMENT_SET:
+            involvement = "none"
+
+        role = td.get("role")
+        if involvement == "none":
+            role = None
+        elif role not in ROLE_SET:
+            role = None
+
+        raw_conf = td.get("confidence")
+        try:
+            confidence = float(raw_conf) if raw_conf is not None else 0.0
+        except (TypeError, ValueError):
+            confidence = 0.0
+        confidence = max(0.0, min(1.0, confidence))
+        if involvement == "none":
+            confidence = 0.0
+
+        raw_signals = td.get("signals", [])
+        if isinstance(raw_signals, str):
+            raw_signals = [raw_signals] if raw_signals else []
+        elif not isinstance(raw_signals, list):
+            raw_signals = []
+        signals = [str(s) for s in raw_signals if s]
+
+        evidence = td.get("evidence", "") or ""
+
+        # Drop low-confidence direct/indirect tags (< 0.4) to "latent" — this
+        # quiets the over-tagging that the feedback flagged on weak verbs.
+        if involvement in {"direct", "indirect"} and confidence < 0.4:
+            involvement = "latent"
+
+        clean[theme] = {
+            "involvement": involvement,
+            "role": role,
+            "evidence": evidence,
+            "signals": signals,
+            "confidence": confidence,
+        }
+    return clean
+
+
 async def annotate_event_themes(
     events: List[CEKEvent],
     causal_links: List[CausalLink],
     scenes: List[Scene],
     model: str,
-    client: Any
+    client: Any,
+    partial_checkpoint_path: Optional[str] = None,
+    concurrency: int = 20,
+    save_every: int = 200,
 ) -> None:
     """
     Main entry point for the thematic annotation stage.
@@ -294,6 +349,12 @@ async def annotate_event_themes(
 
     Also mutates causal_links in-place:
     - Sets edge_supertype
+
+    If partial_checkpoint_path is given, this function will:
+    - Load any prior partial state from that path on entry (resume).
+    - Skip events whose annotations are already populated.
+    - Periodically flush the partial state every `save_every` successes,
+      so an interrupted run can be resumed without losing work.
     """
     print(f"[theme] Attaching scene IDs to {len(events)} events...")
     attach_scene_ids_to_events(events, scenes)
@@ -314,75 +375,124 @@ async def annotate_event_themes(
     ]
     context_jsons = [json.dumps(ctx) for ctx in contexts]
 
-    print(f"[theme] Annotating {len(events)} events with LLM (theme annotations)...")
-    _sem = asyncio.Semaphore(20)
+    # Resume from partial checkpoint if present.
+    if partial_checkpoint_path and os.path.exists(partial_checkpoint_path):
+        try:
+            with open(partial_checkpoint_path) as f:
+                prior = json.load(f).get("theme_annotations_by_event", {})
+            for ev in events:
+                if ev.id in prior and prior[ev.id]:
+                    ev.theme_annotations = prior[ev.id]
+            print(f"[theme] Resumed partial state: {sum(1 for e in events if e.theme_annotations)} "
+                  f"events already annotated, {sum(1 for e in events if not e.theme_annotations)} remaining")
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"[theme] Warning: could not load partial checkpoint ({e}); starting fresh")
 
-    async def _annotate_with_limit(ctx_json: str) -> Any:
-        async with _sem:
-            return await annotate_single_event_theme(ctx_json, model, client)
+    async def _flush_partial():
+        if not partial_checkpoint_path:
+            return
+        payload = {
+            "theme_annotations_by_event": {
+                ev.id: ev.theme_annotations
+                for ev in events
+                if ev.theme_annotations
+            }
+        }
+        tmp = partial_checkpoint_path + ".tmp"
+        try:
+            with open(tmp, "w") as f:
+                json.dump(payload, f)
+            os.replace(tmp, partial_checkpoint_path)
+        except OSError as e:
+            print(f"[theme] Warning: failed to flush partial checkpoint: {e}")
 
-    tasks = [_annotate_with_limit(ctx_json) for ctx_json in context_jsons]
-    results = await asyncio.gather(*tasks, return_exceptions=True)
+    async def _annotate_pass(items, pass_concurrency, timeout_s, label):
+        if not items:
+            return
+        sem = asyncio.Semaphore(pass_concurrency)
+        completed = 0
+        failed = 0
+        errors_logged = 0
+        last_save_at = 0
+        save_lock = asyncio.Lock()
+        total = len(items)
 
-    # Attach results to events
-    for event, result in zip(events, results):
-        if isinstance(result, Exception):
-            print(f"[theme] Warning: annotation failed for {event.id}: {result}")
-            continue
-        if isinstance(result, dict):
-            annotations = result.get("theme_annotations", {})
-            clean: Dict[str, Any] = {}
-            for theme in THEME_SET:
-                td = annotations.get(theme, {})
-                if not isinstance(td, dict):
-                    td = {}
-
-                involvement = td.get("involvement", "none")
-                if involvement not in INVOLVEMENT_SET:
-                    involvement = "none"
-
-                role = td.get("role")
-                if involvement == "none":
-                    role = None
-                elif role not in ROLE_SET:
-                    role = None
-
-                # Confidence must always be a float in [0,1]; never None.
-                raw_conf = td.get("confidence")
+        async def _one(ev, ctx_json):
+            nonlocal completed, failed, errors_logged, last_save_at
+            async with sem:
                 try:
-                    confidence = float(raw_conf) if raw_conf is not None else 0.0
-                except (TypeError, ValueError):
-                    confidence = 0.0
-                if confidence < 0.0:
-                    confidence = 0.0
-                elif confidence > 1.0:
-                    confidence = 1.0
-                if involvement == "none":
-                    confidence = 0.0
+                    result = await asyncio.wait_for(
+                        annotate_single_event_theme(ctx_json, model, client),
+                        timeout=timeout_s,
+                    )
+                except (asyncio.TimeoutError, Exception) as e:
+                    failed += 1
+                    if errors_logged < 5:
+                        errors_logged += 1
+                        print(f"[theme:{label}] error #{errors_logged} on {ev.id}: "
+                              f"{type(e).__name__}: {str(e)[:200]}", flush=True)
+                    return
+                if not isinstance(result, dict):
+                    failed += 1
+                    return
+                ev.theme_annotations = _clean_theme_annotations(result.get("theme_annotations", {}))
+                completed += 1
+                async with save_lock:
+                    if completed - last_save_at >= save_every:
+                        last_save_at = completed
+                        await _flush_partial()
 
-                # Signals must always be a list.
-                raw_signals = td.get("signals", [])
-                if isinstance(raw_signals, str):
-                    raw_signals = [raw_signals] if raw_signals else []
-                elif not isinstance(raw_signals, list):
-                    raw_signals = []
-                signals = [str(s) for s in raw_signals if s]
+        async def _heartbeat():
+            while True:
+                await asyncio.sleep(30)
+                done = completed + failed
+                print(f"[theme:{label}] progress: {done}/{total} "
+                      f"({completed} ok, {failed} failed)", flush=True)
 
-                evidence = td.get("evidence", "") or ""
+        print(f"[theme:{label}] Annotating {total} events "
+              f"(concurrency={pass_concurrency}, timeout={timeout_s}s)...")
+        hb = asyncio.create_task(_heartbeat())
+        try:
+            await asyncio.gather(*[_one(ev, ctx) for ev, ctx in items], return_exceptions=True)
+        finally:
+            hb.cancel()
+            try:
+                await hb
+            except (asyncio.CancelledError, Exception):
+                pass
+            await _flush_partial()
+        print(f"[theme:{label}] Done: {completed} ok, {failed} failed", flush=True)
 
-                # Drop low-confidence direct/indirect tags (< 0.4) to "latent" — this
-                # quiets the over-tagging that the feedback flagged on weak verbs.
-                if involvement in {"direct", "indirect"} and confidence < 0.4:
-                    involvement = "latent"
+    pending = [(ev, ctx) for ev, ctx in zip(events, context_jsons) if not ev.theme_annotations]
 
-                clean[theme] = {
-                    "involvement": involvement,
-                    "role": role,
-                    "evidence": evidence,
-                    "signals": signals,
-                    "confidence": confidence,
-                }
-            event.theme_annotations = clean
+    if not pending:
+        print(f"[theme] All {len(events)} events already annotated; skipping LLM stage")
+    else:
+        # Pass 1 — main run at the configured concurrency.
+        await _annotate_pass(pending, concurrency, timeout_s=120, label="main")
+
+        # Pass 2 — retry whatever still failed, more gently and with a longer timeout.
+        # Most failures here are AsyncOpenAI httpx hiccups or single-call timeouts that
+        # clear up on retry; this pass converts the long tail of transient errors into
+        # actual annotations rather than leaving them as "none".
+        ctx_by_id = {ev.id: ctx for ev, ctx in zip(events, context_jsons)}
+        retry_items = [(ev, ctx_by_id[ev.id]) for ev in events if not ev.theme_annotations]
+        if retry_items:
+            print(f"[theme] {len(retry_items)} events failed pass 1; running retry pass.")
+            await _annotate_pass(retry_items, pass_concurrency=5, timeout_s=240, label="retry")
+
+    # Pass 3 — seed canonical "none" structure for any event still empty.
+    # Without this they would be skipped by the Theme-Bridge Rule
+    # (which requires an existing dict to upgrade involvement on).
+    unrecoverable = [ev for ev in events if not ev.theme_annotations]
+    if unrecoverable:
+        print(f"[theme] Seeding default 'none' annotations for "
+              f"{len(unrecoverable)} unrecoverable events so the Bridge Rule can run on them.")
+        default = _clean_theme_annotations({})
+        for ev in unrecoverable:
+            # Fresh dict copy per event so later mutations are independent.
+            ev.theme_annotations = {t: dict(default[t]) for t in THEME_SET}
+        await _flush_partial()
 
     print(f"[theme] Applying Theme-Bridge Rule...")
     apply_theme_bridge_rule(events, causal_links)

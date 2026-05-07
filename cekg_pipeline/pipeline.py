@@ -586,10 +586,13 @@ class CEKGPreprocessor:
         _scene_sem = asyncio.Semaphore(5)
 
         async def _fetch_scenes(cid, evs):
+            print(f"[scenes-debug] ch{cid}: requesting semaphore", flush=True)
             async with _scene_sem:
+                print(f"[scenes-debug] ch{cid}: ACQUIRED, calling LLM", flush=True)
                 data = await llm_service.extract_scenes_from_chapter_async(
                     evs, cid, self.openai_model, self.client
                 )
+                print(f"[scenes-debug] ch{cid}: LLM returned ({len(data) if data else 0} items)", flush=True)
             if not data:
                 data = [{
                     "event_ids": [e.id for e in evs],
@@ -598,9 +601,11 @@ class CEKGPreprocessor:
                 }]
             return cid, evs, data
 
+        print(f"[scenes-debug] launching gather over {len(by_chap)} chapters", flush=True)
         chapter_results = await asyncio.gather(
             *[_fetch_scenes(cid, evs) for cid, evs in by_chap.items()]
         )
+        print(f"[scenes-debug] gather completed: {len(chapter_results)} results", flush=True)
 
         for cid, evs, data in chapter_results:
             event_ids_in_chapter = {e.id for e in evs}
@@ -935,8 +940,12 @@ class CEKGPreprocessor:
                     lnk.edge_supertype = es_map[key]
         else:
             print("[stage 7/7] Annotating themes...")
+            partial_path = None
+            if self.checkpoint_mgr:
+                partial_path = str(self.checkpoint_mgr.run_dir / "theme_annotation_partial.json")
             await annotate_event_themes(all_events, causal_links, scenes,
-                                        self.openai_model, self.client)
+                                        self.openai_model, self.client,
+                                        partial_checkpoint_path=partial_path)
             if self.checkpoint_mgr:
                 self.checkpoint_mgr.save_checkpoint(
                     "theme_annotation",

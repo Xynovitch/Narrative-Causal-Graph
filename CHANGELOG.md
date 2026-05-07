@@ -2,6 +2,30 @@
 
 All notable changes to the Causal Event Knowledge Graph (CEKG) pipeline will be documented in this file.
 
+## [Unreleased] - 2026-05-06
+
+### Added
+- **Static webpage** under `docs/web/` for browsing the knowledge graph in a browser. Three-panel layout (filters / Cytoscape graph / event detail) with three view modes (Causal / Subplot / Agent), per-theme filtering with confidence threshold, chapter range, agent dropdown, full-text search, and click-through detail panel with per-event theme involvement, source quote, actors, and causal neighbors. Designed for GitHub Pages deployment at `https://xynovitch.github.io/Narrative-Causal-Graph/web/`.
+- **`scripts/build_web.py`** — copies a pipeline JSON-LD output into `docs/web/data/` and updates `manifest.json` so the webpage's novel selector picks it up. Adding a new dataset is one CLI invocation.
+- **`docs/.nojekyll`** so GitHub Pages serves the directory verbatim.
+- **GPT-5 full run output** (`gpt5_full.json`, `gpt5_full_import.txt`, `neo4j_csv_gpt5_full/`):
+  - 8,625 events, 104 characters, 13,991 causal links (McKee 9,007 / Truby 4,984), **29,389 thematic edges** (KNOWLEDGE 15,472 / POWER 6,230 / JUSTICE 4,412 / WEALTH 2,023 / KINSHIP 1,252), 407 scenes. DAG valid.
+  - **100% theme annotation success** (37 / 37 transient pass-1 failures recovered by retry pass).
+  - Wall time: 191 minutes.
+
+### Changed — `cekg_pipeline/theme_annotation.py`
+- **Resume support and incremental checkpointing.** `annotate_event_themes` now takes a `partial_checkpoint_path`; on entry it loads any prior partial state and skips events that are already annotated. Successful annotations are flushed every 200 events via atomic write (`tmp + os.replace`). An interrupted run continues from the last flush rather than restarting from event 0.
+- **Higher concurrency.** Default semaphore raised from 5 → 20. The previous cap was a defensive guess attributed to httpx-pool exhaustion; in practice the AsyncOpenAI default pool (100 connections) handles 20 fine, and gpt-5 RPM budget is far above the resulting throughput.
+- **Two-pass annotation with retry.** Pass 1 runs at concurrency=20, 120 s timeout. Any events that still fail are re-run serially in pass 2 at concurrency=5, 240 s timeout. On the gpt-5 *Great Expectations* run this recovered 37 / 37 transient failures.
+- **Error visibility.** The first 5 errors per pass are printed with exception type and truncated message, instead of being swallowed silently.
+- **Bridge-Rule-friendly fallback.** Events that still fail after the retry pass are seeded with the canonical 5-theme `none` structure, so the Theme-Bridge Rule can still try to upgrade them from neighbors. Without this they would have been left as `{}` and silently excluded from the rule.
+
+### Changed — `cekg_pipeline/pipeline.py`
+- Wires `partial_checkpoint_path` through to `annotate_event_themes` using `<checkpoint_dir>/<run_id>/theme_annotation_partial.json`.
+
+### Repo hygiene
+- `.gitignore` now excludes `checkpoints/`, `checkpoints_*/`, `*_run.log`, `gpt-run.log`, `pipeline_run.log` — internal pipeline state and logs that are regenerable from inputs and too large to track usefully.
+
 ## [Unreleased] - 2026-03-26
 
 ### Added

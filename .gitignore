@@ -16,3 +16,16 @@ venv/
 # Claude Code
 CLAUDE.md
 .claude/
+
+# Pipeline run state and logs (regenerable)
+checkpoints/
+checkpoints_*/
+*_run.log
+gpt-run.log
+pipeline_run.log
+
+# Root-level pipeline run artifacts (canonical copies kept under runs/ or docs/web/data/)
+/gpt5_full.json
+/gpt5_full_import.txt
+/gpt5_full_import.cypher
+/neo4j_csv_gpt5_full/

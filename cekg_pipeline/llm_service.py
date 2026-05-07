@@ -125,7 +125,7 @@ JSON:
 def init_openai_client(api_key: str) -> Any:
     if openai is None:
         raise RuntimeError("openai package not installed.")
-    return openai.OpenAI(api_key=api_key)
+    return openai.AsyncOpenAI(api_key=api_key, max_retries=0, timeout=180)
 
 async def _async_llm_json_call(prompt: str, model: str, client: Any, 
                                cache: BoundedCache, cache_key: str, 
@@ -222,12 +222,10 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
 
     for attempt in range(3):
         try:
-            loop = asyncio.get_event_loop()
-            
-            def make_req():
-                return client.chat.completions.create(**request_kwargs)
-            
-            resp = await loop.run_in_executor(None, make_req)
+            resp = await asyncio.wait_for(
+                client.chat.completions.create(**request_kwargs),
+                timeout=240,
+            )
             text = resp.choices[0].message.content.strip()
             
             # ✅ FIX: Enhanced truncation detection with actionable guidance
@@ -406,7 +404,7 @@ async def classify_agent_type(character_name: str, event_descriptions: List[str]
     OPTIMIZED: Compressed prompt, cheaper model for classification
     """
     # Use cheaper model for simple classification
-    cheap_model = "gpt-4o-mini" if "gpt-4o" in model else model
+    cheap_model = "gpt-4o-mini"
     
     events_text = "\n".join([f"- {desc[:60]}" for desc in event_descriptions[:10]])
     types_text = ", ".join(agent_type_names[:20])
@@ -439,7 +437,7 @@ async def extract_scenes_from_chapter_async(chapter_events, chapter_id, model, c
     """
     OPTIMIZED: Compressed prompt, cheaper model
     """
-    cheap_model = "gpt-4o-mini" if "gpt-4o" in model else model
+    cheap_model = "gpt-4o-mini"
 
     if len(chapter_events) > 200:
         chapter_events = chapter_events[:200]

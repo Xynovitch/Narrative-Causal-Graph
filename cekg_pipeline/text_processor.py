@@ -4,8 +4,45 @@ from typing import List
 def load_text(path: str) -> str:
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
-    
+
+
+_GUTENBERG_START_RE = re.compile(
+    r"\*\*\*\s*START OF (?:THE|THIS) PROJECT GUTENBERG[^\n]*?\*\*\*",
+    re.IGNORECASE,
+)
+_GUTENBERG_END_RE = re.compile(
+    r"\*\*\*\s*END OF (?:THE|THIS) PROJECT GUTENBERG[^\n]*?\*\*\*",
+    re.IGNORECASE,
+)
+
+
+def strip_gutenberg_boilerplate(text: str) -> str:
+    """Remove Project Gutenberg header/footer.
+
+    PG eBooks bracket the actual work with markers like
+    `*** START OF THE PROJECT GUTENBERG EBOOK ... ***` and
+    `*** END OF THE PROJECT GUTENBERG EBOOK ... ***`.
+    Without trimming, the multi-thousand-char license/donation
+    boilerplate after the END marker leaks into the last chapter
+    and causes silent extraction failures + hallucinated events.
+    """
+    start_match = _GUTENBERG_START_RE.search(text)
+    if start_match:
+        text = text[start_match.end():]
+        print(f"[gutenberg] Stripped header before *** START OF *** "
+              f"({start_match.start()} chars removed)")
+    end_match = _GUTENBERG_END_RE.search(text)
+    if end_match:
+        removed = len(text) - end_match.start()
+        text = text[:end_match.start()]
+        print(f"[gutenberg] Stripped trailing license from *** END OF *** "
+              f"onwards ({removed} chars removed)")
+    return text
+
+
 def split_chapters(text: str) -> List[tuple[int, str]]:
+    text = strip_gutenberg_boilerplate(text)
+
     patterns = [
         r"(?m)^Chapter\s+[IVXLCDM]+\.\s*$",
         r"(?m)^CHAPTER\s+[IVXLCDM]+\.?\s*$",

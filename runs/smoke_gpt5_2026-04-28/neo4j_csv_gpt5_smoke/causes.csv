@@ -1,0 +1,9 @@
+:START_ID,:END_ID,:TYPE,relationType,mechanism,weight,confidence,edge_supertype
+event/9fe14cf6,event/64d69630,CAUSES,EVENT_REINFORCEMENT,Initial order prompts detailed follow-up instruction,0.0,0.55,CAUSAL_PRODUCTION
+event/a17486f0,event/50dadcb3,CAUSES,SCENE_CAUSATION,"After ordering Pip away, he turns to check compliance",0.0,0.62,
+event/4dc48bd8,event/e1de3e0e,CAUSES,EVENT_ENABLES_NEXT,His departure enables Pip to observe him continuing out,0.0,0.6,CAUSAL_PRODUCTION
+event/15c050ec,event/9fe14cf6,CAUSES,SCENE_CAUSATION,Affirmed understanding licenses the demand for food,0.0,0.78,
+event/ddd33616,event/71899cf6,CAUSES,SCENE_CAUSATION,Pip’s crying triggers the man’s sudden emergence and description,0.0,0.82,
+event/2812a7db,event/bd312622,CAUSES,PSYCHOLOGICAL_PRESSURE,Threat-backed order compels immediate verbal compliance,0.0,0.85,
+event/77b1a1c8,event/588a95dd,CAUSES,PSYCHOLOGICAL_PRESSURE,Physical intimidation sets up and compels the demand,0.0,0.8,
+event/7453fce7,event/15c050ec,CAUSES,PSYCHOLOGICAL_PRESSURE,Death threat coerces affirmative answer,0.0,0.85,
