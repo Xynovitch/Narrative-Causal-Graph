@@ -24,6 +24,81 @@ const SUPERTYPE_COLOR = {
 };
 const SUPERTYPE_DEFAULT = "#5a607a";
 
+// JS-side fallback for relation_type -> edge_supertype, used when the data
+// was emitted by an older pipeline run whose FINE_TO_SUPERTYPE map didn't
+// cover gpt-5's vocabulary. Mirrors cekg_pipeline/theme_annotation.py.
+const RELTYPE_TO_SUPERTYPE = {
+  // Production family
+  CAUSES: "CAUSAL_PRODUCTION", DIRECT_CAUSE: "CAUSAL_PRODUCTION",
+  ENABLES: "CAUSAL_PRODUCTION", FACILITATES: "CAUSAL_PRODUCTION",
+  TRIGGERS: "CAUSAL_PRODUCTION", INCITING_CAUSE: "CAUSAL_PRODUCTION",
+  EVENT_ENABLES_NEXT: "CAUSAL_PRODUCTION", EVENT_REINFORCEMENT: "CAUSAL_PRODUCTION",
+  DESIRE_ALIGNMENT: "CAUSAL_PRODUCTION", NECESSITATES: "CAUSAL_PRODUCTION",
+  FULFILLS: "CAUSAL_PRODUCTION", PRECEDES: "CAUSAL_PRODUCTION",
+  SCENE_CAUSATION: "CAUSAL_PRODUCTION", SCENE_CHAINING: "CAUSAL_PRODUCTION",
+  PLOT_PROPULSION: "CAUSAL_PRODUCTION", STRUCTURAL_DEPENDENCE: "CAUSAL_PRODUCTION",
+  CONSEQUENCE_CHAINING: "CAUSAL_PRODUCTION", REINFORCES_GOAL: "CAUSAL_PRODUCTION",
+  // Constraint family
+  PREVENTS: "CAUSAL_CONSTRAINT", BLOCKS: "CAUSAL_CONSTRAINT", INHIBITS: "CAUSAL_CONSTRAINT",
+  COMPLICATES: "CAUSAL_CONSTRAINT", OPPOSES: "CAUSAL_CONSTRAINT",
+  DESIRE_OBSTRUCTION: "CAUSAL_CONSTRAINT", DESIRE_COMPETITION: "CAUSAL_CONSTRAINT",
+  PHYSICAL_BLOCKAGE: "CAUSAL_CONSTRAINT", INTERRUPTION_OBSTACLE: "CAUSAL_CONSTRAINT",
+  MISSION_FAILURE: "CAUSAL_CONSTRAINT", MISSION_ABANDONMENT: "CAUSAL_CONSTRAINT",
+  OPPOSITION_PRESSURE: "CAUSAL_CONSTRAINT", PREVENTS_OUTCOME: "CAUSAL_CONSTRAINT",
+  RELATIONAL_FRAGMENTATION: "CAUSAL_CONSTRAINT",
+  // Emotional drive
+  COMPASSION_TRIGGER: "EMOTIONAL_DRIVE", EMOTIONAL_MANIPULATION: "EMOTIONAL_DRIVE",
+  EMOTIONAL_DEPENDENCE: "EMOTIONAL_DRIVE", EMOTIONAL_TRIGGER: "EMOTIONAL_DRIVE",
+  EMOTIONAL_CONTAGION: "EMOTIONAL_DRIVE", EMOTIONAL_DESPAIR: "EMOTIONAL_DRIVE",
+  EMOTIONAL_SUPPORT: "EMOTIONAL_DRIVE", EMOTIONAL_APOLOGY: "EMOTIONAL_DRIVE",
+  EMOTIONAL_CONFESSION: "EMOTIONAL_DRIVE", EMOTIONAL_ENDURANCE: "EMOTIONAL_DRIVE",
+  PSYCHOLOGICAL_IMPACT: "EMOTIONAL_DRIVE", PROTECTIVE_INSTINCT: "EMOTIONAL_DRIVE",
+  CRUELTY_PLEASURE: "EMOTIONAL_DRIVE", NOSTALGIA_INDUCEMENT: "EMOTIONAL_DRIVE",
+  ENRAGES: "EMOTIONAL_DRIVE",
+  PSYCHOLOGICAL_PRESSURE: "EMOTIONAL_DRIVE",
+  PSYCHOLOGICAL_REINFORCEMENT: "EMOTIONAL_DRIVE", EMOTIONAL_DISTANCE: "EMOTIONAL_DRIVE",
+  // Social bond
+  ALLY_DEPENDENCE: "SOCIAL_BOND", ALLY_SUPPORT: "SOCIAL_BOND",
+  FAMILY_INFLUENCE: "SOCIAL_BOND", FAMILY_BACKGROUND_REACTION: "SOCIAL_BOND",
+  INHERITED_OBLIGATION: "SOCIAL_BOND", MENTORSHIP_SUPPORT: "SOCIAL_BOND",
+  MOTIVATES: "SOCIAL_BOND", PERSUASION_ATTEMPT: "SOCIAL_BOND",
+  INTERPERSONAL_CARE: "SOCIAL_BOND", MORAL_GUIDANCE: "SOCIAL_BOND",
+  INTERPERSONAL_BOUNDARY: "SOCIAL_BOND",
+  // Narrative escalation
+  CAUSES_REVERSAL: "NARRATIVE_ESCALATION", ACTION_ESCALATION: "NARRATIVE_ESCALATION",
+  CONSCIENCE_CONFLICT: "NARRATIVE_ESCALATION", IDENTITY_CONFLICT: "NARRATIVE_ESCALATION",
+  CONFLICT_OF_INTEREST: "NARRATIVE_ESCALATION", PHYSICAL_CONFRONTATION: "NARRATIVE_ESCALATION",
+  ESCALATES: "NARRATIVE_ESCALATION", COMPLICATES_FURTHER: "NARRATIVE_ESCALATION",
+  CHALLENGES: "NARRATIVE_ESCALATION", MORAL_CHALLENGE: "NARRATIVE_ESCALATION",
+  MISSED_OPPORTUNITY: "NARRATIVE_ESCALATION",
+  EXPECTATION_DISAPPOINTMENT: "NARRATIVE_ESCALATION",
+  PERSONAL_TRANSFORMATION: "NARRATIVE_ESCALATION",
+  PERCEPTION_SHIFT: "NARRATIVE_ESCALATION",
+  INTERPERSONAL_CONFLICT: "NARRATIVE_ESCALATION", ESCALATES_CONFLICT: "NARRATIVE_ESCALATION",
+  SCENE_REVERSAL: "NARRATIVE_ESCALATION", MORAL_CORRUPTION_INFLUENCE: "NARRATIVE_ESCALATION",
+  LEADS_TO_CRISIS: "NARRATIVE_ESCALATION", EXPECTED_RESULT_SHIFT: "NARRATIVE_ESCALATION",
+  // Resolution
+  RESOLVES: "NARRATIVE_RESOLUTION", CONCLUDES: "NARRATIVE_RESOLUTION",
+  REDEEMS: "NARRATIVE_RESOLUTION", PERSONAL_JOURNEY: "NARRATIVE_RESOLUTION",
+  MENTAL_RELIEF: "NARRATIVE_RESOLUTION",
+  // Revelation / epistemic
+  REVEALS: "REVELATION_EPISTEMIC", EXPOSES: "REVELATION_EPISTEMIC",
+  CONCEALS: "REVELATION_EPISTEMIC", FORESHADOWS: "REVELATION_EPISTEMIC",
+  PAST_CONNECTION: "REVELATION_EPISTEMIC", LOVE_INSIGHT: "REVELATION_EPISTEMIC",
+  HISTORICAL_COMPARISON: "REVELATION_EPISTEMIC",
+  REVEALS_INFORMATION: "REVELATION_EPISTEMIC", BACKSTORY_PRESSURE: "REVELATION_EPISTEMIC",
+  MORAL_REVELATION_TRIGGER: "REVELATION_EPISTEMIC", MORAL_JUDGMENT: "REVELATION_EPISTEMIC",
+  // Mediation / transfer
+  INFORMS: "MEDIATION_TRANSFER", MEDIATES: "MEDIATION_TRANSFER",
+  TRANSFERS: "MEDIATION_TRANSFER", DELEGATES: "MEDIATION_TRANSFER",
+  FINANCIAL_NEED: "MEDIATION_TRANSFER", CULTURAL_EDUCATION: "MEDIATION_TRANSFER",
+  DECISION_MAKING: "MEDIATION_TRANSFER",
+  // Thematic
+  CONTRASTS: "THEMATIC_CONTRAST", MIRRORS: "THEMATIC_CONTRAST",
+  EXPLAINS: "THEMATIC_EXPLANATION", SUPPORTS: "THEMATIC_EXPLANATION",
+  NARRATIVE_COMPOSITE: "THEMATIC_EXPLANATION",
+};
+
 const state = {
   manifest: null,
   novelKey: null,
@@ -144,6 +219,8 @@ function ingest(jsonld) {
         }
       }
     } else if (item.type === "CausalEdge") {
+      const rt = (item.relationType || "").toUpperCase();
+      const supertype = item.edge_supertype || RELTYPE_TO_SUPERTYPE[rt] || null;
       state.causalEdges.push({
         id: item["@id"],
         from: item.from, to: item.to,
@@ -151,7 +228,7 @@ function ingest(jsonld) {
         mechanism: item.mechanism || "",
         weight: item.weight ?? 1.0,
         confidence: item.confidence ?? 1.0,
-        edgeSupertype: item.edge_supertype || null,
+        edgeSupertype: supertype,
       });
     } else if (item.type === "ThematicEdge") {
       state.thematicEdges.push({
@@ -229,7 +306,9 @@ function buildSidebar() {
   ui.chapterMin.value = state.chapterMin;
   ui.chapterMin.min = state.chapterMin;
   ui.chapterMin.max = state.chapterMax;
-  ui.chapterMax.value = Math.min(state.chapterMin + 4, state.chapterMax);
+  // Show 3 chapters by default — wide enough to see edge-type variety,
+  // narrow enough that the layout settles fast on first paint.
+  ui.chapterMax.value = Math.min(state.chapterMin + 2, state.chapterMax);
   ui.chapterMax.min = state.chapterMin;
   ui.chapterMax.max = state.chapterMax;
 
@@ -440,10 +519,13 @@ function cyStyle() {
     {
       // Causal edges: width and opacity scale with confidence;
       // color encodes edge_supertype (production / constraint / revelation / etc).
+      // mapData range tightened to the actual gpt-5 data distribution
+      // (causal confidence almost always falls in [0.4, 0.9]) so the visual
+      // delta between low- and high-confidence edges is visible.
       selector: "edge[kind = 'causal']",
       style: {
-        "width": "mapData(confidence, 0, 1, 0.5, 4)",
-        "opacity": "mapData(confidence, 0, 1, 0.25, 0.9)",
+        "width": "mapData(confidence, 0.4, 0.9, 0.6, 5)",
+        "opacity": "mapData(confidence, 0.4, 0.9, 0.35, 1)",
         "line-color": "data(edgeColor)",
         "target-arrow-color": "data(edgeColor)",
         "target-arrow-shape": "triangle",
@@ -455,8 +537,8 @@ function cyStyle() {
       // Thematic edges: theme color, dashed, also width/opacity by confidence.
       selector: "edge[kind = 'thematic']",
       style: {
-        "width": "mapData(confidence, 0, 1, 0.7, 4.5)",
-        "opacity": "mapData(confidence, 0, 1, 0.3, 0.85)",
+        "width": "mapData(confidence, 0.3, 0.9, 0.8, 5.5)",
+        "opacity": "mapData(confidence, 0.3, 0.9, 0.4, 1)",
         "line-color": "data(edgeColor)",
         "target-arrow-color": "data(edgeColor)",
         "target-arrow-shape": "triangle",
