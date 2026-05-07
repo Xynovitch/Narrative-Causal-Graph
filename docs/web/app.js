@@ -99,12 +99,19 @@ const RELTYPE_TO_SUPERTYPE = {
   NARRATIVE_COMPOSITE: "THEMATIC_EXPLANATION",
 };
 
+// Register Cytoscape extensions if their globals loaded.
+if (typeof cytoscape !== "undefined") {
+  if (typeof cytoscapeFcose !== "undefined") cytoscape.use(cytoscapeFcose);
+  if (typeof cytoscapeCola !== "undefined") cytoscape.use(cytoscapeCola);
+}
+
 const state = {
   manifest: null,
   novelKey: null,
   events: [],
   eventById: new Map(),
   causalEdges: [],
+  liveLayout: null,
   thematicEdges: [],
   agentToEvents: new Map(),
   themeToEvents: { POWER: new Set(), WEALTH: new Set(), KINSHIP: new Set(), JUSTICE: new Set(), KNOWLEDGE: new Set() },
@@ -558,14 +565,74 @@ function clamp01(x) { return Math.max(0, Math.min(1, +x || 0)); }
 
 function runLayout() {
   if (!state.cy) return;
+
+  // Stop any continuous physics simulation from a prior layout.
+  if (state.liveLayout) {
+    try { state.liveLayout.stop(); } catch (e) {}
+    state.liveLayout = null;
+  }
+
   const name = ui.layoutSelect.value;
   const opts = {
-    cose: { name: "cose", animate: false, idealEdgeLength: 80, nodeRepulsion: 8000, padding: 20 },
-    dagre: { name: "dagre", rankDir: "LR", nodeSep: 20, rankSep: 60, animate: false },
-    grid: { name: "grid", padding: 20, animate: false },
-    concentric: { name: "concentric", concentric: n => n.data("chapter"), levelWidth: () => 1, animate: false },
+    // fcose: well-spaced force-directed; default. Edge `weight` (set from
+    // confidence) feeds into the spring constants, so high-confidence edges
+    // are shorter and low-confidence edges are longer — visual "distance".
+    fcose: {
+      name: "fcose",
+      animate: true,
+      animationDuration: 600,
+      randomize: true,
+      quality: "default",
+      nodeRepulsion: 8000,
+      idealEdgeLength: edge => 80 + (1 - (edge.data("confidence") || 0.5)) * 220,
+      edgeElasticity: 0.45,
+      gravity: 0.18,
+      gravityRangeCompound: 1.5,
+      nodeSeparation: 80,
+      packComponents: true,
+      padding: 40,
+    },
+    // cola with infinite:true keeps the physics running. Drag a node and
+    // its neighbors react in real time. Costlier above ~1500 nodes; the
+    // sidebar's max-events cap keeps it usable.
+    "cola-live": {
+      name: "cola",
+      animate: true,
+      infinite: true,
+      fit: false,
+      randomize: false,
+      avoidOverlap: true,
+      handleDisconnected: true,
+      nodeSpacing: 18,
+      edgeLength: edge => 70 + (1 - (edge.data("confidence") || 0.5)) * 200,
+      edgeSymDiffLength: 30,
+    },
+    // Vanilla cose, retuned for much more spread than the Cytoscape default.
+    cose: {
+      name: "cose",
+      animate: "end",
+      animationDuration: 600,
+      idealEdgeLength: 220,
+      nodeRepulsion: 800000,
+      nodeOverlap: 24,
+      gravity: 30,
+      numIter: 1500,
+      padding: 40,
+    },
+    dagre: { name: "dagre", rankDir: "LR", nodeSep: 30, rankSep: 90, animate: true, animationDuration: 500, padding: 30 },
+    grid: { name: "grid", padding: 30, animate: true, animationDuration: 400, avoidOverlap: true },
+    concentric: {
+      name: "concentric",
+      concentric: n => -n.data("chapter"),
+      levelWidth: () => 1,
+      minNodeSpacing: 18,
+      animate: true, animationDuration: 500, padding: 30,
+    },
   };
-  state.cy.layout(opts[name] || opts.cose).run();
+  const cfg = opts[name] || opts.fcose;
+  const layout = state.cy.layout(cfg);
+  layout.run();
+  if (cfg.infinite) state.liveLayout = layout;
 }
 
 function dominantThemeColor(ev) {
