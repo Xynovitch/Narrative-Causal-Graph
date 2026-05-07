@@ -116,3 +116,8 @@ table.themes td.theme-name { font-weight: 600; }
 }
 .neighbor:hover { color: #fff; background: var(--panel-2); }
 .neighbor .rel { color: var(--accent); font-family: monospace; font-size: 10px; }
+
+.legend { display: flex; flex-direction: column; gap: 3px; }
+.legend-row { font-size: 11px; color: #bbb; display: flex; align-items: center; gap: 6px; }
+.legend-swatch { display: inline-block; width: 14px; height: 3px; border-radius: 2px; flex-shrink: 0; }
+.legend-row.dashed .legend-swatch { background-image: linear-gradient(90deg, currentColor 50%, transparent 0); background-size: 4px 100%; height: 2px; }

@@ -7,6 +7,23 @@ const THEME_COLOR = {
 };
 const ACTION_COLOR_DEFAULT = "#7a8aa8";
 
+// Causal edge_supertype -> color, so the graph distinguishes "X enables Y"
+// from "X blocks Y" from "X reveals Y" at a glance. Categories come from
+// FINE_TO_SUPERTYPE in cekg_pipeline/theme_annotation.py.
+const SUPERTYPE_COLOR = {
+  CAUSAL_PRODUCTION:    "#4eae5b",  // green: production / enabling
+  CAUSAL_CONSTRAINT:    "#d24747",  // red: blocking / constraint
+  EMOTIONAL_DRIVE:      "#e98abf",  // pink: emotional cause
+  SOCIAL_BOND:          "#e8973c",  // orange: relational tie
+  NARRATIVE_ESCALATION: "#e15759",  // red-orange: rising tension
+  NARRATIVE_RESOLUTION: "#76b7e0",  // light blue: closure
+  REVELATION_EPISTEMIC: "#9b6bd9",  // purple: information surfaces
+  MEDIATION_TRANSFER:   "#f1ce63",  // yellow: transfer / delegation
+  THEMATIC_CONTRAST:    "#7ec6c2",  // teal: structural contrast
+  THEMATIC_EXPLANATION: "#a3b87f",  // muted green: explanatory
+};
+const SUPERTYPE_DEFAULT = "#5a607a";
+
 const state = {
   manifest: null,
   novelKey: null,
@@ -41,6 +58,9 @@ const ui = {
   agentSelect: document.getElementById("agent-select"),
   showCausal: document.getElementById("show-causal"),
   showThematic: document.getElementById("show-thematic"),
+  edgeConfidence: document.getElementById("edge-confidence"),
+  edgeConfidenceVal: document.getElementById("edge-confidence-val"),
+  supertypeLegend: document.getElementById("supertype-legend"),
   layoutSelect: document.getElementById("layout-select"),
   reLayout: document.getElementById("re-layout"),
   fitView: document.getElementById("fit-view"),
@@ -164,6 +184,33 @@ function addToBucket(map, key, value) {
 // ---------- Sidebar wiring ----------
 
 function buildSidebar() {
+  // Causal-edge supertype legend, restricted to supertypes actually present in this dataset.
+  const presentSupertypes = new Map();
+  for (const e of state.causalEdges) {
+    const st = e.edgeSupertype || "OTHER";
+    presentSupertypes.set(st, (presentSupertypes.get(st) || 0) + 1);
+  }
+  const legendEntries = [...presentSupertypes.entries()].sort((a, b) => b[1] - a[1]);
+  ui.supertypeLegend.innerHTML = "";
+  for (const [st, count] of legendEntries) {
+    const color = SUPERTYPE_COLOR[st] || SUPERTYPE_DEFAULT;
+    const row = document.createElement("div");
+    row.className = "legend-row";
+    row.innerHTML = `<span class="legend-swatch" style="background:${color}"></span>
+                     <span>${escapeHtml(st)}</span>
+                     <span class="hint">(${count.toLocaleString()})</span>`;
+    ui.supertypeLegend.appendChild(row);
+  }
+  if (state.thematicEdges.length) {
+    const row = document.createElement("div");
+    row.className = "legend-row dashed";
+    row.style.marginTop = "6px";
+    row.innerHTML = `<span class="legend-swatch" style="background:#888"></span>
+                     <span>THEMATIC (dashed)</span>
+                     <span class="hint">(${state.thematicEdges.length.toLocaleString()})</span>`;
+    ui.supertypeLegend.appendChild(row);
+  }
+
   ui.themeFilters.innerHTML = "";
   for (const t of THEMES) {
     const lbl = document.createElement("label");
@@ -212,6 +259,10 @@ ui.chapterMax.addEventListener("change", applyFilters);
 ui.agentSelect.addEventListener("change", applyFilters);
 ui.showCausal.addEventListener("change", applyFilters);
 ui.showThematic.addEventListener("change", applyFilters);
+ui.edgeConfidence.addEventListener("input", () => {
+  ui.edgeConfidenceVal.textContent = parseFloat(ui.edgeConfidence.value).toFixed(2);
+  applyFilters();
+});
 ui.maxEvents.addEventListener("change", applyFilters);
 ui.search.addEventListener("input", debounce(applyFilters, 250));
 ui.layoutSelect.addEventListener("change", () => runLayout());
@@ -238,6 +289,7 @@ function applyFilters() {
   const subplotTheme = ui.subplotTheme.value;
   const showCausal = ui.showCausal.checked;
   const showThematic = ui.showThematic.checked;
+  const minEdgeConf = parseFloat(ui.edgeConfidence.value);
   const maxEvents = parseInt(ui.maxEvents.value, 10);
 
   // Event filter
@@ -276,12 +328,14 @@ function applyFilters() {
     if (visible.size >= maxEvents) break;
   }
 
-  // Edge filter — both endpoints must be visible
-  const causalShown = !showCausal ? [] : state.causalEdges.filter(e => visible.has(e.from) && visible.has(e.to));
-  const thematicShown = (!showThematic || (view === "subplot" && false)) ? state.thematicEdges : state.thematicEdges;
-  const thematicFiltered = !showThematic ? [] : thematicShown.filter(e => {
+  // Edge filter — both endpoints must be visible, and edge confidence must clear the slider.
+  const causalShown = !showCausal ? [] : state.causalEdges.filter(e =>
+    visible.has(e.from) && visible.has(e.to) && (e.confidence ?? 0) >= minEdgeConf
+  );
+  const thematicFiltered = !showThematic ? [] : state.thematicEdges.filter(e => {
     if (!visible.has(e.from) || !visible.has(e.to)) return false;
     if (view === "subplot" && e.theme !== subplotTheme) return false;
+    if ((e.confidence ?? 0) < minEdgeConf) return false;
     return true;
   });
 
@@ -319,10 +373,31 @@ function render(visibleSet, causalEdges, thematicEdges) {
   }
   const edges = [];
   for (const e of causalEdges) {
-    edges.push({ data: { id: e.id, source: e.from, target: e.to, relType: e.relationType, kind: "causal" } });
+    const conf = clamp01(e.confidence ?? 0.5);
+    edges.push({
+      data: {
+        id: e.id, source: e.from, target: e.to,
+        relType: e.relationType, kind: "causal",
+        confidence: conf,
+        supertype: e.edgeSupertype || "OTHER",
+        edgeColor: SUPERTYPE_COLOR[e.edgeSupertype] || SUPERTYPE_DEFAULT,
+        // Cose layout reads `weight` as a spring constant — high confidence
+        // pulls endpoints closer, so well-supported causes sit near their effects.
+        weight: 0.5 + conf * 1.5,
+      },
+    });
   }
   for (const e of thematicEdges) {
-    edges.push({ data: { id: e.id, source: e.from, target: e.to, relType: e.theme, kind: "thematic", themeColor: THEME_COLOR[e.theme] || "#888" } });
+    const conf = clamp01(e.confidence ?? 0.5);
+    edges.push({
+      data: {
+        id: e.id, source: e.from, target: e.to,
+        relType: e.theme, kind: "thematic",
+        confidence: conf,
+        edgeColor: THEME_COLOR[e.theme] || "#888",
+        weight: 0.3 + conf * 1.2,
+      },
+    });
   }
 
   const elements = [...nodes, ...edges];
@@ -334,6 +409,7 @@ function render(visibleSet, causalEdges, thematicEdges) {
       style: cyStyle(),
     });
     state.cy.on("tap", "node", evt => showDetail(evt.target.id()));
+    state.cy.on("tap", "edge", evt => showEdgeDetail(evt.target.data()));
   } else {
     state.cy.elements().remove();
     state.cy.add(elements);
@@ -362,22 +438,41 @@ function cyStyle() {
       style: { "border-color": "#fff", "border-width": 3, "width": 22, "height": 22 },
     },
     {
+      // Causal edges: width and opacity scale with confidence;
+      // color encodes edge_supertype (production / constraint / revelation / etc).
       selector: "edge[kind = 'causal']",
       style: {
-        "width": 1, "line-color": "#444a6a", "target-arrow-color": "#666",
-        "target-arrow-shape": "triangle", "curve-style": "bezier", "opacity": 0.6,
+        "width": "mapData(confidence, 0, 1, 0.5, 4)",
+        "opacity": "mapData(confidence, 0, 1, 0.25, 0.9)",
+        "line-color": "data(edgeColor)",
+        "target-arrow-color": "data(edgeColor)",
+        "target-arrow-shape": "triangle",
+        "arrow-scale": 0.8,
+        "curve-style": "bezier",
       },
     },
     {
+      // Thematic edges: theme color, dashed, also width/opacity by confidence.
       selector: "edge[kind = 'thematic']",
       style: {
-        "width": 1.5, "line-color": "data(themeColor)",
-        "target-arrow-color": "data(themeColor)", "target-arrow-shape": "triangle",
-        "curve-style": "bezier", "opacity": 0.7, "line-style": "dashed",
+        "width": "mapData(confidence, 0, 1, 0.7, 4.5)",
+        "opacity": "mapData(confidence, 0, 1, 0.3, 0.85)",
+        "line-color": "data(edgeColor)",
+        "target-arrow-color": "data(edgeColor)",
+        "target-arrow-shape": "triangle",
+        "arrow-scale": 0.8,
+        "line-style": "dashed",
+        "curve-style": "bezier",
       },
+    },
+    {
+      selector: "edge:selected",
+      style: { "width": 5, "opacity": 1, "z-index": 999 },
     },
   ];
 }
+
+function clamp01(x) { return Math.max(0, Math.min(1, +x || 0)); }
 
 function runLayout() {
   if (!state.cy) return;
@@ -497,6 +592,37 @@ function showDetail(eventId) {
 
 function escapeHtml(s) {
   return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+}
+
+function showEdgeDetail(d) {
+  const src = state.eventById.get(d.source);
+  const tgt = state.eventById.get(d.target);
+  const conf = (d.confidence ?? 0).toFixed(2);
+  const colorChip = `<span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:${d.edgeColor};vertical-align:middle;margin-right:6px"></span>`;
+  const kindLabel = d.kind === "causal"
+    ? `${colorChip}${escapeHtml(d.relType)}${d.supertype && d.supertype !== "OTHER" ? ` <span class="hint">(${escapeHtml(d.supertype)})</span>` : ""}`
+    : `${colorChip}THEMATIC · ${escapeHtml(d.relType)}`;
+
+  ui.detailEmpty.hidden = true;
+  ui.detailContent.hidden = false;
+  ui.detailContent.innerHTML = `
+    <h2>Edge</h2>
+    <div class="meta-row">${kindLabel}</div>
+    <div class="meta-row">confidence: <strong>${conf}</strong></div>
+    <div class="detail-section">
+      <div class="panel-title">From</div>
+      <div class="neighbor" data-jump="${d.source}">${escapeHtml(truncate(src ? src.description : d.source, 90))}</div>
+      <div class="panel-title" style="margin-top:8px">To</div>
+      <div class="neighbor" data-jump="${d.target}">${escapeHtml(truncate(tgt ? tgt.description : d.target, 90))}</div>
+    </div>
+  `;
+  ui.detailContent.querySelectorAll("[data-jump]").forEach(el => {
+    el.addEventListener("click", () => {
+      const id = el.dataset.jump;
+      if (state.cy && state.cy.getElementById(id).length) state.cy.center(state.cy.getElementById(id));
+      showDetail(id);
+    });
+  });
 }
 
 init();
