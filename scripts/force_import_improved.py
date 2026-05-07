@@ -2,11 +2,13 @@ from neo4j import GraphDatabase
 import os
 import re
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 URI = "bolt://localhost:7687"
 USER = "neo4j"
-PASSWORD = "greeplace1!"  
-DB_NAME = "20260326"        
-FILE_PATH = "ge_import.txt"
+PASSWORD = "greeplace1!"
+DB_NAME = "20260326"
+FILE_PATH = os.path.join(PROJECT_ROOT, "ge_import.txt")
 
 def clean_statement(stmt):
     """Clean up Cypher statement"""

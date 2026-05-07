@@ -12,10 +12,15 @@ Usage (standalone, post-pipeline):
     nodes, relationships = build_chain_graph(all_events, all_produces, causal_links)
 """
 
+import os
+import sys
 from collections import defaultdict
 from typing import List, Dict, Any, Tuple, Optional
 
-# These imports assume this script is run from the project root
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 from cekg_pipeline import schemas, utils
 
 

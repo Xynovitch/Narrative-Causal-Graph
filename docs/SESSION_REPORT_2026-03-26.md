@@ -150,24 +150,24 @@ By the time chapter 59 runs (last in the 8h session), the per-minute RPM quota i
 
 **1. Scene generation is sequential (slow)**
 `_generate_scenes_optimized` iterates chapters in a `for` loop — 59 blocking API calls in series. Total scene generation time: estimated 20–30 minutes.
-*Fix:* `asyncio.gather(...)` with a concurrency semaphore.
+*Fix:* `asyncio.gather(...)` with a concurrency semaphore. [FIXED]
 
 **2. Scene extraction token truncation**
 Chapter 1's scene response was 33,271 chars and hit the 12,000-token cap. JSON parse failed; fallback created a single catch-all scene for the entire chapter.
-*Fix:* Increase `max_tokens` to 16,000 for scene extraction, or split large chapters before sending.
+*Fix:* Increase `max_tokens` to 16,000 for scene extraction, or split large chapters before sending. [FIXED]
 
 **3. Events with no causal bridge**
 Some events are isolated (no incoming or outgoing CAUSES edge). Unique or generic entity descriptions may not appear in any candidate pair pool.
-*Potential fix:* Add a "near-miss" pool: events within ±5 positions that share no entities but are not in adjacent pairs.
+*Potential fix:* Add a "near-miss" pool: events within ±5 positions that share no entities but are not in adjacent pairs. [FIXED]
 
 **4. Chapter 59 data loss**
-~26 events instead of ~85–90. The rate-limit fix is in place but the existing data cannot be recovered without a full re-run or targeted partial re-run of chapter 59.
+~26 events instead of ~85–90. The rate-limit fix is in place but the existing data cannot be recovered without a full re-run or targeted partial re-run of chapter 59. [FIXED]
 
 ### Medium Priority
 
 **5. BM25 top-K=5 may miss long-range pairs**
 For characters appearing in 20+ events (Pip, Magwitch, Estella, Miss Havisham), the top-5 BM25 results cluster near high-frequency local events.
-*Fix:* Increase `BM25_TOP_K` to 10–15.
+*Fix:* Increase `BM25_TOP_K` to 10–15. [FIXED]
 
 **6. RAG contribution not measurable**
 No logging of whether RAG context changes `relationType` decisions.
@@ -344,24 +344,24 @@ BM25는 전체 후보 쌍의 절반 가까이를 기여하는 지배적인 풀�
 
 **1. 장면 생성이 순차 처리 (느림)**
 `_generate_scenes_optimized`가 챕터를 `for` 루프로 순차 처리 — 59개의 블로킹 API 호출이 직렬로 실행됩니다.
-*수정 방안:* `asyncio.gather(...)`와 동시성 세마포어 적용.
+*수정 방안:* `asyncio.gather(...)`와 동시성 세마포어 적용. [고침]
 
 **2. 장면 추출 토큰 잘림**
 챕터 1의 장면 응답이 33,271자로 12,000 토큰 상한에 도달. JSON 파싱 실패; 폴백으로 챕터 전체에 대한 단일 catch-all 장면 생성.
-*수정 방안:* 장면 추출의 `max_tokens`를 16,000으로 높이거나, 대형 챕터를 전송 전에 분할.
+*수정 방안:* 장면 추출의 `max_tokens`를 16,000으로 높이거나, 대형 챕터를 전송 전에 분할. [고침]
 
 **3. 인과 연결이 없는 이벤트 존재**
 일부 이벤트에 인입/인출 CAUSES 엣지가 없음. 고유하거나 일반적인 엔티티 설명이 어떤 후보 쌍 풀에도 포함되지 않을 수 있습니다.
-*잠재적 개선:* "근접 미스" 풀 추가: 엔티티를 공유하지 않지만 인접 쌍에도 없는 ±5 위치 이내 이벤트.
+*잠재적 개선:* "근접 미스" 풀 추가: 엔티티를 공유하지 않지만 인접 쌍에도 없는 ±5 위치 이내 이벤트. [고침]
 
 **4. 챕터 59 데이터 손실**
-레이트 리밋 수정은 적용되었으나 기존 데이터는 전체 재실행 또는 챕터 59 부분 재실행 없이는 복구 불가.
+레이트 리밋 수정은 적용되었으나 기존 데이터는 전체 재실행 또는 챕터 59 부분 재실행 없이는 복구 불가. [고침]
 
 ### 중간 우선순위
 
 **5. BM25 상위-K=5가 장거리 쌍을 놓칠 수 있음**
 20회 이상 등장하는 인물(Pip, Magwitch, Estella, Miss Havisham)의 경우 상위 5개 BM25 결과가 빈도 높은 근처 이벤트로 몰릴 수 있습니다.
-*수정 방안:* `BM25_TOP_K`를 10–15로 높임.
+*수정 방안:* `BM25_TOP_K`를 10–15로 높임. [고침]
 
 **6. RAG 기여도 측정 불가**
 RAG 컨텍스트가 `relationType` 결정을 변경하는지 로깅 없음.

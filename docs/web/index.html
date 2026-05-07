@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Causal Event Knowledge Graph</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.2/cytoscape.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dagre@0.8.5/dist/dagre.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+</head>
+<body>
+<header id="topbar">
+  <h1>Causal Event Knowledge Graph</h1>
+  <select id="novel-select" title="Novel"></select>
+  <input id="search" type="text" placeholder="Search event descriptions…">
+  <span class="stat" id="stat-events">events: 0</span>
+  <span class="stat" id="stat-edges">edges: 0</span>
+  <span class="stat" id="stat-shown">shown: 0 / 0</span>
+  <span class="stat" id="stat-status"></span>
+</header>
+
+<main id="main">
+  <aside id="sidebar">
+    <section>
+      <div class="panel-title">View mode</div>
+      <select id="view-mode">
+        <option value="causal">Causal</option>
+        <option value="subplot">Subplot (one theme)</option>
+        <option value="agent">Agent (one character)</option>
+      </select>
+    </section>
+
+    <section id="theme-section">
+      <div class="panel-title">Themes</div>
+      <div id="theme-filters"></div>
+      <label class="inline">
+        Min confidence
+        <input id="theme-confidence" type="range" min="0" max="1" step="0.05" value="0.4">
+        <span id="theme-confidence-val">0.40</span>
+      </label>
+    </section>
+
+    <section id="subplot-section" hidden>
+      <div class="panel-title">Subplot</div>
+      <select id="subplot-theme"></select>
+      <div class="hint" id="subplot-info"></div>
+    </section>
+
+    <section>
+      <div class="panel-title">Chapter range</div>
+      <div class="range-row">
+        <input id="chapter-min" type="number" min="1" value="1">
+        <span>–</span>
+        <input id="chapter-max" type="number" min="1" value="59">
+      </div>
+    </section>
+
+    <section>
+      <div class="panel-title">Agent</div>
+      <select id="agent-select"><option value="">— any —</option></select>
+    </section>
+
+    <section>
+      <div class="panel-title">Causal edges</div>
+      <label><input type="checkbox" id="show-causal" checked> Show CAUSES</label>
+      <label><input type="checkbox" id="show-thematic" checked> Show THEMATIC_LINK</label>
+    </section>
+
+    <section>
+      <div class="panel-title">Layout</div>
+      <select id="layout-select">
+        <option value="cose">Force (cose)</option>
+        <option value="dagre">Causal flow (dagre)</option>
+        <option value="grid">Grid</option>
+        <option value="concentric">Concentric</option>
+      </select>
+      <button id="re-layout">Re-layout</button>
+      <button id="fit-view">Fit view</button>
+    </section>
+
+    <section>
+      <div class="panel-title">Performance</div>
+      <label class="inline">
+        Max events
+        <input id="max-events" type="number" min="100" max="10000" step="100" value="1500">
+      </label>
+      <div class="hint">Hard cap to keep layout snappy. Tighten filters to see more.</div>
+    </section>
+  </aside>
+
+  <div id="graph-wrapper">
+    <div id="graph"></div>
+    <div id="graph-empty" hidden>No events match the current filters.</div>
+  </div>
+
+  <aside id="detail">
+    <div id="detail-empty">Click an event to inspect.</div>
+    <div id="detail-content" hidden></div>
+  </aside>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

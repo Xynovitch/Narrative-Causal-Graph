@@ -1,0 +1,23 @@
+{
+  "novels": [
+    {
+      "key": "baseline_gpt4o_mini",
+      "label": "Great Expectations (baseline gpt-4o-mini, 2026-03-26)",
+      "file": "baseline_gpt4o_mini.json",
+      "events": 3338,
+      "causal_edges": 4121,
+      "thematic_edges": 0,
+      "size_mb": 10.22
+    },
+    {
+      "key": "great_expectations_gpt5",
+      "label": "Great Expectations (gpt-5, 2026-05-06)",
+      "file": "great_expectations_gpt5.json",
+      "events": 8625,
+      "causal_edges": 13991,
+      "thematic_edges": 29389,
+      "size_mb": 45.59
+    }
+  ],
+  "default": "great_expectations_gpt5"
+}
