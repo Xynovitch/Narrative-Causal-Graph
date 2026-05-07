@@ -387,27 +387,16 @@ function applyFilters() {
     }
     if (search && !ev.description.toLowerCase().includes(search) && !ev.sourceQuote.toLowerCase().includes(search)) continue;
 
+    // Theme involvement is only treated as a *filter* in subplot view.
+    // In causal / agent views, the theme checkboxes and confidence slider
+    // only influence node coloring (see dominantThemeColor below). This
+    // matches reader intuition: a routine walk-across-the-room event with
+    // all-"none" themes is still an event worth showing in the causal graph.
     if (view === "subplot") {
       const td = ev.themes[subplotTheme];
       if (!td) continue;
       if (td.involvement !== "direct" && td.involvement !== "indirect") continue;
       if ((td.confidence ?? 0) < minConf) continue;
-    } else {
-      // For other views: must touch at least one enabled theme above threshold,
-      // OR have no theme annotations at all (don't hide unannotated events).
-      const themeKeys = Object.keys(ev.themes || {});
-      if (themeKeys.length > 0) {
-        const ok = THEMES.some(t => {
-          if (!themesEnabled.has(t)) return false;
-          const td = ev.themes[t];
-          if (!td) return false;
-          if (td.involvement !== "direct" && td.involvement !== "indirect") return false;
-          return (td.confidence ?? 0) >= minConf;
-        });
-        // If themes exist but none match enabled-with-threshold, hide
-        // — UNLESS user disabled the theme filter entirely (all unchecked = show all)
-        if (!ok && themesEnabled.size > 0) continue;
-      }
     }
 
     visible.add(ev.id);
@@ -434,10 +423,10 @@ function applyFilters() {
     const totalForTheme = state.themeToEvents[subplotTheme]?.size || 0;
     ui.subplotInfo.textContent = `${totalForTheme} events have ${subplotTheme} involvement (any chapter, any confidence)`;
   }
-  render(visible, finalCausal, finalThematic);
+  render(visible, finalCausal, finalThematic, themesEnabled, minConf);
 }
 
-function render(visibleSet, causalEdges, thematicEdges) {
+function render(visibleSet, causalEdges, thematicEdges, themesEnabled, minConf) {
   if (visibleSet.size === 0) {
     ui.graphEmpty.hidden = false;
     if (state.cy) state.cy.elements().remove();
@@ -453,7 +442,7 @@ function render(visibleSet, causalEdges, thematicEdges) {
         id: ev.id,
         label: truncate(ev.description, 60),
         chapter: ev.chapter,
-        themeColor: dominantThemeColor(ev),
+        themeColor: dominantThemeColor(ev, themesEnabled, minConf),
       },
     });
   }
@@ -635,13 +624,20 @@ function runLayout() {
   if (cfg.infinite) state.liveLayout = layout;
 }
 
-function dominantThemeColor(ev) {
+function dominantThemeColor(ev, themesEnabled, minConf) {
+  // Pick the theme this event is most strongly involved with — but only
+  // among the themes the user currently has enabled, and above the
+  // confidence threshold. Events that don't qualify get a neutral color
+  // and stay visible (filtering happens elsewhere).
   let bestT = null, bestC = 0;
   for (const t of THEMES) {
+    if (themesEnabled && !themesEnabled.has(t)) continue;
     const td = ev.themes[t];
     if (!td) continue;
     if (td.involvement !== "direct" && td.involvement !== "indirect") continue;
-    if ((td.confidence ?? 0) > bestC) { bestC = td.confidence; bestT = t; }
+    const c = td.confidence ?? 0;
+    if (c < (minConf ?? 0)) continue;
+    if (c > bestC) { bestC = c; bestT = t; }
   }
   return bestT ? THEME_COLOR[bestT] : ACTION_COLOR_DEFAULT;
 }

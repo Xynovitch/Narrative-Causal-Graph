@@ -39,13 +39,14 @@
     </section>
 
     <section id="theme-section">
-      <div class="panel-title">Themes</div>
+      <div class="panel-title">Themes (node coloring)</div>
       <div id="theme-filters"></div>
       <label class="inline">
         Min confidence
         <input id="theme-confidence" type="range" min="0" max="1" step="0.05" value="0.4">
         <span id="theme-confidence-val">0.40</span>
       </label>
+      <div class="hint">In Causal/Agent view: these only color nodes. In Subplot view: also filters to events with that theme above the threshold.</div>
     </section>
 
     <section id="subplot-section" hidden>
