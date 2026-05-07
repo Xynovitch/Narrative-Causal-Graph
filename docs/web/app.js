@@ -105,6 +105,20 @@ if (typeof cytoscape !== "undefined") {
   if (typeof cytoscapeCola !== "undefined") cytoscape.use(cytoscapeCola);
 }
 
+const TUNING_DEFAULTS = {
+  nodeSize: 1.0,
+  edgeWidth: 1.0,
+  arrowScale: 0.8,
+  labelSize: 8,
+  scaleOnZoom: true,
+  repulsion: 1.0,
+  edgeLength: 1.0,
+  edgeStrength: 1.0,
+  gravity: 1.0,
+  componentSpacing: 1.5,
+  friction: 0.7,
+};
+
 const state = {
   manifest: null,
   novelKey: null,
@@ -112,6 +126,7 @@ const state = {
   eventById: new Map(),
   causalEdges: [],
   liveLayout: null,
+  tuning: { ...TUNING_DEFAULTS },
   thematicEdges: [],
   agentToEvents: new Map(),
   themeToEvents: { POWER: new Set(), WEALTH: new Set(), KINSHIP: new Set(), JUSTICE: new Set(), KNOWLEDGE: new Set() },
@@ -143,6 +158,28 @@ const ui = {
   edgeConfidence: document.getElementById("edge-confidence"),
   edgeConfidenceVal: document.getElementById("edge-confidence-val"),
   supertypeLegend: document.getElementById("supertype-legend"),
+  tNodeSize: document.getElementById("t-node-size"),
+  tNodeSizeV: document.getElementById("t-node-size-v"),
+  tEdgeWidth: document.getElementById("t-edge-width"),
+  tEdgeWidthV: document.getElementById("t-edge-width-v"),
+  tArrowScale: document.getElementById("t-arrow-scale"),
+  tArrowScaleV: document.getElementById("t-arrow-scale-v"),
+  tLabelSize: document.getElementById("t-label-size"),
+  tLabelSizeV: document.getElementById("t-label-size-v"),
+  tScaleOnZoom: document.getElementById("t-scale-on-zoom"),
+  tRepulsion: document.getElementById("t-repulsion"),
+  tRepulsionV: document.getElementById("t-repulsion-v"),
+  tEdgeLength: document.getElementById("t-edge-length"),
+  tEdgeLengthV: document.getElementById("t-edge-length-v"),
+  tEdgeStrength: document.getElementById("t-edge-strength"),
+  tEdgeStrengthV: document.getElementById("t-edge-strength-v"),
+  tGravity: document.getElementById("t-gravity"),
+  tGravityV: document.getElementById("t-gravity-v"),
+  tComponentSpacing: document.getElementById("t-component-spacing"),
+  tComponentSpacingV: document.getElementById("t-component-spacing-v"),
+  tFriction: document.getElementById("t-friction"),
+  tFrictionV: document.getElementById("t-friction-v"),
+  tReset: document.getElementById("t-reset"),
   layoutSelect: document.getElementById("layout-select"),
   reLayout: document.getElementById("re-layout"),
   fitView: document.getElementById("fit-view"),
@@ -355,6 +392,60 @@ ui.layoutSelect.addEventListener("change", () => runLayout());
 ui.reLayout.addEventListener("click", () => runLayout());
 ui.fitView.addEventListener("click", () => state.cy && state.cy.fit(null, 30));
 
+// --- Layout-tuning sliders ---
+
+function bindVisualSlider(input, label, key, fmt = v => parseFloat(v).toFixed(1)) {
+  input.addEventListener("input", () => {
+    state.tuning[key] = parseFloat(input.value);
+    label.textContent = fmt(input.value);
+    applyVisualTuning();
+  });
+}
+function bindForceSlider(input, label, key, fmt = v => parseFloat(v).toFixed(1) + "×") {
+  input.addEventListener("change", () => {
+    state.tuning[key] = parseFloat(input.value);
+    label.textContent = fmt(input.value);
+    runLayout();
+  });
+  input.addEventListener("input", () => {
+    label.textContent = fmt(input.value);
+  });
+}
+
+bindVisualSlider(ui.tNodeSize, ui.tNodeSizeV, "nodeSize");
+bindVisualSlider(ui.tEdgeWidth, ui.tEdgeWidthV, "edgeWidth");
+bindVisualSlider(ui.tArrowScale, ui.tArrowScaleV, "arrowScale");
+bindVisualSlider(ui.tLabelSize, ui.tLabelSizeV, "labelSize", v => String(parseInt(v, 10)));
+ui.tScaleOnZoom.addEventListener("change", () => {
+  state.tuning.scaleOnZoom = ui.tScaleOnZoom.checked;
+  applyVisualTuning();
+});
+
+bindForceSlider(ui.tRepulsion, ui.tRepulsionV, "repulsion");
+bindForceSlider(ui.tEdgeLength, ui.tEdgeLengthV, "edgeLength");
+bindForceSlider(ui.tEdgeStrength, ui.tEdgeStrengthV, "edgeStrength", v => parseFloat(v).toFixed(2));
+bindForceSlider(ui.tGravity, ui.tGravityV, "gravity");
+bindForceSlider(ui.tComponentSpacing, ui.tComponentSpacingV, "componentSpacing");
+bindForceSlider(ui.tFriction, ui.tFrictionV, "friction", v => parseFloat(v).toFixed(2));
+
+ui.tReset.addEventListener("click", () => {
+  state.tuning = { ...TUNING_DEFAULTS };
+  // Restore slider positions and label values
+  ui.tNodeSize.value = TUNING_DEFAULTS.nodeSize; ui.tNodeSizeV.textContent = TUNING_DEFAULTS.nodeSize.toFixed(1);
+  ui.tEdgeWidth.value = TUNING_DEFAULTS.edgeWidth; ui.tEdgeWidthV.textContent = TUNING_DEFAULTS.edgeWidth.toFixed(1);
+  ui.tArrowScale.value = TUNING_DEFAULTS.arrowScale; ui.tArrowScaleV.textContent = TUNING_DEFAULTS.arrowScale.toFixed(1);
+  ui.tLabelSize.value = TUNING_DEFAULTS.labelSize; ui.tLabelSizeV.textContent = String(TUNING_DEFAULTS.labelSize);
+  ui.tScaleOnZoom.checked = TUNING_DEFAULTS.scaleOnZoom;
+  ui.tRepulsion.value = TUNING_DEFAULTS.repulsion; ui.tRepulsionV.textContent = TUNING_DEFAULTS.repulsion.toFixed(1) + "×";
+  ui.tEdgeLength.value = TUNING_DEFAULTS.edgeLength; ui.tEdgeLengthV.textContent = TUNING_DEFAULTS.edgeLength.toFixed(1) + "×";
+  ui.tEdgeStrength.value = TUNING_DEFAULTS.edgeStrength; ui.tEdgeStrengthV.textContent = TUNING_DEFAULTS.edgeStrength.toFixed(2);
+  ui.tGravity.value = TUNING_DEFAULTS.gravity; ui.tGravityV.textContent = TUNING_DEFAULTS.gravity.toFixed(1) + "×";
+  ui.tComponentSpacing.value = TUNING_DEFAULTS.componentSpacing; ui.tComponentSpacingV.textContent = TUNING_DEFAULTS.componentSpacing.toFixed(1) + "×";
+  ui.tFriction.value = TUNING_DEFAULTS.friction; ui.tFrictionV.textContent = TUNING_DEFAULTS.friction.toFixed(2);
+  applyVisualTuning();
+  runLayout();
+});
+
 function debounce(fn, ms) {
   let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
 }
@@ -493,6 +584,9 @@ function render(visibleSet, causalEdges, thematicEdges, themesEnabled, minConf) 
 }
 
 function cyStyle() {
+  const t = state.tuning;
+  const baseSize = 16 * t.nodeSize;
+  const selSize = 22 * t.nodeSize;
   return [
     {
       selector: "node",
@@ -500,32 +594,29 @@ function cyStyle() {
         "background-color": "data(themeColor)",
         "label": "data(label)",
         "color": "#fff",
-        "font-size": 8,
+        "font-size": t.labelSize,
+        "min-zoomed-font-size": t.scaleOnZoom ? 0 : t.labelSize,
         "text-valign": "bottom",
         "text-halign": "center",
         "text-margin-y": 3,
-        "width": 16, "height": 16,
+        "width": baseSize, "height": baseSize,
         "border-color": "#0a0c12", "border-width": 1,
       },
     },
     {
       selector: "node:selected",
-      style: { "border-color": "#fff", "border-width": 3, "width": 22, "height": 22 },
+      style: { "border-color": "#fff", "border-width": 3, "width": selSize, "height": selSize },
     },
     {
-      // Causal edges: width and opacity scale with confidence;
-      // color encodes edge_supertype (production / constraint / revelation / etc).
-      // mapData range tightened to the actual gpt-5 data distribution
-      // (causal confidence almost always falls in [0.4, 0.9]) so the visual
-      // delta between low- and high-confidence edges is visible.
+      // Causal edges: width and opacity scale with confidence; color = edge_supertype.
       selector: "edge[kind = 'causal']",
       style: {
-        "width": "mapData(confidence, 0.4, 0.9, 0.6, 5)",
+        "width": `mapData(confidence, 0.4, 0.9, ${0.6 * t.edgeWidth}, ${5 * t.edgeWidth})`,
         "opacity": "mapData(confidence, 0.4, 0.9, 0.35, 1)",
         "line-color": "data(edgeColor)",
         "target-arrow-color": "data(edgeColor)",
         "target-arrow-shape": "triangle",
-        "arrow-scale": 0.8,
+        "arrow-scale": t.arrowScale,
         "curve-style": "bezier",
       },
     },
@@ -533,12 +624,12 @@ function cyStyle() {
       // Thematic edges: theme color, dashed, also width/opacity by confidence.
       selector: "edge[kind = 'thematic']",
       style: {
-        "width": "mapData(confidence, 0.3, 0.9, 0.8, 5.5)",
+        "width": `mapData(confidence, 0.3, 0.9, ${0.8 * t.edgeWidth}, ${5.5 * t.edgeWidth})`,
         "opacity": "mapData(confidence, 0.3, 0.9, 0.4, 1)",
         "line-color": "data(edgeColor)",
         "target-arrow-color": "data(edgeColor)",
         "target-arrow-shape": "triangle",
-        "arrow-scale": 0.8,
+        "arrow-scale": t.arrowScale,
         "line-style": "dashed",
         "curve-style": "bezier",
       },
@@ -561,29 +652,28 @@ function runLayout() {
     state.liveLayout = null;
   }
 
+  const t = state.tuning;
   const name = ui.layoutSelect.value;
   const opts = {
-    // fcose: well-spaced force-directed; default. Edge `weight` (set from
-    // confidence) feeds into the spring constants, so high-confidence edges
-    // are shorter and low-confidence edges are longer — visual "distance".
+    // fcose: well-spaced force-directed; default. Edge length is also
+    // a function of confidence (high confidence -> short spring).
     fcose: {
       name: "fcose",
       animate: true,
       animationDuration: 600,
       randomize: true,
       quality: "default",
-      nodeRepulsion: 8000,
-      idealEdgeLength: edge => 80 + (1 - (edge.data("confidence") || 0.5)) * 220,
-      edgeElasticity: 0.45,
-      gravity: 0.18,
-      gravityRangeCompound: 1.5,
-      nodeSeparation: 80,
+      nodeRepulsion: 8000 * t.repulsion,
+      idealEdgeLength: edge => (80 + (1 - (edge.data("confidence") || 0.5)) * 220) * t.edgeLength,
+      edgeElasticity: 0.45 * t.edgeStrength,
+      gravity: 0.18 * t.gravity,
+      gravityRangeCompound: 1.5 * t.componentSpacing,
+      nodeSeparation: 80 * t.componentSpacing,
       packComponents: true,
       padding: 40,
     },
     // cola with infinite:true keeps the physics running. Drag a node and
-    // its neighbors react in real time. Costlier above ~1500 nodes; the
-    // sidebar's max-events cap keeps it usable.
+    // its neighbors react in real time. The friction slider is wired here.
     "cola-live": {
       name: "cola",
       animate: true,
@@ -592,29 +682,34 @@ function runLayout() {
       randomize: false,
       avoidOverlap: true,
       handleDisconnected: true,
-      nodeSpacing: 18,
-      edgeLength: edge => 70 + (1 - (edge.data("confidence") || 0.5)) * 200,
+      nodeSpacing: 18 * t.componentSpacing,
+      edgeLength: edge => (70 + (1 - (edge.data("confidence") || 0.5)) * 200) * t.edgeLength,
       edgeSymDiffLength: 30,
+      // cola's "viscosity" — higher = simulation settles faster, lower = more bounce
+      flow: { axis: "y", minSeparation: 0 },
+      maxSimulationTime: 4000,
+      convergenceThreshold: 0.001 * (1 - t.friction),
     },
-    // Vanilla cose, retuned for much more spread than the Cytoscape default.
+    // Vanilla cose, retuned + tuning multipliers.
     cose: {
       name: "cose",
       animate: "end",
       animationDuration: 600,
-      idealEdgeLength: 220,
-      nodeRepulsion: 800000,
+      idealEdgeLength: 220 * t.edgeLength,
+      nodeRepulsion: 800000 * t.repulsion,
       nodeOverlap: 24,
-      gravity: 30,
+      gravity: 30 * t.gravity,
       numIter: 1500,
       padding: 40,
+      edgeElasticity: 100 * t.edgeStrength,
     },
-    dagre: { name: "dagre", rankDir: "LR", nodeSep: 30, rankSep: 90, animate: true, animationDuration: 500, padding: 30 },
+    dagre: { name: "dagre", rankDir: "LR", nodeSep: 30, rankSep: 90 * t.edgeLength, animate: true, animationDuration: 500, padding: 30 },
     grid: { name: "grid", padding: 30, animate: true, animationDuration: 400, avoidOverlap: true },
     concentric: {
       name: "concentric",
       concentric: n => -n.data("chapter"),
       levelWidth: () => 1,
-      minNodeSpacing: 18,
+      minNodeSpacing: 18 * t.componentSpacing,
       animate: true, animationDuration: 500, padding: 30,
     },
   };
@@ -622,6 +717,12 @@ function runLayout() {
   const layout = state.cy.layout(cfg);
   layout.run();
   if (cfg.infinite) state.liveLayout = layout;
+}
+
+// Re-apply node/edge size, label, and arrow style without relayout.
+function applyVisualTuning() {
+  if (!state.cy) return;
+  state.cy.style(cyStyle());
 }
 
 function dominantThemeColor(ev, themesEnabled, minConf) {

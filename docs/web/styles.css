@@ -121,3 +121,7 @@ table.themes td.theme-name { font-weight: 600; }
 .legend-row { font-size: 11px; color: #bbb; display: flex; align-items: center; gap: 6px; }
 .legend-swatch { display: inline-block; width: 14px; height: 3px; border-radius: 2px; flex-shrink: 0; }
 .legend-row.dashed .legend-swatch { background-image: linear-gradient(90deg, currentColor 50%, transparent 0); background-size: 4px 100%; height: 2px; }
+
+label.inline.tune { display: grid; grid-template-columns: 70px 1fr 36px; gap: 4px; align-items: center; font-size: 11px; }
+label.inline.tune input[type="range"] { width: 100%; }
+.tune-val { font-size: 10px; color: var(--muted); text-align: right; }
