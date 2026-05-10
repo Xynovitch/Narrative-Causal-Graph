@@ -64,10 +64,6 @@ button:hover { background: #3a3f60; }
 
 #graph-wrapper { flex: 1; position: relative; background: #0a0c12; }
 #graph { width: 100%; height: 100%; }
-#graph-empty {
-  position: absolute; inset: 0; display: flex; align-items: center;
-  justify-content: center; color: var(--muted); pointer-events: none;
-}
 
 #detail-empty { color: var(--muted); font-size: 13px; padding-top: 24px; text-align: center; }
 #detail h2 { font-size: 13px; color: #c0c8f0; margin-bottom: 6px; }

@@ -191,7 +191,6 @@ const ui = {
   fitView: document.getElementById("fit-view"),
   maxEvents: document.getElementById("max-events"),
   graph: document.getElementById("graph"),
-  graphEmpty: document.getElementById("graph-empty"),
   detailEmpty: document.getElementById("detail-empty"),
   detailContent: document.getElementById("detail-content"),
 };
@@ -365,6 +364,11 @@ function buildSidebar() {
   }
 
   ui.subplotTheme.innerHTML = "";
+  // "" = no theme filter; subplot view still strips causal edges so you see
+  // a thematic-only graph, but across all themes.
+  const anyOpt = document.createElement("option");
+  anyOpt.value = ""; anyOpt.textContent = "— all themes —";
+  ui.subplotTheme.appendChild(anyOpt);
   for (const t of THEMES) {
     const opt = document.createElement("option");
     opt.value = t; opt.textContent = `${t} (${state.themeToEvents[t].size})`;
@@ -546,12 +550,15 @@ function applyFilters() {
     }
     if (search && !ev.description.toLowerCase().includes(search) && !ev.sourceQuote.toLowerCase().includes(search)) continue;
 
-    // Theme involvement is only treated as a *filter* in subplot view.
+    // Theme involvement is only treated as a *filter* in subplot view, and
+    // only when a specific theme is chosen. With "— all themes —" the
+    // subplot view shows every event but strips causal edges (below) so
+    // you see the thematic-only graph across themes.
     // In causal / agent views, the theme checkboxes and confidence slider
     // only influence node coloring (see dominantThemeColor below). This
     // matches reader intuition: a routine walk-across-the-room event with
     // all-"none" themes is still an event worth showing in the causal graph.
-    if (view === "subplot") {
+    if (view === "subplot" && subplotTheme) {
       const td = ev.themes[subplotTheme];
       if (!td) continue;
       if (td.involvement !== "direct" && td.involvement !== "indirect") continue;
@@ -572,7 +579,7 @@ function applyFilters() {
   });
   const thematicFiltered = !showThematic ? [] : state.thematicEdges.filter(e => {
     if (!visible.has(e.from) || !visible.has(e.to)) return false;
-    if (view === "subplot" && e.theme !== subplotTheme) return false;
+    if (view === "subplot" && subplotTheme && e.theme !== subplotTheme) return false;
     if ((e.confidence ?? 0) < minEdgeConf) return false;
     if (e.theme && state.hiddenThematicThemes.has(e.theme)) return false;
     return true;
@@ -584,19 +591,21 @@ function applyFilters() {
 
   ui.statShown.textContent = `shown: ${visible.size.toLocaleString()} / ${state.events.length.toLocaleString()}`;
   if (view === "subplot") {
-    const totalForTheme = state.themeToEvents[subplotTheme]?.size || 0;
-    ui.subplotInfo.textContent = `${totalForTheme} events have ${subplotTheme} involvement (any chapter, any confidence)`;
+    if (subplotTheme) {
+      const totalForTheme = state.themeToEvents[subplotTheme]?.size || 0;
+      ui.subplotInfo.textContent = `${totalForTheme} events have ${subplotTheme} involvement (any chapter, any confidence)`;
+    } else {
+      ui.subplotInfo.textContent = "showing thematic edges across all themes";
+    }
   }
   render(visible, finalCausal, finalThematic, themesEnabled, minConf);
 }
 
 function render(visibleSet, causalEdges, thematicEdges, themesEnabled, minConf) {
   if (visibleSet.size === 0) {
-    ui.graphEmpty.hidden = false;
     if (state.cy) state.cy.elements().remove();
     return;
   }
-  ui.graphEmpty.hidden = true;
 
   const nodes = [];
   for (const id of visibleSet) {
