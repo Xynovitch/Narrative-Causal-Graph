@@ -134,6 +134,11 @@ const state = {
   chapterMax: 1,
   cy: null,
   selectedEventId: null,
+  // Supertypes the user has hidden via the legend. Edges with a supertype in
+  // this set are filtered out of the rendered graph.
+  hiddenSupertypes: new Set(),
+  // Themes whose thematic edges are hidden. Each entry is one of THEMES.
+  hiddenThematicThemes: new Set(),
 };
 
 const ui = {
@@ -155,6 +160,7 @@ const ui = {
   agentSelect: document.getElementById("agent-select"),
   showCausal: document.getElementById("show-causal"),
   showThematic: document.getElementById("show-thematic"),
+  thematicThemeFilters: document.getElementById("thematic-theme-filters"),
   edgeConfidence: document.getElementById("edge-confidence"),
   edgeConfidenceVal: document.getElementById("edge-confidence-val"),
   supertypeLegend: document.getElementById("supertype-legend"),
@@ -305,32 +311,50 @@ function addToBucket(map, key, value) {
 // ---------- Sidebar wiring ----------
 
 function buildSidebar() {
-  // Causal-edge supertype legend, restricted to supertypes actually present in this dataset.
+  // Causal-edge supertype legend, restricted to supertypes actually present in
+  // this dataset. Each row is clickable: clicking toggles whether that
+  // supertype's edges render.
   const presentSupertypes = new Map();
   for (const e of state.causalEdges) {
     const st = e.edgeSupertype || "OTHER";
     presentSupertypes.set(st, (presentSupertypes.get(st) || 0) + 1);
+  }
+  // Drop hidden entries that no longer exist (e.g. after switching novels).
+  for (const st of [...state.hiddenSupertypes]) {
+    if (!presentSupertypes.has(st)) state.hiddenSupertypes.delete(st);
   }
   const legendEntries = [...presentSupertypes.entries()].sort((a, b) => b[1] - a[1]);
   ui.supertypeLegend.innerHTML = "";
   for (const [st, count] of legendEntries) {
     const color = SUPERTYPE_COLOR[st] || SUPERTYPE_DEFAULT;
     const row = document.createElement("div");
-    row.className = "legend-row";
+    row.className = "legend-row" + (state.hiddenSupertypes.has(st) ? " disabled" : "");
+    row.dataset.supertype = st;
+    row.title = "Click to toggle";
     row.innerHTML = `<span class="legend-swatch" style="background:${color}"></span>
-                     <span>${escapeHtml(st)}</span>
+                     <span class="legend-label">${escapeHtml(st)}</span>
                      <span class="hint">(${count.toLocaleString()})</span>`;
+    row.addEventListener("click", () => {
+      if (state.hiddenSupertypes.has(st)) state.hiddenSupertypes.delete(st);
+      else state.hiddenSupertypes.add(st);
+      row.classList.toggle("disabled");
+      applyFilters();
+    });
     ui.supertypeLegend.appendChild(row);
   }
   if (state.thematicEdges.length) {
     const row = document.createElement("div");
-    row.className = "legend-row dashed";
+    row.className = "legend-row dashed uninteractive";
     row.style.marginTop = "6px";
     row.innerHTML = `<span class="legend-swatch" style="background:#888"></span>
-                     <span>THEMATIC (dashed)</span>
+                     <span class="legend-label">THEMATIC (dashed)</span>
                      <span class="hint">(${state.thematicEdges.length.toLocaleString()})</span>`;
     ui.supertypeLegend.appendChild(row);
   }
+
+  // Per-theme filters for thematic edges. These live under the
+  // "Show THEMATIC_LINK" toggle and disable when the parent toggle is off.
+  buildThematicThemeFilters();
 
   ui.themeFilters.innerHTML = "";
   for (const t of THEMES) {
@@ -368,6 +392,47 @@ function buildSidebar() {
   }
 }
 
+function buildThematicThemeFilters() {
+  // Count thematic edges per theme so the user sees how dense each theme is
+  // before toggling. Only render themes that actually appear in the data.
+  const counts = new Map();
+  for (const e of state.thematicEdges) {
+    if (!e.theme) continue;
+    counts.set(e.theme, (counts.get(e.theme) || 0) + 1);
+  }
+  for (const t of [...state.hiddenThematicThemes]) {
+    if (!counts.has(t)) state.hiddenThematicThemes.delete(t);
+  }
+  ui.thematicThemeFilters.innerHTML = "";
+  if (counts.size === 0) {
+    ui.thematicThemeFilters.hidden = true;
+    return;
+  }
+  ui.thematicThemeFilters.hidden = false;
+  // Iterate THEMES (not the Map) so order is consistent across novels.
+  for (const t of THEMES) {
+    if (!counts.has(t)) continue;
+    const count = counts.get(t);
+    const checked = !state.hiddenThematicThemes.has(t);
+    const lbl = document.createElement("label");
+    lbl.innerHTML = `<input type="checkbox" data-thematic-theme="${t}" ${checked ? "checked" : ""}>
+                     <span class="theme-${t.toLowerCase()}">${t}</span>
+                     <span class="hint">(${count.toLocaleString()})</span>`;
+    lbl.querySelector("input").addEventListener("change", e => {
+      if (e.target.checked) state.hiddenThematicThemes.delete(t);
+      else state.hiddenThematicThemes.add(t);
+      applyFilters();
+    });
+    ui.thematicThemeFilters.appendChild(lbl);
+  }
+  syncThematicThemeFiltersDisabled();
+}
+
+function syncThematicThemeFiltersDisabled() {
+  if (ui.showThematic.checked) ui.thematicThemeFilters.classList.remove("disabled");
+  else ui.thematicThemeFilters.classList.add("disabled");
+}
+
 ui.themeConfidence.addEventListener("input", () => {
   ui.themeConfidenceVal.textContent = parseFloat(ui.themeConfidence.value).toFixed(2);
   applyFilters();
@@ -381,7 +446,10 @@ ui.chapterMin.addEventListener("change", applyFilters);
 ui.chapterMax.addEventListener("change", applyFilters);
 ui.agentSelect.addEventListener("change", applyFilters);
 ui.showCausal.addEventListener("change", applyFilters);
-ui.showThematic.addEventListener("change", applyFilters);
+ui.showThematic.addEventListener("change", () => {
+  syncThematicThemeFiltersDisabled();
+  applyFilters();
+});
 ui.edgeConfidence.addEventListener("input", () => {
   ui.edgeConfidenceVal.textContent = parseFloat(ui.edgeConfidence.value).toFixed(2);
   applyFilters();
@@ -495,13 +563,18 @@ function applyFilters() {
   }
 
   // Edge filter — both endpoints must be visible, and edge confidence must clear the slider.
-  const causalShown = !showCausal ? [] : state.causalEdges.filter(e =>
-    visible.has(e.from) && visible.has(e.to) && (e.confidence ?? 0) >= minEdgeConf
-  );
+  const causalShown = !showCausal ? [] : state.causalEdges.filter(e => {
+    if (!visible.has(e.from) || !visible.has(e.to)) return false;
+    if ((e.confidence ?? 0) < minEdgeConf) return false;
+    const st = e.edgeSupertype || "OTHER";
+    if (state.hiddenSupertypes.has(st)) return false;
+    return true;
+  });
   const thematicFiltered = !showThematic ? [] : state.thematicEdges.filter(e => {
     if (!visible.has(e.from) || !visible.has(e.to)) return false;
     if (view === "subplot" && e.theme !== subplotTheme) return false;
     if ((e.confidence ?? 0) < minEdgeConf) return false;
+    if (e.theme && state.hiddenThematicThemes.has(e.theme)) return false;
     return true;
   });
 
