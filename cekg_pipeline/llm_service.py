@@ -303,10 +303,10 @@ async def extract_events_from_text(text_input, chapter_id, model, client,
         text=text_input
     )
     
-    key = _hash_for_cache(
-        f"{chapter_id}:{len(text_input)}:{extraction_style}:v5_strict",
-        model
-    )
+    # Hash actual prompt content. The previous key used only chapter_id, text
+    # length, and style — two chunks of the same chapter with equal length
+    # would collide and silently reuse the first chunk's extracted events.
+    key = _hash_for_cache(f"extract_v6:{prompt}", model)
     
     # No need to specify max_tokens - auto-detected
     data, logprobs = await _async_llm_json_call(
@@ -354,7 +354,9 @@ async def assess_pairs_bulk(
         pairs=pairs_block
     )
     
-    key = _hash_for_cache(f"bulk:{len(pairs_batch)}:{ontology_str[:50]}", model)
+    # Hash the actual prompt — see note in integrated_semantic.assess_pairs_causal.
+    # Hashing only (batch-size, ontology-prefix) collides across every batch.
+    key = _hash_for_cache(f"bulk_v3:{prompt}", model)
     
     # ✅ No need to specify max_tokens - auto-detected by _async_llm_json_call
     
@@ -446,7 +448,10 @@ async def extract_scenes_from_chapter_async(chapter_events, chapter_id, model, c
     simple = [{"id": e.id, "d": e.raw_description[:50]} for e in chapter_events]
     
     prompt = PROMPT_SCENE.format(events=json.dumps(simple))
-    key = _hash_for_cache(f"scene:{chapter_id}:{len(simple)}", cheap_model)
+    # Hash actual prompt content; the previous (chapter_id, len) tuple
+    # collided whenever two scene calls in the same chapter happened to use
+    # the same event count.
+    key = _hash_for_cache(f"scene_v2:{prompt}", cheap_model)
     
     try:
         data, _ = await _async_llm_json_call(

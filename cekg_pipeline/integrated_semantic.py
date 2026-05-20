@@ -113,10 +113,14 @@ async def assess_pairs_causal(
         pairs=pairs_block
     )
 
-    # Bump the cache version so old narrow-relation results don't shadow the
-    # new diversified prompt.
-    prefix = "causal_rag_v2" if use_rag else "causal_v2"
-    cache_key = _hash_for_cache(f"{prefix}:{len(pairs_batch)}:{causal_str[:50]}", model)
+    # Cache key MUST hash the actual prompt content. The previous key only
+    # hashed (prefix, batch-size, first-50-chars-of-ontology), which collides
+    # across every 50-pair batch — so the first batch's response was silently
+    # reused for every subsequent batch, randomizing relationType/mechanism
+    # across the dataset (visible as a near-uniform ~498-per-type distribution
+    # in gpt5_full.json).
+    prefix = "causal_rag_v3" if use_rag else "causal_v3"
+    cache_key = _hash_for_cache(f"{prefix}:{prompt}", model)
 
     try:
         data, _ = await llm_call_function(

@@ -33,6 +33,12 @@ except ImportError:
 
 # Defaults
 THEMATIC_SIMILARITY_THRESHOLD = 0.95
+# Scene-pair threshold is intentionally STRICTER than the long-shot threshold:
+# within a scene most events are loosely related, so a low bar lets a handful
+# of dense scenes flood the candidate budget and crowd out the long-range
+# pools (BM25 / long-shot) that are responsible for cross-chapter discovery.
+SCENE_SIMILARITY_THRESHOLD = 0.75
+SCENE_PAIRS_PER_SCENE_CAP = 30  # ceiling on pairs contributed per scene
 BM25_TOP_K = 10  # top-K BM25 matches per event
 LOCAL_WINDOW_SIZE = 5        # fallback window when embeddings unavailable
 DOUBLE_WINDOW_SIZE = 100     # events per sliding window (long-shot)
@@ -77,11 +83,15 @@ def get_scene_pairs_by_similarity(
     scenes: List[Any],
     embeddings: "np.ndarray",
     event_index: Dict[str, int],
-    similarity_threshold: float = THEMATIC_SIMILARITY_THRESHOLD,
+    similarity_threshold: float = SCENE_SIMILARITY_THRESHOLD,
+    per_scene_cap: int = SCENE_PAIRS_PER_SCENE_CAP,
 ) -> Set[Tuple[str, str]]:
     """
     For each scene, compute pairwise cosine similarity between all events in
-    that scene and keep only pairs with similarity >= threshold.
+    that scene and keep only pairs with similarity >= threshold. Pairs from
+    a single scene are capped at `per_scene_cap` (highest-similarity first)
+    so one large dense scene can't eat the candidate budget — that's what
+    starved the cross-chapter pools on the gpt5_full run.
 
     Uses precomputed embeddings (indexed by event_index) so embeddings are
     only computed once across the whole pipeline.
@@ -105,14 +115,21 @@ def get_scene_pairs_by_similarity(
         emb = embeddings[idxs]          # (K, D)
         sim = _cosine_sim(emb, emb)     # (K, K)
 
+        # Collect qualifying pairs with their similarity so we can cap by
+        # taking the strongest signals first.
+        scored = []
         for i in range(len(scene_events)):
             for j in range(i + 1, len(scene_events)):
-                if sim[i, j] >= similarity_threshold:
-                    ev1, ev2 = scene_events[i], scene_events[j]
-                    if ev1.sequence < ev2.sequence:
-                        pairs.add((ev1.id, ev2.id))
-                    else:
-                        pairs.add((ev2.id, ev1.id))
+                s = sim[i, j]
+                if s >= similarity_threshold:
+                    scored.append((float(s), scene_events[i], scene_events[j]))
+        scored.sort(key=lambda t: t[0], reverse=True)
+
+        for _, ev1, ev2 in scored[:per_scene_cap]:
+            if ev1.sequence < ev2.sequence:
+                pairs.add((ev1.id, ev2.id))
+            else:
+                pairs.add((ev2.id, ev1.id))
 
     return pairs
 
@@ -235,10 +252,11 @@ def get_dynamic_context_candidate_pairs(
     entity_occurrences: Dict[str, List[Tuple[str, int]]],
     scenes: Optional[List[Any]] = None,
     thematic_threshold: float = THEMATIC_SIMILARITY_THRESHOLD,
+    scene_threshold: Optional[float] = None,
     local_window: int = LOCAL_WINDOW_SIZE,
     double_window_size: int = DOUBLE_WINDOW_SIZE,
     double_window_step: int = DOUBLE_WINDOW_STEP,
-    max_pairs: int = 50000,
+    max_pairs: Optional[int] = None,
     use_entity_guided: bool = True,
 ) -> List[Tuple[str, str]]:
     """
@@ -258,9 +276,15 @@ def get_dynamic_context_candidate_pairs(
     if not events:
         return []
 
+    # Scene threshold defaults to a stricter value than long-shot. Sharing one
+    # threshold (the old behavior) let dense scenes saturate the candidate
+    # budget at low thresholds, leaving no room for cross-chapter pairs.
+    if scene_threshold is None:
+        scene_threshold = max(thematic_threshold, SCENE_SIMILARITY_THRESHOLD)
+
     event_map = {e.id: e for e in events}
     print(f"[dynamic_context] Building candidate pairs for {len(events):,} events "
-          f"(thematic >= {thematic_threshold})")
+          f"(long-shot >= {thematic_threshold}, scene >= {scene_threshold})")
 
     # --- 1. Adjacent pairs (unconditional baseline) ---
     adjacent_pairs = get_adjacent_pairs(events)
@@ -308,12 +332,14 @@ def get_dynamic_context_candidate_pairs(
             embeddings = _encode(events, embed_model)
             event_index = {e.id: i for i, e in enumerate(events)}
 
-            # Scene pairs with similarity filter
+            # Scene pairs with similarity filter (uses stricter scene_threshold)
             if scenes:
                 scene_pairs = get_scene_pairs_by_similarity(
-                    events, scenes, embeddings, event_index, thematic_threshold
+                    events, scenes, embeddings, event_index,
+                    similarity_threshold=scene_threshold,
                 )
-                print(f"[dynamic_context] Scene pairs (sim >= {thematic_threshold}): {len(scene_pairs):,}")
+                print(f"[dynamic_context] Scene pairs (sim >= {scene_threshold}, "
+                      f"cap {SCENE_PAIRS_PER_SCENE_CAP}/scene): {len(scene_pairs):,}")
 
             # Long-shot pairs with similarity filter
             if len(events) > double_window_size * 2:
@@ -335,7 +361,7 @@ def get_dynamic_context_candidate_pairs(
         print(f"[dynamic_context] Fallback local/scene pairs: {len(fallback):,}")
         all_pairs = adjacent_pairs | window_pairs | entity_pairs | bm25_pairs | fallback
         all_list = list(all_pairs)
-        if len(all_list) > max_pairs:
+        if max_pairs is not None and len(all_list) > max_pairs:
             all_list = all_list[:max_pairs]
             print(f"[dynamic_context] Capped to {len(all_list):,} pairs (max_pairs={max_pairs})")
         return all_list
@@ -343,14 +369,22 @@ def get_dynamic_context_candidate_pairs(
     # --- 6. Merge all pools ---
     all_pairs = adjacent_pairs | window_pairs | entity_pairs | bm25_pairs | scene_pairs | long_shot_pairs
 
-    # Safety ceiling only
-    if len(all_pairs) > max_pairs:
+    # Optional safety ceiling. With the post-bug-fix pipeline the candidate
+    # count for Great Expectations sits well under 25K, so callers typically
+    # leave max_pairs=None and we send the whole pool to the LLM. Keep the
+    # path for callers that explicitly want a cap.
+    if max_pairs is not None and len(all_pairs) > max_pairs:
         print(f"[dynamic_context] Safety cap: {len(all_pairs):,} → {max_pairs:,} "
-              f"(lower threshold or raise --max-pairs to avoid this)")
-        # Priority: scene-filtered > long-shot > BM25 > entity > window > adjacent
+              f"(omit --max-pairs to send the whole pool)")
+        # Priority: long-shot > BM25 > entity > scene > adjacent > window.
+        # Long-range pools (long-shot, BM25, entity-guided) are the only ones
+        # that produce cross-chapter candidates, so they get the budget first.
+        # Scene/adjacent/window are local backbones we keep as filler.
         result: List[Tuple[str, str]] = []
         seen: Set[Tuple[str, str]] = set()
-        for pool in (scene_pairs, long_shot_pairs, bm25_pairs, entity_pairs, window_pairs, adjacent_pairs):
+        for pool in (long_shot_pairs, bm25_pairs, entity_pairs, scene_pairs, adjacent_pairs, window_pairs):
+            if len(result) >= max_pairs:
+                break
             for p in pool:
                 if len(result) >= max_pairs:
                     break

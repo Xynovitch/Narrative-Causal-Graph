@@ -71,10 +71,11 @@ class IntelligentCausalLinker:
         return max(20, min(bulk_size, 50))
 
     def get_candidate_pairs(self, events: List, entity_occurrences: Dict,
-                           max_pairs: int = 50000) -> List[Tuple]:
+                           max_pairs: Optional[int] = None) -> List[Tuple]:
         """
         Generate candidate pairs using multiple smart strategies.
-        Target: 50K pairs for a 26K event novel.
+        max_pairs=None disables the safety cap so every smart-strategy pair
+        is sent through.
         Returns list of (cause_id, effect_id) tuples.
         """
         print(f"\n[smart_linking] Generating candidate pairs for {len(events)} events...")
@@ -86,8 +87,9 @@ class IntelligentCausalLinker:
         print(f"[strategy_1] Entity-guided: {len(entity_pairs):,} pairs")
         
         # --- Strategy 2: Temporal Window (Local Context) ---
-        # Reduce window size if dataset is huge
-        window_size = 200 if max_pairs > 20000 else 50
+        # Reduce window size if dataset is huge. With no cap, default to the
+        # wider window since we won't be evicting candidates afterwards.
+        window_size = 200 if (max_pairs is None or max_pairs > 20000) else 50
         temporal_pairs = self._temporal_window_pairs(events, max_distance=window_size)
         print(f"[strategy_2] Temporal windows: {len(temporal_pairs):,} pairs")
         
@@ -117,8 +119,8 @@ class IntelligentCausalLinker:
         tier_3 = temporal_pairs
         
         total_found = len(tier_1 | tier_2 | tier_3)
-        
-        if total_found <= max_pairs:
+
+        if max_pairs is None or total_found <= max_pairs:
             final_pairs = tier_1 | tier_2 | tier_3
         else:
             print(f"[capping] Smart reducing {total_found:,} → {max_pairs:,} pairs")

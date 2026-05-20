@@ -63,8 +63,8 @@ Examples:
     # Processing Limits
     parser.add_argument("--max-chapters", type=int, default=None,
                        help="Limit number of chapters to process")
-    parser.add_argument("--max-pairs", type=int, default=5000,
-                       help="Maximum causal pairs to evaluate (default: 5000 / 25000 in --full)")
+    parser.add_argument("--max-pairs", type=int, default=None,
+                       help="Optional cap on candidate causal pairs sent to the LLM. Omit for no cap (default).")
     parser.add_argument("--thematic-threshold", type=float, default=0.50,
                        help="Cosine similarity threshold for long-range candidate pair discovery (0.0-1.0, default: 0.50)")
     parser.add_argument("--no-dynamic-context", action="store_true",
@@ -121,12 +121,13 @@ Examples:
         enable_scene_grouping = False
         enable_agent_classification = False
         enable_confidence_calibration = False
-        max_pairs = 3000
+        # Fast mode keeps an explicit cap to bound cost; --max-pairs overrides.
+        max_pairs = args.max_pairs if args.max_pairs is not None else 3000
     elif args.full:
         enable_scene_grouping = True
         enable_agent_classification = True
         enable_confidence_calibration = True
-        max_pairs = args.max_pairs if args.max_pairs != 5000 else 25000
+        max_pairs = args.max_pairs   # None = no cap (sends every candidate)
     else:
         enable_scene_grouping = args.enable_scene_grouping
         enable_agent_classification = args.enable_agent_classification
@@ -173,7 +174,7 @@ Examples:
         print("="*60)
         print(f"Model: {preprocessor.openai_model}")
         print(f"Chunk Size: {args.chunk_size}")
-        print(f"Max Pairs: {max_pairs:,}")
+        print(f"Max Pairs: {max_pairs:,}" if max_pairs is not None else "Max Pairs: unlimited")
         print(f"Checkpoints: {'✓' if enable_checkpoints else '✗'}")
         if enable_checkpoints:
             print(f"  Directory: {args.checkpoint_dir}")

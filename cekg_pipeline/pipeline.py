@@ -455,7 +455,7 @@ class CEKGPreprocessor:
         entity_occurrences,
         theory_mode="mixed",
         max_concurrent_calls=10,
-        max_pairs=5000,
+        max_pairs=None,
         use_dynamic_context=True,
         thematic_threshold=0.50,
         scenes=None,
@@ -707,7 +707,7 @@ class CEKGPreprocessor:
                    enable_scene_grouping=True,
                    enable_confidence_calibration=True,
                    max_concurrent_calls=10,
-                   max_long_range_pairs=5000,
+                   max_long_range_pairs=None,
                    chunk_size=3000,
                    resume_from_checkpoint=True,
                    use_dynamic_context=True,
@@ -729,7 +729,7 @@ class CEKGPreprocessor:
         print(f"{'='*60}")
         print(f"[pipeline] Theory Mode: {mode_desc}")
         print(f"[pipeline] Chunk Size: {chunk_size} chars")
-        print(f"[pipeline] Max Pairs: {max_long_range_pairs:,}")
+        print(f"[pipeline] Max Pairs: {max_long_range_pairs:,}" if max_long_range_pairs is not None else "[pipeline] Max Pairs: unlimited")
         print(f"{'='*60}\n")
         
         # ============================================================
