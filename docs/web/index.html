@@ -74,12 +74,14 @@
       <label><input type="checkbox" id="show-causal" checked> Show CAUSES</label>
       <label><input type="checkbox" id="show-thematic" checked> Show THEMATIC_LINK</label>
       <div id="thematic-theme-filters" class="sub-filters"></div>
+      <label><input type="checkbox" id="show-chrono"> Show CHRONOLOGICAL</label>
+      <label><input type="checkbox" id="hide-isolated"> Hide isolated events</label>
       <label class="inline">
         Min edge confidence
         <input id="edge-confidence" type="range" min="0" max="1" step="0.05" value="0">
         <span id="edge-confidence-val">0.00</span>
       </label>
-      <div class="hint">Edge thickness &amp; opacity scale with confidence. Click an edge for its relation type and provenance.</div>
+      <div class="hint">Edge thickness &amp; opacity scale with confidence. Click an edge for its relation type and provenance. Chronological arrows link each visible event to the next one in narrative order; isolation is judged on causal/thematic edges only.</div>
     </section>
 
     <section>

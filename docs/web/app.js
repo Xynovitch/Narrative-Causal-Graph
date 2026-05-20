@@ -24,6 +24,11 @@ const SUPERTYPE_COLOR = {
 };
 const SUPERTYPE_DEFAULT = "#5a607a";
 
+// Chronological-overlay edges (event_n -> event_{n+1} in narrative order).
+// Muted slate so they read as background scaffolding rather than competing
+// with the causal supertype palette.
+const CHRONO_COLOR = "#6b7390";
+
 // JS-side fallback for relation_type -> edge_supertype, used when the data
 // was emitted by an older pipeline run whose FINE_TO_SUPERTYPE map didn't
 // cover gpt-5's vocabulary. Mirrors cekg_pipeline/theme_annotation.py.
@@ -160,6 +165,8 @@ const ui = {
   agentSelect: document.getElementById("agent-select"),
   showCausal: document.getElementById("show-causal"),
   showThematic: document.getElementById("show-thematic"),
+  showChrono: document.getElementById("show-chrono"),
+  hideIsolated: document.getElementById("hide-isolated"),
   thematicThemeFilters: document.getElementById("thematic-theme-filters"),
   edgeConfidence: document.getElementById("edge-confidence"),
   edgeConfidenceVal: document.getElementById("edge-confidence-val"),
@@ -350,6 +357,14 @@ function buildSidebar() {
                      <span class="hint">(${state.thematicEdges.length.toLocaleString()})</span>`;
     ui.supertypeLegend.appendChild(row);
   }
+  {
+    const row = document.createElement("div");
+    row.className = "legend-row uninteractive";
+    row.innerHTML = `<span class="legend-swatch" style="background:${CHRONO_COLOR}"></span>
+                     <span class="legend-label">CHRONOLOGICAL (dotted)</span>
+                     <span class="hint">narrative order</span>`;
+    ui.supertypeLegend.appendChild(row);
+  }
 
   // Per-theme filters for thematic edges. These live under the
   // "Show THEMATIC_LINK" toggle and disable when the parent toggle is off.
@@ -454,6 +469,8 @@ ui.showThematic.addEventListener("change", () => {
   syncThematicThemeFiltersDisabled();
   applyFilters();
 });
+ui.showChrono.addEventListener("change", applyFilters);
+ui.hideIsolated.addEventListener("change", applyFilters);
 ui.edgeConfidence.addEventListener("input", () => {
   ui.edgeConfidenceVal.textContent = parseFloat(ui.edgeConfidence.value).toFixed(2);
   applyFilters();
@@ -538,6 +555,8 @@ function applyFilters() {
   const subplotTheme = ui.subplotTheme.value;
   const showCausal = ui.showCausal.checked;
   const showThematic = ui.showThematic.checked;
+  const showChrono = ui.showChrono.checked;
+  const hideIsolated = ui.hideIsolated.checked;
   const minEdgeConf = parseFloat(ui.edgeConfidence.value);
   const maxEvents = parseInt(ui.maxEvents.value, 10);
 
@@ -589,6 +608,37 @@ function applyFilters() {
   const finalCausal = view === "subplot" ? [] : causalShown;
   const finalThematic = view === "subplot" || showThematic ? thematicFiltered : [];
 
+  // Hide isolated events: drop nodes that have no causal / thematic edges
+  // among the currently-shown set. Chronological edges are NOT counted —
+  // they're a narrative scaffolding overlay, not real graph structure, so
+  // counting them would defeat the purpose ("isolated" should mean "no
+  // causal or thematic link to anything else in view").
+  if (hideIsolated) {
+    const connected = new Set();
+    for (const e of finalCausal) { connected.add(e.from); connected.add(e.to); }
+    for (const e of finalThematic) { connected.add(e.from); connected.add(e.to); }
+    visible = new Set([...visible].filter(id => connected.has(id)));
+  }
+
+  // Chronological edges connect each visible event to the next one in
+  // narrative order (chapter, then sequence). Computed after isolation
+  // pruning so the backbone skips dropped events cleanly.
+  let chronoEdges = [];
+  if (showChrono && visible.size > 1) {
+    const ordered = [...visible]
+      .map(id => state.eventById.get(id))
+      .filter(Boolean)
+      .sort((a, b) => (a.chapter - b.chapter) || (a.sequence - b.sequence));
+    for (let i = 0; i < ordered.length - 1; i++) {
+      const a = ordered[i], b = ordered[i + 1];
+      chronoEdges.push({
+        id: `chrono:${a.id}->${b.id}`,
+        from: a.id, to: b.id,
+        confidence: 1.0,
+      });
+    }
+  }
+
   ui.statShown.textContent = `shown: ${visible.size.toLocaleString()} / ${state.events.length.toLocaleString()}`;
   if (view === "subplot") {
     if (subplotTheme) {
@@ -598,10 +648,10 @@ function applyFilters() {
       ui.subplotInfo.textContent = "showing thematic edges across all themes";
     }
   }
-  render(visible, finalCausal, finalThematic, themesEnabled, minConf);
+  render(visible, finalCausal, finalThematic, chronoEdges, themesEnabled, minConf);
 }
 
-function render(visibleSet, causalEdges, thematicEdges, themesEnabled, minConf) {
+function render(visibleSet, causalEdges, thematicEdges, chronoEdges, themesEnabled, minConf) {
   if (visibleSet.size === 0) {
     if (state.cy) state.cy.elements().remove();
     return;
@@ -644,6 +694,19 @@ function render(visibleSet, causalEdges, thematicEdges, themesEnabled, minConf) 
         confidence: conf,
         edgeColor: THEME_COLOR[e.theme] || "#888",
         weight: 0.3 + conf * 1.2,
+      },
+    });
+  }
+  for (const e of chronoEdges) {
+    edges.push({
+      data: {
+        id: e.id, source: e.from, target: e.to,
+        relType: "CHRONOLOGICAL", kind: "chrono",
+        confidence: 1.0,
+        edgeColor: CHRONO_COLOR,
+        // Low spring weight: chronological is a narrative overlay, not a
+        // structural force; we don't want it dragging the layout into a line.
+        weight: 0.15,
       },
     });
   }
@@ -714,6 +777,21 @@ function cyStyle() {
         "arrow-scale": t.arrowScale,
         "line-style": "dashed",
         "curve-style": "bezier",
+      },
+    },
+    {
+      // Chronological edges: thin dotted narrative arrow, fixed muted tone.
+      selector: "edge[kind = 'chrono']",
+      style: {
+        "width": Math.max(0.8, 1.2 * t.edgeWidth),
+        "opacity": 0.55,
+        "line-color": "data(edgeColor)",
+        "target-arrow-color": "data(edgeColor)",
+        "target-arrow-shape": "triangle",
+        "arrow-scale": t.arrowScale * 0.8,
+        "line-style": "dotted",
+        "curve-style": "bezier",
+        "z-index": 1,
       },
     },
     {
@@ -927,9 +1005,14 @@ function showEdgeDetail(d) {
   const tgt = state.eventById.get(d.target);
   const conf = (d.confidence ?? 0).toFixed(2);
   const colorChip = `<span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:${d.edgeColor};vertical-align:middle;margin-right:6px"></span>`;
-  const kindLabel = d.kind === "causal"
-    ? `${colorChip}${escapeHtml(d.relType)}${d.supertype && d.supertype !== "OTHER" ? ` <span class="hint">(${escapeHtml(d.supertype)})</span>` : ""}`
-    : `${colorChip}THEMATIC · ${escapeHtml(d.relType)}`;
+  let kindLabel;
+  if (d.kind === "causal") {
+    kindLabel = `${colorChip}${escapeHtml(d.relType)}${d.supertype && d.supertype !== "OTHER" ? ` <span class="hint">(${escapeHtml(d.supertype)})</span>` : ""}`;
+  } else if (d.kind === "chrono") {
+    kindLabel = `${colorChip}CHRONOLOGICAL <span class="hint">(narrative order, overlay)</span>`;
+  } else {
+    kindLabel = `${colorChip}THEMATIC · ${escapeHtml(d.relType)}`;
+  }
 
   ui.detailEmpty.hidden = true;
   ui.detailContent.hidden = false;
