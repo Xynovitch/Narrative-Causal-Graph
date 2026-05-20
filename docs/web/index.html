@@ -81,7 +81,7 @@
         <input id="edge-confidence" type="range" min="0" max="1" step="0.05" value="0">
         <span id="edge-confidence-val">0.00</span>
       </label>
-      <div class="hint">Edge thickness &amp; opacity scale with confidence. Click an edge for its relation type and provenance. Chronological arrows link each visible event to the next one in narrative order; isolation is judged on causal/thematic edges only.</div>
+      <div class="hint">Edge thickness &amp; opacity scale with confidence. Click an edge for its relation type and provenance. Chronological arrows link each visible event to the next one in narrative order — they can stand on their own as a backbone view if you turn the other edge types off.</div>
     </section>
 
     <section>
@@ -140,8 +140,18 @@
   </div>
 
   <aside id="detail">
-    <div id="detail-empty">Click an event to inspect.</div>
-    <div id="detail-content" hidden></div>
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="detail">Detail</button>
+      <button class="tab-btn" data-tab="nodes">Nodes <span id="node-list-count" class="hint"></span></button>
+    </div>
+    <div id="tab-detail" class="tab-panel">
+      <div id="detail-empty">Click an event to inspect.</div>
+      <div id="detail-content" hidden></div>
+    </div>
+    <div id="tab-nodes" class="tab-panel" hidden>
+      <div class="hint" style="margin-bottom:6px">All events matching the current filters, in narrative order. Click to focus.</div>
+      <div id="node-list"></div>
+    </div>
   </aside>
 </main>
 

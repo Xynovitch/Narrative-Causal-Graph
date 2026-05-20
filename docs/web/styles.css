@@ -141,3 +141,31 @@ table.themes td.theme-name { font-weight: 600; }
 label.inline.tune { display: grid; grid-template-columns: 70px 1fr 36px; gap: 4px; align-items: center; font-size: 11px; }
 label.inline.tune input[type="range"] { width: 100%; }
 .tune-val { font-size: 10px; color: var(--muted); text-align: right; }
+
+.tab-bar {
+  display: flex; gap: 2px; border-bottom: 1px solid var(--border);
+  margin: -4px -4px 4px -4px;
+}
+.tab-btn {
+  background: transparent; border: none; border-bottom: 2px solid transparent;
+  padding: 6px 10px; color: var(--muted); font-size: 12px; cursor: pointer;
+  border-radius: 0;
+}
+.tab-btn:hover { color: var(--text); background: transparent; }
+.tab-btn.active { color: var(--text); border-bottom-color: var(--accent); }
+.tab-panel { display: flex; flex-direction: column; gap: 0; }
+
+#node-list { display: flex; flex-direction: column; gap: 1px; }
+.node-list-item {
+  font-size: 11px; padding: 4px 6px; border-bottom: 1px solid var(--border);
+  cursor: pointer; color: #aaa;
+  display: flex; gap: 8px; align-items: baseline;
+}
+.node-list-item:hover { color: #fff; background: var(--panel-2); }
+.node-list-item.selected { background: var(--panel-2); color: #fff; }
+.node-list-item .seq {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px; color: var(--accent);
+  flex-shrink: 0; min-width: 46px;
+}
+.node-list-item .desc { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

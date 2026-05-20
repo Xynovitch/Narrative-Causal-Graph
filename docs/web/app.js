@@ -200,6 +200,11 @@ const ui = {
   graph: document.getElementById("graph"),
   detailEmpty: document.getElementById("detail-empty"),
   detailContent: document.getElementById("detail-content"),
+  tabDetail: document.getElementById("tab-detail"),
+  tabNodes: document.getElementById("tab-nodes"),
+  tabButtons: document.querySelectorAll(".tab-btn"),
+  nodeList: document.getElementById("node-list"),
+  nodeListCount: document.getElementById("node-list-count"),
 };
 
 // ---------- Loading ----------
@@ -608,35 +613,40 @@ function applyFilters() {
   const finalCausal = view === "subplot" ? [] : causalShown;
   const finalThematic = view === "subplot" || showThematic ? thematicFiltered : [];
 
-  // Hide isolated events: drop nodes that have no causal / thematic edges
-  // among the currently-shown set. Chronological edges are NOT counted —
-  // they're a narrative scaffolding overlay, not real graph structure, so
-  // counting them would defeat the purpose ("isolated" should mean "no
-  // causal or thematic link to anything else in view").
+  // Chronological edges connect each visible event to the next one in
+  // narrative order (chapter, then sequence). Built before isolation
+  // pruning so chronological can serve as a standalone backbone — with
+  // chrono on, every event has a neighbor, so "show only chronological"
+  // (causal/thematic off) is a valid view that hide-isolated won't erase.
+  function buildChrono(set) {
+    if (!showChrono || set.size < 2) return [];
+    const ordered = [...set]
+      .map(id => state.eventById.get(id))
+      .filter(Boolean)
+      .sort((a, b) => (a.chapter - b.chapter) || (a.sequence - b.sequence));
+    const out = [];
+    for (let i = 0; i < ordered.length - 1; i++) {
+      const a = ordered[i], b = ordered[i + 1];
+      out.push({ id: `chrono:${a.id}->${b.id}`, from: a.id, to: b.id, confidence: 1.0 });
+    }
+    return out;
+  }
+  let chronoEdges = buildChrono(visible);
+
+  // Hide isolated events: drop nodes with no visible edges of any kind
+  // (causal, thematic, OR chronological). Counting chrono means the
+  // chronological backbone alone is enough to keep events on screen, so
+  // a chrono-only view stays intact.
   if (hideIsolated) {
     const connected = new Set();
     for (const e of finalCausal) { connected.add(e.from); connected.add(e.to); }
     for (const e of finalThematic) { connected.add(e.from); connected.add(e.to); }
+    for (const e of chronoEdges) { connected.add(e.from); connected.add(e.to); }
+    const before = visible.size;
     visible = new Set([...visible].filter(id => connected.has(id)));
-  }
-
-  // Chronological edges connect each visible event to the next one in
-  // narrative order (chapter, then sequence). Computed after isolation
-  // pruning so the backbone skips dropped events cleanly.
-  let chronoEdges = [];
-  if (showChrono && visible.size > 1) {
-    const ordered = [...visible]
-      .map(id => state.eventById.get(id))
-      .filter(Boolean)
-      .sort((a, b) => (a.chapter - b.chapter) || (a.sequence - b.sequence));
-    for (let i = 0; i < ordered.length - 1; i++) {
-      const a = ordered[i], b = ordered[i + 1];
-      chronoEdges.push({
-        id: `chrono:${a.id}->${b.id}`,
-        from: a.id, to: b.id,
-        confidence: 1.0,
-      });
-    }
+    // If pruning removed anything, the chrono chain has gaps now — rebuild
+    // so it links the surviving events in narrative order.
+    if (visible.size !== before) chronoEdges = buildChrono(visible);
   }
 
   ui.statShown.textContent = `shown: ${visible.size.toLocaleString()} / ${state.events.length.toLocaleString()}`;
@@ -649,7 +659,42 @@ function applyFilters() {
     }
   }
   render(visible, finalCausal, finalThematic, chronoEdges, themesEnabled, minConf);
+  updateNodeList(visible);
 }
+
+function updateNodeList(visibleSet) {
+  const ordered = [...visibleSet]
+    .map(id => state.eventById.get(id))
+    .filter(Boolean)
+    .sort((a, b) => (a.chapter - b.chapter) || (a.sequence - b.sequence));
+  ui.nodeListCount.textContent = ordered.length ? `(${ordered.length.toLocaleString()})` : "";
+  ui.nodeList.innerHTML = "";
+  for (const ev of ordered) {
+    const row = document.createElement("div");
+    row.className = "node-list-item" + (ev.id === state.selectedEventId ? " selected" : "");
+    row.dataset.id = ev.id;
+    row.innerHTML = `<span class="seq">${ev.chapter}.${ev.sequence}</span>
+                     <span class="desc" title="${escapeHtml(ev.description)}">${escapeHtml(truncate(ev.description, 120))}</span>`;
+    row.addEventListener("click", () => {
+      if (state.cy && state.cy.getElementById(ev.id).length) {
+        state.cy.center(state.cy.getElementById(ev.id));
+      }
+      showDetail(ev.id);
+      switchTab("detail");
+    });
+    ui.nodeList.appendChild(row);
+  }
+}
+
+function switchTab(name) {
+  ui.tabButtons.forEach(btn => btn.classList.toggle("active", btn.dataset.tab === name));
+  ui.tabDetail.hidden = name !== "detail";
+  ui.tabNodes.hidden = name !== "nodes";
+}
+
+ui.tabButtons.forEach(btn => {
+  btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+});
 
 function render(visibleSet, causalEdges, thematicEdges, chronoEdges, themesEnabled, minConf) {
   if (visibleSet.size === 0) {
@@ -663,7 +708,9 @@ function render(visibleSet, causalEdges, thematicEdges, chronoEdges, themesEnabl
     nodes.push({
       data: {
         id: ev.id,
-        label: truncate(ev.description, 60),
+        // Compact narrative coordinate. Full description lives in the
+        // Nodes tab + Detail panel; the graph itself stays uncluttered.
+        label: `${ev.chapter}.${ev.sequence}`,
         chapter: ev.chapter,
         themeColor: dominantThemeColor(ev, themesEnabled, minConf),
       },
@@ -719,8 +766,8 @@ function render(visibleSet, causalEdges, thematicEdges, chronoEdges, themesEnabl
       wheelSensitivity: 0.3,
       style: cyStyle(),
     });
-    state.cy.on("tap", "node", evt => showDetail(evt.target.id()));
-    state.cy.on("tap", "edge", evt => showEdgeDetail(evt.target.data()));
+    state.cy.on("tap", "node", evt => { showDetail(evt.target.id()); switchTab("detail"); });
+    state.cy.on("tap", "edge", evt => { showEdgeDetail(evt.target.data()); switchTab("detail"); });
   } else {
     state.cy.elements().remove();
     state.cy.add(elements);
@@ -913,6 +960,13 @@ function showDetail(eventId) {
   state.selectedEventId = eventId;
   ui.detailEmpty.hidden = true;
   ui.detailContent.hidden = false;
+  // Keep the list highlight in sync, even if the user is currently on the
+  // Nodes tab and clicked a "Caused by" / "Causes" link in Detail.
+  if (ui.nodeList) {
+    ui.nodeList.querySelectorAll(".node-list-item").forEach(el => {
+      el.classList.toggle("selected", el.dataset.id === eventId);
+    });
+  }
 
   const themeRows = THEMES.map(t => {
     const td = ev.themes[t] || { involvement: "none", role: null, confidence: 0, evidence: "" };
