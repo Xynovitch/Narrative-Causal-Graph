@@ -59,11 +59,14 @@ def normalize_theory_name(theory: str) -> str:
 class CEKGPreprocessor:
     def __init__(self, openai_model: Optional[str] = None, schema_path: Optional[str] = None,
                  checkpoint_dir: str = "./checkpoints", enable_checkpoints: bool = True):
-        if not config.OPENAI_API_KEY:
-            raise RuntimeError("OPENAI_API_KEY not set.")
-        
-        self.openai_model = openai_model or config.OPENAI_MODEL
-        self.client = llm_service.init_openai_client(config.OPENAI_API_KEY)
+        self.openai_model = openai_model or config.LLM_MODEL
+        self.client = llm_service.init_openai_client(
+            config.LLM_API_KEY, base_url=config.LLM_BASE_URL
+        )
+        self.mini_client = llm_service.init_mini_client(
+            config.LLM_API_KEY, base_url=config.LLM_MINI_BASE_URL
+        )
+        self.mini_model = config.LLM_MINI_MODEL
         self.dag_validator = utils.DAGValidator()
         self.global_event_sequence = 0
         self.ontology = get_ontology_manager(schema_path)
@@ -433,7 +436,7 @@ class CEKGPreprocessor:
             try:
                 agent_type = await llm_service.classify_agent_type(
                     char_name, sample_events, agent_type_names,
-                    self.openai_model, self.client
+                    self.mini_model, self.mini_client
                 )
                 
                 if self.ontology.validate_agent_type(agent_type):
@@ -590,7 +593,7 @@ class CEKGPreprocessor:
             async with _scene_sem:
                 print(f"[scenes-debug] ch{cid}: ACQUIRED, calling LLM", flush=True)
                 data = await llm_service.extract_scenes_from_chapter_async(
-                    evs, cid, self.openai_model, self.client
+                    evs, cid, self.mini_model, self.mini_client
                 )
                 print(f"[scenes-debug] ch{cid}: LLM returned ({len(data) if data else 0} items)", flush=True)
             if not data:

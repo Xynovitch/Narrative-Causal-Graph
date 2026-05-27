@@ -9,7 +9,7 @@ import traceback
 import asyncio
 from cekg_pipeline.pipeline import CEKGPreprocessor
 from cekg_pipeline.checkpoint_manager import CheckpointManager
-from cekg_pipeline.config import OPENAI_API_KEY, OPENAI_MODEL
+from cekg_pipeline.config import LLM_MODEL, LLM_BASE_URL
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -57,8 +57,8 @@ Examples:
                        help="Path to JSON schema file for ontologies")
     
     # Model
-    parser.add_argument("--openai-model", default=OPENAI_MODEL,
-                       help="OpenAI model to use (default: gpt-4o-mini)")
+    parser.add_argument("--openai-model", default=LLM_MODEL,
+                       help=f"LLM model name (default: {LLM_MODEL} via {LLM_BASE_URL})")
     
     # Processing Limits
     parser.add_argument("--max-chapters", type=int, default=None,
@@ -89,15 +89,6 @@ Examples:
     parser.add_argument("--disable-mixed-theory", action="store_true")
 
     args = parser.parse_args()
-
-    if not OPENAI_API_KEY:
-        print("\n" + "="*60)
-        print("ERROR: OPENAI_API_KEY not set!")
-        print("="*60)
-        print("\nPlease set your OpenAI API key:")
-        print("  export OPENAI_API_KEY='sk-...'")
-        print("="*60 + "\n")
-        exit(1)
 
     # Handle checkpoint listing
     if args.list_checkpoints:

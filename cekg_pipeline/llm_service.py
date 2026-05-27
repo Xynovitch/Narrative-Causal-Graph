@@ -122,10 +122,15 @@ JSON:
 # Service Functions
 # ---------------------------------------------------------------------------
 
-def init_openai_client(api_key: str) -> Any:
+def init_openai_client(api_key: str, base_url: str = None) -> Any:
     if openai is None:
         raise RuntimeError("openai package not installed.")
-    return openai.AsyncOpenAI(api_key=api_key, max_retries=0, timeout=180)
+    return openai.AsyncOpenAI(api_key=api_key, base_url=base_url, max_retries=0, timeout=180)
+
+def init_mini_client(api_key: str, base_url: str = None) -> Any:
+    if openai is None:
+        raise RuntimeError("openai package not installed.")
+    return openai.AsyncOpenAI(api_key=api_key, base_url=base_url, max_retries=0, timeout=180)
 
 async def _async_llm_json_call(prompt: str, model: str, client: Any, 
                                cache: BoundedCache, cache_key: str, 
@@ -146,79 +151,43 @@ async def _async_llm_json_call(prompt: str, model: str, client: Any,
     if cached is not None:
         return cached, None
 
-    is_reasoning_model = "gpt-5" in model or "o1" in model
-    
-    # ============================================================================
-    # ✅ FIX: DYNAMIC TOKEN ALLOCATION
-    # ============================================================================
-    
-    # Detect operation type from prompt content
+    # Detect operation type from prompt content for dynamic token allocation
     is_bulk_assessment = "Analyze" in prompt and "pairs" in prompt
     is_integrated_assessment = "BOTH causal AND semantic" in prompt
     is_event_extraction = "Extract ALL narrative events" in prompt
     is_scene_extraction = "Group events into scenes" in prompt
-    
+
     if is_integrated_assessment:
-        # Integrated mode - be EXTREMELY generous
         pair_count = prompt.count("->")
-        required_tokens = 3000 + (400 * pair_count) + 2000
-        max_tokens = min(required_tokens, 16000)
-        
+        max_tokens = min(3000 + (400 * pair_count) + 2000, 16000)
         print(f"[llm] Integrated (causal+semantic): {pair_count} pairs → {max_tokens} tokens")
-        
     elif is_bulk_assessment:
-        # Standard causal - very generous allocation
         pair_count = prompt.count("->")
-        required_tokens = 2000 + (300 * pair_count) + 2000
-        max_tokens = min(required_tokens, 16000)
-        
+        max_tokens = min(2000 + (300 * pair_count) + 2000, 16000)
         print(f"[llm] Bulk causal: {pair_count} pairs → {max_tokens} tokens")
-        
     elif is_event_extraction:
-        # Event extraction - EXTREMELY generous
-        # Just allocate maximum or near-maximum tokens
         input_chars = len(prompt)
-        estimated_events = max(input_chars // 100, 15)  # Very aggressive estimate
-        required_tokens = (estimated_events * 400) + 4000  # Huge per-event + large base
-        max_tokens = min(required_tokens, 16000)
-        
-        # If we're close to limit, just use maximum
+        estimated_events = max(input_chars // 100, 15)
+        max_tokens = min((estimated_events * 400) + 4000, 16000)
         if max_tokens > 12000:
             max_tokens = 16000
-        
         print(f"[llm] Event extraction: ~{estimated_events} events → {max_tokens} tokens (input: {input_chars} chars)")
-        
     elif is_scene_extraction:
-        # Scene extraction — use maximum to avoid truncation on large chapters
         max_tokens = 16000
-
     else:
-        # Default: very generous
         max_tokens = max(max_tokens, 8000)
 
-    # Cap max_tokens to the model's actual output token limit
-    if "gpt-3.5" in model:
-        max_tokens = min(max_tokens, 4096)
-
-    # ============================================================================
-    # END FIX
-    # ============================================================================
-    
     request_kwargs = {
         "model": model,
         "messages": [{"role": "user", "content": prompt}],
         "response_format": {"type": "json_object"},
-        "timeout": 600
+        "max_tokens": max_tokens,
+        "temperature": 0.0,
+        "seed": 42,
+        "timeout": 600,
+        # Disable Qwen3 chain-of-thought thinking for deterministic JSON output
+        "extra_body": {"chat_template_kwargs": {"enable_thinking": False}},
     }
-
-    if is_reasoning_model:
-        request_kwargs["max_completion_tokens"] = max_tokens
-        request_kwargs["temperature"] = 1.0
-        request_kwargs["seed"] = 42
-    else:
-        request_kwargs["max_tokens"] = max_tokens
-        request_kwargs["temperature"] = 0.0
-        request_kwargs["seed"] = 42
 
     for attempt in range(3):
         try:
@@ -400,28 +369,22 @@ async def assess_pairs_bulk(
         return [None] * len(pairs_batch)
 
 async def classify_agent_type(character_name: str, event_descriptions: List[str],
-                              agent_type_names: List[str], model: str, 
+                              agent_type_names: List[str], model: str,
                               client: Any) -> str:
-    """
-    OPTIMIZED: Compressed prompt, cheaper model for classification
-    """
-    # Use cheaper model for simple classification
-    cheap_model = "gpt-4o-mini"
-    
     events_text = "\n".join([f"- {desc[:60]}" for desc in event_descriptions[:10]])
     types_text = ", ".join(agent_type_names[:20])
-    
+
     prompt = PROMPT_AGENT_CLASS.format(
         name=character_name,
         actions=events_text,
         types=types_text
     )
-    
-    key = _hash_for_cache(f"agent:{character_name}:{len(event_descriptions)}", cheap_model)
-    
+
+    key = _hash_for_cache(f"agent:{character_name}:{len(event_descriptions)}", model)
+
     try:
         data, _ = await _async_llm_json_call(
-            prompt, cheap_model, client, agent_classification_cache, key, 512
+            prompt, model, client, agent_classification_cache, key, 512
         )
         
         if isinstance(data, dict) and "agentType" in data:
@@ -436,26 +399,17 @@ async def classify_agent_type(character_name: str, event_descriptions: List[str]
         return "STRUCTURAL_AGENT"
 
 async def extract_scenes_from_chapter_async(chapter_events, chapter_id, model, client):
-    """
-    OPTIMIZED: Compressed prompt, cheaper model
-    """
-    cheap_model = "gpt-4o-mini"
-
     if len(chapter_events) > 200:
         chapter_events = chapter_events[:200]
-    
-    # Minimal event representation
+
     simple = [{"id": e.id, "d": e.raw_description[:50]} for e in chapter_events]
-    
+
     prompt = PROMPT_SCENE.format(events=json.dumps(simple))
-    # Hash actual prompt content; the previous (chapter_id, len) tuple
-    # collided whenever two scene calls in the same chapter happened to use
-    # the same event count.
-    key = _hash_for_cache(f"scene_v2:{prompt}", cheap_model)
-    
+    key = _hash_for_cache(f"scene_v2:{prompt}", model)
+
     try:
         data, _ = await _async_llm_json_call(
-            prompt, cheap_model, client, scene_cache, key, 4096
+            prompt, model, client, scene_cache, key, 4096
         )
         return data if isinstance(data, list) else []
     except:
