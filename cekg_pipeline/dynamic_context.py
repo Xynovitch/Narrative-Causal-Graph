@@ -18,15 +18,20 @@ Pipeline:
 from typing import List, Tuple, Set, Dict, Optional, Any
 
 try:
-    from sentence_transformers import SentenceTransformer
     import numpy as np
-    _EMBED_AVAILABLE = True
+    _NUMPY_AVAILABLE = True
+except ImportError:
+    _NUMPY_AVAILABLE = False
+
+try:
+    from sentence_transformers import SentenceTransformer
+    _EMBED_AVAILABLE = _NUMPY_AVAILABLE
 except ImportError:
     _EMBED_AVAILABLE = False
 
 try:
     from rank_bm25 import BM25Okapi
-    _BM25_AVAILABLE = True
+    _BM25_AVAILABLE = _NUMPY_AVAILABLE
 except ImportError:
     _BM25_AVAILABLE = False
 
@@ -226,7 +231,7 @@ def get_bm25_pairs(
     Complements cosine similarity for named entities and domain terms that
     dense embeddings tend to compress away.
     """
-    if not _BM25_AVAILABLE or not _EMBED_AVAILABLE or not events:
+    if not _BM25_AVAILABLE or not events:
         return set()
 
     corpus = [e.raw_description.lower().split() for e in events]
