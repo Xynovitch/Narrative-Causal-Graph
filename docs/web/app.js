@@ -780,7 +780,14 @@ function switchTab(name) {
 }
 
 ui.tabButtons.forEach(btn => {
-  btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+  btn.addEventListener("click", () => {
+    switchTab(btn.dataset.tab);
+    // If switching to Causal tab and a node is already selected, rebuild it
+    if (btn.dataset.tab === "causal" && state.selectedEventId) {
+      const ev = state.eventById.get(state.selectedEventId);
+      if (ev) buildCausalTab(ev);
+    }
+  });
 });
 
 function render(visibleSet, causalEdges, thematicEdges, chronoEdges, themesEnabled, minConf) {
