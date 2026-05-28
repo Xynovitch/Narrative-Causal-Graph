@@ -39,12 +39,11 @@
       </select>
     </section>
 
-    <!-- Focus mode: search for a specific event to centre the graph on -->
+    <!-- Focus mode: shows focused event info + clear button -->
     <section id="focus-section" hidden>
-      <div class="panel-title">Focus on event</div>
-      <input id="focus-search" type="text" placeholder="Search event description…" autocomplete="off">
-      <div id="focus-results" class="focus-results"></div>
-      <div class="hint">Shows the selected event and all its direct causal connections. Click any node to re-focus.</div>
+      <div class="panel-title">Node focus</div>
+      <div id="focus-label" class="hint">Click any node or use "Isolate" in the detail panel to focus.</div>
+      <button id="focus-clear" hidden>✕ Clear focus</button>
     </section>
 
     <section id="theme-section">
@@ -176,7 +175,9 @@
     </div>
     <div id="tab-detail" class="tab-panel">
       <div id="detail-empty">Click an event to inspect.</div>
-      <div id="detail-content" hidden></div>
+      <div id="detail-content" hidden>
+        <button id="isolate-btn" class="isolate-btn" hidden>⬡ Isolate in graph</button>
+      </div>
     </div>
     <div id="tab-nodes" class="tab-panel" hidden>
       <div class="hint" style="margin-bottom:6px">All events matching the current filters, in narrative order. Click to focus.</div>

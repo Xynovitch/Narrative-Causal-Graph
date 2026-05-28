@@ -125,8 +125,9 @@ const ui = {
   themeConfidenceVal: document.getElementById("theme-confidence-val"),
   viewMode: document.getElementById("view-mode"),
   focusSection: document.getElementById("focus-section"),
-  focusSearch: document.getElementById("focus-search"),
-  focusResults: document.getElementById("focus-results"),
+  focusLabel: document.getElementById("focus-label"),
+  focusClear: document.getElementById("focus-clear"),
+  isolateBtn: document.getElementById("isolate-btn"),
   subplotSection: document.getElementById("subplot-section"),
   subplotThemeChecks: document.getElementById("subplot-theme-checks"),
   subplotInfo: document.getElementById("subplot-info"),
@@ -460,6 +461,10 @@ ui.viewMode.addEventListener("change", () => {
   const v = ui.viewMode.value;
   ui.subplotSection.hidden = v !== "subplot";
   ui.focusSection.hidden = v !== "focus";
+  if (v !== "focus") {
+    state.focusEventId = null;
+    updateFocusLabel();
+  }
   if (v === "subplot") updateSubplotInfo();
   applyFilters();
 });
@@ -498,29 +503,23 @@ ui.layoutSelect.addEventListener("change", () => runLayout());
 ui.reLayout.addEventListener("click", () => runLayout());
 ui.fitView.addEventListener("click", () => state.cy && state.cy.fit(null, 30));
 
-// Focus search: live results as user types
-ui.focusSearch.addEventListener("input", debounce(() => {
-  const q = ui.focusSearch.value.trim().toLowerCase();
-  ui.focusResults.innerHTML = "";
-  if (!q) return;
-  const matches = state.events.filter(ev =>
-    ev.description.toLowerCase().includes(q) || ev.id.toLowerCase().includes(q)
-  ).slice(0, 12);
-  for (const ev of matches) {
-    const item = document.createElement("div");
-    item.className = "node-list-item" + (ev.id === state.focusEventId ? " selected" : "");
-    item.dataset.id = ev.id;
-    item.innerHTML = `<span class="seq">${ev.chapter}.${ev.sequence}</span>
-                      <span class="desc" title="${escapeHtml(ev.description)}">${escapeHtml(truncate(ev.description, 100))}</span>`;
-    item.addEventListener("click", () => {
-      state.focusEventId = ev.id;
-      ui.focusSearch.value = truncate(ev.description, 60);
-      ui.focusResults.innerHTML = "";
-      applyFilters();
-    });
-    ui.focusResults.appendChild(item);
-  }
-}, 200));
+// "Isolate in graph" button in detail panel
+ui.isolateBtn.addEventListener("click", () => {
+  if (!state.selectedEventId) return;
+  ui.viewMode.value = "focus";
+  ui.subplotSection.hidden = true;
+  ui.focusSection.hidden = false;
+  state.focusEventId = state.selectedEventId;
+  updateFocusLabel();
+  applyFilters();
+});
+
+// Clear focus button
+ui.focusClear.addEventListener("click", () => {
+  state.focusEventId = null;
+  updateFocusLabel();
+  applyFilters();
+});
 
 // --- Layout-tuning sliders ---
 
@@ -629,7 +628,8 @@ function applyFilters() {
   const minEdgeConf = parseFloat(ui.edgeConfidence.value);
   const maxEvents = parseInt(ui.maxEvents.value, 10);
 
-  // Focus mode: build 1-hop causal neighborhood, bypassing chapter filter
+  // Focus mode: build 1-hop causal neighborhood when an event is isolated.
+  // Bypasses chapter filter to show all connections across the full novel.
   let focusNeighborhood = null;
   if (view === "focus" && state.focusEventId) {
     focusNeighborhood = new Set([state.focusEventId]);
@@ -642,12 +642,11 @@ function applyFilters() {
   // Event filter
   let visible = new Set();
   for (const ev of state.events) {
-    // Focus view ignores chapter filter, only shows neighborhood
-    if (view === "focus") {
-      if (!focusNeighborhood) continue;
+    if (view === "focus" && focusNeighborhood) {
+      // Isolated mode: only show the neighborhood, skip chapter filter
       if (!focusNeighborhood.has(ev.id)) continue;
     } else {
-      // Chapter filter
+      // All other modes (including focus with no event selected): use chapter filter
       if (chMode === "specific") {
         if (!specificChapters || !specificChapters.has(ev.chapter)) continue;
       } else {
@@ -742,7 +741,7 @@ function applyFilters() {
   }
 
   if (view === "focus" && !state.focusEventId) {
-    ui.statShown.textContent = "Focus mode — search for an event in the sidebar.";
+    ui.statShown.textContent += " — click a node, then Isolate";
   }
 
   render(visible, finalCausal, finalThematic, chronoEdges, themesEnabled, minConf);
@@ -860,9 +859,10 @@ function render(visibleSet, causalEdges, thematicEdges, chronoEdges, themesEnabl
       const id = evt.target.id();
       showDetail(id);
       switchTab("detail");
-      // In focus mode, clicking a neighbor re-focuses the graph on it
-      if (ui.viewMode.value === "focus") {
+      // In focus mode (when already isolated), clicking a neighbor re-isolates on it
+      if (ui.viewMode.value === "focus" && state.focusEventId) {
         state.focusEventId = id;
+        updateFocusLabel();
         applyFilters();
       }
     });
@@ -1027,6 +1027,9 @@ function showDetail(eventId) {
   state.selectedEventId = eventId;
   ui.detailEmpty.hidden = true;
   ui.detailContent.hidden = false;
+  // Show Isolate button whenever a node is selected
+  ui.isolateBtn.hidden = false;
+  ui.isolateBtn.textContent = state.focusEventId === eventId ? "⬡ Already isolated" : "⬡ Isolate in graph";
 
   if (ui.nodeList) {
     ui.nodeList.querySelectorAll(".node-list-item").forEach(el => {
@@ -1202,6 +1205,17 @@ function showEdgeDetail(d) {
       showDetail(id);
     });
   });
+}
+
+function updateFocusLabel() {
+  if (!state.focusEventId) {
+    ui.focusLabel.textContent = "Click any node then use "Isolate in graph".";
+    ui.focusClear.hidden = true;
+  } else {
+    const ev = state.eventById.get(state.focusEventId);
+    ui.focusLabel.textContent = ev ? `Focused: ${truncate(ev.description, 60)}` : state.focusEventId;
+    ui.focusClear.hidden = false;
+  }
 }
 
 init();
