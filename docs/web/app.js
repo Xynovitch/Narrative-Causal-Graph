@@ -7,33 +7,22 @@ const THEME_COLOR = {
 };
 const ACTION_COLOR_DEFAULT = "#7a8aa8";
 
-// Causal edge_supertype -> color, so the graph distinguishes "X enables Y"
-// from "X blocks Y" from "X reveals Y" at a glance. Categories come from
-// FINE_TO_SUPERTYPE in cekg_pipeline/theme_annotation.py.
 const SUPERTYPE_COLOR = {
-  CAUSAL_PRODUCTION:    "#4eae5b",  // green: production / enabling
-  CAUSAL_CONSTRAINT:    "#d24747",  // red: blocking / constraint
-  EMOTIONAL_DRIVE:      "#e98abf",  // pink: emotional cause
-  SOCIAL_BOND:          "#e8973c",  // orange: relational tie
-  NARRATIVE_ESCALATION: "#e15759",  // red-orange: rising tension
-  NARRATIVE_RESOLUTION: "#76b7e0",  // light blue: closure
-  REVELATION_EPISTEMIC: "#9b6bd9",  // purple: information surfaces
-  MEDIATION_TRANSFER:   "#f1ce63",  // yellow: transfer / delegation
-  THEMATIC_CONTRAST:    "#7ec6c2",  // teal: structural contrast
-  THEMATIC_EXPLANATION: "#a3b87f",  // muted green: explanatory
+  CAUSAL_PRODUCTION:    "#4eae5b",
+  CAUSAL_CONSTRAINT:    "#d24747",
+  EMOTIONAL_DRIVE:      "#e98abf",
+  SOCIAL_BOND:          "#e8973c",
+  NARRATIVE_ESCALATION: "#e15759",
+  NARRATIVE_RESOLUTION: "#76b7e0",
+  REVELATION_EPISTEMIC: "#9b6bd9",
+  MEDIATION_TRANSFER:   "#f1ce63",
+  THEMATIC_CONTRAST:    "#7ec6c2",
+  THEMATIC_EXPLANATION: "#a3b87f",
 };
 const SUPERTYPE_DEFAULT = "#5a607a";
-
-// Chronological-overlay edges (event_n -> event_{n+1} in narrative order).
-// Muted slate so they read as background scaffolding rather than competing
-// with the causal supertype palette.
 const CHRONO_COLOR = "#6b7390";
 
-// JS-side fallback for relation_type -> edge_supertype, used when the data
-// was emitted by an older pipeline run whose FINE_TO_SUPERTYPE map didn't
-// cover gpt-5's vocabulary. Mirrors cekg_pipeline/theme_annotation.py.
 const RELTYPE_TO_SUPERTYPE = {
-  // Production family
   CAUSES: "CAUSAL_PRODUCTION", DIRECT_CAUSE: "CAUSAL_PRODUCTION",
   ENABLES: "CAUSAL_PRODUCTION", FACILITATES: "CAUSAL_PRODUCTION",
   TRIGGERS: "CAUSAL_PRODUCTION", INCITING_CAUSE: "CAUSAL_PRODUCTION",
@@ -43,7 +32,6 @@ const RELTYPE_TO_SUPERTYPE = {
   SCENE_CAUSATION: "CAUSAL_PRODUCTION", SCENE_CHAINING: "CAUSAL_PRODUCTION",
   PLOT_PROPULSION: "CAUSAL_PRODUCTION", STRUCTURAL_DEPENDENCE: "CAUSAL_PRODUCTION",
   CONSEQUENCE_CHAINING: "CAUSAL_PRODUCTION", REINFORCES_GOAL: "CAUSAL_PRODUCTION",
-  // Constraint family
   PREVENTS: "CAUSAL_CONSTRAINT", BLOCKS: "CAUSAL_CONSTRAINT", INHIBITS: "CAUSAL_CONSTRAINT",
   COMPLICATES: "CAUSAL_CONSTRAINT", OPPOSES: "CAUSAL_CONSTRAINT",
   DESIRE_OBSTRUCTION: "CAUSAL_CONSTRAINT", DESIRE_COMPETITION: "CAUSAL_CONSTRAINT",
@@ -51,7 +39,6 @@ const RELTYPE_TO_SUPERTYPE = {
   MISSION_FAILURE: "CAUSAL_CONSTRAINT", MISSION_ABANDONMENT: "CAUSAL_CONSTRAINT",
   OPPOSITION_PRESSURE: "CAUSAL_CONSTRAINT", PREVENTS_OUTCOME: "CAUSAL_CONSTRAINT",
   RELATIONAL_FRAGMENTATION: "CAUSAL_CONSTRAINT",
-  // Emotional drive
   COMPASSION_TRIGGER: "EMOTIONAL_DRIVE", EMOTIONAL_MANIPULATION: "EMOTIONAL_DRIVE",
   EMOTIONAL_DEPENDENCE: "EMOTIONAL_DRIVE", EMOTIONAL_TRIGGER: "EMOTIONAL_DRIVE",
   EMOTIONAL_CONTAGION: "EMOTIONAL_DRIVE", EMOTIONAL_DESPAIR: "EMOTIONAL_DRIVE",
@@ -59,69 +46,51 @@ const RELTYPE_TO_SUPERTYPE = {
   EMOTIONAL_CONFESSION: "EMOTIONAL_DRIVE", EMOTIONAL_ENDURANCE: "EMOTIONAL_DRIVE",
   PSYCHOLOGICAL_IMPACT: "EMOTIONAL_DRIVE", PROTECTIVE_INSTINCT: "EMOTIONAL_DRIVE",
   CRUELTY_PLEASURE: "EMOTIONAL_DRIVE", NOSTALGIA_INDUCEMENT: "EMOTIONAL_DRIVE",
-  ENRAGES: "EMOTIONAL_DRIVE",
-  PSYCHOLOGICAL_PRESSURE: "EMOTIONAL_DRIVE",
+  ENRAGES: "EMOTIONAL_DRIVE", PSYCHOLOGICAL_PRESSURE: "EMOTIONAL_DRIVE",
   PSYCHOLOGICAL_REINFORCEMENT: "EMOTIONAL_DRIVE", EMOTIONAL_DISTANCE: "EMOTIONAL_DRIVE",
-  // Social bond
   ALLY_DEPENDENCE: "SOCIAL_BOND", ALLY_SUPPORT: "SOCIAL_BOND",
   FAMILY_INFLUENCE: "SOCIAL_BOND", FAMILY_BACKGROUND_REACTION: "SOCIAL_BOND",
   INHERITED_OBLIGATION: "SOCIAL_BOND", MENTORSHIP_SUPPORT: "SOCIAL_BOND",
   MOTIVATES: "SOCIAL_BOND", PERSUASION_ATTEMPT: "SOCIAL_BOND",
   INTERPERSONAL_CARE: "SOCIAL_BOND", MORAL_GUIDANCE: "SOCIAL_BOND",
   INTERPERSONAL_BOUNDARY: "SOCIAL_BOND",
-  // Narrative escalation
   CAUSES_REVERSAL: "NARRATIVE_ESCALATION", ACTION_ESCALATION: "NARRATIVE_ESCALATION",
   CONSCIENCE_CONFLICT: "NARRATIVE_ESCALATION", IDENTITY_CONFLICT: "NARRATIVE_ESCALATION",
   CONFLICT_OF_INTEREST: "NARRATIVE_ESCALATION", PHYSICAL_CONFRONTATION: "NARRATIVE_ESCALATION",
   ESCALATES: "NARRATIVE_ESCALATION", COMPLICATES_FURTHER: "NARRATIVE_ESCALATION",
   CHALLENGES: "NARRATIVE_ESCALATION", MORAL_CHALLENGE: "NARRATIVE_ESCALATION",
-  MISSED_OPPORTUNITY: "NARRATIVE_ESCALATION",
-  EXPECTATION_DISAPPOINTMENT: "NARRATIVE_ESCALATION",
-  PERSONAL_TRANSFORMATION: "NARRATIVE_ESCALATION",
-  PERCEPTION_SHIFT: "NARRATIVE_ESCALATION",
+  MISSED_OPPORTUNITY: "NARRATIVE_ESCALATION", EXPECTATION_DISAPPOINTMENT: "NARRATIVE_ESCALATION",
+  PERSONAL_TRANSFORMATION: "NARRATIVE_ESCALATION", PERCEPTION_SHIFT: "NARRATIVE_ESCALATION",
   INTERPERSONAL_CONFLICT: "NARRATIVE_ESCALATION", ESCALATES_CONFLICT: "NARRATIVE_ESCALATION",
   SCENE_REVERSAL: "NARRATIVE_ESCALATION", MORAL_CORRUPTION_INFLUENCE: "NARRATIVE_ESCALATION",
   LEADS_TO_CRISIS: "NARRATIVE_ESCALATION", EXPECTED_RESULT_SHIFT: "NARRATIVE_ESCALATION",
-  // Resolution
   RESOLVES: "NARRATIVE_RESOLUTION", CONCLUDES: "NARRATIVE_RESOLUTION",
   REDEEMS: "NARRATIVE_RESOLUTION", PERSONAL_JOURNEY: "NARRATIVE_RESOLUTION",
   MENTAL_RELIEF: "NARRATIVE_RESOLUTION",
-  // Revelation / epistemic
   REVEALS: "REVELATION_EPISTEMIC", EXPOSES: "REVELATION_EPISTEMIC",
   CONCEALS: "REVELATION_EPISTEMIC", FORESHADOWS: "REVELATION_EPISTEMIC",
   PAST_CONNECTION: "REVELATION_EPISTEMIC", LOVE_INSIGHT: "REVELATION_EPISTEMIC",
-  HISTORICAL_COMPARISON: "REVELATION_EPISTEMIC",
-  REVEALS_INFORMATION: "REVELATION_EPISTEMIC", BACKSTORY_PRESSURE: "REVELATION_EPISTEMIC",
-  MORAL_REVELATION_TRIGGER: "REVELATION_EPISTEMIC", MORAL_JUDGMENT: "REVELATION_EPISTEMIC",
-  // Mediation / transfer
+  HISTORICAL_COMPARISON: "REVELATION_EPISTEMIC", REVEALS_INFORMATION: "REVELATION_EPISTEMIC",
+  BACKSTORY_PRESSURE: "REVELATION_EPISTEMIC", MORAL_REVELATION_TRIGGER: "REVELATION_EPISTEMIC",
+  MORAL_JUDGMENT: "REVELATION_EPISTEMIC",
   INFORMS: "MEDIATION_TRANSFER", MEDIATES: "MEDIATION_TRANSFER",
   TRANSFERS: "MEDIATION_TRANSFER", DELEGATES: "MEDIATION_TRANSFER",
   FINANCIAL_NEED: "MEDIATION_TRANSFER", CULTURAL_EDUCATION: "MEDIATION_TRANSFER",
   DECISION_MAKING: "MEDIATION_TRANSFER",
-  // Thematic
   CONTRASTS: "THEMATIC_CONTRAST", MIRRORS: "THEMATIC_CONTRAST",
   EXPLAINS: "THEMATIC_EXPLANATION", SUPPORTS: "THEMATIC_EXPLANATION",
   NARRATIVE_COMPOSITE: "THEMATIC_EXPLANATION",
 };
 
-// Register Cytoscape extensions if their globals loaded.
 if (typeof cytoscape !== "undefined") {
   if (typeof cytoscapeFcose !== "undefined") cytoscape.use(cytoscapeFcose);
   if (typeof cytoscapeCola !== "undefined") cytoscape.use(cytoscapeCola);
 }
 
 const TUNING_DEFAULTS = {
-  nodeSize: 1.0,
-  edgeWidth: 1.0,
-  arrowScale: 0.8,
-  labelSize: 8,
-  scaleOnZoom: true,
-  repulsion: 1.0,
-  edgeLength: 1.0,
-  edgeStrength: 1.0,
-  gravity: 1.0,
-  componentSpacing: 1.5,
-  friction: 0.7,
+  nodeSize: 1.0, edgeWidth: 1.0, arrowScale: 0.8, labelSize: 8, scaleOnZoom: true,
+  repulsion: 1.0, edgeLength: 1.0, edgeStrength: 1.0, gravity: 1.0,
+  componentSpacing: 1.5, friction: 0.7,
 };
 
 const state = {
@@ -139,10 +108,8 @@ const state = {
   chapterMax: 1,
   cy: null,
   selectedEventId: null,
-  // Supertypes the user has hidden via the legend. Edges with a supertype in
-  // this set are filtered out of the rendered graph.
+  focusEventId: null,
   hiddenSupertypes: new Set(),
-  // Themes whose thematic edges are hidden. Each entry is one of THEMES.
   hiddenThematicThemes: new Set(),
 };
 
@@ -157,11 +124,20 @@ const ui = {
   themeConfidence: document.getElementById("theme-confidence"),
   themeConfidenceVal: document.getElementById("theme-confidence-val"),
   viewMode: document.getElementById("view-mode"),
+  focusSection: document.getElementById("focus-section"),
+  focusSearch: document.getElementById("focus-search"),
+  focusResults: document.getElementById("focus-results"),
   subplotSection: document.getElementById("subplot-section"),
-  subplotTheme: document.getElementById("subplot-theme"),
+  subplotThemeChecks: document.getElementById("subplot-theme-checks"),
   subplotInfo: document.getElementById("subplot-info"),
+  chapterMode: document.getElementById("chapter-mode"),
+  chapterRangeRow: document.getElementById("chapter-range-row"),
+  chapterSpecificRow: document.getElementById("chapter-specific-row"),
   chapterMin: document.getElementById("chapter-min"),
   chapterMax: document.getElementById("chapter-max"),
+  chapterSpecific: document.getElementById("chapter-specific"),
+  attrCharacter: document.getElementById("attr-character"),
+  attrCharacterList: document.getElementById("attr-character-list"),
   agentSelect: document.getElementById("agent-select"),
   showCausal: document.getElementById("show-causal"),
   showThematic: document.getElementById("show-thematic"),
@@ -202,6 +178,9 @@ const ui = {
   detailContent: document.getElementById("detail-content"),
   tabDetail: document.getElementById("tab-detail"),
   tabNodes: document.getElementById("tab-nodes"),
+  tabCausal: document.getElementById("tab-causal"),
+  causalTabEmpty: document.getElementById("causal-tab-empty"),
+  causalTabContent: document.getElementById("causal-tab-content"),
   tabButtons: document.querySelectorAll(".tab-btn"),
   nodeList: document.getElementById("node-list"),
   nodeListCount: document.getElementById("node-list-count"),
@@ -308,6 +287,7 @@ function ingest(jsonld) {
   state.chapterMin = chapters.length ? Math.min(...chapters) : 1;
   state.chapterMax = chapters.length ? Math.max(...chapters) : 1;
 
+  state.focusEventId = null;
   buildSidebar();
   ui.statEvents.textContent = `events: ${state.events.length.toLocaleString()}`;
   ui.statEdges.textContent = `edges: ${(state.causalEdges.length + state.thematicEdges.length).toLocaleString()}`;
@@ -322,15 +302,12 @@ function addToBucket(map, key, value) {
 // ---------- Sidebar wiring ----------
 
 function buildSidebar() {
-  // Causal-edge supertype legend, restricted to supertypes actually present in
-  // this dataset. Each row is clickable: clicking toggles whether that
-  // supertype's edges render.
+  // Supertype legend
   const presentSupertypes = new Map();
   for (const e of state.causalEdges) {
     const st = e.edgeSupertype || "OTHER";
     presentSupertypes.set(st, (presentSupertypes.get(st) || 0) + 1);
   }
-  // Drop hidden entries that no longer exist (e.g. after switching novels).
   for (const st of [...state.hiddenSupertypes]) {
     if (!presentSupertypes.has(st)) state.hiddenSupertypes.delete(st);
   }
@@ -371,10 +348,9 @@ function buildSidebar() {
     ui.supertypeLegend.appendChild(row);
   }
 
-  // Per-theme filters for thematic edges. These live under the
-  // "Show THEMATIC_LINK" toggle and disable when the parent toggle is off.
   buildThematicThemeFilters();
 
+  // Node coloring theme checkboxes
   ui.themeFilters.innerHTML = "";
   for (const t of THEMES) {
     const lbl = document.createElement("label");
@@ -383,30 +359,37 @@ function buildSidebar() {
     ui.themeFilters.appendChild(lbl);
   }
 
-  ui.subplotTheme.innerHTML = "";
-  // "" = no theme filter; subplot view still strips causal edges so you see
-  // a thematic-only graph, but across all themes.
-  const anyOpt = document.createElement("option");
-  anyOpt.value = ""; anyOpt.textContent = "— all themes —";
-  ui.subplotTheme.appendChild(anyOpt);
+  // Subplot multi-theme checkboxes
+  ui.subplotThemeChecks.innerHTML = "";
   for (const t of THEMES) {
-    const opt = document.createElement("option");
-    opt.value = t; opt.textContent = `${t} (${state.themeToEvents[t].size})`;
-    ui.subplotTheme.appendChild(opt);
+    const lbl = document.createElement("label");
+    lbl.innerHTML = `<input type="checkbox" data-theme="${t}" checked> <span class="theme-${t.toLowerCase()}">${t}</span> <span class="hint">(${state.themeToEvents[t].size})</span>`;
+    lbl.querySelector("input").addEventListener("change", () => {
+      updateSubplotInfo();
+      applyFilters();
+    });
+    ui.subplotThemeChecks.appendChild(lbl);
   }
 
+  // Chapter range defaults
   ui.chapterMin.value = state.chapterMin;
   ui.chapterMin.min = state.chapterMin;
   ui.chapterMin.max = state.chapterMax;
-  // Show 3 chapters by default — wide enough to see edge-type variety,
-  // narrow enough that the layout settles fast on first paint.
   ui.chapterMax.value = Math.min(state.chapterMin + 2, state.chapterMax);
   ui.chapterMax.min = state.chapterMin;
   ui.chapterMax.max = state.chapterMax;
 
-  // Agents sorted by event count
-  const sortedAgents = [...state.agentToEvents.entries()]
-    .sort((a, b) => b[1].size - a[1].size);
+  // Attribute search: populate datalist from all characters
+  ui.attrCharacterList.innerHTML = "";
+  const allChars = [...state.agentToEvents.keys()].sort();
+  for (const c of allChars) {
+    const opt = document.createElement("option");
+    opt.value = c;
+    ui.attrCharacterList.appendChild(opt);
+  }
+
+  // Legacy agent select (hidden section, kept for backward compat)
+  const sortedAgents = [...state.agentToEvents.entries()].sort((a, b) => b[1].size - a[1].size);
   ui.agentSelect.innerHTML = '<option value="">— any —</option>';
   for (const [agent, evs] of sortedAgents) {
     const opt = document.createElement("option");
@@ -417,8 +400,6 @@ function buildSidebar() {
 }
 
 function buildThematicThemeFilters() {
-  // Count thematic edges per theme so the user sees how dense each theme is
-  // before toggling. Only render themes that actually appear in the data.
   const counts = new Map();
   for (const e of state.thematicEdges) {
     if (!e.theme) continue;
@@ -433,7 +414,6 @@ function buildThematicThemeFilters() {
     return;
   }
   ui.thematicThemeFilters.hidden = false;
-  // Iterate THEMES (not the Map) so order is consistent across novels.
   for (const t of THEMES) {
     if (!counts.has(t)) continue;
     const count = counts.get(t);
@@ -457,17 +437,49 @@ function syncThematicThemeFiltersDisabled() {
   else ui.thematicThemeFilters.classList.add("disabled");
 }
 
+function updateSubplotInfo() {
+  const checked = [...ui.subplotThemeChecks.querySelectorAll("input[type=checkbox]")]
+    .filter(cb => cb.checked).map(cb => cb.dataset.theme);
+  if (checked.length === 0) {
+    ui.subplotInfo.textContent = "No themes selected — nothing will show.";
+  } else if (checked.length === THEMES.length) {
+    ui.subplotInfo.textContent = "Showing events with any theme involvement.";
+  } else {
+    ui.subplotInfo.textContent = `Events with ${checked.join(" or ")} involvement.`;
+  }
+}
+
+// ---------- Event listeners ----------
+
 ui.themeConfidence.addEventListener("input", () => {
   ui.themeConfidenceVal.textContent = parseFloat(ui.themeConfidence.value).toFixed(2);
   applyFilters();
 });
+
 ui.viewMode.addEventListener("change", () => {
-  ui.subplotSection.hidden = ui.viewMode.value !== "subplot";
+  const v = ui.viewMode.value;
+  ui.subplotSection.hidden = v !== "subplot";
+  ui.focusSection.hidden = v !== "focus";
+  if (v === "subplot") updateSubplotInfo();
   applyFilters();
 });
-ui.subplotTheme.addEventListener("change", applyFilters);
+
+ui.subplotThemeChecks.addEventListener && (() => {})(); // checkboxes wired in buildSidebar
+
+ui.chapterMode.addEventListener("change", () => {
+  const specific = ui.chapterMode.value === "specific";
+  ui.chapterRangeRow.hidden = specific;
+  ui.chapterSpecificRow.hidden = !specific;
+  applyFilters();
+});
+
 ui.chapterMin.addEventListener("change", applyFilters);
 ui.chapterMax.addEventListener("change", applyFilters);
+ui.chapterSpecific.addEventListener("input", debounce(applyFilters, 300));
+
+ui.attrCharacter.addEventListener("input", debounce(applyFilters, 250));
+document.querySelectorAll("input[name='attr-role']").forEach(r => r.addEventListener("change", applyFilters));
+
 ui.agentSelect.addEventListener("change", applyFilters);
 ui.showCausal.addEventListener("change", applyFilters);
 ui.showThematic.addEventListener("change", () => {
@@ -486,6 +498,30 @@ ui.layoutSelect.addEventListener("change", () => runLayout());
 ui.reLayout.addEventListener("click", () => runLayout());
 ui.fitView.addEventListener("click", () => state.cy && state.cy.fit(null, 30));
 
+// Focus search: live results as user types
+ui.focusSearch.addEventListener("input", debounce(() => {
+  const q = ui.focusSearch.value.trim().toLowerCase();
+  ui.focusResults.innerHTML = "";
+  if (!q) return;
+  const matches = state.events.filter(ev =>
+    ev.description.toLowerCase().includes(q) || ev.id.toLowerCase().includes(q)
+  ).slice(0, 12);
+  for (const ev of matches) {
+    const item = document.createElement("div");
+    item.className = "node-list-item" + (ev.id === state.focusEventId ? " selected" : "");
+    item.dataset.id = ev.id;
+    item.innerHTML = `<span class="seq">${ev.chapter}.${ev.sequence}</span>
+                      <span class="desc" title="${escapeHtml(ev.description)}">${escapeHtml(truncate(ev.description, 100))}</span>`;
+    item.addEventListener("click", () => {
+      state.focusEventId = ev.id;
+      ui.focusSearch.value = truncate(ev.description, 60);
+      ui.focusResults.innerHTML = "";
+      applyFilters();
+    });
+    ui.focusResults.appendChild(item);
+  }
+}, 200));
+
 // --- Layout-tuning sliders ---
 
 function bindVisualSlider(input, label, key, fmt = v => parseFloat(v).toFixed(1)) {
@@ -501,19 +537,14 @@ function bindForceSlider(input, label, key, fmt = v => parseFloat(v).toFixed(1) 
     label.textContent = fmt(input.value);
     runLayout();
   });
-  input.addEventListener("input", () => {
-    label.textContent = fmt(input.value);
-  });
+  input.addEventListener("input", () => { label.textContent = fmt(input.value); });
 }
 
 bindVisualSlider(ui.tNodeSize, ui.tNodeSizeV, "nodeSize");
 bindVisualSlider(ui.tEdgeWidth, ui.tEdgeWidthV, "edgeWidth");
 bindVisualSlider(ui.tArrowScale, ui.tArrowScaleV, "arrowScale");
 bindVisualSlider(ui.tLabelSize, ui.tLabelSizeV, "labelSize", v => String(parseInt(v, 10)));
-ui.tScaleOnZoom.addEventListener("change", () => {
-  state.tuning.scaleOnZoom = ui.tScaleOnZoom.checked;
-  applyVisualTuning();
-});
+ui.tScaleOnZoom.addEventListener("change", () => { state.tuning.scaleOnZoom = ui.tScaleOnZoom.checked; applyVisualTuning(); });
 
 bindForceSlider(ui.tRepulsion, ui.tRepulsionV, "repulsion");
 bindForceSlider(ui.tEdgeLength, ui.tEdgeLengthV, "edgeLength");
@@ -524,7 +555,6 @@ bindForceSlider(ui.tFriction, ui.tFrictionV, "friction", v => parseFloat(v).toFi
 
 ui.tReset.addEventListener("click", () => {
   state.tuning = { ...TUNING_DEFAULTS };
-  // Restore slider positions and label values
   ui.tNodeSize.value = TUNING_DEFAULTS.nodeSize; ui.tNodeSizeV.textContent = TUNING_DEFAULTS.nodeSize.toFixed(1);
   ui.tEdgeWidth.value = TUNING_DEFAULTS.edgeWidth; ui.tEdgeWidthV.textContent = TUNING_DEFAULTS.edgeWidth.toFixed(1);
   ui.tArrowScale.value = TUNING_DEFAULTS.arrowScale; ui.tArrowScaleV.textContent = TUNING_DEFAULTS.arrowScale.toFixed(1);
@@ -546,18 +576,52 @@ function debounce(fn, ms) {
 
 // ---------- Filter / render ----------
 
+function parseChapterSpec(spec) {
+  const chapters = new Set();
+  for (const part of spec.split(",")) {
+    const trimmed = part.trim();
+    if (!trimmed) continue;
+    const range = trimmed.split("-");
+    if (range.length === 2) {
+      const from = parseInt(range[0], 10);
+      const to = parseInt(range[1], 10);
+      if (!isNaN(from) && !isNaN(to)) {
+        for (let i = Math.min(from, to); i <= Math.max(from, to); i++) chapters.add(i);
+      }
+    } else {
+      const n = parseInt(trimmed, 10);
+      if (!isNaN(n)) chapters.add(n);
+    }
+  }
+  return chapters;
+}
+
 function applyFilters() {
   const themesEnabled = new Set(
     [...ui.themeFilters.querySelectorAll("input[type=checkbox]")]
       .filter(cb => cb.checked).map(cb => cb.dataset.theme)
   );
   const minConf = parseFloat(ui.themeConfidence.value);
+
+  // Chapter filter
+  const chMode = ui.chapterMode.value;
   const chMin = parseInt(ui.chapterMin.value, 10);
   const chMax = parseInt(ui.chapterMax.value, 10);
-  const agent = ui.agentSelect.value;
+  const specificChapters = chMode === "specific" ? parseChapterSpec(ui.chapterSpecific.value) : null;
+
+  // Attribute search
+  const attrChar = ui.attrCharacter.value.trim().toLowerCase();
+  const attrRole = (document.querySelector("input[name='attr-role']:checked") || {}).value || "any";
+
   const search = ui.search.value.trim().toLowerCase();
   const view = ui.viewMode.value;
-  const subplotTheme = ui.subplotTheme.value;
+
+  // Subplot: multiple themes (checkboxes)
+  const subplotThemes = new Set(
+    [...ui.subplotThemeChecks.querySelectorAll("input[type=checkbox]")]
+      .filter(cb => cb.checked).map(cb => cb.dataset.theme)
+  );
+
   const showCausal = ui.showCausal.checked;
   const showThematic = ui.showThematic.checked;
   const showChrono = ui.showChrono.checked;
@@ -565,35 +629,61 @@ function applyFilters() {
   const minEdgeConf = parseFloat(ui.edgeConfidence.value);
   const maxEvents = parseInt(ui.maxEvents.value, 10);
 
+  // Focus mode: build 1-hop causal neighborhood, bypassing chapter filter
+  let focusNeighborhood = null;
+  if (view === "focus" && state.focusEventId) {
+    focusNeighborhood = new Set([state.focusEventId]);
+    for (const e of state.causalEdges) {
+      if (e.from === state.focusEventId) focusNeighborhood.add(e.to);
+      if (e.to === state.focusEventId) focusNeighborhood.add(e.from);
+    }
+  }
+
   // Event filter
   let visible = new Set();
   for (const ev of state.events) {
-    if (ev.chapter < chMin || ev.chapter > chMax) continue;
-    if (agent) {
-      if (!ev.actors.includes(agent) && !ev.patients.includes(agent)) continue;
+    // Focus view ignores chapter filter, only shows neighborhood
+    if (view === "focus") {
+      if (!focusNeighborhood) continue;
+      if (!focusNeighborhood.has(ev.id)) continue;
+    } else {
+      // Chapter filter
+      if (chMode === "specific") {
+        if (!specificChapters || !specificChapters.has(ev.chapter)) continue;
+      } else {
+        if (ev.chapter < chMin || ev.chapter > chMax) continue;
+      }
     }
+
+    // Attribute/role filter
+    if (attrChar) {
+      const isActor = ev.actors.some(a => a.toLowerCase().includes(attrChar));
+      const isPatient = ev.patients.some(p => p.toLowerCase().includes(attrChar));
+      if (attrRole === "actor" && !isActor) continue;
+      else if (attrRole === "patient" && !isPatient) continue;
+      else if (attrRole === "any" && !isActor && !isPatient) continue;
+    }
+
     if (search && !ev.description.toLowerCase().includes(search) && !ev.sourceQuote.toLowerCase().includes(search)) continue;
 
-    // Theme involvement is only treated as a *filter* in subplot view, and
-    // only when a specific theme is chosen. With "— all themes —" the
-    // subplot view shows every event but strips causal edges (below) so
-    // you see the thematic-only graph across themes.
-    // In causal / agent views, the theme checkboxes and confidence slider
-    // only influence node coloring (see dominantThemeColor below). This
-    // matches reader intuition: a routine walk-across-the-room event with
-    // all-"none" themes is still an event worth showing in the causal graph.
-    if (view === "subplot" && subplotTheme) {
-      const td = ev.themes[subplotTheme];
-      if (!td) continue;
-      if (td.involvement !== "direct" && td.involvement !== "indirect") continue;
-      if ((td.confidence ?? 0) < minConf) continue;
+    // Subplot: filter to events matching any selected theme
+    if (view === "subplot" && subplotThemes.size > 0) {
+      const hasTheme = [...subplotThemes].some(t => {
+        const td = ev.themes[t];
+        if (!td) return false;
+        if (td.involvement !== "direct" && td.involvement !== "indirect") return false;
+        return (td.confidence ?? 0) >= minConf;
+      });
+      if (!hasTheme) continue;
+    } else if (view === "subplot" && subplotThemes.size === 0) {
+      continue; // no themes checked = show nothing
     }
 
     visible.add(ev.id);
     if (visible.size >= maxEvents) break;
   }
 
-  // Edge filter — both endpoints must be visible, and edge confidence must clear the slider.
+  // Edge filter
   const causalShown = !showCausal ? [] : state.causalEdges.filter(e => {
     if (!visible.has(e.from) || !visible.has(e.to)) return false;
     if ((e.confidence ?? 0) < minEdgeConf) return false;
@@ -603,26 +693,19 @@ function applyFilters() {
   });
   const thematicFiltered = !showThematic ? [] : state.thematicEdges.filter(e => {
     if (!visible.has(e.from) || !visible.has(e.to)) return false;
-    if (view === "subplot" && subplotTheme && e.theme !== subplotTheme) return false;
+    if (view === "subplot" && subplotThemes.size > 0 && !subplotThemes.has(e.theme)) return false;
     if ((e.confidence ?? 0) < minEdgeConf) return false;
     if (e.theme && state.hiddenThematicThemes.has(e.theme)) return false;
     return true;
   });
 
-  // In subplot view, drop causal edges (we want clean subplot rendering)
   const finalCausal = view === "subplot" ? [] : causalShown;
   const finalThematic = view === "subplot" || showThematic ? thematicFiltered : [];
 
-  // Chronological edges connect each visible event to the next one in
-  // narrative order (chapter, then sequence). Built before isolation
-  // pruning so chronological can serve as a standalone backbone — with
-  // chrono on, every event has a neighbor, so "show only chronological"
-  // (causal/thematic off) is a valid view that hide-isolated won't erase.
   function buildChrono(set) {
     if (!showChrono || set.size < 2) return [];
     const ordered = [...set]
-      .map(id => state.eventById.get(id))
-      .filter(Boolean)
+      .map(id => state.eventById.get(id)).filter(Boolean)
       .sort((a, b) => (a.chapter - b.chapter) || (a.sequence - b.sequence));
     const out = [];
     for (let i = 0; i < ordered.length - 1; i++) {
@@ -633,10 +716,6 @@ function applyFilters() {
   }
   let chronoEdges = buildChrono(visible);
 
-  // Hide isolated events: drop nodes with no visible edges of any kind
-  // (causal, thematic, OR chronological). Counting chrono means the
-  // chronological backbone alone is enough to keep events on screen, so
-  // a chrono-only view stays intact.
   if (hideIsolated) {
     const connected = new Set();
     for (const e of finalCausal) { connected.add(e.from); connected.add(e.to); }
@@ -644,28 +723,35 @@ function applyFilters() {
     for (const e of chronoEdges) { connected.add(e.from); connected.add(e.to); }
     const before = visible.size;
     visible = new Set([...visible].filter(id => connected.has(id)));
-    // If pruning removed anything, the chrono chain has gaps now — rebuild
-    // so it links the surviving events in narrative order.
     if (visible.size !== before) chronoEdges = buildChrono(visible);
   }
 
   ui.statShown.textContent = `shown: ${visible.size.toLocaleString()} / ${state.events.length.toLocaleString()}`;
+
   if (view === "subplot") {
-    if (subplotTheme) {
-      const totalForTheme = state.themeToEvents[subplotTheme]?.size || 0;
-      ui.subplotInfo.textContent = `${totalForTheme} events have ${subplotTheme} involvement (any chapter, any confidence)`;
+    const checked = [...subplotThemes];
+    if (checked.length === 0) {
+      ui.subplotInfo.textContent = "No themes selected.";
     } else {
-      ui.subplotInfo.textContent = "showing thematic edges across all themes";
+      const total = [...visible].reduce((acc, id) => {
+        const ev = state.eventById.get(id);
+        return ev ? acc + 1 : acc;
+      }, 0);
+      ui.subplotInfo.textContent = `${total} events shown with ${checked.join(" or ")} involvement.`;
     }
   }
+
+  if (view === "focus" && !state.focusEventId) {
+    ui.statShown.textContent = "Focus mode — search for an event in the sidebar.";
+  }
+
   render(visible, finalCausal, finalThematic, chronoEdges, themesEnabled, minConf);
   updateNodeList(visible);
 }
 
 function updateNodeList(visibleSet) {
   const ordered = [...visibleSet]
-    .map(id => state.eventById.get(id))
-    .filter(Boolean)
+    .map(id => state.eventById.get(id)).filter(Boolean)
     .sort((a, b) => (a.chapter - b.chapter) || (a.sequence - b.sequence));
   ui.nodeListCount.textContent = ordered.length ? `(${ordered.length.toLocaleString()})` : "";
   ui.nodeList.innerHTML = "";
@@ -690,6 +776,7 @@ function switchTab(name) {
   ui.tabButtons.forEach(btn => btn.classList.toggle("active", btn.dataset.tab === name));
   ui.tabDetail.hidden = name !== "detail";
   ui.tabNodes.hidden = name !== "nodes";
+  ui.tabCausal.hidden = name !== "causal";
 }
 
 ui.tabButtons.forEach(btn => {
@@ -705,17 +792,21 @@ function render(visibleSet, causalEdges, thematicEdges, chronoEdges, themesEnabl
   const nodes = [];
   for (const id of visibleSet) {
     const ev = state.eventById.get(id);
+    // Label = event id (short hash after the slash, or full id if no slash)
+    const shortId = ev.id.includes("/") ? ev.id.split("/").pop() : ev.id;
     nodes.push({
       data: {
         id: ev.id,
-        // Compact narrative coordinate. Full description lives in the
-        // Nodes tab + Detail panel; the graph itself stays uncluttered.
-        label: `${ev.chapter}.${ev.sequence}`,
+        label: shortId,
+        fullId: ev.id,
         chapter: ev.chapter,
+        seq: `${ev.chapter}.${ev.sequence}`,
+        description: ev.description,
         themeColor: dominantThemeColor(ev, themesEnabled, minConf),
       },
     });
   }
+
   const edges = [];
   for (const e of causalEdges) {
     const conf = clamp01(e.confidence ?? 0.5);
@@ -726,8 +817,6 @@ function render(visibleSet, causalEdges, thematicEdges, chronoEdges, themesEnabl
         confidence: conf,
         supertype: e.edgeSupertype || "OTHER",
         edgeColor: SUPERTYPE_COLOR[e.edgeSupertype] || SUPERTYPE_DEFAULT,
-        // Cose layout reads `weight` as a spring constant — high confidence
-        // pulls endpoints closer, so well-supported causes sit near their effects.
         weight: 0.5 + conf * 1.5,
       },
     });
@@ -749,11 +838,7 @@ function render(visibleSet, causalEdges, thematicEdges, chronoEdges, themesEnabl
       data: {
         id: e.id, source: e.from, target: e.to,
         relType: "CHRONOLOGICAL", kind: "chrono",
-        confidence: 1.0,
-        edgeColor: CHRONO_COLOR,
-        // Low spring weight: chronological is a narrative overlay, not a
-        // structural force; we don't want it dragging the layout into a line.
-        weight: 0.15,
+        confidence: 1.0, edgeColor: CHRONO_COLOR, weight: 0.15,
       },
     });
   }
@@ -766,7 +851,16 @@ function render(visibleSet, causalEdges, thematicEdges, chronoEdges, themesEnabl
       wheelSensitivity: 0.3,
       style: cyStyle(),
     });
-    state.cy.on("tap", "node", evt => { showDetail(evt.target.id()); switchTab("detail"); });
+    state.cy.on("tap", "node", evt => {
+      const id = evt.target.id();
+      showDetail(id);
+      switchTab("detail");
+      // In focus mode, clicking a neighbor re-focuses the graph on it
+      if (ui.viewMode.value === "focus") {
+        state.focusEventId = id;
+        applyFilters();
+      }
+    });
     state.cy.on("tap", "edge", evt => { showEdgeDetail(evt.target.data()); switchTab("detail"); });
   } else {
     state.cy.elements().remove();
@@ -800,7 +894,6 @@ function cyStyle() {
       style: { "border-color": "#fff", "border-width": 3, "width": selSize, "height": selSize },
     },
     {
-      // Causal edges: width and opacity scale with confidence; color = edge_supertype.
       selector: "edge[kind = 'causal']",
       style: {
         "width": `mapData(confidence, 0.4, 0.9, ${0.6 * t.edgeWidth}, ${5 * t.edgeWidth})`,
@@ -813,7 +906,6 @@ function cyStyle() {
       },
     },
     {
-      // Thematic edges: theme color, dashed, also width/opacity by confidence.
       selector: "edge[kind = 'thematic']",
       style: {
         "width": `mapData(confidence, 0.3, 0.9, ${0.8 * t.edgeWidth}, ${5.5 * t.edgeWidth})`,
@@ -827,7 +919,6 @@ function cyStyle() {
       },
     },
     {
-      // Chronological edges: thin dotted narrative arrow, fixed muted tone.
       selector: "edge[kind = 'chrono']",
       style: {
         "width": Math.max(0.8, 1.2 * t.edgeWidth),
@@ -852,62 +943,38 @@ function clamp01(x) { return Math.max(0, Math.min(1, +x || 0)); }
 
 function runLayout() {
   if (!state.cy) return;
-
-  // Stop any continuous physics simulation from a prior layout.
   if (state.liveLayout) {
     try { state.liveLayout.stop(); } catch (e) {}
     state.liveLayout = null;
   }
-
   const t = state.tuning;
   const name = ui.layoutSelect.value;
   const opts = {
-    // fcose: well-spaced force-directed; default. Edge length is also
-    // a function of confidence (high confidence -> short spring).
     fcose: {
-      name: "fcose",
-      animate: true,
-      animationDuration: 600,
-      randomize: true,
-      quality: "default",
+      name: "fcose", animate: true, animationDuration: 600, randomize: true, quality: "default",
       nodeRepulsion: 8000 * t.repulsion,
       idealEdgeLength: edge => (80 + (1 - (edge.data("confidence") || 0.5)) * 220) * t.edgeLength,
       edgeElasticity: 0.45 * t.edgeStrength,
       gravity: 0.18 * t.gravity,
       gravityRangeCompound: 1.5 * t.componentSpacing,
       nodeSeparation: 80 * t.componentSpacing,
-      packComponents: true,
-      padding: 40,
+      packComponents: true, padding: 40,
     },
-    // cola with infinite:true keeps the physics running. Drag a node and
-    // its neighbors react in real time. The friction slider is wired here.
     "cola-live": {
-      name: "cola",
-      animate: true,
-      infinite: true,
-      fit: false,
-      randomize: false,
-      avoidOverlap: true,
-      handleDisconnected: true,
+      name: "cola", animate: true, infinite: true, fit: false,
+      randomize: false, avoidOverlap: true, handleDisconnected: true,
       nodeSpacing: 18 * t.componentSpacing,
       edgeLength: edge => (70 + (1 - (edge.data("confidence") || 0.5)) * 200) * t.edgeLength,
       edgeSymDiffLength: 30,
-      // cola's "viscosity" — higher = simulation settles faster, lower = more bounce
       flow: { axis: "y", minSeparation: 0 },
       maxSimulationTime: 4000,
       convergenceThreshold: 0.001 * (1 - t.friction),
     },
-    // Vanilla cose, retuned + tuning multipliers.
     cose: {
-      name: "cose",
-      animate: "end",
-      animationDuration: 600,
+      name: "cose", animate: "end", animationDuration: 600,
       idealEdgeLength: 220 * t.edgeLength,
       nodeRepulsion: 800000 * t.repulsion,
-      nodeOverlap: 24,
-      gravity: 30 * t.gravity,
-      numIter: 1500,
-      padding: 40,
+      nodeOverlap: 24, gravity: 30 * t.gravity, numIter: 1500, padding: 40,
       edgeElasticity: 100 * t.edgeStrength,
     },
     dagre: { name: "dagre", rankDir: "LR", nodeSep: 30, rankSep: 90 * t.edgeLength, animate: true, animationDuration: 500, padding: 30 },
@@ -926,17 +993,12 @@ function runLayout() {
   if (cfg.infinite) state.liveLayout = layout;
 }
 
-// Re-apply node/edge size, label, and arrow style without relayout.
 function applyVisualTuning() {
   if (!state.cy) return;
   state.cy.style(cyStyle());
 }
 
 function dominantThemeColor(ev, themesEnabled, minConf) {
-  // Pick the theme this event is most strongly involved with — but only
-  // among the themes the user currently has enabled, and above the
-  // confidence threshold. Events that don't qualify get a neutral color
-  // and stay visible (filtering happens elsewhere).
   let bestT = null, bestC = 0;
   for (const t of THEMES) {
     if (themesEnabled && !themesEnabled.has(t)) continue;
@@ -960,8 +1022,7 @@ function showDetail(eventId) {
   state.selectedEventId = eventId;
   ui.detailEmpty.hidden = true;
   ui.detailContent.hidden = false;
-  // Keep the list highlight in sync, even if the user is currently on the
-  // Nodes tab and clicked a "Caused by" / "Causes" link in Detail.
+
   if (ui.nodeList) {
     ui.nodeList.querySelectorAll(".node-list-item").forEach(el => {
       el.classList.toggle("selected", el.dataset.id === eventId);
@@ -987,11 +1048,15 @@ function showDetail(eventId) {
 
   const causalIn = state.causalEdges.filter(e => e.to === eventId);
   const causalOut = state.causalEdges.filter(e => e.from === eventId);
+  const shortId = ev.id.includes("/") ? ev.id.split("/").pop() : ev.id;
 
   ui.detailContent.innerHTML = `
+    <div class="event-id-label">${escapeHtml(ev.id)}</div>
     <h2>${escapeHtml(truncate(ev.description, 90))}</h2>
-    <div class="meta-row">Ch ${ev.chapter} · seq ${ev.sequence} · ${escapeHtml(ev.actionType)} · conf ${ev.confidence.toFixed(2)}</div>
-    ${ev.sourceQuote ? `<div class="quote" style="margin-top:8px">${escapeHtml(truncate(ev.sourceQuote, 350))}</div>` : ""}
+    <div class="meta-row">Ch ${ev.chapter} · event #${ev.sequence} · ${escapeHtml(ev.actionType)} · conf ${ev.confidence.toFixed(2)}</div>
+    ${ev.sourceQuote
+      ? `<div class="detail-section"><div class="panel-title">Actual text</div><div class="quote">${escapeHtml(ev.sourceQuote)}</div></div>`
+      : ""}
 
     <div class="detail-section">
       <div class="panel-title">Themes</div>
@@ -1001,13 +1066,13 @@ function showDetail(eventId) {
     ${ev.actors.length ? `
     <div class="detail-section">
       <div class="panel-title">Actors</div>
-      <div class="chips">${ev.actors.map(a => `<span class="chip" data-agent="${escapeHtml(a)}">${escapeHtml(a)}</span>`).join("")}</div>
+      <div class="chips">${ev.actors.map(a => `<span class="chip" data-agent="${escapeHtml(a)}" data-role="actor">${escapeHtml(a)}</span>`).join("")}</div>
     </div>` : ""}
 
     ${ev.patients.length ? `
     <div class="detail-section">
       <div class="panel-title">Patients</div>
-      <div class="chips">${ev.patients.map(a => `<span class="chip" data-agent="${escapeHtml(a)}">${escapeHtml(a)}</span>`).join("")}</div>
+      <div class="chips">${ev.patients.map(a => `<span class="chip" data-agent="${escapeHtml(a)}" data-role="patient">${escapeHtml(a)}</span>`).join("")}</div>
     </div>` : ""}
 
     ${ev.whyFactors.length ? `
@@ -1022,6 +1087,7 @@ function showDetail(eventId) {
         const src = state.eventById.get(e.from);
         return `<div class="neighbor" data-jump="${e.from}"><span class="rel">${escapeHtml(e.relationType)}</span> ${escapeHtml(truncate(src ? src.description : e.from, 70))}</div>`;
       }).join("") || `<div class="hint">none in current data</div>`}
+      ${causalIn.length > 8 ? `<div class="hint">+${causalIn.length - 8} more — see Causal tab</div>` : ""}
     </div>
 
     <div class="detail-section">
@@ -1030,22 +1096,65 @@ function showDetail(eventId) {
         const dst = state.eventById.get(e.to);
         return `<div class="neighbor" data-jump="${e.to}"><span class="rel">${escapeHtml(e.relationType)}</span> ${escapeHtml(truncate(dst ? dst.description : e.to, 70))}</div>`;
       }).join("") || `<div class="hint">none in current data</div>`}
+      ${causalOut.length > 8 ? `<div class="hint">+${causalOut.length - 8} more — see Causal tab</div>` : ""}
     </div>
   `;
 
   ui.detailContent.querySelectorAll("[data-jump]").forEach(el => {
     el.addEventListener("click", () => {
       const id = el.dataset.jump;
-      if (state.cy && state.cy.getElementById(id).length) {
-        state.cy.center(state.cy.getElementById(id));
-      }
+      if (state.cy && state.cy.getElementById(id).length) state.cy.center(state.cy.getElementById(id));
       showDetail(id);
     });
   });
+
+  // Clicking an actor/patient chip filters the attribute search by role
   ui.detailContent.querySelectorAll("[data-agent]").forEach(el => {
     el.addEventListener("click", () => {
-      ui.agentSelect.value = el.dataset.agent;
+      ui.attrCharacter.value = el.dataset.agent;
+      const role = el.dataset.role; // "actor" or "patient"
+      const radio = document.querySelector(`input[name='attr-role'][value='${role}']`);
+      if (radio) radio.checked = true;
       applyFilters();
+    });
+  });
+
+  // Populate causal tab content
+  buildCausalTab(ev);
+}
+
+function buildCausalTab(ev) {
+  const causalIn = state.causalEdges.filter(e => e.to === ev.id);
+  const causalOut = state.causalEdges.filter(e => e.from === ev.id);
+
+  ui.causalTabEmpty.hidden = true;
+  ui.causalTabContent.hidden = false;
+
+  const makeRow = (e, neighborId) => {
+    const neighbor = state.eventById.get(neighborId);
+    const shortId = neighborId.includes("/") ? neighborId.split("/").pop() : neighborId;
+    return `<div class="neighbor" data-jump="${escapeHtml(neighborId)}">
+      <span class="rel">${escapeHtml(e.relationType)}</span>
+      <span class="hint" style="font-family:monospace">${escapeHtml(shortId)}</span>
+      ${escapeHtml(truncate(neighbor ? neighbor.description : neighborId, 80))}
+      ${neighbor ? `<span class="hint"> (Ch ${neighbor.chapter}.${neighbor.sequence})</span>` : ""}
+    </div>`;
+  };
+
+  ui.causalTabContent.innerHTML = `
+    <div class="event-id-label" style="margin-bottom:8px">${escapeHtml(ev.id)}</div>
+    <div class="panel-title">Causes → (${causalOut.length} outgoing)</div>
+    ${causalOut.map(e => makeRow(e, e.to)).join("") || '<div class="hint">none</div>'}
+    <div class="panel-title" style="margin-top:12px">← Caused by (${causalIn.length} incoming)</div>
+    ${causalIn.map(e => makeRow(e, e.from)).join("") || '<div class="hint">none</div>'}
+  `;
+
+  ui.causalTabContent.querySelectorAll("[data-jump]").forEach(el => {
+    el.addEventListener("click", () => {
+      const id = el.dataset.jump;
+      if (state.cy && state.cy.getElementById(id).length) state.cy.center(state.cy.getElementById(id));
+      showDetail(id);
+      switchTab("detail");
     });
   });
 }
