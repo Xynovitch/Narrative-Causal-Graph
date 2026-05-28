@@ -85,9 +85,10 @@
       <input id="attr-character" type="text" placeholder="Character name…" list="attr-character-list" autocomplete="off">
       <datalist id="attr-character-list"></datalist>
       <div class="attr-role-row">
-        <label><input type="radio" name="attr-role" value="any" checked> Either</label>
+        <label><input type="radio" name="attr-role" value="any" checked> Any</label>
         <label><input type="radio" name="attr-role" value="actor"> Actor</label>
         <label><input type="radio" name="attr-role" value="patient"> Patient</label>
+        <label><input type="radio" name="attr-role" value="whyfactor"> Why</label>
       </div>
       <div class="hint">Filter events by a character's role. "Actor" = they perform the action; "Patient" = it happens to them.</div>
     </section>
@@ -175,9 +176,8 @@
     </div>
     <div id="tab-detail" class="tab-panel">
       <div id="detail-empty">Click an event to inspect.</div>
-      <div id="detail-content" hidden>
-        <button id="isolate-btn" class="isolate-btn" hidden>⬡ Isolate in graph</button>
-      </div>
+      <button id="isolate-btn" class="isolate-btn" hidden>Isolate in graph</button>
+      <div id="detail-content" hidden></div>
     </div>
     <div id="tab-nodes" class="tab-panel" hidden>
       <div class="hint" style="margin-bottom:6px">All events matching the current filters, in narrative order. Click to focus.</div>

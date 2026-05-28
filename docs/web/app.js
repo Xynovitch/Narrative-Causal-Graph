@@ -253,6 +253,7 @@ function ingest(jsonld) {
       state.eventById.set(ev.id, ev);
       for (const a of ev.actors) addToBucket(state.agentToEvents, a, ev.id);
       for (const p of ev.patients) addToBucket(state.agentToEvents, p, ev.id);
+      for (const w of ev.whyFactors) addToBucket(state.agentToEvents, w, ev.id);
       for (const t of THEMES) {
         const td = ev.themes[t];
         if (td && (td.involvement === "direct" || td.involvement === "indirect")) {
@@ -658,9 +659,11 @@ function applyFilters() {
     if (attrChar) {
       const isActor = ev.actors.some(a => a.toLowerCase().includes(attrChar));
       const isPatient = ev.patients.some(p => p.toLowerCase().includes(attrChar));
+      const isWhy = ev.whyFactors.some(w => w.toLowerCase().includes(attrChar));
       if (attrRole === "actor" && !isActor) continue;
       else if (attrRole === "patient" && !isPatient) continue;
-      else if (attrRole === "any" && !isActor && !isPatient) continue;
+      else if (attrRole === "whyfactor" && !isWhy) continue;
+      else if (attrRole === "any" && !isActor && !isPatient && !isWhy) continue;
     }
 
     if (search && !ev.description.toLowerCase().includes(search) && !ev.sourceQuote.toLowerCase().includes(search)) continue;
@@ -1209,7 +1212,7 @@ function showEdgeDetail(d) {
 
 function updateFocusLabel() {
   if (!state.focusEventId) {
-    ui.focusLabel.textContent = "Click any node then use "Isolate in graph".";
+    ui.focusLabel.textContent = 'Click any node then use "Isolate in graph".';
     ui.focusClear.hidden = true;
   } else {
     const ev = state.eventById.get(state.focusEventId);
