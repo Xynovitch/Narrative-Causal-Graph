@@ -23,17 +23,16 @@ Every node and edge answers a specific narrative question:
 | `MOTIVATES` | Edge | What motivated this event? |
 | `HOSTS` | Edge | Where did this event take place? |
 
-### Graph Snapshot — *Great Expectations* (Dickens)
+### Graph Snapshot — *Great Expectations* (Dickens, gpt-oss-120b full run)
 
 | Metric | Value |
 |--------|-------|
-| Events extracted | ~4,700 |
+| Events extracted | 5,889 |
 | Characters identified | ~100 |
-| Causal links (McKee + Truby) | ~3,200 |
-| Thematic links | derived from theme annotations |
-| Scenes | ~300 |
+| Causal links (McKee + Truby) | 20,874 |
+| Thematic edges | 39,489 |
 | DAG valid | Yes |
-| Full-mode cost | ~$1.35–$5.00 |
+| Full-mode cost | ~$0 (local vLLM) |
 
 ---
 
@@ -51,13 +50,18 @@ Raw .txt
                 + Theme-Bridge Rule  (propagate involvement to causal neighbours)
                 + build_thematic_links()  (THEMATIC edges from co-participation)
   └─ Export: JSON-LD, Neo4j Cypher, CSV
+  └─ [Web] Graph Explorer (docs/web/) — browse in browser via GitHub Pages
 ```
+
+### LLM Backend
+
+The pipeline defaults to a **local vLLM server** (set `VLLM_BASE_URL` and `VLLM_MODEL` in `.env`). OpenAI-compatible endpoints (OpenAI, Azure, any OpenAI-API server) are also supported via `OPENAI_API_KEY` and `OPENAI_MODEL`.
 
 ### Candidate Pair Generation
 
 Stage 6 does not evaluate all O(N²) event pairs. Instead it uses two strategies:
 
-1. **Dynamic context windows** (default): combines a sliding window within chapters with long-range pairs discovered via cosine similarity of event embeddings (`thematic_threshold=0.95`). Caps at `--max-pairs`.
+1. **Dynamic context windows** (default): combines a sliding window within chapters with long-range pairs discovered via cosine similarity of event embeddings (`thematic_threshold=0.50`) plus BM25 keyword overlap. Caps at `--max-pairs`.
 2. **Fallback (`IntelligentCausalLinker`)**: entity co-occurrence + temporal proximity scoring.
 
 ### Thematic Links
@@ -71,16 +75,56 @@ This replaces the previous `SemanticLink` system (cosine-similarity edges), whic
 
 ---
 
+## Graph Explorer (Web)
+
+A browser-based graph explorer is available at `https://xynovitch.github.io/Narrative-Causal-Graph/web/` (GitHub Pages).
+
+**View modes**
+| Mode | Description |
+|------|-------------|
+| Causal | Full causal graph, filtered by chapter / character / theme |
+| Subplot | Shows only events matching selected themes (multi-select checkboxes) |
+| Agent | Filter to one character's events |
+| Node Focus | Ego-centric subgraph around a selected event, configurable hop depth (1 / 2 / 3 / 4 / All) |
+
+**Filters**
+- Chapter range or specific chapters (e.g. `1, 3, 5-7`)
+- Character search with Actor / Patient / Any role
+- Why Factor search (separate from character search)
+- Multi-theme subplot filter with per-theme confidence threshold
+- Edge type toggles (CAUSES / THEMATIC_LINK / CHRONOLOGICAL) with per-supertype legend
+- Edge confidence slider
+- Hide isolated events toggle
+
+**Detail panel tabs**
+- **Detail** — source quote, actors, patients, why factors, theme involvement, causal neighbors
+- **Nodes** — all visible events in narrative order; click to focus
+- **Causal** — all inbound/outbound causal edges for the selected event across the full dataset
+
+**Layout options:** fcose (default), cola live-physics, cose, dagre, grid, concentric. Full layout-tuning sliders for node size, edge width, repulsion, gravity, and more.
+
+To add a new dataset to the explorer:
+```bash
+python scripts/build_web.py runs/<run_dir>/ge_preprocessed.json --key my_run --label "My novel run"
+```
+
+---
+
 ## Setup
 
 ```bash
 pip install -r requirements.txt
-# openai, pandas, python-dotenv, sentence-transformers
+# vllm (or openai), pandas, python-dotenv, sentence-transformers, rank-bm25, wtpsplit
 ```
 
 Create `.env` in the project root:
 
 ```
+# Local vLLM (default)
+VLLM_BASE_URL="http://localhost:8000/v1"
+VLLM_MODEL="your-model-name"
+
+# Or OpenAI
 OPENAI_API_KEY="sk-proj-..."
 OPENAI_MODEL="gpt-4o-mini"
 ```

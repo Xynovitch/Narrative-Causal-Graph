@@ -2,6 +2,61 @@
 
 All notable changes to the Causal Event Knowledge Graph (CEKG) pipeline will be documented in this file.
 
+## [Unreleased] - 2026-05-28
+
+### Changed — `docs/web/` (Graph Explorer)
+- **Node focus: configurable hop-depth BFS.** Replaced 1-hop neighbor expansion with depth-limited BFS. Depth selector (1 / 2 / 3 / 4 / All reachable) added to the focus sidebar panel; changing it re-runs the filter immediately. Default depth = 2 (~17–162 nodes in practice vs. 5,776 for full connected component).
+- **Node focus entry point.** "Isolate in graph" button added to the detail panel (replaces sidebar search UX). Clicking it switches to Node Focus mode and centers the graph on the selected event. "✕ Clear focus" button and current event label shown in the focus section.
+- **Character and why factor search separated.** Character search (with Actor / Patient / Any radio) and Why Factor search are now independent sidebar sections with their own inputs and datalists.
+- **Node label reverted to `chapter.sequence`.** Graph nodes show `3.12`-style labels; full event ID and description are shown in the detail panel on click.
+- **Causal tab rebuilt.** The "Causal" tab in the detail panel now shows all inbound and outbound causal edges for the selected event across the full dataset, ignoring current filters.
+- **Tab switching fixed.** `.tab-panel { display: flex }` was overriding the browser's `[hidden]` UA stylesheet. Fixed by adding `[hidden] { display: none !important }` as the first rule in `styles.css`.
+- **Isolate button DOM fix.** Button was inside `#detail-content`, which gets replaced by `innerHTML` on every node click, detaching the listener. Moved to be a sibling element.
+
+### Fixed — `docs/web/app.js`
+- **JS syntax error (curly quotes) killing entire app.** Unicode curly-quote characters (`"..."`) in `updateFocusLabel()` were silently terminating the string literal and throwing `SyntaxError: Unexpected identifier 'Isolate'` at parse time, preventing `init()` from ever running. Fixed by using single-quote outer delimiters.
+
+## [Unreleased] - 2026-05-27
+
+### Changed — `cekg_pipeline/`
+- **Migrated LLM backend to local vLLM servers.** `llm_service.py` now targets a self-hosted vLLM endpoint by default instead of the OpenAI API. Base URL and model name are configurable via `.env`.
+- **Fixed sentence-transformers import failure and BM25 embed gate.** Import guard added so `dynamic_context.py` degrades gracefully when `sentence-transformers` is not available rather than crashing at startup.
+
+## [Unreleased] - 2026-05-20
+
+### Added — `docs/web/`
+- **Hide-isolated toggle.** Checkbox to remove events with no visible edges from the current filtered view.
+- **Chronological narrative overlay.** "Show CHRONOLOGICAL" toggle adds lightweight sequential arrows linking each visible event to the next in narrative order without affecting layout.
+
+### Changed — `docs/web/`
+- **Node labels use `chapter.sequence` format.** (e.g. `3.12`). Event ID and full description remain available in the detail panel.
+- **Nodes tab added to detail panel.** Lists all events matching the current filters in narrative order; clicking an entry focuses the graph on that node.
+
+### Fixed — `cekg_pipeline/`
+- **LLM cache-key collisions.** Hash function was producing identical keys for different prompt variants. Switched to content-addressed SHA256 of the full prompt string.
+- **Candidate pool rebalancing.** BM25 and cosine pools were not being merged correctly; BM25 could crowd out cosine pairs entirely. Fixed proportional merging.
+- **Uncapped pair count.** `--max-pairs` was silently clamped below user-specified values in the dynamic-context path. Cap removed; user value is respected.
+
+## [Unreleased] - 2026-05-10
+
+### Changed — `docs/web/`
+- **Subplot theme filter uses checkboxes.** Multiple themes can be selected simultaneously (previously single dropdown). Subplot mode filters to events that have any of the checked themes above the confidence threshold.
+- **Causal supertype and thematic theme toggles.** Click a row in the "Causal edge types" legend to hide all edges of that supertype. Per-theme checkboxes added under the THEMATIC_LINK toggle. Both affect rendering without re-running layout.
+- **`edge_supertype` backfill.** Edges missing `edge_supertype` are assigned a supertype based on their `relation_type` so they appear correctly in the legend.
+- **Subplot overlay made optional.** Empty-state overlay when no theme is selected removed; graph shows all events instead.
+
+## [Unreleased] - 2026-05-07 (post-launch web polish)
+
+### Added — `docs/web/`
+- **Layout-tuning sliders.** Node size, edge width, arrow scale, label size, repulsion, edge length, edge strength, gravity, component spacing, and friction (live physics) are all adjustable in the sidebar without re-running the pipeline.
+- **Better-spaced default layout (fcose).** Replaced the previous cose layout with fcose for clearer separation of clusters. Added live physics mode (cola) that keeps nodes movable after layout.
+
+### Changed — `docs/web/`
+- **Edge differentiation by confidence and supertype.** Edge thickness and opacity scale with confidence value. Color encodes `edge_supertype` (McKee direct, McKee indirect, Truby, etc.) with a clickable legend.
+- **gpt-5 relation types added to supertype map.** All relation types produced by the gpt-5 run are covered; previously unknown types fell through to a default color.
+- **Events with no theme involvement shown in Causal/Agent view.** Previously these events were hidden; now only hidden in Subplot view when a theme filter is active.
+- **`/docs` root redirect.** `docs/index.html` redirects to `web/index.html` so the GitHub Pages root URL goes directly to the explorer.
+
 ## [Unreleased] - 2026-05-06
 
 ### Added
