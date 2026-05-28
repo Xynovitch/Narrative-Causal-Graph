@@ -139,6 +139,8 @@ const ui = {
   chapterSpecific: document.getElementById("chapter-specific"),
   attrCharacter: document.getElementById("attr-character"),
   attrCharacterList: document.getElementById("attr-character-list"),
+  whySearch: document.getElementById("why-search"),
+  whySearchList: document.getElementById("why-search-list"),
   agentSelect: document.getElementById("agent-select"),
   showCausal: document.getElementById("show-causal"),
   showThematic: document.getElementById("show-thematic"),
@@ -253,7 +255,6 @@ function ingest(jsonld) {
       state.eventById.set(ev.id, ev);
       for (const a of ev.actors) addToBucket(state.agentToEvents, a, ev.id);
       for (const p of ev.patients) addToBucket(state.agentToEvents, p, ev.id);
-      for (const w of ev.whyFactors) addToBucket(state.agentToEvents, w, ev.id);
       for (const t of THEMES) {
         const td = ev.themes[t];
         if (td && (td.involvement === "direct" || td.involvement === "indirect")) {
@@ -381,13 +382,24 @@ function buildSidebar() {
   ui.chapterMax.min = state.chapterMin;
   ui.chapterMax.max = state.chapterMax;
 
-  // Attribute search: populate datalist from all characters
+  // Character datalist: actors and patients only
   ui.attrCharacterList.innerHTML = "";
-  const allChars = [...state.agentToEvents.keys()].sort();
-  for (const c of allChars) {
+  for (const c of [...state.agentToEvents.keys()].sort()) {
     const opt = document.createElement("option");
     opt.value = c;
     ui.attrCharacterList.appendChild(opt);
+  }
+
+  // Why factor datalist: unique why factors across all events
+  ui.whySearchList.innerHTML = "";
+  const allWhyFactors = new Set();
+  for (const ev of state.events) {
+    for (const w of ev.whyFactors) allWhyFactors.add(w);
+  }
+  for (const w of [...allWhyFactors].sort()) {
+    const opt = document.createElement("option");
+    opt.value = w;
+    ui.whySearchList.appendChild(opt);
   }
 
   // Legacy agent select (hidden section, kept for backward compat)
@@ -485,6 +497,7 @@ ui.chapterSpecific.addEventListener("input", debounce(applyFilters, 300));
 
 ui.attrCharacter.addEventListener("input", debounce(applyFilters, 250));
 document.querySelectorAll("input[name='attr-role']").forEach(r => r.addEventListener("change", applyFilters));
+ui.whySearch.addEventListener("input", debounce(applyFilters, 250));
 
 ui.agentSelect.addEventListener("change", applyFilters);
 ui.showCausal.addEventListener("change", applyFilters);
@@ -609,9 +622,11 @@ function applyFilters() {
   const chMax = parseInt(ui.chapterMax.value, 10);
   const specificChapters = chMode === "specific" ? parseChapterSpec(ui.chapterSpecific.value) : null;
 
-  // Attribute search
+  // Character search
   const attrChar = ui.attrCharacter.value.trim().toLowerCase();
   const attrRole = (document.querySelector("input[name='attr-role']:checked") || {}).value || "any";
+  // Why factor search
+  const whySearch = ui.whySearch.value.trim().toLowerCase();
 
   const search = ui.search.value.trim().toLowerCase();
   const view = ui.viewMode.value;
@@ -659,12 +674,11 @@ function applyFilters() {
     if (attrChar) {
       const isActor = ev.actors.some(a => a.toLowerCase().includes(attrChar));
       const isPatient = ev.patients.some(p => p.toLowerCase().includes(attrChar));
-      const isWhy = ev.whyFactors.some(w => w.toLowerCase().includes(attrChar));
       if (attrRole === "actor" && !isActor) continue;
       else if (attrRole === "patient" && !isPatient) continue;
-      else if (attrRole === "whyfactor" && !isWhy) continue;
-      else if (attrRole === "any" && !isActor && !isPatient && !isWhy) continue;
+      else if (attrRole === "any" && !isActor && !isPatient) continue;
     }
+    if (whySearch && !ev.whyFactors.some(w => w.toLowerCase().includes(whySearch))) continue;
 
     if (search && !ev.description.toLowerCase().includes(search) && !ev.sourceQuote.toLowerCase().includes(search)) continue;
 

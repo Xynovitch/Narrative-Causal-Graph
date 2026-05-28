@@ -81,16 +81,21 @@
     </section>
 
     <section>
-      <div class="panel-title">Attribute search</div>
+      <div class="panel-title">Character search</div>
       <input id="attr-character" type="text" placeholder="Character name…" list="attr-character-list" autocomplete="off">
       <datalist id="attr-character-list"></datalist>
       <div class="attr-role-row">
         <label><input type="radio" name="attr-role" value="any" checked> Any</label>
         <label><input type="radio" name="attr-role" value="actor"> Actor</label>
         <label><input type="radio" name="attr-role" value="patient"> Patient</label>
-        <label><input type="radio" name="attr-role" value="whyfactor"> Why</label>
       </div>
-      <div class="hint">Filter events by a character's role. "Actor" = they perform the action; "Patient" = it happens to them.</div>
+    </section>
+
+    <section>
+      <div class="panel-title">Why factor search</div>
+      <input id="why-search" type="text" placeholder="Why factor…" list="why-search-list" autocomplete="off">
+      <datalist id="why-search-list"></datalist>
+      <div class="hint">Filter events where this is listed as a motivating factor.</div>
     </section>
 
     <section id="agent-section" hidden>
