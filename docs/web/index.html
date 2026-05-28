@@ -42,6 +42,16 @@
     <!-- Focus mode: shows focused event info + clear button -->
     <section id="focus-section" hidden>
       <div class="panel-title">Node focus</div>
+      <label class="inline">
+        Hop depth
+        <select id="focus-depth">
+          <option value="1">1 — direct only</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="9999">All reachable</option>
+        </select>
+      </label>
       <div id="focus-label" class="hint">Click any node or use "Isolate" in the detail panel to focus.</div>
       <button id="focus-clear" hidden>✕ Clear focus</button>
     </section>

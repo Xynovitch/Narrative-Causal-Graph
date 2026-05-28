@@ -528,6 +528,11 @@ ui.isolateBtn.addEventListener("click", () => {
   applyFilters();
 });
 
+// Depth selector re-runs filter when changed
+document.getElementById("focus-depth").addEventListener("change", () => {
+  if (state.focusEventId) applyFilters();
+});
+
 // Clear focus button
 ui.focusClear.addEventListener("click", () => {
   state.focusEventId = null;
@@ -644,14 +649,29 @@ function applyFilters() {
   const minEdgeConf = parseFloat(ui.edgeConfidence.value);
   const maxEvents = parseInt(ui.maxEvents.value, 10);
 
-  // Focus mode: build 1-hop causal neighborhood when an event is isolated.
-  // Bypasses chapter filter to show all connections across the full novel.
+  // Focus mode: depth-limited BFS from the isolated node.
+  // Follows causal edges in both directions, bypassing the chapter filter.
   let focusNeighborhood = null;
   if (view === "focus" && state.focusEventId) {
-    focusNeighborhood = new Set([state.focusEventId]);
+    const focusDepth = parseInt((document.getElementById("focus-depth") || {}).value || "2", 10);
+    const adj = new Map();
     for (const e of state.causalEdges) {
-      if (e.from === state.focusEventId) focusNeighborhood.add(e.to);
-      if (e.to === state.focusEventId) focusNeighborhood.add(e.from);
+      if (!adj.has(e.from)) adj.set(e.from, []);
+      if (!adj.has(e.to))   adj.set(e.to,   []);
+      adj.get(e.from).push(e.to);
+      adj.get(e.to).push(e.from);
+    }
+    focusNeighborhood = new Set([state.focusEventId]);
+    const queue = [[state.focusEventId, 0]];
+    while (queue.length) {
+      const [cur, depth] = queue.shift();
+      if (depth >= focusDepth) continue;
+      for (const nb of (adj.get(cur) || [])) {
+        if (!focusNeighborhood.has(nb)) {
+          focusNeighborhood.add(nb);
+          queue.push([nb, depth + 1]);
+        }
+      }
     }
   }
 
