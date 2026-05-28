@@ -792,12 +792,10 @@ function render(visibleSet, causalEdges, thematicEdges, chronoEdges, themesEnabl
   const nodes = [];
   for (const id of visibleSet) {
     const ev = state.eventById.get(id);
-    // Label = event id (short hash after the slash, or full id if no slash)
-    const shortId = ev.id.includes("/") ? ev.id.split("/").pop() : ev.id;
     nodes.push({
       data: {
         id: ev.id,
-        label: shortId,
+        label: `${ev.chapter}.${ev.sequence}`,
         fullId: ev.id,
         chapter: ev.chapter,
         seq: `${ev.chapter}.${ev.sequence}`,
