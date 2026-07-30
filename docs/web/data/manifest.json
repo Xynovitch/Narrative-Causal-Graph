@@ -11,7 +11,7 @@
     },
     {
       "key": "great_expectations_gpt5",
-      "label": "Great Expectations (gpt-5, 2026-05-06)",
+      "label": "Great Expectations (gpt-5, 2026-05-06 — SUPERSEDED, pre-bugfix)",
       "file": "great_expectations_gpt5.json",
       "events": 8625,
       "causal_edges": 13991,
