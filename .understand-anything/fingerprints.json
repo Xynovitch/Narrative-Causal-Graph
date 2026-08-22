@@ -1,0 +1,2316 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "f602e040e670aece183dcf24fbc6999d8690de8e",
+  "generatedAt": "2026-06-23T07:35:08.045Z",
+  "files": {
+    "main.py": {
+      "filePath": "main.py",
+      "contentHash": "e513dfe71ebb5d922396da0201160b48a6d80e7885bfba70ba79e004f08be035",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 231
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "traceback",
+          "specifiers": [
+            "traceback"
+          ]
+        },
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "cekg_pipeline.pipeline",
+          "specifiers": [
+            "CEKGPreprocessor"
+          ]
+        },
+        {
+          "source": "cekg_pipeline.checkpoint_manager",
+          "specifiers": [
+            "CheckpointManager"
+          ]
+        },
+        {
+          "source": "cekg_pipeline.config",
+          "specifiers": [
+            "LLM_MODEL",
+            "LLM_BASE_URL"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 249,
+      "hasStructuralAnalysis": true
+    },
+    "schema.json": {
+      "filePath": "schema.json",
+      "contentHash": "7be83b5e652d659e7a9b9915b3307d8345d3ece3c9f58654427c8455cd4aa3bf",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2469,
+      "hasStructuralAnalysis": true
+    },
+    "event_ontology.json": {
+      "filePath": "event_ontology.json",
+      "contentHash": "7b89b4cd53a13e0ff4daca09d7153aa18503d93dd65ed1ba63c9bd04d7e74500",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 108,
+      "hasStructuralAnalysis": true
+    },
+    "relationship_ontology.json": {
+      "filePath": "relationship_ontology.json",
+      "contentHash": "4aa0abf64dce60b878d645c1887dc4022d9ede1acb89d793230e5c28b8f65ffe",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 108,
+      "hasStructuralAnalysis": true
+    },
+    "requirements.txt": {
+      "filePath": "requirements.txt",
+      "contentHash": "8090dac32487cbd0cab29655689594cc0fc300c9ef45000bef4dea01c4357062",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 6,
+      "hasStructuralAnalysis": false
+    },
+    ".gitignore": {
+      "filePath": ".gitignore",
+      "contentHash": "f64fac0ef2fdda2e88b188701e82e72f2c3b2d55cf10dbd89b75c8bccda9b6df",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 32,
+      "hasStructuralAnalysis": false
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "aca00e0ac5ad64d48c8d25e23854e680fe4346dde6443f9a7479702a5ae12252",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 282,
+      "hasStructuralAnalysis": true
+    },
+    "CHANGELOG.md": {
+      "filePath": "CHANGELOG.md",
+      "contentHash": "09992ab55120967017d3defa17434362c4ac809dbf56b77b7fbb102e52222dba",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 166,
+      "hasStructuralAnalysis": true
+    },
+    "LICENSE": {
+      "filePath": "LICENSE",
+      "contentHash": "83d7a9f5e7dd1de5ed1d46942e835b19c7596a9d23fe1336f4766833d3662b18",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 16,
+      "hasStructuralAnalysis": false
+    },
+    "Great Expectations.txt": {
+      "filePath": "Great Expectations.txt",
+      "contentHash": "9ae9f8100b5718429a82f79b6550c7e996bacc82ab767bebf61ab3e164bc0806",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 20674,
+      "hasStructuralAnalysis": false
+    },
+    "cekg_pipeline/__init__.py": {
+      "filePath": "cekg_pipeline/__init__.py",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/checkpoint_manager.py": {
+      "filePath": "cekg_pipeline/checkpoint_manager.py",
+      "contentHash": "f2119e754fa3e560c7c8087004f1e98b36b91dd71d62ff52dd1f23ba0520fd51",
+      "functions": [
+        {
+          "name": "serialize_events",
+          "params": [
+            "events"
+          ],
+          "returnType": "List[Dict]",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "deserialize_events",
+          "params": [
+            "data",
+            "event_class"
+          ],
+          "returnType": "List",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "serialize_links",
+          "params": [
+            "links"
+          ],
+          "returnType": "List[Dict]",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "deserialize_links",
+          "params": [
+            "data",
+            "link_class"
+          ],
+          "returnType": "List",
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [
+        {
+          "name": "CheckpointManager",
+          "methods": [
+            "__init__",
+            "_load_metadata",
+            "_save_metadata",
+            "_compute_hash",
+            "save_checkpoint",
+            "load_checkpoint",
+            "has_checkpoint",
+            "list_checkpoints",
+            "get_last_checkpoint",
+            "clear_checkpoint",
+            "clear_all",
+            "get_progress_summary"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 220
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "pickle",
+          "specifiers": [
+            "pickle"
+          ]
+        },
+        {
+          "source": "hashlib",
+          "specifiers": [
+            "hashlib"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Dict",
+            "Any",
+            "Optional",
+            "List"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "asdict"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        }
+      ],
+      "exports": [
+        "CheckpointManager",
+        "serialize_events",
+        "deserialize_events",
+        "serialize_links",
+        "deserialize_links"
+      ],
+      "totalLines": 304,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/config.py": {
+      "filePath": "cekg_pipeline/config.py",
+      "contentHash": "f562ae3de5249adfc848abe09de6d88e72ff403713c33105ed09b0c8369b4858",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            "load_dotenv"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 38,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/coreference_resolver.py": {
+      "filePath": "cekg_pipeline/coreference_resolver.py",
+      "contentHash": "38d2334d27804551a28b80928404fdc67258bfe415d911e8a9c4ecdb82c8f974",
+      "functions": [
+        {
+          "name": "get_resolver",
+          "params": [],
+          "returnType": "CoreferenceResolver",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "reset_resolver",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [
+        {
+          "name": "CoreferenceResolver",
+          "methods": [
+            "__init__",
+            "seed_from_work",
+            "is_valid_character_name",
+            "normalize_character_name",
+            "register_character",
+            "resolve",
+            "batch_resolve",
+            "learn_from_cooccurrence",
+            "get_statistics"
+          ],
+          "properties": [
+            "KNOWN_WORK_ALIASES"
+          ],
+          "exported": true,
+          "lineCount": 339
+        }
+      ],
+      "imports": [
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Dict",
+            "List",
+            "Set",
+            "Optional",
+            "Tuple"
+          ]
+        },
+        {
+          "source": "collections",
+          "specifiers": [
+            "defaultdict"
+          ]
+        }
+      ],
+      "exports": [
+        "CoreferenceResolver",
+        "get_resolver",
+        "reset_resolver"
+      ],
+      "totalLines": 365,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/dynamic_context.py": {
+      "filePath": "cekg_pipeline/dynamic_context.py",
+      "contentHash": "8baa9dc2828e98ff0f6fc801528c66665e93fb9db7c08c7eda51fc348a18e56c",
+      "functions": [
+        {
+          "name": "_get_embedding_model",
+          "params": [],
+          "returnType": "Optional[Any]",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "_encode",
+          "params": [
+            "events",
+            "model"
+          ],
+          "returnType": "\"np.ndarray\"",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "_cosine_sim",
+          "params": [
+            "a",
+            "b"
+          ],
+          "returnType": "\"np.ndarray\"",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "get_adjacent_pairs",
+          "params": [
+            "events"
+          ],
+          "returnType": "Set[Tuple[str, str]]",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "get_scene_pairs_by_similarity",
+          "params": [
+            "events",
+            "scenes",
+            "embeddings",
+            "event_index",
+            "similarity_threshold",
+            "per_scene_cap"
+          ],
+          "returnType": "Set[Tuple[str, str]]",
+          "exported": true,
+          "lineCount": 54
+        },
+        {
+          "name": "get_long_shot_pairs_double_sliding",
+          "params": [
+            "events",
+            "event_map",
+            "embeddings",
+            "similarity_threshold",
+            "window_size",
+            "step"
+          ],
+          "returnType": "Set[Tuple[str, str]]",
+          "exported": true,
+          "lineCount": 51
+        },
+        {
+          "name": "_get_local_fallback_pairs",
+          "params": [
+            "events",
+            "scenes",
+            "local_window"
+          ],
+          "returnType": "Set[Tuple[str, str]]",
+          "exported": true,
+          "lineCount": 27
+        },
+        {
+          "name": "get_bm25_pairs",
+          "params": [
+            "events",
+            "top_k"
+          ],
+          "returnType": "Set[Tuple[str, str]]",
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "get_dynamic_context_candidate_pairs",
+          "params": [
+            "events",
+            "entity_occurrences",
+            "scenes",
+            "thematic_threshold",
+            "scene_threshold",
+            "local_window",
+            "double_window_size",
+            "double_window_step",
+            "max_pairs",
+            "use_entity_guided"
+          ],
+          "returnType": "List[Tuple[str, str]]",
+          "exported": true,
+          "lineCount": 156
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Tuple",
+            "Set",
+            "Dict",
+            "Optional",
+            "Any"
+          ]
+        }
+      ],
+      "exports": [
+        "_get_embedding_model",
+        "_encode",
+        "_cosine_sim",
+        "get_adjacent_pairs",
+        "get_scene_pairs_by_similarity",
+        "get_long_shot_pairs_double_sliding",
+        "_get_local_fallback_pairs",
+        "get_bm25_pairs",
+        "get_dynamic_context_candidate_pairs"
+      ],
+      "totalLines": 411,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/exporters.py": {
+      "filePath": "cekg_pipeline/exporters.py",
+      "contentHash": "abb0f8b59c12c2858e26e3e19dd50d436817a8ea5ea7abdb0b6f9ad60fc4b050",
+      "functions": [
+        {
+          "name": "_needs_backtick_escaping",
+          "params": [
+            "identifier"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 36
+        },
+        {
+          "name": "_escape_identifier",
+          "params": [
+            "identifier"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "_escape_cypher_value",
+          "params": [
+            "v"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "_format_cypher_properties",
+          "params": [
+            "props"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "export_neo4j_cypher",
+          "params": [
+            "path",
+            "nodes",
+            "relationships",
+            "batch_size"
+          ],
+          "exported": true,
+          "lineCount": 134
+        },
+        {
+          "name": "build_jsonld",
+          "params": [
+            "events",
+            "event_produces",
+            "causal_links",
+            "scenes"
+          ],
+          "returnType": "Dict[str, Any]",
+          "exported": true,
+          "lineCount": 60
+        },
+        {
+          "name": "export_json",
+          "params": [
+            "path",
+            "data"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "export_csv",
+          "params": [
+            "out_dir",
+            "events",
+            "event_produces",
+            "causal_links",
+            "scenes"
+          ],
+          "returnType": "Dict[str, str]",
+          "exported": true,
+          "lineCount": 245
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "csv",
+          "specifiers": [
+            "csv"
+          ]
+        },
+        {
+          "source": "collections",
+          "specifiers": [
+            "defaultdict"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "asdict"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Dict",
+            "Any",
+            "Optional"
+          ]
+        },
+        {
+          "source": ".schemas",
+          "specifiers": [
+            "CEKEvent",
+            "EventProducesEntity",
+            "CausalLink",
+            "GenericNode",
+            "GenericRelationship",
+            "Scene"
+          ]
+        },
+        {
+          "source": ".utils",
+          "specifiers": [
+            "_truncate_safe"
+          ]
+        }
+      ],
+      "exports": [
+        "_needs_backtick_escaping",
+        "_escape_identifier",
+        "_escape_cypher_value",
+        "_format_cypher_properties",
+        "export_neo4j_cypher",
+        "build_jsonld",
+        "export_json",
+        "export_csv"
+      ],
+      "totalLines": 581,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/graph_builder.py": {
+      "filePath": "cekg_pipeline/graph_builder.py",
+      "contentHash": "ed4b1c9ff860c823f998902ab1ea36e756f37688672491a86b1ab461b29623d3",
+      "functions": [
+        {
+          "name": "_generate_entity_id",
+          "params": [
+            "name",
+            "type_prefix"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "propagate_context_attributes",
+          "params": [
+            "events"
+          ],
+          "returnType": "List[CEKEvent]",
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "propagate_context",
+          "params": [
+            "events",
+            "event_produces",
+            "entity_occurrences"
+          ],
+          "returnType": "Tuple[List[EventProducesEntity], Dict[str, List[Tuple[str, int]]]]",
+          "exported": true,
+          "lineCount": 82
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "collections",
+          "specifiers": [
+            "defaultdict"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Dict",
+            "Tuple"
+          ]
+        },
+        {
+          "source": ".schemas",
+          "specifiers": [
+            "CEKEvent",
+            "EventProducesEntity"
+          ]
+        },
+        {
+          "source": ".utils",
+          "specifiers": [
+            "_make_id"
+          ]
+        }
+      ],
+      "exports": [
+        "_generate_entity_id",
+        "propagate_context_attributes",
+        "propagate_context"
+      ],
+      "totalLines": 122,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/graph_mapper.py": {
+      "filePath": "cekg_pipeline/graph_mapper.py",
+      "contentHash": "653cfc796fd4c1f0bd5285520e29b9c32dd15580f256abe33266fd3c01385cbe",
+      "functions": [
+        {
+          "name": "_escape_props",
+          "params": [
+            "props"
+          ],
+          "returnType": "Dict[str, Any]",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "_sanitize_name_for_id",
+          "params": [
+            "name"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "map_to_generic_graph",
+          "params": [
+            "events",
+            "event_produces",
+            "causal_links",
+            "scenes",
+            "agent_classifications"
+          ],
+          "returnType": "Tuple[List[schemas.GenericNode], List[schemas.GenericRelationship]]",
+          "exported": true,
+          "lineCount": 302
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "collections",
+          "specifiers": [
+            "defaultdict"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Dict",
+            "Any",
+            "Tuple",
+            "Optional"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "schemas"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "utils"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "theme_graph"
+          ]
+        }
+      ],
+      "exports": [
+        "_escape_props",
+        "_sanitize_name_for_id",
+        "map_to_generic_graph"
+      ],
+      "totalLines": 338,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/integrated_semantic.py": {
+      "filePath": "cekg_pipeline/integrated_semantic.py",
+      "contentHash": "7263924e71b21e5ce15e61f7cc2b86136995d368e4ee742c0f0ed9ba944fa555",
+      "functions": [
+        {
+          "name": "assess_pairs_causal",
+          "params": [
+            "pairs_batch",
+            "model",
+            "client",
+            "causal_relations",
+            "llm_call_function",
+            "passage_index"
+          ],
+          "returnType": "List[Optional[Dict]]",
+          "exported": true,
+          "lineCount": 70
+        },
+        {
+          "name": "process_pairs_causal_only",
+          "params": [
+            "pairs_with_text",
+            "model",
+            "client",
+            "relation_ontology",
+            "theory_name",
+            "dag_validator",
+            "ontology_validator",
+            "llm_call_function",
+            "max_concurrent_calls",
+            "bulk_size",
+            "passage_index"
+          ],
+          "returnType": "List[CausalLink]",
+          "exported": true,
+          "lineCount": 75
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Dict",
+            "Optional",
+            "Tuple",
+            "Any"
+          ]
+        },
+        {
+          "source": ".schemas",
+          "specifiers": [
+            "CausalLink"
+          ]
+        },
+        {
+          "source": ".utils",
+          "specifiers": [
+            "_hash_for_cache"
+          ]
+        },
+        {
+          "source": ".llm_service",
+          "specifiers": [
+            "assessment_cache"
+          ]
+        }
+      ],
+      "exports": [
+        "assess_pairs_causal",
+        "process_pairs_causal_only"
+      ],
+      "totalLines": 223,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/llm_service.py": {
+      "filePath": "cekg_pipeline/llm_service.py",
+      "contentHash": "5952b8f7d5c8bf345851a42b48ddd4f29bb4e0d9a50a9bd5ba1d9980aa3011bd",
+      "functions": [
+        {
+          "name": "init_openai_client",
+          "params": [
+            "api_key",
+            "base_url"
+          ],
+          "returnType": "Any",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "init_mini_client",
+          "params": [
+            "api_key",
+            "base_url"
+          ],
+          "returnType": "Any",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "_async_llm_json_call",
+          "params": [
+            "prompt",
+            "model",
+            "client",
+            "cache",
+            "cache_key",
+            "max_tokens"
+          ],
+          "returnType": "Any",
+          "exported": true,
+          "lineCount": 120
+        },
+        {
+          "name": "extract_events_from_text",
+          "params": [
+            "text_input",
+            "chapter_id",
+            "model",
+            "client",
+            "enable_llm_expansion",
+            "request_logprobs",
+            "extraction_style",
+            "event_ontology"
+          ],
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "batch_extract_events",
+          "params": [
+            "paragraphs",
+            "model",
+            "client",
+            "enable_llm_expansion",
+            "request_logprobs",
+            "extraction_style",
+            "event_ontology"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "assess_pairs_bulk",
+          "params": [
+            "pairs_batch",
+            "model",
+            "client",
+            "relation_ontology"
+          ],
+          "returnType": "List[Optional[Dict]]",
+          "exported": true,
+          "lineCount": 73
+        },
+        {
+          "name": "classify_agent_type",
+          "params": [
+            "character_name",
+            "event_descriptions",
+            "agent_type_names",
+            "model",
+            "client"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "extract_scenes_from_chapter_async",
+          "params": [
+            "chapter_events",
+            "chapter_id",
+            "model",
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "annotate_single_event_theme",
+          "params": [
+            "event_context_json",
+            "model",
+            "client"
+          ],
+          "returnType": "Any",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "get_cache_sizes",
+          "params": [],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Dict",
+            "Optional",
+            "Any"
+          ]
+        },
+        {
+          "source": ".schemas",
+          "specifiers": [
+            "ExtractionError",
+            "CEKEvent"
+          ]
+        },
+        {
+          "source": ".utils",
+          "specifiers": [
+            "BoundedCache",
+            "_hash_for_cache"
+          ]
+        },
+        {
+          "source": ".config",
+          "specifiers": [
+            "CACHE_MAX_SIZE"
+          ]
+        }
+      ],
+      "exports": [
+        "init_openai_client",
+        "init_mini_client",
+        "_async_llm_json_call",
+        "extract_events_from_text",
+        "batch_extract_events",
+        "assess_pairs_bulk",
+        "classify_agent_type",
+        "extract_scenes_from_chapter_async",
+        "annotate_single_event_theme",
+        "get_cache_sizes"
+      ],
+      "totalLines": 506,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/ontology_loader.py": {
+      "filePath": "cekg_pipeline/ontology_loader.py",
+      "contentHash": "a849f42d8b78eb34d18c5f24fcc5f2ebf205d169a70ec9c29304b6e9abdd83fd",
+      "functions": [
+        {
+          "name": "get_ontology_manager",
+          "params": [
+            "schema_path"
+          ],
+          "returnType": "OntologyManager",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "reset_ontology_manager",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [
+        {
+          "name": "EventType",
+          "methods": [],
+          "properties": [
+            "name",
+            "theory",
+            "description",
+            "neo4j_label",
+            "neo4j_properties"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "RelationType",
+          "methods": [],
+          "properties": [
+            "name",
+            "theory",
+            "directionality",
+            "description",
+            "neo4j_label",
+            "neo4j_properties"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "AgentType",
+          "methods": [],
+          "properties": [
+            "name",
+            "theory",
+            "description",
+            "neo4j_label",
+            "neo4j_properties"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "OntologyManager",
+          "methods": [
+            "__init__",
+            "_load_from_file",
+            "_load_defaults",
+            "get_event_type_names",
+            "get_relation_type_names",
+            "get_agent_type_names",
+            "validate_relation_type",
+            "validate_event_type",
+            "validate_agent_type",
+            "get_relation_directionality"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 203
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Dict",
+            "List",
+            "Optional",
+            "Any"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass",
+            "field"
+          ]
+        }
+      ],
+      "exports": [
+        "EventType",
+        "RelationType",
+        "AgentType",
+        "OntologyManager",
+        "get_ontology_manager",
+        "reset_ontology_manager"
+      ],
+      "totalLines": 259,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/optimized_linking.py": {
+      "filePath": "cekg_pipeline/optimized_linking.py",
+      "contentHash": "6d7df69e9ac483d3aef66ace1e8bfd352b15346649b7a4815c39d4669c9efb31",
+      "functions": [
+        {
+          "name": "intelligent_long_range_linking",
+          "params": [
+            "events",
+            "assess_pairs_bulk_func",
+            "model",
+            "client",
+            "relation_ontology",
+            "theory_name",
+            "dag_validator",
+            "ontology_validator",
+            "entity_occurrences",
+            "max_pairs",
+            "max_concurrent_calls",
+            "truncate_descriptions"
+          ],
+          "exported": true,
+          "lineCount": 119
+        }
+      ],
+      "classes": [
+        {
+          "name": "EventPair",
+          "methods": [],
+          "properties": [
+            "cause_id",
+            "effect_id",
+            "cause_text",
+            "effect_text",
+            "cause_seq",
+            "effect_seq"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "IntelligentCausalLinker",
+          "methods": [
+            "__init__",
+            "calculate_optimal_bulk_size",
+            "get_candidate_pairs",
+            "_entity_guided_pairs",
+            "_temporal_window_pairs",
+            "_chapter_transition_pairs",
+            "_semantic_similarity_pairs_safe",
+            "_narrative_peak_pairs"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 292
+        }
+      ],
+      "imports": [
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Tuple",
+            "Dict",
+            "Set",
+            "Optional",
+            "Any"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "collections",
+          "specifiers": [
+            "defaultdict"
+          ]
+        },
+        {
+          "source": "random",
+          "specifiers": [
+            "random"
+          ]
+        }
+      ],
+      "exports": [
+        "EventPair",
+        "IntelligentCausalLinker",
+        "intelligent_long_range_linking"
+      ],
+      "totalLines": 443,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/passage_index.py": {
+      "filePath": "cekg_pipeline/passage_index.py",
+      "contentHash": "a9470bc70b15ec735d49fa8ddab01f1b83ebd1919dc5da21898671705b8664c9",
+      "functions": [
+        {
+          "name": "_segment_text",
+          "params": [
+            "text",
+            "passage_size",
+            "overlap"
+          ],
+          "returnType": "List[str]",
+          "exported": true,
+          "lineCount": 27
+        }
+      ],
+      "classes": [
+        {
+          "name": "PassageIndex",
+          "methods": [
+            "__init__",
+            "build",
+            "retrieve",
+            "is_ready"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 69
+        }
+      ],
+      "imports": [
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Tuple",
+            "Optional",
+            "Any"
+          ]
+        }
+      ],
+      "exports": [
+        "_segment_text",
+        "PassageIndex"
+      ],
+      "totalLines": 121,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/pipeline.py": {
+      "filePath": "cekg_pipeline/pipeline.py",
+      "contentHash": "ae2d3a669583df287334d6f5f22d9d53ea4b93609364c999925bbc3768578fa5",
+      "functions": [
+        {
+          "name": "normalize_theory_name",
+          "params": [
+            "theory"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "classes": [
+        {
+          "name": "CEKGPreprocessor",
+          "methods": [
+            "__init__",
+            "_init_checkpoint_manager",
+            "_get_sat_model",
+            "_serialize_events",
+            "_deserialize_events",
+            "_serialize_links",
+            "_deserialize_event_produces",
+            "_deserialize_causal_links",
+            "_deserialize_scenes",
+            "_calculate_calibrated_confidence",
+            "_infer_theory_from_event_type",
+            "_parse_event_json_data",
+            "_process_chunk_with_retry",
+            "_process_chapter_chunked",
+            "_classify_agent_types",
+            "_causal_linking",
+            "_generate_scenes_optimized",
+            "run_async"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 977
+        }
+      ],
+      "imports": [
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "traceback",
+          "specifiers": [
+            "traceback"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "random",
+          "specifiers": [
+            "random"
+          ]
+        },
+        {
+          "source": "textwrap",
+          "specifiers": [
+            "textwrap"
+          ]
+        },
+        {
+          "source": "collections",
+          "specifiers": [
+            "defaultdict"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Dict",
+            "Optional",
+            "Any",
+            "Set",
+            "Tuple"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "asdict"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "config",
+            "schemas",
+            "utils",
+            "text_processor",
+            "llm_service",
+            "graph_builder",
+            "graph_mapper",
+            "exporters"
+          ]
+        },
+        {
+          "source": ".theme_annotation",
+          "specifiers": [
+            "annotate_event_themes"
+          ]
+        },
+        {
+          "source": ".ontology_loader",
+          "specifiers": [
+            "get_ontology_manager",
+            "OntologyManager"
+          ]
+        },
+        {
+          "source": ".optimized_linking",
+          "specifiers": [
+            "intelligent_long_range_linking"
+          ]
+        },
+        {
+          "source": ".integrated_semantic",
+          "specifiers": [
+            "process_pairs_causal_only"
+          ]
+        },
+        {
+          "source": ".coreference_resolver",
+          "specifiers": [
+            "get_resolver"
+          ]
+        },
+        {
+          "source": ".checkpoint_manager",
+          "specifiers": [
+            "CheckpointManager"
+          ]
+        },
+        {
+          "source": ".passage_index",
+          "specifiers": [
+            "PassageIndex"
+          ]
+        }
+      ],
+      "exports": [
+        "normalize_theory_name",
+        "CEKGPreprocessor"
+      ],
+      "totalLines": 1035,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/schemas.py": {
+      "filePath": "cekg_pipeline/schemas.py",
+      "contentHash": "eb6df7792932ceb4c7c714f85fb9e562d03953af86f4448e657546c32de17b3f",
+      "functions": [],
+      "classes": [
+        {
+          "name": "CEKGError",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "ExtractionError",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "DAGViolationError",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "CEKEvent",
+          "methods": [],
+          "properties": [
+            "id",
+            "raw_description",
+            "action_type",
+            "time_context",
+            "location_context",
+            "actors",
+            "patients",
+            "chapter",
+            "sequence",
+            "confidence",
+            "source_quote",
+            "why_factors",
+            "theory",
+            "theme_annotations",
+            "scene_id"
+          ],
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "AgentRole",
+          "methods": [],
+          "properties": [
+            "agent_id",
+            "agent_name",
+            "agent_type",
+            "theory",
+            "events_involved"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "EventProducesEntity",
+          "methods": [],
+          "properties": [
+            "event_id",
+            "entity_id",
+            "entity_name",
+            "entity_type",
+            "relationship",
+            "strength",
+            "agent_type",
+            "theory"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "CausalLink",
+          "methods": [],
+          "properties": [
+            "source_event_id",
+            "target_event_id",
+            "relation_type",
+            "mechanism",
+            "weight",
+            "confidence",
+            "theory",
+            "directionality",
+            "edge_supertype"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "PlaceContext",
+          "methods": [],
+          "properties": [
+            "id",
+            "name",
+            "place_type",
+            "narrative_significance",
+            "conflict_function",
+            "moral_function",
+            "theory",
+            "events"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "TimeContext",
+          "methods": [],
+          "properties": [
+            "id",
+            "time_type",
+            "narrative_effect",
+            "structural_or_moral_function",
+            "theory",
+            "events"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "Scene",
+          "methods": [],
+          "properties": [
+            "id",
+            "chapter",
+            "included_event_ids",
+            "primary_location",
+            "time_period",
+            "participants",
+            "theme",
+            "summary",
+            "confidence",
+            "place_type",
+            "time_type",
+            "all_actors",
+            "all_patients",
+            "all_whyfactors"
+          ],
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "GenericNode",
+          "methods": [],
+          "properties": [
+            "uid",
+            "label",
+            "properties"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "GenericRelationship",
+          "methods": [],
+          "properties": [
+            "start_node_uid",
+            "end_node_uid",
+            "rel_type",
+            "properties"
+          ],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass",
+            "field"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Dict",
+            "Optional",
+            "Any"
+          ]
+        }
+      ],
+      "exports": [
+        "CEKGError",
+        "ExtractionError",
+        "DAGViolationError",
+        "CEKEvent",
+        "AgentRole",
+        "EventProducesEntity",
+        "CausalLink",
+        "PlaceContext",
+        "TimeContext",
+        "Scene",
+        "GenericNode",
+        "GenericRelationship"
+      ],
+      "totalLines": 157,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/text_processor.py": {
+      "filePath": "cekg_pipeline/text_processor.py",
+      "contentHash": "0ec385761ec90bd5dbe2499f8be3ef825185c2e62a19bfbf236873f1c9cd28e1",
+      "functions": [
+        {
+          "name": "load_text",
+          "params": [
+            "path"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "strip_gutenberg_boilerplate",
+          "params": [
+            "text"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "split_chapters",
+          "params": [
+            "text"
+          ],
+          "returnType": "List[tuple[int, str]]",
+          "exported": true,
+          "lineCount": 39
+        },
+        {
+          "name": "split_into_paragraphs",
+          "params": [
+            "text"
+          ],
+          "returnType": "List[str]",
+          "exported": true,
+          "lineCount": 25
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List"
+          ]
+        }
+      ],
+      "exports": [
+        "load_text",
+        "strip_gutenberg_boilerplate",
+        "split_chapters",
+        "split_into_paragraphs"
+      ],
+      "totalLines": 107,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/theme_annotation.py": {
+      "filePath": "cekg_pipeline/theme_annotation.py",
+      "contentHash": "3de83c166a10bfe89a6ca8910a965239a014fd8f158a8346201fa41261a6b195",
+      "functions": [
+        {
+          "name": "assign_edge_supertypes",
+          "params": [
+            "causal_links"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "attach_scene_ids_to_events",
+          "params": [
+            "events",
+            "scenes"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "build_local_causal_context",
+          "params": [
+            "event",
+            "causes_by_target",
+            "effects_by_source",
+            "event_map"
+          ],
+          "returnType": "Dict[str, Any]",
+          "exported": true,
+          "lineCount": 30
+        },
+        {
+          "name": "apply_theme_bridge_rule",
+          "params": [
+            "events",
+            "causal_links"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 78
+        },
+        {
+          "name": "_clean_theme_annotations",
+          "params": [
+            "annotations_raw"
+          ],
+          "returnType": "Dict[str, Any]",
+          "exported": true,
+          "lineCount": 49
+        },
+        {
+          "name": "annotate_event_themes",
+          "params": [
+            "events",
+            "causal_links",
+            "scenes",
+            "model",
+            "client",
+            "partial_checkpoint_path",
+            "concurrency",
+            "save_every"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 168
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "collections",
+          "specifiers": [
+            "defaultdict"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Dict",
+            "Any",
+            "Optional"
+          ]
+        },
+        {
+          "source": ".schemas",
+          "specifiers": [
+            "CEKEvent",
+            "CausalLink",
+            "Scene"
+          ]
+        },
+        {
+          "source": ".llm_service",
+          "specifiers": [
+            "annotate_single_event_theme"
+          ]
+        }
+      ],
+      "exports": [
+        "assign_edge_supertypes",
+        "attach_scene_ids_to_events",
+        "build_local_causal_context",
+        "apply_theme_bridge_rule",
+        "_clean_theme_annotations",
+        "annotate_event_themes"
+      ],
+      "totalLines": 529,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/theme_graph.py": {
+      "filePath": "cekg_pipeline/theme_graph.py",
+      "contentHash": "d05522a56110f14a798a7b87f5f2da44098a93eb70cbe447117321591829f52f",
+      "functions": [
+        {
+          "name": "_theme_data",
+          "params": [
+            "ev",
+            "theme"
+          ],
+          "returnType": "Dict[str, Any]",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "_is_theme_active",
+          "params": [
+            "ev",
+            "theme"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "_safe_conf",
+          "params": [
+            "td"
+          ],
+          "returnType": "float",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "build_thematic_event_edges",
+          "params": [
+            "events",
+            "causal_links",
+            "scenes",
+            "enable_sequential_spine"
+          ],
+          "returnType": "List[schemas.GenericRelationship]",
+          "exported": true,
+          "lineCount": 88
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any",
+            "Dict",
+            "List",
+            "Optional",
+            "Tuple"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "schemas"
+          ]
+        }
+      ],
+      "exports": [
+        "_theme_data",
+        "_is_theme_active",
+        "_safe_conf",
+        "build_thematic_event_edges"
+      ],
+      "totalLines": 162,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/utils.py": {
+      "filePath": "cekg_pipeline/utils.py",
+      "contentHash": "092fe1b910689832fb02a22f6d9b9cd677d3dab00809a10f362f4f9e55046825",
+      "functions": [
+        {
+          "name": "_make_id",
+          "params": [
+            "prefix"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "_hash_for_cache",
+          "params": [
+            "text",
+            "model"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "_escape_cypher_string",
+          "params": [
+            "s"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "_truncate_safe",
+          "params": [
+            "text",
+            "max_length"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "_normalize_weights",
+          "params": [
+            "factors"
+          ],
+          "returnType": "List[Dict[str, Any]]",
+          "exported": true,
+          "lineCount": 28
+        }
+      ],
+      "classes": [
+        {
+          "name": "BoundedCache",
+          "methods": [
+            "__init__",
+            "_get_lock",
+            "get",
+            "set",
+            "size",
+            "clear"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 53
+        },
+        {
+          "name": "DAGValidator",
+          "methods": [
+            "__init__",
+            "add_events",
+            "add_edge",
+            "_would_create_cycle",
+            "get_stats",
+            "validate_dag"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 118
+        }
+      ],
+      "imports": [
+        {
+          "source": "uuid",
+          "specifiers": [
+            "uuid"
+          ]
+        },
+        {
+          "source": "hashlib",
+          "specifiers": [
+            "hashlib"
+          ]
+        },
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "collections",
+          "specifiers": [
+            "OrderedDict",
+            "deque"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Dict",
+            "Optional",
+            "Any",
+            "Set"
+          ]
+        },
+        {
+          "source": ".schemas",
+          "specifiers": [
+            "CEKEvent"
+          ]
+        }
+      ],
+      "exports": [
+        "BoundedCache",
+        "_make_id",
+        "_hash_for_cache",
+        "_escape_cypher_string",
+        "_truncate_safe",
+        "_normalize_weights",
+        "DAGValidator"
+      ],
+      "totalLines": 263,
+      "hasStructuralAnalysis": true
+    },
+    "cekg_pipeline/debug.md": {
+      "filePath": "cekg_pipeline/debug.md",
+      "contentHash": "3a5fe9f1960760f561570d276310b37a3b538f7c599c9240ede629933640631b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "novels/All Quiet on the Western Front by Erich Maria Remarque.txt": {
+      "filePath": "novels/All Quiet on the Western Front by Erich Maria Remarque.txt",
+      "contentHash": "4c0c12e733411d11c52c03069b1c209199da057a4e587d349c50f24cb6f89eb9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 8007,
+      "hasStructuralAnalysis": false
+    },
+    "novels/Arrowsmith by Sinclair Lewis.txt": {
+      "filePath": "novels/Arrowsmith by Sinclair Lewis.txt",
+      "contentHash": "694dd96f9a6c7757c5020c9214d7a431478aa5556514677c7490ead25a1135a8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 19692,
+      "hasStructuralAnalysis": false
+    },
+    "novels/Cimarron by Edna Ferber.txt": {
+      "filePath": "novels/Cimarron by Edna Ferber.txt",
+      "contentHash": "1745dcc558f2840afcef27248a680468dbc69773b60de84b404d4861cdb02155",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 16428,
+      "hasStructuralAnalysis": false
+    },
+    "novels/Elmer Gantry by Sinclair Lewis.txt": {
+      "filePath": "novels/Elmer Gantry by Sinclair Lewis.txt",
+      "contentHash": "cc8bb6e264f4f6c2d6cafae62ad163605188bbda13f148020369f2391d47e0cb",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 18831,
+      "hasStructuralAnalysis": false
+    },
+    "novels/Magnificent Obsession by Lloyd C. Douglas.txt": {
+      "filePath": "novels/Magnificent Obsession by Lloyd C. Douglas.txt",
+      "contentHash": "db1c26b9710b539d06d02ad088216456ad59fa44cd41f73ac88dac649a0cd843",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 14717,
+      "hasStructuralAnalysis": false
+    },
+    "novels/Show Boat by Edna Ferber.txt": {
+      "filePath": "novels/Show Boat by Edna Ferber.txt",
+      "contentHash": "a54fc98ac1512f7ab605bb6b783286b4d6cbb76ceb2f51d1221ac3d26747df96",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 11978,
+      "hasStructuralAnalysis": false
+    },
+    "novels/So Big by Edna Ferber.txt": {
+      "filePath": "novels/So Big by Edna Ferber.txt",
+      "contentHash": "68f7603cf4a25d8688d1866f83cbbc90ae86596d9d9796f46fa370ba75102e79",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 10355,
+      "hasStructuralAnalysis": false
+    },
+    "novels/The Age of Innocence by Edith Wharton.txt": {
+      "filePath": "novels/The Age of Innocence by Edith Wharton.txt",
+      "contentHash": "07ca72af1ba0f6981b7468efb3ce83352915db5b1ac29ee16743056c31f8d931",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 11957,
+      "hasStructuralAnalysis": false
+    },
+    "novels/The Arrow of Gold by Joseph Conrad.txt": {
+      "filePath": "novels/The Arrow of Gold by Joseph Conrad.txt",
+      "contentHash": "4c23846f3c78577501b4c19b2a319eff48f7a6a1ab7e7e3c25365db88dbaf9ed",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 11180,
+      "hasStructuralAnalysis": false
+    },
+    "novels/The Enchanted April by Elizabeth.txt": {
+      "filePath": "novels/The Enchanted April by Elizabeth.txt",
+      "contentHash": "b816045eaeb5c5056f808c016604a2b6255e4db826c450a254d8819980689508",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 9116,
+      "hasStructuralAnalysis": false
+    },
+    "novels/The Greene Murder Case by S. S. Van Dine.txt": {
+      "filePath": "novels/The Greene Murder Case by S. S. Van Dine.txt",
+      "contentHash": "3f82561893e0da4aa0a0b0c029a4cf8e402d5455a8bf5666c2b6baa9b133979a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 12826,
+      "hasStructuralAnalysis": false
+    },
+    "novels/The Man of the Forest by Zane Grey.txt": {
+      "filePath": "novels/The Man of the Forest by Zane Grey.txt",
+      "contentHash": "8fae6d0e67b29d7cdf29cb3ac376588091581cdf79e7ebcd558dec124c530e4c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 15249,
+      "hasStructuralAnalysis": false
+    },
+    "novels/The Sheik by Edith M. Hull.txt": {
+      "filePath": "novels/The Sheik by Edith M. Hull.txt",
+      "contentHash": "9c9cae77bdbb3d465c3ed295114cb861ca1a6960f454da67caa6c38b452d47f7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 8850,
+      "hasStructuralAnalysis": false
+    }
+  }
+}

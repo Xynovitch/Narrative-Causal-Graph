@@ -1,0 +1,25 @@
+{
+  "projectRoot": "C:\\Users\\6seve\\Codelib-severin\\1_Research\\Narrative-Causal-Graph",
+  "batchFiles": [
+    {"path": ".gitignore", "language": "text", "sizeLines": 25, "fileCategory": "config"},
+    {"path": "CHANGELOG.md", "language": "markdown", "sizeLines": 131, "fileCategory": "docs"},
+    {"path": "Great Expectations.txt", "language": "text", "sizeLines": 16464, "fileCategory": "data"},
+    {"path": "LICENSE", "language": "text", "sizeLines": 8, "fileCategory": "docs"},
+    {"path": "README.md", "language": "markdown", "sizeLines": 208, "fileCategory": "docs"},
+    {"path": "event_ontology.json", "language": "json", "sizeLines": 108, "fileCategory": "config"},
+    {"path": "relationship_ontology.json", "language": "json", "sizeLines": 108, "fileCategory": "config"},
+    {"path": "requirements.txt", "language": "text", "sizeLines": 6, "fileCategory": "config"},
+    {"path": "schema.json", "language": "json", "sizeLines": 2467, "fileCategory": "config"}
+  ],
+  "batchImportData": {
+    ".gitignore": [],
+    "CHANGELOG.md": [],
+    "Great Expectations.txt": [],
+    "LICENSE": [],
+    "README.md": [],
+    "event_ontology.json": [],
+    "relationship_ontology.json": [],
+    "requirements.txt": [],
+    "schema.json": []
+  }
+}

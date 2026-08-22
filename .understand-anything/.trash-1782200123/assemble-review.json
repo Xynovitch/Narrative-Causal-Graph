@@ -1,0 +1,50 @@
+{
+  "passed": false,
+  "totalNodes": 88,
+  "totalEdges": 151,
+  "issues": [
+    "MISSING IMPORT EDGE: pipeline.py imports dynamic_context.py (line 29: 'from .dynamic_context import get_dynamic_context_candidate_pairs') but no 'imports' edge exists in graph. Call edge CEKGPreprocessor->get_dynamic_context_candidate_pairs() exists but the file-level import relationship is missing."
+  ],
+  "warnings": [
+    "ID PREFIX INCONSISTENCY: 8 class nodes have bare-path IDs ('class:checkpoint_manager.py:CheckpointManager') missing 'cekg_pipeline/' prefix, while all 37 function nodes have full-path IDs ('function:cekg_pipeline/checkpoint_manager.py:save_checkpoint()'). Affected: CheckpointManager, CoreferenceResolver, OntologyManager, IntelligentCausalLinker, CEKGPreprocessor, DAGValidator, BoundedCache, PassageIndex.",
+    "NODE TYPE MISCLASSIFICATION: 'cekg_pipeline/debug.md' has type 'file' but should be 'document' for consistency with README.md, CHANGELOG.md, and LICENSE (all type 'document').",
+    "SCHEMA INCONSISTENCY: 13 novel file nodes (batch-2) have extra fields 'path', 'category', 'language', 'metrics' not present on root-level file nodes (main.py, Great Expectations.txt) or cekg_pipeline file nodes. This creates inconsistent node schemas across the graph.",
+    "DUPLICATE EDGE: 'config:schema.json' -> 'file:main.py' appears twice with different edge types ('configures' weight=1.0 and 'is_loaded_by' weight=0.9). Semantically valid but structurally redundant.",
+    "INCONSISTENT DIRECTION LABELS: Batch-1 edges used 'directed'/'undirected'; assembled graph normalizes all to 'forward'. Edge semantics are preserved but original direction distinction (directed vs undirected for 'related' edges) is lost."
+  ],
+  "stats": {
+    "nodeTypes": {
+      "config": 5,
+      "file": 35,
+      "document": 3,
+      "function": 37,
+      "class": 8
+    },
+    "edgeTypes": {
+      "imports": 35,
+      "contains": 52,
+      "calls": 39,
+      "documents": 5,
+      "related": 5,
+      "configures": 4,
+      "documents_changes": 3,
+      "defines_vocabulary": 2,
+      "references": 1,
+      "is_loaded_by": 1,
+      "is_input_to": 1,
+      "licenses": 1,
+      "belongsTo": 1,
+      "relatedTo": 1
+    },
+    "validationDetails": {
+      "danglingEdges": 0,
+      "duplicateNodeIds": 0,
+      "missingRequiredFields": 0,
+      "invalidComplexityValues": 0,
+      "cekg_pipeline_file_nodes": 20,
+      "novel_file_nodes": 13,
+      "node_id_format_issues": 8,
+      "pipeline_import_count": 15
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "projectRoot": "C:\\Users\\6seve\\Codelib-severin\\1_Research\\Narrative-Causal-Graph",
+  "batchFiles": [
+    {"path": "novels/All Quiet on the Western Front by Erich Maria Remarque.txt", "language": "text", "sizeLines": 6180, "fileCategory": "data"},
+    {"path": "novels/Arrowsmith by Sinclair Lewis.txt", "language": "text", "sizeLines": 15594, "fileCategory": "data"},
+    {"path": "novels/Cimarron by Edna Ferber.txt", "language": "text", "sizeLines": 12613, "fileCategory": "data"},
+    {"path": "novels/Elmer Gantry by Sinclair Lewis.txt", "language": "text", "sizeLines": 14693, "fileCategory": "data"},
+    {"path": "novels/Magnificent Obsession by Lloyd C. Douglas.txt", "language": "text", "sizeLines": 10428, "fileCategory": "data"},
+    {"path": "novels/Show Boat by Edna Ferber.txt", "language": "text", "sizeLines": 9812, "fileCategory": "data"},
+    {"path": "novels/So Big by Edna Ferber.txt", "language": "text", "sizeLines": 8485, "fileCategory": "data"},
+    {"path": "novels/The Age of Innocence by Edith Wharton.txt", "language": "text", "sizeLines": 9668, "fileCategory": "data"},
+    {"path": "novels/The Arrow of Gold by Joseph Conrad.txt", "language": "text", "sizeLines": 9357, "fileCategory": "data"},
+    {"path": "novels/The Enchanted April by Elizabeth.txt", "language": "text", "sizeLines": 7385, "fileCategory": "data"},
+    {"path": "novels/The Greene Murder Case by S. S. Van Dine.txt", "language": "text", "sizeLines": 9759, "fileCategory": "data"},
+    {"path": "novels/The Man of the Forest by Zane Grey.txt", "language": "text", "sizeLines": 11383, "fileCategory": "data"},
+    {"path": "novels/The Sheik by Edith M. Hull.txt", "language": "text", "sizeLines": 7765, "fileCategory": "data"}
+  ],
+  "batchImportData": {
+    "novels/All Quiet on the Western Front by Erich Maria Remarque.txt": [],
+    "novels/Arrowsmith by Sinclair Lewis.txt": [],
+    "novels/Cimarron by Edna Ferber.txt": [],
+    "novels/Elmer Gantry by Sinclair Lewis.txt": [],
+    "novels/Magnificent Obsession by Lloyd C. Douglas.txt": [],
+    "novels/Show Boat by Edna Ferber.txt": [],
+    "novels/So Big by Edna Ferber.txt": [],
+    "novels/The Age of Innocence by Edith Wharton.txt": [],
+    "novels/The Arrow of Gold by Joseph Conrad.txt": [],
+    "novels/The Enchanted April by Elizabeth.txt": [],
+    "novels/The Greene Murder Case by S. S. Van Dine.txt": [],
+    "novels/The Man of the Forest by Zane Grey.txt": [],
+    "novels/The Sheik by Edith M. Hull.txt": []
+  }
+}

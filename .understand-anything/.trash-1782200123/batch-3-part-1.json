@@ -1,0 +1,809 @@
+{
+  "nodes": [
+    {
+      "id": "file:main.py",
+      "name": "main.py",
+      "type": "file",
+      "filePath": "main.py",
+      "summary": "CLI 入口点，使用 argparse 解析命令行参数（输入/输出路径、checkpoint 管理、预设模式 --fast/--full、特征开关），初始化 CEKGPreprocessor 并异步运行流水线，输出 JSON/Cypher/CSV 结果",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cekg_pipeline/__init__.py",
+      "name": "cekg_pipeline/__init__.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/__init__.py",
+      "summary": "空包初始化文件，使 cekg_pipeline 成为 Python 包",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:cekg_pipeline/checkpoint_manager.py",
+      "name": "cekg_pipeline/checkpoint_manager.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/checkpoint_manager.py",
+      "summary": "基于 pickle 的断点续传管理器：按 stage 保存/加载/验证 checkpoint（SHA256 哈希校验），支持 JSON 可读副本、metadata 追踪、进度摘要，提供 serialize_events/links 辅助函数",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cekg_pipeline/config.py",
+      "name": "cekg_pipeline/config.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/config.py",
+      "summary": "环境配置模块：通过 dotenv 加载 .env 中的 LLM 参数（BASE_URL、MODEL、MINI_MODEL、API_KEY），定义批处理大小、缓存上限、受控行为本体映射",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:cekg_pipeline/coreference_resolver.py",
+      "name": "cekg_pipeline/coreference_resolver.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/coreference_resolver.py",
+      "summary": "指代消解器：将代词/昵称/描述词解析为规整角色名。核心功能包括代词/通用描述词过滤、角色注册表管理、子串匹配/名匹配、共现学习、作品别名种子（如 Great Expectations 的角色映射表）",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cekg_pipeline/debug.md",
+      "name": "cekg_pipeline/debug.md",
+      "type": "file",
+      "filePath": "cekg_pipeline/debug.md",
+      "summary": "调试指南 Prompt：要求 AI 按「Bug 修复→代码整洁→性能优化→类型安全」四个维度全面审计和重构代码",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:cekg_pipeline/dynamic_context.py",
+      "name": "cekg_pipeline/dynamic_context.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/dynamic_context.py",
+      "summary": "动态上下文候选对生成：使用 SentenceTransformer 嵌入计算余弦相似度，通过邻接对、场景内配对、双滑动窗口长距配对、实体引导配对、BM25 关键词配对等策略发现因果候选对",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cekg_pipeline/exporters.py",
+      "name": "cekg_pipeline/exporters.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/exporters.py",
+      "summary": "多格式导出器：JSON-LD 图表示、Neo4j Cypher 脚本（MERGE+ON CREATE SET、标识符转义、分批写入）、CSV 星型模型（事件/Agent/位置/动机/因果/场景/主题边 13 个文件）",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cekg_pipeline/graph_builder.py",
+      "name": "cekg_pipeline/graph_builder.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/graph_builder.py",
+      "summary": "上下文传播与实体-事件链接：Pass1 沿事件链传播位置/时间属性，Pass2 传播演员/动机实体上下文（持续性推理），生成规范实体 ID",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cekg_pipeline/graph_mapper.py",
+      "name": "cekg_pipeline/graph_mapper.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/graph_mapper.py",
+      "summary": "通用图映射器：将流水线数据映射为 GenericNode/GenericRelationship 星型模型，场景为中心关联事件和实体，扁平化主题标注为可查询属性",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cekg_pipeline/integrated_semantic.py",
+      "name": "cekg_pipeline/integrated_semantic.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/integrated_semantic.py",
+      "summary": "因果链接模块：通过 LLM 批量评估事件对的因果关系，使用反事实推理（\"would the effect have occurred without the cause\"），支持 RAG 上下文注入，选择最具体的因果类型",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cekg_pipeline/llm_service.py",
+      "name": "cekg_pipeline/llm_service.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/llm_service.py",
+      "summary": "LLM 服务层：封装 OpenAI/vLLM API 调用，提供事件抽取、因果评估、Agent 分类、场景提取、主题标注等方法。核心 _async_llm_json_call 支持动态 max_tokens、JSON 解析、截断检测、缓存、3 次重试",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cekg_pipeline/ontology_loader.py",
+      "name": "cekg_pipeline/ontology_loader.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/ontology_loader.py",
+      "summary": "本体加载器：从 JSON schema 文件加载事件类型/关系类型/Agent 类型/地点/时间本体字典，支持拼接 JSON 修复、自定义键名兼容、理论过滤查询、单例模式",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cekg_pipeline/optimized_linking.py",
+      "name": "cekg_pipeline/optimized_linking.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/optimized_linking.py",
+      "summary": "智能因果链接器（回退策略）：综合实体共现、时间窗口、章节过渡、语义相似度（嵌入）、叙事高峰等 5 种策略生成候选因果对，Tier 优先级合并，动态批量大小计算",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cekg_pipeline/passage_index.py",
+      "name": "cekg_pipeline/passage_index.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/passage_index.py",
+      "summary": "段落索引（RAG）：将小说分割为重叠文本段落，用 SentenceTransformer 嵌入并预归一化，提供基于余弦相似度的 top-K 段落检索，用于因果评估时注入叙事上下文",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cekg_pipeline/pipeline.py",
+      "name": "cekg_pipeline/pipeline.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/pipeline.py",
+      "summary": "流水线主编排器（CEKGPreprocessor），串联 8 个阶段：Stage0 别名播种 → Stage1 文本加载切章 → Stage2 智能分块 LLM 事件抽取（重试+并发）→ Stage3 上下文传播 → Stage4 Agent 分类（可选）→ Stage5 场景分组（可选）→ Stage6 因果链接 → Stage7 主题标注 → 导出 JSON/Cypher/CSV。每阶段支持 checkpoint 断点续传",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cekg_pipeline/schemas.py",
+      "name": "cekg_pipeline/schemas.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/schemas.py",
+      "summary": "核心数据类定义：CEKEvent（事件节点，含主题标注和理论归属）、CausalLink（因果边，含关系类型/机制/超类型）、ThematicLink、Scene（场景分组）、AgentRole、EventProducesEntity、PlaceContext、TimeContext、GenericNode/Relationship",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cekg_pipeline/text_processor.py",
+      "name": "cekg_pipeline/text_processor.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/text_processor.py",
+      "summary": "文本加载与预处理：加载文本文件，剥离 Project Gutenberg 头尾模板，通过多模式正则按章节标题分割，回退到段落分割",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cekg_pipeline/theme_annotation.py",
+      "name": "cekg_pipeline/theme_annotation.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/theme_annotation.py",
+      "summary": "主题标注层 v2：为每个事件标注 POWER/WEALTH/KINSHIP/JUSTICE/KNOWLEDGE 五个结构主题的参与度（direct/indirect/latent）和角色（initiating/enabling/escalating 等 7 种），支持 Theme-Bridge 规则、部分 checkpoint 恢复、两轮 LLM 重试策略",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cekg_pipeline/theme_graph.py",
+      "name": "cekg_pipeline/theme_graph.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/theme_graph.py",
+      "summary": "主题边层：将主题作为边属性（而非节点），通过因果投影（causal-projected）和场景内顺序骨架（sequential spine）两种模式构建 THEMATIC_LINK 边，形成可查询的主题子图/子情节",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cekg_pipeline/utils.py",
+      "name": "cekg_pipeline/utils.py",
+      "type": "file",
+      "filePath": "cekg_pipeline/utils.py",
+      "summary": "工具函数集：BoundedCache（异步 LRU 缓存）、DAGValidator（Kahn 算法 DAG 验证+环检测+时序约束）、ID 生成、缓存哈希、Cypher 字符串转义、安全截断、权重归一化",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "fn:main.py:main",
+      "name": "main()",
+      "type": "function",
+      "filePath": "main.py",
+      "summary": "解析命令行参数，初始化 CEKGPreprocessor，异步执行流水线并打印结果",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        16,
+        246
+      ]
+    },
+    {
+      "id": "class:checkpoint_manager.py:CheckpointManager",
+      "name": "CheckpointManager",
+      "type": "class",
+      "filePath": "cekg_pipeline/checkpoint_manager.py",
+      "summary": "断点管理器：按阶段保存 pickle checkpoint（含 SHA256 哈希校验），支持 JSON 副本、metadata 追踪、进度摘要、清空操作",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        15,
+        234
+      ]
+    },
+    {
+      "id": "class:coreference_resolver.py:CoreferenceResolver",
+      "name": "CoreferenceResolver",
+      "type": "class",
+      "filePath": "cekg_pipeline/coreference_resolver.py",
+      "summary": "指代消解核心类：管理角色注册表、别名映射、共现矩阵，支持作品种子（KNOWN_WORK_ALIASES）、子串/名匹配消解",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        11,
+        349
+      ]
+    },
+    {
+      "id": "fn:dynamic_context.py:get_dynamic_context_candidate_pairs",
+      "name": "get_dynamic_context_candidate_pairs()",
+      "type": "function",
+      "filePath": "cekg_pipeline/dynamic_context.py",
+      "summary": "动态上下文主入口：综合邻接对、局部窗口、实体引导、BM25、场景嵌入、双滑动窗口等 6 个池子生成候选因果对，支持 max_pairs 上限和优先级分配",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        255,
+        410
+      ]
+    },
+    {
+      "id": "fn:integrated_semantic.py:process_pairs_causal_only",
+      "name": "process_pairs_causal_only()",
+      "type": "function",
+      "filePath": "cekg_pipeline/integrated_semantic.py",
+      "summary": "因果链接流水线编排：分批调用 assess_pairs_causal，验证结果并创建 CausalLink 对象（含 DAG 合法性检查和本体验证）",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        149,
+        223
+      ]
+    },
+    {
+      "id": "fn:llm_service.py:_async_llm_json_call",
+      "name": "_async_llm_json_call()",
+      "type": "function",
+      "filePath": "cekg_pipeline/llm_service.py",
+      "summary": "核心 LLM 调用：动态 max_tokens（按操作类型自动计算）、JSON 响应解析/markdown 提取、截断检测告警、缓存、3 次指数回退重试",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        135,
+        254
+      ]
+    },
+    {
+      "id": "class:ontology_loader.py:OntologyManager",
+      "name": "OntologyManager",
+      "type": "class",
+      "filePath": "cekg_pipeline/ontology_loader.py",
+      "summary": "本体管理器：从 JSON schema 加载事件/关系/Agent/地点/时间类型，支持拼接 JSON 修复、理论过滤查询、类型验证",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        42,
+        244
+      ]
+    },
+    {
+      "id": "class:optimized_linking.py:IntelligentCausalLinker",
+      "name": "IntelligentCausalLinker",
+      "type": "class",
+      "filePath": "cekg_pipeline/optimized_linking.py",
+      "summary": "智能链接器：5 种策略（实体共现/时间窗口/章节过渡/语义相似度/叙事高峰）生成候选因果对，Tier 优先级合并",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        32,
+        443
+      ]
+    },
+    {
+      "id": "class:pipeline.py:CEKGPreprocessor",
+      "name": "CEKGPreprocessor",
+      "type": "class",
+      "filePath": "cekg_pipeline/pipeline.py",
+      "summary": "流水线主编排器：管理 8 个处理阶段，协调 LLM 调用、checkpoint 系统、上下文传播、因果链接和主题标注",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        59,
+        1035
+      ]
+    },
+    {
+      "id": "fn:theme_annotation.py:annotate_event_themes",
+      "name": "annotate_event_themes()",
+      "type": "function",
+      "filePath": "cekg_pipeline/theme_annotation.py",
+      "summary": "主题标注主入口：为事件标注场景 ID、分配边超类型、构建因果上下文、LLM 标注（两轮+重试）、Theme-Bridge 规则后处理",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        359,
+        527
+      ]
+    },
+    {
+      "id": "class:utils.py:DAGValidator",
+      "name": "DAGValidator",
+      "type": "class",
+      "filePath": "cekg_pipeline/utils.py",
+      "summary": "有向无环图验证器：管理邻接表，检查环（DFS）和时序约束，使用 Kahn 算法验证 DAG 属性",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        146,
+        263
+      ]
+    },
+    {
+      "id": "class:utils.py:BoundedCache",
+      "name": "BoundedCache",
+      "type": "class",
+      "filePath": "cekg_pipeline/utils.py",
+      "summary": "线程安全异步 LRU 缓存：带 asyncio Lock，支持 get/set/clear/size 操作",
+      "tags": [
+        "python-code"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        9,
+        61
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:main.py",
+      "target": "file:cekg_pipeline/pipeline.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:main.py",
+      "target": "file:cekg_pipeline/checkpoint_manager.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:main.py",
+      "target": "file:cekg_pipeline/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/exporters.py",
+      "target": "file:cekg_pipeline/schemas.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/exporters.py",
+      "target": "file:cekg_pipeline/utils.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/graph_builder.py",
+      "target": "file:cekg_pipeline/schemas.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/graph_builder.py",
+      "target": "file:cekg_pipeline/utils.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/graph_mapper.py",
+      "target": "file:cekg_pipeline/schemas.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/graph_mapper.py",
+      "target": "file:cekg_pipeline/utils.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/graph_mapper.py",
+      "target": "file:cekg_pipeline/theme_graph.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/integrated_semantic.py",
+      "target": "file:cekg_pipeline/schemas.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/integrated_semantic.py",
+      "target": "file:cekg_pipeline/utils.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/integrated_semantic.py",
+      "target": "file:cekg_pipeline/llm_service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/llm_service.py",
+      "target": "file:cekg_pipeline/schemas.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/llm_service.py",
+      "target": "file:cekg_pipeline/utils.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/llm_service.py",
+      "target": "file:cekg_pipeline/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/schemas.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/utils.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/text_processor.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/llm_service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/graph_builder.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/graph_mapper.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/exporters.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/theme_annotation.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/ontology_loader.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/optimized_linking.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/integrated_semantic.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/coreference_resolver.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/checkpoint_manager.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "file:cekg_pipeline/passage_index.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/theme_annotation.py",
+      "target": "file:cekg_pipeline/schemas.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/theme_annotation.py",
+      "target": "file:cekg_pipeline/llm_service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/theme_graph.py",
+      "target": "file:cekg_pipeline/schemas.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:cekg_pipeline/utils.py",
+      "target": "file:cekg_pipeline/schemas.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:main.py",
+      "target": "fn:main.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cekg_pipeline/checkpoint_manager.py",
+      "target": "class:checkpoint_manager.py:CheckpointManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cekg_pipeline/coreference_resolver.py",
+      "target": "class:coreference_resolver.py:CoreferenceResolver",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cekg_pipeline/dynamic_context.py",
+      "target": "fn:dynamic_context.py:get_dynamic_context_candidate_pairs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cekg_pipeline/integrated_semantic.py",
+      "target": "fn:integrated_semantic.py:process_pairs_causal_only",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cekg_pipeline/llm_service.py",
+      "target": "fn:llm_service.py:_async_llm_json_call",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cekg_pipeline/ontology_loader.py",
+      "target": "class:ontology_loader.py:OntologyManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cekg_pipeline/optimized_linking.py",
+      "target": "class:optimized_linking.py:IntelligentCausalLinker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cekg_pipeline/pipeline.py",
+      "target": "class:pipeline.py:CEKGPreprocessor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cekg_pipeline/theme_annotation.py",
+      "target": "fn:theme_annotation.py:annotate_event_themes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cekg_pipeline/utils.py",
+      "target": "class:utils.py:DAGValidator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cekg_pipeline/utils.py",
+      "target": "class:utils.py:BoundedCache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "fn:main.py:main",
+      "target": "class:pipeline.py:CEKGPreprocessor",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "fn:main.py:main",
+      "target": "class:checkpoint_manager.py:CheckpointManager",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:pipeline.py:CEKGPreprocessor",
+      "target": "class:utils.py:DAGValidator",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:pipeline.py:CEKGPreprocessor",
+      "target": "class:coreference_resolver.py:CoreferenceResolver",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:pipeline.py:CEKGPreprocessor",
+      "target": "class:checkpoint_manager.py:CheckpointManager",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:pipeline.py:CEKGPreprocessor",
+      "target": "fn:dynamic_context.py:get_dynamic_context_candidate_pairs",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:pipeline.py:CEKGPreprocessor",
+      "target": "fn:integrated_semantic.py:process_pairs_causal_only",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:pipeline.py:CEKGPreprocessor",
+      "target": "fn:theme_annotation.py:annotate_event_themes",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:pipeline.py:CEKGPreprocessor",
+      "target": "class:optimized_linking.py:IntelligentCausalLinker",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

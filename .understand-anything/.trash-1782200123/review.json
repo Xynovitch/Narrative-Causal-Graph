@@ -1,0 +1,59 @@
+{
+  "issues": [],
+  "warnings": [
+    "File node 'file:Great Expectations.txt' not in any layer",
+    "File node 'file:novels/All Quiet on the Western Front by Erich Maria Remarque.txt' not in any layer",
+    "File node 'file:novels/Arrowsmith by Sinclair Lewis.txt' not in any layer",
+    "File node 'file:novels/Cimarron by Edna Ferber.txt' not in any layer",
+    "File node 'file:novels/Elmer Gantry by Sinclair Lewis.txt' not in any layer",
+    "File node 'file:novels/Magnificent Obsession by Lloyd C. Douglas.txt' not in any layer",
+    "File node 'file:novels/Show Boat by Edna Ferber.txt' not in any layer",
+    "File node 'file:novels/So Big by Edna Ferber.txt' not in any layer",
+    "File node 'file:novels/The Age of Innocence by Edith Wharton.txt' not in any layer",
+    "File node 'file:novels/The Arrow of Gold by Joseph Conrad.txt' not in any layer",
+    "File node 'file:novels/The Enchanted April by Elizabeth.txt' not in any layer",
+    "File node 'file:novels/The Greene Murder Case by S. S. Van Dine.txt' not in any layer",
+    "File node 'file:novels/The Man of the Forest by Zane Grey.txt' not in any layer",
+    "File node 'file:novels/The Sheik by Edith M. Hull.txt' not in any layer",
+    "Node 'config:.gitignore' has no edges (orphan)",
+    "Node 'file:novels/All Quiet on the Western Front by Erich Maria Remarque.txt' has no edges (orphan)",
+    "Node 'file:novels/Magnificent Obsession by Lloyd C. Douglas.txt' has no edges (orphan)",
+    "Node 'file:novels/The Age of Innocence by Edith Wharton.txt' has no edges (orphan)",
+    "Node 'file:novels/The Arrow of Gold by Joseph Conrad.txt' has no edges (orphan)",
+    "Node 'file:novels/The Enchanted April by Elizabeth.txt' has no edges (orphan)",
+    "Node 'file:novels/The Greene Murder Case by S. S. Van Dine.txt' has no edges (orphan)",
+    "Node 'file:novels/The Man of the Forest by Zane Grey.txt' has no edges (orphan)",
+    "Node 'file:novels/The Sheik by Edith M. Hull.txt' has no edges (orphan)",
+    "Node 'file:cekg_pipeline/__init__.py' has no edges (orphan)",
+    "Node 'document:cekg_pipeline/debug.md' has no edges (orphan)"
+  ],
+  "stats": {
+    "totalNodes": 88,
+    "totalEdges": 152,
+    "totalLayers": 6,
+    "tourSteps": 8,
+    "nodeTypes": {
+      "config": 5,
+      "file": 34,
+      "document": 4,
+      "function": 37,
+      "class": 8
+    },
+    "edgeTypes": {
+      "defines_vocabulary": 2,
+      "related": 5,
+      "configures": 4,
+      "documents": 5,
+      "references": 1,
+      "documents_changes": 3,
+      "is_loaded_by": 1,
+      "is_input_to": 1,
+      "licenses": 1,
+      "imports": 36,
+      "contains": 52,
+      "calls": 39,
+      "belongsTo": 1,
+      "relatedTo": 1
+    }
+  }
+}

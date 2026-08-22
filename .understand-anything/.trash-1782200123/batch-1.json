@@ -1,0 +1,220 @@
+{
+  "nodes": [
+    {
+      "id": "config:schema.json",
+      "type": "config",
+      "name": "schema.json",
+      "filePath": "schema.json",
+      "summary": "核心叙事本体定义，定义62种事件类型（38个@McKee + 24个@Truby）、47种代理角色类型、92种因果关系类型（42个McKee + 50个Truby）、44种地点类型、28种时间类型，以及5大结构主题（POWER/WEALTH/KINSHIP/JUSTICE/KNOWLEDGE）和角色参与层级（direct/indirect/latent/none），是整个流水线的本体论主干",
+      "tags": ["本体定义", "叙事理论", "McKee", "Truby", "配置", "因果推断", "事件类型"],
+      "complexity": 10
+    },
+    {
+      "id": "config:event_ontology.json",
+      "type": "config",
+      "name": "event_ontology.json",
+      "filePath": "event_ontology.json",
+      "summary": "事件类型分类词典，包含98种事件类型标签（如ACKNOWLEDGMENT、CONFLICT_IGNITION、CHARACTER_TRANSFORMATION_SIGNAL等），从13部小说的LLM分析中自底向上提取，并融合叙事理论种子（自顶向下），用于流水线中的event_category标准化标注",
+      "tags": ["本体定义", "事件分类", "叙事理论", "LLM生成"],
+      "complexity": 3
+    },
+    {
+      "id": "config:relationship_ontology.json",
+      "type": "config",
+      "name": "relationship_ontology.json",
+      "filePath": "relationship_ontology.json",
+      "summary": "关系类型分类词典，包含106种事件间关系类型（如EMOTIONAL_TRIGGER、MORAL_CHALLENGE、SOCIAL_REJECTION、PSYCHOLOGICAL_IMPACT等），从小说文本中通过LLM分析自顶向下提取，用于因果链接评估中的关系类型标准化",
+      "tags": ["本体定义", "关系类型", "因果推断", "LLM生成"],
+      "complexity": 3
+    },
+    {
+      "id": "config:requirements.txt",
+      "type": "config",
+      "name": "requirements.txt",
+      "filePath": "requirements.txt",
+      "summary": "Python依赖清单：openai（LLM API调用）、pandas（数据处理）、python-dotenv（环境变量加载）、sentence-transformers（事件嵌入相似度计算）、rank-bm25（关键词候选对生成）、wtpsplit（SAT句子分割）",
+      "tags": ["Python依赖", "配置", "LLM", "NLP"],
+      "complexity": 1
+    },
+    {
+      "id": "config:.gitignore",
+      "type": "config",
+      "name": ".gitignore",
+      "filePath": ".gitignore",
+      "summary": "Git版本控制排除规则，忽略.env密钥文件、Python缓存（__pycache__/*.pyc）、虚拟环境（venv/.venv）、macOS元数据（.DS_Store）、Claude Code配置（CLAUDE.md/.claude/）、流水线运行状态和日志（checkpoints/*.log）及根级流水线产物",
+      "tags": ["版本控制", "安全", "配置"],
+      "complexity": 1
+    },
+    {
+      "id": "file:Great Expectations.txt",
+      "type": "file",
+      "name": "Great Expectations.txt",
+      "filePath": "Great Expectations.txt",
+      "summary": "查尔斯·狄更斯《远大前程》小说全文（20,673行），作为CEKG流水线的主要输入数据，用于构建结构化因果知识图谱。完整运行产出5,889个事件、约100个角色、20,874条因果链接（McKee+Truby）、39,489条主题边",
+      "tags": ["小说文本", "输入数据", "狄更斯", "远大前程", "叙事分析"],
+      "complexity": 2
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "项目完整文档，包含7阶段流水线架构（章节分割→LLM事件抽取→上下文传播→代理分类→场景分组→因果链接→主题标注+导出）、Graph Explorer Web界面、使用示例、成本估算（全模式$3-5/小说）、关键文件清单、检查点机制和本体结构概述",
+      "tags": ["文档", "入门指南", "流水线架构", "成本估算", "Web可视化"],
+      "complexity": 5
+    },
+    {
+      "id": "document:CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG.md",
+      "filePath": "CHANGELOG.md",
+      "summary": "开发变更历史记录，涵盖feature/dynamic-ontology-refactor（动态本体注入和节点到属性重构）、2025-11-17（Windows兼容性和推理模型支持）、2026-03-26（SAT句子分割、BM25候选对、RAG段落上下文）、2026-05-06起的多轮Graph Explorer Web迭代以及vLLM本地后端迁移",
+      "tags": ["变更日志", "开发历史", "重构", "Bug修复", "Web可视化"],
+      "complexity": 3
+    },
+    {
+      "id": "document:LICENSE",
+      "type": "document",
+      "name": "LICENSE",
+      "filePath": "LICENSE",
+      "summary": "Creative Commons Attribution 4.0 International (CC BY 4.0) 许可证，允许自由分享和改编本作品（包括商业用途），需署名",
+      "tags": ["许可证", "CC BY 4.0", "开源"],
+      "complexity": 1
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:schema.json",
+      "target": "config:event_ontology.json",
+      "type": "defines_vocabulary",
+      "direction": "directed",
+      "weight": 0.8
+    },
+    {
+      "source": "config:schema.json",
+      "target": "config:relationship_ontology.json",
+      "type": "defines_vocabulary",
+      "direction": "directed",
+      "weight": 0.8
+    },
+    {
+      "source": "config:event_ontology.json",
+      "target": "config:relationship_ontology.json",
+      "type": "related",
+      "direction": "undirected",
+      "weight": 0.6
+    },
+    {
+      "source": "config:schema.json",
+      "target": "file:main.py",
+      "type": "configures",
+      "direction": "directed",
+      "weight": 1.0
+    },
+    {
+      "source": "config:event_ontology.json",
+      "target": "file:main.py",
+      "type": "configures",
+      "direction": "directed",
+      "weight": 0.7
+    },
+    {
+      "source": "config:relationship_ontology.json",
+      "target": "file:main.py",
+      "type": "configures",
+      "direction": "directed",
+      "weight": 0.7
+    },
+    {
+      "source": "config:requirements.txt",
+      "target": "file:main.py",
+      "type": "configures",
+      "direction": "directed",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:main.py",
+      "type": "documents",
+      "direction": "directed",
+      "weight": 0.9
+    },
+    {
+      "source": "document:README.md",
+      "target": "config:schema.json",
+      "type": "documents",
+      "direction": "directed",
+      "weight": 0.9
+    },
+    {
+      "source": "document:README.md",
+      "target": "config:event_ontology.json",
+      "type": "documents",
+      "direction": "directed",
+      "weight": 0.6
+    },
+    {
+      "source": "document:README.md",
+      "target": "config:relationship_ontology.json",
+      "type": "documents",
+      "direction": "directed",
+      "weight": 0.6
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:Great Expectations.txt",
+      "type": "documents",
+      "direction": "directed",
+      "weight": 0.7
+    },
+    {
+      "source": "document:README.md",
+      "target": "document:CHANGELOG.md",
+      "type": "references",
+      "direction": "directed",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CHANGELOG.md",
+      "target": "config:schema.json",
+      "type": "documents_changes",
+      "direction": "directed",
+      "weight": 0.7
+    },
+    {
+      "source": "document:CHANGELOG.md",
+      "target": "config:event_ontology.json",
+      "type": "documents_changes",
+      "direction": "directed",
+      "weight": 0.6
+    },
+    {
+      "source": "document:CHANGELOG.md",
+      "target": "config:relationship_ontology.json",
+      "type": "documents_changes",
+      "direction": "directed",
+      "weight": 0.6
+    },
+    {
+      "source": "config:schema.json",
+      "target": "file:main.py",
+      "type": "is_loaded_by",
+      "direction": "directed",
+      "weight": 0.9
+    },
+    {
+      "source": "file:Great Expectations.txt",
+      "target": "file:main.py",
+      "type": "is_input_to",
+      "direction": "directed",
+      "weight": 0.8
+    },
+    {
+      "source": "document:LICENSE",
+      "target": "document:README.md",
+      "type": "licenses",
+      "direction": "directed",
+      "weight": 0.4
+    }
+  ]
+}

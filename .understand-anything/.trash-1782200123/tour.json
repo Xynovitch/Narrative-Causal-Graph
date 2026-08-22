@@ -1,0 +1,117 @@
+{
+  "title": "CEKG 代码库学习导览",
+  "description": "从本体定义到 Web 可视化的 8 步导览，覆盖叙事因果知识图谱（CEKG）流水线的完整架构",
+  "steps": [
+    {
+      "order": 1,
+      "title": "项目概览与叙事本体定义",
+      "description": "从 README.md 了解项目全景（7 阶段流水线、成本估算 $3-5/小说、Graph Explorer Web 界面），然后深入 schema.json 理解核心本体：62 种事件类型（@McKee + @Truby）、47 种代理角色、92 种因果关系、5 大结构主题（POWER/WEALTH/KINSHIP/JUSTICE/KNOWLEDGE）。event_ontology.json 和 relationship_ontology.json 分别是事件标签词典（98 种）和关系类型词典（106 种），与 schema 协同构成整个流水线的本体论主干。",
+      "nodeIds": [
+        "document:README.md",
+        "config:schema.json",
+        "config:event_ontology.json",
+        "config:relationship_ontology.json"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "入口点与基础配置",
+      "description": "main.py 是命令行入口，通过 argparse 解析参数（输入路径、checkpoint 管理、--fast/--full 预设模式），初始化 CEKGPreprocessor 并异步运行流水线。config.py 通过 dotenv 加载 .env 中的 LLM 配置（BASE_URL、MODEL、API_KEY），定义批处理大小和缓存上限。requirements.txt 列出所有 Python 依赖：openai、sentence-transformers、rank-bm25、wtpsplit 等。",
+      "nodeIds": [
+        "file:main.py",
+        "function:main.py:main()",
+        "file:cekg_pipeline/config.py",
+        "config:requirements.txt",
+        "config:.gitignore"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "文本加载与章节分割（Stage 0-1）",
+      "description": "text_processor.py 的 split_chapters() 负责加载小说文本文件，剥离 Project Gutenberg 头尾模板，通过 5 种多模式正则表达式匹配章节标题（Chapter/CHAPTER/Book 等），回退到段落分割。pipeline.py 中的 CEKGPreprocessor.run_async() 在 Stage0 通过 coreference_resolver.py 的 seed_from_work() 加载角色别名种子，在 Stage1 调用文本加载和章节分割，每个阶段通过 checkpoint_manager.py 支持断点续传。",
+      "nodeIds": [
+        "file:cekg_pipeline/text_processor.py",
+        "function:cekg_pipeline/text_processor.py:split_chapters()",
+        "file:cekg_pipeline/pipeline.py",
+        "class:pipeline.py:CEKGPreprocessor",
+        "function:cekg_pipeline/pipeline.py:run_async()",
+        "file:cekg_pipeline/checkpoint_manager.py",
+        "file:cekg_pipeline/coreference_resolver.py",
+        "function:cekg_pipeline/coreference_resolver.py:seed_from_work()"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "LLM 事件抽取与指代消解（Stage 2）",
+      "description": "Stage2 是流水线的核心：_process_chapter_chunked() 将章节内容按 SAT 句子分割（wtpsplit），以重叠窗口组装 chunk，通过 Semaphore 并发调用 LLM 批量抽取事件。底层 _async_llm_json_call() 封装了 OpenAI/vLLM API 调用，支持动态 max_tokens、JSON 解析、截断检测、LRU 缓存和 3 次指数回退重试。extract_events_from_text() 注入事件本体论生成 prompt。_parse_event_json_data() 解析 LLM 返回的 JSON 创建 CEKEvent 对象，并通过 CoreferenceResolver.resolve() 将代词/昵称/描述词规整为标准角色名。",
+      "nodeIds": [
+        "file:cekg_pipeline/llm_service.py",
+        "function:cekg_pipeline/llm_service.py:_async_llm_json_call()",
+        "function:cekg_pipeline/llm_service.py:extract_events_from_text()",
+        "function:cekg_pipeline/pipeline.py:_process_chapter_chunked()",
+        "function:cekg_pipeline/pipeline.py:_parse_event_json_data()",
+        "class:coreference_resolver.py:CoreferenceResolver",
+        "function:cekg_pipeline/coreference_resolver.py:resolve()",
+        "file:cekg_pipeline/schemas.py"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "上下文传播与 Agent 分类（Stage 3-4）",
+      "description": "graph_builder.py 负责 Stage3 的上下文传播，分为两遍：Pass1 的 propagate_context_attributes() 沿事件链传播位置/时间属性（未显式指定时继承前驱上下文），Pass2 的 propagate_context() 传播演员和动机实体的上下文（实现「叙事持续性」——新实体覆盖旧实体，否则继承活跃上下文）。Stage4 可选，通过 llm_service.py 的 classify_agent_type() 使用廉价 mini 模型将角色名+事件描述分类为 Agent 类型（如 PROTAGONIST_HERO / ANTAGONIST_VILLAIN 等 47 种）。schemas.py 定义所有核心数据类：CEKEvent、CausalLink、Scene、AgentRole 等。",
+      "nodeIds": [
+        "file:cekg_pipeline/graph_builder.py",
+        "function:cekg_pipeline/graph_builder.py:propagate_context_attributes()",
+        "function:cekg_pipeline/graph_builder.py:propagate_context()",
+        "function:cekg_pipeline/llm_service.py:classify_agent_type()",
+        "file:cekg_pipeline/schemas.py"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "因果候选对生成与智能链接（Stage 5-6）",
+      "description": "Stage5-6 是因果推断链的核心。Stage5 由两条路径生成候选对：dynamic_context.py 的 get_dynamic_context_candidate_pairs() 综合 6 个池子（邻接对、场景内嵌入相似度、双滑动窗口长距配对、实体引导、BM25 关键词配对），回退时 optimized_linking.py 的 IntelligentCausalLinker 使用 5 种策略（实体共现、时间窗口、章节过渡、语义相似度、叙事高峰）并 Tier 优先级合并。passage_index.py 的 PassageIndex 将小说分割为重叠段落并用 SentenceTransformer 嵌入，支持 RAG 上下文检索。Stage6 中 integrated_semantic.py 的 process_pairs_causal_only() 将候选对分批送入 LLM（assess_pairs_bulk()），通过反事实推理（'效果在没有原因的情况下会发生吗'）评估因果关系。",
+      "nodeIds": [
+        "file:cekg_pipeline/dynamic_context.py",
+        "function:cekg_pipeline/dynamic_context.py:get_dynamic_context_candidate_pairs()",
+        "file:cekg_pipeline/optimized_linking.py",
+        "class:optimized_linking.py:IntelligentCausalLinker",
+        "function:cekg_pipeline/optimized_linking.py:intelligent_long_range_linking()",
+        "file:cekg_pipeline/passage_index.py",
+        "class:passage_index.py:PassageIndex",
+        "file:cekg_pipeline/integrated_semantic.py",
+        "function:cekg_pipeline/integrated_semantic.py:process_pairs_causal_only()",
+        "function:cekg_pipeline/llm_service.py:assess_pairs_bulk()"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "主题标注与图映射（Stage 7）",
+      "description": "Stage7 的主题标注层 v2 是流水线的收尾阶段。theme_annotation.py 的 annotate_event_themes() 为每个事件标注 5 大结构主题（POWER/WEALTH/KINSHIP/JUSTICE/KNOWLEDGE）的参与度（direct/indirect/latent）和角色（initiating/enabling/escalating 等 7 种）。内部流程包括：assign_edge_supertypes() 为因果边分配超类型（CAUSAL_PRODUCTION/EMOTIONAL_DRIVE 等 10 类），通过 annotate_single_event_theme() 调用 LLM 逐事件标注，两轮重试策略 + Theme-Bridge 规则后处理（相邻因果事件有 direct 参与度则升级为 indirect+mediating）。theme_graph.py 的 build_thematic_event_edges() 通过因果投影和场景顺序骨架两种模式构建 THEMATIC_LINK 边。graph_mapper.py 的 map_to_generic_graph() 将所有数据映射为 GenericNode/GenericRelationship 星型模型。",
+      "nodeIds": [
+        "file:cekg_pipeline/theme_annotation.py",
+        "function:cekg_pipeline/theme_annotation.py:annotate_event_themes()",
+        "file:cekg_pipeline/theme_graph.py",
+        "function:cekg_pipeline/theme_graph.py:build_thematic_event_edges()",
+        "file:cekg_pipeline/graph_mapper.py",
+        "function:cekg_pipeline/graph_mapper.py:map_to_generic_graph()",
+        "function:cekg_pipeline/llm_service.py:annotate_single_event_theme()"
+      ]
+    },
+    {
+      "order": 8,
+      "title": "多格式导出与 Web 可视化",
+      "description": "exporters.py 提供三种导出格式：(1) build_jsonld() 构建 JSON-LD 图表示（事件→生产边→因果边→主题边）；(2) export_neo4j_cypher() 生成 Neo4j Cypher 脚本，创建索引后分批 MERGE 节点和关系；(3) export_csv() 生成 13 个 CSV 文件的星型模型（事件/Agent/地点/动机/因果/场景/主题边等）。通用图映射器 graph_mapper.py 同时调用 ontology_loader.py 单例本体管理器进行类型验证。scripts/build_web.py 将流水线 JSON-LD 产物部署到 docs/web/data/ 并更新 manifest，为 Graph Explorer Web 界面提供前端数据。utils.py 中的 DAGValidator 使用 Kahn 算法验证因果图的无环性，BoundedCache 提供线程安全的异步 LRU 缓存。",
+      "nodeIds": [
+        "file:cekg_pipeline/exporters.py",
+        "function:cekg_pipeline/exporters.py:build_jsonld()",
+        "function:cekg_pipeline/exporters.py:export_neo4j_cypher()",
+        "function:cekg_pipeline/exporters.py:export_csv()",
+        "file:cekg_pipeline/ontology_loader.py",
+        "class:ontology_loader.py:OntologyManager",
+        "file:cekg_pipeline/utils.py",
+        "class:utils.py:DAGValidator"
+      ]
+    }
+  ]
+}

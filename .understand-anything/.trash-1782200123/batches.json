@@ -1,0 +1,508 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 43,
+  "totalBatches": 3,
+  "exportsByPath": {
+    "main.py": [
+      "main"
+    ],
+    "cekg_pipeline/__init__.py": [],
+    "cekg_pipeline/checkpoint_manager.py": [
+      "CheckpointManager",
+      "serialize_events",
+      "deserialize_events",
+      "serialize_links",
+      "deserialize_links"
+    ],
+    "cekg_pipeline/config.py": [],
+    "cekg_pipeline/coreference_resolver.py": [
+      "CoreferenceResolver",
+      "get_resolver",
+      "reset_resolver"
+    ],
+    "cekg_pipeline/dynamic_context.py": [
+      "_get_embedding_model",
+      "_encode",
+      "_cosine_sim",
+      "get_adjacent_pairs",
+      "get_scene_pairs_by_similarity",
+      "get_long_shot_pairs_double_sliding",
+      "_get_local_fallback_pairs",
+      "get_bm25_pairs",
+      "get_dynamic_context_candidate_pairs"
+    ],
+    "cekg_pipeline/exporters.py": [
+      "_needs_backtick_escaping",
+      "_escape_identifier",
+      "_escape_cypher_value",
+      "_format_cypher_properties",
+      "export_neo4j_cypher",
+      "build_jsonld",
+      "export_json",
+      "export_csv"
+    ],
+    "cekg_pipeline/graph_builder.py": [
+      "_generate_entity_id",
+      "propagate_context_attributes",
+      "propagate_context"
+    ],
+    "cekg_pipeline/graph_mapper.py": [
+      "_escape_props",
+      "_sanitize_name_for_id",
+      "map_to_generic_graph"
+    ],
+    "cekg_pipeline/integrated_semantic.py": [
+      "assess_pairs_causal",
+      "process_pairs_causal_only"
+    ],
+    "cekg_pipeline/llm_service.py": [
+      "init_openai_client",
+      "init_mini_client",
+      "_async_llm_json_call",
+      "extract_events_from_text",
+      "batch_extract_events",
+      "assess_pairs_bulk",
+      "classify_agent_type",
+      "extract_scenes_from_chapter_async",
+      "annotate_single_event_theme",
+      "get_cache_sizes"
+    ],
+    "cekg_pipeline/ontology_loader.py": [
+      "EventType",
+      "RelationType",
+      "AgentType",
+      "OntologyManager",
+      "get_ontology_manager",
+      "reset_ontology_manager"
+    ],
+    "cekg_pipeline/optimized_linking.py": [
+      "EventPair",
+      "IntelligentCausalLinker",
+      "intelligent_long_range_linking"
+    ],
+    "cekg_pipeline/passage_index.py": [
+      "_segment_text",
+      "PassageIndex"
+    ],
+    "cekg_pipeline/pipeline.py": [
+      "normalize_theory_name",
+      "CEKGPreprocessor"
+    ],
+    "cekg_pipeline/schemas.py": [
+      "CEKGError",
+      "ExtractionError",
+      "DAGViolationError",
+      "CEKEvent",
+      "AgentRole",
+      "EventProducesEntity",
+      "CausalLink",
+      "PlaceContext",
+      "TimeContext",
+      "Scene",
+      "GenericNode",
+      "GenericRelationship"
+    ],
+    "cekg_pipeline/text_processor.py": [
+      "load_text",
+      "strip_gutenberg_boilerplate",
+      "split_chapters",
+      "split_into_paragraphs"
+    ],
+    "cekg_pipeline/theme_annotation.py": [
+      "assign_edge_supertypes",
+      "attach_scene_ids_to_events",
+      "build_local_causal_context",
+      "apply_theme_bridge_rule",
+      "_clean_theme_annotations",
+      "annotate_event_themes"
+    ],
+    "cekg_pipeline/theme_graph.py": [
+      "_theme_data",
+      "_is_theme_active",
+      "_safe_conf",
+      "build_thematic_event_edges"
+    ],
+    "cekg_pipeline/utils.py": [
+      "BoundedCache",
+      "_make_id",
+      "_hash_for_cache",
+      "_escape_cypher_string",
+      "_truncate_safe",
+      "_normalize_weights",
+      "DAGValidator"
+    ]
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": ".gitignore",
+          "language": "text",
+          "sizeLines": 25,
+          "fileCategory": "config"
+        },
+        {
+          "path": "CHANGELOG.md",
+          "language": "markdown",
+          "sizeLines": 131,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "Great Expectations.txt",
+          "language": "text",
+          "sizeLines": 16464,
+          "fileCategory": "data"
+        },
+        {
+          "path": "LICENSE",
+          "language": "text",
+          "sizeLines": 8,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 208,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "event_ontology.json",
+          "language": "json",
+          "sizeLines": 108,
+          "fileCategory": "config"
+        },
+        {
+          "path": "relationship_ontology.json",
+          "language": "json",
+          "sizeLines": 108,
+          "fileCategory": "config"
+        },
+        {
+          "path": "requirements.txt",
+          "language": "text",
+          "sizeLines": 6,
+          "fileCategory": "config"
+        },
+        {
+          "path": "schema.json",
+          "language": "json",
+          "sizeLines": 2467,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        ".gitignore": [],
+        "CHANGELOG.md": [],
+        "Great Expectations.txt": [],
+        "LICENSE": [],
+        "README.md": [],
+        "event_ontology.json": [],
+        "relationship_ontology.json": [],
+        "requirements.txt": [],
+        "schema.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "novels/All Quiet on the Western Front by Erich Maria Remarque.txt",
+          "language": "text",
+          "sizeLines": 6180,
+          "fileCategory": "data"
+        },
+        {
+          "path": "novels/Arrowsmith by Sinclair Lewis.txt",
+          "language": "text",
+          "sizeLines": 15594,
+          "fileCategory": "data"
+        },
+        {
+          "path": "novels/Cimarron by Edna Ferber.txt",
+          "language": "text",
+          "sizeLines": 12613,
+          "fileCategory": "data"
+        },
+        {
+          "path": "novels/Elmer Gantry by Sinclair Lewis.txt",
+          "language": "text",
+          "sizeLines": 14693,
+          "fileCategory": "data"
+        },
+        {
+          "path": "novels/Magnificent Obsession by Lloyd C. Douglas.txt",
+          "language": "text",
+          "sizeLines": 10428,
+          "fileCategory": "data"
+        },
+        {
+          "path": "novels/Show Boat by Edna Ferber.txt",
+          "language": "text",
+          "sizeLines": 9812,
+          "fileCategory": "data"
+        },
+        {
+          "path": "novels/So Big by Edna Ferber.txt",
+          "language": "text",
+          "sizeLines": 8485,
+          "fileCategory": "data"
+        },
+        {
+          "path": "novels/The Age of Innocence by Edith Wharton.txt",
+          "language": "text",
+          "sizeLines": 9668,
+          "fileCategory": "data"
+        },
+        {
+          "path": "novels/The Arrow of Gold by Joseph Conrad.txt",
+          "language": "text",
+          "sizeLines": 9357,
+          "fileCategory": "data"
+        },
+        {
+          "path": "novels/The Enchanted April by Elizabeth.txt",
+          "language": "text",
+          "sizeLines": 7385,
+          "fileCategory": "data"
+        },
+        {
+          "path": "novels/The Greene Murder Case by S. S. Van Dine.txt",
+          "language": "text",
+          "sizeLines": 9759,
+          "fileCategory": "data"
+        },
+        {
+          "path": "novels/The Man of the Forest by Zane Grey.txt",
+          "language": "text",
+          "sizeLines": 11383,
+          "fileCategory": "data"
+        },
+        {
+          "path": "novels/The Sheik by Edith M. Hull.txt",
+          "language": "text",
+          "sizeLines": 7765,
+          "fileCategory": "data"
+        }
+      ],
+      "batchImportData": {
+        "novels/All Quiet on the Western Front by Erich Maria Remarque.txt": [],
+        "novels/Arrowsmith by Sinclair Lewis.txt": [],
+        "novels/Cimarron by Edna Ferber.txt": [],
+        "novels/Elmer Gantry by Sinclair Lewis.txt": [],
+        "novels/Magnificent Obsession by Lloyd C. Douglas.txt": [],
+        "novels/Show Boat by Edna Ferber.txt": [],
+        "novels/So Big by Edna Ferber.txt": [],
+        "novels/The Age of Innocence by Edith Wharton.txt": [],
+        "novels/The Arrow of Gold by Joseph Conrad.txt": [],
+        "novels/The Enchanted April by Elizabeth.txt": [],
+        "novels/The Greene Murder Case by S. S. Van Dine.txt": [],
+        "novels/The Man of the Forest by Zane Grey.txt": [],
+        "novels/The Sheik by Edith M. Hull.txt": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "cekg_pipeline/__init__.py",
+          "language": "python",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/checkpoint_manager.py",
+          "language": "python",
+          "sizeLines": 291,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/config.py",
+          "language": "python",
+          "sizeLines": 34,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/coreference_resolver.py",
+          "language": "python",
+          "sizeLines": 353,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/debug.md",
+          "language": "markdown",
+          "sizeLines": 26,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "cekg_pipeline/dynamic_context.py",
+          "language": "python",
+          "sizeLines": 350,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/exporters.py",
+          "language": "python",
+          "sizeLines": 553,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/graph_builder.py",
+          "language": "python",
+          "sizeLines": 111,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/graph_mapper.py",
+          "language": "python",
+          "sizeLines": 316,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/integrated_semantic.py",
+          "language": "python",
+          "sizeLines": 185,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/llm_service.py",
+          "language": "python",
+          "sizeLines": 446,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/ontology_loader.py",
+          "language": "python",
+          "sizeLines": 247,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/optimized_linking.py",
+          "language": "python",
+          "sizeLines": 429,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/passage_index.py",
+          "language": "python",
+          "sizeLines": 99,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/pipeline.py",
+          "language": "python",
+          "sizeLines": 959,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/schemas.py",
+          "language": "python",
+          "sizeLines": 142,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/text_processor.py",
+          "language": "python",
+          "sizeLines": 97,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/theme_annotation.py",
+          "language": "python",
+          "sizeLines": 466,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/theme_graph.py",
+          "language": "python",
+          "sizeLines": 132,
+          "fileCategory": "code"
+        },
+        {
+          "path": "cekg_pipeline/utils.py",
+          "language": "python",
+          "sizeLines": 254,
+          "fileCategory": "code"
+        },
+        {
+          "path": "main.py",
+          "language": "python",
+          "sizeLines": 234,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "cekg_pipeline/__init__.py": [],
+        "cekg_pipeline/checkpoint_manager.py": [],
+        "cekg_pipeline/config.py": [],
+        "cekg_pipeline/coreference_resolver.py": [],
+        "cekg_pipeline/debug.md": [],
+        "cekg_pipeline/dynamic_context.py": [],
+        "cekg_pipeline/exporters.py": [
+          "cekg_pipeline.schemas",
+          "cekg_pipeline.utils"
+        ],
+        "cekg_pipeline/graph_builder.py": [
+          "cekg_pipeline.schemas",
+          "cekg_pipeline.utils"
+        ],
+        "cekg_pipeline/graph_mapper.py": [
+          "cekg_pipeline.schemas",
+          "cekg_pipeline.utils",
+          "cekg_pipeline.theme_graph"
+        ],
+        "cekg_pipeline/integrated_semantic.py": [
+          "cekg_pipeline.schemas",
+          "cekg_pipeline.utils",
+          "cekg_pipeline.llm_service"
+        ],
+        "cekg_pipeline/llm_service.py": [
+          "cekg_pipeline.schemas",
+          "cekg_pipeline.utils",
+          "cekg_pipeline.config"
+        ],
+        "cekg_pipeline/ontology_loader.py": [],
+        "cekg_pipeline/optimized_linking.py": [],
+        "cekg_pipeline/passage_index.py": [],
+        "cekg_pipeline/pipeline.py": [
+          "cekg_pipeline.config",
+          "cekg_pipeline.schemas",
+          "cekg_pipeline.utils",
+          "cekg_pipeline.text_processor",
+          "cekg_pipeline.llm_service",
+          "cekg_pipeline.graph_builder",
+          "cekg_pipeline.graph_mapper",
+          "cekg_pipeline.exporters",
+          "cekg_pipeline.theme_annotation",
+          "cekg_pipeline.ontology_loader",
+          "cekg_pipeline.optimized_linking",
+          "cekg_pipeline.integrated_semantic",
+          "cekg_pipeline.coreference_resolver",
+          "cekg_pipeline.checkpoint_manager",
+          "cekg_pipeline.passage_index"
+        ],
+        "cekg_pipeline/schemas.py": [],
+        "cekg_pipeline/text_processor.py": [],
+        "cekg_pipeline/theme_annotation.py": [
+          "cekg_pipeline.schemas",
+          "cekg_pipeline.llm_service"
+        ],
+        "cekg_pipeline/theme_graph.py": [
+          "cekg_pipeline.schemas"
+        ],
+        "cekg_pipeline/utils.py": [
+          "cekg_pipeline.schemas"
+        ],
+        "main.py": [
+          "cekg_pipeline.pipeline",
+          "cekg_pipeline.checkpoint_manager",
+          "cekg_pipeline.config"
+        ]
+      },
+      "neighborMap": {}
+    }
+  ]
+}

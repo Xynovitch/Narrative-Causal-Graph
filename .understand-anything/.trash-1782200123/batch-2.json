@@ -1,0 +1,311 @@
+{
+  "nodes": [
+    {
+      "id": "file:novels/All Quiet on the Western Front by Erich Maria Remarque.txt",
+      "type": "file",
+      "path": "novels/All Quiet on the Western Front by Erich Maria Remarque.txt",
+      "category": "data",
+      "language": "text",
+      "summary": "埃里希·玛利亚·雷马克的反战经典小说，以一战德国士兵保罗·博伊默尔的第一人称视角，描绘了战争对青年一代的肉体摧残与精神毁灭。",
+      "tags": [
+        "小说数据",
+        "输入文本",
+        "文学",
+        "雷马克"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "totalLines": 8006,
+        "nonEmptyLines": 6173
+      },
+      "name": "All Quiet on the Western Front by Erich Maria Remarque.txt",
+      "filePath": "novels/All Quiet on the Western Front by Erich Maria Remarque.txt"
+    },
+    {
+      "id": "file:novels/Arrowsmith by Sinclair Lewis.txt",
+      "type": "file",
+      "path": "novels/Arrowsmith by Sinclair Lewis.txt",
+      "category": "data",
+      "language": "text",
+      "summary": "辛克莱·刘易斯获普利策奖之作（作者拒绝领奖），讲述理想主义医生马丁·阿罗史密斯在科学研究与商业利益、个人抱负之间挣扎的故事，深刻批判了美国医学界的商业化。",
+      "tags": [
+        "小说数据",
+        "输入文本",
+        "文学",
+        "辛克莱·刘易斯"
+      ],
+      "complexity": "very_complex",
+      "metrics": {
+        "totalLines": 19691,
+        "nonEmptyLines": 15587
+      },
+      "name": "Arrowsmith by Sinclair Lewis.txt",
+      "filePath": "novels/Arrowsmith by Sinclair Lewis.txt"
+    },
+    {
+      "id": "file:novels/Cimarron by Edna Ferber.txt",
+      "type": "file",
+      "path": "novels/Cimarron by Edna Ferber.txt",
+      "category": "data",
+      "language": "text",
+      "summary": "埃德娜·费伯笔下的西部开拓史诗，讲述俄克拉荷马土地热潮中扬西·克雷瓦特及其家族的命运变迁，描绘了美国边疆从蛮荒到文明的转型。",
+      "tags": [
+        "小说数据",
+        "输入文本",
+        "文学",
+        "埃德娜·费伯"
+      ],
+      "complexity": "complex",
+      "metrics": {
+        "totalLines": 16427,
+        "nonEmptyLines": 12613
+      },
+      "name": "Cimarron by Edna Ferber.txt",
+      "filePath": "novels/Cimarron by Edna Ferber.txt"
+    },
+    {
+      "id": "file:novels/Elmer Gantry by Sinclair Lewis.txt",
+      "type": "file",
+      "path": "novels/Elmer Gantry by Sinclair Lewis.txt",
+      "category": "data",
+      "language": "text",
+      "summary": "辛克莱·刘易斯的讽刺巨著，刻画了一个酗酒、好色但极富魅力的伪善传教士埃尔默·甘特瑞，揭露了1920年代美国宗教商业化的虚伪与腐败。",
+      "tags": [
+        "小说数据",
+        "输入文本",
+        "文学",
+        "辛克莱·刘易斯"
+      ],
+      "complexity": "complex",
+      "metrics": {
+        "totalLines": 18830,
+        "nonEmptyLines": 14686
+      },
+      "name": "Elmer Gantry by Sinclair Lewis.txt",
+      "filePath": "novels/Elmer Gantry by Sinclair Lewis.txt"
+    },
+    {
+      "id": "file:novels/Magnificent Obsession by Lloyd C. Douglas.txt",
+      "type": "file",
+      "path": "novels/Magnificent Obsession by Lloyd C. Douglas.txt",
+      "category": "data",
+      "language": "text",
+      "summary": "劳埃德·C·道格拉斯的励志宗教小说，讲述一位富有的花花公子因间接导致一位良医死亡，在悔恨中追寻匿名行善的人生道路，探讨救赎与无私奉献的主题。",
+      "tags": [
+        "小说数据",
+        "输入文本",
+        "文学",
+        "劳埃德·道格拉斯"
+      ],
+      "complexity": "complex",
+      "metrics": {
+        "totalLines": 14716,
+        "nonEmptyLines": 10428
+      },
+      "name": "Magnificent Obsession by Lloyd C. Douglas.txt",
+      "filePath": "novels/Magnificent Obsession by Lloyd C. Douglas.txt"
+    },
+    {
+      "id": "file:novels/Show Boat by Edna Ferber.txt",
+      "type": "file",
+      "path": "novels/Show Boat by Edna Ferber.txt",
+      "category": "data",
+      "language": "text",
+      "summary": "埃德娜·费伯的代表作，以密西西比河上的演艺船为舞台，跨越三代人的命运沉浮，深刻探讨种族偏见、性别角色与美国演艺界的变迁。",
+      "tags": [
+        "小说数据",
+        "输入文本",
+        "文学",
+        "埃德娜·费伯"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "totalLines": 11977,
+        "nonEmptyLines": 9805
+      },
+      "name": "Show Boat by Edna Ferber.txt",
+      "filePath": "novels/Show Boat by Edna Ferber.txt"
+    },
+    {
+      "id": "file:novels/So Big by Edna Ferber.txt",
+      "type": "file",
+      "path": "novels/So Big by Edna Ferber.txt",
+      "category": "data",
+      "language": "text",
+      "summary": "埃德娜·费伯获普利策奖的作品，讲述赛琳娜·皮克在芝加哥近郊从农妇成长为坚韧母亲的奋斗史，赞颂劳动的价值与女性在逆境中的顽强生命力。",
+      "tags": [
+        "小说数据",
+        "输入文本",
+        "文学",
+        "埃德娜·费伯"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "totalLines": 10354,
+        "nonEmptyLines": 8478
+      },
+      "name": "So Big by Edna Ferber.txt",
+      "filePath": "novels/So Big by Edna Ferber.txt"
+    },
+    {
+      "id": "file:novels/The Age of Innocence by Edith Wharton.txt",
+      "type": "file",
+      "path": "novels/The Age of Innocence by Edith Wharton.txt",
+      "category": "data",
+      "language": "text",
+      "summary": "伊迪丝·华顿获普利策奖之作，以1870年代纽约上流社会为背景，讲述纽兰·阿切尔在传统婚姻与禁忌之爱间的挣扎，精妙解剖了镀金时代社会的虚伪与束缚。",
+      "tags": [
+        "小说数据",
+        "输入文本",
+        "文学",
+        "伊迪丝·华顿"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "totalLines": 11956,
+        "nonEmptyLines": 9661
+      },
+      "name": "The Age of Innocence by Edith Wharton.txt",
+      "filePath": "novels/The Age of Innocence by Edith Wharton.txt"
+    },
+    {
+      "id": "file:novels/The Arrow of Gold by Joseph Conrad.txt",
+      "type": "file",
+      "path": "novels/The Arrow of Gold by Joseph Conrad.txt",
+      "category": "data",
+      "language": "text",
+      "summary": "约瑟夫·康拉德以第一人称叙述的爱情与冒险小说，讲述年轻水手在法国马赛卷入卡洛斯派政治阴谋，与神秘女子多娜·丽塔之间炽热而注定失败的爱情。",
+      "tags": [
+        "小说数据",
+        "输入文本",
+        "文学",
+        "约瑟夫·康拉德"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "totalLines": 11179,
+        "nonEmptyLines": 9350
+      },
+      "name": "The Arrow of Gold by Joseph Conrad.txt",
+      "filePath": "novels/The Arrow of Gold by Joseph Conrad.txt"
+    },
+    {
+      "id": "file:novels/The Enchanted April by Elizabeth.txt",
+      "type": "file",
+      "path": "novels/The Enchanted April by Elizabeth.txt",
+      "category": "data",
+      "language": "text",
+      "summary": "伊丽莎白·冯·阿尼姆的治愈系小说，讲述四位性格迥异的英国女性在意大利海滨城堡共度四月假期，在阳光与花香中重新发现自我、修复人际关系的温暖故事。",
+      "tags": [
+        "小说数据",
+        "输入文本",
+        "文学",
+        "伊丽莎白·冯·阿尼姆"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "totalLines": 9115,
+        "nonEmptyLines": 7378
+      },
+      "name": "The Enchanted April by Elizabeth.txt",
+      "filePath": "novels/The Enchanted April by Elizabeth.txt"
+    },
+    {
+      "id": "file:novels/The Greene Murder Case by S. S. Van Dine.txt",
+      "type": "file",
+      "path": "novels/The Greene Murder Case by S. S. Van Dine.txt",
+      "category": "data",
+      "language": "text",
+      "summary": "S·S·范·达因的经典侦探小说，菲洛·万斯系列之一，讲述格林大宅中接连发生的离奇命案，侦探万斯以其渊博学识和独特推理方法解开家族谋杀谜团。",
+      "tags": [
+        "小说数据",
+        "输入文本",
+        "文学",
+        "范·达因"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "totalLines": 12825,
+        "nonEmptyLines": 9752
+      },
+      "name": "The Greene Murder Case by S. S. Van Dine.txt",
+      "filePath": "novels/The Greene Murder Case by S. S. Van Dine.txt"
+    },
+    {
+      "id": "file:novels/The Man of the Forest by Zane Grey.txt",
+      "type": "file",
+      "path": "novels/The Man of the Forest by Zane Grey.txt",
+      "category": "data",
+      "language": "text",
+      "summary": "赞恩·格雷的西部冒险小说，讲述森林隐士米尔特·戴尔从歹徒手中营救无辜少女，在亚利桑那荒野中展开追逐与正义对决的经典西部传奇。",
+      "tags": [
+        "小说数据",
+        "输入文本",
+        "文学",
+        "赞恩·格雷"
+      ],
+      "complexity": "complex",
+      "metrics": {
+        "totalLines": 15248,
+        "nonEmptyLines": 11376
+      },
+      "name": "The Man of the Forest by Zane Grey.txt",
+      "filePath": "novels/The Man of the Forest by Zane Grey.txt"
+    },
+    {
+      "id": "file:novels/The Sheik by Edith M. Hull.txt",
+      "type": "file",
+      "path": "novels/The Sheik by Edith M. Hull.txt",
+      "category": "data",
+      "language": "text",
+      "summary": "伊迪丝·M·赫尔的浪漫冒险小说，讲述英国贵族女性黛安娜在阿尔及利亚沙漠中被阿拉伯酋长绑架后，经历文化冲突与情感转变的争议性爱情故事，开创了沙漠言情类型。",
+      "tags": [
+        "小说数据",
+        "输入文本",
+        "文学",
+        "伊迪丝·赫尔"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "totalLines": 8849,
+        "nonEmptyLines": 7758
+      },
+      "name": "The Sheik by Edith M. Hull.txt",
+      "filePath": "novels/The Sheik by Edith M. Hull.txt"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:novels/Arrowsmith by Sinclair Lewis.txt",
+      "target": "file:novels/Elmer Gantry by Sinclair Lewis.txt",
+      "type": "related",
+      "label": "同一作者：辛克莱·刘易斯",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:novels/Cimarron by Edna Ferber.txt",
+      "target": "file:novels/Show Boat by Edna Ferber.txt",
+      "type": "related",
+      "label": "同一作者：埃德娜·费伯",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:novels/Cimarron by Edna Ferber.txt",
+      "target": "file:novels/So Big by Edna Ferber.txt",
+      "type": "related",
+      "label": "同一作者：埃德娜·费伯",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:novels/Show Boat by Edna Ferber.txt",
+      "target": "file:novels/So Big by Edna Ferber.txt",
+      "type": "related",
+      "label": "同一作者：埃德娜·费伯",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

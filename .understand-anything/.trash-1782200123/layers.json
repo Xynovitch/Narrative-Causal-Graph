@@ -1,0 +1,77 @@
+{
+  "project": "Narrative-Causal-Graph",
+  "architecture_style": "Pipeline (8-stage sequential with checkpoint)",
+  "layers": [
+    {
+      "id": "layer-1",
+      "name": "入口与编排",
+      "description": "CLI 入口点与流水线主编排器，负责解析命令行参数、初始化 CEKGPreprocessor、串联 8 个处理阶段（文本加载→事件抽取→上下文传播→Agent 分类→场景分组→因果链接→主题标注→导出），并通过 CheckpointManager 实现各阶段断点续传。辅以 README、变更日志和许可证等项目文档。",
+      "nodeIds": [
+        "file:main.py",
+        "file:cekg_pipeline/pipeline.py",
+        "document:README.md",
+        "document:CHANGELOG.md",
+        "document:LICENSE",
+        "document:cekg_pipeline/debug.md"
+      ]
+    },
+    {
+      "id": "layer-2",
+      "name": "本体与配置",
+      "description": "定义叙事知识图谱的核心本体论，包含 62 种事件类型（McKee+Truby）、47 种代理角色、92 种因果关系、44 种地点和 28 种时间类型（schema.json），以及从 13 部小说 LLM 分析中提取的 98 种事件标签（event_ontology.json）和 106 种关系类型（relationship_ontology.json）。通过 OntologyManager 提供静态本体字典加载、理论过滤查询、类型验证和 JSON 修复，config.py 管理 LLM 环境变量和批处理参数。",
+      "nodeIds": [
+        "config:schema.json",
+        "config:event_ontology.json",
+        "config:relationship_ontology.json",
+        "config:requirements.txt",
+        "config:.gitignore",
+        "file:cekg_pipeline/ontology_loader.py",
+        "file:cekg_pipeline/config.py"
+      ]
+    },
+    {
+      "id": "layer-3",
+      "name": "数据模型与基础设施",
+      "description": "定义核心数据类（CEKEvent、CausalLink、ThematicLink、Scene、AgentRole 等）和通用节点/关系抽象（GenericNode/Relationship），提供异步 LRU 缓存（BoundedCache）、DAG 合法性验证（Kahn 算法+环检测+时序约束）、ID 生成等工具函数，以及基于 pickle 的阶段级断点保存/加载和 SHA256 完整性校验。",
+      "nodeIds": [
+        "file:cekg_pipeline/schemas.py",
+        "file:cekg_pipeline/utils.py",
+        "file:cekg_pipeline/checkpoint_manager.py",
+        "file:cekg_pipeline/__init__.py"
+      ]
+    },
+    {
+      "id": "layer-4",
+      "name": "文本处理与事件抽取",
+      "description": "加载小说文本、剥离 Project Gutenberg 模板、通过多模式正则按章节分割为文本块（text_processor），调用 LLM 进行事件抽取和 Agent 类型分类（llm_service），通过角色注册表和共现学习消解指代歧义（coreference_resolver），利用 SentenceTransformer 嵌入构建重叠段落 RAG 索引以支撑后续因果评估的上下文注入（passage_index）。",
+      "nodeIds": [
+        "file:cekg_pipeline/text_processor.py",
+        "file:cekg_pipeline/llm_service.py",
+        "file:cekg_pipeline/coreference_resolver.py",
+        "file:cekg_pipeline/passage_index.py"
+      ]
+    },
+    {
+      "id": "layer-5",
+      "name": "图谱构建与因果推理",
+      "description": "沿事件序列传播位置/时间/实体上下文属性（graph_builder），通过邻接对、场景内嵌入相似度、双滑动窗口、BM25 关键词和实体引导 5 种策略生成候选因果对（dynamic_context），再回退到实体共现、时间窗口、章节过渡、语义相似度和叙事高峰峰值 5 种策略（optimized_linking），最终由 LLM 按反事实推理批量评估因果关系并创建 CausalLink（integrated_semantic），最后通过 graph_mapper 将流水线数据映射为星型通用图模型。",
+      "nodeIds": [
+        "file:cekg_pipeline/graph_builder.py",
+        "file:cekg_pipeline/graph_mapper.py",
+        "file:cekg_pipeline/dynamic_context.py",
+        "file:cekg_pipeline/optimized_linking.py",
+        "file:cekg_pipeline/integrated_semantic.py"
+      ]
+    },
+    {
+      "id": "layer-6",
+      "name": "主题标注与多格式导出",
+      "description": "为每个事件标注 POWER/WEALTH/KINSHIP/JUSTICE/KNOWLEDGE 五大结构主题的参与度（direct/indirect/latent），通过 Theme-Bridge 规则补齐相邻因果关系链中的主题传递（theme_annotation），按因果投影和场景顺序骨架两种模式构建 THEMATIC_LINK 边形成可查询主题子图（theme_graph），最终通过 exporters 输出 JSON-LD 图表示、Neo4j Cypher 脚本（MERGE+分批写入）和 13 文件 CSV 星型模型。",
+      "nodeIds": [
+        "file:cekg_pipeline/theme_annotation.py",
+        "file:cekg_pipeline/theme_graph.py",
+        "file:cekg_pipeline/exporters.py"
+      ]
+    }
+  ]
+}

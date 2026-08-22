@@ -1,0 +1,111 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 13,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "novels/All Quiet on the Western Front by Erich Maria Remarque.txt",
+      "language": "text",
+      "fileCategory": "data",
+      "totalLines": 8006,
+      "nonEmptyLines": 6173,
+      "metrics": {}
+    },
+    {
+      "path": "novels/Arrowsmith by Sinclair Lewis.txt",
+      "language": "text",
+      "fileCategory": "data",
+      "totalLines": 19691,
+      "nonEmptyLines": 15587,
+      "metrics": {}
+    },
+    {
+      "path": "novels/Cimarron by Edna Ferber.txt",
+      "language": "text",
+      "fileCategory": "data",
+      "totalLines": 16427,
+      "nonEmptyLines": 12613,
+      "metrics": {}
+    },
+    {
+      "path": "novels/Elmer Gantry by Sinclair Lewis.txt",
+      "language": "text",
+      "fileCategory": "data",
+      "totalLines": 18830,
+      "nonEmptyLines": 14686,
+      "metrics": {}
+    },
+    {
+      "path": "novels/Magnificent Obsession by Lloyd C. Douglas.txt",
+      "language": "text",
+      "fileCategory": "data",
+      "totalLines": 14716,
+      "nonEmptyLines": 10428,
+      "metrics": {}
+    },
+    {
+      "path": "novels/Show Boat by Edna Ferber.txt",
+      "language": "text",
+      "fileCategory": "data",
+      "totalLines": 11977,
+      "nonEmptyLines": 9805,
+      "metrics": {}
+    },
+    {
+      "path": "novels/So Big by Edna Ferber.txt",
+      "language": "text",
+      "fileCategory": "data",
+      "totalLines": 10354,
+      "nonEmptyLines": 8478,
+      "metrics": {}
+    },
+    {
+      "path": "novels/The Age of Innocence by Edith Wharton.txt",
+      "language": "text",
+      "fileCategory": "data",
+      "totalLines": 11956,
+      "nonEmptyLines": 9661,
+      "metrics": {}
+    },
+    {
+      "path": "novels/The Arrow of Gold by Joseph Conrad.txt",
+      "language": "text",
+      "fileCategory": "data",
+      "totalLines": 11179,
+      "nonEmptyLines": 9350,
+      "metrics": {}
+    },
+    {
+      "path": "novels/The Enchanted April by Elizabeth.txt",
+      "language": "text",
+      "fileCategory": "data",
+      "totalLines": 9115,
+      "nonEmptyLines": 7378,
+      "metrics": {}
+    },
+    {
+      "path": "novels/The Greene Murder Case by S. S. Van Dine.txt",
+      "language": "text",
+      "fileCategory": "data",
+      "totalLines": 12825,
+      "nonEmptyLines": 9752,
+      "metrics": {}
+    },
+    {
+      "path": "novels/The Man of the Forest by Zane Grey.txt",
+      "language": "text",
+      "fileCategory": "data",
+      "totalLines": 15248,
+      "nonEmptyLines": 11376,
+      "metrics": {}
+    },
+    {
+      "path": "novels/The Sheik by Edith M. Hull.txt",
+      "language": "text",
+      "fileCategory": "data",
+      "totalLines": 8849,
+      "nonEmptyLines": 7758,
+      "metrics": {}
+    }
+  ]
+}

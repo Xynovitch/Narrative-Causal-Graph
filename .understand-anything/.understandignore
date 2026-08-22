@@ -1,0 +1,38 @@
+# .understandignore — 排除辅助目录和脚本，聚焦核心管道代码
+
+# --- 辅助目录 ---
+docs/
+scripts/
+old scripts/
+Experiment Results/
+backups/
+runs/
+
+# --- 从 .gitignore 继承 ---
+.env
+__pycache__/
+*.pyc
+venv/
+.venv/
+.DS_Store
+**/.DS_Store
+
+# --- Claude/Agent 配置 ---
+CLAUDE.md
+.claude/
+
+# --- Pipeline 运行状态和日志 ---
+checkpoints/
+checkpoints_*/
+*_run.log
+gpt-run.log
+pipeline_run.log
+
+# --- 根级运行产物 ---
+/gpt5_full.json
+/gpt5_full_import.txt
+/gpt5_full_import.cypher
+/neo4j_csv_gpt5_full/
+
+# --- 临时/测试文件 ---
+*.ipynb
